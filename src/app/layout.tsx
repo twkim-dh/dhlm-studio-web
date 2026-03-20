@@ -45,10 +45,10 @@ export default function RootLayout({
   return (
     <html lang="ko" className={`${notoSansKR.variable} antialiased`}>
       <head>
-        <Script
+        <script
+          async
           src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-5182634360822108"
           crossOrigin="anonymous"
-          strategy="beforeInteractive"
         />
       </head>
       <body className="min-h-screen flex flex-col font-sans">
