@@ -5,6 +5,7 @@ import Link from "next/link";
 
 const navLinks = [
   { label: "서비스", href: "/#services" },
+  { label: "블로그", href: "/blog" },
   { label: "회사소개", href: "/#about" },
   { label: "문의", href: "/#contact" },
 ];

@@ -231,6 +231,70 @@ export default function Home() {
         </div>
       </section>
 
+      {/* Latest Blog */}
+      <section className="py-20 sm:py-28 bg-white">
+        <div className="mx-auto max-w-6xl px-4 sm:px-6">
+          <div className="text-center mb-14">
+            <h2 className="text-3xl sm:text-4xl font-bold text-gray-900">
+              최신 블로그
+            </h2>
+            <p className="mt-4 text-gray-600 text-lg">
+              일상 속 결정을 재밌게 만드는 이야기
+            </p>
+          </div>
+          <div className="grid gap-6 sm:grid-cols-2 lg:grid-cols-3">
+            {[
+              {
+                slug: "how-to-choose-menu",
+                title: "매일 저녁 메뉴 고르기가 힘든 이유와 해결법",
+                excerpt:
+                  "결정 피로란 무엇인지, 커플과 가족 사이 메뉴 갈등의 원인과 해결법을 알아봅니다.",
+              },
+              {
+                slug: "couple-compatibility-test",
+                title: "연인 취향 테스트로 알아보는 우리의 궁합",
+                excerpt:
+                  "취향 싱크로율이 관계에서 왜 중요한지, 똑(Ttok) 서비스로 궁합을 확인하는 방법을 소개합니다.",
+              },
+              {
+                slug: "daily-decision-tips",
+                title: "일상 속 작은 결정을 쉽게 만드는 5가지 방법",
+                excerpt:
+                  "결정 피로를 줄이고 일상의 선택을 가볍게 만드는 실용적인 팁 5가지를 소개합니다.",
+              },
+            ].map((post) => (
+              <Link
+                key={post.slug}
+                href={`/blog/${post.slug}`}
+                className="block rounded-2xl border border-gray-100 bg-white p-6 shadow-sm hover:shadow-md transition-shadow group"
+              >
+                <h3 className="text-lg font-bold text-gray-900 group-hover:text-[#31A575] transition-colors mb-2">
+                  {post.title}
+                </h3>
+                <p className="text-gray-600 text-sm leading-relaxed mb-3">
+                  {post.excerpt}
+                </p>
+                <span className="text-sm font-semibold text-[#31A575]">
+                  자세히 읽기 &rarr;
+                </span>
+              </Link>
+            ))}
+          </div>
+          <div className="mt-10 text-center">
+            <Link
+              href="/blog"
+              className="inline-flex items-center justify-center rounded-xl px-8 py-3 text-base font-semibold border-2 transition-colors hover:bg-gray-50"
+              style={{
+                borderColor: "var(--brand-green)",
+                color: "var(--brand-green)",
+              }}
+            >
+              블로그 전체 보기
+            </Link>
+          </div>
+        </div>
+      </section>
+
       {/* Contact */}
       <section id="contact" className="py-20 sm:py-28 bg-white">
         <div className="mx-auto max-w-2xl px-4 sm:px-6">
