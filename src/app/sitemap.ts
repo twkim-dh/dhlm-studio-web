@@ -1,17 +1,68 @@
 import type { MetadataRoute } from "next";
 
+const BASE = "https://dhlm-studio.com";
+
+// Static pages
+const staticRoutes = [
+  "", "about", "services", "privacy", "terms",
+  "blog",
+];
+
+// Blog posts
+const blogSlugs = [
+  "how-to-choose-menu", "couple-compatibility-test", "food-matching-guide",
+  "balance-game-ideas", "daily-decision-tips",
+  "lotto-number-generator", "lotto-dream-number", "lotto-statistics", "lotto-winning-tips",
+  "salary-calculator", "retirement-calculator", "loan-interest", "bmi-guide",
+  "party-games", "friend-quiz", "menu-decision", "couple-compatibility",
+  "online-tools-free", "vat-calculator-guide", "severance-pay-guide",
+  "gold-price-today", "unit-converter-guide", "qr-code-free",
+  "image-compress-free", "youtube-thumbnail-download", "json-formatter-online",
+  "password-generator", "typing-speed-test", "electricity-calculator", "coupang-seller-fee",
+];
+
+// Tools
+const toolRoutes = [
+  "tools",
+  // calc
+  "tools/calc/salary", "tools/calc/severance", "tools/calc/loan", "tools/calc/vat",
+  "tools/calc/deposit", "tools/calc/margin", "tools/calc/youtube", "tools/calc/percent",
+  "tools/calc/exchange", "tools/calc/time", "tools/calc/gold", "tools/calc/hourly",
+  "tools/calc/loan-compare", "tools/calc/rent-vs-buy", "tools/calc/investment-return",
+  "tools/calc/coupang-fee", "tools/calc/tax-calculator",
+  // life
+  "tools/life/bmi", "tools/life/age", "tools/life/date", "tools/life/unit-converter",
+  "tools/life/stopwatch", "tools/life/calorie", "tools/life/tip-calculator",
+  "tools/life/countdown", "tools/life/electricity", "tools/life/typing-speed",
+  // mfg
+  "tools/mfg/unit-weight", "tools/mfg/cpk", "tools/mfg/uph", "tools/mfg/defect", "tools/mfg/oee",
+  // dev
+  "tools/dev/json", "tools/dev/base64", "tools/dev/jwt", "tools/dev/cron", "tools/dev/sql",
+  "tools/dev/color-picker", "tools/dev/lorem-ipsum", "tools/dev/url-encoder",
+  "tools/dev/regex-tester", "tools/dev/ip-check", "tools/dev/screen-size",
+  "tools/dev/markdown-preview", "tools/dev/font-preview", "tools/dev/tax-calculator",
+  "tools/dev/timestamp", "tools/dev/subnet", "tools/dev/chmod",
+  "tools/dev/binary-converter", "tools/dev/html-entity",
+  // image
+  "tools/image/image-compress", "tools/image/image-convert", "tools/image/image-resize",
+  "tools/image/youtube-thumbnail", "tools/image/qr",
+  // msg
+  "tools/msg/resign-letter", "tools/msg/reject-message", "tools/msg/congratulation",
+  "tools/msg/annual-leave", "tools/msg/late-excuse", "tools/msg/text-summary",
+  "tools/msg/character-count", "tools/msg/text-transform",
+  // gen
+  "tools/gen/nickname-gen", "tools/gen/company-name-gen", "tools/gen/team-name-gen",
+  "tools/gen/random-picker", "tools/gen/password-gen", "tools/gen/hashtag-gen",
+  "tools/gen/emoji-search", "tools/gen/random-number", "tools/gen/morse-code",
+  // compare
+  "tools/compare/deposit-compare", "tools/compare/card-compare", "tools/compare/phone-compare",
+];
+
 export default function sitemap(): MetadataRoute.Sitemap {
-  return [
-    { url: "https://dhlm-studio.com", lastModified: new Date(), changeFrequency: "weekly", priority: 1 },
-    { url: "https://dhlm-studio.com/about", lastModified: new Date(), changeFrequency: "monthly", priority: 0.8 },
-    { url: "https://dhlm-studio.com/services", lastModified: new Date(), changeFrequency: "monthly", priority: 0.8 },
-    { url: "https://dhlm-studio.com/blog", lastModified: new Date(), changeFrequency: "weekly", priority: 0.9 },
-    { url: "https://dhlm-studio.com/blog/how-to-choose-menu", lastModified: new Date(), changeFrequency: "monthly", priority: 0.7 },
-    { url: "https://dhlm-studio.com/blog/couple-compatibility-test", lastModified: new Date(), changeFrequency: "monthly", priority: 0.7 },
-    { url: "https://dhlm-studio.com/blog/food-matching-guide", lastModified: new Date(), changeFrequency: "monthly", priority: 0.7 },
-    { url: "https://dhlm-studio.com/blog/balance-game-ideas", lastModified: new Date(), changeFrequency: "monthly", priority: 0.7 },
-    { url: "https://dhlm-studio.com/blog/daily-decision-tips", lastModified: new Date(), changeFrequency: "monthly", priority: 0.7 },
-    { url: "https://dhlm-studio.com/privacy", lastModified: new Date(), changeFrequency: "yearly", priority: 0.3 },
-    { url: "https://dhlm-studio.com/terms", lastModified: new Date(), changeFrequency: "yearly", priority: 0.3 },
+  const routes = [
+    ...staticRoutes.map(r => ({ url: `${BASE}/${r}`, lastModified: new Date(), changeFrequency: "weekly" as const, priority: r === "" ? 1 : 0.8 })),
+    ...blogSlugs.map(s => ({ url: `${BASE}/blog/${s}`, lastModified: new Date(), changeFrequency: "monthly" as const, priority: 0.7 })),
+    ...toolRoutes.map(r => ({ url: `${BASE}/${r}`, lastModified: new Date(), changeFrequency: "weekly" as const, priority: 0.8 })),
   ];
+  return routes;
 }
