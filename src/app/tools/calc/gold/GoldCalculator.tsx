@@ -28,6 +28,9 @@ interface Result {
   totalWeight: number;
   estimatedBuy: number;
   estimatedSell: number;
+  weightInDon: number;
+  weightInGram: number;
+  weightInOz: number;
 }
 
 export default function GoldCalculator() {
@@ -69,7 +72,10 @@ export default function GoldCalculator() {
 
   function calculate() {
     const w = parseFloat(weight);
-    if (!w || w <= 0 || !price) return;
+    if (!w || w <= 0 || !price) {
+      setResult(null);
+      return;
+    }
 
     let grams: number;
     if (unit === "don") grams = w * DON_TO_GRAM;
@@ -84,8 +90,17 @@ export default function GoldCalculator() {
       totalWeight: grams,
       estimatedBuy: Math.round(basePrice * 1.05),
       estimatedSell: Math.round(basePrice * 0.95),
+      weightInDon: grams / DON_TO_GRAM,
+      weightInGram: grams,
+      weightInOz: grams / OZ_TO_GRAM,
     });
   }
+
+  // Real-time calculation whenever inputs change
+  useEffect(() => {
+    calculate();
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, [weight, unit, goldType, price]);
 
   const units: { key: WeightUnit; label: string }[] = [
     { key: "don", label: "돈" },
@@ -148,7 +163,7 @@ export default function GoldCalculator() {
               {purityOptions.map(({ key, label }) => (
                 <button
                   key={key}
-                  onClick={() => { setGoldType(key); setResult(null); }}
+                  onClick={() => setGoldType(key)}
                   className={`py-2 rounded-lg text-sm font-medium border transition-colors ${
                     goldType === key
                       ? "bg-brand text-white border-brand"
@@ -166,7 +181,7 @@ export default function GoldCalculator() {
               {units.map((u) => (
                 <button
                   key={u.key}
-                  onClick={() => { setUnit(u.key); setResult(null); }}
+                  onClick={() => setUnit(u.key)}
                   className={`py-2 rounded-lg text-sm font-medium border transition-colors ${
                     unit === u.key
                       ? "bg-brand text-white border-brand"
@@ -209,6 +224,23 @@ export default function GoldCalculator() {
               {purityOptions.find(p => p.key === goldType)?.label} 예상 매입가
             </p>
             <p className="text-3xl font-bold text-yellow-700">{formatWon(result.estimatedBuy)}</p>
+          </div>
+          <div className="bg-gray-50 rounded-lg p-3 mb-4">
+            <p className="text-xs text-gray-500 mb-1">단위 환산</p>
+            <div className="grid grid-cols-3 gap-2 text-center text-sm">
+              <div>
+                <p className="font-bold text-gray-800">{result.weightInDon.toFixed(2)}</p>
+                <p className="text-xs text-gray-500">돈</p>
+              </div>
+              <div>
+                <p className="font-bold text-gray-800">{result.weightInGram.toFixed(2)}</p>
+                <p className="text-xs text-gray-500">g</p>
+              </div>
+              <div>
+                <p className="font-bold text-gray-800">{result.weightInOz.toFixed(4)}</p>
+                <p className="text-xs text-gray-500">oz</p>
+              </div>
+            </div>
           </div>
           <div className="space-y-2 text-sm">
             {[

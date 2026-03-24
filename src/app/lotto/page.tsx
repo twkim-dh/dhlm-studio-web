@@ -11,7 +11,10 @@ import {
   generateExcluding,
   generateOddEven,
   generateDream,
+  generateDreamWithSource,
+  dreamData,
 } from '@/lib/lotto-generator';
+import type { DreamEntry, DreamResult } from '@/lib/lotto-generator';
 import { initKakao, shareLotto } from '@/lib/lotto-kakao';
 
 type Mode = 'random' | 'dream' | 'fixed' | 'exclude' | 'oddeven';
@@ -47,6 +50,11 @@ export default function Home() {
   const [excludedNumbers, setExcludedNumbers] = useState<number[]>([]);
   const [oddCount, setOddCount] = useState(3);
 
+  // Dream-specific states
+  const [dreamSearch, setDreamSearch] = useState('');
+  const [selectedDream, setSelectedDream] = useState<DreamEntry | null>(null);
+  const [dreamResults, setDreamResults] = useState<DreamResult[]>([]);
+
   // Share feedback
   const [shareMsg, setShareMsg] = useState('');
 
@@ -64,13 +72,17 @@ export default function Home() {
       case 'random':
         generated = generateRandom(setCount);
         break;
-      case 'dream':
-        if (!dreamKeyword.trim()) {
-          alert('꿈 키워드를 입력해주세요!');
+      case 'dream': {
+        const keyword = selectedDream?.keyword || dreamKeyword.trim();
+        if (!keyword) {
+          alert('꿈 키워드를 입력하거나 선택해주세요!');
           return;
         }
-        generated = generateDream(dreamKeyword, setCount);
+        const dResults = generateDreamWithSource(keyword, setCount);
+        setDreamResults(dResults);
+        generated = dResults.map((r) => r.numbers);
         break;
+      }
       case 'fixed':
         if (fixedNumbers.length === 0) {
           alert('고정할 번호를 선택해주세요!');
@@ -240,17 +252,100 @@ export default function Home() {
         {mode === 'dream' && (
           <div>
             <label className="text-sm font-medium text-gray-700 block mb-1">
-              꿈 키워드 입력
+              꿈 키워드 검색
             </label>
             <input
               type="text"
-              value={dreamKeyword}
-              onChange={(e) => setDreamKeyword(e.target.value)}
+              value={dreamSearch}
+              onChange={(e) => {
+                setDreamSearch(e.target.value);
+                setSelectedDream(null);
+                setDreamKeyword(e.target.value);
+              }}
               placeholder="예: 돼지, 물, 뱀, 꽃..."
               className="w-full border border-gray-300 rounded-lg px-3 py-2 text-sm focus:outline-none focus:border-gold"
             />
-            <p className="text-xs text-gray-400 mt-1">
-              꿈에서 본 키워드를 입력하면 관련 번호를 생성합니다
+
+            {/* Popular keyword buttons */}
+            <div className="mt-3">
+              <p className="text-xs text-gray-500 mb-1.5">인기 키워드</p>
+              <div className="flex flex-wrap gap-1.5">
+                {dreamData.slice(0, 12).map((d) => (
+                  <button
+                    key={d.keyword}
+                    onClick={() => {
+                      setSelectedDream(d);
+                      setDreamKeyword(d.keyword);
+                      setDreamSearch(d.keyword);
+                    }}
+                    className={`px-2.5 py-1 rounded-full text-xs font-medium transition-all ${
+                      selectedDream?.keyword === d.keyword
+                        ? 'bg-gold text-white'
+                        : 'bg-gray-100 text-gray-600 hover:bg-gray-200'
+                    }`}
+                  >
+                    {d.emoji} {d.keyword}
+                  </button>
+                ))}
+              </div>
+            </div>
+
+            {/* Search results */}
+            {dreamSearch.trim() && !selectedDream && (
+              <div className="mt-3 bg-gray-50 rounded-lg p-2 max-h-48 overflow-y-auto">
+                {dreamData
+                  .filter((d) => d.keyword.includes(dreamSearch.trim()))
+                  .map((d) => (
+                    <button
+                      key={d.keyword}
+                      onClick={() => {
+                        setSelectedDream(d);
+                        setDreamKeyword(d.keyword);
+                        setDreamSearch(d.keyword);
+                      }}
+                      className="w-full flex items-center justify-between px-3 py-2 rounded-lg hover:bg-white text-left transition-colors"
+                    >
+                      <span className="text-sm">
+                        {d.emoji} {d.keyword}
+                        <span className="text-xs text-gray-400 ml-1">
+                          ({d.meaning})
+                        </span>
+                      </span>
+                      <span className="text-xs text-gray-400">
+                        {d.numbers.join(', ')}
+                      </span>
+                    </button>
+                  ))}
+                {dreamData.filter((d) =>
+                  d.keyword.includes(dreamSearch.trim())
+                ).length === 0 && (
+                  <p className="text-xs text-gray-400 text-center py-2">
+                    일치하는 키워드가 없습니다. 직접 입력한 키워드로 번호를 생성합니다.
+                  </p>
+                )}
+              </div>
+            )}
+
+            {/* Selected dream info */}
+            {selectedDream && (
+              <div className="mt-3 bg-yellow-50 border border-yellow-200 rounded-lg p-3">
+                <div className="flex items-center gap-2 mb-1">
+                  <span className="text-xl">{selectedDream.emoji}</span>
+                  <span className="font-bold text-gray-800">
+                    {selectedDream.keyword}
+                  </span>
+                  <span className="text-xs bg-yellow-200 text-yellow-800 px-2 py-0.5 rounded-full">
+                    {selectedDream.meaning}
+                  </span>
+                </div>
+                <p className="text-xs text-gray-500">
+                  관련 번호: {selectedDream.numbers.join(', ')}
+                </p>
+              </div>
+            )}
+
+            <p className="text-xs text-gray-400 mt-2">
+              꿈에서 본 키워드를 선택하면 관련 번호 2~3개 + 랜덤 번호로 생성합니다
             </p>
           </div>
         )}
@@ -345,14 +440,57 @@ export default function Home() {
               <h3 className="text-sm font-bold text-gray-700 mb-2">
                 생성된 번호
               </h3>
-              {results.map((set, i) => (
-                <NumberSet
-                  key={`${animationKey}-${i}`}
-                  label={String.fromCharCode(65 + i)}
-                  numbers={set}
-                  animated={true}
-                />
-              ))}
+              {mode === 'dream' && dreamResults.length > 0
+                ? dreamResults.map((dr, i) => (
+                    <div
+                      key={`${animationKey}-${i}`}
+                      className="number-set flex items-center gap-2 py-2"
+                    >
+                      <span className="text-sm font-bold text-gold w-6 shrink-0">
+                        {String.fromCharCode(65 + i)}
+                      </span>
+                      <div className="flex gap-1.5 flex-wrap">
+                        {dr.numbers.map((num, ni) => {
+                          const isDream = dr.dreamNumbers.includes(num);
+                          return (
+                            <motion.div
+                              key={`${animationKey}-${i}-${num}-${ni}`}
+                              initial={{ scale: 0, opacity: 0, rotate: -180 }}
+                              animate={{ scale: 1, opacity: 1, rotate: 0 }}
+                              transition={{
+                                type: 'spring',
+                                stiffness: 260,
+                                damping: 20,
+                                delay: ni * 0.12,
+                              }}
+                            >
+                              <div className="relative">
+                                <LottoBall number={num} size="md" />
+                                {isDream && (
+                                  <div className="absolute -top-1 -right-1 w-4 h-4 bg-yellow-400 rounded-full flex items-center justify-center text-[8px] font-bold text-white shadow">
+                                    ★
+                                  </div>
+                                )}
+                              </div>
+                            </motion.div>
+                          );
+                        })}
+                      </div>
+                    </div>
+                  ))
+                : results.map((set, i) => (
+                    <NumberSet
+                      key={`${animationKey}-${i}`}
+                      label={String.fromCharCode(65 + i)}
+                      numbers={set}
+                      animated={true}
+                    />
+                  ))}
+              {mode === 'dream' && dreamResults.length > 0 && (
+                <p className="text-xs text-gray-400 mt-2">
+                  ★ 표시 = 꿈해몽 번호 / 나머지 = 랜덤 번호
+                </p>
+              )}
             </div>
 
             {/* Action Buttons */}
