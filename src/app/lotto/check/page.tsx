@@ -1,19 +1,10 @@
 'use client';
 
-import { useState, useEffect } from 'react';
+import { useState } from 'react';
 import LottoBall from '@/components/LottoBall';
 import { motion, AnimatePresence } from 'framer-motion';
-
-interface DrawResult {
-  drwNo: number;
-  drwtNo1: number;
-  drwtNo2: number;
-  drwtNo3: number;
-  drwtNo4: number;
-  drwtNo5: number;
-  drwtNo6: number;
-  bnusNo: number;
-}
+import { getLatestDraw, getDrawByRound } from '@/data/lotto/recent-draws';
+import type { LottoDraw } from '@/data/lotto/recent-draws';
 
 interface CheckResult {
   matchedNumbers: number[];
@@ -22,25 +13,15 @@ interface CheckResult {
   rankLabel: string;
 }
 
+// Static data - no API needed
+const latestDraw = getLatestDraw();
+
 export default function CheckPage() {
   const [myNumbers, setMyNumbers] = useState<number[]>([]);
-  const [roundInput, setRoundInput] = useState('');
-  const [draw, setDraw] = useState<DrawResult | null>(null);
+  const [roundInput, setRoundInput] = useState(String(latestDraw.round));
+  const [draw, setDraw] = useState<LottoDraw>(latestDraw);
   const [result, setResult] = useState<CheckResult | null>(null);
   const [showConfetti, setShowConfetti] = useState(false);
-
-  useEffect(() => {
-    // Fetch latest draw to get default round
-    fetch('/api/lotto/' + String(Math.floor((Date.now() - new Date('2002-12-07').getTime()) / (7 * 86400000)) + 1))
-      .then((r) => r.json())
-      .then((data) => {
-        if (data.returnValue === 'success') {
-          setDraw(data);
-          setRoundInput(String(data.drwNo));
-        }
-      })
-      .catch(() => {});
-  }, []);
 
   const toggleNumber = (num: number) => {
     if (myNumbers.includes(num)) {
@@ -50,46 +31,29 @@ export default function CheckPage() {
     }
   };
 
-  const handleCheck = async () => {
+  const handleCheck = () => {
     if (myNumbers.length !== 6) {
       alert('6개의 번호를 선택해주세요!');
       return;
     }
 
-    // Fetch the draw if round changed
     const round = parseInt(roundInput, 10);
     let currentDraw = draw;
 
-    if (!draw || draw.drwNo !== round) {
-      try {
-        const res = await fetch(`/api/lotto/${round}`);
-        const data = await res.json();
-        if (data.returnValue === 'success') {
-          currentDraw = data;
-          setDraw(data);
-        } else {
-          alert('해당 회차 정보를 찾을 수 없습니다.');
-          return;
-        }
-      } catch {
-        alert('데이터를 불러오는데 실패했습니다.');
+    if (draw.round !== round) {
+      const found = getDrawByRound(round);
+      if (found) {
+        currentDraw = found;
+        setDraw(found);
+      } else {
+        alert('해당 회차 정보를 찾을 수 없습니다. (최근 20회차만 조회 가능)');
         return;
       }
     }
 
-    if (!currentDraw) return;
-
-    const winNumbers = [
-      currentDraw.drwtNo1,
-      currentDraw.drwtNo2,
-      currentDraw.drwtNo3,
-      currentDraw.drwtNo4,
-      currentDraw.drwtNo5,
-      currentDraw.drwtNo6,
-    ];
-
+    const winNumbers = currentDraw.numbers;
     const matched = myNumbers.filter((n) => winNumbers.includes(n));
-    const matchedBonus = myNumbers.includes(currentDraw.bnusNo);
+    const matchedBonus = myNumbers.includes(currentDraw.bonus);
 
     let rank: number | null = null;
     let rankLabel = '낙첨';
@@ -206,17 +170,10 @@ export default function CheckPage() {
             {/* Draw Numbers */}
             <div className="text-center mb-4">
               <span className="text-sm text-gray-500">
-                제 {draw.drwNo}회 당첨번호
+                제 {draw.round}회 당첨번호
               </span>
               <div className="flex items-center justify-center gap-1.5 mt-2 flex-wrap">
-                {[
-                  draw.drwtNo1,
-                  draw.drwtNo2,
-                  draw.drwtNo3,
-                  draw.drwtNo4,
-                  draw.drwtNo5,
-                  draw.drwtNo6,
-                ].map((num, i) => (
+                {draw.numbers.map((num, i) => (
                   <div
                     key={i}
                     className={`${
@@ -235,7 +192,7 @@ export default function CheckPage() {
                       : ''
                   }`}
                 >
-                  <LottoBall number={draw.bnusNo} size="md" bonus />
+                  <LottoBall number={draw.bonus} size="md" bonus />
                 </div>
               </div>
             </div>
