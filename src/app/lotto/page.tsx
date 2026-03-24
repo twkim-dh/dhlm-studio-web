@@ -29,16 +29,24 @@ const oddEvenOptions = [
   { label: '홀2:짝4', odd: 2 },
 ];
 
-interface DrawResult {
-  drwNo: number;
-  drwtNo1: number;
-  drwtNo2: number;
-  drwtNo3: number;
-  drwtNo4: number;
-  drwtNo5: number;
-  drwtNo6: number;
-  bnusNo: number;
-  drwNoDate: string;
+interface RecentDraw {
+  round: number;
+  date: string;
+  numbers: number[];
+  bonus: number;
+  prize1Amount: number;
+}
+
+function formatPrize(amount: number): string {
+  if (amount >= 100000000) {
+    const eok = Math.floor(amount / 100000000);
+    const remain = Math.floor((amount % 100000000) / 10000);
+    return remain > 0 ? `${eok}억 ${remain.toLocaleString()}만원` : `${eok}억원`;
+  }
+  if (amount >= 10000) {
+    return `${Math.floor(amount / 10000).toLocaleString()}만원`;
+  }
+  return `${amount.toLocaleString()}원`;
 }
 
 export default function Home() {
@@ -54,26 +62,49 @@ export default function Home() {
   const [excludedNumbers, setExcludedNumbers] = useState<number[]>([]);
   const [oddCount, setOddCount] = useState(3);
 
-  // Latest draw
-  const [latestDraw, setLatestDraw] = useState<DrawResult | null>(null);
+  // Recent draws
+  const [recentDraws, setRecentDraws] = useState<RecentDraw[]>([]);
 
   // Share feedback
   const [shareMsg, setShareMsg] = useState('');
 
   useEffect(() => {
     initKakao();
-    fetchLatestDraw();
+    fetchRecentDraws();
   }, []);
 
-  const fetchLatestDraw = async () => {
+  const fetchRecentDraws = async () => {
     try {
-      const res = await fetch('/api/draw');
-      if (res.ok) {
-        const data = await res.json();
-        if (data.returnValue === 'success') {
-          setLatestDraw(data);
+      // Estimate latest round
+      const latestRound = Math.floor(
+        (Date.now() - new Date('2002-12-07').getTime()) / (7 * 86400000)
+      ) + 1;
+
+      const draws: RecentDraw[] = [];
+      for (let i = 0; i < 5; i++) {
+        const round = latestRound - i;
+        try {
+          const res = await fetch(`/lotto/api/draw?round=${round}`);
+          if (res.ok) {
+            const data = await res.json();
+            if (data.returnValue === 'success') {
+              draws.push({
+                round: data.round ?? data.drwNo,
+                date: data.date ?? data.drwNoDate,
+                numbers: data.numbers ?? [
+                  data.drwtNo1, data.drwtNo2, data.drwtNo3,
+                  data.drwtNo4, data.drwtNo5, data.drwtNo6,
+                ],
+                bonus: data.bonus ?? data.bnusNo,
+                prize1Amount: data.prize1Amount ?? data.firstWinamnt ?? 0,
+              });
+            }
+          }
+        } catch {
+          // skip failed round
         }
       }
+      setRecentDraws(draws);
     } catch {
       // silently fail
     }
@@ -130,7 +161,6 @@ export default function Home() {
   };
 
   const handleSaveImage = () => {
-    // Create a canvas-based image of the numbers
     const canvas = document.createElement('canvas');
     canvas.width = 400;
     canvas.height = 80 + results.length * 60;
@@ -397,39 +427,55 @@ export default function Home() {
         )}
       </AnimatePresence>
 
-      {/* Link to draw results */}
-      <div className="mt-6 text-center">
-        <a
-          href="/draw"
-          className="text-sm text-gold font-medium hover:underline"
-        >
-          이번 회차 당첨번호 확인 &rarr;
-        </a>
-      </div>
-
-      {/* Latest Draw Mini Display */}
-      {latestDraw && (
+      {/* Recent Draws Section */}
+      {recentDraws.length > 0 && (
         <div className="mt-6 bg-gray-50 rounded-2xl p-4">
-          <h3 className="text-sm font-bold text-gray-700 mb-2">
-            최근 당첨번호{' '}
-            <span className="text-gold">({latestDraw.drwNo}회)</span>
+          <h3 className="text-sm font-bold text-gray-700 mb-3">
+            최근 당첨번호
           </h3>
-          <div className="flex items-center gap-1.5 flex-wrap">
-            {[
-              latestDraw.drwtNo1,
-              latestDraw.drwtNo2,
-              latestDraw.drwtNo3,
-              latestDraw.drwtNo4,
-              latestDraw.drwtNo5,
-              latestDraw.drwtNo6,
-            ].map((num, i) => (
-              <LottoBall key={i} number={num} size="sm" />
+          <div className="space-y-3">
+            {recentDraws.map((draw) => (
+              <div key={draw.round} className="bg-white rounded-xl p-3">
+                <div className="flex items-center justify-between mb-2">
+                  <span className="text-xs font-bold text-gold">
+                    {draw.round}회
+                  </span>
+                  <span className="text-xs text-gray-400">{draw.date}</span>
+                </div>
+                <div className="flex items-center gap-1 flex-wrap">
+                  {draw.numbers.map((num, i) => (
+                    <LottoBall key={i} number={num} size="sm" />
+                  ))}
+                  <LottoBall number={draw.bonus} size="sm" bonus />
+                </div>
+                {draw.prize1Amount > 0 && (
+                  <p className="text-xs text-gray-500 mt-1.5">
+                    1등 {formatPrize(draw.prize1Amount)}
+                  </p>
+                )}
+              </div>
             ))}
-            <LottoBall number={latestDraw.bnusNo} size="sm" bonus />
           </div>
-          <p className="text-xs text-gray-400 mt-2">
-            {latestDraw.drwNoDate} 추첨
-          </p>
+          <div className="text-center mt-3">
+            <a
+              href="/lotto/draw"
+              className="text-sm text-gold font-medium hover:underline"
+            >
+              전체 당첨번호 보기 &rarr;
+            </a>
+          </div>
+        </div>
+      )}
+
+      {/* Link to draw results (fallback if no recent draws loaded) */}
+      {recentDraws.length === 0 && (
+        <div className="mt-6 text-center">
+          <a
+            href="/lotto/draw"
+            className="text-sm text-gold font-medium hover:underline"
+          >
+            이번 회차 당첨번호 확인 &rarr;
+          </a>
         </div>
       )}
 

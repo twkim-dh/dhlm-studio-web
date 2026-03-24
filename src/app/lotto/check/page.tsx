@@ -31,7 +31,7 @@ export default function CheckPage() {
 
   useEffect(() => {
     // Fetch latest draw to get default round
-    fetch('/api/draw')
+    fetch('/lotto/api/draw')
       .then((r) => r.json())
       .then((data) => {
         if (data.returnValue === 'success') {
@@ -62,7 +62,7 @@ export default function CheckPage() {
 
     if (!draw || draw.drwNo !== round) {
       try {
-        const res = await fetch(`/api/draw?round=${round}`);
+        const res = await fetch(`/lotto/api/draw?round=${round}`);
         const data = await res.json();
         if (data.returnValue === 'success') {
           currentDraw = data;
