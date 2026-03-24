@@ -78,7 +78,7 @@ export default function DrawPage() {
       for (let i = 0; i < 10; i++) {
         const round = latestRound - i;
         try {
-          const res = await fetch(`/lotto/api/draw?round=${round}`);
+          const res = await fetch(`/api/lotto/${round}`);
           if (res.ok) {
             const data = await res.json();
             if (data.returnValue === 'success') {
@@ -104,7 +104,7 @@ export default function DrawPage() {
     setError('');
     setSearchResult(null);
     try {
-      const res = await fetch(`/lotto/api/draw?round=${round}`);
+      const res = await fetch(`/api/lotto/${round}`);
       const data = await res.json();
       if (data.returnValue === 'success') {
         setSearchResult(normalizeDrawResult(data));

@@ -29,7 +29,7 @@ export default function StatsPage() {
       for (let i = 0; i < 20; i++) {
         const round = latestRound - i;
         try {
-          const res = await fetch(`/lotto/api/draw?round=${round}`);
+          const res = await fetch(`/api/lotto/${round}`);
           if (res.ok) {
             const data = await res.json();
             if (data.returnValue === 'success') {
