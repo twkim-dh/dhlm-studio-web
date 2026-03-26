@@ -1,4 +1,11 @@
 // Lotto number generator utilities - all client-side
+// Uses crypto.getRandomValues() for secure randomness
+
+function secureRandom(max: number): number {
+  const arr = new Uint32Array(1);
+  crypto.getRandomValues(arr);
+  return arr[0] % max;
+}
 
 function getRandomNumbers(count: number, exclude: number[] = []): number[] {
   const available = Array.from({ length: 45 }, (_, i) => i + 1).filter(
@@ -6,7 +13,7 @@ function getRandomNumbers(count: number, exclude: number[] = []): number[] {
   );
   const result: number[] = [];
   for (let i = 0; i < count && available.length > 0; i++) {
-    const idx = Math.floor(Math.random() * available.length);
+    const idx = secureRandom(available.length);
     result.push(available[idx]);
     available.splice(idx, 1);
   }
@@ -62,7 +69,7 @@ export function generateOddEven(
     const pickedOdds: number[] = [];
     const oddPool = [...odds];
     for (let i = 0; i < oddCount && oddPool.length > 0; i++) {
-      const idx = Math.floor(Math.random() * oddPool.length);
+      const idx = secureRandom(oddPool.length);
       pickedOdds.push(oddPool[idx]);
       oddPool.splice(idx, 1);
     }
@@ -70,7 +77,7 @@ export function generateOddEven(
     const pickedEvens: number[] = [];
     const evenPool = [...evens];
     for (let i = 0; i < evenCount && evenPool.length > 0; i++) {
-      const idx = Math.floor(Math.random() * evenPool.length);
+      const idx = secureRandom(evenPool.length);
       pickedEvens.push(evenPool[idx]);
       evenPool.splice(idx, 1);
     }
@@ -125,6 +132,10 @@ export const dreamData: DreamEntry[] = [
   { keyword: '왕', emoji: '👑', numbers: [5, 15, 25, 45], meaning: '권력' },
   { keyword: '금', emoji: '🥇', numbers: [8, 18, 28, 38], meaning: '가치' },
   { keyword: '피', emoji: '🩸', numbers: [9, 19, 29, 39], meaning: '생명력' },
+  { keyword: '학교', emoji: '🏫', numbers: [7, 17, 27, 37], meaning: '배움' },
+  { keyword: '전쟁', emoji: '⚔️', numbers: [6, 16, 36, 45], meaning: '갈등' },
+  { keyword: '거북이', emoji: '🐢', numbers: [10, 20, 30, 40], meaning: '장수' },
+  { keyword: '토끼', emoji: '🐰', numbers: [4, 14, 24, 34], meaning: '다산' },
 ];
 
 // Build dreamMap from dreamData for backward compatibility
@@ -162,12 +173,12 @@ export function generateDream(keyword: string, setCount: number): number[][] {
 
     // Pick from seed numbers first (up to 3-4)
     const fromSeed = Math.min(
-      Math.floor(Math.random() * 2) + 3,
+      secureRandom(2) + 3,
       pool.length,
       6
     );
     for (let i = 0; i < fromSeed; i++) {
-      const idx = Math.floor(Math.random() * pool.length);
+      const idx = secureRandom(pool.length);
       picked.push(pool[idx]);
       pool.splice(idx, 1);
     }
@@ -217,12 +228,12 @@ export function generateDreamWithSource(
     const pool = [...seedNumbers];
 
     const fromSeed = Math.min(
-      Math.floor(Math.random() * 2) + 2,
+      secureRandom(2) + 2,
       pool.length,
       3
     );
     for (let i = 0; i < fromSeed; i++) {
-      const idx = Math.floor(Math.random() * pool.length);
+      const idx = secureRandom(pool.length);
       picked.push(pool[idx]);
       dreamPicked.push(pool[idx]);
       pool.splice(idx, 1);

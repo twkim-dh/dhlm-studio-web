@@ -172,7 +172,7 @@ export default function PrivacyPage() {
             </h2>
             <ul className="list-none space-y-1">
               <li>
-                <strong>성명:</strong> 김태우
+                <strong>성명:</strong> DHLM Studio
               </li>
               <li>
                 <strong>직위:</strong> 대표

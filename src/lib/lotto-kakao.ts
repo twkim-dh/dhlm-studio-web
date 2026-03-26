@@ -2,7 +2,7 @@
 
 
 const KAKAO_KEY = 'ea95354167038ebb0be11c1aae1ffe26';
-const DOMAIN = 'https://lotto.dhlm-studio.com';
+const DOMAIN = 'https://dhlm-studio.com/lotto';
 
 export function initKakao(): Promise<void> {
   return new Promise((resolve) => {
