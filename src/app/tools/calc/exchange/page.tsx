@@ -5,6 +5,20 @@ export const metadata: Metadata = {
   title: "환율 계산기 - 실시간 환율 변환 | DHLM Tools",
   description:
     "USD, JPY, EUR, CNY 등 주요 통화를 원화로 변환합니다. 참고용 고정 환율 기준.",
+  openGraph: {
+    title: "Currency Converter | DHLM Studio",
+    description: "Convert currencies with real-time exchange rates.",
+    locale: "ko_KR",
+    alternateLocale: "en_US",
+  },
+  alternates: {
+    canonical: "https://dhlm-studio.com/tools/calc/exchange",
+    languages: {
+      "ko": "https://dhlm-studio.com/tools/calc/exchange",
+      "en": "https://dhlm-studio.com/tools/calc/exchange",
+      "x-default": "https://dhlm-studio.com/tools/calc/exchange",
+    },
+  },
 };
 
 export default function Page() {

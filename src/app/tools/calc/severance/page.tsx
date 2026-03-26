@@ -5,6 +5,20 @@ export const metadata: Metadata = {
   title: "퇴직금 계산기 - 예상 퇴직금 계산 | DHLM Tools",
   description:
     "입사일, 퇴사일, 최근 3개월 급여를 입력하면 예상 퇴직금을 계산합니다. 근무일수와 1일 평균임금 기반으로 정확하게 산출합니다.",
+  openGraph: {
+    title: "Severance Pay Calculator | DHLM Studio",
+    description: "Calculate your retirement severance pay based on years of service.",
+    locale: "ko_KR",
+    alternateLocale: "en_US",
+  },
+  alternates: {
+    canonical: "https://dhlm-studio.com/tools/calc/severance",
+    languages: {
+      "ko": "https://dhlm-studio.com/tools/calc/severance",
+      "en": "https://dhlm-studio.com/tools/calc/severance",
+      "x-default": "https://dhlm-studio.com/tools/calc/severance",
+    },
+  },
 };
 
 export default function Page() {

@@ -5,6 +5,20 @@ export const metadata: Metadata = {
   title: "적금 이자 계산기 - 만기 수령액 계산 | DHLM Tools",
   description:
     "월 납입액, 이율, 기간을 입력하면 적금 만기 수령액을 계산합니다. 세전/세후 이자와 원금을 확인하세요.",
+  openGraph: {
+    title: "Savings Interest Calculator | DHLM Studio",
+    description: "Calculate savings account interest and maturity amount.",
+    locale: "ko_KR",
+    alternateLocale: "en_US",
+  },
+  alternates: {
+    canonical: "https://dhlm-studio.com/tools/calc/deposit",
+    languages: {
+      "ko": "https://dhlm-studio.com/tools/calc/deposit",
+      "en": "https://dhlm-studio.com/tools/calc/deposit",
+      "x-default": "https://dhlm-studio.com/tools/calc/deposit",
+    },
+  },
 };
 
 export default function Page() {
