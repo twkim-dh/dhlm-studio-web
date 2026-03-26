@@ -16,8 +16,8 @@ type TabId = 'fortune' | 'generate' | 'winning' | 'stats';
 type FortuneSubTab = 'daily' | 'tarot' | 'compat' | 'name';
 
 const mainTabs: { id: TabId; label: string; emoji: string }[] = [
-  { id: 'fortune', label: '운세', emoji: '🔮' },
   { id: 'generate', label: '번호생성', emoji: '🎲' },
+  { id: 'fortune', label: '운세', emoji: '🔮' },
   { id: 'winning', label: '당첨', emoji: '🏆' },
   { id: 'stats', label: '통계', emoji: '📊' },
 ];
@@ -136,7 +136,7 @@ function getCompatScore(b1: string, b2: string, type: 'love' | 'friend' | 'work'
    Main Page Component
    ═══════════════════════════════════════ */
 export default function LottoPage() {
-  const [activeTab, setActiveTab] = useState<TabId>('fortune');
+  const [activeTab, setActiveTab] = useState<TabId>('generate');
 
   useEffect(() => {
     const hash = window.location.hash.replace('#', '') as TabId;
