@@ -3,6 +3,7 @@
 import { useState, useEffect, useRef } from 'react';
 import Link from 'next/link';
 import { motion } from 'framer-motion';
+import { trendingData, type TrendingItem } from '@/data/trending';
 
 /* ═══════════════════════════════════════
    Data
@@ -341,6 +342,9 @@ export default function Home() {
         </div>
       </section>
 
+      {/* ════════ Trending Dashboard ════════ */}
+      <TrendingDashboard />
+
       {/* ════════ Popular Section ════════ */}
       <section className="bg-[#0F172A] text-white py-16 px-5">
         <div className="mx-auto max-w-lg">
@@ -431,5 +435,106 @@ export default function Home() {
         </div>
       </section>
     </>
+  );
+}
+
+/* ═══════════════════════════════════════
+   Trending Dashboard Component
+   ═══════════════════════════════════════ */
+type RegionId = 'global' | 'kr' | 'us' | 'jp' | 'vn' | 'uk';
+
+const regions: { id: RegionId; flag: string; label: string }[] = [
+  { id: 'global', flag: '🌍', label: 'Global' },
+  { id: 'kr', flag: '🇰🇷', label: 'KR' },
+  { id: 'us', flag: '🇺🇸', label: 'US' },
+  { id: 'jp', flag: '🇯🇵', label: 'JP' },
+  { id: 'vn', flag: '🇻🇳', label: 'VN' },
+  { id: 'uk', flag: '🇬🇧', label: 'UK' },
+];
+
+const trendingCategories: { key: keyof typeof trendingData; emoji: string; label: string }[] = [
+  { key: 'music', emoji: '🎵', label: 'Music' },
+  { key: 'youtube', emoji: '📺', label: 'YouTube' },
+  { key: 'movies', emoji: '🎬', label: 'Movies & TV' },
+  { key: 'games', emoji: '🎮', label: 'Games' },
+  { key: 'apps', emoji: '📱', label: 'Apps' },
+  { key: 'search', emoji: '🔍', label: 'Search Trends' },
+];
+
+function ChangeIcon({ change }: { change: TrendingItem['change'] }) {
+  if (change === 'up') return <span className="text-red-400 text-xs font-bold">▲</span>;
+  if (change === 'down') return <span className="text-blue-400 text-xs font-bold">▼</span>;
+  if (change === 'new') return <span className="text-amber-400 text-[10px] font-bold">NEW</span>;
+  return <span className="text-gray-600 text-xs">─</span>;
+}
+
+function TrendingDashboard() {
+  const [region, setRegion] = useState<RegionId>('global');
+
+  return (
+    <section className="bg-[#0B1120] text-white py-16 px-5">
+      <div className="mx-auto max-w-2xl">
+        {/* Header */}
+        <div className="text-center mb-6">
+          <p className="text-amber-400 text-xs font-bold tracking-widest mb-1">UPDATED DAILY</p>
+          <h2 className="text-2xl font-black">What&apos;s Trending Right Now 🔥</h2>
+          <p className="text-gray-500 text-xs mt-1">Updated: {trendingData.updatedAt}</p>
+        </div>
+
+        {/* Region Selector */}
+        <div className="flex gap-1.5 justify-center mb-8 flex-wrap">
+          {regions.map((r) => (
+            <button key={r.id} onClick={() => setRegion(r.id)}
+              className={`px-3 py-1.5 rounded-full text-xs font-medium transition ${
+                region === r.id
+                  ? 'bg-amber-500 text-gray-900'
+                  : 'bg-[#1E293B] text-gray-400 hover:bg-[#2D3A4F]'
+              }`}>
+              {r.flag} {r.label}
+            </button>
+          ))}
+        </div>
+
+        {/* Categories */}
+        <div className="space-y-6">
+          {trendingCategories.map((cat) => {
+            if (cat.key === 'updatedAt') return null;
+            const catData = trendingData[cat.key as keyof Omit<typeof trendingData, 'updatedAt'>];
+            if (!catData) return null;
+            const items = catData[region] || [];
+            return (
+              <div key={cat.key} className="bg-[#1E293B] border border-gray-700/30 rounded-2xl overflow-hidden">
+                <div className="px-4 py-3 border-b border-gray-700/30 flex items-center justify-between">
+                  <h3 className="font-bold text-sm">{cat.emoji} {cat.label}</h3>
+                  <button onClick={async () => {
+                    const text = `${cat.emoji} ${cat.label} Top 5 (${regions.find(r => r.id === region)?.flag} ${region.toUpperCase()})\n${items.slice(0, 5).map(i => `${i.rank}. ${i.title}${i.subtitle ? ' - ' + i.subtitle : ''}`).join('\n')}\n\nhttps://dhlm-studio.com`;
+                    if (navigator.share) { try { await navigator.share({ title: `Trending ${cat.label}`, text }); } catch {} }
+                    else { await navigator.clipboard.writeText(text); }
+                  }} className="text-[10px] text-gray-500 hover:text-gray-300 transition">Share ↗</button>
+                </div>
+                <div className="divide-y divide-gray-700/20">
+                  {items.slice(0, 3).map((item) => (
+                    <div key={item.rank} className="flex items-center gap-3 px-4 py-2.5 hover:bg-[#253047] transition">
+                      <span className="text-lg font-black text-gray-500 w-6 text-right shrink-0">{item.rank}</span>
+                      <ChangeIcon change={item.change} />
+                      <div className="flex-1 min-w-0">
+                        <p className="text-sm font-medium truncate">{item.title}</p>
+                        {item.subtitle && <p className="text-xs text-gray-500 truncate">{item.subtitle}</p>}
+                      </div>
+                      {item.metric && (
+                        <div className="text-right shrink-0">
+                          <p className="text-xs font-bold text-amber-400">{item.metric}</p>
+                          {item.metricLabel && <p className="text-[9px] text-gray-600">{item.metricLabel}</p>}
+                        </div>
+                      )}
+                    </div>
+                  ))}
+                </div>
+              </div>
+            );
+          })}
+        </div>
+      </div>
+    </section>
   );
 }
