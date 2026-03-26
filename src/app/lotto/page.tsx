@@ -345,32 +345,98 @@ function TarotSection() {
     setFlipped((prev) => new Set([...prev, idx]));
 
     if (newSelected.length === 3) {
-      fetchInterpretation(newSelected);
+      generateInterpretation(newSelected);
     }
   };
 
-  const fetchInterpretation = async (cardIdxs: number[]) => {
+  const generateInterpretation = (cardIdxs: number[]) => {
     setLoading(true);
-    setError('');
-    const cards = cardIdxs.map((i) => `${shuffled[i].name} (${shuffled[i].meaning})`);
-    try {
-      const res = await fetch('/api/tarot', {
-        method: 'POST',
-        headers: { 'Content-Type': 'application/json' },
-        body: JSON.stringify({ cards, concern: concern || undefined }),
-      });
-      const data = await res.json();
-      if (!res.ok) {
-        setError(data.error || 'AI 해석 실패');
-      } else {
-        setInterpretation(data.interpretation);
-        setPhase('result');
-      }
-    } catch {
-      setError('네트워크 오류가 발생했습니다.');
-    } finally {
+    const cards = cardIdxs.map((i) => shuffled[i]);
+
+    const pastMessages: Record<string, string> = {
+      '바보': '과거에 새로운 도전을 시작했던 경험이 지금의 당신을 만들었습니다.',
+      '마법사': '과거의 창의적인 선택들이 좋은 토대가 되었습니다.',
+      '여사제': '직감을 따랐던 과거의 결정이 옳았습니다.',
+      '여황제': '풍요롭고 따뜻했던 시간이 당신의 마음을 키웠습니다.',
+      '황제': '과거에 세운 안정적인 기반이 지금 빛을 발합니다.',
+      '교황': '신뢰할 수 있는 관계들이 과거부터 쌓여왔습니다.',
+      '연인': '과거의 중요한 선택이 지금의 인연으로 이어졌습니다.',
+      '전차': '과거의 도전과 승리가 당신에게 자신감을 주었습니다.',
+      '힘': '어려움을 이겨낸 과거의 경험이 내면의 힘이 되었습니다.',
+      '은둔자': '조용히 성찰했던 시간이 깊은 지혜를 선물했습니다.',
+      '운명의 수레바퀴': '과거의 변화가 새로운 기회의 문을 열어주었습니다.',
+      '정의': '공정하게 행동했던 과거가 좋은 결과로 돌아옵니다.',
+      '매달린 사람': '과거의 희생과 인내가 새로운 시각을 열어주었습니다.',
+      '죽음': '과거의 끝이 새로운 시작의 씨앗이 되었습니다.',
+      '절제': '균형을 찾으려 했던 노력이 결실을 맺고 있습니다.',
+      '악마': '과거의 집착에서 벗어나면서 자유를 찾기 시작했습니다.',
+      '탑': '갑작스러운 과거의 변화가 오히려 해방을 가져다주었습니다.',
+      '별': '과거에 품었던 희망이 서서히 현실이 되고 있습니다.',
+      '달': '불안했던 과거를 극복하면서 직감이 더 강해졌습니다.',
+      '태양': '밝고 행복했던 과거의 기억이 지금도 힘이 됩니다.',
+      '심판': '과거의 경험을 돌아보며 새로운 각성을 얻었습니다.',
+      '세계': '과거에 완성한 것들이 탄탄한 기반이 되었습니다.',
+    };
+    const presentMessages: Record<string, string> = {
+      '바보': '지금은 두려움 없이 새로운 것에 도전할 때입니다.',
+      '마법사': '현재 당신에게는 원하는 것을 만들어낼 힘이 있습니다.',
+      '여사제': '지금은 직감을 믿고 내면의 목소리에 귀 기울일 때입니다.',
+      '여황제': '현재 풍요로운 에너지가 당신을 감싸고 있습니다.',
+      '황제': '지금 당신은 상황을 잘 통제하고 있습니다. 자신감을 가지세요.',
+      '교황': '현재 주변의 조언을 귀담아들으면 좋은 결과가 있습니다.',
+      '연인': '지금 중요한 선택의 기로에 서 있습니다. 마음의 소리를 따르세요.',
+      '전차': '현재 강한 추진력으로 목표를 향해 나아가고 있습니다.',
+      '힘': '지금 필요한 것은 부드러운 용기와 인내심입니다.',
+      '은둔자': '현재 잠시 멈추고 자신을 돌아볼 시간이 필요합니다.',
+      '운명의 수레바퀴': '지금 변화의 바람이 불고 있습니다. 흐름에 맡기세요.',
+      '정의': '현재 균형 잡힌 판단이 중요한 시기입니다.',
+      '매달린 사람': '지금은 다른 관점에서 상황을 바라볼 때입니다.',
+      '죽음': '현재 무언가를 내려놓으면 새로운 것이 시작됩니다.',
+      '절제': '지금은 조급해하지 말고 조화를 찾을 때입니다.',
+      '악마': '현재의 유혹이나 집착에서 벗어날 용기가 필요합니다.',
+      '탑': '지금 예상치 못한 변화가 오히려 기회가 될 수 있습니다.',
+      '별': '현재 희망의 빛이 비치고 있습니다. 믿음을 가지세요.',
+      '달': '지금은 불확실하지만 직감을 따르면 길이 보입니다.',
+      '태양': '현재 밝은 에너지가 가득합니다. 자신감을 가지세요!',
+      '심판': '지금이 각성과 변화의 순간입니다.',
+      '세계': '현재 목표 달성에 매우 가까이 와 있습니다.',
+    };
+    const futureMessages: Record<string, string> = {
+      '바보': '앞으로 신선하고 설레는 새 출발이 기다리고 있습니다.',
+      '마법사': '미래에 당신의 능력이 빛을 발할 기회가 옵니다.',
+      '여사제': '앞으로 숨겨진 진실이 드러나며 지혜를 얻게 됩니다.',
+      '여황제': '미래에 풍요롭고 행복한 시간이 찾아옵니다.',
+      '황제': '앞으로 안정적이고 튼튼한 기반을 다지게 됩니다.',
+      '교황': '미래에 좋은 멘토나 가르침을 만나게 됩니다.',
+      '연인': '앞으로 의미 있는 인연이나 선택이 찾아옵니다.',
+      '전차': '미래에 큰 성취와 승리를 경험하게 됩니다.',
+      '힘': '앞으로 어떤 어려움도 이겨낼 내면의 힘을 갖게 됩니다.',
+      '은둔자': '미래에 깊은 깨달음과 성장의 시간이 옵니다.',
+      '운명의 수레바퀴': '앞으로 행운의 바퀴가 당신 편으로 돌아갑니다.',
+      '정의': '미래에 정당한 보상과 공정한 결과를 얻게 됩니다.',
+      '매달린 사람': '앞으로 새로운 관점이 열리며 성장하게 됩니다.',
+      '죽음': '미래에 큰 변화와 함께 새로운 시작이 찾아옵니다.',
+      '절제': '앞으로 조화롭고 평화로운 시간이 기다립니다.',
+      '악마': '미래에 속박에서 벗어나 진정한 자유를 찾게 됩니다.',
+      '탑': '앞으로 큰 변화 후에 더 나은 것이 세워집니다.',
+      '별': '미래에 꿈이 현실이 되는 순간이 찾아옵니다.',
+      '달': '앞으로 불안이 걷히고 직감이 이끄는 대로 좋은 길이 열립니다.',
+      '태양': '미래에 큰 기쁨과 성공이 기다리고 있습니다!',
+      '심판': '앞으로 새로운 부활과 도약의 기회가 옵니다.',
+      '세계': '미래에 완성과 성취의 기쁨을 맛보게 됩니다.',
+    };
+
+    const past = pastMessages[cards[0].name] || `${cards[0].name} 카드는 과거의 ${cards[0].meaning}을(를) 의미합니다.`;
+    const present = presentMessages[cards[1].name] || `${cards[1].name} 카드는 현재의 ${cards[1].meaning}을(를) 의미합니다.`;
+    const future = futureMessages[cards[2].name] || `${cards[2].name} 카드는 미래의 ${cards[2].meaning}을(를) 의미합니다.`;
+
+    const text = `${past}\n\n${present}\n\n${future}\n\n전체적으로 좋은 흐름입니다. 자신을 믿고 한 걸음씩 나아가세요. 행운이 함께합니다! 🍀`;
+
+    setTimeout(() => {
+      setInterpretation(text);
+      setPhase('result');
       setLoading(false);
-    }
+    }, 1200);
   };
 
   const positionLabels = ['과거', '현재', '미래'];
@@ -379,11 +445,8 @@ function TarotSection() {
     <div className="space-y-5">
       {phase === 'input' && (
         <div className="bg-gradient-to-br from-purple-50 to-indigo-50 rounded-2xl p-5">
-          <h2 className="font-bold text-lg mb-1">AI 타로 카드</h2>
-          <p className="text-xs text-gray-500 mb-4">카드 3장으로 과거/현재/미래를 읽어보세요 (하루 3회 무료)</p>
-          <input type="text" value={concern} onChange={(e) => setConcern(e.target.value)}
-            placeholder="고민을 입력하세요 (선택)"
-            className="w-full px-3 py-2.5 rounded-xl border border-gray-200 text-sm focus:outline-none focus:ring-2 focus:ring-purple-300 mb-3" />
+          <h2 className="font-bold text-lg mb-1">타로 카드</h2>
+          <p className="text-xs text-gray-500 mb-4">카드 3장으로 과거/현재/미래를 읽어보세요</p>
           <button onClick={startReading}
             className="w-full py-3 bg-purple-600 text-white rounded-xl font-medium hover:bg-purple-700 active:scale-[0.98] transition">
             카드 펼치기
@@ -468,7 +531,7 @@ function TarotSection() {
           </div>
 
           <div className="bg-white border border-gray-100 rounded-2xl p-5 shadow-sm">
-            <h3 className="font-bold text-sm mb-2">AI 해석</h3>
+            <h3 className="font-bold text-sm mb-2">타로 해석</h3>
             <p className="text-sm text-gray-700 leading-relaxed whitespace-pre-wrap">{interpretation}</p>
           </div>
 
