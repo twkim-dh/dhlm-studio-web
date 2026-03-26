@@ -1,319 +1,396 @@
-import Link from "next/link";
-import ServiceCard from "@/components/ServiceCard";
-import ContactForm from "@/components/ContactForm";
+'use client';
 
-const services = [
-  {
-    emoji: "\uD83C\uDF5D",
-    title: "오늘 뭐먹?",
-    description:
-      "매일 저녁 뭐 먹을지 고민될 때, 링크 하나로 함께 고르세요. 각자 메뉴 3개를 고르면 겹치는 메뉴가 오늘의 저녁이 됩니다.",
-    features: ["카카오톡 공유", "실시간 결과", "메뉴 매칭"],
-    color: "#FF8C42",
-    status: "coming-soon" as const,
-  },
-  {
-    emoji: "\uD83D\uDC95",
-    title: "똑(Ttok)",
-    description:
-      "친구, 연인과 취향 싱크로율을 확인해보세요. 서로의 답변을 비교해 얼마나 통하는지 알 수 있습니다.",
-    features: ["취향 테스트", "싱크로율", "카카오 공유", "결과 분석"],
-    color: "#FF6B6B",
-    status: "live" as const,
-    link: "https://ttok.dhlm-studio.com",
-  },
-  {
-    emoji: "\uD83D\uDCF1",
-    title: "App Factory",
-    description:
-      "일상에 필요한 28가지 실용 계산기와 도구. CBM 계산기, VAT 계산기, BMI 계산기 등 다양한 실용 앱을 만듭니다.",
-    features: ["80+ 앱", "14개 언어", "Google Play", "실용 도구"],
-    color: "#31A575",
-    status: "coming-soon" as const,
-  },
+import { useState, useEffect, useRef } from 'react';
+import Link from 'next/link';
+import { motion } from 'framer-motion';
+
+/* ═══════════════════════════════════════
+   Data
+   ═══════════════════════════════════════ */
+const popularServices = [
+  { emoji: '🍀', title: '로또 번호 뽑기', desc: 'AI 번호 생성 + 운세', href: '/lotto', hoverEmoji: '🎱' },
+  { emoji: '🔮', title: 'AI 타로', desc: '카드 3장으로 미래 읽기', href: '/lotto#fortune', hoverEmoji: '🃏' },
+  { emoji: '💕', title: '궁합 테스트', desc: '생년월일로 궁합 확인', href: '/lotto#fortune', hoverEmoji: '❤️' },
+  { emoji: '⌨️', title: '타자 속도 테스트', desc: '내 타자 실력은?', href: '/tools/life/typing-speed', hoverEmoji: '🔥' },
 ];
 
-const steps = [
-  {
-    emoji: "\uD83C\uDFAF",
-    title: "메뉴 3개 고르기",
-    description: "오늘 먹고 싶은 메뉴를 3개 골라주세요",
-  },
-  {
-    emoji: "\uD83D\uDCF1",
-    title: "카톡 공유",
-    description: "링크를 상대방에게 카카오톡으로 공유하세요",
-  },
-  {
-    emoji: "\uD83C\uDF89",
-    title: "겹치는 메뉴 = 오늘의 저녁",
-    description: "서로 겹치는 메뉴가 오늘의 저녁 메뉴가 됩니다",
-  },
+type CatId = 'all' | 'finance' | 'life' | 'dev' | 'doc' | 'image' | 'gen' | 'mfg' | 'compare';
+const categories: { id: CatId; label: string; emoji: string }[] = [
+  { id: 'all', label: '전체', emoji: '🔧' },
+  { id: 'finance', label: '금융', emoji: '💰' },
+  { id: 'life', label: '생활', emoji: '🏠' },
+  { id: 'dev', label: '개발', emoji: '💻' },
+  { id: 'doc', label: '텍스트', emoji: '📝' },
+  { id: 'image', label: '이미지', emoji: '🖼️' },
+  { id: 'gen', label: '생성기', emoji: '🎲' },
+  { id: 'mfg', label: '제조', emoji: '🏭' },
+  { id: 'compare', label: '비교', emoji: '📊' },
 ];
 
-const stats = [
-  { number: "80+", label: "앱" },
-  { number: "14", label: "언어" },
-  { number: "8", label: "서비스" },
+interface ToolItem { name: string; emoji: string; href: string; cat: CatId }
+const tools: ToolItem[] = [
+  // finance
+  { name: '연봉 실수령', emoji: '💵', href: '/tools/calc/salary', cat: 'finance' },
+  { name: '퇴직금', emoji: '🏦', href: '/tools/calc/severance', cat: 'finance' },
+  { name: '대출 이자', emoji: '🏠', href: '/tools/calc/loan', cat: 'finance' },
+  { name: '부가세', emoji: '🧾', href: '/tools/calc/vat', cat: 'finance' },
+  { name: '적금 이자', emoji: '💰', href: '/tools/calc/deposit', cat: 'finance' },
+  { name: '마진 계산', emoji: '📈', href: '/tools/calc/margin', cat: 'finance' },
+  { name: '유튜브 수익', emoji: '▶️', href: '/tools/calc/youtube', cat: 'finance' },
+  { name: '퍼센트', emoji: '％', href: '/tools/calc/percent', cat: 'finance' },
+  { name: '환율 변환', emoji: '💱', href: '/tools/calc/exchange', cat: 'finance' },
+  { name: '시급 변환', emoji: '⏰', href: '/tools/calc/time', cat: 'finance' },
+  { name: '금 시세', emoji: '🥇', href: '/tools/calc/gold', cat: 'finance' },
+  { name: '시급 계산', emoji: '💸', href: '/tools/calc/hourly-wage', cat: 'finance' },
+  { name: '대출 비교', emoji: '🔄', href: '/tools/calc/loan-compare', cat: 'finance' },
+  { name: '전세vs월세', emoji: '🏢', href: '/tools/calc/rent-vs-buy', cat: 'finance' },
+  { name: 'ROI 계산', emoji: '📊', href: '/tools/calc/roi', cat: 'finance' },
+  { name: '쿠팡 수수료', emoji: '🛒', href: '/tools/calc/coupang-fee', cat: 'finance' },
+  // life
+  { name: 'BMI', emoji: '⚖️', href: '/tools/life/bmi', cat: 'life' },
+  { name: '나이 계산', emoji: '🎂', href: '/tools/life/age', cat: 'life' },
+  { name: '날짜 계산', emoji: '📅', href: '/tools/life/date', cat: 'life' },
+  { name: '단위 변환', emoji: '📐', href: '/tools/life/unit-converter', cat: 'life' },
+  { name: '스톱워치', emoji: '⏱️', href: '/tools/life/stopwatch', cat: 'life' },
+  { name: '칼로리', emoji: '🔥', href: '/tools/life/calorie', cat: 'life' },
+  { name: '더치페이', emoji: '🍽️', href: '/tools/life/tip-calculator', cat: 'life' },
+  { name: '카운트다운', emoji: '⏳', href: '/tools/life/countdown', cat: 'life' },
+  { name: '전기요금', emoji: '💡', href: '/tools/life/electricity', cat: 'life' },
+  { name: '타자 속도', emoji: '⌨️', href: '/tools/life/typing-speed', cat: 'life' },
+  // dev
+  { name: 'JSON', emoji: '{ }', href: '/tools/dev/json', cat: 'dev' },
+  { name: 'Base64', emoji: '🔐', href: '/tools/dev/base64', cat: 'dev' },
+  { name: 'JWT', emoji: '🔑', href: '/tools/dev/jwt', cat: 'dev' },
+  { name: 'Cron', emoji: '🕐', href: '/tools/dev/cron', cat: 'dev' },
+  { name: 'SQL', emoji: '🗃️', href: '/tools/dev/sql', cat: 'dev' },
+  { name: '색상 변환', emoji: '🎨', href: '/tools/dev/color-picker', cat: 'dev' },
+  { name: 'Lorem', emoji: '📄', href: '/tools/dev/lorem-ipsum', cat: 'dev' },
+  { name: 'URL 인코더', emoji: '🔗', href: '/tools/dev/url-encoder', cat: 'dev' },
+  { name: '정규식', emoji: '🔍', href: '/tools/dev/regex-tester', cat: 'dev' },
+  { name: '내 IP', emoji: '🌐', href: '/tools/dev/ip-check', cat: 'dev' },
+  { name: '화면 크기', emoji: '🖥️', href: '/tools/dev/screen-size', cat: 'dev' },
+  { name: 'Markdown', emoji: '📝', href: '/tools/dev/markdown-preview', cat: 'dev' },
+  { name: '폰트 미리보기', emoji: '🔤', href: '/tools/dev/font-preview', cat: 'dev' },
+  { name: 'Timestamp', emoji: '🕰️', href: '/tools/dev/timestamp', cat: 'dev' },
+  { name: '서브넷', emoji: '📡', href: '/tools/dev/subnet', cat: 'dev' },
+  { name: 'chmod', emoji: '🔒', href: '/tools/dev/chmod', cat: 'dev' },
+  { name: '진법 변환', emoji: '🔢', href: '/tools/dev/binary-converter', cat: 'dev' },
+  { name: 'HTML Entity', emoji: '&lt;', href: '/tools/dev/html-entity', cat: 'dev' },
+  // doc
+  { name: '퇴사 문자', emoji: '👋', href: '/tools/msg/resign-letter', cat: 'doc' },
+  { name: '거절 메시지', emoji: '🚫', href: '/tools/msg/reject-message', cat: 'doc' },
+  { name: '축의금 문구', emoji: '💐', href: '/tools/msg/congratulation', cat: 'doc' },
+  { name: '연차 사유', emoji: '🏖️', href: '/tools/msg/annual-leave', cat: 'doc' },
+  { name: '지각 변명', emoji: '🏃', href: '/tools/msg/late-excuse', cat: 'doc' },
+  { name: '한줄 요약', emoji: '📋', href: '/tools/msg/text-summary', cat: 'doc' },
+  { name: '글자수 세기', emoji: '🔢', href: '/tools/msg/character-count', cat: 'doc' },
+  { name: '텍스트 변환', emoji: '🔄', href: '/tools/msg/text-transform', cat: 'doc' },
+  // image
+  { name: '이미지 압축', emoji: '🗜️', href: '/tools/image/image-compress', cat: 'image' },
+  { name: '이미지 변환', emoji: '🔄', href: '/tools/image/image-convert', cat: 'image' },
+  { name: '이미지 리사이즈', emoji: '📏', href: '/tools/image/image-resize', cat: 'image' },
+  { name: 'YT 썸네일', emoji: '🎬', href: '/tools/image/youtube-thumbnail', cat: 'image' },
+  { name: 'QR코드', emoji: '📱', href: '/tools/image/qr', cat: 'image' },
+  // gen
+  { name: '닉네임', emoji: '🏷️', href: '/tools/gen/nickname-gen', cat: 'gen' },
+  { name: '회사명', emoji: '🏢', href: '/tools/gen/company-name-gen', cat: 'gen' },
+  { name: '팀명', emoji: '👥', href: '/tools/gen/team-name-gen', cat: 'gen' },
+  { name: '랜덤 뽑기', emoji: '🎰', href: '/tools/gen/random-picker', cat: 'gen' },
+  { name: '비밀번호', emoji: '🔐', href: '/tools/gen/password-gen', cat: 'gen' },
+  { name: '해시태그', emoji: '#️⃣', href: '/tools/gen/hashtag-gen', cat: 'gen' },
+  { name: '이모지 검색', emoji: '😀', href: '/tools/gen/emoji-search', cat: 'gen' },
+  { name: '랜덤 숫자', emoji: '🎲', href: '/tools/gen/random-number', cat: 'gen' },
+  { name: '모스 부호', emoji: '📻', href: '/tools/gen/morse-code', cat: 'gen' },
+  // mfg
+  { name: '단중 계산', emoji: '⚙️', href: '/tools/mfg/unit-weight', cat: 'mfg' },
+  { name: 'Cpk', emoji: '📉', href: '/tools/mfg/cpk', cat: 'mfg' },
+  { name: 'UPH', emoji: '🏭', href: '/tools/mfg/uph', cat: 'mfg' },
+  { name: '불량률', emoji: '❌', href: '/tools/mfg/defect', cat: 'mfg' },
+  { name: 'OEE', emoji: '📊', href: '/tools/mfg/oee', cat: 'mfg' },
+  // compare
+  { name: '적금 이율', emoji: '🏦', href: '/tools/compare/deposit-compare', cat: 'compare' },
+  { name: '신용카드', emoji: '💳', href: '/tools/compare/card-compare', cat: 'compare' },
+  { name: '통신사 요금', emoji: '📱', href: '/tools/compare/phone-compare', cat: 'compare' },
 ];
 
+const blogPosts = [
+  { slug: 'lotto-winning-tips', title: '로또 당첨 확률 높이는 5가지 방법', date: '2026-03-25' },
+  { slug: 'salary-calculator', title: '2026년 연봉 실수령액 계산법', date: '2026-03-24' },
+  { slug: 'typing-speed-test', title: '타자 속도 테스트 온라인 무료', date: '2026-03-23' },
+];
+
+/* ═══════════════════════════════════════
+   Fortune Logic
+   ═══════════════════════════════════════ */
+function hashStr(s: string): number {
+  let h = 0;
+  for (let i = 0; i < s.length; i++) h = ((h << 5) - h + s.charCodeAt(i)) | 0;
+  return Math.abs(h);
+}
+
+function getFortune(birthday: string) {
+  const today = new Date();
+  const seed = birthday.replace(/-/g, '') + `${today.getFullYear()}${today.getMonth()}${today.getDate()}`;
+  const hash = hashStr(seed);
+  const score = (hash % 100) + 1;
+  const nums: number[] = [];
+  let h = hash;
+  while (nums.length < 3) {
+    h = ((h * 1103515245 + 12345) & 0x7fffffff);
+    const n = (h % 45) + 1;
+    if (!nums.includes(n)) nums.push(n);
+  }
+  let grade: string;
+  if (score >= 90) grade = '대박';
+  else if (score >= 70) grade = '상승';
+  else if (score >= 50) grade = '평온';
+  else if (score >= 30) grade = '보통';
+  else grade = '충전';
+  return { score, nums: nums.sort((a, b) => a - b), grade };
+}
+
+function getVisitorCount() {
+  const base = 10000;
+  const hours = (Date.now() - new Date('2026-03-01').getTime()) / 3600000;
+  return Math.floor(base + hours * 15);
+}
+
+/* ═══════════════════════════════════════
+   Animated Counter
+   ═══════════════════════════════════════ */
+function AnimatedCount({ target }: { target: number }) {
+  const [count, setCount] = useState(0);
+  const ref = useRef<HTMLSpanElement>(null);
+
+  useEffect(() => {
+    const observer = new IntersectionObserver(([entry]) => {
+      if (entry.isIntersecting) {
+        let start = 0;
+        const duration = 1500;
+        const step = (ts: number) => {
+          if (!start) start = ts;
+          const progress = Math.min((ts - start) / duration, 1);
+          setCount(Math.floor(progress * target));
+          if (progress < 1) requestAnimationFrame(step);
+        };
+        requestAnimationFrame(step);
+        observer.disconnect();
+      }
+    });
+    if (ref.current) observer.observe(ref.current);
+    return () => observer.disconnect();
+  }, [target]);
+
+  return <span ref={ref}>{count.toLocaleString()}</span>;
+}
+
+/* ═══════════════════════════════════════
+   Page
+   ═══════════════════════════════════════ */
 export default function Home() {
+  const [birthday, setBirthday] = useState('');
+  const [fortune, setFortune] = useState<ReturnType<typeof getFortune> | null>(null);
+  const [activeCat, setActiveCat] = useState<CatId>('all');
+  const visitorCount = getVisitorCount();
+
+  const handleFortune = () => {
+    if (!birthday) return;
+    setFortune(getFortune(birthday));
+  };
+
+  const filteredTools = activeCat === 'all' ? tools : tools.filter((t) => t.cat === activeCat);
+
   return (
     <>
-      {/* Hero */}
-      <section className="relative overflow-hidden bg-gradient-to-br from-white via-green-50/40 to-orange-50/30 py-20 sm:py-28 lg:py-36">
-        <div className="mx-auto max-w-6xl px-4 sm:px-6 text-center">
-          <h1 className="text-4xl sm:text-5xl lg:text-6xl font-black tracking-tight text-gray-900 leading-tight">
-            함께 고르는{" "}
-            <span style={{ color: "var(--brand-green)" }}>즐거움</span>
-          </h1>
-          <p className="mt-6 text-lg sm:text-xl text-gray-600 max-w-2xl mx-auto leading-relaxed">
-            매일의 작은 결정을 재밌게 만드는 서비스를 만듭니다
+      {/* ════════ Hero Section ════════ */}
+      <section className="relative overflow-hidden bg-[#0F172A] text-white min-h-[100dvh] flex items-center">
+        {/* BG glow */}
+        <div className="absolute top-1/4 left-1/2 -translate-x-1/2 w-[600px] h-[600px] bg-purple-600/20 rounded-full blur-[120px] pointer-events-none" />
+        <div className="absolute bottom-0 right-0 w-[400px] h-[400px] bg-amber-500/10 rounded-full blur-[100px] pointer-events-none" />
+
+        <div className="relative mx-auto max-w-lg w-full px-5 py-16 text-center">
+          <motion.p
+            initial={{ opacity: 0, y: 20 }} animate={{ opacity: 1, y: 0 }} transition={{ delay: 0.1 }}
+            className="text-sm text-purple-300 font-medium tracking-wide mb-3"
+          >
+            DHLM STUDIO
+          </motion.p>
+          <motion.h1
+            initial={{ opacity: 0, y: 20 }} animate={{ opacity: 1, y: 0 }} transition={{ delay: 0.2 }}
+            className="text-3xl sm:text-4xl font-black leading-tight mb-3"
+          >
+            오늘의 행운을<br />확인하세요
+          </motion.h1>
+          <motion.p
+            initial={{ opacity: 0 }} animate={{ opacity: 1 }} transition={{ delay: 0.4 }}
+            className="text-gray-400 text-sm mb-8"
+          >
+            생년월일만 입력하면 오늘의 운세와 행운 번호를 바로 확인!
+          </motion.p>
+
+          <motion.div
+            initial={{ opacity: 0, y: 20 }} animate={{ opacity: 1, y: 0 }} transition={{ delay: 0.5 }}
+            className="space-y-3"
+          >
+            <input
+              type="date"
+              value={birthday}
+              onChange={(e) => setBirthday(e.target.value)}
+              className="w-full px-4 py-3.5 bg-[#1E293B] border border-gray-700 rounded-2xl text-white text-center text-lg focus:outline-none focus:ring-2 focus:ring-purple-500 focus:border-transparent transition"
+            />
+            <button
+              onClick={handleFortune}
+              disabled={!birthday}
+              className={`w-full py-3.5 rounded-2xl font-bold text-lg transition active:scale-[0.98] ${
+                birthday
+                  ? 'bg-gradient-to-r from-purple-600 to-indigo-600 hover:from-purple-500 hover:to-indigo-500 text-white shadow-lg shadow-purple-600/30'
+                  : 'bg-gray-700 text-gray-500 cursor-not-allowed'
+              }`}
+            >
+              ✨ 오늘의 운세 확인
+            </button>
+          </motion.div>
+
+          {/* Fortune Result */}
+          {fortune && (
+            <motion.div
+              initial={{ opacity: 0, scale: 0.9 }} animate={{ opacity: 1, scale: 1 }}
+              className="mt-6 bg-[#1E293B] border border-gray-700 rounded-2xl p-5 text-center"
+            >
+              <p className="text-5xl font-black mb-1" style={{
+                background: 'linear-gradient(135deg, #FFD700, #FF8C42)',
+                WebkitBackgroundClip: 'text',
+                WebkitTextFillColor: 'transparent',
+              }}>
+                {fortune.score}점
+              </p>
+              <p className="text-gray-400 text-sm mb-4">
+                {fortune.grade === '대박' && '🌟 운이 폭발하는 날!'}
+                {fortune.grade === '상승' && '🔥 좋은 기운이 가득!'}
+                {fortune.grade === '평온' && '☀️ 안정적인 하루'}
+                {fortune.grade === '보통' && '🌤️ 작은 행운을 놓치지 마세요'}
+                {fortune.grade === '충전' && '🌙 에너지를 모으는 날'}
+              </p>
+              <p className="text-xs text-gray-500 mb-2">행운의 숫자</p>
+              <div className="flex justify-center gap-3">
+                {fortune.nums.map((n) => (
+                  <span key={n} className="w-11 h-11 rounded-full bg-gradient-to-br from-amber-400 to-orange-500 flex items-center justify-center text-sm font-bold text-gray-900">
+                    {n}
+                  </span>
+                ))}
+              </div>
+              <div className="flex gap-2 mt-4">
+                <Link href="/lotto#fortune" className="flex-1 py-2.5 bg-purple-600/20 border border-purple-500/30 text-purple-300 rounded-xl text-xs font-medium hover:bg-purple-600/30 transition">
+                  자세히 보기 →
+                </Link>
+                <button onClick={async () => {
+                  const text = `오늘의 운세 ${fortune.score}점! 행운번호: ${fortune.nums.join(', ')}\nhttps://dhlm-studio.com`;
+                  if (navigator.share) { try { await navigator.share({ title: '오늘의 운세', text }); } catch {} }
+                  else { await navigator.clipboard.writeText(text); alert('복사되었습니다!'); }
+                }} className="flex-1 py-2.5 bg-amber-500/20 border border-amber-500/30 text-amber-300 rounded-xl text-xs font-medium hover:bg-amber-500/30 transition">
+                  공유하기
+                </button>
+              </div>
+            </motion.div>
+          )}
+
+          {/* Scroll hint */}
+          <motion.div
+            initial={{ opacity: 0 }} animate={{ opacity: 1 }} transition={{ delay: 1.5 }}
+            className="mt-12 text-gray-600 text-xs animate-bounce"
+          >
+            ↓ 더 둘러보기
+          </motion.div>
+        </div>
+      </section>
+
+      {/* ════════ Popular Section ════════ */}
+      <section className="bg-[#0F172A] text-white py-16 px-5">
+        <div className="mx-auto max-w-lg">
+          <div className="text-center mb-2">
+            <p className="text-purple-400 text-xs font-medium tracking-widest mb-1">TRENDING NOW</p>
+            <h2 className="text-xl font-bold">🔥 지금 인기 있는 도구</h2>
+          </div>
+
+          <p className="text-center text-sm text-gray-400 mb-6">
+            오늘 <span className="text-amber-400 font-bold"><AnimatedCount target={visitorCount} /></span>명이 사용했어요
           </p>
-          <div className="mt-10 flex flex-col sm:flex-row items-center justify-center gap-4">
-            <Link
-              href="#services"
-              className="inline-flex items-center justify-center rounded-xl px-8 py-3.5 text-base font-semibold text-white shadow-lg transition-transform hover:scale-105"
-              style={{ backgroundColor: "var(--brand-green)" }}
-            >
-              서비스 둘러보기
-            </Link>
-            <Link
-              href="#contact"
-              className="inline-flex items-center justify-center rounded-xl px-8 py-3.5 text-base font-semibold border-2 transition-colors hover:bg-gray-50"
-              style={{
-                borderColor: "var(--brand-green)",
-                color: "var(--brand-green)",
-              }}
-            >
-              문의하기
-            </Link>
-          </div>
-        </div>
 
-        {/* Decorative blobs */}
-        <div
-          className="absolute -top-20 -right-20 w-72 h-72 rounded-full opacity-10 blur-3xl"
-          style={{ backgroundColor: "var(--brand-green)" }}
-        />
-        <div
-          className="absolute -bottom-20 -left-20 w-72 h-72 rounded-full opacity-10 blur-3xl"
-          style={{ backgroundColor: "var(--brand-orange)" }}
-        />
-      </section>
-
-      {/* Services */}
-      <section id="services" className="py-20 sm:py-28 bg-white">
-        <div className="mx-auto max-w-6xl px-4 sm:px-6">
-          <div className="text-center mb-14">
-            <h2 className="text-3xl sm:text-4xl font-bold text-gray-900">
-              우리의 서비스
-            </h2>
-            <p className="mt-4 text-gray-600 text-lg">
-              일상의 결정을 함께, 더 재밌게
-            </p>
-          </div>
-          <div className="grid gap-8 sm:grid-cols-2 lg:grid-cols-3">
-            {services.map((service) => (
-              <ServiceCard key={service.title} {...service} />
-            ))}
-          </div>
-        </div>
-      </section>
-
-      {/* How It Works */}
-      <section className="py-20 sm:py-28 bg-gray-50">
-        <div className="mx-auto max-w-6xl px-4 sm:px-6">
-          <div className="text-center mb-14">
-            <h2 className="text-3xl sm:text-4xl font-bold text-gray-900">
-              이렇게 사용해요
-            </h2>
-            <p className="mt-4 text-gray-600 text-lg">
-              &ldquo;오늘 뭐먹?&rdquo; 3단계로 끝!
-            </p>
-          </div>
-          <div className="grid gap-8 sm:grid-cols-3">
-            {steps.map((step, index) => (
-              <div key={step.title} className="text-center">
-                <div className="mx-auto mb-4 flex h-20 w-20 items-center justify-center rounded-2xl bg-white shadow-sm text-4xl">
-                  {step.emoji}
-                </div>
-                <div
-                  className="mb-2 inline-flex h-7 w-7 items-center justify-center rounded-full text-xs font-bold text-white"
-                  style={{ backgroundColor: "var(--brand-green)" }}
-                >
-                  {index + 1}
-                </div>
-                <h3 className="text-lg font-bold text-gray-900 mb-2">
-                  {step.title}
-                </h3>
-                <p className="text-gray-600 text-sm leading-relaxed">
-                  {step.description}
-                </p>
-                {index < steps.length - 1 && (
-                  <div className="hidden sm:block absolute right-0 top-1/2 -translate-y-1/2 text-gray-300 text-2xl">
-                  </div>
-                )}
-              </div>
-            ))}
-          </div>
-        </div>
-      </section>
-
-      {/* Stats */}
-      <section className="py-16 sm:py-24 bg-white">
-        <div className="mx-auto max-w-4xl px-4 sm:px-6">
-          <div className="grid grid-cols-3 gap-8 text-center">
-            {stats.map((stat) => (
-              <div key={stat.label}>
-                <div
-                  className="text-4xl sm:text-5xl lg:text-6xl font-black"
-                  style={{ color: "var(--brand-green)" }}
-                >
-                  {stat.number}
-                </div>
-                <div className="mt-2 text-sm sm:text-base font-medium text-gray-600">
-                  {stat.label}
-                </div>
-              </div>
-            ))}
-          </div>
-        </div>
-      </section>
-
-      {/* About */}
-      <section id="about" className="py-20 sm:py-28 bg-gray-50">
-        <div className="mx-auto max-w-6xl px-4 sm:px-6">
-          <div className="grid gap-12 lg:grid-cols-2 items-center">
-            <div>
-              <h2 className="text-3xl sm:text-4xl font-bold text-gray-900 mb-6">
-                DHLM-STUDIO를 소개합니다
-              </h2>
-              <p className="text-gray-600 leading-relaxed mb-4">
-                DHLM-STUDIO는 &ldquo;함께 고르는 즐거움&rdquo;이라는 가치 아래,
-                일상 속 작은 결정들을 더 재미있고 의미 있게 만드는 서비스를
-                개발합니다.
-              </p>
-              <p className="text-gray-600 leading-relaxed mb-4">
-                2026년에 설립된 DHLM-STUDIO는 모바일 앱과 웹 서비스를 통해
-                사람들이 함께 결정하고, 함께 즐기는 경험을 만들어갑니다.
-              </p>
-              <p className="text-gray-600 leading-relaxed">
-                28개 이상의 실용 앱을 14개 언어로 제공하며, 전 세계 사용자들이
-                일상에서 필요로 하는 도구를 만들고 있습니다.
-              </p>
-            </div>
-            <div className="space-y-6">
-              <div className="rounded-2xl bg-white p-6 shadow-sm border border-gray-100">
-                <h3
-                  className="text-lg font-bold mb-2"
-                  style={{ color: "var(--brand-green)" }}
-                >
-                  Mission
-                </h3>
-                <p className="text-gray-700 font-medium">
-                  함께 고르는 즐거움을 만듭니다
-                </p>
-              </div>
-              <div className="rounded-2xl bg-white p-6 shadow-sm border border-gray-100">
-                <h3
-                  className="text-lg font-bold mb-2"
-                  style={{ color: "var(--brand-orange)" }}
-                >
-                  Vision
-                </h3>
-                <p className="text-gray-700 font-medium">
-                  모든 일상의 결정에 &lsquo;함께&rsquo;를 더합니다
-                </p>
-              </div>
-            </div>
-          </div>
-        </div>
-      </section>
-
-      {/* Latest Blog */}
-      <section className="py-20 sm:py-28 bg-white">
-        <div className="mx-auto max-w-6xl px-4 sm:px-6">
-          <div className="text-center mb-14">
-            <h2 className="text-3xl sm:text-4xl font-bold text-gray-900">
-              최신 블로그
-            </h2>
-            <p className="mt-4 text-gray-600 text-lg">
-              일상 속 결정을 재밌게 만드는 이야기
-            </p>
-          </div>
-          <div className="grid gap-6 sm:grid-cols-2 lg:grid-cols-3">
-            {[
-              {
-                slug: "how-to-choose-menu",
-                title: "매일 저녁 메뉴 고르기가 힘든 이유와 해결법",
-                excerpt:
-                  "결정 피로란 무엇인지, 커플과 가족 사이 메뉴 갈등의 원인과 해결법을 알아봅니다.",
-              },
-              {
-                slug: "couple-compatibility-test",
-                title: "연인 취향 테스트로 알아보는 우리의 궁합",
-                excerpt:
-                  "취향 싱크로율이 관계에서 왜 중요한지, 똑(Ttok) 서비스로 궁합을 확인하는 방법을 소개합니다.",
-              },
-              {
-                slug: "daily-decision-tips",
-                title: "일상 속 작은 결정을 쉽게 만드는 5가지 방법",
-                excerpt:
-                  "결정 피로를 줄이고 일상의 선택을 가볍게 만드는 실용적인 팁 5가지를 소개합니다.",
-              },
-            ].map((post) => (
-              <Link
-                key={post.slug}
-                href={`/blog/${post.slug}`}
-                className="block rounded-2xl border border-gray-100 bg-white p-6 shadow-sm hover:shadow-md transition-shadow group"
-              >
-                <h3 className="text-lg font-bold text-gray-900 group-hover:text-[#31A575] transition-colors mb-2">
-                  {post.title}
-                </h3>
-                <p className="text-gray-600 text-sm leading-relaxed mb-3">
-                  {post.excerpt}
-                </p>
-                <span className="text-sm font-semibold text-[#31A575]">
-                  자세히 읽기 &rarr;
+          <div className="grid grid-cols-2 gap-3">
+            {popularServices.map((s) => (
+              <Link key={s.title} href={s.href}
+                className="group bg-[#1E293B] border border-gray-700/50 rounded-2xl p-4 hover:border-purple-500/50 hover:bg-[#1E293B]/80 transition-all">
+                <span className="text-3xl block mb-2 group-hover:scale-110 transition-transform inline-block">
+                  <span className="group-hover:hidden">{s.emoji}</span>
+                  <span className="hidden group-hover:inline">{s.hoverEmoji}</span>
                 </span>
+                <p className="font-bold text-sm">{s.title}</p>
+                <p className="text-gray-500 text-xs mt-0.5">{s.desc}</p>
               </Link>
             ))}
           </div>
-          <div className="mt-10 text-center">
-            <Link
-              href="/blog"
-              className="inline-flex items-center justify-center rounded-xl px-8 py-3 text-base font-semibold border-2 transition-colors hover:bg-gray-50"
-              style={{
-                borderColor: "var(--brand-green)",
-                color: "var(--brand-green)",
-              }}
-            >
-              블로그 전체 보기
+        </div>
+      </section>
+
+      {/* ════════ Tools Section ════════ */}
+      <section className="bg-[#0F172A] text-white py-16 px-5">
+        <div className="mx-auto max-w-4xl">
+          <div className="text-center mb-6">
+            <h2 className="text-xl font-bold">🧮 무료 도구 모음</h2>
+            <p className="text-gray-500 text-xs mt-1">{tools.length}개 도구 무료 사용</p>
+          </div>
+
+          {/* Category filter */}
+          <div className="flex gap-1.5 overflow-x-auto pb-3 mb-5 scrollbar-hide">
+            {categories.map((c) => (
+              <button key={c.id} onClick={() => setActiveCat(c.id)}
+                className={`shrink-0 px-3 py-1.5 rounded-full text-xs font-medium transition ${
+                  activeCat === c.id
+                    ? 'bg-purple-600 text-white'
+                    : 'bg-[#1E293B] text-gray-400 hover:bg-[#2D3A4F]'
+                }`}>
+                {c.emoji} {c.label}
+              </button>
+            ))}
+          </div>
+
+          {/* Tool grid */}
+          <div className="grid grid-cols-3 sm:grid-cols-4 md:grid-cols-5 gap-2">
+            {filteredTools.map((t) => (
+              <Link key={t.href} href={t.href}
+                className="bg-[#1E293B] border border-gray-700/30 rounded-xl p-3 text-center hover:border-purple-500/40 hover:bg-[#253047] transition group">
+                <span className="text-xl block mb-1 group-hover:scale-110 transition-transform inline-block">{t.emoji}</span>
+                <p className="text-[11px] text-gray-300 font-medium leading-tight">{t.name}</p>
+              </Link>
+            ))}
+          </div>
+
+          <div className="text-center mt-6">
+            <Link href="/tools" className="inline-flex items-center gap-1 px-5 py-2.5 bg-[#1E293B] border border-gray-700 rounded-xl text-sm text-gray-300 hover:border-purple-500/50 hover:text-white transition">
+              전체 도구 보기 →
             </Link>
           </div>
         </div>
       </section>
 
-      {/* Contact */}
-      <section id="contact" className="py-20 sm:py-28 bg-white">
-        <div className="mx-auto max-w-2xl px-4 sm:px-6">
-          <div className="text-center mb-12">
-            <h2 className="text-3xl sm:text-4xl font-bold text-gray-900">
-              문의하기
-            </h2>
-            <p className="mt-4 text-gray-600 text-lg">
-              궁금한 점이 있으시면 언제든 연락해주세요
-            </p>
-            <a
-              href="mailto:tw.kim@dhlm.co.kr"
-              className="mt-3 inline-block text-base font-medium transition-colors hover:underline"
-              style={{ color: "var(--brand-green)" }}
-            >
-              tw.kim@dhlm.co.kr
-            </a>
+      {/* ════════ Blog Section ════════ */}
+      <section className="bg-[#0B1120] text-white py-16 px-5">
+        <div className="mx-auto max-w-lg">
+          <h2 className="text-xl font-bold text-center mb-6">📝 최근 블로그</h2>
+          <div className="space-y-3">
+            {blogPosts.map((post) => (
+              <Link key={post.slug} href={`/blog/${post.slug}`}
+                className="block bg-[#1E293B] border border-gray-700/30 rounded-xl px-4 py-3.5 hover:border-purple-500/40 transition group">
+                <p className="text-sm font-medium text-gray-200 group-hover:text-white transition">{post.title}</p>
+                <p className="text-xs text-gray-500 mt-1">{post.date}</p>
+              </Link>
+            ))}
           </div>
-          <ContactForm />
+          <div className="text-center mt-5">
+            <Link href="/blog" className="text-sm text-purple-400 hover:text-purple-300 transition">
+              블로그 전체 보기 →
+            </Link>
+          </div>
         </div>
       </section>
     </>

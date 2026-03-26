@@ -64,3 +64,11 @@ body {
 .animate-count-up {
   animation: count-up 0.5s ease-out forwards;
 }
+
+.scrollbar-hide::-webkit-scrollbar {
+  display: none;
+}
+.scrollbar-hide {
+  -ms-overflow-style: none;
+  scrollbar-width: none;
+}
