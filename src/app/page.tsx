@@ -188,10 +188,17 @@ function AnimatedCount({ target }: { target: number }) {
    Page
    ═══════════════════════════════════════ */
 export default function Home() {
-  const [birthday, setBirthday] = useState('');
+  const [year, setYear] = useState('');
+  const [month, setMonth] = useState('');
+  const [day, setDay] = useState('');
   const [fortune, setFortune] = useState<ReturnType<typeof getFortune> | null>(null);
   const [activeCat, setActiveCat] = useState<CatId>('all');
   const visitorCount = getVisitorCount();
+  const monthRef = useRef<HTMLInputElement>(null);
+  const dayRef = useRef<HTMLInputElement>(null);
+
+  const birthday = year.length === 4 && month.length >= 1 && day.length >= 1
+    ? `${year}-${month.padStart(2, '0')}-${day.padStart(2, '0')}` : '';
 
   const handleFortune = () => {
     if (!birthday) return;
@@ -232,12 +239,42 @@ export default function Home() {
             initial={{ opacity: 0, y: 20 }} animate={{ opacity: 1, y: 0 }} transition={{ delay: 0.5 }}
             className="space-y-3"
           >
-            <input
-              type="date"
-              value={birthday}
-              onChange={(e) => setBirthday(e.target.value)}
-              className="w-full px-4 py-3.5 bg-[#1E293B] border border-gray-700 rounded-2xl text-white text-center text-lg focus:outline-none focus:ring-2 focus:ring-purple-500 focus:border-transparent transition"
-            />
+            <div className="flex gap-2 items-center justify-center">
+              <input
+                type="text" inputMode="numeric" placeholder="1990" maxLength={4}
+                value={year}
+                onChange={(e) => {
+                  const v = e.target.value.replace(/\D/g, '').slice(0, 4);
+                  setYear(v);
+                  if (v.length === 4) monthRef.current?.focus();
+                }}
+                className="w-[90px] px-2 py-3.5 bg-[#1E293B] border border-gray-700 rounded-2xl text-white text-center text-lg focus:outline-none focus:ring-2 focus:ring-purple-500 transition"
+              />
+              <span className="text-gray-500 text-lg">/</span>
+              <input
+                ref={monthRef}
+                type="text" inputMode="numeric" placeholder="03" maxLength={2}
+                value={month}
+                onChange={(e) => {
+                  const v = e.target.value.replace(/\D/g, '').slice(0, 2);
+                  setMonth(v);
+                  if (v.length === 2) dayRef.current?.focus();
+                }}
+                className="w-[60px] px-2 py-3.5 bg-[#1E293B] border border-gray-700 rounded-2xl text-white text-center text-lg focus:outline-none focus:ring-2 focus:ring-purple-500 transition"
+              />
+              <span className="text-gray-500 text-lg">/</span>
+              <input
+                ref={dayRef}
+                type="text" inputMode="numeric" placeholder="15" maxLength={2}
+                value={day}
+                onChange={(e) => {
+                  const v = e.target.value.replace(/\D/g, '').slice(0, 2);
+                  setDay(v);
+                }}
+                onKeyDown={(e) => { if (e.key === 'Enter') handleFortune(); }}
+                className="w-[60px] px-2 py-3.5 bg-[#1E293B] border border-gray-700 rounded-2xl text-white text-center text-lg focus:outline-none focus:ring-2 focus:ring-purple-500 transition"
+              />
+            </div>
             <button
               onClick={handleFortune}
               disabled={!birthday}
