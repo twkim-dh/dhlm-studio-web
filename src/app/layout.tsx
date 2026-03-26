@@ -13,27 +13,49 @@ const notoSansKR = Noto_Sans_KR({
 });
 
 export const metadata: Metadata = {
-  title: "DHLM-STUDIO | 함께 고르는 즐거움",
+  metadataBase: new URL("https://dhlm-studio.com"),
+  title: {
+    default: "DHLM Studio | Free Online Tools & Trending Dashboard",
+    template: "%s | DHLM Studio",
+  },
   description:
-    "매일의 작은 결정을 재밌게 만드는 서비스를 만듭니다. 오늘 뭐먹?, 똑(Ttok), App Factory 등 일상을 함께하는 서비스.",
+    "Free online tools: salary calculator, JSON formatter, QR generator, lotto number generator, typing speed test and 75+ more. Global trending dashboard updated daily.",
   keywords: [
-    "DHLM-STUDIO",
-    "오늘 뭐먹",
-    "똑",
-    "Ttok",
-    "App Factory",
-    "일상",
-    "함께 고르기",
-    "메뉴 추천",
-    "취향 테스트",
+    "DHLM Studio", "free online tools", "calculator", "salary calculator",
+    "JSON formatter", "QR code generator", "lotto number generator",
+    "typing speed test", "trending now", "online tools free",
+    "연봉 계산기", "로또 번호 생성기", "무료 온라인 도구",
   ],
   openGraph: {
-    title: "DHLM-STUDIO | 함께 고르는 즐거움",
-    description: "매일의 작은 결정을 재밌게 만드는 서비스를 만듭니다.",
+    title: "DHLM Studio | Free Online Tools & Trending Dashboard",
+    description: "75+ free online tools and global trending dashboard. Salary calculator, JSON formatter, lotto generator and more.",
     url: "https://dhlm-studio.com",
-    siteName: "DHLM-STUDIO",
+    siteName: "DHLM Studio",
     locale: "ko_KR",
+    alternateLocale: "en_US",
     type: "website",
+  },
+  alternates: {
+    canonical: "https://dhlm-studio.com",
+    languages: {
+      "ko": "https://dhlm-studio.com",
+      "en": "https://dhlm-studio.com",
+      "x-default": "https://dhlm-studio.com",
+    },
+  },
+  robots: {
+    index: true,
+    follow: true,
+    googleBot: {
+      index: true,
+      follow: true,
+      "max-video-preview": -1,
+      "max-image-preview": "large",
+      "max-snippet": -1,
+    },
+  },
+  verification: {
+    google: "google-site-verification-code",
   },
 };
 

@@ -2,10 +2,29 @@ import type { MetadataRoute } from "next";
 
 const BASE = "https://dhlm-studio.com";
 
-// Static pages
+// Static / main pages
 const staticRoutes = [
-  "", "about", "services", "privacy", "terms",
-  "blog",
+  "", "about", "privacy", "terms",
+];
+
+// Viral services
+const viralRoutes = [
+  "ttok", "mwomuk", "guessme", "balance", "spin",
+];
+
+// Lotto
+const lottoRoutes = [
+  "lotto",
+];
+
+// Fortune / AI
+const fortuneRoutes = [
+  "fortune", "fortune/daily", "fortune/tarot", "fortune/compatibility", "fortune/name",
+];
+
+// Today
+const todayRoutes = [
+  "today", "today/outfit", "today/food", "today/drink",
 ];
 
 // Blog posts
@@ -29,7 +48,7 @@ const toolRoutes = [
   "tools/calc/deposit", "tools/calc/margin", "tools/calc/youtube", "tools/calc/percent",
   "tools/calc/exchange", "tools/calc/time", "tools/calc/gold", "tools/calc/hourly",
   "tools/calc/loan-compare", "tools/calc/rent-vs-buy", "tools/calc/investment-return",
-  "tools/calc/coupang-fee", "tools/calc/tax-calculator",
+  "tools/calc/coupang-fee", "tools/calc/tax-calculator", "tools/calc/hourly-wage",
   // life
   "tools/life/bmi", "tools/life/age", "tools/life/date", "tools/life/unit-converter",
   "tools/life/stopwatch", "tools/life/calorie", "tools/life/tip-calculator",
@@ -40,7 +59,7 @@ const toolRoutes = [
   "tools/dev/json", "tools/dev/base64", "tools/dev/jwt", "tools/dev/cron", "tools/dev/sql",
   "tools/dev/color-picker", "tools/dev/lorem-ipsum", "tools/dev/url-encoder",
   "tools/dev/regex-tester", "tools/dev/ip-check", "tools/dev/screen-size",
-  "tools/dev/markdown-preview", "tools/dev/font-preview", "tools/dev/tax-calculator",
+  "tools/dev/markdown-preview", "tools/dev/font-preview",
   "tools/dev/timestamp", "tools/dev/subnet", "tools/dev/chmod",
   "tools/dev/binary-converter", "tools/dev/html-entity",
   // image
@@ -59,10 +78,46 @@ const toolRoutes = [
 ];
 
 export default function sitemap(): MetadataRoute.Sitemap {
-  const routes = [
-    ...staticRoutes.map(r => ({ url: `${BASE}/${r}`, lastModified: new Date(), changeFrequency: "weekly" as const, priority: r === "" ? 1 : 0.8 })),
-    ...blogSlugs.map(s => ({ url: `${BASE}/blog/${s}`, lastModified: new Date(), changeFrequency: "monthly" as const, priority: 0.7 })),
-    ...toolRoutes.map(r => ({ url: `${BASE}/${r}`, lastModified: new Date(), changeFrequency: "weekly" as const, priority: 0.8 })),
+  const now = new Date();
+
+  return [
+    // Homepage — highest priority, daily change
+    { url: BASE, lastModified: now, changeFrequency: "daily", priority: 1.0 },
+
+    // Static pages
+    ...staticRoutes.filter(r => r !== "").map(r => ({
+      url: `${BASE}/${r}`, lastModified: now, changeFrequency: "monthly" as const, priority: 0.5,
+    })),
+
+    // Viral services — high priority
+    ...viralRoutes.map(r => ({
+      url: `${BASE}/${r}`, lastModified: now, changeFrequency: "weekly" as const, priority: 0.9,
+    })),
+
+    // Lotto — high priority, daily change
+    ...lottoRoutes.map(r => ({
+      url: `${BASE}/${r}`, lastModified: now, changeFrequency: "daily" as const, priority: 0.9,
+    })),
+
+    // Fortune
+    ...fortuneRoutes.map(r => ({
+      url: `${BASE}/${r}`, lastModified: now, changeFrequency: "daily" as const, priority: 0.8,
+    })),
+
+    // Today
+    ...todayRoutes.map(r => ({
+      url: `${BASE}/${r}`, lastModified: now, changeFrequency: "daily" as const, priority: 0.7,
+    })),
+
+    // Blog — monthly
+    { url: `${BASE}/blog`, lastModified: now, changeFrequency: "weekly" as const, priority: 0.8 },
+    ...blogSlugs.map(s => ({
+      url: `${BASE}/blog/${s}`, lastModified: now, changeFrequency: "monthly" as const, priority: 0.7,
+    })),
+
+    // Tools — weekly
+    ...toolRoutes.map(r => ({
+      url: `${BASE}/${r}`, lastModified: now, changeFrequency: "weekly" as const, priority: r === "tools" ? 0.9 : 0.8,
+    })),
   ];
-  return routes;
 }
