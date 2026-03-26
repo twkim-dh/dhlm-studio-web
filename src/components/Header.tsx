@@ -13,10 +13,8 @@ const navLinks = [
 export default function Header() {
   const [menuOpen, setMenuOpen] = useState(false);
   const [scrolled, setScrolled] = useState(false);
-  const [isHome, setIsHome] = useState(false);
 
   useEffect(() => {
-    setIsHome(window.location.pathname === "/");
     const onScroll = () => setScrolled(window.scrollY > 10);
     window.addEventListener("scroll", onScroll, { passive: true });
     return () => window.removeEventListener("scroll", onScroll);
@@ -37,20 +35,15 @@ export default function Header() {
     <>
       <header
         className={`sticky top-0 z-50 transition-all duration-300 ${
-          isHome
-            ? scrolled
-              ? "bg-[#0F172A]/90 backdrop-blur-md shadow-sm"
-              : "bg-transparent"
-            : scrolled
-              ? "bg-white/80 backdrop-blur-md shadow-sm"
-              : "bg-white"
+          scrolled
+            ? "bg-[#0F172A]/95 backdrop-blur-md shadow-lg shadow-black/10"
+            : "bg-[#0F172A]"
         }`}
       >
         <div className="mx-auto max-w-6xl flex items-center justify-between px-4 py-4 sm:px-6">
           <Link
             href="/"
-            className={`text-xl font-bold tracking-tight ${isHome ? "text-white" : ""}`}
-            style={isHome ? {} : { color: "var(--brand-green)" }}
+            className="text-xl font-bold tracking-tight text-white"
           >
             DHLM-STUDIO
           </Link>
@@ -61,7 +54,7 @@ export default function Header() {
               <Link
                 key={link.href}
                 href={link.href}
-                className={`text-sm font-medium transition-colors ${isHome ? "text-gray-300 hover:text-white" : "text-gray-600 hover:text-[var(--brand-green)]"}`}
+                className="text-sm font-medium text-gray-300 hover:text-white transition-colors"
               >
                 {link.label}
               </Link>
@@ -74,9 +67,9 @@ export default function Header() {
             onClick={() => setMenuOpen(true)}
             aria-label="메뉴 열기"
           >
-            <span className={`block w-6 h-0.5 ${isHome ? "bg-gray-300" : "bg-gray-700"}`} />
-            <span className={`block w-6 h-0.5 ${isHome ? "bg-gray-300" : "bg-gray-700"}`} />
-            <span className={`block w-6 h-0.5 ${isHome ? "bg-gray-300" : "bg-gray-700"}`} />
+            <span className="block w-6 h-0.5 bg-gray-300" />
+            <span className="block w-6 h-0.5 bg-gray-300" />
+            <span className="block w-6 h-0.5 bg-gray-300" />
           </button>
         </div>
       </header>
@@ -91,14 +84,14 @@ export default function Header() {
 
       {/* Mobile drawer */}
       <div
-        className={`fixed top-0 right-0 z-50 h-full w-64 bg-white shadow-xl transform transition-transform duration-300 md:hidden ${
+        className={`fixed top-0 right-0 z-50 h-full w-64 bg-[#1E293B] shadow-xl transform transition-transform duration-300 md:hidden ${
           menuOpen ? "translate-x-0" : "translate-x-full"
         }`}
       >
         <div className="flex justify-end p-4">
           <button
             onClick={() => setMenuOpen(false)}
-            className="p-2 text-gray-600"
+            className="p-2 text-gray-400"
             aria-label="메뉴 닫기"
           >
             <svg
@@ -123,7 +116,7 @@ export default function Header() {
               key={link.href}
               href={link.href}
               onClick={() => setMenuOpen(false)}
-              className="block py-3 text-base font-medium text-gray-700 hover:text-[var(--brand-green)] border-b border-gray-100 transition-colors"
+              className="block py-3 text-base font-medium text-gray-300 hover:text-white border-b border-gray-700 transition-colors"
             >
               {link.label}
             </Link>
