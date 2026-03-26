@@ -9,6 +9,7 @@ export interface TrendingItem {
   metric?: string;
   metricLabel?: string;
   image?: string;
+  url?: string;
 }
 
 export interface TrendingCategory {
@@ -215,46 +216,46 @@ export const trendingData: TrendingData = {
 
   apps: {
     global: [
-      { rank: 1, change: 'up', title: 'ChatGPT', subtitle: 'OpenAI', metric: '#1', metricLabel: 'free' },
-      { rank: 2, change: 'same', title: 'TikTok', subtitle: 'ByteDance', metric: '#2', metricLabel: 'free' },
-      { rank: 3, change: 'up', title: 'Temu', subtitle: 'PDD Holdings', metric: '#3', metricLabel: 'free' },
-      { rank: 4, change: 'new', title: 'Threads', subtitle: 'Meta', metric: '#4', metricLabel: 'free' },
-      { rank: 5, change: 'down', title: 'Instagram', subtitle: 'Meta', metric: '#5', metricLabel: 'free' },
+      { rank: 1, change: 'up', title: 'ChatGPT', subtitle: 'OpenAI', metric: '#1', metricLabel: 'free', url: 'https://chat.openai.com' },
+      { rank: 2, change: 'same', title: 'TikTok', subtitle: 'ByteDance', metric: '#2', metricLabel: 'free', url: 'https://www.tiktok.com' },
+      { rank: 3, change: 'up', title: 'Temu', subtitle: 'PDD Holdings', metric: '#3', metricLabel: 'free', url: 'https://www.temu.com' },
+      { rank: 4, change: 'new', title: 'Threads', subtitle: 'Meta', metric: '#4', metricLabel: 'free', url: 'https://www.threads.net' },
+      { rank: 5, change: 'down', title: 'Instagram', subtitle: 'Meta', metric: '#5', metricLabel: 'free', url: 'https://www.instagram.com' },
     ],
     kr: [
-      { rank: 1, change: 'same', title: '카카오톡', subtitle: 'Kakao', metric: '#1', metricLabel: 'free' },
-      { rank: 2, change: 'up', title: '쿠팡', subtitle: 'Coupang', metric: '#2', metricLabel: 'free' },
-      { rank: 3, change: 'up', title: 'ChatGPT', subtitle: 'OpenAI', metric: '#3', metricLabel: 'free' },
-      { rank: 4, change: 'new', title: '당근', subtitle: 'Danggeun Market', metric: '#4', metricLabel: 'free' },
-      { rank: 5, change: 'down', title: '네이버', subtitle: 'Naver', metric: '#5', metricLabel: 'free' },
+      { rank: 1, change: 'same', title: '카카오톡', subtitle: 'Kakao', metric: '#1', metricLabel: 'free', url: 'https://www.kakaocorp.com/page/service/service/KakaoTalk' },
+      { rank: 2, change: 'up', title: '쿠팡', subtitle: 'Coupang', metric: '#2', metricLabel: 'free', url: 'https://www.coupang.com' },
+      { rank: 3, change: 'up', title: 'ChatGPT', subtitle: 'OpenAI', metric: '#3', metricLabel: 'free', url: 'https://chat.openai.com' },
+      { rank: 4, change: 'new', title: '당근', subtitle: 'Danggeun Market', metric: '#4', metricLabel: 'free', url: 'https://www.daangn.com' },
+      { rank: 5, change: 'down', title: '네이버', subtitle: 'Naver', metric: '#5', metricLabel: 'free', url: 'https://www.naver.com' },
     ],
     us: [
-      { rank: 1, change: 'up', title: 'ChatGPT', subtitle: 'OpenAI', metric: '#1', metricLabel: 'free' },
-      { rank: 2, change: 'same', title: 'TikTok', subtitle: 'ByteDance', metric: '#2', metricLabel: 'free' },
-      { rank: 3, change: 'up', title: 'Temu', subtitle: 'PDD Holdings', metric: '#3', metricLabel: 'free' },
-      { rank: 4, change: 'new', title: 'Threads', subtitle: 'Meta', metric: '#4', metricLabel: 'free' },
-      { rank: 5, change: 'down', title: 'Instagram', subtitle: 'Meta', metric: '#5', metricLabel: 'free' },
+      { rank: 1, change: 'up', title: 'ChatGPT', subtitle: 'OpenAI', metric: '#1', metricLabel: 'free', url: 'https://chat.openai.com' },
+      { rank: 2, change: 'same', title: 'TikTok', subtitle: 'ByteDance', metric: '#2', metricLabel: 'free', url: 'https://www.tiktok.com' },
+      { rank: 3, change: 'up', title: 'Temu', subtitle: 'PDD Holdings', metric: '#3', metricLabel: 'free', url: 'https://www.temu.com' },
+      { rank: 4, change: 'new', title: 'Threads', subtitle: 'Meta', metric: '#4', metricLabel: 'free', url: 'https://www.threads.net' },
+      { rank: 5, change: 'down', title: 'Instagram', subtitle: 'Meta', metric: '#5', metricLabel: 'free', url: 'https://www.instagram.com' },
     ],
     jp: [
-      { rank: 1, change: 'same', title: 'LINE', subtitle: 'LY Corp', metric: '#1', metricLabel: 'free' },
-      { rank: 2, change: 'up', title: 'PayPay', subtitle: 'SoftBank', metric: '#2', metricLabel: 'free' },
-      { rank: 3, change: 'up', title: 'ChatGPT', subtitle: 'OpenAI', metric: '#3', metricLabel: 'free' },
-      { rank: 4, change: 'new', title: 'TikTok', subtitle: 'ByteDance', metric: '#4', metricLabel: 'free' },
-      { rank: 5, change: 'down', title: 'YouTube', subtitle: 'Google', metric: '#5', metricLabel: 'free' },
+      { rank: 1, change: 'same', title: 'LINE', subtitle: 'LY Corp', metric: '#1', metricLabel: 'free', url: 'https://line.me' },
+      { rank: 2, change: 'up', title: 'PayPay', subtitle: 'SoftBank', metric: '#2', metricLabel: 'free', url: 'https://paypay.ne.jp' },
+      { rank: 3, change: 'up', title: 'ChatGPT', subtitle: 'OpenAI', metric: '#3', metricLabel: 'free', url: 'https://chat.openai.com' },
+      { rank: 4, change: 'new', title: 'TikTok', subtitle: 'ByteDance', metric: '#4', metricLabel: 'free', url: 'https://www.tiktok.com' },
+      { rank: 5, change: 'down', title: 'YouTube', subtitle: 'Google', metric: '#5', metricLabel: 'free', url: 'https://www.youtube.com' },
     ],
     vn: [
-      { rank: 1, change: 'same', title: 'Zalo', subtitle: 'VNG', metric: '#1', metricLabel: 'free' },
-      { rank: 2, change: 'up', title: 'TikTok', subtitle: 'ByteDance', metric: '#2', metricLabel: 'free' },
-      { rank: 3, change: 'up', title: 'Shopee', subtitle: 'Sea Group', metric: '#3', metricLabel: 'free' },
-      { rank: 4, change: 'new', title: 'MoMo', subtitle: 'M_Service', metric: '#4', metricLabel: 'free' },
-      { rank: 5, change: 'down', title: 'Facebook', subtitle: 'Meta', metric: '#5', metricLabel: 'free' },
+      { rank: 1, change: 'same', title: 'Zalo', subtitle: 'VNG', metric: '#1', metricLabel: 'free', url: 'https://zalo.me' },
+      { rank: 2, change: 'up', title: 'TikTok', subtitle: 'ByteDance', metric: '#2', metricLabel: 'free', url: 'https://www.tiktok.com' },
+      { rank: 3, change: 'up', title: 'Shopee', subtitle: 'Sea Group', metric: '#3', metricLabel: 'free', url: 'https://shopee.vn' },
+      { rank: 4, change: 'new', title: 'MoMo', subtitle: 'M_Service', metric: '#4', metricLabel: 'free', url: 'https://momo.vn' },
+      { rank: 5, change: 'down', title: 'Facebook', subtitle: 'Meta', metric: '#5', metricLabel: 'free', url: 'https://www.facebook.com' },
     ],
     uk: [
-      { rank: 1, change: 'up', title: 'ChatGPT', subtitle: 'OpenAI', metric: '#1', metricLabel: 'free' },
-      { rank: 2, change: 'same', title: 'TikTok', subtitle: 'ByteDance', metric: '#2', metricLabel: 'free' },
-      { rank: 3, change: 'up', title: 'Revolut', subtitle: 'Revolut Ltd', metric: '#3', metricLabel: 'free' },
-      { rank: 4, change: 'new', title: 'Temu', subtitle: 'PDD Holdings', metric: '#4', metricLabel: 'free' },
-      { rank: 5, change: 'down', title: 'Instagram', subtitle: 'Meta', metric: '#5', metricLabel: 'free' },
+      { rank: 1, change: 'up', title: 'ChatGPT', subtitle: 'OpenAI', metric: '#1', metricLabel: 'free', url: 'https://chat.openai.com' },
+      { rank: 2, change: 'same', title: 'TikTok', subtitle: 'ByteDance', metric: '#2', metricLabel: 'free', url: 'https://www.tiktok.com' },
+      { rank: 3, change: 'up', title: 'Revolut', subtitle: 'Revolut Ltd', metric: '#3', metricLabel: 'free', url: 'https://www.revolut.com' },
+      { rank: 4, change: 'new', title: 'Temu', subtitle: 'PDD Holdings', metric: '#4', metricLabel: 'free', url: 'https://www.temu.com' },
+      { rank: 5, change: 'down', title: 'Instagram', subtitle: 'Meta', metric: '#5', metricLabel: 'free', url: 'https://www.instagram.com' },
     ],
   },
 

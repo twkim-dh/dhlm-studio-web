@@ -468,6 +468,20 @@ function ChangeIcon({ change }: { change: TrendingItem['change'] }) {
   return <span className="text-gray-600 text-xs">─</span>;
 }
 
+function getItemUrl(catKey: string, item: TrendingItem): string {
+  if (item.url) return item.url;
+  const q = encodeURIComponent(`${item.title}${item.subtitle ? ' ' + item.subtitle : ''}`);
+  switch (catKey) {
+    case 'music': return `https://www.youtube.com/results?search_query=${q}`;
+    case 'youtube': return `https://www.youtube.com/results?search_query=${q}`;
+    case 'movies': return `https://www.youtube.com/results?search_query=${encodeURIComponent(item.title + ' trailer')}`;
+    case 'games': return `https://www.youtube.com/results?search_query=${encodeURIComponent(item.title)}`;
+    case 'apps': return `https://www.google.com/search?q=${encodeURIComponent(item.title + ' app')}`;
+    case 'search': return `https://www.google.com/search?q=${encodeURIComponent(item.title)}`;
+    default: return `https://www.google.com/search?q=${q}`;
+  }
+}
+
 function TrendingDashboard() {
   const [region, setRegion] = useState<RegionId>('global');
 
@@ -514,7 +528,10 @@ function TrendingDashboard() {
                 </div>
                 <div className="divide-y divide-gray-700/20">
                   {items.slice(0, 3).map((item) => (
-                    <div key={item.rank} className="flex items-center gap-3 px-4 py-2.5 hover:bg-[#253047] transition">
+                    <a key={item.rank}
+                      href={getItemUrl(cat.key, item)}
+                      target="_blank" rel="noopener noreferrer"
+                      className="flex items-center gap-3 px-4 py-2.5 hover:bg-[#253047] transition cursor-pointer">
                       <span className="text-lg font-black text-gray-500 w-6 text-right shrink-0">{item.rank}</span>
                       <ChangeIcon change={item.change} />
                       <div className="flex-1 min-w-0">
@@ -527,7 +544,8 @@ function TrendingDashboard() {
                           {item.metricLabel && <p className="text-[9px] text-gray-600">{item.metricLabel}</p>}
                         </div>
                       )}
-                    </div>
+                      <span className="text-gray-600 text-xs shrink-0">↗</span>
+                    </a>
                   ))}
                 </div>
               </div>
