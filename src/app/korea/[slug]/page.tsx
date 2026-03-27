@@ -65,6 +65,16 @@ export default async function KoreaPostPage({ params }: { params: Promise<{ slug
         {/* Sections */}
         {post.sections.map((sec) => (
           <div key={sec.heading} className="mt-10">
+            {sec.image && (
+              <div className="mb-6 overflow-hidden" style={{ borderRadius: '4px' }}>
+                <img src={sec.image} alt={sec.imageAlt || sec.heading}
+                  className="w-full h-auto" loading="lazy"
+                  style={{ maxHeight: '400px', objectFit: 'cover' }} />
+                {sec.imageAlt && (
+                  <p className="text-[11px] mt-2 italic" style={{ color: '#9CA3AF' }}>{sec.imageAlt}</p>
+                )}
+              </div>
+            )}
             <h2 className="text-lg font-medium mb-4" style={{ fontFamily: serif, color: '#1A1A1A' }}>
               {sec.heading}
             </h2>
