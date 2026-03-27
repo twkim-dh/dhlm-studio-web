@@ -236,36 +236,58 @@ export default function BlogPage() {
       <div className="px-6" style={{ paddingTop: '60px', paddingBottom: '40px' }}>
         <div className="mx-auto" style={{ maxWidth: '960px' }}>
           <p className="text-[11px] tracking-[0.4em] mb-8" style={{ color: '#BCBCBC' }}>DHLM STUDIO</p>
-          <h1 className="text-[clamp(28px,4vw,40px)] font-normal leading-[1.6]"
-            style={{ fontFamily: "var(--font-noto-serif-kr), serif", color: '#1A1A1A', letterSpacing: '0.08em' }}>
-            이야기
+          <h1 className="text-[clamp(28px,4vw,40px)] font-bold leading-[1.4]"
+            style={{ fontFamily: "var(--font-noto-serif-kr), serif", color: '#1A1A1A' }}>
+            블로그
           </h1>
-          <p className="text-[14px] mt-4 italic" style={{ fontFamily: 'var(--font-playfair), serif', color: '#B0B0B0' }}>
-            Stories about Korean culture and daily life
+          <p className="text-sm mt-3" style={{ color: '#6B7280' }}>
+            로또 당첨번호, 도구 활용법, 생활 정보
           </p>
         </div>
       </div>
 
-      {/* Posts */}
-      <div className="mx-auto max-w-3xl px-5 sm:px-8 pb-20">
-        <div className="space-y-4">
-          {posts.map((post) => (
-            <Link key={post.slug} href={`/blog/${post.slug}`}
-              className="block bg-white border rounded p-6 sm:p-8 transition-all hover:border-[#C73E3A] hover:shadow-md group"
-              style={{ borderColor: '#E5E7EB', borderRadius: '4px' }}>
-              <div className="flex items-center gap-3 mb-3">
-                <time className="text-xs" style={{ color: '#6B7280' }}>{post.date}</time>
-              </div>
-              <h2 className="text-lg sm:text-xl font-bold transition-colors group-hover:text-[#C73E3A] mb-2"
-                style={{ fontFamily: "var(--font-noto-serif-kr), serif", color: '#1A1A1A' }}>
-                {post.title}
-              </h2>
-              <p className="text-sm leading-relaxed" style={{ color: '#6B7280' }}>{post.excerpt}</p>
-              <span className="mt-3 inline-block text-xs font-medium tracking-widest" style={{ color: '#C73E3A' }}>
-                READ →
-              </span>
+      <div className="mx-auto px-6" style={{ maxWidth: '960px', paddingBottom: '80px' }}>
+        {/* Lotto Results Section */}
+        <div className="mb-12">
+          <div className="flex items-center justify-between mb-6">
+            <p className="text-[11px] tracking-[0.25em]" style={{ color: '#BCBCBC' }}>LOTTO RESULTS</p>
+            <Link href="/blog/lotto" className="text-[13px] transition-colors hover:text-[#C73E3A]" style={{ color: '#9CA3AF' }}>
+              전체 회차 →
             </Link>
-          ))}
+          </div>
+          <Link href="/blog/lotto"
+            className="block border p-6 transition-colors hover:border-[#C73E3A] group"
+            style={{ borderColor: '#E5E7EB', borderRadius: '4px' }}>
+            <p className="text-lg font-bold group-hover:text-[#C73E3A] transition-colors"
+              style={{ fontFamily: "var(--font-noto-serif-kr), serif", color: '#1A1A1A' }}>
+              🎱 로또 당첨번호 조회
+            </p>
+            <p className="text-sm mt-2" style={{ color: '#6B7280' }}>
+              매주 토요일 업데이트 · 역대 당첨번호 · 번호 분석 · 당첨금 기록
+            </p>
+          </Link>
+        </div>
+
+        {/* Tools & Life Section */}
+        <div>
+          <p className="text-[11px] tracking-[0.25em] mb-6" style={{ color: '#BCBCBC' }}>TOOLS & LIFE</p>
+          <div className="space-y-0">
+            {posts.map((post) => (
+              <Link key={post.slug} href={`/blog/${post.slug}`}
+                className="block group" style={{ borderBottom: '1px solid #E5E7EB' }}>
+                <div style={{ padding: '20px 0' }}>
+                  <div className="flex items-center gap-3 mb-1">
+                    <time className="text-[11px]" style={{ color: '#9CA3AF' }}>{post.date}</time>
+                  </div>
+                  <p className="text-[15px] font-medium transition-colors group-hover:text-[#C73E3A]"
+                    style={{ fontFamily: "var(--font-noto-serif-kr), serif", color: '#1A1A1A' }}>
+                    {post.title}
+                  </p>
+                  <p className="text-[13px] mt-1" style={{ color: '#6B7280' }}>{post.excerpt}</p>
+                </div>
+              </Link>
+            ))}
+          </div>
         </div>
       </div>
     </div>

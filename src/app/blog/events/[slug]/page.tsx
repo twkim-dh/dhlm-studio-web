@@ -43,18 +43,6 @@ export default async function EventPage({ params }: { params: Promise<{ slug: st
 
   return (
     <div style={{ background: '#FFFFFF' }}>
-      {/* Hero image */}
-      <div className="relative w-full overflow-hidden" style={{ height: 'clamp(240px, 40vw, 420px)' }}>
-        <img src={post.image} alt={post.imageAlt}
-          className="w-full h-full object-cover" loading="eager" />
-        <div className="absolute inset-0" style={{ background: 'linear-gradient(to top, rgba(0,0,0,0.5) 0%, transparent 60%)' }} />
-        <div className="absolute bottom-0 left-0 right-0 px-6 pb-8">
-          <div className="mx-auto" style={{ maxWidth: '720px' }}>
-            <p className="text-sm" style={{ color: 'rgba(255,255,255,0.7)' }}>{post.period} · {post.location}</p>
-          </div>
-        </div>
-      </div>
-
       {/* Content */}
       <article className="mx-auto px-6" style={{ maxWidth: '720px', paddingTop: '48px', paddingBottom: '80px' }}>
         <span className="text-3xl">{post.emoji}</span>

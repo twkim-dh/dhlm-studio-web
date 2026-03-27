@@ -43,20 +43,8 @@ export default async function EventPage({ params }: { params: Promise<{ slug: st
 
   return (
     <div style={{ background: '#FFFFFF' }}>
-      {/* Hero image */}
-      <div className="relative w-full overflow-hidden" style={{ height: 'clamp(240px, 40vw, 420px)' }}>
-        <img src={post.image} alt={post.imageAlt}
-          className="w-full h-full object-cover" loading="eager" />
-        <div className="absolute inset-0" style={{ background: 'linear-gradient(to top, rgba(0,0,0,0.5) 0%, transparent 60%)' }} />
-        <div className="absolute bottom-0 left-0 right-0 px-6 pb-8">
-          <div className="mx-auto" style={{ maxWidth: '720px' }}>
-            <p className="text-sm" style={{ color: 'rgba(255,255,255,0.7)' }}>{post.period} · {post.location}</p>
-          </div>
-        </div>
-      </div>
-
       {/* Content */}
-      <article className="mx-auto px-6" style={{ maxWidth: '720px', paddingTop: '48px', paddingBottom: '80px' }}>
+      <article className="mx-auto px-6" style={{ maxWidth: '720px', paddingTop: '60px', paddingBottom: '80px' }}>
         <span className="text-3xl">{post.emoji}</span>
         <h1 className="text-[clamp(24px,4vw,36px)] font-normal leading-[1.5] mt-4"
           style={{ fontFamily: serif, color: '#1A1A1A', letterSpacing: '0.03em' }}>
@@ -65,8 +53,9 @@ export default async function EventPage({ params }: { params: Promise<{ slug: st
         <p className="text-base mt-1" style={{ fontFamily: serif, color: '#BCBCBC' }}>
           {post.titleKr}
         </p>
+        <p className="text-[13px] mt-3" style={{ color: '#9CA3AF' }}>{post.period} · {post.location}</p>
 
-        <div className="mt-2 mb-8" style={{ width: '32px', height: '1px', background: '#E5E7EB' }} />
+        <div className="mt-4 mb-8" style={{ width: '32px', height: '1px', background: '#E5E7EB' }} />
 
         {/* Intro */}
         <p className="text-base leading-[1.9]" style={{ color: '#4B5563' }}>
