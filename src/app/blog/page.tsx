@@ -233,19 +233,16 @@ export default function BlogPage() {
   return (
     <div style={{ background: '#FFFFFF' }}>
       {/* Hero */}
-      <div className="relative py-16 sm:py-20 text-center overflow-hidden">
-        <div className="absolute inset-0 bg-cover bg-center opacity-10"
-          style={{ backgroundImage: `url('https://images.unsplash.com/photo-1548115184-bc6544d06a58?w=800&q=60')` }} />
-        <div className="relative">
-          <p className="text-[10px] tracking-[0.4em] mb-3" style={{ color: '#C73E3A' }}>BLOG</p>
-          <h1 className="text-3xl sm:text-4xl font-bold tracking-[0.1em]"
-            style={{ fontFamily: "var(--font-noto-serif-kr), serif", color: '#1A1A1A' }}>
+      <div className="px-6" style={{ paddingTop: '60px', paddingBottom: '40px' }}>
+        <div className="mx-auto" style={{ maxWidth: '960px' }}>
+          <p className="text-[11px] tracking-[0.4em] mb-8" style={{ color: '#BCBCBC' }}>DHLM STUDIO</p>
+          <h1 className="text-[clamp(28px,4vw,40px)] font-normal leading-[1.6]"
+            style={{ fontFamily: "var(--font-noto-serif-kr), serif", color: '#1A1A1A', letterSpacing: '0.08em' }}>
             이야기
           </h1>
-          <p className="mt-3 text-sm" style={{ color: '#6B7280' }}>
-            일상에 유용한 정보와 무료 도구 활용법
+          <p className="text-[14px] mt-4 italic" style={{ fontFamily: 'var(--font-playfair), serif', color: '#B0B0B0' }}>
+            Stories about Korean culture and daily life
           </p>
-          <div className="w-10 h-[2px] mx-auto mt-4" style={{ background: '#C73E3A' }} />
         </div>
       </div>
 

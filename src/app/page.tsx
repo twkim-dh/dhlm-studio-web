@@ -67,12 +67,10 @@ export default function Home() {
                         <p className="text-[12px]" style={{ fontFamily: serif, color: '#9CA3AF' }}>{ev.nameKr} · {ev.period}</p>
                         <p className="text-[13px] mt-1 leading-relaxed" style={{ color: '#6B7280' }}>{ev.desc}</p>
                         <div className="flex items-center gap-3 mt-1.5">
-                          {ev.url && (
-                            <a href={ev.url} target="_blank" rel="noopener noreferrer"
-                              className="text-[11px] transition-colors duration-200 hover:text-[#C73E3A]" style={{ color: '#9CA3AF' }}>
-                              Official →
-                            </a>
-                          )}
+                          <a href={ev.url} target="_blank" rel="noopener noreferrer"
+                            className="text-[11px] transition-colors duration-200 hover:text-[#C73E3A]" style={{ color: '#9CA3AF' }}>
+                            Learn more →
+                          </a>
                           <button onClick={() => {
                             const text = `${ev.emoji} ${ev.name} (${ev.nameKr})\n${ev.period}\n${ev.desc}\n\nhttps://dhlm-studio.com`;
                             if (navigator.share) { navigator.share({ title: ev.name, text }).catch(() => {}); }

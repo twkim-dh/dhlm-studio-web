@@ -157,28 +157,30 @@ export default function LottoPage() {
   return (
     <div className="min-h-screen" style={{ background: '#FFFFFF' }}>
       {/* Header */}
-      <div className="py-8 text-center">
-        <p className="text-[10px] tracking-[0.4em] mb-1" style={{ color: '#C73E3A' }}>DHLM STUDIO</p>
-        <h1 className="text-2xl font-bold tracking-[0.15em]"
-          style={{ fontFamily: 'var(--font-noto-serif-kr), serif', color: '#1A1A1A' }}>
-          행운의 번호
-        </h1>
-        <p className="text-xs mt-1 tracking-wide" style={{ color: '#6B7280' }}>World Lottery Generator</p>
-        <div className="w-8 h-[2px] mx-auto mt-3" style={{ background: '#C73E3A' }} />
+      <div style={{ paddingTop: '60px', paddingBottom: '40px' }} className="px-6">
+        <div className="mx-auto" style={{ maxWidth: '960px' }}>
+          <p className="text-[11px] tracking-[0.4em] mb-8" style={{ color: '#BCBCBC' }}>DHLM STUDIO</p>
+          <h1 className="text-[clamp(28px,4vw,40px)] font-normal leading-[1.6]"
+            style={{ fontFamily: 'var(--font-noto-serif-kr), serif', color: '#1A1A1A', letterSpacing: '0.08em' }}>
+            행운의 번호
+          </h1>
+          <p className="text-[14px] mt-4 italic" style={{ fontFamily: 'var(--font-playfair), serif', color: '#B0B0B0' }}>
+            World Lottery Generator
+          </p>
+        </div>
       </div>
 
       <div className="max-w-lg mx-auto px-4 pb-8">
         {/* Tab Navigation */}
-        <div className="sticky top-[48px] z-10 -mx-4 px-4 backdrop-blur-md" style={{ background: 'rgba(255,255,255,0.95)' }}>
-          <div className="flex border-b" style={{ borderColor: '#E5E7EB' }}>
+        <div className="sticky top-[56px] z-10 -mx-4 px-4 backdrop-blur-md" style={{ background: 'rgba(255,255,255,0.95)' }}>
+          <div className="flex" style={{ borderBottom: '1px solid #E5E7EB' }}>
             {mainTabs.map((tab) => (
               <button key={tab.id} onClick={() => handleTabChange(tab.id)}
-                className="flex-1 py-2.5 text-center text-sm font-medium transition-colors relative"
-                style={{ color: activeTab === tab.id ? '#8B2500' : '#8D8478' }}>
-                <span className="block text-base">{tab.emoji}</span>
-                <span className="block text-[10px] mt-0.5">{tab.label}</span>
+                className="flex-1 py-3 text-center transition-colors relative"
+                style={{ color: activeTab === tab.id ? '#1A1A1A' : '#BCBCBC' }}>
+                <span className="block text-[13px]">{tab.emoji} {tab.label}</span>
                 {activeTab === tab.id && (
-                  <div className="absolute bottom-0 left-3 right-3 h-[2px]" style={{ background: '#C73E3A' }} />
+                  <div className="absolute bottom-0 left-4 right-4 h-[1px]" style={{ background: '#1A1A1A' }} />
                 )}
               </button>
             ))}

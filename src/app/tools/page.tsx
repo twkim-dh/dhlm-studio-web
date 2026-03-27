@@ -136,16 +136,17 @@ export default function Home() {
   return (
     <div style={{ background: '#FFFFFF' }}>
       {/* Hero */}
-      <div className="py-14 sm:py-18 text-center">
-        <p className="text-[10px] tracking-[0.4em] mb-3" style={{ color: '#C73E3A' }}>TOOLS</p>
-        <h1 className="text-2xl sm:text-3xl font-bold tracking-[0.08em]"
-          style={{ fontFamily: "var(--font-noto-serif-kr), serif", color: '#1A1A1A' }}>
-          무료 도구
-        </h1>
-        <p className="text-sm mt-2" style={{ color: '#6B7280' }}>
-          로그인 없이 바로 사용하는 {totalTools}개 도구
-        </p>
-        <div className="w-8 h-[2px] mx-auto mt-4" style={{ background: '#C73E3A' }} />
+      <div className="px-6" style={{ paddingTop: '60px', paddingBottom: '40px' }}>
+        <div className="mx-auto" style={{ maxWidth: '960px' }}>
+          <p className="text-[11px] tracking-[0.4em] mb-8" style={{ color: '#BCBCBC' }}>DHLM STUDIO</p>
+          <h1 className="text-[clamp(28px,4vw,40px)] font-normal leading-[1.6]"
+            style={{ fontFamily: "var(--font-noto-serif-kr), serif", color: '#1A1A1A', letterSpacing: '0.08em' }}>
+            무료 도구
+          </h1>
+          <p className="text-[14px] mt-4 italic" style={{ fontFamily: 'var(--font-playfair), serif', color: '#B0B0B0' }}>
+            {totalTools} free tools — no login required
+          </p>
+        </div>
       </div>
 
       <div className="max-w-5xl mx-auto px-5 sm:px-8 pb-16">
