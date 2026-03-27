@@ -47,9 +47,9 @@ export default function WorldLotteryClient({ lotteryId }: { lotteryId: string })
         <p className="text-[10px] tracking-[0.4em] mb-1" style={{ color: '#8B2500' }}>DHLM STUDIO</p>
         <h1 className="text-2xl font-bold tracking-[0.1em]"
           style={{ fontFamily: 'var(--font-noto-serif-kr), serif', color: '#2C1810' }}>
-          {lottery.country} {lottery.name}
+          {lottery.country} {lottery.lang.title}
         </h1>
-        <p className="text-xs mt-1" style={{ color: '#8D8478' }}>{lottery.seoTitle}</p>
+        <p className="text-xs mt-1" style={{ color: '#8D8478' }}>{lottery.name}</p>
         <div className="w-8 h-[2px] mx-auto mt-3" style={{ background: '#8B2500' }} />
       </div>
 
@@ -73,10 +73,10 @@ export default function WorldLotteryClient({ lotteryId }: { lotteryId: string })
             <div>
               <p className="font-bold text-base" style={{ color: '#2C1810' }}>{lottery.name}</p>
               <p className="text-xs" style={{ color: '#8D8478' }}>
-                {lottery.mainNumbers.count} numbers ({lottery.mainNumbers.min}-{lottery.mainNumbers.max})
+                {lottery.mainNumbers.count} {lottery.lang.numbers} ({lottery.mainNumbers.min}-{lottery.mainNumbers.max})
                 {lottery.bonusNumbers && ` + ${lottery.bonusNumbers.count} ${lottery.bonusNumbers.name} (${lottery.bonusNumbers.min}-${lottery.bonusNumbers.max})`}
               </p>
-              <p className="text-[10px] mt-0.5" style={{ color: '#A5A09A' }}>Draw: {lottery.drawDays.join(', ')} · {lottery.ageRestriction}</p>
+              <p className="text-[10px] mt-0.5" style={{ color: '#A5A09A' }}>{lottery.lang.draw}: {lottery.drawDays.join(', ')} · {lottery.ageRestriction}</p>
             </div>
           </div>
         </div>
@@ -84,7 +84,7 @@ export default function WorldLotteryClient({ lotteryId }: { lotteryId: string })
         {/* Generate */}
         <div className="flex gap-2 mb-4">
           <div className="flex items-center gap-1.5 bg-white border rounded px-3" style={{ borderColor: '#D5CEC3', borderRadius: '4px' }}>
-            <span className="text-xs" style={{ color: '#8D8478' }}>Sets</span>
+            <span className="text-xs" style={{ color: '#8D8478' }}>{lottery.lang.sets}</span>
             {[1, 3, 5].map((n) => (
               <button key={n} onClick={() => setSets(n)}
                 className={`w-7 h-7 rounded text-xs font-bold transition ${sets === n ? 'bg-[#8B2500] text-white' : 'text-[#8D8478]'}`}>
@@ -95,7 +95,7 @@ export default function WorldLotteryClient({ lotteryId }: { lotteryId: string })
           <button onClick={generate}
             className="flex-1 py-3 text-white rounded font-bold text-sm transition active:scale-[0.98]"
             style={{ background: '#8B2500', borderRadius: '4px' }}>
-            Generate
+            {lottery.lang.generate}
           </button>
         </div>
 
@@ -116,14 +116,14 @@ export default function WorldLotteryClient({ lotteryId }: { lotteryId: string })
                 const text = results.map(r => `${r.main.join(', ')}${r.bonus ? ` + ${r.bonusName}: ${r.bonus.join(', ')}` : ''}`).join('\n');
                 await navigator.clipboard.writeText(text); setMsg('Copied!'); setTimeout(() => setMsg(''), 2000);
               }} className="flex-1 py-2.5 rounded text-sm font-medium transition" style={{ background: '#E8E2D8', borderRadius: '4px', color: '#2C1810' }}>
-                📋 Copy
+                📋 {lottery.lang.copy}
               </button>
               <button onClick={async () => {
                 const text = results.map(r => formatShareText(lottery, r)).join('\n\n');
                 if (navigator.share) { try { await navigator.share({ title: `${lottery.name}`, text }); return; } catch {} }
                 await navigator.clipboard.writeText(text); setMsg('Copied!'); setTimeout(() => setMsg(''), 2000);
               }} className="flex-1 py-2.5 rounded text-sm font-medium text-white transition" style={{ background: '#8B2500', borderRadius: '4px' }}>
-                Share
+                {lottery.lang.share}
               </button>
             </div>
             {msg && <p className="text-center text-xs text-green-700">{msg}</p>}
@@ -132,7 +132,7 @@ export default function WorldLotteryClient({ lotteryId }: { lotteryId: string })
 
         {/* Other lotteries */}
         <div className="mt-8">
-          <p className="text-xs font-medium mb-2" style={{ color: '#8D8478' }}>Other Lotteries</p>
+          <p className="text-xs font-medium mb-2" style={{ color: '#8D8478' }}>{lottery.lang.otherLotteries}</p>
           <div className="flex flex-wrap gap-1.5">
             <Link href="/lotto" className="px-2.5 py-1 bg-white border rounded text-[10px] transition hover:border-[#C5981A]"
               style={{ color: '#2C1810', borderColor: '#D5CEC3', borderRadius: '4px' }}>
@@ -149,7 +149,7 @@ export default function WorldLotteryClient({ lotteryId }: { lotteryId: string })
         </div>
 
         <p className="text-center text-[10px] mt-6" style={{ color: '#B5AFA5' }}>
-          Random number generator for entertainment only. Not affiliated with any official lottery.
+          {lottery.lang.disclaimer}
         </p>
       </div>
     </div>

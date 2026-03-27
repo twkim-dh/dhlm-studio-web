@@ -12,6 +12,19 @@ export interface LotteryDef {
   seoTitle: string;
   seoDesc: string;
   ageRestriction: string;
+  // Localized UI strings
+  lang: {
+    title: string;        // page title in local language
+    generate: string;     // "Generate" button
+    copy: string;         // "Copy" button
+    share: string;        // "Share" button
+    sets: string;         // "Sets" label
+    numbers: string;      // "numbers" label
+    draw: string;         // "Draw days" label
+    result: string;       // "Your numbers" label
+    disclaimer: string;   // disclaimer text
+    otherLotteries: string; // "Other lotteries"
+  };
 }
 
 export interface GeneratedResult {
@@ -45,6 +58,8 @@ export function generateLottery(lottery: LotteryDef, sets: number = 1): Generate
   return results;
 }
 
+const EN = { title: 'Lucky Numbers', generate: 'Generate', copy: 'Copy', share: 'Share', sets: 'Sets', numbers: 'numbers', draw: 'Draw', result: 'Your Numbers', disclaimer: 'Random number generator for entertainment only. Not affiliated with any official lottery.', otherLotteries: 'Other Lotteries' };
+
 export const worldLotteries: LotteryDef[] = [
   {
     id: 'korea-lotto',
@@ -53,11 +68,12 @@ export const worldLotteries: LotteryDef[] = [
     flag: 'kr',
     mainNumbers: { min: 1, max: 45, count: 6 },
     bonusNumbers: null,
-    drawDays: ['Saturday'],
+    drawDays: ['토요일'],
     color: '#8B2500',
     seoTitle: 'Korea Lotto 6/45 Number Generator',
     seoDesc: 'Generate random Korea Lotto 6/45 numbers. Free lottery number picker with secure random generation.',
     ageRestriction: '만 18세 이상',
+    lang: { title: '행운의 번호', generate: '번호 생성', copy: '복사', share: '공유', sets: '세트', numbers: '개 번호', draw: '추첨일', result: '당신의 번호', disclaimer: '번호 생성만 제공하며 구매 대행은 하지 않습니다.', otherLotteries: '다른 복권' },
   },
   {
     id: 'us-powerball',
@@ -66,11 +82,12 @@ export const worldLotteries: LotteryDef[] = [
     flag: 'us',
     mainNumbers: { min: 1, max: 69, count: 5 },
     bonusNumbers: { min: 1, max: 26, count: 1, name: 'Powerball' },
-    drawDays: ['Monday', 'Wednesday', 'Saturday'],
+    drawDays: ['Mon', 'Wed', 'Sat'],
     color: '#DC2626',
     seoTitle: 'Free Powerball Number Generator',
     seoDesc: 'Generate random Powerball numbers instantly. Pick 5 numbers (1-69) + 1 Powerball (1-26). Free & secure.',
     ageRestriction: '18+ (varies by state)',
+    lang: EN,
   },
   {
     id: 'us-megamillions',
@@ -79,11 +96,12 @@ export const worldLotteries: LotteryDef[] = [
     flag: 'us',
     mainNumbers: { min: 1, max: 70, count: 5 },
     bonusNumbers: { min: 1, max: 25, count: 1, name: 'Mega Ball' },
-    drawDays: ['Tuesday', 'Friday'],
+    drawDays: ['Tue', 'Fri'],
     color: '#F59E0B',
     seoTitle: 'Free Mega Millions Number Generator',
     seoDesc: 'Generate Mega Millions numbers. Pick 5 (1-70) + 1 Mega Ball (1-25). Cryptographically secure random.',
     ageRestriction: '18+ (varies by state)',
+    lang: EN,
   },
   {
     id: 'euromillions',
@@ -92,11 +110,12 @@ export const worldLotteries: LotteryDef[] = [
     flag: 'eu',
     mainNumbers: { min: 1, max: 50, count: 5 },
     bonusNumbers: { min: 1, max: 12, count: 2, name: 'Lucky Stars' },
-    drawDays: ['Tuesday', 'Friday'],
+    drawDays: ['Mar', 'Ven'],
     color: '#2563EB',
     seoTitle: 'Free EuroMillions Number Generator',
-    seoDesc: 'Generate EuroMillions numbers. Pick 5 (1-50) + 2 Lucky Stars (1-12). Free random number picker.',
+    seoDesc: 'Générateur de numéros EuroMillions. 5 numéros (1-50) + 2 étoiles (1-12). Gratuit et sécurisé.',
     ageRestriction: '18+',
+    lang: { title: 'Vos numéros chanceux', generate: 'Générer', copy: 'Copier', share: 'Partager', sets: 'Grilles', numbers: 'numéros', draw: 'Tirage', result: 'Vos numéros', disclaimer: 'Générateur aléatoire à but récréatif uniquement. Non affilié à une loterie officielle.', otherLotteries: 'Autres loteries' },
   },
   {
     id: 'eurojackpot',
@@ -105,11 +124,12 @@ export const worldLotteries: LotteryDef[] = [
     flag: 'eu',
     mainNumbers: { min: 1, max: 50, count: 5 },
     bonusNumbers: { min: 1, max: 12, count: 2, name: 'Euro Numbers' },
-    drawDays: ['Tuesday', 'Friday'],
+    drawDays: ['Di', 'Fr'],
     color: '#7C3AED',
-    seoTitle: 'Free EuroJackpot Number Generator',
-    seoDesc: 'Generate EuroJackpot numbers. Pick 5 (1-50) + 2 Euro Numbers (1-12). Free & secure.',
+    seoTitle: 'Kostenloser EuroJackpot Zahlengenerator',
+    seoDesc: 'EuroJackpot Zahlen generieren. 5 Zahlen (1-50) + 2 Eurozahlen (1-12). Kostenlos & sicher.',
     ageRestriction: '18+',
+    lang: { title: 'Ihre Glückszahlen', generate: 'Generieren', copy: 'Kopieren', share: 'Teilen', sets: 'Tipps', numbers: 'Zahlen', draw: 'Ziehung', result: 'Ihre Zahlen', disclaimer: 'Zufallsgenerator nur zur Unterhaltung. Nicht mit einer offiziellen Lotterie verbunden.', otherLotteries: 'Andere Lotterien' },
   },
   {
     id: 'uk-lottery',
@@ -118,24 +138,26 @@ export const worldLotteries: LotteryDef[] = [
     flag: 'gb',
     mainNumbers: { min: 1, max: 59, count: 6 },
     bonusNumbers: null,
-    drawDays: ['Wednesday', 'Saturday'],
+    drawDays: ['Wed', 'Sat'],
     color: '#1D4ED8',
     seoTitle: 'Free UK Lottery Number Generator',
     seoDesc: 'Generate UK National Lottery numbers. Pick 6 numbers from 1-59. Free random number generator.',
     ageRestriction: '18+',
+    lang: EN,
   },
   {
     id: 'japan-loto6',
-    name: 'Loto 6',
+    name: 'ロト6',
     country: '🇯🇵',
     flag: 'jp',
     mainNumbers: { min: 1, max: 43, count: 6 },
     bonusNumbers: null,
-    drawDays: ['Monday', 'Thursday'],
+    drawDays: ['月曜', '木曜'],
     color: '#DC2626',
-    seoTitle: 'Free Japan Loto 6 Number Generator',
-    seoDesc: 'Generate Japan Loto 6 numbers. Pick 6 from 1-43. Free lottery number picker.',
-    ageRestriction: '20+',
+    seoTitle: 'ロト6 番号ジェネレーター — 無料',
+    seoDesc: 'ロト6の番号を無料で生成。1～43から6つの番号をランダムに選択。安全な乱数生成。',
+    ageRestriction: '20歳以上',
+    lang: { title: 'ラッキーナンバー', generate: '番号生成', copy: 'コピー', share: '共有', sets: '口数', numbers: 'つの番号', draw: '抽選日', result: 'あなたの番号', disclaimer: '娯楽目的のランダム番号生成器です。公式の宝くじとは関係ありません。', otherLotteries: '他のくじ' },
   },
   {
     id: 'australia-powerball',
@@ -144,24 +166,26 @@ export const worldLotteries: LotteryDef[] = [
     flag: 'au',
     mainNumbers: { min: 1, max: 35, count: 7 },
     bonusNumbers: { min: 1, max: 20, count: 1, name: 'Powerball' },
-    drawDays: ['Thursday'],
+    drawDays: ['Thu'],
     color: '#16A34A',
-    seoTitle: 'Free Australia Powerball Number Generator',
+    seoTitle: 'Free Australian Powerball Number Generator',
     seoDesc: 'Generate Australian Powerball numbers. Pick 7 (1-35) + 1 Powerball (1-20). Free & secure.',
     ageRestriction: '18+',
+    lang: EN,
   },
   {
     id: 'brazil-megasena',
-    name: 'Mega Sena',
+    name: 'Mega-Sena',
     country: '🇧🇷',
     flag: 'br',
     mainNumbers: { min: 1, max: 60, count: 6 },
     bonusNumbers: null,
-    drawDays: ['Wednesday', 'Saturday'],
+    drawDays: ['Qua', 'Sáb'],
     color: '#16A34A',
-    seoTitle: 'Free Mega Sena Number Generator',
-    seoDesc: 'Generate Brazil Mega Sena numbers. Pick 6 from 1-60. Free lottery number generator.',
+    seoTitle: 'Gerador de Números da Mega-Sena — Grátis',
+    seoDesc: 'Gere números da Mega-Sena. Escolha 6 números de 1 a 60. Gerador aleatório gratuito e seguro.',
     ageRestriction: '18+',
+    lang: { title: 'Seus números da sorte', generate: 'Gerar', copy: 'Copiar', share: 'Compartilhar', sets: 'Jogos', numbers: 'números', draw: 'Sorteio', result: 'Seus números', disclaimer: 'Gerador aleatório apenas para entretenimento. Não é afiliado a nenhuma loteria oficial.', otherLotteries: 'Outras loterias' },
   },
   {
     id: 'canada-lottomax',
@@ -170,11 +194,12 @@ export const worldLotteries: LotteryDef[] = [
     flag: 'ca',
     mainNumbers: { min: 1, max: 50, count: 7 },
     bonusNumbers: null,
-    drawDays: ['Tuesday', 'Friday'],
+    drawDays: ['Tue', 'Fri'],
     color: '#DC2626',
-    seoTitle: 'Free Canada Lotto Max Number Generator',
+    seoTitle: 'Free Lotto Max Number Generator',
     seoDesc: 'Generate Lotto Max numbers. Pick 7 from 1-50. Free Canadian lottery number picker.',
     ageRestriction: '18+',
+    lang: EN,
   },
 ];
 
