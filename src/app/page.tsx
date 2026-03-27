@@ -38,8 +38,8 @@ export default function Home() {
               <p className="text-[11px] tracking-[0.4em] mb-12" style={{ color: '#BCBCBC' }}>
                 DHLM STUDIO
               </p>
-              <h1 className="text-[clamp(28px,4vw,44px)] font-normal leading-[1.6]"
-                style={{ fontFamily: 'var(--font-noto-serif-kr), serif', color: '#1A1A1A', letterSpacing: '0.06em' }}>
+              <h1 className="text-[clamp(28px,4.5vw,48px)] font-normal leading-[1.6]"
+                style={{ fontFamily: 'var(--font-noto-serif-kr), serif', color: '#1A1A1A', letterSpacing: '0.04em' }}>
                 한국의 문화를<br />세계와 연결합니다
               </h1>
               <p className="text-[15px] mt-8 italic leading-relaxed" style={{ fontFamily: 'var(--font-playfair), serif', color: '#B0B0B0' }}>
@@ -67,10 +67,10 @@ export default function Home() {
                         <p className="text-[12px]" style={{ fontFamily: serif, color: '#9CA3AF' }}>{ev.nameKr} · {ev.period}</p>
                         <p className="text-[13px] mt-1 leading-relaxed" style={{ color: '#6B7280' }}>{ev.desc}</p>
                         <div className="flex items-center gap-3 mt-1.5">
-                          <a href={ev.url} target="_blank" rel="noopener noreferrer"
+                          <Link href={ev.url}
                             className="text-[11px] transition-colors duration-200 hover:text-[#C73E3A]" style={{ color: '#9CA3AF' }}>
                             Learn more →
-                          </a>
+                          </Link>
                           <button onClick={() => {
                             const text = `${ev.emoji} ${ev.name} (${ev.nameKr})\n${ev.period}\n${ev.desc}\n\nhttps://dhlm-studio.com`;
                             if (navigator.share) { navigator.share({ title: ev.name, text }).catch(() => {}); }
