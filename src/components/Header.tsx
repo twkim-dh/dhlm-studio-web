@@ -1,17 +1,51 @@
 "use client";
 
 import { useState, useEffect } from "react";
+import { usePathname } from "next/navigation";
 import Link from "next/link";
 
-const navLinks = [
-  { label: "Korea", href: "/blog" },
-  { label: "Lottery", href: "/lotto" },
-  { label: "Tools", href: "/tools" },
-];
+const areaConfig: Record<string, { logo: string; logoColor: string; bg: string; bgScroll: string; linkColor: string; hoverColor: string; lineColors: string; links: { label: string; href: string }[] }> = {
+  main: {
+    logo: 'DHLM', logoColor: '#C5981A',
+    bg: 'transparent', bgScroll: 'rgba(11,13,23,0.9)',
+    linkColor: 'rgba(245,240,232,0.6)', hoverColor: '#C5981A',
+    lineColors: 'linear-gradient(90deg, #8B2500, #C5981A, #1B5E20)',
+    links: [{ label: 'Korea', href: '/blog' }, { label: 'Lottery', href: '/lotto' }, { label: 'Tools', href: '/tools' }],
+  },
+  lotto: {
+    logo: '🎱 DHLM Lotto', logoColor: '#C5981A',
+    bg: 'rgba(11,13,23,0.95)', bgScroll: 'rgba(11,13,23,0.95)',
+    linkColor: '#6A6A7A', hoverColor: '#C5981A',
+    lineColors: 'linear-gradient(90deg, #8B2500, #C5981A, #1B5E20)',
+    links: [{ label: 'Home', href: '/' }, { label: 'Korea', href: '/blog' }, { label: 'Tools', href: '/tools' }],
+  },
+  korea: {
+    logo: '🇰🇷 Discover Korea', logoColor: '#8B2500',
+    bg: 'rgba(245,240,232,0.95)', bgScroll: 'rgba(245,240,232,0.95)',
+    linkColor: '#8D8478', hoverColor: '#8B2500',
+    lineColors: 'linear-gradient(90deg, #8B2500, #C5981A, #1B5E20)',
+    links: [{ label: 'Home', href: '/' }, { label: 'Lottery', href: '/lotto' }, { label: 'Tools', href: '/tools' }],
+  },
+  tools: {
+    logo: '🧮 DHLM Tools', logoColor: '#1A237E',
+    bg: 'rgba(250,250,248,0.95)', bgScroll: 'rgba(250,250,248,0.95)',
+    linkColor: '#8D8478', hoverColor: '#1A237E',
+    lineColors: 'linear-gradient(90deg, #1A237E, #C5981A, #1A237E)',
+    links: [{ label: 'Home', href: '/' }, { label: 'Korea', href: '/blog' }, { label: 'Lottery', href: '/lotto' }],
+  },
+};
 
 export default function Header() {
+  const pathname = usePathname();
   const [menuOpen, setMenuOpen] = useState(false);
   const [scrolled, setScrolled] = useState(false);
+
+  const area = pathname.startsWith('/lotto') ? 'lotto'
+    : (pathname.startsWith('/blog') || pathname.startsWith('/korea')) ? 'korea'
+    : pathname.startsWith('/tools') ? 'tools'
+    : 'main';
+  const cfg = areaConfig[area];
+  const isLight = area === 'korea' || area === 'tools';
 
   useEffect(() => {
     const onScroll = () => setScrolled(window.scrollY > 80);
@@ -27,22 +61,25 @@ export default function Header() {
 
   return (
     <>
-      <header className={`fixed top-0 left-0 right-0 z-50 transition-all duration-500 ${
-        scrolled ? "bg-[#0B0D17]/90 backdrop-blur-xl shadow-lg" : "bg-transparent"
-      }`}>
-        {scrolled && <div className="h-[2px] bg-gradient-to-r from-[#8B2500] via-[#C5981A] to-[#1B5E20]" />}
-        <div className="mx-auto max-w-6xl flex items-center justify-between px-5 py-4 sm:px-8">
-          <Link href="/" className="group">
-            <span className="text-lg font-bold tracking-[0.15em]"
-              style={{ fontFamily: "var(--font-playfair), var(--font-noto-serif-kr), serif", color: scrolled ? '#C5981A' : '#C5981A' }}>
-              DHLM
-            </span>
+      <header className={`fixed top-0 left-0 right-0 z-50 transition-all duration-500 ${scrolled ? 'shadow-md' : ''}`}
+        style={{
+          background: scrolled ? cfg.bgScroll : cfg.bg,
+          backdropFilter: scrolled ? 'blur(16px)' : 'none',
+        }}>
+        {scrolled && <div className="h-[2px]" style={{ background: cfg.lineColors }} />}
+        <div className="mx-auto max-w-6xl flex items-center justify-between px-5 py-3.5 sm:px-8">
+          <Link href={area === 'main' ? '/' : area === 'lotto' ? '/lotto' : area === 'korea' ? '/blog' : '/tools'}
+            className="text-base font-bold tracking-wide" style={{ fontFamily: "var(--font-playfair), var(--font-noto-serif-kr), serif", color: cfg.logoColor }}>
+            {cfg.logo}
           </Link>
 
-          <nav className="hidden md:flex items-center gap-10">
-            {navLinks.map((link) => (
+          <nav className="hidden md:flex items-center gap-8">
+            {cfg.links.map((link) => (
               <Link key={link.href} href={link.href}
-                className={`text-sm font-medium tracking-wide transition-colors ${scrolled ? 'text-[#9A9080] hover:text-[#C5981A]' : 'text-[#F5F0E8]/60 hover:text-[#C5981A]'}`}>
+                className="text-sm font-medium tracking-wide transition-colors"
+                style={{ color: cfg.linkColor }}
+                onMouseEnter={(e) => (e.currentTarget.style.color = cfg.hoverColor)}
+                onMouseLeave={(e) => (e.currentTarget.style.color = cfg.linkColor)}>
                 {link.label}
               </Link>
             ))}
@@ -50,22 +87,24 @@ export default function Header() {
 
           <button className="md:hidden p-2" onClick={() => setMenuOpen(true)} aria-label="Menu">
             <div className="space-y-1.5">
-              <span className={`block w-5 h-[1.5px] transition ${scrolled ? 'bg-[#9A9080]' : 'bg-[#F5F0E8]/60'}`} />
-              <span className={`block w-5 h-[1.5px] transition ${scrolled ? 'bg-[#9A9080]' : 'bg-[#F5F0E8]/60'}`} />
+              <span className="block w-5 h-[1.5px]" style={{ background: isLight ? '#8D8478' : 'rgba(245,240,232,0.5)' }} />
+              <span className="block w-5 h-[1.5px]" style={{ background: isLight ? '#8D8478' : 'rgba(245,240,232,0.5)' }} />
             </div>
           </button>
         </div>
       </header>
 
-      {menuOpen && <div className="fixed inset-0 z-50 bg-black/60" onClick={() => setMenuOpen(false)} />}
-      <div className={`fixed top-0 right-0 z-50 h-full w-64 bg-[#0B0D17] transform transition-transform duration-300 ${menuOpen ? "translate-x-0" : "translate-x-full"}`}>
+      {menuOpen && <div className="fixed inset-0 z-50 bg-black/50" onClick={() => setMenuOpen(false)} />}
+      <div className={`fixed top-0 right-0 z-50 h-full w-64 shadow-xl transform transition-transform duration-300 ${menuOpen ? "translate-x-0" : "translate-x-full"}`}
+        style={{ background: isLight ? '#FAFAF8' : '#0B0D17' }}>
         <div className="flex justify-end p-5">
-          <button onClick={() => setMenuOpen(false)} className="text-[#9A9080] text-2xl">&times;</button>
+          <button onClick={() => setMenuOpen(false)} className="text-2xl" style={{ color: isLight ? '#8D8478' : '#6A6A7A' }}>&times;</button>
         </div>
-        <nav className="flex flex-col px-8 gap-2">
-          {navLinks.map((link) => (
+        <nav className="flex flex-col px-8 gap-1">
+          {cfg.links.map((link) => (
             <Link key={link.href} href={link.href} onClick={() => setMenuOpen(false)}
-              className="block py-4 text-lg font-medium text-[#9A9080] hover:text-[#C5981A] border-b border-[#1A1A2E] transition-colors tracking-wide">
+              className="block py-3.5 text-base font-medium border-b transition-colors"
+              style={{ color: isLight ? '#2C1810' : '#9A9A9A', borderColor: isLight ? '#E0D8CC' : '#1A1A2E' }}>
               {link.label}
             </Link>
           ))}

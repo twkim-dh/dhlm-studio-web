@@ -3,11 +3,12 @@
 import { motion } from 'framer-motion';
 
 function getBallColor(num: number): string {
-  if (num <= 10) return '#FFC107'; // yellow
-  if (num <= 20) return '#2196F3'; // blue
-  if (num <= 30) return '#F44336'; // red
-  if (num <= 40) return '#9E9E9E'; // gray
-  return '#4CAF50'; // green
+  // Korean Dancheong colors
+  if (num <= 10) return '#8B2500'; // 주홍 (red pillar)
+  if (num <= 20) return '#1A237E'; // 감색 (indigo beam)
+  if (num <= 30) return '#1B5E20'; // 초록 (green beam)
+  if (num <= 40) return '#C5981A'; // 금색 (gold decoration)
+  return '#2C1810'; // 먹색 (dark wood)
 }
 
 interface LottoBallProps {
