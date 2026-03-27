@@ -6,7 +6,7 @@ import LottoBall from '@/components/LottoBall';
 import NumberSet from '@/components/NumberSet';
 import { generateRandom, generateWithFixed, generateExcluding, generateOddEven, generateDream, dreamData } from '@/lib/lotto-generator';
 import { initKakao, shareLotto } from '@/lib/lotto-kakao';
-import { worldLotteries, getLotteryById, generateLottery, formatShareText, type GeneratedResult } from '@/lib/world-lottery';
+import { worldLotteries, getLotteryById, generateLottery, formatShareText, idToSlug, type GeneratedResult } from '@/lib/world-lottery';
 import Link from 'next/link';
 import { getLatestDraw, getRecentDraws, getNumberFrequency, getHotNumbers, getColdNumbers, getTotalDrawCount, allDraws } from '@/data/lotto/recent-draws';
 import type { LottoDraw } from '@/data/lotto/recent-draws';
@@ -206,68 +206,63 @@ export default function LottoPage() {
    🏠 Lotto Home — Country Selection
    ═══════════════════════════════════════ */
 function LottoHome({ onNavigate }: { onNavigate: (tab: TabId) => void }) {
-  const lotteries = [
-    { flag: '🇰🇷', name: '로또 6/45', nameLocal: '한국 로또', desc: '1~45에서 6개', color: '#8B2500', action: () => onNavigate('generate') },
-    { flag: '🇺🇸', name: 'Powerball', nameLocal: 'パワーボール', desc: '5 numbers + 1 Powerball', color: '#DC2626', href: '/lotto/powerball' },
-    { flag: '🇺🇸', name: 'Mega Millions', nameLocal: 'メガミリオンズ', desc: '5 numbers + 1 Mega Ball', color: '#F59E0B', href: '/lotto/mega-millions' },
-    { flag: '🇪🇺', name: 'EuroMillions', nameLocal: 'EuroMillions', desc: '5 numéros + 2 étoiles', color: '#2563EB', href: '/lotto/euromillions' },
-    { flag: '🇪🇺', name: 'EuroJackpot', nameLocal: 'EuroJackpot', desc: '5 Zahlen + 2 Eurozahlen', color: '#7C3AED', href: '/lotto/eurojackpot' },
-    { flag: '🇬🇧', name: 'UK Lotto', nameLocal: 'UK National Lottery', desc: '6 numbers from 1-59', color: '#1D4ED8', href: '/lotto/uk-lottery' },
-    { flag: '🇯🇵', name: 'ロト6', nameLocal: 'Japan Loto 6', desc: '1~43から6つ選択', color: '#DC2626', href: '/lotto/japan-loto6' },
-    { flag: '🇦🇺', name: 'Powerball AU', nameLocal: 'Australian Powerball', desc: '7 numbers + 1 Powerball', color: '#16A34A', href: '/lotto/australia-powerball' },
-    { flag: '🇧🇷', name: 'Mega Sena', nameLocal: 'Mega-Sena', desc: '6 números de 1 a 60', color: '#16A34A', href: '/lotto/mega-sena' },
-    { flag: '🇨🇦', name: 'Lotto Max', nameLocal: 'Lotto Max', desc: '7 numbers from 1-50', color: '#DC2626', href: '/lotto/lotto-max' },
-  ];
-
   return (
     <div className="space-y-5">
       {/* Quick actions */}
       <div className="grid grid-cols-2 gap-3">
         <button onClick={() => onNavigate('generate')}
-          className="bg-white border rounded p-4 text-center transition-all hover:border-[#8B2500] hover:shadow-md"
+          className="bg-white border rounded p-4 text-center transition-all hover:border-[#8B2500]"
           style={{ borderColor: '#D5CEC3', borderRadius: '4px' }}>
-          <span className="text-2xl block mb-1">🎲</span>
-          <p className="text-sm font-bold" style={{ color: '#2C1810' }}>번호 생성</p>
+          <p className="text-sm font-bold" style={{ color: '#2C1810' }}>🇰🇷 번호 생성</p>
           <p className="text-[10px]" style={{ color: '#8D8478' }}>Korea Lotto 6/45</p>
         </button>
         <button onClick={() => onNavigate('fortune')}
-          className="bg-white border rounded p-4 text-center transition-all hover:border-[#8B2500] hover:shadow-md"
+          className="bg-white border rounded p-4 text-center transition-all hover:border-[#8B2500]"
           style={{ borderColor: '#D5CEC3', borderRadius: '4px' }}>
-          <span className="text-2xl block mb-1">🔮</span>
-          <p className="text-sm font-bold" style={{ color: '#2C1810' }}>운세 · 타로</p>
+          <p className="text-sm font-bold" style={{ color: '#2C1810' }}>🔮 운세 · 타로</p>
           <p className="text-[10px]" style={{ color: '#8D8478' }}>Fortune & Tarot</p>
         </button>
       </div>
 
-      {/* Country lottery selection */}
+      {/* All lotteries */}
       <div>
-        <p className="text-xs font-medium tracking-widest mb-3" style={{ color: '#8B2500' }}>WORLD LOTTERIES</p>
-        <div className="space-y-2">
-          {lotteries.map((l) => (
-            l.href ? (
-              <Link key={l.name} href={l.href}
-                className="flex items-center gap-4 bg-white border rounded px-4 py-3.5 transition-all hover:border-[#C5981A] hover:shadow-sm"
+        <p className="text-xs font-medium tracking-widest mb-3" style={{ color: '#8B2500' }}>
+          WORLD LOTTERIES · {worldLotteries.length}
+        </p>
+        <div className="space-y-1.5">
+          {worldLotteries.map((l) => {
+            const slug = idToSlug[l.id];
+            const isKorea = l.id === 'korea-lotto';
+            const desc = `${l.mainNumbers.count} (${l.mainNumbers.min}-${l.mainNumbers.max})${l.bonusNumbers ? ` + ${l.bonusNumbers.name}` : ''}`;
+
+            if (isKorea) {
+              return (
+                <button key={l.id} onClick={() => onNavigate('generate')}
+                  className="w-full flex items-center gap-3 bg-white border rounded px-4 py-3 transition-all hover:border-[#C5981A] text-left"
+                  style={{ borderColor: '#D5CEC3', borderRadius: '4px' }}>
+                  <span className="text-lg shrink-0">{l.country}</span>
+                  <div className="flex-1 min-w-0">
+                    <p className="text-sm font-bold" style={{ color: '#2C1810' }}>{l.name}</p>
+                    <p className="text-[10px]" style={{ color: '#8D8478' }}>{desc}</p>
+                  </div>
+                  <span className="text-[10px] shrink-0" style={{ color: '#C5981A' }}>→</span>
+                </button>
+              );
+            }
+
+            return (
+              <Link key={l.id} href={slug ? `/lotto/${slug}` : '/lotto'}
+                className="flex items-center gap-3 bg-white border rounded px-4 py-3 transition-all hover:border-[#C5981A]"
                 style={{ borderColor: '#D5CEC3', borderRadius: '4px' }}>
-                <span className="text-2xl shrink-0">{l.flag}</span>
+                <span className="text-lg shrink-0">{l.country}</span>
                 <div className="flex-1 min-w-0">
                   <p className="text-sm font-bold" style={{ color: '#2C1810' }}>{l.name}</p>
-                  <p className="text-[10px]" style={{ color: '#8D8478' }}>{l.desc}</p>
+                  <p className="text-[10px]" style={{ color: '#8D8478' }}>{desc}</p>
                 </div>
-                <span className="text-xs shrink-0" style={{ color: '#C5981A' }}>→</span>
+                <span className="text-[10px] shrink-0" style={{ color: '#C5981A' }}>→</span>
               </Link>
-            ) : (
-              <button key={l.name} onClick={l.action}
-                className="w-full flex items-center gap-4 bg-white border rounded px-4 py-3.5 transition-all hover:border-[#C5981A] hover:shadow-sm text-left"
-                style={{ borderColor: '#D5CEC3', borderRadius: '4px' }}>
-                <span className="text-2xl shrink-0">{l.flag}</span>
-                <div className="flex-1 min-w-0">
-                  <p className="text-sm font-bold" style={{ color: '#2C1810' }}>{l.name}</p>
-                  <p className="text-[10px]" style={{ color: '#8D8478' }}>{l.desc}</p>
-                </div>
-                <span className="text-xs shrink-0" style={{ color: '#C5981A' }}>→</span>
-              </button>
-            )
-          ))}
+            );
+          })}
         </div>
       </div>
 
@@ -1242,11 +1237,7 @@ function WorldTab() {
     setMsg('Copied!'); setTimeout(() => setMsg(''), 2000);
   };
 
-  const slugMap: Record<string, string> = {
-    'us-powerball': 'powerball', 'us-megamillions': 'mega-millions', 'euromillions': 'euromillions',
-    'eurojackpot': 'eurojackpot', 'uk-lottery': 'uk-lottery', 'japan-loto6': 'japan-loto6',
-    'australia-powerball': 'australia-powerball', 'brazil-megasena': 'mega-sena', 'canada-lottomax': 'lotto-max',
-  };
+  // Use idToSlug from world-lottery
 
   return (
     <div className="space-y-5">
@@ -1338,8 +1329,8 @@ function WorldTab() {
       <div className="pt-4">
         <p className="text-xs text-[#B5AFA5] mb-2">Dedicated pages:</p>
         <div className="flex flex-wrap gap-1">
-          {worldLotteries.filter((l) => slugMap[l.id]).map((l) => (
-            <Link key={l.id} href={`/lotto/${slugMap[l.id]}`}
+          {worldLotteries.filter((l) => idToSlug[l.id]).map((l) => (
+            <Link key={l.id} href={`/lotto/${idToSlug[l.id]}`}
               className="px-2 py-1 bg-[#F0EBE0] rounded text-[10px] text-[#A5A09A] hover:bg-[#E8E2D8] transition">
               {l.country} {l.name}
             </Link>

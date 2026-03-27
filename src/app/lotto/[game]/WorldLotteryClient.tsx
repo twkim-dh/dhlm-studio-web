@@ -2,7 +2,7 @@
 
 import { useState } from 'react';
 import Link from 'next/link';
-import { worldLotteries, getLotteryById, generateLottery, formatShareText, type LotteryDef, type GeneratedResult } from '@/lib/world-lottery';
+import { worldLotteries, getLotteryById, generateLottery, formatShareText, idToSlug, type LotteryDef, type GeneratedResult } from '@/lib/world-lottery';
 
 function BallColor(n: number, max: number): string {
   const pct = n / max;
@@ -34,11 +34,7 @@ export default function WorldLotteryClient({ lotteryId }: { lotteryId: string })
 
   const generate = () => { setResults(generateLottery(lottery, sets)); setMsg(''); };
 
-  const slugMap: Record<string, string> = {
-    'us-powerball': 'powerball', 'us-megamillions': 'mega-millions', 'euromillions': 'euromillions',
-    'eurojackpot': 'eurojackpot', 'uk-lottery': 'uk-lottery', 'japan-loto6': 'japan-loto6',
-    'australia-powerball': 'australia-powerball', 'brazil-megasena': 'mega-sena', 'canada-lottomax': 'lotto-max',
-  };
+  // Use idToSlug from world-lottery
 
   return (
     <div className="min-h-screen" style={{ background: '#F5F0E8' }}>
@@ -138,8 +134,8 @@ export default function WorldLotteryClient({ lotteryId }: { lotteryId: string })
               style={{ color: '#2C1810', borderColor: '#D5CEC3', borderRadius: '4px' }}>
               🇰🇷 Korea 6/45
             </Link>
-            {worldLotteries.filter(l => slugMap[l.id] && l.id !== selectedId).map(l => (
-              <Link key={l.id} href={`/lotto/${slugMap[l.id]}`}
+            {worldLotteries.filter(l => idToSlug[l.id] && l.id !== selectedId).map(l => (
+              <Link key={l.id} href={`/lotto/${idToSlug[l.id]}`}
                 className="px-2.5 py-1 bg-white border rounded text-[10px] transition hover:border-[#C5981A]"
                 style={{ color: '#2C1810', borderColor: '#D5CEC3', borderRadius: '4px' }}>
                 {l.country} {l.name}

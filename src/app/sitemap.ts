@@ -15,15 +15,12 @@ const viralRoutes = [
 // Lotto
 const lottoRoutes = [
   "lotto",
-  "lotto/powerball",
-  "lotto/mega-millions",
-  "lotto/euromillions",
-  "lotto/eurojackpot",
-  "lotto/uk-lottery",
-  "lotto/japan-loto6",
-  "lotto/australia-powerball",
-  "lotto/mega-sena",
-  "lotto/lotto-max",
+  "lotto/powerball", "lotto/mega-millions", "lotto/euromillions", "lotto/eurojackpot",
+  "lotto/uk-lottery", "lotto/japan-loto6", "lotto/australia-powerball", "lotto/mega-sena", "lotto/lotto-max",
+  "lotto/germany-6aus49", "lotto/france-loto", "lotto/italy-superenalotto", "lotto/spain-primitiva",
+  "lotto/irish-lotto", "lotto/netherlands-lotto", "lotto/poland-lotto", "lotto/austria-lotto",
+  "lotto/sweden-lotto", "lotto/thunderball",
+  "lotto/india-lottery", "lotto/thai-lottery", "lotto/philippines-lotto", "lotto/newzealand-lotto", "lotto/southafrica-lotto",
 ];
 
 // Fortune / AI

@@ -1,10 +1,9 @@
 import type { Metadata } from 'next';
-import { worldLotteries, getLotteryBySlug } from '@/lib/world-lottery';
+import { getLotteryBySlug, slugToId } from '@/lib/world-lottery';
 import WorldLotteryClient from './WorldLotteryClient';
 
 export function generateStaticParams() {
-  const slugs = ['powerball', 'mega-millions', 'euromillions', 'eurojackpot', 'uk-lottery', 'japan-loto6', 'australia-powerball', 'mega-sena', 'lotto-max'];
-  return slugs.map((game) => ({ game }));
+  return Object.keys(slugToId).map((game) => ({ game }));
 }
 
 export async function generateMetadata({ params }: { params: Promise<{ game: string }> }): Promise<Metadata> {
