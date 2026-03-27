@@ -1,5 +1,5 @@
 import type { Metadata } from "next";
-import { Noto_Sans_KR } from "next/font/google";
+import { Noto_Sans_KR, Noto_Serif_KR, Playfair_Display } from "next/font/google";
 import Script from "next/script";
 import Header from "@/components/Header";
 import Footer from "@/components/Footer";
@@ -9,6 +9,20 @@ const notoSansKR = Noto_Sans_KR({
   variable: "--font-noto-sans-kr",
   subsets: ["latin"],
   weight: ["300", "400", "500", "700", "900"],
+  display: "swap",
+});
+
+const notoSerifKR = Noto_Serif_KR({
+  variable: "--font-noto-serif-kr",
+  subsets: ["latin"],
+  weight: ["400", "700", "900"],
+  display: "swap",
+});
+
+const playfair = Playfair_Display({
+  variable: "--font-playfair",
+  subsets: ["latin"],
+  weight: ["400", "700", "900"],
   display: "swap",
 });
 
@@ -65,7 +79,7 @@ export default function RootLayout({
   children: React.ReactNode;
 }>) {
   return (
-    <html lang="ko" className={`${notoSansKR.variable} antialiased`}>
+    <html lang="ko" className={`${notoSansKR.variable} ${notoSerifKR.variable} ${playfair.variable} antialiased`}>
       <head>
         <script
           async
