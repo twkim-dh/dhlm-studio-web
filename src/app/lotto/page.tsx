@@ -883,6 +883,15 @@ function GenerateTab() {
 
   return (
     <div className="space-y-5">
+      {/* Korea Lotto header */}
+      <div className="flex items-center gap-3 mb-2">
+        <span className="text-2xl">🇰🇷</span>
+        <div>
+          <p className="text-base font-medium" style={{ fontFamily: 'var(--font-noto-serif-kr), serif', color: '#1A1A1A' }}>Korea Lotto 6/45</p>
+          <p className="text-[12px]" style={{ color: '#9CA3AF' }}>1~45에서 6개 · 매주 토요일</p>
+        </div>
+      </div>
+
       <div className="grid grid-cols-5 gap-1.5">
         {modes.map((m) => (
           <button key={m.id} onClick={() => { setMode(m.id); setResults([]); }}
@@ -1028,9 +1037,9 @@ function WinningTab() {
 
   return (
     <div className="space-y-5">
-      <div className="bg-gradient-to-br from-[#E8E2D8] to-[#F0EBE0] rounded-lg p-5">
+      <div className="border p-5" style={{ borderColor: '#E5E7EB', borderRadius: '4px' }}>
         <div className="flex items-center justify-between mb-3">
-          <h2 className="font-bold">{viewDraw.round}회 당첨번호</h2>
+          <h2 className="font-bold flex items-center gap-2" style={{ color: '#1A1A1A' }}>🇰🇷 {viewDraw.round}회 당첨번호</h2>
           <span className="text-xs text-[#A5A09A]">{viewDraw.date}</span>
         </div>
         <div className="flex items-center gap-1.5 flex-wrap justify-center">
@@ -1248,7 +1257,7 @@ function WorldTab() {
         {worldLotteries.filter((l) => l.id !== 'korea-lotto').map((l) => (
           <button key={l.id} onClick={() => { setSelectedId(l.id); setResults([]); }}
             className={`py-2 px-1 rounded-xl text-center text-xs transition ${
-              selectedId === l.id ? 'bg-[#8B2500] text-white ' : 'bg-[#E8E2D8] text-[#8D8478] hover:bg-[#E0D8CC]'
+              selectedId === l.id ? 'bg-[#1A1A1A] text-white' : 'bg-[#FAFAFA] text-[#6B7280] hover:bg-[#F0F0F0]'
             }`}>
             <span className="text-base block">{l.country}</span>
             <span className="text-[9px] block mt-0.5 leading-tight">{l.name.split(' ')[0]}</span>
@@ -1256,8 +1265,8 @@ function WorldTab() {
         ))}
       </div>
 
-      {/* Info */}
-      <div className="bg-[#F0EBE0] rounded-lg p-4">
+      {/* Info with flag */}
+      <div className="border p-4" style={{ borderColor: '#E5E7EB', borderRadius: '4px' }}>
         <div className="flex items-center gap-3">
           <span className="text-3xl">{lottery.country}</span>
           <div>
