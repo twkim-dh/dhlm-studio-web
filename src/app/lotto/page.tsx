@@ -14,12 +14,12 @@ import type { LottoDraw } from '@/data/lotto/recent-draws';
 /* ═══════════════════════════════════════
    Types & Constants
    ═══════════════════════════════════════ */
-type TabId = 'fortune' | 'generate' | 'world' | 'winning' | 'stats';
+type TabId = 'home' | 'fortune' | 'generate' | 'world' | 'winning' | 'stats';
 type FortuneSubTab = 'daily' | 'tarot' | 'compat' | 'name';
 
 const mainTabs: { id: TabId; label: string; emoji: string }[] = [
-  { id: 'generate', label: '번호생성', emoji: '🎲' },
-  { id: 'world', label: 'World', emoji: '🌍' },
+  { id: 'home', label: '홈', emoji: '🏠' },
+  { id: 'generate', label: '생성', emoji: '🎲' },
   { id: 'fortune', label: '운세', emoji: '🔮' },
   { id: 'winning', label: '당첨', emoji: '🏆' },
   { id: 'stats', label: '통계', emoji: '📊' },
@@ -139,11 +139,11 @@ function getCompatScore(b1: string, b2: string, type: 'love' | 'friend' | 'work'
    Main Page Component
    ═══════════════════════════════════════ */
 export default function LottoPage() {
-  const [activeTab, setActiveTab] = useState<TabId>('generate');
+  const [activeTab, setActiveTab] = useState<TabId>('home');
 
   useEffect(() => {
     const hash = window.location.hash.replace('#', '') as TabId;
-    if (['fortune', 'generate', 'world', 'winning', 'stats'].includes(hash)) {
+    if (['home', 'fortune', 'generate', 'world', 'winning', 'stats'].includes(hash)) {
       setActiveTab(hash);
     }
     initKakao();
@@ -155,35 +155,30 @@ export default function LottoPage() {
   };
 
   return (
-    <div className="min-h-screen" style={{ background: '#0B0D17' }}>
-      {/* Hero header */}
-      <div className="relative py-10 text-center overflow-hidden">
-        <div className="absolute inset-0 bg-cover bg-center opacity-15"
-          style={{ backgroundImage: `url('https://images.unsplash.com/photo-1600298881979-2fee2e0e9ba5?w=800&q=60')` }} />
-        <div className="relative">
-          <p className="text-[10px] tracking-[0.4em] mb-2" style={{ color: '#C5981A' }}>DHLM STUDIO</p>
-          <h1 className="text-2xl font-bold tracking-[0.15em]"
-            style={{ fontFamily: 'var(--font-noto-serif-kr), serif', color: '#F5F0E8' }}>
-            행운의 번호
-          </h1>
-          <p className="text-xs mt-1.5 tracking-widest" style={{ color: 'rgba(245,240,232,0.35)' }}>World Lottery Generator</p>
-        </div>
+    <div className="min-h-screen" style={{ background: '#F5F0E8' }}>
+      {/* Header */}
+      <div className="py-8 text-center">
+        <p className="text-[10px] tracking-[0.4em] mb-1" style={{ color: '#8B2500' }}>DHLM STUDIO</p>
+        <h1 className="text-2xl font-bold tracking-[0.15em]"
+          style={{ fontFamily: 'var(--font-noto-serif-kr), serif', color: '#2C1810' }}>
+          행운의 번호
+        </h1>
+        <p className="text-xs mt-1 tracking-wide" style={{ color: '#8D8478' }}>World Lottery Generator</p>
+        <div className="w-8 h-[2px] mx-auto mt-3" style={{ background: '#8B2500' }} />
       </div>
 
-      <div className="max-w-lg mx-auto px-4 pb-6">
+      <div className="max-w-lg mx-auto px-4 pb-8">
         {/* Tab Navigation */}
-        <div className="sticky top-[52px] z-10 -mx-4 px-4" style={{ background: '#0B0D17' }}>
-          <div className="flex border-b" style={{ borderColor: 'rgba(197,152,26,0.15)' }}>
+        <div className="sticky top-[48px] z-10 -mx-4 px-4 backdrop-blur-md" style={{ background: 'rgba(245,240,232,0.9)' }}>
+          <div className="flex border-b" style={{ borderColor: '#D5CEC3' }}>
             {mainTabs.map((tab) => (
               <button key={tab.id} onClick={() => handleTabChange(tab.id)}
-                className={`flex-1 py-3 text-center text-sm font-medium transition-colors relative ${
-                  activeTab === tab.id ? '' : ''
-                }`}
-                style={{ color: activeTab === tab.id ? '#C5981A' : 'rgba(245,240,232,0.3)' }}>
-                <span className="block text-lg">{tab.emoji}</span>
-                <span className="block text-xs mt-0.5">{tab.label}</span>
+                className="flex-1 py-2.5 text-center text-sm font-medium transition-colors relative"
+                style={{ color: activeTab === tab.id ? '#8B2500' : '#8D8478' }}>
+                <span className="block text-base">{tab.emoji}</span>
+                <span className="block text-[10px] mt-0.5">{tab.label}</span>
                 {activeTab === tab.id && (
-                  <div className="absolute bottom-0 left-3 right-3 h-[2px]" style={{ background: '#C5981A' }} />
+                  <div className="absolute bottom-0 left-3 right-3 h-[2px]" style={{ background: '#8B2500' }} />
                 )}
               </button>
             ))}
@@ -191,6 +186,7 @@ export default function LottoPage() {
         </div>
 
         <div className="mt-5">
+          {activeTab === 'home' && <LottoHome onNavigate={handleTabChange} />}
           {activeTab === 'fortune' && <FortuneTab />}
           {activeTab === 'generate' && <GenerateTab />}
           {activeTab === 'world' && <WorldTab />}
@@ -198,9 +194,97 @@ export default function LottoPage() {
           {activeTab === 'stats' && <StatsTab />}
         </div>
 
-        <p className="text-center text-[10px] mt-8 pb-4" style={{ color: 'rgba(245,240,232,0.2)' }}>
+        <p className="text-center text-[10px] mt-8 pb-4" style={{ color: '#B5AFA5' }}>
           번호 생성만 제공하며 구매 대행은 하지 않습니다.
         </p>
+      </div>
+    </div>
+  );
+}
+
+/* ═══════════════════════════════════════
+   🏠 Lotto Home — Country Selection
+   ═══════════════════════════════════════ */
+function LottoHome({ onNavigate }: { onNavigate: (tab: TabId) => void }) {
+  const lotteries = [
+    { flag: '🇰🇷', name: '로또 6/45', nameLocal: '한국 로또', desc: '1~45에서 6개', color: '#8B2500', action: () => onNavigate('generate') },
+    { flag: '🇺🇸', name: 'Powerball', nameLocal: 'パワーボール', desc: '5 numbers + 1 Powerball', color: '#DC2626', href: '/lotto/powerball' },
+    { flag: '🇺🇸', name: 'Mega Millions', nameLocal: 'メガミリオンズ', desc: '5 numbers + 1 Mega Ball', color: '#F59E0B', href: '/lotto/mega-millions' },
+    { flag: '🇪🇺', name: 'EuroMillions', nameLocal: 'EuroMillions', desc: '5 numéros + 2 étoiles', color: '#2563EB', href: '/lotto/euromillions' },
+    { flag: '🇪🇺', name: 'EuroJackpot', nameLocal: 'EuroJackpot', desc: '5 Zahlen + 2 Eurozahlen', color: '#7C3AED', href: '/lotto/eurojackpot' },
+    { flag: '🇬🇧', name: 'UK Lotto', nameLocal: 'UK National Lottery', desc: '6 numbers from 1-59', color: '#1D4ED8', href: '/lotto/uk-lottery' },
+    { flag: '🇯🇵', name: 'ロト6', nameLocal: 'Japan Loto 6', desc: '1~43から6つ選択', color: '#DC2626', href: '/lotto/japan-loto6' },
+    { flag: '🇦🇺', name: 'Powerball AU', nameLocal: 'Australian Powerball', desc: '7 numbers + 1 Powerball', color: '#16A34A', href: '/lotto/australia-powerball' },
+    { flag: '🇧🇷', name: 'Mega Sena', nameLocal: 'Mega-Sena', desc: '6 números de 1 a 60', color: '#16A34A', href: '/lotto/mega-sena' },
+    { flag: '🇨🇦', name: 'Lotto Max', nameLocal: 'Lotto Max', desc: '7 numbers from 1-50', color: '#DC2626', href: '/lotto/lotto-max' },
+  ];
+
+  return (
+    <div className="space-y-5">
+      {/* Quick actions */}
+      <div className="grid grid-cols-2 gap-3">
+        <button onClick={() => onNavigate('generate')}
+          className="bg-white border rounded p-4 text-center transition-all hover:border-[#8B2500] hover:shadow-md"
+          style={{ borderColor: '#D5CEC3', borderRadius: '4px' }}>
+          <span className="text-2xl block mb-1">🎲</span>
+          <p className="text-sm font-bold" style={{ color: '#2C1810' }}>번호 생성</p>
+          <p className="text-[10px]" style={{ color: '#8D8478' }}>Korea Lotto 6/45</p>
+        </button>
+        <button onClick={() => onNavigate('fortune')}
+          className="bg-white border rounded p-4 text-center transition-all hover:border-[#8B2500] hover:shadow-md"
+          style={{ borderColor: '#D5CEC3', borderRadius: '4px' }}>
+          <span className="text-2xl block mb-1">🔮</span>
+          <p className="text-sm font-bold" style={{ color: '#2C1810' }}>운세 · 타로</p>
+          <p className="text-[10px]" style={{ color: '#8D8478' }}>Fortune & Tarot</p>
+        </button>
+      </div>
+
+      {/* Country lottery selection */}
+      <div>
+        <p className="text-xs font-medium tracking-widest mb-3" style={{ color: '#8B2500' }}>WORLD LOTTERIES</p>
+        <div className="space-y-2">
+          {lotteries.map((l) => (
+            l.href ? (
+              <Link key={l.name} href={l.href}
+                className="flex items-center gap-4 bg-white border rounded px-4 py-3.5 transition-all hover:border-[#C5981A] hover:shadow-sm"
+                style={{ borderColor: '#D5CEC3', borderRadius: '4px' }}>
+                <span className="text-2xl shrink-0">{l.flag}</span>
+                <div className="flex-1 min-w-0">
+                  <p className="text-sm font-bold" style={{ color: '#2C1810' }}>{l.name}</p>
+                  <p className="text-[10px]" style={{ color: '#8D8478' }}>{l.desc}</p>
+                </div>
+                <span className="text-xs shrink-0" style={{ color: '#C5981A' }}>→</span>
+              </Link>
+            ) : (
+              <button key={l.name} onClick={l.action}
+                className="w-full flex items-center gap-4 bg-white border rounded px-4 py-3.5 transition-all hover:border-[#C5981A] hover:shadow-sm text-left"
+                style={{ borderColor: '#D5CEC3', borderRadius: '4px' }}>
+                <span className="text-2xl shrink-0">{l.flag}</span>
+                <div className="flex-1 min-w-0">
+                  <p className="text-sm font-bold" style={{ color: '#2C1810' }}>{l.name}</p>
+                  <p className="text-[10px]" style={{ color: '#8D8478' }}>{l.desc}</p>
+                </div>
+                <span className="text-xs shrink-0" style={{ color: '#C5981A' }}>→</span>
+              </button>
+            )
+          ))}
+        </div>
+      </div>
+
+      {/* More */}
+      <div className="grid grid-cols-2 gap-3">
+        <button onClick={() => onNavigate('winning')}
+          className="bg-white border rounded p-3 text-center transition-all hover:border-[#8B2500]"
+          style={{ borderColor: '#D5CEC3', borderRadius: '4px' }}>
+          <span className="text-lg">🏆</span>
+          <p className="text-xs font-medium mt-0.5" style={{ color: '#2C1810' }}>당첨 확인</p>
+        </button>
+        <button onClick={() => onNavigate('stats')}
+          className="bg-white border rounded p-3 text-center transition-all hover:border-[#8B2500]"
+          style={{ borderColor: '#D5CEC3', borderRadius: '4px' }}>
+          <span className="text-lg">📊</span>
+          <p className="text-xs font-medium mt-0.5" style={{ color: '#2C1810' }}>통계</p>
+        </button>
       </div>
     </div>
   );
@@ -223,7 +307,7 @@ function FortuneTab() {
             className={`flex-1 py-2 rounded-xl text-xs font-medium transition ${
               subTab === t.id
                 ? 'bg-[#8B2500] text-white '
-                : 'bg-[#1A1D35] text-[rgba(245,240,232,0.5)] hover:bg-[#1E2240]'
+                : 'bg-[#E8E2D8] text-[#8D8478] hover:bg-[#E0D8CC]'
             }`}
           >
             {t.emoji} {t.label}
@@ -259,11 +343,11 @@ function DailyFortuneSection() {
 
   return (
     <div className="space-y-5">
-      <div className="bg-gradient-to-br from-[#0F1225] to-[#13162B] rounded-lg p-5">
+      <div className="bg-gradient-to-br from-[#F0EBE0] to-[#E8E2D8] rounded-lg p-5">
         <h2 className="font-bold text-lg mb-3">오늘의 로또 운세</h2>
         <div className="flex gap-2">
           <input type="date" value={birthday} onChange={(e) => setBirthday(e.target.value)}
-            className="flex-1 px-3 py-2.5 rounded-xl border border-[#1E2240] text-sm focus:outline-none focus:ring-2 focus:ring-[#C5981A]" />
+            className="flex-1 px-3 py-2.5 rounded-xl border border-[#D5CEC3] text-sm focus:outline-none focus:ring-2 focus:ring-[#8B2500]" />
           <button onClick={handleCheck}
             className="px-5 py-2.5 bg-[#8B2500] text-white rounded-xl text-sm font-medium hover:bg-[#6B1D00] active:scale-95 transition">
             확인
@@ -273,8 +357,8 @@ function DailyFortuneSection() {
 
       {fortune && (
         <>
-          <div className="bg-[#13162B] border border-[#1E2240] rounded-lg p-5 text-center ">
-            <p className="text-sm text-[rgba(245,240,232,0.4)] mb-2">{fortune.grade}</p>
+          <div className="bg-white border border-[#D5CEC3] rounded-lg p-5 text-center ">
+            <p className="text-sm text-[#A5A09A] mb-2">{fortune.grade}</p>
             <div className="relative w-28 h-28 mx-auto mb-3">
               <svg viewBox="0 0 100 100" className="w-full h-full -rotate-90">
                 <circle cx="50" cy="50" r="42" fill="none" stroke="#e5e7eb" strokeWidth="8" />
@@ -287,25 +371,25 @@ function DailyFortuneSection() {
                 <span className="text-3xl font-bold">{fortune.score}</span>
               </div>
             </div>
-            <p className="text-sm text-[rgba(245,240,232,0.5)]">{fortune.message}</p>
+            <p className="text-sm text-[#8D8478]">{fortune.message}</p>
           </div>
 
-          <div className="bg-[#13162B] border border-[#1E2240] rounded-lg p-5 ">
+          <div className="bg-white border border-[#D5CEC3] rounded-lg p-5 ">
             <h3 className="font-bold text-sm mb-3">오늘의 행운 번호</h3>
             <div className="flex justify-center gap-3">
               {fortune.luckyNumbers.map((n) => <LottoBall key={n} number={n} size="lg" animated />)}
             </div>
           </div>
 
-          <div className="bg-[#13162B] border border-[#1E2240] rounded-lg p-5 ">
+          <div className="bg-white border border-[#D5CEC3] rounded-lg p-5 ">
             <h3 className="font-bold text-sm mb-3">이번 주 운세 추이</h3>
             <div className="flex items-end gap-1.5 h-24">
               {fortune.weeklyTrend.map((val, i) => (
                 <div key={i} className="flex-1 flex flex-col items-center gap-1">
-                  <span className="text-[10px] text-[rgba(245,240,232,0.3)]">{val}</span>
-                  <div className={`w-full rounded-t-md ${i === todayIdx ? 'bg-[#C5981A]' : 'bg-[#1A1D35]'}`}
+                  <span className="text-[10px] text-[#B5AFA5]">{val}</span>
+                  <div className={`w-full rounded-t-md ${i === todayIdx ? 'bg-[#C5981A]' : 'bg-[#E8E2D8]'}`}
                     style={{ height: `${val * 0.8}%` }} />
-                  <span className={`text-[10px] ${i === todayIdx ? 'text-[#C5981A] font-bold' : 'text-[rgba(245,240,232,0.3)]'}`}>{dayNames[i]}</span>
+                  <span className={`text-[10px] ${i === todayIdx ? 'text-[#8B2500] font-bold' : 'text-[#B5AFA5]'}`}>{dayNames[i]}</span>
                 </div>
               ))}
             </div>
@@ -315,7 +399,7 @@ function DailyFortuneSection() {
             const text = `DHLM 로또 운세\n점수: ${fortune.score}점 ${fortune.grade}\n행운번호: ${fortune.luckyNumbers.join(', ')}\n\nhttps://dhlm-studio.com/lotto#fortune`;
             if (navigator.share) { try { await navigator.share({ title: 'DHLM 로또 운세', text }); } catch {} }
             else { await navigator.clipboard.writeText(text); alert('복사되었습니다!'); }
-          }} className="w-full py-3 bg-yellow-400 text-[#F5F0E8] rounded-xl font-medium hover:bg-yellow-500 active:scale-[0.98] transition">
+          }} className="w-full py-3 bg-yellow-400 text-[#2C1810] rounded-xl font-medium hover:bg-yellow-500 active:scale-[0.98] transition">
             운세 공유하기
           </button>
         </>
@@ -457,9 +541,9 @@ function TarotSection() {
   return (
     <div className="space-y-5">
       {phase === 'input' && (
-        <div className="bg-gradient-to-br from-[#0F1225] to-[#13162B] rounded-lg p-5">
+        <div className="bg-gradient-to-br from-[#F0EBE0] to-[#E8E2D8] rounded-lg p-5">
           <h2 className="font-bold text-lg mb-1">타로 카드</h2>
-          <p className="text-xs text-[rgba(245,240,232,0.4)] mb-4">카드 3장으로 과거/현재/미래를 읽어보세요</p>
+          <p className="text-xs text-[#A5A09A] mb-4">카드 3장으로 과거/현재/미래를 읽어보세요</p>
           <button onClick={startReading}
             className="w-full py-3 bg-[#8B2500] text-white rounded-xl font-medium hover:bg-[#6B1D00] active:scale-[0.98] transition">
             카드 펼치기
@@ -469,8 +553,8 @@ function TarotSection() {
 
       {phase === 'select' && (
         <div>
-          <p className="text-center text-sm text-[rgba(245,240,232,0.5)] mb-4">
-            카드 3장을 선택하세요 <span className="text-[#C5981A] font-bold">({selected.length}/3)</span>
+          <p className="text-center text-sm text-[#8D8478] mb-4">
+            카드 3장을 선택하세요 <span className="text-[#8B2500] font-bold">({selected.length}/3)</span>
           </p>
           <div className="grid grid-cols-5 gap-2">
             {shuffled.map((card, idx) => {
@@ -490,10 +574,10 @@ function TarotSection() {
                       <motion.div key="front"
                         initial={{ rotateY: 90 }} animate={{ rotateY: 0 }}
                         transition={{ duration: 0.3 }}
-                        className="absolute inset-0 bg-gradient-to-br from-[#1A1D35] to-[#13162B] border-2 border-[#C5981A] rounded-xl flex flex-col items-center justify-center p-1"
+                        className="absolute inset-0 bg-gradient-to-br from-[#1A1D35] to-[#13162B] border-2 border-[#C5981A] rounded flex flex-col items-center justify-center p-1"
                       >
                         <span className="text-2xl">{card.emoji}</span>
-                        <span className="text-[9px] font-medium text-[#F5F0E8] mt-1 leading-tight text-center">{card.name}</span>
+                        <span className="text-[9px] font-medium text-[#2C1810] mt-1 leading-tight text-center">{card.name}</span>
                         {order >= 0 && (
                           <span className="absolute top-0.5 right-1 text-[8px] bg-[#8B2500] text-white rounded-full w-4 h-4 flex items-center justify-center">
                             {positionLabels[order][0]}
@@ -505,7 +589,7 @@ function TarotSection() {
                         exit={{ rotateY: 90 }}
                         transition={{ duration: 0.15 }}
                         className={`absolute inset-0 rounded-xl border-2 flex items-center justify-center ${
-                          selected.length >= 3 ? 'bg-[#1A1D35] border-[#1E2240]' : 'bg-gradient-to-br from-[#8B2500] to-[#1A237E] border-[#C5981A] cursor-pointer'
+                          selected.length >= 3 ? 'bg-[#E8E2D8] border-[#D5CEC3]' : 'bg-gradient-to-br from-[#8B2500] to-[#C5981A] border-[#C5981A] cursor-pointer'
                         }`}
                       >
                         <span className="text-2xl text-white/80">🂠</span>
@@ -520,7 +604,7 @@ function TarotSection() {
           {loading && (
             <div className="text-center py-6">
               <div className="inline-block w-8 h-8 border-3 border-purple-200 border-t-purple-600 rounded-full animate-spin" />
-              <p className="text-sm text-[rgba(245,240,232,0.4)] mt-2">AI가 카드를 해석하고 있어요...</p>
+              <p className="text-sm text-[#A5A09A] mt-2">AI가 카드를 해석하고 있어요...</p>
             </div>
           )}
           {error && <p className="text-center text-sm text-red-500 mt-3">{error}</p>}
@@ -533,19 +617,19 @@ function TarotSection() {
             {selected.map((idx, i) => {
               const card = shuffled[idx];
               return (
-                <div key={card.id} className="bg-gradient-to-br from-[#0F1225] to-[#13162B] border border-purple-200 rounded-xl p-3 text-center flex-1">
-                  <p className="text-[10px] text-[#C5981A] font-bold mb-1">{positionLabels[i]}</p>
+                <div key={card.id} className="bg-gradient-to-br from-[#F0EBE0] to-[#E8E2D8] border border-purple-200 rounded-xl p-3 text-center flex-1">
+                  <p className="text-[10px] text-[#8B2500] font-bold mb-1">{positionLabels[i]}</p>
                   <span className="text-2xl block">{card.emoji}</span>
                   <p className="text-xs font-medium mt-1">{card.name}</p>
-                  <p className="text-[10px] text-[rgba(245,240,232,0.4)]">{card.meaning}</p>
+                  <p className="text-[10px] text-[#A5A09A]">{card.meaning}</p>
                 </div>
               );
             })}
           </div>
 
-          <div className="bg-[#13162B] border border-[#1E2240] rounded-lg p-5 ">
+          <div className="bg-white border border-[#D5CEC3] rounded-lg p-5 ">
             <h3 className="font-bold text-sm mb-2">타로 해석</h3>
-            <p className="text-sm text-[#F5F0E8] leading-relaxed whitespace-pre-wrap">{interpretation}</p>
+            <p className="text-sm text-[#2C1810] leading-relaxed whitespace-pre-wrap">{interpretation}</p>
           </div>
 
           <button onClick={() => { setPhase('input'); setConcern(''); }}
@@ -579,27 +663,27 @@ function CompatSection() {
   };
 
   const getGrade = (score: number) => {
-    if (score >= 90) return { label: '환상의 짝꿍', color: 'text-[#C5981A]' };
-    if (score >= 70) return { label: '찰떡궁합', color: 'text-[#C5981A]' };
-    if (score >= 50) return { label: '괜찮은 사이', color: 'text-[#C5981A]' };
+    if (score >= 90) return { label: '환상의 짝꿍', color: 'text-[#8B2500]' };
+    if (score >= 70) return { label: '찰떡궁합', color: 'text-[#8B2500]' };
+    if (score >= 50) return { label: '괜찮은 사이', color: 'text-[#8B2500]' };
     if (score >= 30) return { label: '노력 필요', color: 'text-amber-600' };
-    return { label: '극과 극', color: 'text-[rgba(245,240,232,0.4)]' };
+    return { label: '극과 극', color: 'text-[#A5A09A]' };
   };
 
   return (
     <div className="space-y-5">
-      <div className="bg-gradient-to-br from-[#0F1225] to-[#13162B] rounded-lg p-5">
+      <div className="bg-gradient-to-br from-[#F0EBE0] to-[#E8E2D8] rounded-lg p-5">
         <h2 className="font-bold text-lg mb-3">궁합 보기</h2>
         <div className="space-y-2">
           <div>
-            <label className="text-xs text-[rgba(245,240,232,0.4)] mb-1 block">내 생년월일</label>
+            <label className="text-xs text-[#A5A09A] mb-1 block">내 생년월일</label>
             <input type="date" value={myBirth} onChange={(e) => setMyBirth(e.target.value)}
-              className="w-full px-3 py-2.5 rounded-xl border border-[#1E2240] text-sm focus:outline-none focus:ring-2 focus:ring-[#C5981A]" />
+              className="w-full px-3 py-2.5 rounded-xl border border-[#D5CEC3] text-sm focus:outline-none focus:ring-2 focus:ring-[#8B2500]" />
           </div>
           <div>
-            <label className="text-xs text-[rgba(245,240,232,0.4)] mb-1 block">상대 생년월일</label>
+            <label className="text-xs text-[#A5A09A] mb-1 block">상대 생년월일</label>
             <input type="date" value={partnerBirth} onChange={(e) => setPartnerBirth(e.target.value)}
-              className="w-full px-3 py-2.5 rounded-xl border border-[#1E2240] text-sm focus:outline-none focus:ring-2 focus:ring-[#C5981A]" />
+              className="w-full px-3 py-2.5 rounded-xl border border-[#D5CEC3] text-sm focus:outline-none focus:ring-2 focus:ring-[#8B2500]" />
           </div>
           <button onClick={check}
             className="w-full py-3 bg-[#8B2500] text-white rounded-xl font-medium hover:bg-[#6B1D00] active:scale-[0.98] transition mt-1">
@@ -610,7 +694,7 @@ function CompatSection() {
 
       {result && (
         <>
-          <div className="bg-[#13162B] border border-[#1E2240] rounded-lg p-5 text-center ">
+          <div className="bg-white border border-[#D5CEC3] rounded-lg p-5 text-center ">
             <p className={`text-sm font-bold mb-2 ${getGrade(result.total).color}`}>{getGrade(result.total).label}</p>
             <div className="relative w-32 h-32 mx-auto mb-3">
               <svg viewBox="0 0 100 100" className="w-full h-full -rotate-90">
@@ -619,7 +703,7 @@ function CompatSection() {
                   strokeLinecap="round" strokeDasharray={`${result.total * 2.64} 264`} />
               </svg>
               <div className="absolute inset-0 flex items-center justify-center">
-                <span className="text-3xl font-bold text-[#C5981A]">{result.total}%</span>
+                <span className="text-3xl font-bold text-[#8B2500]">{result.total}%</span>
               </div>
             </div>
           </div>
@@ -630,10 +714,10 @@ function CompatSection() {
               { label: '우정', emoji: '🤝', score: result.friend },
               { label: '업무', emoji: '💼', score: result.work },
             ] as const).map((item) => (
-              <div key={item.label} className="bg-[#13162B] border border-[#1E2240] rounded-xl p-3 text-center ">
+              <div key={item.label} className="bg-white border border-[#D5CEC3] rounded-xl p-3 text-center ">
                 <span className="text-lg block">{item.emoji}</span>
-                <p className="text-[10px] text-[rgba(245,240,232,0.4)] mt-1">{item.label}</p>
-                <p className="text-lg font-bold text-[#C5981A]">{item.score}%</p>
+                <p className="text-[10px] text-[#A5A09A] mt-1">{item.label}</p>
+                <p className="text-lg font-bold text-[#8B2500]">{item.score}%</p>
               </div>
             ))}
           </div>
@@ -642,7 +726,7 @@ function CompatSection() {
             const text = `우리 궁합 ${result.total}%래! 💕\n연애 ${result.love}% / 우정 ${result.friend}% / 업무 ${result.work}%\n\nhttps://dhlm-studio.com/lotto#fortune`;
             if (navigator.share) { try { await navigator.share({ title: '궁합 결과', text }); } catch {} }
             else { await navigator.clipboard.writeText(text); alert('복사되었습니다!'); }
-          }} className="w-full py-3 bg-yellow-400 text-[#F5F0E8] rounded-xl font-medium hover:bg-yellow-500 active:scale-[0.98] transition">
+          }} className="w-full py-3 bg-yellow-400 text-[#2C1810] rounded-xl font-medium hover:bg-yellow-500 active:scale-[0.98] transition">
             궁합 공유하기
           </button>
         </>
@@ -694,16 +778,16 @@ function NameFortuneSection() {
 
   return (
     <div className="space-y-5">
-      <div className="bg-gradient-to-br from-[#0F1225] to-[#13162B] rounded-lg p-5">
+      <div className="bg-gradient-to-br from-[#F0EBE0] to-[#E8E2D8] rounded-lg p-5">
         <h2 className="font-bold text-lg mb-1">이름 운세</h2>
-        <p className="text-xs text-[rgba(245,240,232,0.4)] mb-3">한글 이름의 획수로 운세를 확인하세요</p>
+        <p className="text-xs text-[#A5A09A] mb-3">한글 이름의 획수로 운세를 확인하세요</p>
         <div className="flex gap-2">
           <input type="text" value={name} onChange={(e) => setName(e.target.value)}
             placeholder="한글 이름 (예: 홍길동)"
             maxLength={5}
-            className="flex-1 px-3 py-2.5 rounded-xl border border-[#1E2240] text-sm focus:outline-none focus:ring-2 focus:ring-[#C5981A]" />
+            className="flex-1 px-3 py-2.5 rounded-xl border border-[#D5CEC3] text-sm focus:outline-none focus:ring-2 focus:ring-[#8B2500]" />
           <button onClick={analyze}
-            className="px-5 py-2.5 bg-[#C5981A] text-white rounded-xl text-sm font-medium hover:bg-[#A07A10] active:scale-95 transition">
+            className="px-5 py-2.5 bg-[#8B2500] text-white rounded-xl text-sm font-medium hover:bg-[#6B1D00] active:scale-95 transition">
             확인
           </button>
         </div>
@@ -711,8 +795,8 @@ function NameFortuneSection() {
 
       {result && (
         <>
-          <div className="bg-[#13162B] border border-[#1E2240] rounded-lg p-5 text-center ">
-            <p className="text-sm text-[rgba(245,240,232,0.4)] mb-1">총 획수: {result.strokes}획</p>
+          <div className="bg-white border border-[#D5CEC3] rounded-lg p-5 text-center ">
+            <p className="text-sm text-[#A5A09A] mb-1">총 획수: {result.strokes}획</p>
             <p className="text-amber-600 font-bold text-sm mb-2">{result.grade}</p>
             <div className="relative w-28 h-28 mx-auto mb-3">
               <svg viewBox="0 0 100 100" className="w-full h-full -rotate-90">
@@ -724,10 +808,10 @@ function NameFortuneSection() {
                 <span className="text-3xl font-bold">{result.score}</span>
               </div>
             </div>
-            <p className="text-sm text-[rgba(245,240,232,0.5)]">{result.meaning}</p>
+            <p className="text-sm text-[#8D8478]">{result.meaning}</p>
           </div>
 
-          <div className="bg-[#13162B] border border-[#1E2240] rounded-lg p-5 ">
+          <div className="bg-white border border-[#D5CEC3] rounded-lg p-5 ">
             <h3 className="font-bold text-sm mb-3">이름 행운 번호</h3>
             <div className="flex justify-center gap-3">
               {result.luckyNums.map((n) => <LottoBall key={n} number={n} size="lg" animated />)}
@@ -738,7 +822,7 @@ function NameFortuneSection() {
             const text = `${name}님의 이름 운세\n점수: ${result.score}점 (${result.grade})\n총 ${result.strokes}획 — ${result.meaning}\n행운번호: ${result.luckyNums.join(', ')}\n\nhttps://dhlm-studio.com/lotto#fortune`;
             if (navigator.share) { try { await navigator.share({ title: '이름 운세', text }); } catch {} }
             else { await navigator.clipboard.writeText(text); alert('복사되었습니다!'); }
-          }} className="w-full py-3 bg-yellow-400 text-[#F5F0E8] rounded-xl font-medium hover:bg-yellow-500 active:scale-[0.98] transition">
+          }} className="w-full py-3 bg-yellow-400 text-[#2C1810] rounded-xl font-medium hover:bg-yellow-500 active:scale-[0.98] transition">
             이름 운세 공유하기
           </button>
         </>
@@ -806,7 +890,7 @@ function GenerateTab() {
         {modes.map((m) => (
           <button key={m.id} onClick={() => { setMode(m.id); setResults([]); }}
             className={`py-2 px-1 rounded-xl text-center text-xs font-medium transition ${
-              mode === m.id ? 'bg-[#C5981A] text-white ' : 'bg-[#1A1D35] text-[rgba(245,240,232,0.5)] hover:bg-[#1E2240]'
+              mode === m.id ? 'bg-[#8B2500] text-white ' : 'bg-[#E8E2D8] text-[#8D8478] hover:bg-[#E0D8CC]'
             }`}>
             <span className="block text-base">{m.label.split(' ')[0]}</span>
             <span className="block mt-0.5 text-[10px]">{m.label.split(' ')[1]}</span>
@@ -814,18 +898,18 @@ function GenerateTab() {
         ))}
       </div>
 
-      <div className="bg-[#0F1225] rounded-lg p-4">
-        <p className="text-xs text-[rgba(245,240,232,0.4)] mb-3">{modes.find((m) => m.id === mode)?.desc}</p>
+      <div className="bg-[#F0EBE0] rounded-lg p-4">
+        <p className="text-xs text-[#A5A09A] mb-3">{modes.find((m) => m.id === mode)?.desc}</p>
 
         {mode === 'dream' && (
           <div className="space-y-3">
             <input type="text" value={dreamKeyword} onChange={(e) => setDreamKeyword(e.target.value)}
               placeholder="꿈에 나온 키워드 (예: 돼지, 돈, 용)"
-              className="w-full px-3 py-2.5 rounded-xl border border-[#1E2240] text-sm focus:outline-none focus:ring-2 focus:ring-blue-300" />
+              className="w-full px-3 py-2.5 rounded-xl border border-[#D5CEC3] text-sm focus:outline-none focus:ring-2 focus:ring-blue-300" />
             <div className="flex flex-wrap gap-1.5">
               {dreamData.slice(0, 20).map((d) => (
                 <button key={d.keyword} onClick={() => setDreamKeyword((prev) => prev ? `${prev} ${d.keyword}` : d.keyword)}
-                  className="px-2 py-1 bg-[#13162B] border border-[#1E2240] rounded-lg text-xs hover:bg-blue-50 transition">
+                  className="px-2 py-1 bg-white border border-[#D5CEC3] rounded-lg text-xs hover:bg-blue-50 transition">
                   {d.emoji} {d.keyword}
                 </button>
               ))}
@@ -835,7 +919,7 @@ function GenerateTab() {
 
         {(mode === 'fixed' || mode === 'exclude') && (
           <div>
-            <p className="text-xs text-[rgba(245,240,232,0.4)] mb-2">
+            <p className="text-xs text-[#A5A09A] mb-2">
               {mode === 'fixed' ? '포함할 번호를 선택하세요 (최대 5개)' : '제외할 번호를 선택하세요'}
             </p>
             <div className="grid grid-cols-9 gap-1">
@@ -847,7 +931,7 @@ function GenerateTab() {
                 return (
                   <button key={n} onClick={() => !disabled && toggleNumber(n, list, setter)} disabled={disabled}
                     className={`w-8 h-8 rounded-full text-xs font-medium transition ${
-                      selected ? 'bg-[#C5981A] text-white' : disabled ? 'bg-[#1A1D35] text-[rgba(245,240,232,0.25)]' : 'bg-[#13162B] border border-[#1E2240] text-[#F5F0E8] hover:bg-blue-50'
+                      selected ? 'bg-[#8B2500] text-white' : disabled ? 'bg-[#E8E2D8] text-[#C5C0B5]' : 'bg-white border border-[#D5CEC3] text-[#2C1810] hover:bg-blue-50'
                     }`}>{n}</button>
                 );
               })}
@@ -857,9 +941,9 @@ function GenerateTab() {
 
         {mode === 'oddeven' && (
           <div>
-            <p className="text-xs text-[rgba(245,240,232,0.4)] mb-2">홀수 개수: {oddCount}개 / 짝수: {6 - oddCount}개</p>
+            <p className="text-xs text-[#A5A09A] mb-2">홀수 개수: {oddCount}개 / 짝수: {6 - oddCount}개</p>
             <input type="range" min={0} max={6} value={oddCount} onChange={(e) => setOddCount(Number(e.target.value))} className="w-full" />
-            <div className="flex justify-between text-[10px] text-[rgba(245,240,232,0.3)] mt-1">
+            <div className="flex justify-between text-[10px] text-[#B5AFA5] mt-1">
               <span>짝수 6</span><span>균형</span><span>홀수 6</span>
             </div>
           </div>
@@ -867,36 +951,36 @@ function GenerateTab() {
       </div>
 
       <div className="flex gap-2">
-        <div className="flex items-center gap-2 bg-[#0F1225] rounded-xl px-3">
-          <span className="text-xs text-[rgba(245,240,232,0.4)]">세트</span>
+        <div className="flex items-center gap-2 bg-[#F0EBE0] rounded-xl px-3">
+          <span className="text-xs text-[#A5A09A]">세트</span>
           {[1, 3, 5].map((n) => (
             <button key={n} onClick={() => setSetCount(n)}
-              className={`w-7 h-7 rounded-lg text-xs font-bold transition ${setCount === n ? 'bg-[#C5981A] text-white' : 'text-[rgba(245,240,232,0.4)] hover:bg-[#1E2240]'}`}>{n}</button>
+              className={`w-7 h-7 rounded-lg text-xs font-bold transition ${setCount === n ? 'bg-[#8B2500] text-white' : 'text-[#A5A09A] hover:bg-[#E0D8CC]'}`}>{n}</button>
           ))}
         </div>
-        <button onClick={generate} className="flex-1 py-3 bg-[#C5981A] text-white rounded-xl font-bold text-sm hover:bg-[#A07A10] active:scale-[0.98] transition">
+        <button onClick={generate} className="flex-1 py-3 bg-[#8B2500] text-white rounded-xl font-bold text-sm hover:bg-[#6B1D00] active:scale-[0.98] transition">
           번호 생성
         </button>
       </div>
 
       {results.length > 0 && (
-        <div className="bg-[#13162B] border border-[#1E2240] rounded-lg p-4  space-y-2">
+        <div className="bg-white border border-[#D5CEC3] rounded-lg p-4  space-y-2">
           {results.map((set, i) => (
             <NumberSet key={i} label={String.fromCharCode(65 + i)} numbers={set} animated />
           ))}
-          <div className="flex gap-2 mt-4 pt-3 border-t border-[#1E2240]">
-            <button onClick={handleCopy} className="flex-1 py-2.5 bg-[#1A1D35] rounded-xl text-sm font-medium hover:bg-[#1E2240] transition">
+          <div className="flex gap-2 mt-4 pt-3 border-t border-[#D5CEC3]">
+            <button onClick={handleCopy} className="flex-1 py-2.5 bg-[#E8E2D8] rounded-xl text-sm font-medium hover:bg-[#E0D8CC] transition">
               📋 번호 복사
             </button>
-            <button onClick={handleShare} className="flex-1 py-2.5 bg-yellow-400 text-[#F5F0E8] rounded-xl text-sm font-medium hover:bg-yellow-500 transition">
+            <button onClick={handleShare} className="flex-1 py-2.5 bg-yellow-400 text-[#2C1810] rounded-xl text-sm font-medium hover:bg-yellow-500 transition">
               공유하기
             </button>
           </div>
           {shareMsg && <p className="text-center text-xs text-green-600 mt-2">{shareMsg}</p>}
-          <div className="mt-4 pt-3 border-t border-[#1E2240]">
-            <p className="text-xs text-[rgba(245,240,232,0.4)] mb-2 font-medium">이 번호로 구매하기</p>
+          <div className="mt-4 pt-3 border-t border-[#D5CEC3]">
+            <p className="text-xs text-[#A5A09A] mb-2 font-medium">이 번호로 구매하기</p>
             <div className="flex gap-2">
-              <button onClick={handleCopy} className="flex-1 py-2.5 border border-[#1E2240] rounded-xl text-xs font-medium hover:bg-[#0F1225] transition">
+              <button onClick={handleCopy} className="flex-1 py-2.5 border border-[#D5CEC3] rounded-xl text-xs font-medium hover:bg-[#F0EBE0] transition">
                 📋 번호 복사
               </button>
               <a href="https://m.dhlottery.co.kr" target="_blank" rel="noopener noreferrer"
@@ -947,35 +1031,35 @@ function WinningTab() {
 
   return (
     <div className="space-y-5">
-      <div className="bg-gradient-to-br from-[#13162B] to-[#0F1225] rounded-lg p-5">
+      <div className="bg-gradient-to-br from-[#E8E2D8] to-[#F0EBE0] rounded-lg p-5">
         <div className="flex items-center justify-between mb-3">
           <h2 className="font-bold">{viewDraw.round}회 당첨번호</h2>
-          <span className="text-xs text-[rgba(245,240,232,0.4)]">{viewDraw.date}</span>
+          <span className="text-xs text-[#A5A09A]">{viewDraw.date}</span>
         </div>
         <div className="flex items-center gap-1.5 flex-wrap justify-center">
           {viewDraw.numbers.map((n, i) => <LottoBall key={i} number={n} size="lg" animated delay={i} />)}
           <LottoBall number={viewDraw.bonus} size="lg" bonus animated delay={6} />
         </div>
-        {viewDraw.prize1 && <p className="text-center text-xs text-[rgba(245,240,232,0.4)] mt-3">1등 당첨금: {viewDraw.prize1}</p>}
+        {viewDraw.prize1 && <p className="text-center text-xs text-[#A5A09A] mt-3">1등 당첨금: {viewDraw.prize1}</p>}
       </div>
 
       <div className="flex gap-2">
         <button onClick={() => handleRoundChange(Math.max(1, selectedRound - 1))}
-          className="px-3 py-2 bg-[#1A1D35] rounded-xl text-sm hover:bg-[#1E2240] transition">◀</button>
+          className="px-3 py-2 bg-[#E8E2D8] rounded-xl text-sm hover:bg-[#E0D8CC] transition">◀</button>
         <input type="number" value={selectedRound} onChange={(e) => handleRoundChange(Number(e.target.value))}
           min={1} max={latest.round}
-          className="flex-1 text-center px-3 py-2 border border-[#1E2240] rounded-xl text-sm focus:outline-none focus:ring-2 focus:ring-[#C5981A]" />
+          className="flex-1 text-center px-3 py-2 border border-[#D5CEC3] rounded-xl text-sm focus:outline-none focus:ring-2 focus:ring-[#8B2500]" />
         <button onClick={() => handleRoundChange(Math.min(latest.round, selectedRound + 1))}
-          className="px-3 py-2 bg-[#1A1D35] rounded-xl text-sm hover:bg-[#1E2240] transition">▶</button>
+          className="px-3 py-2 bg-[#E8E2D8] rounded-xl text-sm hover:bg-[#E0D8CC] transition">▶</button>
       </div>
 
-      <div className="bg-[#13162B] border border-[#1E2240] rounded-lg p-4 ">
+      <div className="bg-white border border-[#D5CEC3] rounded-lg p-4 ">
         <h3 className="font-bold text-sm mb-3">최근 당첨번호</h3>
         <div className="space-y-2">
           {recent.slice(0, 5).map((draw) => (
             <button key={draw.round} onClick={() => handleRoundChange(draw.round)}
               className={`w-full flex items-center gap-2 py-2 px-3 rounded-xl text-xs transition ${
-                draw.round === selectedRound ? 'bg-amber-50 border border-amber-200' : 'hover:bg-[#0F1225]'
+                draw.round === selectedRound ? 'bg-amber-50 border border-amber-200' : 'hover:bg-[#F0EBE0]'
               }`}>
               <span className="font-bold w-14 text-left">{draw.round}회</span>
               <div className="flex gap-1 flex-1 flex-wrap">
@@ -987,9 +1071,9 @@ function WinningTab() {
         </div>
       </div>
 
-      <div className="bg-[#13162B] border border-[#1E2240] rounded-lg p-4 ">
+      <div className="bg-white border border-[#D5CEC3] rounded-lg p-4 ">
         <h3 className="font-bold text-sm mb-3">내 번호 당첨 확인</h3>
-        <p className="text-xs text-[rgba(245,240,232,0.4)] mb-2">6개 번호를 선택하세요</p>
+        <p className="text-xs text-[#A5A09A] mb-2">6개 번호를 선택하세요</p>
         <div className="grid grid-cols-9 gap-1 mb-3">
           {Array.from({ length: 45 }, (_, i) => i + 1).map((n) => {
             const selected = checkNums.includes(n);
@@ -997,23 +1081,23 @@ function WinningTab() {
             return (
               <button key={n} onClick={() => !disabled && toggleCheckNum(n)} disabled={disabled}
                 className={`w-8 h-8 rounded-full text-xs font-medium transition ${
-                  selected ? 'bg-[#C5981A] text-white' : disabled ? 'bg-[#1A1D35] text-[rgba(245,240,232,0.25)]' : 'bg-[#13162B] border border-[#1E2240] text-[#F5F0E8] hover:bg-amber-50'
+                  selected ? 'bg-[#8B2500] text-white' : disabled ? 'bg-[#E8E2D8] text-[#C5C0B5]' : 'bg-white border border-[#D5CEC3] text-[#2C1810] hover:bg-amber-50'
                 }`}>{n}</button>
             );
           })}
         </div>
         <div className="flex gap-2">
           <button onClick={() => { setCheckNums([]); setCheckResult(null); }}
-            className="px-4 py-2.5 bg-[#1A1D35] rounded-xl text-xs font-medium hover:bg-[#1E2240] transition">초기화</button>
+            className="px-4 py-2.5 bg-[#E8E2D8] rounded-xl text-xs font-medium hover:bg-[#E0D8CC] transition">초기화</button>
           <button onClick={checkWinning} disabled={checkNums.length !== 6}
             className={`flex-1 py-2.5 rounded-xl text-sm font-bold transition ${
-              checkNums.length === 6 ? 'bg-[#C5981A] text-white hover:bg-[#A07A10] active:scale-[0.98]' : 'bg-[#1A1D35] text-[rgba(245,240,232,0.3)] cursor-not-allowed'
+              checkNums.length === 6 ? 'bg-[#8B2500] text-white hover:bg-[#6B1D00] active:scale-[0.98]' : 'bg-[#E8E2D8] text-[#B5AFA5] cursor-not-allowed'
             }`}>당첨 확인 ({checkNums.length}/6)</button>
         </div>
         {checkResult && (
           <div className={`mt-3 p-3 rounded-xl text-center text-sm font-medium ${
             checkResult.includes('1등') || checkResult.includes('2등') ? 'bg-yellow-100 text-yellow-800'
-              : checkResult.includes('등') ? 'bg-blue-50 text-blue-700' : 'bg-[#0F1225] text-[rgba(245,240,232,0.5)]'
+              : checkResult.includes('등') ? 'bg-blue-50 text-blue-700' : 'bg-[#F0EBE0] text-[#8D8478]'
           }`}>{checkResult}</div>
         )}
       </div>
@@ -1068,25 +1152,25 @@ function StatsTab() {
 
   return (
     <div className="space-y-5">
-      <p className="text-xs text-[rgba(245,240,232,0.4)] text-center">전체 {totalDraws}회차 기준 통계</p>
+      <p className="text-xs text-[#A5A09A] text-center">전체 {totalDraws}회차 기준 통계</p>
 
-      <div className="bg-[#13162B] border border-[#1E2240] rounded-lg p-4 ">
+      <div className="bg-white border border-[#D5CEC3] rounded-lg p-4 ">
         <h3 className="font-bold text-sm mb-1">🔥 핫넘버</h3>
-        <p className="text-xs text-[rgba(245,240,232,0.3)] mb-3">최근 20회 중 3회 이상 출현</p>
+        <p className="text-xs text-[#B5AFA5] mb-3">최근 20회 중 3회 이상 출현</p>
         <div className="flex flex-wrap gap-1.5">
-          {hotNums.length > 0 ? hotNums.map((n) => <LottoBall key={n} number={n} size="sm" />) : <span className="text-xs text-[rgba(245,240,232,0.3)]">해당 번호 없음</span>}
+          {hotNums.length > 0 ? hotNums.map((n) => <LottoBall key={n} number={n} size="sm" />) : <span className="text-xs text-[#B5AFA5]">해당 번호 없음</span>}
         </div>
       </div>
 
-      <div className="bg-[#13162B] border border-[#1E2240] rounded-lg p-4 ">
+      <div className="bg-white border border-[#D5CEC3] rounded-lg p-4 ">
         <h3 className="font-bold text-sm mb-1">❄️ 콜드넘버</h3>
-        <p className="text-xs text-[rgba(245,240,232,0.3)] mb-3">최근 20회 중 미출현</p>
+        <p className="text-xs text-[#B5AFA5] mb-3">최근 20회 중 미출현</p>
         <div className="flex flex-wrap gap-1.5">
-          {coldNums.length > 0 ? coldNums.map((n) => <LottoBall key={n} number={n} size="sm" />) : <span className="text-xs text-[rgba(245,240,232,0.3)]">해당 번호 없음</span>}
+          {coldNums.length > 0 ? coldNums.map((n) => <LottoBall key={n} number={n} size="sm" />) : <span className="text-xs text-[#B5AFA5]">해당 번호 없음</span>}
         </div>
       </div>
 
-      <div className="bg-[#13162B] border border-[#1E2240] rounded-lg p-4 ">
+      <div className="bg-white border border-[#D5CEC3] rounded-lg p-4 ">
         <h3 className="font-bold text-sm mb-3">번호별 출현 횟수</h3>
         <div className="grid grid-cols-9 gap-1">
           {Array.from({ length: 45 }, (_, i) => i + 1).map((n) => {
@@ -1097,15 +1181,15 @@ function StatsTab() {
                 <div className="h-12 flex items-end justify-center mb-0.5">
                   <div className="w-full max-w-[20px] rounded-t bg-blue-400" style={{ height: `${Math.max(pct, 4)}%` }} />
                 </div>
-                <span className="text-[9px] text-[rgba(245,240,232,0.4)]">{n}</span>
-                <span className="block text-[8px] text-[rgba(245,240,232,0.3)]">{count}</span>
+                <span className="text-[9px] text-[#A5A09A]">{n}</span>
+                <span className="block text-[8px] text-[#B5AFA5]">{count}</span>
               </div>
             );
           })}
         </div>
       </div>
 
-      <div className="bg-[#13162B] border border-[#1E2240] rounded-lg p-4 ">
+      <div className="bg-white border border-[#D5CEC3] rounded-lg p-4 ">
         <h3 className="font-bold text-sm mb-3">홀짝 비율</h3>
         <div className="flex h-6 rounded-full overflow-hidden">
           <div className="bg-blue-500 flex items-center justify-center text-[10px] text-white font-bold" style={{ width: `${oddEvenStats.oddPct}%` }}>
@@ -1117,16 +1201,16 @@ function StatsTab() {
         </div>
       </div>
 
-      <div className="bg-[#13162B] border border-[#1E2240] rounded-lg p-4 ">
+      <div className="bg-white border border-[#D5CEC3] rounded-lg p-4 ">
         <h3 className="font-bold text-sm mb-3">구간별 분포</h3>
         <div className="space-y-2">
           {rangeStats.ranges.map((r) => (
             <div key={r.label} className="flex items-center gap-2">
-              <span className="text-xs text-[rgba(245,240,232,0.4)] w-12">{r.label}</span>
-              <div className="flex-1 h-5 bg-[#1A1D35] rounded-full overflow-hidden">
+              <span className="text-xs text-[#A5A09A] w-12">{r.label}</span>
+              <div className="flex-1 h-5 bg-[#E8E2D8] rounded-full overflow-hidden">
                 <div className="h-full bg-[#C5981A] rounded-full" style={{ width: `${(r.count / rangeStats.maxCount) * 100}%` }} />
               </div>
-              <span className="text-xs text-[rgba(245,240,232,0.3)] w-12 text-right">{r.count}</span>
+              <span className="text-xs text-[#B5AFA5] w-12 text-right">{r.count}</span>
             </div>
           ))}
         </div>
@@ -1171,7 +1255,7 @@ function WorldTab() {
         {worldLotteries.filter((l) => l.id !== 'korea-lotto').map((l) => (
           <button key={l.id} onClick={() => { setSelectedId(l.id); setResults([]); }}
             className={`py-2 px-1 rounded-xl text-center text-xs transition ${
-              selectedId === l.id ? 'bg-[#C5981A] text-white ' : 'bg-[#1A1D35] text-[rgba(245,240,232,0.5)] hover:bg-[#1E2240]'
+              selectedId === l.id ? 'bg-[#8B2500] text-white ' : 'bg-[#E8E2D8] text-[#8D8478] hover:bg-[#E0D8CC]'
             }`}>
             <span className="text-base block">{l.country}</span>
             <span className="text-[9px] block mt-0.5 leading-tight">{l.name.split(' ')[0]}</span>
@@ -1180,44 +1264,44 @@ function WorldTab() {
       </div>
 
       {/* Info */}
-      <div className="bg-[#0F1225] rounded-lg p-4">
+      <div className="bg-[#F0EBE0] rounded-lg p-4">
         <div className="flex items-center gap-3">
           <span className="text-3xl">{lottery.country}</span>
           <div>
             <p className="font-bold">{lottery.name}</p>
-            <p className="text-xs text-[rgba(245,240,232,0.4)]">
+            <p className="text-xs text-[#A5A09A]">
               {lottery.mainNumbers.count} from {lottery.mainNumbers.min}-{lottery.mainNumbers.max}
               {lottery.bonusNumbers && ` + ${lottery.bonusNumbers.count} ${lottery.bonusNumbers.name} (${lottery.bonusNumbers.min}-${lottery.bonusNumbers.max})`}
             </p>
-            <p className="text-[10px] text-[rgba(245,240,232,0.3)] mt-0.5">Draw: {lottery.drawDays.join(', ')} · {lottery.ageRestriction}</p>
+            <p className="text-[10px] text-[#B5AFA5] mt-0.5">Draw: {lottery.drawDays.join(', ')} · {lottery.ageRestriction}</p>
           </div>
         </div>
       </div>
 
       {/* Generate */}
       <div className="flex gap-2">
-        <div className="flex items-center gap-2 bg-[#0F1225] rounded-xl px-3">
-          <span className="text-xs text-[rgba(245,240,232,0.4)]">Sets</span>
+        <div className="flex items-center gap-2 bg-[#F0EBE0] rounded-xl px-3">
+          <span className="text-xs text-[#A5A09A]">Sets</span>
           {[1, 3, 5].map((n) => (
             <button key={n} onClick={() => setSets(n)}
-              className={`w-7 h-7 rounded-lg text-xs font-bold transition ${sets === n ? 'bg-[#C5981A] text-white' : 'text-[rgba(245,240,232,0.4)] hover:bg-[#1E2240]'}`}>
+              className={`w-7 h-7 rounded-lg text-xs font-bold transition ${sets === n ? 'bg-[#8B2500] text-white' : 'text-[#A5A09A] hover:bg-[#E0D8CC]'}`}>
               {n}
             </button>
           ))}
         </div>
         <button onClick={generate}
-          className="flex-1 py-3 bg-[#C5981A] text-white rounded-xl font-bold text-sm hover:bg-[#A07A10] active:scale-[0.98] transition">
+          className="flex-1 py-3 bg-[#8B2500] text-white rounded-xl font-bold text-sm hover:bg-[#6B1D00] active:scale-[0.98] transition">
           Generate
         </button>
       </div>
 
       {/* Results */}
       {results.length > 0 && (
-        <div className="bg-[#13162B] border border-[#1E2240] rounded-lg p-4  space-y-3">
+        <div className="bg-white border border-[#D5CEC3] rounded-lg p-4  space-y-3">
           {results.map((r, i) => (
-            <div key={i} className={`${i > 0 ? 'pt-3 border-t border-[#1E2240]' : ''}`}>
+            <div key={i} className={`${i > 0 ? 'pt-3 border-t border-[#D5CEC3]' : ''}`}>
               <div className="flex items-center gap-1.5 flex-wrap">
-                <span className="text-xs font-bold text-[rgba(245,240,232,0.3)] w-5">{String.fromCharCode(65 + i)}</span>
+                <span className="text-xs font-bold text-[#B5AFA5] w-5">{String.fromCharCode(65 + i)}</span>
                 {r.main.map((n) => (
                   <LottoBall key={`m${i}-${n}`} number={n} size="md" animated delay={r.main.indexOf(n)} />
                 ))}
@@ -1226,15 +1310,15 @@ function WorldTab() {
                 ))}
               </div>
               {r.bonus && (
-                <p className="text-[10px] text-[rgba(245,240,232,0.3)] mt-1 ml-5">
+                <p className="text-[10px] text-[#B5AFA5] mt-1 ml-5">
                   {r.bonusName}: {r.bonus.join(', ')}
                 </p>
               )}
             </div>
           ))}
 
-          <div className="flex gap-2 pt-3 border-t border-[#1E2240]">
-            <button onClick={handleCopy} className="flex-1 py-2.5 bg-[#1A1D35] rounded-xl text-sm font-medium hover:bg-[#1E2240] transition">
+          <div className="flex gap-2 pt-3 border-t border-[#D5CEC3]">
+            <button onClick={handleCopy} className="flex-1 py-2.5 bg-[#E8E2D8] rounded-xl text-sm font-medium hover:bg-[#E0D8CC] transition">
               📋 Copy
             </button>
             <button onClick={async () => {
@@ -1242,7 +1326,7 @@ function WorldTab() {
               if (navigator.share) { try { await navigator.share({ title: `${lottery.name} Numbers`, text }); return; } catch {} }
               await navigator.clipboard.writeText(text);
               setMsg('Copied!'); setTimeout(() => setMsg(''), 2000);
-            }} className="flex-1 py-2.5 bg-[#C5981A] text-white rounded-xl text-sm font-medium hover:bg-[#A07A10] transition">
+            }} className="flex-1 py-2.5 bg-[#8B2500] text-white rounded-xl text-sm font-medium hover:bg-[#6B1D00] transition">
               Share
             </button>
           </div>
@@ -1252,18 +1336,18 @@ function WorldTab() {
 
       {/* SEO links */}
       <div className="pt-4">
-        <p className="text-xs text-[rgba(245,240,232,0.3)] mb-2">Dedicated pages:</p>
+        <p className="text-xs text-[#B5AFA5] mb-2">Dedicated pages:</p>
         <div className="flex flex-wrap gap-1">
           {worldLotteries.filter((l) => slugMap[l.id]).map((l) => (
             <Link key={l.id} href={`/lotto/${slugMap[l.id]}`}
-              className="px-2 py-1 bg-[#0F1225] rounded text-[10px] text-[rgba(245,240,232,0.4)] hover:bg-[#1A1D35] transition">
+              className="px-2 py-1 bg-[#F0EBE0] rounded text-[10px] text-[#A5A09A] hover:bg-[#E8E2D8] transition">
               {l.country} {l.name}
             </Link>
           ))}
         </div>
       </div>
 
-      <p className="text-center text-[10px] text-[rgba(245,240,232,0.3)] leading-relaxed">
+      <p className="text-center text-[10px] text-[#B5AFA5] leading-relaxed">
         Random number generator for entertainment only.<br />
         Not affiliated with any official lottery.
       </p>
