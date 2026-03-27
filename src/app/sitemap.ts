@@ -18,6 +18,7 @@ const koreaPostSlugs = [
   'kakao-everything', 'naver-not-google', 'fastest-internet-korea',
   'korea-vs-japan', 'korean-age-explained', 'korea-safety', 'no-tipping-korea',
   'korean-couple-culture', 'korean-military-service', 'korean-apartment-life',
+  'korean-school-lunch', 'korean-noraebang', 'korean-pc-bang', 'han-river-culture', 'korean-photo-booth',
 ];
 
 // Event blog slugs

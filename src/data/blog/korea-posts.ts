@@ -545,6 +545,67 @@ export const koreaPosts: KoreaPost[] = [
     koreanWord: { word: '아파트', romanized: 'apateu', meaning: 'apartment' },
     tags: ['apartment', 'housing', 'jeonse', 'Korean life'],
   },
+  // ═══ Final 5 to reach 50 ═══
+  {
+    slug: 'korean-school-lunch', title: 'Korean School Lunch: Best in the World?', category: 'Food', emoji: '🍜', readTime: '4 min',
+    description: "Korean school lunches are nutritious, varied, and free. Many foreigners say they're better than restaurant food.",
+    intro: "Forget soggy pizza and mystery meat. Korean school lunches include fresh kimchi, grilled fish, seasonal vegetables, rice, and soup — served free to all students, every day.",
+    sections: [
+      { heading: 'What Students Eat', body: "A typical Korean school lunch includes: steamed rice, soup (doenjang-jjigae, kimchi-jjigae, etc.), a main dish (grilled fish, bulgogi, dakgalbi), 2-3 banchan (side dishes), kimchi, and sometimes fruit or dessert. The menu changes daily. Meals are nutritionally balanced and follow government guidelines. Everything is cooked fresh on-site by professional kitchen staff." },
+      { heading: 'Why It Works', body: "Korea made school lunches free nationwide in stages from 2011-2021. The government invests heavily in nutrition standards. School nutritionists plan menus monthly, incorporating seasonal ingredients and local produce. Students eat together in cafeterias with teachers. The result: Korean children have among the lowest obesity rates in the OECD." },
+    ],
+    funFact: "Korean school lunch menus are posted on an app called '스쿨런치' so parents can see exactly what their children ate.",
+    koreanWord: { word: '급식', romanized: 'geup-sik', meaning: 'school lunch / institutional meal' },
+    tags: ['school lunch', 'education', 'food', 'nutrition'],
+  },
+  {
+    slug: 'korean-noraebang', title: "Noraebang: Korea's Karaoke Room Culture", category: 'Lifestyle', emoji: '🏠', readTime: '3 min',
+    description: "In Korea, karaoke means private rooms with friends, not singing in front of strangers. Noraebang is a national pastime.",
+    intro: "Noraebang (노래방, literally 'singing room') is everywhere in Korea — there are over 30,000 of them. Unlike Western-style karaoke bars, Korean noraebang gives you a private room with just your friends.",
+    sections: [
+      { heading: 'How It Works', body: "Pay by the hour ($10-15 per room), get a private room with a massive song catalog (Korean, English, Japanese, Chinese), two microphones, a TV screen, tambourines, and mood lighting. Most noraebangs have a coin system — insert coins for extra time. The song catalog includes everything from BTS to Queen to Disney songs. Scoring systems rate your singing and create friendly competition." },
+      { heading: 'Coin Noraebang', body: "Coin noraebang (코인노래방) is the solo version — tiny booths for 1-2 people where you pay per song ($1-2). They're everywhere near subway stations and are perfect for practicing alone. No judgment, no audience — just you and the microphone. Many Koreans use coin noraebang as stress relief after work or school." },
+    ],
+    funFact: "The most-sung song in Korean noraebang history is reportedly 'Love Confession' (사랑 고백) by MBC's Kim Dong-ryul.",
+    koreanWord: { word: '노래방', romanized: 'noraebang', meaning: 'singing room (karaoke)' },
+    tags: ['noraebang', 'karaoke', 'entertainment', 'nightlife'],
+  },
+  {
+    slug: 'korean-pc-bang', title: "PC Bang: Korea's 24/7 Gaming Cafes", category: 'Lifestyle', emoji: '🏠', readTime: '4 min',
+    description: "High-end gaming PCs, cup ramen, and all-night sessions for $1/hour. PC Bangs are where Korean esports culture was born.",
+    intro: "Walk into a Korean PC Bang (PC방) and you'll find rows of high-spec gaming PCs, ergonomic chairs, and gamers playing League of Legends at 3 AM while eating cup ramen. Welcome to Korea's gaming culture.",
+    sections: [
+      { heading: 'The Experience', body: "PC Bangs charge about $1-1.50 per hour. Every PC has top-tier specs (RTX 4070+, 240Hz monitors, mechanical keyboards). All popular games are pre-installed. You can order food directly to your station — ramen, fried rice, tteokbokki, soft drinks. Many operate 24/7. Some have 'premium' sections with better chairs and larger monitors. The atmosphere is dark, neon-lit, and intensely focused." },
+      { heading: 'Cultural Impact', body: "PC Bangs birthed Korean esports. StarCraft, League of Legends, and Overwatch all became massive in Korea through PC Bang culture. During the 1997 financial crisis, unemployed young people flocked to cheap PC Bangs, creating a generation of hardcore gamers. Today Korea has about 20,000 PC Bangs, and they remain central to gaming culture even as home PCs become more powerful." },
+    ],
+    funFact: "The Korean government passed a 'Cinderella Law' (2011-2021) that banned minors from gaming at PC Bangs between midnight and 6 AM.",
+    koreanWord: { word: 'PC방', romanized: 'pi-ssi-bang', meaning: 'PC room (gaming cafe)' },
+    tags: ['PC Bang', 'gaming', 'esports', 'Korean culture'],
+  },
+  {
+    slug: 'han-river-culture', title: 'Han River: Where All of Seoul Comes to Relax', category: 'Travel', emoji: '🏙️', readTime: '3 min',
+    description: "Ordering chicken to a riverside park, cycling 40km paths, and watching the sunset — Han River is Seoul's living room.",
+    intro: "The Han River isn't just a river — it's Seoul's central park, picnic ground, cycling highway, and social hub. On any warm evening, thousands of Seoulites gather along its banks.",
+    sections: [
+      { heading: 'What People Do', body: "Order delivery chicken and beer (치맥) to your exact GPS location by the river. Rent bicycles and ride the 40km riverside path. Watch the Banpo Bridge Rainbow Fountain (the world's longest bridge fountain). Rent camping mats and tents at riverside parks. Play badminton, rollerblade, or fly kites. Watch buskers perform near bridges. Simply sit and watch the sunset over the Seoul skyline." },
+      { heading: 'Best Spots', body: "Yeouido Hangang Park — Most popular, closest to downtown. Banpo Hangang Park — Rainbow fountain, floating islands. Ttukseom — Water sports, swimming pool in summer. Mangwon Hangang Park — Less crowded, local vibe. Nanji Hangang Park — Near World Cup Stadium, great sunset views. Each park has convenience stores, restrooms, and bike rental stations." },
+    ],
+    funFact: "Eating ramyeon by the Han River is such an iconic Korean experience that instant noodle vending machines are installed at every riverside park.",
+    koreanWord: { word: '한강', romanized: 'Han-gang', meaning: 'Han River' },
+    tags: ['Han River', 'Seoul', 'parks', 'picnic', 'cycling'],
+  },
+  {
+    slug: 'korean-photo-booth', title: "Korean Photo Booths: Why 4-Cut Photos Are Everywhere", category: 'Lifestyle', emoji: '🏠', readTime: '3 min',
+    description: "인생네컷, Photoism, Haru Film — Korea's photo booth craze is more than a trend. It's a cultural phenomenon.",
+    intro: "Walk through any Korean shopping district and you'll see them: colorful photo booth shops packed with young Koreans taking '4-cut' photos (네컷사진). It's not just a fad — it's become a core part of Korean social life.",
+    sections: [
+      { heading: 'The Culture', body: "Korean photo booths (인생네컷, Photoism, Haru Film, etc.) take 4 photos in sequence, printed as a strip. But unlike Western photo booths, Korean versions offer: frame selection (hundreds of designs, including K-Pop collaborations), beauty filters applied in real-time, props and costumes, and a digital copy sent to your phone. A session costs $3-5." },
+      { heading: 'Why So Popular', body: "Photo booths serve a specific social function in Korea: they create physical mementos of friendships and dates. Koreans collect photo strips in wallets, on phone cases, and on bedroom walls. It's the analog counterpart to digital selfies — something tangible to keep. Couples take them on every date. Friends take them at every gathering. Even corporate teams take group photo booth shots." },
+    ],
+    funFact: "인생네컷 (Life 4 Cuts) — the biggest chain — takes over 10 million photos per month across Korea.",
+    koreanWord: { word: '인생네컷', romanized: 'insaeng-ne-keot', meaning: 'life four cuts (photo booth brand)' },
+    tags: ['photo booth', 'selfie', 'Korean trend', '인생네컷'],
+  },
 ];
 
 export function getKoreaPostBySlug(slug: string): KoreaPost | undefined {
