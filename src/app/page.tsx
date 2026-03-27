@@ -38,8 +38,8 @@ export default function Home() {
               <p className="text-[11px] tracking-[0.4em] mb-12" style={{ color: '#BCBCBC' }}>
                 DHLM STUDIO
               </p>
-              <h1 className="text-[clamp(24px,3.5vw,36px)] font-normal leading-[1.7]"
-                style={{ fontFamily: 'var(--font-noto-serif-kr), serif', color: '#1A1A1A', letterSpacing: '0.05em' }}>
+              <h1 className="text-[clamp(28px,4vw,44px)] font-normal leading-[1.6]"
+                style={{ fontFamily: 'var(--font-noto-serif-kr), serif', color: '#1A1A1A', letterSpacing: '0.06em' }}>
                 한국의 문화를<br />세계와 연결합니다
               </h1>
               <p className="text-[15px] mt-8 italic leading-relaxed" style={{ fontFamily: 'var(--font-playfair), serif', color: '#B0B0B0' }}>
