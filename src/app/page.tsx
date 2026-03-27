@@ -162,19 +162,23 @@ export default function Home() {
               <p className="text-[12px] tracking-[0.1em] mb-4" style={{ color: '#9CA3AF' }}>Comebacks</p>
               <div className="space-y-3 mb-8">
                 {koreaMonthly.kpop.comebacks.map((cb) => (
-                  <div key={cb.artist} style={{ borderBottom: '1px solid #F0F0F0', paddingBottom: '12px' }}>
-                    <p className="text-sm font-medium" style={{ color: '#1A1A1A' }}>{cb.artist}</p>
+                  <a key={cb.artist} href={`https://www.youtube.com/results?search_query=${encodeURIComponent(cb.artist + ' ' + cb.title)}`}
+                    target="_blank" rel="noopener noreferrer"
+                    className="block transition-colors hover:text-[#C73E3A]" style={{ borderBottom: '1px solid #F0F0F0', paddingBottom: '12px' }}>
+                    <p className="text-sm font-medium" style={{ color: 'inherit' }}>{cb.artist}</p>
                     <p className="text-[12px]" style={{ color: '#9CA3AF' }}>{cb.title} · {cb.date}</p>
-                  </div>
+                  </a>
                 ))}
               </div>
               <p className="text-[12px] tracking-[0.1em] mb-4" style={{ color: '#9CA3AF' }}>Concerts in Korea</p>
               <div className="space-y-3">
                 {koreaMonthly.kpop.concerts.map((c) => (
-                  <div key={c.artist} style={{ borderBottom: '1px solid #F0F0F0', paddingBottom: '12px' }}>
-                    <p className="text-sm font-medium" style={{ color: '#1A1A1A' }}>{c.artist}</p>
+                  <a key={c.artist} href={`https://www.youtube.com/results?search_query=${encodeURIComponent(c.artist + ' concert ' + c.dates)}`}
+                    target="_blank" rel="noopener noreferrer"
+                    className="block transition-colors hover:text-[#C73E3A]" style={{ borderBottom: '1px solid #F0F0F0', paddingBottom: '12px' }}>
+                    <p className="text-sm font-medium" style={{ color: 'inherit' }}>{c.artist}</p>
                     <p className="text-[12px]" style={{ color: '#9CA3AF' }}>{c.venue} · {c.dates}</p>
-                  </div>
+                  </a>
                 ))}
               </div>
             </div>
@@ -185,22 +189,26 @@ export default function Home() {
               <p className="text-[12px] tracking-[0.1em] mb-4" style={{ color: '#9CA3AF' }}>Hot Dramas</p>
               <div className="space-y-3 mb-8">
                 {koreaMonthly.drama.map((d) => (
-                  <div key={d.name} style={{ borderBottom: '1px solid #F0F0F0', paddingBottom: '12px' }}>
-                    <p className="text-sm font-medium" style={{ color: '#1A1A1A' }}>{d.name}</p>
+                  <a key={d.name} href={`https://www.google.com/search?q=${encodeURIComponent(d.name + ' ' + d.platform)}`}
+                    target="_blank" rel="noopener noreferrer"
+                    className="block transition-colors hover:text-[#C73E3A]" style={{ borderBottom: '1px solid #F0F0F0', paddingBottom: '12px' }}>
+                    <p className="text-sm font-medium" style={{ color: 'inherit' }}>{d.name}</p>
                     <p className="text-[12px]" style={{ color: '#9CA3AF' }}>{d.platform} · {d.genre}</p>
-                  </div>
+                  </a>
                 ))}
               </div>
               <p className="text-[12px] tracking-[0.1em] mb-4" style={{ color: '#9CA3AF' }}>Korean Slang</p>
               <div className="space-y-3">
                 {koreaMonthly.trending.slang.map((s) => (
-                  <div key={s.word} style={{ borderBottom: '1px solid #F0F0F0', paddingBottom: '12px' }}>
+                  <a key={s.word} href={`https://www.google.com/search?q=${encodeURIComponent(s.word + ' Korean slang meaning')}`}
+                    target="_blank" rel="noopener noreferrer"
+                    className="block transition-colors hover:text-[#C73E3A]" style={{ borderBottom: '1px solid #F0F0F0', paddingBottom: '12px' }}>
                     <div className="flex items-baseline gap-2">
-                      <p className="text-sm font-medium" style={{ fontFamily: serif, color: '#1A1A1A' }}>{s.word}</p>
+                      <p className="text-sm font-medium" style={{ fontFamily: serif, color: 'inherit' }}>{s.word}</p>
                       <p className="text-[11px]" style={{ color: '#BCBCBC' }}>{s.romanized}</p>
                     </div>
                     <p className="text-[12px] mt-0.5" style={{ color: '#6B7280' }}>{s.meaning}</p>
-                  </div>
+                  </a>
                 ))}
               </div>
             </div>
@@ -218,13 +226,15 @@ export default function Home() {
               </p>
               <div className="space-y-3">
                 {koreaMonthly.beauty.oliveyoungTop.map((p, i) => (
-                  <div key={p.name} className="flex items-start gap-4" style={{ borderBottom: '1px solid #F0F0F0', paddingBottom: '12px' }}>
+                  <a key={p.name} href={`https://www.google.com/search?q=${encodeURIComponent(p.brand + ' ' + p.name + ' review')}`}
+                    target="_blank" rel="noopener noreferrer"
+                    className="flex items-start gap-4 transition-colors hover:text-[#C73E3A]" style={{ borderBottom: '1px solid #F0F0F0', paddingBottom: '12px' }}>
                     <span className="text-[12px] mt-0.5 shrink-0" style={{ color: '#C73E3A' }}>{String(i + 1).padStart(2, '0')}</span>
                     <div>
-                      <p className="text-sm font-medium" style={{ color: '#1A1A1A' }}>{p.name}</p>
+                      <p className="text-sm font-medium" style={{ color: 'inherit' }}>{p.name}</p>
                       <p className="text-[12px]" style={{ color: '#9CA3AF' }}>{p.brand} · {p.category}</p>
                     </div>
-                  </div>
+                  </a>
                 ))}
               </div>
             </div>
@@ -234,10 +244,12 @@ export default function Home() {
               </p>
               <div className="space-y-3">
                 {koreaMonthly.beauty.popups.map((p) => (
-                  <div key={p.brand} style={{ borderBottom: '1px solid #F0F0F0', paddingBottom: '12px' }}>
-                    <p className="text-sm font-medium" style={{ color: '#1A1A1A' }}>{p.brand}</p>
+                  <a key={p.brand} href={`https://www.google.com/search?q=${encodeURIComponent(p.brand + ' popup store Seoul ' + p.location)}`}
+                    target="_blank" rel="noopener noreferrer"
+                    className="block transition-colors hover:text-[#C73E3A]" style={{ borderBottom: '1px solid #F0F0F0', paddingBottom: '12px' }}>
+                    <p className="text-sm font-medium" style={{ color: 'inherit' }}>{p.brand}</p>
                     <p className="text-[12px]" style={{ color: '#9CA3AF' }}>{p.location} · Until {p.until}</p>
-                  </div>
+                  </a>
                 ))}
               </div>
             </div>
