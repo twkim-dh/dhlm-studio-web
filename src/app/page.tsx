@@ -2,6 +2,7 @@
 
 import Link from 'next/link';
 import { monthlyEvents, getMonthName, getMonthNameKr } from '@/data/monthly-events';
+import { koreaMonthly } from '@/data/korea-interests';
 
 const serif = 'var(--font-noto-serif-kr), var(--font-playfair), serif';
 
@@ -143,6 +144,110 @@ export default function Home() {
                 <p className="text-[12px] mt-1.5 leading-relaxed" style={{ color: '#6B7280' }}>{food.desc}</p>
               </div>
             ))}
+          </div>
+        </div>
+      </section>
+
+      {/* ── K-Pop & K-Drama ── */}
+      <section style={{ background: '#FAFAFA', borderTop: '1px solid #E5E7EB' }}>
+        <div className="mx-auto px-6" style={{ maxWidth: '960px', paddingTop: '80px', paddingBottom: '80px' }}>
+          <div className="grid grid-cols-1 md:grid-cols-2 gap-16">
+            {/* K-Pop Comebacks & Concerts */}
+            <div>
+              <p className="text-[11px] tracking-[0.25em] mb-8" style={{ fontFamily: 'var(--font-playfair), serif', color: '#BCBCBC' }}>
+                K-Pop · {koreaMonthly.updatedAt}
+              </p>
+
+              <p className="text-[12px] tracking-[0.1em] mb-4" style={{ color: '#9CA3AF' }}>Comebacks</p>
+              <div className="space-y-3 mb-8">
+                {koreaMonthly.kpop.comebacks.map((cb) => (
+                  <div key={cb.artist} style={{ borderBottom: '1px solid #F0F0F0', paddingBottom: '12px' }}>
+                    <p className="text-sm font-medium" style={{ color: '#1A1A1A' }}>{cb.artist}</p>
+                    <p className="text-[12px]" style={{ color: '#9CA3AF' }}>{cb.title} · {cb.date}</p>
+                  </div>
+                ))}
+              </div>
+
+              <p className="text-[12px] tracking-[0.1em] mb-4" style={{ color: '#9CA3AF' }}>Concerts in Korea</p>
+              <div className="space-y-3">
+                {koreaMonthly.kpop.concerts.map((c) => (
+                  <div key={c.artist} style={{ borderBottom: '1px solid #F0F0F0', paddingBottom: '12px' }}>
+                    <p className="text-sm font-medium" style={{ color: '#1A1A1A' }}>{c.artist}</p>
+                    <p className="text-[12px]" style={{ color: '#9CA3AF' }}>{c.venue} · {c.dates}</p>
+                  </div>
+                ))}
+              </div>
+            </div>
+
+            {/* K-Drama + Trending Slang */}
+            <div>
+              <p className="text-[11px] tracking-[0.25em] mb-8" style={{ fontFamily: 'var(--font-playfair), serif', color: '#BCBCBC' }}>
+                K-Drama & Trending
+              </p>
+
+              <p className="text-[12px] tracking-[0.1em] mb-4" style={{ color: '#9CA3AF' }}>Hot Dramas</p>
+              <div className="space-y-3 mb-8">
+                {koreaMonthly.drama.map((d) => (
+                  <div key={d.name} style={{ borderBottom: '1px solid #F0F0F0', paddingBottom: '12px' }}>
+                    <p className="text-sm font-medium" style={{ color: '#1A1A1A' }}>{d.name}</p>
+                    <p className="text-[12px]" style={{ color: '#9CA3AF' }}>{d.platform} · {d.genre}</p>
+                  </div>
+                ))}
+              </div>
+
+              <p className="text-[12px] tracking-[0.1em] mb-4" style={{ color: '#9CA3AF' }}>Korean Slang</p>
+              <div className="space-y-3">
+                {koreaMonthly.trending.slang.map((s) => (
+                  <div key={s.word} style={{ borderBottom: '1px solid #F0F0F0', paddingBottom: '12px' }}>
+                    <div className="flex items-baseline gap-2">
+                      <p className="text-sm font-medium" style={{ fontFamily: serif, color: '#1A1A1A' }}>{s.word}</p>
+                      <p className="text-[11px]" style={{ color: '#BCBCBC' }}>{s.romanized}</p>
+                    </div>
+                    <p className="text-[12px] mt-0.5" style={{ color: '#6B7280' }}>{s.meaning}</p>
+                  </div>
+                ))}
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      {/* ── K-Beauty & Shopping ── */}
+      <section style={{ background: '#FFFFFF', borderTop: '1px solid #E5E7EB' }}>
+        <div className="mx-auto px-6" style={{ maxWidth: '960px', paddingTop: '80px', paddingBottom: '80px' }}>
+          <div className="grid grid-cols-1 md:grid-cols-2 gap-16">
+            {/* Olive Young Best Sellers */}
+            <div>
+              <p className="text-[11px] tracking-[0.25em] mb-8" style={{ fontFamily: 'var(--font-playfair), serif', color: '#BCBCBC' }}>
+                K-Beauty Best Sellers
+              </p>
+              <div className="space-y-3">
+                {koreaMonthly.beauty.oliveyoungTop.map((p, i) => (
+                  <div key={p.name} className="flex items-start gap-4" style={{ borderBottom: '1px solid #F0F0F0', paddingBottom: '12px' }}>
+                    <span className="text-[12px] mt-0.5 shrink-0" style={{ color: '#C73E3A' }}>{String(i + 1).padStart(2, '0')}</span>
+                    <div>
+                      <p className="text-sm font-medium" style={{ color: '#1A1A1A' }}>{p.name}</p>
+                      <p className="text-[12px]" style={{ color: '#9CA3AF' }}>{p.brand} · {p.category}</p>
+                    </div>
+                  </div>
+                ))}
+              </div>
+            </div>
+
+            {/* Pop-up Stores */}
+            <div>
+              <p className="text-[11px] tracking-[0.25em] mb-8" style={{ fontFamily: 'var(--font-playfair), serif', color: '#BCBCBC' }}>
+                Pop-up Stores in Seoul
+              </p>
+              <div className="space-y-3">
+                {koreaMonthly.beauty.popups.map((p) => (
+                  <div key={p.brand} style={{ borderBottom: '1px solid #F0F0F0', paddingBottom: '12px' }}>
+                    <p className="text-sm font-medium" style={{ color: '#1A1A1A' }}>{p.brand}</p>
+                    <p className="text-[12px]" style={{ color: '#9CA3AF' }}>{p.location} · Until {p.until}</p>
+                  </div>
+                ))}
+              </div>
+            </div>
           </div>
         </div>
       </section>
