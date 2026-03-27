@@ -37,12 +37,6 @@ export default async function KoreaPostPage({ params }: { params: Promise<{ slug
 
   return (
     <div style={{ background: '#FFFFFF' }}>
-      {/* Hero image */}
-      <div className="w-full overflow-hidden" style={{ height: 'clamp(200px, 35vw, 360px)' }}>
-        <img src={post.image} alt={post.title}
-          className="w-full h-full object-cover" loading="eager" />
-      </div>
-
       <article className="mx-auto px-6" style={{ maxWidth: '720px', paddingTop: '48px', paddingBottom: '80px' }}>
         {/* Meta */}
         <p className="text-[12px] mb-6" style={{ color: '#BCBCBC' }}>

@@ -45,7 +45,7 @@ export const koreaPosts: KoreaPost[] = [
     description: 'Many Koreans believe sleeping with an electric fan on in a closed room can kill you. Here\'s why.',
     intro: 'Ask any Korean about sleeping with a fan on in a closed room. Many will genuinely warn you it could be fatal. Welcome to "fan death" — Korea\'s most uniquely Korean urban legend.',
     sections: [
-      { heading: 'The Belief', image: 'https://images.unsplash.com/photo-1581783898377-1c85bf937427?w=700&q=75', imageAlt: 'Electric fan in Korean room', body: 'Fan death (선풍기 사망) is the belief that an electric fan running overnight in a sealed room can cause death by hypothermia or suffocation. Korean media has reported fan death cases for decades, and many electric fans sold in Korea come with auto-off timers specifically for this reason.' },
+      { heading: 'The Belief', body: 'Fan death (선풍기 사망) is the belief that an electric fan running overnight in a sealed room can cause death by hypothermia or suffocation. Korean media has reported fan death cases for decades, and many electric fans sold in Korea come with auto-off timers specifically for this reason.' },
       { heading: 'Why It Persists', body: 'Scientists have debunked fan death repeatedly, but the belief persists. Some theories suggest the government promoted the myth during energy crises to reduce electricity usage. Others point to confirmation bias — when someone dies in a room with a fan, the fan gets blamed.' },
     ],
     funFact: 'Korean electric fans are often sold with built-in timers that automatically shut off after a set period.',
