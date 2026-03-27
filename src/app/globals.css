@@ -12,12 +12,12 @@
   --k-stone: #D5CEC3;
   --k-roof: #2C1810;
 
-  /* Default (main page) */
-  --area-bg: var(--k-night);
-  --area-card: #13162B;
-  --area-accent: var(--k-gold);
-  --area-text: var(--k-cream);
-  --area-muted: #8D8478;
+  /* Default (main page) — white */
+  --area-bg: #FFFFFF;
+  --area-card: #FFFFFF;
+  --area-accent: #C73E3A;
+  --area-text: #1A1A1A;
+  --area-muted: #6B7280;
 
   --font-sans: var(--font-noto-sans-kr);
 }

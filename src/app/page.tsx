@@ -1,6 +1,7 @@
 'use client';
 
 import Link from 'next/link';
+import { monthlyEvents, getMonthName, getMonthNameKr } from '@/data/monthly-events';
 
 const serif = 'var(--font-noto-serif-kr), var(--font-playfair), serif';
 
@@ -21,11 +22,16 @@ const posts = [
   'Never Write Names in Red Ink',
 ];
 
+// Next month's data
+const now = new Date();
+const nextMonth = now.getMonth() + 2 > 12 ? 1 : now.getMonth() + 2;
+const monthData = monthlyEvents[nextMonth];
+
 export default function Home() {
   return (
     <>
       {/* ── Hero ── */}
-      <section className="px-6" style={{ paddingTop: '140px', paddingBottom: '140px' }}>
+      <section className="px-6" style={{ paddingTop: '140px', paddingBottom: '140px', background: '#FFFFFF' }}>
         <div className="mx-auto" style={{ maxWidth: '960px' }}>
           <p className="text-sm tracking-[0.3em] mb-10" style={{ color: '#6B7280' }}>
             DHLM STUDIO
@@ -36,7 +42,7 @@ export default function Home() {
           <p className="text-lg mt-6 italic" style={{ fontFamily: 'var(--font-playfair), serif', color: '#6B7280' }}>
             Connecting Korean Culture to the World
           </p>
-          <div className="mt-16 mx-0" style={{ width: '40%', height: '1px', background: '#E5E7EB' }} />
+          <div className="mt-16" style={{ width: '40%', height: '1px', background: '#E5E7EB' }} />
         </div>
       </section>
 
@@ -77,8 +83,53 @@ export default function Home() {
         </div>
       </section>
 
+      {/* ── Coming Next Month ── */}
+      <section style={{ background: '#FFFFFF', borderTop: '1px solid #E5E7EB' }}>
+        <div className="mx-auto px-6" style={{ maxWidth: '960px', paddingTop: '80px', paddingBottom: '80px' }}>
+          <div className="flex items-baseline gap-4 mb-10">
+            <p className="text-sm tracking-[0.2em]" style={{ fontFamily: 'var(--font-playfair), serif', color: '#6B7280' }}>
+              Coming in {getMonthName(nextMonth)}
+            </p>
+            <p className="text-sm" style={{ fontFamily: serif, color: '#9CA3AF' }}>
+              {getMonthNameKr(nextMonth)}의 한국
+            </p>
+          </div>
+
+          {/* Events */}
+          <p className="text-[13px] tracking-[0.15em] mb-6" style={{ color: '#9CA3AF' }}>Events</p>
+          <div className="space-y-6 mb-12">
+            {monthData.events.map((ev) => (
+              <div key={ev.name} style={{ borderBottom: '1px solid #F3F4F6', paddingBottom: '24px' }}>
+                <div className="flex items-start gap-3">
+                  <span className="text-xl mt-0.5">{ev.emoji}</span>
+                  <div>
+                    <p className="text-base font-medium" style={{ color: '#1A1A1A' }}>{ev.name}</p>
+                    <p className="text-sm" style={{ fontFamily: serif, color: '#6B7280' }}>{ev.nameKr}</p>
+                    <p className="text-[13px] mt-1.5" style={{ color: '#9CA3AF' }}>{ev.period}</p>
+                    <p className="text-sm mt-2 leading-relaxed" style={{ color: '#4B5563' }}>{ev.desc}</p>
+                  </div>
+                </div>
+              </div>
+            ))}
+          </div>
+
+          {/* Seasonal Food */}
+          <p className="text-[13px] tracking-[0.15em] mb-6" style={{ color: '#9CA3AF' }}>Seasonal Food</p>
+          <div className="grid grid-cols-1 sm:grid-cols-3 gap-4">
+            {monthData.foods.map((food) => (
+              <div key={food.name} className="border bg-[#FAFAFA]" style={{ borderColor: '#E5E7EB', borderRadius: '4px', padding: '24px' }}>
+                <span className="text-2xl">{food.emoji}</span>
+                <p className="text-sm font-medium mt-2" style={{ color: '#1A1A1A' }}>{food.name}</p>
+                <p className="text-[13px]" style={{ fontFamily: serif, color: '#6B7280' }}>{food.nameKr}</p>
+                <p className="text-[13px] mt-2 leading-relaxed" style={{ color: '#9CA3AF' }}>{food.desc}</p>
+              </div>
+            ))}
+          </div>
+        </div>
+      </section>
+
       {/* ── Popular ── */}
-      <section style={{ borderTop: '1px solid #E5E7EB' }}>
+      <section style={{ background: '#FFFFFF', borderTop: '1px solid #E5E7EB' }}>
         <div className="mx-auto px-6" style={{ maxWidth: '960px', paddingTop: '100px', paddingBottom: '100px' }}>
           <p className="text-sm tracking-[0.2em] mb-12" style={{ fontFamily: 'var(--font-playfair), serif', color: '#6B7280' }}>
             Most Read
@@ -111,13 +162,13 @@ export default function Home() {
       {/* ── More ── */}
       <section style={{ background: '#111111' }}>
         <div className="mx-auto px-6" style={{ maxWidth: '960px', paddingTop: '100px', paddingBottom: '100px' }}>
-          <p className="text-sm tracking-[0.2em] mb-12" style={{ fontFamily: 'var(--font-playfair), serif', color: '#6B7280' }}>
+          <p className="text-sm tracking-[0.2em] mb-12" style={{ fontFamily: 'var(--font-playfair), serif', color: '#9CA3AF' }}>
             Also from DHLM Studio
           </p>
 
           <div className="grid grid-cols-2 sm:grid-cols-3 gap-y-12">
             {[
-              { ko: '복권', en: 'World Lottery', desc: '10+ lotteries', href: '/lotto' },
+              { ko: '복권', en: 'World Lottery', desc: '25+ lotteries', href: '/lotto' },
               { ko: '도구', en: 'Free Tools', desc: '80+ calculators', href: '/tools' },
               { ko: '운세', en: 'Fortune', desc: 'Daily luck', href: '/lotto#fortune' },
             ].map((item) => (
@@ -126,8 +177,8 @@ export default function Home() {
                   style={{ fontFamily: serif, color: '#FFFFFF' }}>
                   {item.ko}
                 </p>
-                <p className="text-sm mt-1" style={{ color: '#6B7280' }}>{item.en}</p>
-                <p className="text-[13px] mt-0.5" style={{ color: '#4B5563' }}>{item.desc}</p>
+                <p className="text-sm mt-1" style={{ color: '#9CA3AF' }}>{item.en}</p>
+                <p className="text-[13px] mt-0.5" style={{ color: '#6B7280' }}>{item.desc}</p>
               </Link>
             ))}
           </div>
