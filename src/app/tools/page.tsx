@@ -111,18 +111,18 @@ function CategorySection({ id, icon, title, tools }: CategoryProps) {
   return (
     <section id={id} className="mb-14">
       <h2 className="text-lg font-bold mb-4 flex items-center gap-2"
-        style={{ fontFamily: "var(--font-noto-serif-kr), serif", color: '#2C1810' }}>
+        style={{ fontFamily: "var(--font-noto-serif-kr), serif", color: '#1A1A1A' }}>
         <span>{icon}</span>
         {title}
-        <span className="text-xs font-normal" style={{ color: '#8D8478' }}>({tools.length})</span>
+        <span className="text-xs font-normal" style={{ color: '#6B7280' }}>({tools.length})</span>
       </h2>
       <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-3">
         {tools.map((tool) => (
           <Link key={tool.name} href={tool.href}
-            className="block p-4 bg-white border transition-all hover:border-[#1A237E] hover:shadow-md"
-            style={{ borderColor: '#D5CEC3', borderRadius: '4px' }}>
-            <h3 className="font-semibold text-sm mb-1" style={{ color: '#2C1810' }}>{tool.name}</h3>
-            <p className="text-xs" style={{ color: '#8D8478' }}>{tool.desc}</p>
+            className="block p-4 bg-white border transition-all hover:border-[#C73E3A] hover:shadow-md"
+            style={{ borderColor: '#E5E7EB', borderRadius: '4px' }}>
+            <h3 className="font-semibold text-sm mb-1" style={{ color: '#1A1A1A' }}>{tool.name}</h3>
+            <p className="text-xs" style={{ color: '#6B7280' }}>{tool.desc}</p>
           </Link>
         ))}
       </div>
@@ -134,18 +134,18 @@ export default function Home() {
   const totalTools = financeTools.length + lifeTools.length + mfgTools.length + devTools.length + imageTools.length + docTools.length + genTools.length + compareTools.length;
 
   return (
-    <div style={{ background: '#FAFAF8' }}>
+    <div style={{ background: '#FFFFFF' }}>
       {/* Hero */}
       <div className="py-14 sm:py-18 text-center">
-        <p className="text-[10px] tracking-[0.4em] mb-3" style={{ color: '#1A237E' }}>TOOLS</p>
+        <p className="text-[10px] tracking-[0.4em] mb-3" style={{ color: '#C73E3A' }}>TOOLS</p>
         <h1 className="text-2xl sm:text-3xl font-bold tracking-[0.08em]"
-          style={{ fontFamily: "var(--font-noto-serif-kr), serif", color: '#2C1810' }}>
+          style={{ fontFamily: "var(--font-noto-serif-kr), serif", color: '#1A1A1A' }}>
           무료 도구
         </h1>
-        <p className="text-sm mt-2" style={{ color: '#8D8478' }}>
+        <p className="text-sm mt-2" style={{ color: '#6B7280' }}>
           로그인 없이 바로 사용하는 {totalTools}개 도구
         </p>
-        <div className="w-8 h-[2px] mx-auto mt-4" style={{ background: '#1A237E' }} />
+        <div className="w-8 h-[2px] mx-auto mt-4" style={{ background: '#C73E3A' }} />
       </div>
 
       <div className="max-w-5xl mx-auto px-5 sm:px-8 pb-16">

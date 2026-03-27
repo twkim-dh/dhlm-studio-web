@@ -22,25 +22,72 @@ const posts = [
   'Never Write Names in Red Ink',
 ];
 
-// Current month data
-const currentMonth = new Date().getMonth() + 1; // 1~12
-const monthData = monthlyEvents[currentMonth];
+// Next month data
+const nextMonth = new Date().getMonth() + 2 > 12 ? 1 : new Date().getMonth() + 2;
+const monthData = monthlyEvents[nextMonth];
 
 export default function Home() {
   return (
     <>
-      {/* ── Hero ── */}
-      <section className="px-6" style={{ paddingTop: '140px', paddingBottom: '140px', background: '#FFFFFF' }}>
+      {/* ── Hero — Left: Title / Right: Next Month Events ── */}
+      <section className="px-6" style={{ paddingTop: '100px', paddingBottom: '100px', background: '#FFFFFF' }}>
         <div className="mx-auto" style={{ maxWidth: '960px' }}>
-          <p className="text-sm tracking-[0.3em] mb-10" style={{ color: '#6B7280' }}>
-            DHLM STUDIO
-          </p>
-          <h1 className="text-[clamp(32px,5vw,56px)] font-bold leading-[1.5]" style={{ fontFamily: serif, color: '#1A1A1A', letterSpacing: '0.05em' }}>
-            한국의 문화를<br />세계와 연결합니다
-          </h1>
-          <p className="text-lg mt-6 italic" style={{ fontFamily: 'var(--font-playfair), serif', color: '#6B7280' }}>
-            Connecting Korean Culture to the World
-          </p>
+          <div className="grid grid-cols-1 md:grid-cols-2 gap-12 md:gap-16 items-start">
+            {/* Left — Title */}
+            <div>
+              <p className="text-sm tracking-[0.3em] mb-8" style={{ color: '#6B7280' }}>
+                DHLM STUDIO
+              </p>
+              <h1 className="text-[clamp(28px,4vw,48px)] font-bold leading-[1.5]" style={{ fontFamily: serif, color: '#1A1A1A', letterSpacing: '0.05em' }}>
+                한국의 문화를<br />세계와 연결합니다
+              </h1>
+              <p className="text-base mt-5 italic" style={{ fontFamily: 'var(--font-playfair), serif', color: '#6B7280' }}>
+                Connecting Korean Culture<br />to the World
+              </p>
+            </div>
+
+            {/* Right — Next Month Events */}
+            <div>
+              <div className="flex items-baseline gap-3 mb-6">
+                <p className="text-[13px] tracking-[0.15em]" style={{ fontFamily: 'var(--font-playfair), serif', color: '#6B7280' }}>
+                  Coming in {getMonthName(nextMonth)}
+                </p>
+                <p className="text-[13px]" style={{ fontFamily: serif, color: '#9CA3AF' }}>
+                  {getMonthNameKr(nextMonth)}
+                </p>
+              </div>
+              <div className="space-y-4">
+                {monthData.events.map((ev) => (
+                  <div key={ev.name} style={{ borderBottom: '1px solid #F3F4F6', paddingBottom: '16px' }}>
+                    <div className="flex items-start gap-2.5">
+                      <span className="text-base mt-0.5">{ev.emoji}</span>
+                      <div className="flex-1 min-w-0">
+                        <p className="text-sm font-medium" style={{ color: '#1A1A1A' }}>{ev.name}</p>
+                        <p className="text-[12px]" style={{ fontFamily: serif, color: '#9CA3AF' }}>{ev.nameKr} · {ev.period}</p>
+                        <p className="text-[13px] mt-1 leading-relaxed" style={{ color: '#6B7280' }}>{ev.desc}</p>
+                        <div className="flex items-center gap-3 mt-1.5">
+                          {ev.url && (
+                            <a href={ev.url} target="_blank" rel="noopener noreferrer"
+                              className="text-[11px] transition-colors duration-200 hover:text-[#C73E3A]" style={{ color: '#9CA3AF' }}>
+                              Official →
+                            </a>
+                          )}
+                          <button onClick={() => {
+                            const text = `${ev.emoji} ${ev.name} (${ev.nameKr})\n${ev.period}\n${ev.desc}\n\nhttps://dhlm-studio.com`;
+                            if (navigator.share) { navigator.share({ title: ev.name, text }).catch(() => {}); }
+                            else { navigator.clipboard.writeText(text); }
+                          }} className="text-[11px] transition-colors duration-200 hover:text-[#C73E3A]" style={{ color: '#9CA3AF' }}>
+                            Share
+                          </button>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                ))}
+              </div>
+            </div>
+          </div>
+
           <div className="mt-16" style={{ width: '40%', height: '1px', background: '#E5E7EB' }} />
         </div>
       </section>
@@ -82,63 +129,19 @@ export default function Home() {
         </div>
       </section>
 
-      {/* ── This Month in Korea ── */}
+      {/* ── Seasonal Food (compact) ── */}
       <section style={{ background: '#FFFFFF', borderTop: '1px solid #E5E7EB' }}>
-        <div className="mx-auto px-6" style={{ maxWidth: '960px', paddingTop: '80px', paddingBottom: '80px' }}>
-          <div className="flex items-baseline gap-4 mb-10">
-            <p className="text-sm tracking-[0.2em]" style={{ fontFamily: 'var(--font-playfair), serif', color: '#6B7280' }}>
-              Korea in {getMonthName(currentMonth)}
-            </p>
-            <p className="text-sm" style={{ fontFamily: serif, color: '#9CA3AF' }}>
-              {getMonthNameKr(currentMonth)}의 한국
-            </p>
-          </div>
-
-          {/* Events */}
-          <p className="text-[13px] tracking-[0.15em] mb-6" style={{ color: '#9CA3AF' }}>Events</p>
-          <div className="space-y-6 mb-12">
-            {monthData.events.map((ev) => (
-              <div key={ev.name} style={{ borderBottom: '1px solid #F3F4F6', paddingBottom: '24px' }}>
-                <div className="flex items-start gap-3">
-                  <span className="text-xl mt-0.5">{ev.emoji}</span>
-                  <div className="flex-1">
-                    <p className="text-base font-medium" style={{ color: '#1A1A1A' }}>{ev.name}</p>
-                    <p className="text-sm" style={{ fontFamily: serif, color: '#6B7280' }}>{ev.nameKr}</p>
-                    <p className="text-[13px] mt-1.5" style={{ color: '#9CA3AF' }}>{ev.period}</p>
-                    <p className="text-sm mt-2 leading-relaxed" style={{ color: '#4B5563' }}>{ev.desc}</p>
-                    <div className="flex items-center gap-4 mt-3">
-                      {ev.url && (
-                        <a href={ev.url} target="_blank" rel="noopener noreferrer"
-                          className="text-[12px] transition-colors duration-200 hover:text-[#C73E3A]"
-                          style={{ color: '#6B7280' }}>
-                          Official site →
-                        </a>
-                      )}
-                      <button onClick={() => {
-                        const text = `${ev.emoji} ${ev.name} (${ev.nameKr})\n${ev.period}\n${ev.desc}\n\nhttps://dhlm-studio.com`;
-                        if (navigator.share) { navigator.share({ title: ev.name, text }).catch(() => {}); }
-                        else { navigator.clipboard.writeText(text); }
-                      }}
-                        className="text-[12px] transition-colors duration-200 hover:text-[#C73E3A]"
-                        style={{ color: '#9CA3AF' }}>
-                        Share
-                      </button>
-                    </div>
-                  </div>
-                </div>
-              </div>
-            ))}
-          </div>
-
-          {/* Seasonal Food */}
-          <p className="text-[13px] tracking-[0.15em] mb-6" style={{ color: '#9CA3AF' }}>Seasonal Food</p>
+        <div className="mx-auto px-6" style={{ maxWidth: '960px', paddingTop: '60px', paddingBottom: '60px' }}>
+          <p className="text-[13px] tracking-[0.15em] mb-6" style={{ fontFamily: 'var(--font-playfair), serif', color: '#9CA3AF' }}>
+            Seasonal Food · {getMonthNameKr(nextMonth)}
+          </p>
           <div className="grid grid-cols-1 sm:grid-cols-3 gap-4">
             {monthData.foods.map((food) => (
-              <div key={food.name} className="border bg-[#FAFAFA]" style={{ borderColor: '#E5E7EB', borderRadius: '4px', padding: '24px' }}>
-                <span className="text-2xl">{food.emoji}</span>
-                <p className="text-sm font-medium mt-2" style={{ color: '#1A1A1A' }}>{food.name}</p>
-                <p className="text-[13px]" style={{ fontFamily: serif, color: '#6B7280' }}>{food.nameKr}</p>
-                <p className="text-[13px] mt-2 leading-relaxed" style={{ color: '#9CA3AF' }}>{food.desc}</p>
+              <div key={food.name} className="border" style={{ borderColor: '#E5E7EB', borderRadius: '4px', padding: '20px', background: '#FAFAFA' }}>
+                <span className="text-xl">{food.emoji}</span>
+                <p className="text-sm font-medium mt-1.5" style={{ color: '#1A1A1A' }}>{food.name}</p>
+                <p className="text-[12px]" style={{ fontFamily: serif, color: '#9CA3AF' }}>{food.nameKr}</p>
+                <p className="text-[12px] mt-1.5 leading-relaxed" style={{ color: '#6B7280' }}>{food.desc}</p>
               </div>
             ))}
           </div>

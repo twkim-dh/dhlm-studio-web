@@ -28,44 +28,41 @@
   --font-sans: var(--font-noto-sans-kr);
 }
 
-/* ═══ Area Themes ═══ */
+/* ═══ Area Themes — all white-based, unified ═══ */
 
-/* Lotto — Palace Night */
 [data-area="lotto"] {
-  --area-bg: #0B0D17;
-  --area-card: #13162B;
-  --area-accent: #C5981A;
-  --area-text: #F5F0E8;
-  --area-muted: #6A6A7A;
-  --area-border: #1E2240;
-  --area-input-bg: #0F1225;
-  --area-btn: #C5981A;
-  --area-btn-text: #0B0D17;
-}
-
-/* Korea / Blog — Palace Day */
-[data-area="korea"] {
-  --area-bg: #F5F0E8;
+  --area-bg: #FFFFFF;
   --area-card: #FFFFFF;
-  --area-accent: #8B2500;
-  --area-text: #2C1810;
-  --area-muted: #8D8478;
-  --area-border: #E0D8CC;
+  --area-accent: #C73E3A;
+  --area-text: #1A1A1A;
+  --area-muted: #6B7280;
+  --area-border: #E5E7EB;
   --area-input-bg: #FFFFFF;
-  --area-btn: #8B2500;
+  --area-btn: #C73E3A;
   --area-btn-text: #FFFFFF;
 }
 
-/* Tools — Hanok Study */
-[data-area="tools"] {
-  --area-bg: #FAFAF8;
+[data-area="korea"] {
+  --area-bg: #FFFFFF;
   --area-card: #FFFFFF;
-  --area-accent: #1A237E;
-  --area-text: #2C1810;
-  --area-muted: #8D8478;
-  --area-border: #D5CEC3;
+  --area-accent: #C73E3A;
+  --area-text: #1A1A1A;
+  --area-muted: #6B7280;
+  --area-border: #E5E7EB;
   --area-input-bg: #FFFFFF;
-  --area-btn: #1A237E;
+  --area-btn: #C73E3A;
+  --area-btn-text: #FFFFFF;
+}
+
+[data-area="tools"] {
+  --area-bg: #FFFFFF;
+  --area-card: #FFFFFF;
+  --area-accent: #C73E3A;
+  --area-text: #1A1A1A;
+  --area-muted: #6B7280;
+  --area-border: #E5E7EB;
+  --area-input-bg: #FFFFFF;
+  --area-btn: #C73E3A;
   --area-btn-text: #FFFFFF;
 }
 

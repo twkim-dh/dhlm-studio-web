@@ -155,22 +155,22 @@ export default function LottoPage() {
   };
 
   return (
-    <div className="min-h-screen" style={{ background: '#F5F0E8' }}>
+    <div className="min-h-screen" style={{ background: '#FFFFFF' }}>
       {/* Header */}
       <div className="py-8 text-center">
-        <p className="text-[10px] tracking-[0.4em] mb-1" style={{ color: '#8B2500' }}>DHLM STUDIO</p>
+        <p className="text-[10px] tracking-[0.4em] mb-1" style={{ color: '#C73E3A' }}>DHLM STUDIO</p>
         <h1 className="text-2xl font-bold tracking-[0.15em]"
-          style={{ fontFamily: 'var(--font-noto-serif-kr), serif', color: '#2C1810' }}>
+          style={{ fontFamily: 'var(--font-noto-serif-kr), serif', color: '#1A1A1A' }}>
           행운의 번호
         </h1>
-        <p className="text-xs mt-1 tracking-wide" style={{ color: '#8D8478' }}>World Lottery Generator</p>
-        <div className="w-8 h-[2px] mx-auto mt-3" style={{ background: '#8B2500' }} />
+        <p className="text-xs mt-1 tracking-wide" style={{ color: '#6B7280' }}>World Lottery Generator</p>
+        <div className="w-8 h-[2px] mx-auto mt-3" style={{ background: '#C73E3A' }} />
       </div>
 
       <div className="max-w-lg mx-auto px-4 pb-8">
         {/* Tab Navigation */}
-        <div className="sticky top-[48px] z-10 -mx-4 px-4 backdrop-blur-md" style={{ background: 'rgba(245,240,232,0.9)' }}>
-          <div className="flex border-b" style={{ borderColor: '#D5CEC3' }}>
+        <div className="sticky top-[48px] z-10 -mx-4 px-4 backdrop-blur-md" style={{ background: 'rgba(255,255,255,0.95)' }}>
+          <div className="flex border-b" style={{ borderColor: '#E5E7EB' }}>
             {mainTabs.map((tab) => (
               <button key={tab.id} onClick={() => handleTabChange(tab.id)}
                 className="flex-1 py-2.5 text-center text-sm font-medium transition-colors relative"
@@ -178,7 +178,7 @@ export default function LottoPage() {
                 <span className="block text-base">{tab.emoji}</span>
                 <span className="block text-[10px] mt-0.5">{tab.label}</span>
                 {activeTab === tab.id && (
-                  <div className="absolute bottom-0 left-3 right-3 h-[2px]" style={{ background: '#8B2500' }} />
+                  <div className="absolute bottom-0 left-3 right-3 h-[2px]" style={{ background: '#C73E3A' }} />
                 )}
               </button>
             ))}
@@ -211,22 +211,22 @@ function LottoHome({ onNavigate }: { onNavigate: (tab: TabId) => void }) {
       {/* Quick actions */}
       <div className="grid grid-cols-2 gap-3">
         <button onClick={() => onNavigate('generate')}
-          className="bg-white border rounded p-4 text-center transition-all hover:border-[#8B2500]"
-          style={{ borderColor: '#D5CEC3', borderRadius: '4px' }}>
-          <p className="text-sm font-bold" style={{ color: '#2C1810' }}>🇰🇷 번호 생성</p>
-          <p className="text-[10px]" style={{ color: '#8D8478' }}>Korea Lotto 6/45</p>
+          className="bg-white border rounded p-4 text-center transition-all hover:border-[#C73E3A]"
+          style={{ borderColor: '#E5E7EB', borderRadius: '4px' }}>
+          <p className="text-sm font-bold" style={{ color: '#1A1A1A' }}>🇰🇷 번호 생성</p>
+          <p className="text-[10px]" style={{ color: '#6B7280' }}>Korea Lotto 6/45</p>
         </button>
         <button onClick={() => onNavigate('fortune')}
-          className="bg-white border rounded p-4 text-center transition-all hover:border-[#8B2500]"
-          style={{ borderColor: '#D5CEC3', borderRadius: '4px' }}>
-          <p className="text-sm font-bold" style={{ color: '#2C1810' }}>🔮 운세 · 타로</p>
-          <p className="text-[10px]" style={{ color: '#8D8478' }}>Fortune & Tarot</p>
+          className="bg-white border rounded p-4 text-center transition-all hover:border-[#C73E3A]"
+          style={{ borderColor: '#E5E7EB', borderRadius: '4px' }}>
+          <p className="text-sm font-bold" style={{ color: '#1A1A1A' }}>🔮 운세 · 타로</p>
+          <p className="text-[10px]" style={{ color: '#6B7280' }}>Fortune & Tarot</p>
         </button>
       </div>
 
       {/* All lotteries */}
       <div>
-        <p className="text-xs font-medium tracking-widest mb-3" style={{ color: '#8B2500' }}>
+        <p className="text-xs font-medium tracking-widest mb-3" style={{ color: '#C73E3A' }}>
           WORLD LOTTERIES · {worldLotteries.length}
         </p>
         <div className="space-y-1.5">
@@ -238,28 +238,28 @@ function LottoHome({ onNavigate }: { onNavigate: (tab: TabId) => void }) {
             if (isKorea) {
               return (
                 <button key={l.id} onClick={() => onNavigate('generate')}
-                  className="w-full flex items-center gap-3 bg-white border rounded px-4 py-3 transition-all hover:border-[#C5981A] text-left"
-                  style={{ borderColor: '#D5CEC3', borderRadius: '4px' }}>
+                  className="w-full flex items-center gap-3 bg-white border rounded px-4 py-3 transition-all hover:border-[#C73E3A] text-left"
+                  style={{ borderColor: '#E5E7EB', borderRadius: '4px' }}>
                   <span className="text-lg shrink-0">{l.country}</span>
                   <div className="flex-1 min-w-0">
-                    <p className="text-sm font-bold" style={{ color: '#2C1810' }}>{l.name}</p>
-                    <p className="text-[10px]" style={{ color: '#8D8478' }}>{desc}</p>
+                    <p className="text-sm font-bold" style={{ color: '#1A1A1A' }}>{l.name}</p>
+                    <p className="text-[10px]" style={{ color: '#6B7280' }}>{desc}</p>
                   </div>
-                  <span className="text-[10px] shrink-0" style={{ color: '#C5981A' }}>→</span>
+                  <span className="text-[10px] shrink-0" style={{ color: '#C73E3A' }}>→</span>
                 </button>
               );
             }
 
             return (
               <Link key={l.id} href={slug ? `/lotto/${slug}` : '/lotto'}
-                className="flex items-center gap-3 bg-white border rounded px-4 py-3 transition-all hover:border-[#C5981A]"
-                style={{ borderColor: '#D5CEC3', borderRadius: '4px' }}>
+                className="flex items-center gap-3 bg-white border rounded px-4 py-3 transition-all hover:border-[#C73E3A]"
+                style={{ borderColor: '#E5E7EB', borderRadius: '4px' }}>
                 <span className="text-lg shrink-0">{l.country}</span>
                 <div className="flex-1 min-w-0">
-                  <p className="text-sm font-bold" style={{ color: '#2C1810' }}>{l.name}</p>
-                  <p className="text-[10px]" style={{ color: '#8D8478' }}>{desc}</p>
+                  <p className="text-sm font-bold" style={{ color: '#1A1A1A' }}>{l.name}</p>
+                  <p className="text-[10px]" style={{ color: '#6B7280' }}>{desc}</p>
                 </div>
-                <span className="text-[10px] shrink-0" style={{ color: '#C5981A' }}>→</span>
+                <span className="text-[10px] shrink-0" style={{ color: '#C73E3A' }}>→</span>
               </Link>
             );
           })}
@@ -269,16 +269,16 @@ function LottoHome({ onNavigate }: { onNavigate: (tab: TabId) => void }) {
       {/* More */}
       <div className="grid grid-cols-2 gap-3">
         <button onClick={() => onNavigate('winning')}
-          className="bg-white border rounded p-3 text-center transition-all hover:border-[#8B2500]"
-          style={{ borderColor: '#D5CEC3', borderRadius: '4px' }}>
+          className="bg-white border rounded p-3 text-center transition-all hover:border-[#C73E3A]"
+          style={{ borderColor: '#E5E7EB', borderRadius: '4px' }}>
           <span className="text-lg">🏆</span>
-          <p className="text-xs font-medium mt-0.5" style={{ color: '#2C1810' }}>당첨 확인</p>
+          <p className="text-xs font-medium mt-0.5" style={{ color: '#1A1A1A' }}>당첨 확인</p>
         </button>
         <button onClick={() => onNavigate('stats')}
-          className="bg-white border rounded p-3 text-center transition-all hover:border-[#8B2500]"
-          style={{ borderColor: '#D5CEC3', borderRadius: '4px' }}>
+          className="bg-white border rounded p-3 text-center transition-all hover:border-[#C73E3A]"
+          style={{ borderColor: '#E5E7EB', borderRadius: '4px' }}>
           <span className="text-lg">📊</span>
-          <p className="text-xs font-medium mt-0.5" style={{ color: '#2C1810' }}>통계</p>
+          <p className="text-xs font-medium mt-0.5" style={{ color: '#1A1A1A' }}>통계</p>
         </button>
       </div>
     </div>

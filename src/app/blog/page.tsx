@@ -231,7 +231,7 @@ const posts = [
 
 export default function BlogPage() {
   return (
-    <div style={{ background: '#F5F0E8' }}>
+    <div style={{ background: '#FFFFFF' }}>
       {/* Hero */}
       <div className="relative py-16 sm:py-20 text-center overflow-hidden">
         <div className="absolute inset-0 bg-cover bg-center opacity-10"
@@ -239,10 +239,10 @@ export default function BlogPage() {
         <div className="relative">
           <p className="text-[10px] tracking-[0.4em] mb-3" style={{ color: '#C73E3A' }}>BLOG</p>
           <h1 className="text-3xl sm:text-4xl font-bold tracking-[0.1em]"
-            style={{ fontFamily: "var(--font-noto-serif-kr), serif", color: '#2C1810' }}>
+            style={{ fontFamily: "var(--font-noto-serif-kr), serif", color: '#1A1A1A' }}>
             이야기
           </h1>
-          <p className="mt-3 text-sm" style={{ color: '#8D8478' }}>
+          <p className="mt-3 text-sm" style={{ color: '#6B7280' }}>
             일상에 유용한 정보와 무료 도구 활용법
           </p>
           <div className="w-10 h-[2px] mx-auto mt-4" style={{ background: '#C73E3A' }} />
@@ -254,17 +254,17 @@ export default function BlogPage() {
         <div className="space-y-4">
           {posts.map((post) => (
             <Link key={post.slug} href={`/blog/${post.slug}`}
-              className="block bg-white border rounded p-6 sm:p-8 transition-all hover:border-[#C5981A] hover:shadow-md group"
-              style={{ borderColor: '#E0D8CC', borderRadius: '4px' }}>
+              className="block bg-white border rounded p-6 sm:p-8 transition-all hover:border-[#C73E3A] hover:shadow-md group"
+              style={{ borderColor: '#E5E7EB', borderRadius: '4px' }}>
               <div className="flex items-center gap-3 mb-3">
-                <time className="text-xs" style={{ color: '#8D8478' }}>{post.date}</time>
+                <time className="text-xs" style={{ color: '#6B7280' }}>{post.date}</time>
               </div>
-              <h2 className="text-lg sm:text-xl font-bold transition-colors group-hover:text-[#8B2500] mb-2"
-                style={{ fontFamily: "var(--font-noto-serif-kr), serif", color: '#2C1810' }}>
+              <h2 className="text-lg sm:text-xl font-bold transition-colors group-hover:text-[#C73E3A] mb-2"
+                style={{ fontFamily: "var(--font-noto-serif-kr), serif", color: '#1A1A1A' }}>
                 {post.title}
               </h2>
-              <p className="text-sm leading-relaxed" style={{ color: '#8D8478' }}>{post.excerpt}</p>
-              <span className="mt-3 inline-block text-xs font-medium tracking-widest" style={{ color: '#8B2500' }}>
+              <p className="text-sm leading-relaxed" style={{ color: '#6B7280' }}>{post.excerpt}</p>
+              <span className="mt-3 inline-block text-xs font-medium tracking-widest" style={{ color: '#C73E3A' }}>
                 READ →
               </span>
             </Link>
