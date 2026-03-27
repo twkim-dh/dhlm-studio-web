@@ -101,7 +101,7 @@ export default function Home() {
 
           <div className="grid grid-cols-1 sm:grid-cols-2 gap-4 mb-10">
             {categories.map((cat) => (
-              <Link key={cat.en} href="/blog"
+              <Link key={cat.en} href="/blog/en/korea"
                 className="block border bg-white transition-colors duration-200 hover:border-[#C73E3A]"
                 style={{ borderColor: '#E5E7EB', borderRadius: '4px', padding: '40px' }}>
                 <p className="text-[clamp(24px,3vw,28px)] font-bold" style={{ fontFamily: serif, color: '#1A1A1A' }}>
@@ -115,7 +115,7 @@ export default function Home() {
 
           <div className="flex flex-wrap gap-x-6 gap-y-2 mb-10">
             {moreCategories.map((cat) => (
-              <Link key={cat} href="/blog"
+              <Link key={cat} href="/blog/en/korea"
                 className="text-[13px] transition-colors duration-200 hover:text-[#C73E3A]"
                 style={{ color: '#6B7280' }}>
                 {cat}
@@ -123,7 +123,7 @@ export default function Home() {
             ))}
           </div>
 
-          <Link href="/blog" className="text-sm transition-colors duration-200 hover:opacity-70" style={{ color: '#C73E3A' }}>
+          <Link href="/blog/en/korea" className="text-sm transition-colors duration-200 hover:opacity-70" style={{ color: '#C73E3A' }}>
             View all 200+ articles →
           </Link>
         </div>
@@ -276,7 +276,7 @@ export default function Home() {
           </div>
 
           <div className="mt-10">
-            <Link href="/blog" className="text-sm transition-colors duration-200 hover:opacity-70" style={{ color: '#C73E3A' }}>
+            <Link href="/blog/en/korea" className="text-sm transition-colors duration-200 hover:opacity-70" style={{ color: '#C73E3A' }}>
               View all articles →
             </Link>
           </div>
