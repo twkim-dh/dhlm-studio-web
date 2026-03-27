@@ -148,6 +148,9 @@ export default function sitemap(): MetadataRoute.Sitemap {
       url: `${BASE}/blog/${s}`, lastModified: now, changeFrequency: "monthly" as const, priority: 0.7,
     })),
 
+    // Lotto blog — weekly results
+    { url: `${BASE}/blog/lotto`, lastModified: now, changeFrequency: "weekly" as const, priority: 0.9 },
+
     // Discover Korea blog
     { url: `${BASE}/korea`, lastModified: now, changeFrequency: "weekly" as const, priority: 0.8 },
     ...koreaPostSlugs.map(s => ({
