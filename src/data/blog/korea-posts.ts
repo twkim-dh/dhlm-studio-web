@@ -284,6 +284,267 @@ export const koreaPosts: KoreaPost[] = [
     koreanWord: { word: '네이버', romanized: 'neibeo', meaning: 'Naver (Korean search engine)' },
     tags: ['Naver', 'Korean internet', 'search engine', 'technology'],
   },
+  // ═══ Additional Beliefs ═══
+  {
+    slug: 'whistling-night', title: "Don't Whistle at Night in Korea", category: 'Beliefs', emoji: '🔮', readTime: '3 min',
+    description: 'Whistling after dark is believed to summon ghosts or snakes in Korean folklore.',
+    intro: 'Whistle a tune while walking home at night in Korea, and someone will almost certainly tell you to stop. Whistling after dark is believed to call ghosts — or snakes.',
+    sections: [
+      { heading: 'The Belief', body: "Korean folklore holds that evil spirits are attracted to whistling sounds at night. Some versions say it summons ghosts, others say snakes. The belief likely originated from rural Korea where whistling could attract actual snakes or wild animals in the dark." },
+      { heading: 'Still Alive Today', body: "Even urban Koreans who don't believe in ghosts often feel uneasy hearing whistling at night. It's been reinforced through Korean horror movies and TV shows. Parents still tell children not to whistle after sunset." },
+    ],
+    funFact: 'In old Korea, night watchmen used clappers instead of whistles specifically to avoid "summoning spirits."',
+    koreanWord: { word: '귀신', romanized: 'gwisin', meaning: 'ghost/spirit' },
+    tags: ['whistling', 'ghosts', 'night', 'Korean folklore'],
+  },
+  {
+    slug: 'exam-superstitions', title: 'Korean Exam Day Superstitions: Yeot Candy & More', category: 'Beliefs', emoji: '🔮', readTime: '3 min',
+    description: "On Korea's college entrance exam day, the entire country mobilizes. Here are the superstitions students follow.",
+    intro: "Every November, Korea's entire society revolves around one event: the Suneung (college entrance exam). Planes are grounded, offices open late, and police escort late students. The superstitions are just as intense.",
+    sections: [
+      { heading: 'Lucky Rituals', body: "Students receive yeot (엿, sticky candy) — because it 'sticks' to the exam, meaning answers will stick in their minds. Seaweed soup is avoided because seaweed is slippery (answers will 'slip' away). Parents pray at temples for 100 days before the exam. Younger students cheer outside exam halls, performing coordinated dances." },
+      { heading: 'The Social Impact', body: "The Suneung is so important that it affects national policy. Flight schedules change to reduce noise during the listening test. Stock markets open late. The entire country goes quiet during the English listening section. This single test determines which university a student attends, which in Korea determines career, social status, and even marriage prospects." },
+    ],
+    funFact: "Korea's Suneung is considered one of the world's most stressful exams — the suicide rate among Korean students spikes around exam season.",
+    koreanWord: { word: '수능', romanized: 'suneung', meaning: 'College Scholastic Ability Test' },
+    tags: ['Suneung', 'exam', 'education', 'superstition'],
+  },
+  // ═══ Additional Food ═══
+  {
+    slug: 'korean-cafe-culture', title: "Korea's Coffee Obsession: More Cafes Than Convenience Stores", category: 'Food', emoji: '🍜', readTime: '4 min',
+    description: 'Seoul has more cafes per capita than any city in the world. Koreans take their coffee seriously.',
+    intro: "Korea has approximately 100,000 cafes — that's more cafes than McDonald's locations worldwide, all in a country smaller than Pennsylvania.",
+    sections: [
+      { heading: 'Why So Many Cafes?', body: "Korean cafe culture isn't just about coffee — it's about space. In a country where apartments are small and public spaces are limited, cafes serve as living rooms, offices, study halls, and date spots. The concept of 'cafe hopping' (카페 투어) is a legitimate weekend activity. Koreans visit cafes for the aesthetics as much as the drinks." },
+      { heading: 'Cafe Types', body: "Themed cafes: Dog cafes, cat cafes, raccoon cafes, sheep cafes. Study cafes: Pay by the hour, complete silence enforced. Dessert cafes: Elaborate cakes, bingsu (shaved ice), souffle pancakes. Hanok cafes: Traditional Korean house converted into a cafe. Rooftop cafes: Views of Seoul skyline. Book cafes: Thousands of books, quiet atmosphere." },
+    ],
+    funFact: 'South Korea is the 7th largest coffee market in the world, drinking more coffee per capita than the US.',
+    koreanWord: { word: '아메리카노', romanized: 'amerikano', meaning: 'Americano (the most popular coffee order in Korea)' },
+    tags: ['cafe', 'coffee', 'Korean culture', 'Seoul'],
+  },
+  {
+    slug: 'korean-delivery-culture', title: "Korea's Delivery Culture: Anything, Anywhere, Anytime", category: 'Food', emoji: '🍜', readTime: '4 min',
+    description: 'Koreans can get fried chicken delivered to a park bench at midnight. The delivery culture is unmatched.',
+    intro: "In Korea, delivery isn't limited to pizza and Chinese food. You can get Korean BBQ sets, full-course meals, coffee, and even fried chicken delivered to a park bench by the Han River at 2 AM.",
+    sections: [
+      { heading: 'How It Works', body: "Apps like Baedal Minjok (배달의민족) and Coupang Eats dominate. Almost every restaurant delivers. The average delivery time is 30-40 minutes. You can order to literally any location — parks, offices, hotels. Some services deliver single cups of coffee. Payment is usually through the app, and tipping is not expected." },
+      { heading: 'The Han River Tradition', body: "Ordering fried chicken to a spot on the Han River bank is practically a Korean rite of passage. Every spring and summer evening, thousands of people sit along the river with delivery chicken and beer. The delivery riders navigate through parks on scooters to find you — you just drop a pin on the map." },
+    ],
+    funFact: "Korea's food delivery market is worth over $20 billion — about 3% of the country's entire GDP.",
+    koreanWord: { word: '배달', romanized: 'baedal', meaning: 'delivery' },
+    tags: ['delivery', 'food delivery', 'Baedal Minjok', 'Korean apps'],
+  },
+  {
+    slug: 'korean-ramen-vs-japanese', title: 'Korean Ramyeon vs Japanese Ramen: The Real Difference', category: 'Food', emoji: '🍜', readTime: '3 min',
+    description: "They share a name origin but they're completely different foods. Here's the breakdown.",
+    intro: "Foreigners often confuse Korean ramyeon with Japanese ramen. While they share an etymological root, they're as different as New York pizza and Italian pizza.",
+    sections: [
+      { heading: 'The Differences', body: "Korean ramyeon (라면) is almost always instant — curly noodles in spicy red broth, cooked at home or at a convenience store. Japanese ramen (ラーメン) is a restaurant dish — handmade noodles in hours-long bone broth. Korean ramyeon costs $1. Japanese ramen costs $10+. Koreans eat ramyeon as a quick snack. Japanese eat ramen as a proper meal." },
+      { heading: 'Korean Ramyeon Culture', body: "Koreans eat 80+ servings of instant ramyeon per person per year — the highest in the world. Cooking ramyeon has a specific art: the water-to-powder ratio, the egg timing, adding cheese or rice. Shin Ramyun is the most famous brand globally. Eating ramyeon at a convenience store (with the hot water dispenser) is a quintessential Korean experience." },
+    ],
+    funFact: "The Korean movie 'Parasite' featured a ram-don (짜파구리) scene that caused instant noodle sales to spike globally.",
+    koreanWord: { word: '라면', romanized: 'ramyeon', meaning: 'instant noodles (Korean style)' },
+    tags: ['ramyeon', 'ramen', 'instant noodles', 'Korean vs Japanese'],
+  },
+  // ═══ Additional K-Culture ═══
+  {
+    slug: 'mukbang-culture', title: 'Mukbang: Why Millions Watch Koreans Eat', category: 'K-Culture', emoji: '🎵', readTime: '4 min',
+    description: "Mukbang — eating broadcasts — started in Korea and became a global phenomenon. But why do people watch others eat?",
+    intro: "Every night, millions of people around the world watch strangers eat enormous amounts of food on camera. This phenomenon started in Korea, and it's called mukbang (먹방).",
+    sections: [
+      { heading: 'How It Started', body: "Mukbang (먹방 = 먹는 방송, eating broadcast) began on Korean live-streaming platform AfreecaTV around 2010. Viewers would watch hosts eat large meals while chatting. The format exploded because of Korea's solo dining stigma — eating alone was considered sad, so watching someone eat online created a virtual dining companion." },
+      { heading: 'The Global Spread', body: "ASMR mukbang (focusing on eating sounds) went viral on YouTube around 2018. Korean creators like Boki and Tzuyang have millions of subscribers. The genre has spawned sub-categories: ASMR mukbang, challenge mukbang (extreme amounts), cooking + mukbang, and review mukbang. Some top creators earn over $1 million per year." },
+    ],
+    funFact: "The Korean government considered regulating mukbang content due to concerns about promoting overeating and food waste.",
+    koreanWord: { word: '먹방', romanized: 'meokbang', meaning: 'eating broadcast' },
+    tags: ['mukbang', 'ASMR', 'YouTube', 'Korean content'],
+  },
+  {
+    slug: 'webtoon-revolution', title: 'Webtoon: How Korea Changed Comics Forever', category: 'K-Culture', emoji: '🎵', readTime: '4 min',
+    description: "Korean webtoons killed the comic book format and created a new digital art form that's taking over the world.",
+    intro: "Forget manga pages and Marvel issues. Korean webtoons are vertical-scrolling, full-color, mobile-first comics that have revolutionized how the world reads comics.",
+    sections: [
+      { heading: 'What Makes Webtoons Different', body: "Traditional comics are designed for print — horizontal pages, panels side by side. Webtoons are designed for phones — you scroll down through a single vertical strip. This simple change transformed the reading experience. Colors are standard (manga is black and white). Episodes release weekly and are free to read (with paid early access). The vertical format enables cinematic pacing impossible in print." },
+      { heading: 'The Industry', body: "Naver Webtoon and Kakao Webtoon dominate Korea. The platform has over 80 million monthly users globally. Successful webtoons get adapted into K-Dramas (Sweet Home, True Beauty, All of Us Are Dead), movies, and games. Top webtoon artists earn millions. The industry is worth over $3 billion and growing 20%+ annually." },
+    ],
+    funFact: "The webtoon 'Tower of God' was so popular that its anime adaptation trended #1 on Crunchyroll globally.",
+    koreanWord: { word: '웹툰', romanized: 'webtun', meaning: 'webtoon (digital comic)' },
+    tags: ['webtoon', 'comics', 'Naver', 'digital art'],
+  },
+  {
+    slug: 'korean-beauty-skincare', title: 'K-Beauty: The 10-Step Skincare Routine Explained', category: 'K-Culture', emoji: '🎵', readTime: '5 min',
+    description: "The famous Korean skincare routine that conquered the world. Here's what each step actually does.",
+    intro: "Korean skincare isn't about covering imperfections — it's about preventing them. The famous 10-step routine might sound excessive, but each step has a purpose.",
+    sections: [
+      { heading: 'The 10 Steps', body: "1. Oil cleanser — Dissolves makeup and sunscreen.\n2. Water cleanser — Removes remaining impurities.\n3. Exfoliant — Removes dead skin cells (2-3x per week).\n4. Toner — Balances pH and prepares skin.\n5. Essence — The heart of Korean skincare. Hydrating and repairing.\n6. Serum/Ampoule — Concentrated active ingredients.\n7. Sheet mask — Intense hydration boost (2-3x per week).\n8. Eye cream — Delicate under-eye area care.\n9. Moisturizer — Locks everything in.\n10. Sunscreen — Non-negotiable, even on cloudy days." },
+      { heading: 'Why It Works', body: "The Korean approach focuses on prevention over correction, hydration over drying, and layering lightweight products over using one heavy cream. Korean sunscreen technology is years ahead of Western brands — lightweight, no white cast, comfortable for daily wear. This is why Korean skin appears 'glass-like' — it's genuinely well-hydrated, not just filtered." },
+    ],
+    funFact: "Korean sunscreen is so popular that some formulas are banned in the EU because they contain filters not yet approved there — despite being proven safe in Korea for years.",
+    koreanWord: { word: '피부', romanized: 'pibu', meaning: 'skin' },
+    tags: ['K-Beauty', 'skincare', 'routine', 'sunscreen'],
+  },
+  // ═══ Additional Travel ═══
+  {
+    slug: 'dmz-visit-guide', title: 'Visiting the DMZ: The Most Tense Border on Earth', category: 'Travel', emoji: '🏙️', readTime: '5 min',
+    description: "The Korean DMZ is the world's most heavily fortified border. And you can visit it on a day trip from Seoul.",
+    intro: "Just 50 km north of Seoul — one of the world's most modern cities — lies the DMZ, a 4km-wide strip dividing North and South Korea since 1953. It's surreal, sobering, and one of Korea's most visited sites.",
+    sections: [
+      { heading: 'What You Can See', body: "Joint Security Area (JSA/Panmunjom): Stand in the blue UN buildings that straddle the border. One foot in North Korea, one in South. The Third Tunnel: A North Korean invasion tunnel discovered in 1978, 73 meters underground. Dora Observatory: Look into North Korea through binoculars. Dorasan Station: A train station built for future reunification, with tracks leading to Pyongyang." },
+      { heading: 'How to Visit', body: "You cannot visit the DMZ independently — a guided tour is required. Tours leave from Seoul daily and cost $40-80. Passport is required. There's a strict dress code (no flip-flops, shorts, or sleeveless tops). Photography is restricted in certain areas. Book through USO, Koridoor, or other authorized operators." },
+    ],
+    funFact: "The DMZ has become an accidental nature reserve — 70 years without human activity has created a thriving ecosystem with endangered species.",
+    koreanWord: { word: '비무장지대', romanized: 'bi-mu-jang-ji-dae', meaning: 'Demilitarized Zone (DMZ)' },
+    tags: ['DMZ', 'North Korea', 'border', 'JSA', 'day trip'],
+  },
+  {
+    slug: 'korean-jjimjilbang', title: 'Korean Jjimjilbang: The Complete Sauna & Spa Guide', category: 'Travel', emoji: '🏙️', readTime: '4 min',
+    description: "Jjimjilbang is Korea's public bathhouse culture. Naked bathing, heated rooms, and sleeping overnight for $10.",
+    intro: "A jjimjilbang (찜질방) is part spa, part sauna, part sleepover, and part social club. For about $10-15, you get access to hot baths, saunas, heated rooms, and a place to sleep overnight.",
+    sections: [
+      { heading: 'How It Works', body: "Pay at the entrance and receive a locker key and matching t-shirt/shorts set. The bathhouse section is gender-separated and nude — yes, completely naked. Hot tubs, cold plunge, steam room, and scrubbing stations. After bathing, change into the provided clothes and enter the co-ed common area with heated rooms (jade room, salt room, ice room), a snack bar, TV areas, and sleeping mats." },
+      { heading: 'The Experience', body: "Must-try: The sheep head towel (양머리, a towel twisted into a sheep shape on your head), baked eggs (맥반석 계란, eggs slow-cooked in the sauna), and sikhye (식혜, sweet rice drink). Many Koreans use jjimjilbang as cheap overnight accommodation. The atmosphere is surprisingly relaxed — families, friends, and couples all hang out together." },
+    ],
+    funFact: "Dragon Hill Spa in Seoul is 7 floors and includes a swimming pool, cinema, rooftop garden, and golf driving range — all for about $12 entry.",
+    koreanWord: { word: '찜질방', romanized: 'jjimjilbang', meaning: 'heated room / Korean spa' },
+    tags: ['jjimjilbang', 'spa', 'sauna', 'bathhouse'],
+  },
+  // ═══ Additional Language ═══
+  {
+    slug: 'korean-texting-decoded', title: 'ㅋㅋㅋ ㅎㅎ ㅠㅠ — Korean Texting Decoded', category: 'Language', emoji: '🗣️', readTime: '3 min',
+    description: "Korean texting uses consonants as shorthand. Here's what ㅋㅋㅋ, ㅎㅎ, and ㅠㅠ mean.",
+    intro: "If a Korean texts you 'ㅋㅋㅋㅋㅋ', don't panic. It's laughter. Korean texting uses individual consonants as emotional shorthand in a way that's uniquely Korean.",
+    sections: [
+      { heading: 'The Basics', body: "ㅋㅋㅋ (kkk) = laughter (like 'hahaha'). More ㅋs = funnier.\nㅎㅎ (hh) = soft laughter/smile (like 'hehe').\nㅠㅠ (yy) = crying/sad face. The ㅠ looks like tears running down.\nㅇㅇ (oo) = yes/agreement (shortened 응/eung).\nㄴㄴ (nn) = no (shortened 노노).\nㅇㅋ (ok) = OK.\nㄱㅅ (gs) = thanks (shortened 감사).\nㅎㄷㄷ (hdd) = shivering/shocked." },
+      { heading: 'Advanced Level', body: "ㅂㅂ = bye bye. ㄷㄷ = trembling (scared/impressed). ㅁㅊ = crazy (먼저 — actually rude, use carefully). ㅈㅅ = sorry (죄송). ㅊㅋ = congrats (축하). The number of consonants matters: ㅋ = mild, ㅋㅋ = normal, ㅋㅋㅋㅋㅋ = hilarious. Just one ㅋ can feel passive-aggressive." },
+    ],
+    funFact: "A single 'ㅋ' in Korean texting can be interpreted as sarcastic or cold — similar to replying 'k' in English.",
+    koreanWord: { word: 'ㅋㅋㅋ', romanized: 'kkk', meaning: 'hahaha (text laughter)' },
+    tags: ['texting', 'slang', 'Korean text', 'ㅋㅋㅋ'],
+  },
+  {
+    slug: 'nunchi-social-skill', title: "Nunchi: Korea's Secret Social Superpower", category: 'Language', emoji: '🗣️', readTime: '3 min',
+    description: "Nunchi is the Korean art of reading the room. It's the most important social skill in Korea — and you've never heard of it.",
+    intro: "In Korea, the ability to 'read the room' has a name: nunchi (눈치). It's not just a nice skill to have — it's considered essential for survival in Korean society.",
+    sections: [
+      { heading: 'What Is Nunchi?', body: "Nunchi literally means 'eye-measure' — the ability to gauge others' thoughts, feelings, and the overall mood of a room without explicit communication. A person with good nunchi (눈치가 빠르다) picks up on subtle cues: who's uncomfortable, what's not being said, when to speak, and when to stay quiet." },
+      { heading: 'Why It Matters', body: "In Korean culture, direct confrontation is avoided. People rarely say exactly what they mean. Nunchi fills the gap — it's how Koreans navigate social situations without explicit communication. Having bad nunchi (눈치가 없다) is one of the worst social criticisms in Korea. It means you're oblivious, insensitive, and difficult to be around." },
+    ],
+    funFact: "Korean mothers teach nunchi from early childhood. 'Nunchi bwa!' (눈치 봐!) — 'Read the room!' — is one of the most common phrases Korean children hear.",
+    koreanWord: { word: '눈치', romanized: 'nunchi', meaning: 'eye-measure / the art of reading the room' },
+    tags: ['nunchi', 'social skills', 'communication', 'Korean concept'],
+  },
+  // ═══ Additional Work ═══
+  {
+    slug: 'chaebol-explained', title: "Chaebol: Samsung, Hyundai & Korea's Family Empires", category: 'Work', emoji: '💼', readTime: '4 min',
+    description: "Five family-owned conglomerates control over 50% of Korea's GDP. Here's how chaebol work.",
+    intro: "Samsung alone accounts for about 20% of South Korea's GDP. Add Hyundai, SK, LG, and Lotte, and five families essentially run the Korean economy. These family empires are called chaebol (재벌).",
+    sections: [
+      { heading: 'What Are Chaebol?', body: "Chaebol are massive family-controlled conglomerates. Samsung isn't just phones — it's construction, insurance, hospitals, theme parks, and even military equipment. Hyundai isn't just cars — it's shipbuilding, department stores, and construction. These companies were built during Korea's rapid industrialization (1960s-80s) with heavy government support." },
+      { heading: 'Love-Hate Relationship', body: "Koreans have a complex relationship with chaebol. They created Korea's economic miracle, provide the best jobs, and are sources of national pride. But they also have incredible political influence, family succession scandals, and create an economy where small businesses struggle. Working at a top chaebol (삼성, 현대, SK) is the ultimate career goal for most Korean graduates." },
+    ],
+    funFact: "Samsung's Lee family has been involved in multiple corruption and tax evasion scandals, yet Samsung remains Korea's most desired employer.",
+    koreanWord: { word: '재벌', romanized: 'jaebeol', meaning: 'wealthy family / conglomerate' },
+    tags: ['chaebol', 'Samsung', 'Hyundai', 'Korean economy'],
+  },
+  // ═══ Additional Tech ═══
+  {
+    slug: 'fastest-internet-korea', title: 'Why Korea Has the World\'s Fastest Internet', category: 'Tech', emoji: '📱', readTime: '3 min',
+    description: "Average internet speed in Korea is 200+ Mbps. Most homes have gigabit fiber. Here's how it happened.",
+    intro: "While many countries still struggle with broadband, Korea achieved near-universal gigabit internet years ago. The average Korean internet speed is over 200 Mbps — many homes have 1 Gbps or even 10 Gbps connections.",
+    sections: [
+      { heading: 'How Korea Did It', body: "In the late 1990s, the Korean government made a strategic decision to invest heavily in broadband infrastructure as a national priority. The dense urban population helped — running fiber to apartment buildings (where 60%+ of Koreans live) is efficient. Competition between three major ISPs (KT, SK Broadband, LG U+) drove prices down and speeds up." },
+      { heading: 'The Impact', body: "Fast internet enabled Korea's digital economy: e-sports (Korea was the birthplace of professional gaming), streaming culture, online shopping (Korea's e-commerce penetration is among the highest globally), and the app ecosystem (KakaoTalk, Naver, delivery apps). Korean internet culture moves fast — trends emerge and die within days." },
+    ],
+    funFact: "Korean internet is so fast that when Koreans travel abroad, the biggest culture shock is often slow WiFi.",
+    koreanWord: { word: '인터넷', romanized: 'inteonet', meaning: 'internet' },
+    tags: ['internet', 'broadband', 'technology', 'infrastructure'],
+  },
+  // ═══ Comparison ═══
+  {
+    slug: 'korea-vs-japan', title: 'Korea vs Japan: Cultural Differences Explained', category: 'Comparison', emoji: '🤔', readTime: '5 min',
+    description: "Korea and Japan are neighbors but culturally distinct. Here are the key differences tourists notice.",
+    intro: "Korea and Japan are geographically close and share some cultural roots, but the differences are striking. Tourists who visit both often say they feel like completely different worlds.",
+    sections: [
+      { heading: 'Key Differences', body: "Food: Korean food is bold, spicy, and communal (sharing dishes). Japanese food is subtle, delicate, and individual portions.\nSocial: Koreans are direct and emotionally expressive. Japanese are indirect and reserved.\nDrinking: Koreans drink socially and loudly. Japanese drink more quietly.\nBeauty: Korean beauty emphasizes dewy, glass skin. Japanese beauty emphasizes natural, matte looks.\nTechnology: Korea is mobile-first (KakaoTalk). Japan still uses fax machines and cash.\nAge: Korea uses Korean age (1 year older at birth). Japan uses Western age." },
+      { heading: 'The Rivalry', body: "The Korea-Japan relationship is complex, shaped by Japan's colonial occupation of Korea (1910-1945). This history affects everything from politics to pop culture. Koreans and Japanese generally get along as individuals, but national sentiment can be intense, especially around historical issues. Both countries produce world-class entertainment, technology, and cuisine — the friendly competition benefits everyone." },
+    ],
+    funFact: "Korean and Japanese grammar structures are remarkably similar (subject-object-verb), making each language relatively easier for speakers of the other to learn.",
+    koreanWord: { word: '한일관계', romanized: 'han-il-gwangye', meaning: 'Korea-Japan relations' },
+    tags: ['Korea vs Japan', 'cultural difference', 'comparison', 'travel'],
+  },
+  {
+    slug: 'korean-age-explained', title: 'Korean Age vs International Age: Why You\'re Older in Korea', category: 'Comparison', emoji: '🤔', readTime: '3 min',
+    description: "In Korea, you're 1 year old at birth and everyone ages up on January 1. Here's the confusing system explained.",
+    intro: "Tell a Korean your birthday and they might say you're a different age than you think. Until 2023, Korea used a unique age system where everyone was born at age 1.",
+    sections: [
+      { heading: 'The Old System', body: "Korean age (만 나이 vs 세는 나이): You were 1 when born (counting time in the womb). Everyone aged up together on January 1 — not on their birthday. So a baby born on December 31 would be 2 years old the next day. This meant Koreans were 1-2 years 'older' than their international age." },
+      { heading: 'The 2023 Change', body: "In June 2023, Korea officially switched to international age for legal and administrative purposes. But in daily conversation, many Koreans still use the old system — especially when determining social hierarchy. Age matters enormously in Korean culture (it determines speech level, who pours drinks, who pays), so the 'Korean age' concept persists socially even if it's no longer legal." },
+    ],
+    funFact: "Before the 2023 change, a Korean could have three different ages: Korean age, calendar age, and international age — all at the same time.",
+    koreanWord: { word: '만 나이', romanized: 'man nai', meaning: 'international age (full age)' },
+    tags: ['Korean age', 'age system', 'culture', 'comparison'],
+  },
+  {
+    slug: 'korea-safety', title: "Why Korea is One of the Safest Countries in the World", category: 'Comparison', emoji: '🤔', readTime: '3 min',
+    description: "Lost wallets get returned, women walk alone at night, and violent crime is rare. Korea's safety is remarkable.",
+    intro: "Leave your laptop at a cafe table and go to the restroom. Walk alone at 3 AM through Seoul's streets. Drop your wallet and expect it back. Korea's safety level genuinely surprises foreigners.",
+    sections: [
+      { heading: 'How Safe Is It?', body: "Korea's violent crime rate is one of the lowest among developed nations. Murder rate is about 0.6 per 100,000 — compared to 6.3 in the US. Theft is rare — Koreans commonly leave bags, phones, and laptops unattended in cafes. Public transportation runs safely 24/7. Convenience stores and restaurants are open all night. Women can walk alone at night in most areas without concern (though caution is always wise)." },
+      { heading: 'Why?', body: "Several factors contribute: CCTV is everywhere (Seoul has over 1 million cameras). Community-oriented culture creates social pressure against crime. Gun ownership is virtually nonexistent. Police presence is visible. The homogeneous culture creates strong social trust. And Korea's confucian values emphasize social harmony and shame avoidance." },
+    ],
+    funFact: "Korea's 'lost and found' culture is remarkable — about 80% of lost wallets are returned to their owners, often with all cash intact.",
+    koreanWord: { word: '안전', romanized: 'anjeon', meaning: 'safety/security' },
+    tags: ['safety', 'crime rate', 'comparison', 'Korea vs world'],
+  },
+  {
+    slug: 'no-tipping-korea', title: 'Why You Don\'t Tip in Korea', category: 'Comparison', emoji: '🤔', readTime: '3 min',
+    description: "Tipping is not just unnecessary in Korea — it can be confusing or even insulting. Here's why.",
+    intro: "Coming from a tipping culture? Leave the tip calculator at home. In Korea, tipping doesn't exist — and trying to tip can create awkward situations.",
+    sections: [
+      { heading: 'No Tipping Culture', body: "Restaurants: No tip expected. Ever. The price on the menu is what you pay. Taxis: No tip. Round up if you want, but drivers don't expect it. Hotels: No tip for bellboys or housekeeping. Delivery: No tip. Hair salons: No tip. The service charge, if any, is already included in the price." },
+      { heading: 'Why It Works', body: "Korean service workers are paid a proper wage — they don't depend on tips. Service quality is consistently high because it's expected as professional standard, not incentivized by tips. Tipping can actually be awkward: some service workers will chase you down to return money they think you accidentally left behind. In high-end restaurants, leaving cash on the table might confuse staff." },
+    ],
+    funFact: "Some Korean restaurants will literally run after you if you leave cash on the table, thinking you forgot your money.",
+    koreanWord: { word: '팁', romanized: 'tip', meaning: 'tip (a foreign concept in Korea)' },
+    tags: ['tipping', 'no tip', 'dining', 'Korean customs'],
+  },
+  // ═══ Lifestyle ═══
+  {
+    slug: 'korean-couple-culture', title: 'Korean Couple Culture: Matching Outfits & 100-Day Anniversary', category: 'Lifestyle', emoji: '🏠', readTime: '4 min',
+    description: "Korean couples wear matching outfits, celebrate in 100-day increments, and follow unique dating customs.",
+    intro: "See two people wearing identical outfits in Korea? They're a couple, and it's completely normal. Korean couple culture is intense, public, and full of unique customs.",
+    sections: [
+      { heading: 'Couple Customs', body: "Matching outfits (커플룩): Couples wear identical clothes, shoes, or phone cases. Not just shirts — full matching outfits. Anniversary system: Koreans celebrate 100 days, 200 days, 300 days, and so on. The 100-day anniversary (백일) is the first major milestone. Couple rings: Many couples exchange rings early in the relationship. Couple photos: Professional photoshoots in matching outfits are common." },
+      { heading: 'Dating Holidays', body: "Valentine's Day (Feb 14): Women give chocolate to men. White Day (Mar 14): Men give candy to women. Black Day (Apr 14): Single people eat black bean noodles together. Rose Day (May 14): Exchange roses. Kiss Day (Jun 14): Self-explanatory. Silver Day (Jul 14): Exchange silver accessories. And it continues every month on the 14th all year." },
+    ],
+    funFact: "Korean couples have a 'couple phone case' culture — many phone case shops sell identical cases in two colors specifically for couples.",
+    koreanWord: { word: '커플룩', romanized: 'keopeul-luk', meaning: 'couple look (matching outfits)' },
+    tags: ['dating', 'couple culture', 'relationship', 'Korean customs'],
+  },
+  {
+    slug: 'korean-military-service', title: "Korean Military Service: Every Man's Duty", category: 'Lifestyle', emoji: '🏠', readTime: '4 min',
+    description: "All Korean men must serve 18-21 months in the military. It affects K-Pop, careers, and relationships.",
+    intro: "Every able-bodied Korean man must serve in the military for 18-21 months. There are no exceptions — even K-Pop idols must go. It's the most significant shared experience among Korean men.",
+    sections: [
+      { heading: 'How It Works', body: "Men must enlist before age 28 (with some extensions). Army: 18 months. Navy: 20 months. Air Force: 21 months (hardest to get into — it's the cushiest). Marines: 18 months (toughest). Basic training is 5 weeks, followed by assignment to a unit. Pay is minimal — about $600/month (recently increased from $100). Phone use is now allowed after hours (a recent change that was hugely celebrated)." },
+      { heading: 'The Impact', body: "Military service creates a gap in every Korean man's life. University students typically go during their studies, creating '군휴학' (military leave). K-Pop idols lose 18 months of their career — BTS members' enlistment was national news. Career-wise, employers understand the gap. Socially, military experience is a bonding topic among Korean men. Women do not have mandatory service, though voluntary service is available." },
+    ],
+    funFact: "BTS's military service exemption was debated in Korean parliament — they ultimately served, with all members enlisting by 2023.",
+    koreanWord: { word: '군대', romanized: 'gundae', meaning: 'military / army' },
+    tags: ['military', 'conscription', 'Korean men', 'BTS'],
+  },
+  {
+    slug: 'korean-apartment-life', title: 'Korean Apartment Life: Why Everyone Lives in High-Rises', category: 'Lifestyle', emoji: '🏠', readTime: '4 min',
+    description: "Over 60% of Koreans live in apartments. The apartment complex is Korea's defining housing form.",
+    intro: "Look at any Korean city skyline and you'll see endless rows of identical apartment towers. Over 60% of South Koreans live in apartments — it's not just housing, it's a lifestyle.",
+    sections: [
+      { heading: 'Why Apartments?', body: "Korea urbanized rapidly in the 1970s-80s, and apartments were the fastest way to house millions of rural-to-urban migrants. Today, Korean apartments (아파트) are typically 20-30 story towers in large complexes with shared facilities: playgrounds, fitness centers, convenience stores, and underground parking. Brand-name apartments (Samsung, Hyundai, Lotte) are status symbols — the brand matters as much as the location." },
+      { heading: 'The Jeonse System', body: "Korea's unique jeonse (전세) rental system: instead of monthly rent, you give the landlord a massive deposit (often 50-80% of the apartment's value). You live rent-free, and when you leave, you get the deposit back. The landlord invests the deposit and keeps the returns. This system is uniquely Korean and is being challenged by rising prices, but it still dominates." },
+    ],
+    funFact: "Korean apartments are measured in 평 (pyeong) — one pyeong is about 3.3 square meters. A '30-pyeong' apartment (about 100 sqm) is considered a good family size.",
+    koreanWord: { word: '아파트', romanized: 'apateu', meaning: 'apartment' },
+    tags: ['apartment', 'housing', 'jeonse', 'Korean life'],
+  },
 ];
 
 export function getKoreaPostBySlug(slug: string): KoreaPost | undefined {
