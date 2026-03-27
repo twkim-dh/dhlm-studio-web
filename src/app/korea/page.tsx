@@ -43,19 +43,11 @@ export default function KoreaListPage() {
         </div>
 
         {/* Posts grid */}
-        <div className="grid grid-cols-1 sm:grid-cols-2 gap-6">
+        <div className="space-y-0">
           {filtered.map((post) => (
             <Link key={post.slug} href={`/korea/${post.slug}`}
-              className="block group border transition-colors duration-200 hover:border-[#C73E3A] overflow-hidden"
-              style={{ borderColor: '#E5E7EB', borderRadius: '4px' }}>
-              {/* Image */}
-              <div className="w-full h-40 overflow-hidden bg-[#F3F4F6]">
-                <img src={post.image} alt={post.title}
-                  className="w-full h-full object-cover transition-transform duration-300 group-hover:scale-105"
-                  loading="lazy" />
-              </div>
-              {/* Content */}
-              <div style={{ padding: '20px' }}>
+              className="block group" style={{ borderBottom: '1px solid #E5E7EB' }}>
+              <div style={{ padding: '20px 0' }}>
                 <p className="text-[11px] mb-2" style={{ color: '#9CA3AF' }}>
                   {post.emoji} {post.category} · {post.readTime}
                 </p>
@@ -63,7 +55,7 @@ export default function KoreaListPage() {
                   style={{ fontFamily: serif, color: '#1A1A1A' }}>
                   {post.title}
                 </p>
-                <p className="text-[13px] mt-2 leading-relaxed line-clamp-2" style={{ color: '#6B7280' }}>
+                <p className="text-[13px] mt-1.5 leading-relaxed" style={{ color: '#6B7280' }}>
                   {post.description}
                 </p>
               </div>

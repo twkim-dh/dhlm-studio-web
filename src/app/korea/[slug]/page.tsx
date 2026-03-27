@@ -108,18 +108,12 @@ export default async function KoreaPostPage({ params }: { params: Promise<{ slug
         {related.length > 0 && (
           <div className="mt-14 pt-10" style={{ borderTop: '1px solid #E5E7EB' }}>
             <p className="text-[11px] tracking-[0.2em] mb-6" style={{ color: '#BCBCBC' }}>RELATED</p>
-            <div className="grid grid-cols-1 sm:grid-cols-3 gap-4">
+            <div className="space-y-3">
               {related.map((r) => (
                 <Link key={r.slug} href={`/korea/${r.slug}`}
-                  className="block border overflow-hidden transition-colors duration-200 hover:border-[#C73E3A]"
-                  style={{ borderColor: '#E5E7EB', borderRadius: '4px' }}>
-                  <div className="h-24 overflow-hidden bg-[#F3F4F6]">
-                    <img src={r.image} alt={r.title} className="w-full h-full object-cover" loading="lazy" />
-                  </div>
-                  <div style={{ padding: '12px' }}>
-                    <p className="text-[13px] font-medium leading-snug" style={{ fontFamily: serif, color: '#1A1A1A' }}>{r.title}</p>
-                    <p className="text-[11px] mt-1" style={{ color: '#9CA3AF' }}>{r.readTime}</p>
-                  </div>
+                  className="block transition-colors duration-200 hover:text-[#C73E3A]" style={{ color: '#1A1A1A' }}>
+                  <p className="text-[15px] font-medium" style={{ fontFamily: serif }}>{r.title}</p>
+                  <p className="text-[12px] mt-0.5" style={{ color: '#9CA3AF' }}>{r.readTime} read</p>
                 </Link>
               ))}
             </div>
