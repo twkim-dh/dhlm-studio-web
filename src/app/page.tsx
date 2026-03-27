@@ -205,15 +205,28 @@ function AnimatedCount({ target }: { target: number }) {
   return <span ref={ref}>{count.toLocaleString()}</span>;
 }
 
-/* Korean cloud pattern SVG (subtle) */
-const CloudPattern = () => (
-  <div className="absolute inset-0 pointer-events-none opacity-[0.04]"
-    style={{
-      backgroundImage: `url("data:image/svg+xml,%3Csvg width='120' height='120' viewBox='0 0 120 120' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath d='M30 60c0-8 6-15 14-16 2-10 11-17 21-17s19 7 21 17c8 1 14 8 14 16s-6 15-14 16c-2 10-11 17-21 17s-19-7-21-17c-8-1-14-8-14-16z' fill='%23D4A853' fill-opacity='1'/%3E%3C/svg%3E")`,
-      backgroundSize: '120px 120px',
-    }}
-  />
+/* Taeguk SVG component */
+const TaegukDeco = ({ className = '', style }: { className?: string; style?: React.CSSProperties }) => (
+  <svg viewBox="0 0 100 100" className={`${className} k-taeguk`} style={{ opacity: 0.06, ...style }}>
+    <circle cx="50" cy="50" r="48" fill="none" stroke="#D4A853" strokeWidth="1"/>
+    <path d="M50,2 A48,48 0 0,1 50,98 A24,24 0 0,0 50,50 A24,24 0 0,1 50,2" fill="#C73E3A" fillOpacity="0.5"/>
+    <path d="M50,98 A48,48 0 0,1 50,2 A24,24 0 0,1 50,50 A24,24 0 0,0 50,98" fill="#4A90D9" fillOpacity="0.5"/>
+  </svg>
 );
+
+/* Category pattern class map */
+const catPatternClass: Record<string, string> = {
+  'Beliefs': 'k-cloud',
+  'Food': 'k-wave',
+  'K-Pop': 'k-star',
+  'Travel': 'k-mountain',
+  'Life': 'k-lattice',
+  'Traditions': 'k-flower',
+  'Language': 'k-cloud',
+  'Business': 'k-lattice',
+  'Tech': 'k-lattice',
+  'vs World': 'k-mountain',
+};
 
 /* ═══════════════════════════════════════
    Page
@@ -242,7 +255,9 @@ export default function Home() {
     <>
       {/* ════ Hero ════ */}
       <section className="relative overflow-hidden bg-[#1A1A2E] text-[#F0E6D3] min-h-[100dvh] flex items-center">
-        <CloudPattern />
+        <div className="absolute inset-0 k-cloud pointer-events-none" />
+        <TaegukDeco className="absolute top-10 right-10 w-32 h-32 hidden sm:block" />
+        <TaegukDeco className="absolute bottom-20 left-10 w-24 h-24 hidden sm:block" style={{ animationDirection: 'reverse' } as React.CSSProperties} />
         <div className="absolute top-1/3 left-1/2 -translate-x-1/2 w-[500px] h-[500px] bg-[#C73E3A]/10 rounded-full blur-[120px] pointer-events-none" />
         <div className="absolute bottom-0 right-0 w-[300px] h-[300px] bg-[#D4A853]/10 rounded-full blur-[100px] pointer-events-none" />
 
@@ -328,8 +343,8 @@ export default function Home() {
       </section>
 
       {/* ════ Discover Korea ════ */}
-      <section className="relative bg-[#FFF8F0] py-16 px-5 overflow-hidden">
-        <CloudPattern />
+      <section className="relative py-16 px-5 overflow-hidden k-hanji">
+        <div className="absolute inset-0 k-flower pointer-events-none" />
         <div className="relative mx-auto max-w-2xl">
           <div className="text-center mb-8">
             <span className="text-2xl">🇰🇷</span>
@@ -341,10 +356,11 @@ export default function Home() {
           {/* Category scroll */}
           <div className="flex gap-2 overflow-x-auto pb-3 scrollbar-hide mb-6">
             {discoverCategories.map((cat) => (
-              <div key={cat.label} className="shrink-0 w-20 text-center bg-white border border-[#E8E0D0] rounded-xl p-3 hover:border-[#C73E3A] hover:shadow-md transition cursor-pointer group">
-                <span className="text-2xl block">{cat.emoji}</span>
-                <p className="text-[10px] font-bold text-[#2D2D2D] mt-1">{cat.label}</p>
-                <p className="text-[9px] text-[#6B6B80]">{cat.count} posts</p>
+              <div key={cat.label} className={`shrink-0 w-20 text-center bg-white border border-[#E8E0D0] rounded-xl p-3 hover:border-[#C73E3A] hover:shadow-md transition cursor-pointer group relative overflow-hidden k-card-hover`}>
+                <div className={`absolute inset-0 ${catPatternClass[cat.label] || 'k-cloud'} pointer-events-none opacity-0 group-hover:opacity-100 transition-opacity`} />
+                <span className="relative text-2xl block">{cat.emoji}</span>
+                <p className="relative text-[10px] font-bold text-[#2D2D2D] mt-1">{cat.label}</p>
+                <p className="relative text-[9px] text-[#6B6B80]">{cat.count} posts</p>
               </div>
             ))}
           </div>
@@ -369,13 +385,13 @@ export default function Home() {
       </section>
 
       {/* ════ Korean Divider ════ */}
-      <div className="h-[2px] bg-gradient-to-r from-transparent via-[#C73E3A] to-transparent" />
+      <div className="k-divider" />
 
       {/* ════ Trending ════ */}
       <TrendingDashboard />
 
       {/* ════ Korean Divider ════ */}
-      <div className="h-[2px] bg-gradient-to-r from-transparent via-[#D4A853] to-transparent" />
+      <div className="k-divider" />
 
       {/* ════ Popular Tools ════ */}
       <section className="bg-[#1A1A2E] text-[#F0E6D3] py-16 px-5">
@@ -418,8 +434,8 @@ export default function Home() {
           <div className="grid grid-cols-3 sm:grid-cols-4 md:grid-cols-5 gap-2">
             {filteredTools.map((t) => (
               <Link key={t.href} href={t.href}
-                className="bg-[#2D2D4E] border border-[#3D3D5E] rounded-xl p-3 text-center hover:border-[#D4A853]/40 transition group">
-                <span className="text-xl block mb-1">{t.emoji}</span>
+                className="bg-[#2D2D4E] border border-[#3D3D5E] rounded-xl p-3 text-center k-card-hover group">
+                <span className="text-xl block mb-1 group-hover:scale-110 transition-transform inline-block">{t.emoji}</span>
                 <p className="text-[11px] text-[#A0A0B0] font-medium leading-tight">{t.name}</p>
               </Link>
             ))}
@@ -433,10 +449,9 @@ export default function Home() {
       </section>
 
       {/* ════ Blog ════ */}
-      <section className="bg-[#FFF8F0] py-16 px-5">
+      <section className="relative py-16 px-5 k-hanji">
+        <div className="absolute inset-0 k-cloud pointer-events-none" />
         <div className="relative mx-auto max-w-lg">
-          <CloudPattern />
-          <div className="relative">
             <h2 className="text-xl font-bold text-[#2D2D2D] text-center mb-6" style={{ fontFamily: K.serif }}>📝 최근 블로그</h2>
             <div className="space-y-2">
               {blogPosts.map((post) => (
@@ -452,7 +467,6 @@ export default function Home() {
                 블로그 전체 보기 →
               </Link>
             </div>
-          </div>
         </div>
       </section>
     </>
