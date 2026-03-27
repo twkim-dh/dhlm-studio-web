@@ -36,11 +36,11 @@ export default function Home() {
           <p className="text-[11px] tracking-[0.4em] mb-12" style={{ color: '#BCBCBC' }}>
             DHLM STUDIO
           </p>
-          <h1 className="text-[clamp(28px,4.5vw,48px)] font-normal leading-[1.6]"
-            style={{ fontFamily: 'var(--font-noto-serif-kr), serif', color: '#1A1A1A', letterSpacing: '0.04em' }}>
+          <h1 className="text-[clamp(32px,5vw,56px)] font-bold leading-[1.5]"
+            style={{ fontFamily: 'var(--font-noto-serif-kr), serif', color: '#1A1A1A', letterSpacing: '0.05em' }}>
             한국의 문화를<br />세계와 연결합니다
           </h1>
-          <p className="text-[15px] mt-8 italic leading-relaxed" style={{ fontFamily: 'var(--font-playfair), serif', color: '#B0B0B0' }}>
+          <p className="text-lg mt-6 italic" style={{ fontFamily: 'var(--font-playfair), serif', color: '#6B7280' }}>
             Connecting Korean Culture to the World
           </p>
           <div className="mt-16" style={{ width: '40%', height: '1px', background: '#E5E7EB' }} />
