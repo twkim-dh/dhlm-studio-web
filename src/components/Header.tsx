@@ -34,10 +34,10 @@ export default function Header() {
               const active = pathname.startsWith(link.href);
               return (
                 <Link key={link.href} href={link.href}
-                  className="text-sm transition-colors duration-200"
-                  style={{ color: active ? '#C73E3A' : '#6B7280' }}
+                  className="text-[13px] transition-colors duration-200"
+                  style={{ color: active ? '#1A1A1A' : '#BCBCBC' }}
                   onMouseEnter={(e) => { if (!active) e.currentTarget.style.color = '#1A1A1A'; }}
-                  onMouseLeave={(e) => { if (!active) e.currentTarget.style.color = '#6B7280'; }}>
+                  onMouseLeave={(e) => { if (!active) e.currentTarget.style.color = '#BCBCBC'; }}>
                   {link.label}
                 </Link>
               );

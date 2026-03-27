@@ -30,18 +30,19 @@ export default function Home() {
   return (
     <>
       {/* ── Hero — Left: Title / Right: Next Month Events ── */}
-      <section className="px-6" style={{ paddingTop: '100px', paddingBottom: '100px', background: '#FFFFFF' }}>
+      <section className="px-6" style={{ paddingTop: '120px', paddingBottom: '120px', background: '#FFFFFF' }}>
         <div className="mx-auto" style={{ maxWidth: '960px' }}>
-          <div className="grid grid-cols-1 md:grid-cols-2 gap-12 md:gap-16 items-start">
-            {/* Left — Title */}
+          <div className="grid grid-cols-1 md:grid-cols-2 gap-16 md:gap-20 items-start">
+            {/* Left — Calligraphy-style title */}
             <div>
-              <p className="text-sm tracking-[0.3em] mb-8" style={{ color: '#6B7280' }}>
+              <p className="text-[11px] tracking-[0.4em] mb-12" style={{ color: '#BCBCBC' }}>
                 DHLM STUDIO
               </p>
-              <h1 className="text-[clamp(28px,4vw,48px)] font-bold leading-[1.5]" style={{ fontFamily: serif, color: '#1A1A1A', letterSpacing: '0.05em' }}>
+              <h1 className="text-[clamp(36px,5vw,56px)] font-normal leading-[1.7]"
+                style={{ fontFamily: 'var(--font-noto-serif-kr), serif', color: '#1A1A1A', letterSpacing: '0.08em' }}>
                 한국의 문화를<br />세계와 연결합니다
               </h1>
-              <p className="text-base mt-5 italic" style={{ fontFamily: 'var(--font-playfair), serif', color: '#6B7280' }}>
+              <p className="text-[15px] mt-8 italic leading-relaxed" style={{ fontFamily: 'var(--font-playfair), serif', color: '#B0B0B0' }}>
                 Connecting Korean Culture<br />to the World
               </p>
             </div>
@@ -95,7 +96,7 @@ export default function Home() {
       {/* ── Discover Korea ── */}
       <section style={{ background: '#FAFAFA', borderTop: '1px solid #E5E7EB' }}>
         <div className="mx-auto px-6" style={{ maxWidth: '960px', paddingTop: '100px', paddingBottom: '100px' }}>
-          <p className="text-sm tracking-[0.2em] mb-12" style={{ fontFamily: 'var(--font-playfair), serif', color: '#6B7280' }}>
+          <p className="text-[11px] tracking-[0.25em] mb-12" style={{ fontFamily: 'var(--font-playfair), serif', color: '#BCBCBC' }}>
             Discover Korea
           </p>
 
@@ -151,7 +152,7 @@ export default function Home() {
       {/* ── Popular ── */}
       <section style={{ background: '#FFFFFF', borderTop: '1px solid #E5E7EB' }}>
         <div className="mx-auto px-6" style={{ maxWidth: '960px', paddingTop: '100px', paddingBottom: '100px' }}>
-          <p className="text-sm tracking-[0.2em] mb-12" style={{ fontFamily: 'var(--font-playfair), serif', color: '#6B7280' }}>
+          <p className="text-[11px] tracking-[0.25em] mb-12" style={{ fontFamily: 'var(--font-playfair), serif', color: '#BCBCBC' }}>
             Most Read
           </p>
 
@@ -182,7 +183,7 @@ export default function Home() {
       {/* ── More ── */}
       <section style={{ background: '#111111' }}>
         <div className="mx-auto px-6" style={{ maxWidth: '960px', paddingTop: '100px', paddingBottom: '100px' }}>
-          <p className="text-sm tracking-[0.2em] mb-12" style={{ fontFamily: 'var(--font-playfair), serif', color: '#9CA3AF' }}>
+          <p className="text-[11px] tracking-[0.25em] mb-12" style={{ fontFamily: 'var(--font-playfair), serif', color: '#555' }}>
             Also from DHLM Studio
           </p>
 
