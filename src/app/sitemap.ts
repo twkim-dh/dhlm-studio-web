@@ -2,6 +2,32 @@ import type { MetadataRoute } from "next";
 
 const BASE = "https://dhlm-studio.com";
 
+// Discover Korea blog slugs
+const koreaPostSlugs = [
+  'red-ink-death', 'fan-death', 'number-four', 'dream-pigs', 'shoe-gift',
+  'whistling-night', 'exam-superstitions',
+  'korean-bbq-guide', 'soju-drinking-rules', 'street-food-top10',
+  'korean-fried-chicken', 'korean-convenience-store',
+  'korean-cafe-culture', 'korean-delivery-culture', 'korean-ramen-vs-japanese',
+  'kpop-trainee-life', 'kdrama-tropes', 'hallyu-wave',
+  'mukbang-culture', 'webtoon-revolution', 'korean-beauty-skincare',
+  'seoul-neighborhoods', 'jeju-island-guide', 'korean-temple-stay',
+  'dmz-visit-guide', 'korean-jjimjilbang',
+  'hangul-one-hour', 'oppa-meaning', 'korean-texting-decoded', 'nunchi-social-skill',
+  'hoesik-work-dinner', 'ppalli-ppalli', 'chaebol-explained',
+  'kakao-everything', 'naver-not-google', 'fastest-internet-korea',
+  'korea-vs-japan', 'korean-age-explained', 'korea-safety', 'no-tipping-korea',
+  'korean-couple-culture', 'korean-military-service', 'korean-apartment-life',
+];
+
+// Event blog slugs
+const eventSlugs = [
+  'seollal', 'hwacheon-ice-festival', 'taebaeksan-snow-festival',
+  'jeju-fire-festival', 'valentines-day-korea', 'jinhae-cherry-blossom',
+  'seoul-cherry-blossom', 'boryeong-mud-festival', 'chuseok',
+  'autumn-foliage', 'busan-film-festival', 'christmas-korea',
+];
+
 // Static / main pages
 const staticRoutes = [
   "", "about", "privacy", "terms",
@@ -119,6 +145,17 @@ export default function sitemap(): MetadataRoute.Sitemap {
     { url: `${BASE}/blog`, lastModified: now, changeFrequency: "weekly" as const, priority: 0.8 },
     ...blogSlugs.map(s => ({
       url: `${BASE}/blog/${s}`, lastModified: now, changeFrequency: "monthly" as const, priority: 0.7,
+    })),
+
+    // Discover Korea blog
+    { url: `${BASE}/blog/en/korea`, lastModified: now, changeFrequency: "weekly" as const, priority: 0.8 },
+    ...koreaPostSlugs.map(s => ({
+      url: `${BASE}/blog/en/korea/${s}`, lastModified: now, changeFrequency: "monthly" as const, priority: 0.7,
+    })),
+
+    // Event blog
+    ...eventSlugs.map(s => ({
+      url: `${BASE}/blog/events/${s}`, lastModified: now, changeFrequency: "monthly" as const, priority: 0.7,
     })),
 
     // Tools — weekly
