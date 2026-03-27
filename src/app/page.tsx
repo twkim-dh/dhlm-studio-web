@@ -205,14 +205,32 @@ function AnimatedCount({ target }: { target: number }) {
   return <span ref={ref}>{count.toLocaleString()}</span>;
 }
 
-/* Taeguk SVG component */
-const TaegukDeco = ({ className = '', style }: { className?: string; style?: React.CSSProperties }) => (
-  <svg viewBox="0 0 100 100" className={`${className} k-taeguk`} style={{ opacity: 0.06, ...style }}>
-    <circle cx="50" cy="50" r="48" fill="none" stroke="#D4A853" strokeWidth="1"/>
-    <path d="M50,2 A48,48 0 0,1 50,98 A24,24 0 0,0 50,50 A24,24 0 0,1 50,2" fill="#C73E3A" fillOpacity="0.5"/>
-    <path d="M50,98 A48,48 0 0,1 50,2 A24,24 0 0,1 50,50 A24,24 0 0,0 50,98" fill="#4A90D9" fillOpacity="0.5"/>
-  </svg>
+/* Korean Jamo background letter */
+const JamoBg = ({ letter, color = '#C73E3A', position = 'right' }: { letter: string; color?: string; position?: 'left' | 'right' }) => (
+  <div className="absolute inset-0 overflow-hidden pointer-events-none select-none" aria-hidden="true">
+    <span className={`absolute text-[300px] sm:text-[400px] font-black leading-none ${position === 'right' ? '-right-10 -top-10' : '-left-10 -bottom-10'}`}
+      style={{ fontFamily: 'var(--font-noto-serif-kr), serif', color, opacity: 0.035 }}>
+      {letter}
+    </span>
+  </div>
 );
+
+/* Scroll fade-in wrapper */
+function FadeIn({ children, className = '', delay = 0 }: { children: React.ReactNode; className?: string; delay?: number }) {
+  const ref = useRef<HTMLDivElement>(null);
+  const [visible, setVisible] = useState(false);
+  useEffect(() => {
+    const observer = new IntersectionObserver(([e]) => { if (e.isIntersecting) { setVisible(true); observer.disconnect(); } }, { threshold: 0.15 });
+    if (ref.current) observer.observe(ref.current);
+    return () => observer.disconnect();
+  }, []);
+  return (
+    <div ref={ref} className={`transition-all duration-700 ${visible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-8'} ${className}`}
+      style={{ transitionDelay: `${delay}ms` }}>
+      {children}
+    </div>
+  );
+}
 
 /* Category pattern class map */
 const catPatternClass: Record<string, string> = {
@@ -256,27 +274,35 @@ export default function Home() {
       {/* ════ Hero ════ */}
       <section className="relative overflow-hidden bg-[#1A1A2E] text-[#F0E6D3] min-h-[100dvh] flex items-center">
         <div className="absolute inset-0 k-cloud pointer-events-none" />
-        <TaegukDeco className="absolute top-10 right-10 w-32 h-32 hidden sm:block" />
-        <TaegukDeco className="absolute bottom-20 left-10 w-24 h-24 hidden sm:block" style={{ animationDirection: 'reverse' } as React.CSSProperties} />
-        <div className="absolute top-1/3 left-1/2 -translate-x-1/2 w-[500px] h-[500px] bg-[#C73E3A]/10 rounded-full blur-[120px] pointer-events-none" />
-        <div className="absolute bottom-0 right-0 w-[300px] h-[300px] bg-[#D4A853]/10 rounded-full blur-[100px] pointer-events-none" />
+        <JamoBg letter="ㅎ" position="right" color="#D4A853" />
+        <div className="absolute top-1/3 left-1/2 -translate-x-1/2 w-[500px] h-[500px] bg-[#C73E3A]/8 rounded-full blur-[120px] pointer-events-none" />
 
         <div className="relative mx-auto max-w-lg w-full px-5 py-16 text-center">
           <motion.div initial={{ opacity: 0, y: 20 }} animate={{ opacity: 1, y: 0 }} transition={{ delay: 0.1 }}>
-            <span className="text-3xl">🇰🇷</span>
+            <p className="text-xs tracking-[0.4em] text-[#D4A853] font-medium mb-4">DHLM STUDIO</p>
           </motion.div>
 
           <motion.h1 initial={{ opacity: 0, y: 20 }} animate={{ opacity: 1, y: 0 }} transition={{ delay: 0.2 }}
-            className="text-3xl sm:text-4xl font-bold leading-tight mt-4"
+            className="text-3xl sm:text-4xl font-bold leading-tight"
             style={{ fontFamily: K.serif }}>
-            Discover Korea Through<br />
-            <span className="text-[#D4A853]">Tools, Culture & Fun</span>
+            <span className="text-[#D4A853]">── </span>한국의 문화와 도구를<span className="text-[#D4A853]"> ──</span><br />
+            <span className="text-[#D4A853]">── </span>세계와 연결합니다<span className="text-[#D4A853]"> ──</span>
           </motion.h1>
 
-          <motion.p initial={{ opacity: 0 }} animate={{ opacity: 1 }} transition={{ delay: 0.4 }}
-            className="text-[#8080A0] text-sm mt-3 mb-8">
-            한국의 도구, 문화, 재미를 한곳에서 경험하세요
+          <motion.p initial={{ opacity: 0 }} animate={{ opacity: 1 }} transition={{ delay: 0.35 }}
+            className="text-[#6B6B80] text-sm mt-4 italic" style={{ fontFamily: K.serif }}>
+            Connecting Korean Culture & Tools to the World
           </motion.p>
+
+          <motion.div initial={{ opacity: 0 }} animate={{ opacity: 1 }} transition={{ delay: 0.5 }}
+            className="flex justify-center gap-3 mt-6 mb-8">
+            <Link href="/lotto#fortune" className="px-5 py-2.5 bg-[#C73E3A] text-white rounded-lg text-sm font-medium hover:bg-[#A33230] transition active:scale-95">
+              🔮 오늘의 운세
+            </Link>
+            <Link href="/lotto" className="px-5 py-2.5 bg-[#D4A853]/20 border border-[#D4A853]/30 text-[#D4A853] rounded-lg text-sm font-medium hover:bg-[#D4A853]/30 transition active:scale-95">
+              🍀 로또 뽑기
+            </Link>
+          </motion.div>
 
           <motion.div initial={{ opacity: 0, y: 20 }} animate={{ opacity: 1, y: 0 }} transition={{ delay: 0.5 }}
             className="space-y-3">
@@ -344,43 +370,102 @@ export default function Home() {
 
       {/* ════ Discover Korea ════ */}
       <section className="relative py-16 px-5 overflow-hidden k-hanji">
-        <div className="absolute inset-0 k-flower pointer-events-none" />
+        <JamoBg letter="ㄱ" position="left" color="#C73E3A" />
         <div className="relative mx-auto max-w-2xl">
-          <div className="text-center mb-8">
-            <span className="text-2xl">🇰🇷</span>
-            <h2 className="text-2xl font-bold text-[#2D2D2D] mt-2" style={{ fontFamily: K.serif }}>Discover Korea</h2>
-            <p className="text-sm text-[#6B6B80] mt-1">한국의 흥미로운 이야기</p>
-            <div className="w-10 h-[3px] bg-[#C73E3A] mx-auto mt-3" />
-          </div>
+          <FadeIn>
+            <div className="text-center mb-8">
+              <h2 className="text-2xl font-bold text-[#2D2D2D]" style={{ fontFamily: K.serif }}>
+                🇰🇷 Discover Korea
+              </h2>
+              <p className="text-sm text-[#6B6B80] mt-1">한국의 흥미로운 이야기</p>
+              <div className="w-10 h-[3px] bg-[#C73E3A] mx-auto mt-3" />
+            </div>
+          </FadeIn>
 
-          {/* Category scroll */}
-          <div className="flex gap-2 overflow-x-auto pb-3 scrollbar-hide mb-6">
-            {discoverCategories.map((cat) => (
-              <div key={cat.label} className={`shrink-0 w-20 text-center bg-white border border-[#E8E0D0] rounded-xl p-3 hover:border-[#C73E3A] hover:shadow-md transition cursor-pointer group relative overflow-hidden k-card-hover`}>
-                <div className={`absolute inset-0 ${catPatternClass[cat.label] || 'k-cloud'} pointer-events-none opacity-0 group-hover:opacity-100 transition-opacity`} />
-                <span className="relative text-2xl block">{cat.emoji}</span>
-                <p className="relative text-[10px] font-bold text-[#2D2D2D] mt-1">{cat.label}</p>
-                <p className="relative text-[9px] text-[#6B6B80]">{cat.count} posts</p>
+          {/* Bento grid — big + small cards */}
+          <FadeIn delay={100}>
+            <div className="grid grid-cols-3 gap-2 mb-4">
+              {/* Big card */}
+              <div className={`col-span-2 row-span-2 relative bg-white border border-[#E8E0D0] rounded-xl p-5 overflow-hidden k-card-hover cursor-pointer group`}>
+                <div className="absolute inset-0 k-cloud pointer-events-none opacity-0 group-hover:opacity-100 transition-opacity" />
+                <span className="relative text-4xl block mb-2">{discoverCategories[0].emoji}</span>
+                <p className="relative text-lg font-bold text-[#2D2D2D]" style={{ fontFamily: K.serif }}>{discoverCategories[0].label}</p>
+                <p className="relative text-xs text-[#6B6B80] mt-1">{discoverCategories[0].count} stories</p>
+                <p className="relative text-[10px] text-[#C73E3A] mt-2 font-medium">Explore →</p>
               </div>
-            ))}
-          </div>
+              {/* Small cards */}
+              {discoverCategories.slice(1, 3).map((cat) => (
+                <div key={cat.label} className="bg-white border border-[#E8E0D0] rounded-xl p-3 text-center overflow-hidden k-card-hover cursor-pointer group relative">
+                  <div className={`absolute inset-0 ${catPatternClass[cat.label] || 'k-cloud'} pointer-events-none opacity-0 group-hover:opacity-100 transition-opacity`} />
+                  <span className="relative text-2xl block">{cat.emoji}</span>
+                  <p className="relative text-[10px] font-bold text-[#2D2D2D] mt-1">{cat.label}</p>
+                  <p className="relative text-[9px] text-[#6B6B80]">{cat.count}</p>
+                </div>
+              ))}
+            </div>
+          </FadeIn>
+
+          <FadeIn delay={200}>
+            <div className="grid grid-cols-3 gap-2 mb-4">
+              {/* Small cards */}
+              {discoverCategories.slice(3, 5).map((cat) => (
+                <div key={cat.label} className="bg-white border border-[#E8E0D0] rounded-xl p-3 text-center overflow-hidden k-card-hover cursor-pointer group relative">
+                  <div className={`absolute inset-0 ${catPatternClass[cat.label] || 'k-cloud'} pointer-events-none opacity-0 group-hover:opacity-100 transition-opacity`} />
+                  <span className="relative text-2xl block">{cat.emoji}</span>
+                  <p className="relative text-[10px] font-bold text-[#2D2D2D] mt-1">{cat.label}</p>
+                  <p className="relative text-[9px] text-[#6B6B80]">{cat.count}</p>
+                </div>
+              ))}
+              {/* Big card */}
+              <div className={`col-span-1 row-span-2 relative bg-white border border-[#E8E0D0] rounded-xl p-4 overflow-hidden k-card-hover cursor-pointer group`}>
+                <div className="absolute inset-0 k-flower pointer-events-none opacity-0 group-hover:opacity-100 transition-opacity" />
+                <span className="relative text-3xl block mb-2">{discoverCategories[5].emoji}</span>
+                <p className="relative text-sm font-bold text-[#2D2D2D]" style={{ fontFamily: K.serif }}>{discoverCategories[5].label}</p>
+                <p className="relative text-[9px] text-[#6B6B80] mt-1">{discoverCategories[5].count} stories</p>
+              </div>
+              {/* More small cards */}
+              {discoverCategories.slice(6, 8).map((cat) => (
+                <div key={cat.label} className="bg-white border border-[#E8E0D0] rounded-xl p-3 text-center overflow-hidden k-card-hover cursor-pointer group relative">
+                  <div className={`absolute inset-0 ${catPatternClass[cat.label] || 'k-cloud'} pointer-events-none opacity-0 group-hover:opacity-100 transition-opacity`} />
+                  <span className="relative text-2xl block">{cat.emoji}</span>
+                  <p className="relative text-[10px] font-bold text-[#2D2D2D] mt-1">{cat.label}</p>
+                  <p className="relative text-[9px] text-[#6B6B80]">{cat.count}</p>
+                </div>
+              ))}
+            </div>
+          </FadeIn>
+
+          {/* Remaining categories */}
+          <FadeIn delay={300}>
+            <div className="grid grid-cols-4 gap-2 mb-6">
+              {discoverCategories.slice(8).map((cat) => (
+                <div key={cat.label} className="bg-white border border-[#E8E0D0] rounded-xl p-2.5 text-center overflow-hidden k-card-hover cursor-pointer group relative">
+                  <div className={`absolute inset-0 ${catPatternClass[cat.label] || 'k-cloud'} pointer-events-none opacity-0 group-hover:opacity-100 transition-opacity`} />
+                  <span className="relative text-xl block">{cat.emoji}</span>
+                  <p className="relative text-[9px] font-bold text-[#2D2D2D] mt-0.5">{cat.label}</p>
+                </div>
+              ))}
+            </div>
+          </FadeIn>
 
           {/* Popular posts */}
-          <div className="space-y-2">
-            {discoverPosts.map((post, i) => (
-              <div key={i} className="flex items-center gap-3 bg-white border border-[#E8E0D0] rounded-xl px-4 py-3 hover:border-[#C73E3A]/50 transition cursor-pointer">
-                <span className="text-xl">{post.emoji}</span>
-                <p className="flex-1 text-sm font-medium text-[#2D2D2D]">{post.title}</p>
-                <span className="text-xs text-[#6B6B80]">👁 {post.views}</span>
-              </div>
-            ))}
-          </div>
-
-          <div className="text-center mt-6">
-            <Link href="/blog" className="inline-flex items-center gap-1 px-5 py-2.5 bg-[#C73E3A] text-white rounded-lg text-sm font-medium hover:bg-[#A33230] transition">
-              전체 보기 →
-            </Link>
-          </div>
+          <FadeIn delay={400}>
+            <p className="text-xs text-[#6B6B80] font-medium mb-2 tracking-wider">POPULAR READS</p>
+            <div className="space-y-2">
+              {discoverPosts.map((post, i) => (
+                <div key={i} className="flex items-center gap-3 bg-white border border-[#E8E0D0] rounded-xl px-4 py-3 hover:border-[#C73E3A]/50 hover:shadow-sm transition cursor-pointer">
+                  <span className="text-xl">{post.emoji}</span>
+                  <p className="flex-1 text-sm font-medium text-[#2D2D2D]">{post.title}</p>
+                  <span className="text-xs text-[#6B6B80]">👁 {post.views}</span>
+                </div>
+              ))}
+            </div>
+            <div className="text-center mt-6">
+              <Link href="/blog" className="inline-flex items-center gap-1 px-5 py-2.5 bg-[#C73E3A] text-white rounded-lg text-sm font-medium hover:bg-[#A33230] transition">
+                전체 보기 →
+              </Link>
+            </div>
+          </FadeIn>
         </div>
       </section>
 
@@ -394,8 +479,9 @@ export default function Home() {
       <div className="k-divider" />
 
       {/* ════ Popular Tools ════ */}
-      <section className="bg-[#1A1A2E] text-[#F0E6D3] py-16 px-5">
-        <div className="mx-auto max-w-lg">
+      <section className="relative bg-[#1A1A2E] text-[#F0E6D3] py-16 px-5 overflow-hidden">
+        <JamoBg letter="ㄷ" position="right" color="#D4A853" />
+        <div className="relative mx-auto max-w-lg">
           <div className="text-center mb-2">
             <p className="text-[#D4A853] text-xs font-bold tracking-widest mb-1">POPULAR</p>
             <h2 className="text-xl font-bold" style={{ fontFamily: K.serif }}>인기 도구</h2>
@@ -417,8 +503,8 @@ export default function Home() {
       </section>
 
       {/* ════ Tools Grid ════ */}
-      <section className="bg-[#1A1A2E] text-[#F0E6D3] py-16 px-5">
-        <div className="mx-auto max-w-4xl">
+      <section className="relative bg-[#1A1A2E] text-[#F0E6D3] py-16 px-5 overflow-hidden">
+        <div className="relative mx-auto max-w-4xl">
           <div className="text-center mb-6">
             <h2 className="text-xl font-bold" style={{ fontFamily: K.serif }}>🧮 무료 도구 모음</h2>
             <p className="text-[#6B6B80] text-xs mt-1">{tools.length}개 도구 무료 사용</p>
@@ -521,15 +607,16 @@ function TrendingDashboard() {
   const [region, setRegion] = useState<RegionId>('kr');
 
   return (
-    <section className="bg-[#1A1A2E] text-[#F0E6D3] py-16 px-5">
-      <div className="mx-auto max-w-2xl">
-        <div className="text-center mb-6">
+    <section className="relative bg-[#1A1A2E] text-[#F0E6D3] py-16 px-5 overflow-hidden">
+      <JamoBg letter="ㅌ" position="left" color="#4A90D9" />
+      <div className="relative mx-auto max-w-2xl">
+        <FadeIn><div className="text-center mb-6">
           <p className="text-[#D4A853] text-xs font-bold tracking-widest mb-1">UPDATED DAILY</p>
           <h2 className="text-2xl font-bold" style={{ fontFamily: 'var(--font-playfair), var(--font-noto-serif-kr), serif' }}>
             What&apos;s Trending Now 🔥
           </h2>
           <p className="text-[#6B6B80] text-xs mt-1">Updated: {trendingData.updatedAt}</p>
-        </div>
+        </div></FadeIn>
 
         <div className="flex gap-1.5 justify-center mb-8 flex-wrap">
           {regions.map((r) => (

@@ -4,10 +4,10 @@ import { useState, useEffect } from "react";
 import Link from "next/link";
 
 const navLinks = [
-  { label: "도구", href: "/tools" },
-  { label: "로또", href: "/lotto" },
-  { label: "블로그", href: "/blog" },
-  { label: "회사소개", href: "/about" },
+  { ko: "도구", en: "Tools", href: "/tools" },
+  { ko: "운세", en: "Fortune", href: "/lotto#fortune" },
+  { ko: "로또", en: "Lotto", href: "/lotto" },
+  { ko: "코리아", en: "Korea", href: "/blog" },
 ];
 
 export default function Header() {
@@ -45,7 +45,7 @@ export default function Header() {
             {navLinks.map((link) => (
               <Link key={link.href} href={link.href}
                 className="text-sm font-medium text-[#A0A0B0] hover:text-[#D4A853] transition-colors">
-                {link.label}
+                {link.ko} <span className="text-[10px] text-[#4A4A5E]">{link.en}</span>
               </Link>
             ))}
           </nav>
@@ -71,7 +71,7 @@ export default function Header() {
           {navLinks.map((link) => (
             <Link key={link.href} href={link.href} onClick={() => setMenuOpen(false)}
               className="block py-3 text-base font-medium text-[#A0A0B0] hover:text-[#D4A853] border-b border-[#2D2D4E] transition-colors">
-              {link.label}
+              {link.ko} <span className="text-xs text-[#4A4A5E]">{link.en}</span>
             </Link>
           ))}
         </nav>
