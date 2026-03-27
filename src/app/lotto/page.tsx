@@ -6,17 +6,20 @@ import LottoBall from '@/components/LottoBall';
 import NumberSet from '@/components/NumberSet';
 import { generateRandom, generateWithFixed, generateExcluding, generateOddEven, generateDream, dreamData } from '@/lib/lotto-generator';
 import { initKakao, shareLotto } from '@/lib/lotto-kakao';
+import { worldLotteries, getLotteryById, generateLottery, formatShareText, type GeneratedResult } from '@/lib/world-lottery';
+import Link from 'next/link';
 import { getLatestDraw, getRecentDraws, getNumberFrequency, getHotNumbers, getColdNumbers, getTotalDrawCount, allDraws } from '@/data/lotto/recent-draws';
 import type { LottoDraw } from '@/data/lotto/recent-draws';
 
 /* ═══════════════════════════════════════
    Types & Constants
    ═══════════════════════════════════════ */
-type TabId = 'fortune' | 'generate' | 'winning' | 'stats';
+type TabId = 'fortune' | 'generate' | 'world' | 'winning' | 'stats';
 type FortuneSubTab = 'daily' | 'tarot' | 'compat' | 'name';
 
 const mainTabs: { id: TabId; label: string; emoji: string }[] = [
   { id: 'generate', label: '번호생성', emoji: '🎲' },
+  { id: 'world', label: 'World', emoji: '🌍' },
   { id: 'fortune', label: '운세', emoji: '🔮' },
   { id: 'winning', label: '당첨', emoji: '🏆' },
   { id: 'stats', label: '통계', emoji: '📊' },
@@ -140,7 +143,7 @@ export default function LottoPage() {
 
   useEffect(() => {
     const hash = window.location.hash.replace('#', '') as TabId;
-    if (['fortune', 'generate', 'winning', 'stats'].includes(hash)) {
+    if (['fortune', 'generate', 'world', 'winning', 'stats'].includes(hash)) {
       setActiveTab(hash);
     }
     initKakao();
@@ -182,6 +185,7 @@ export default function LottoPage() {
       <div className="mt-4">
         {activeTab === 'fortune' && <FortuneTab />}
         {activeTab === 'generate' && <GenerateTab />}
+        {activeTab === 'world' && <WorldTab />}
         {activeTab === 'winning' && <WinningTab />}
         {activeTab === 'stats' && <StatsTab />}
       </div>
@@ -1118,6 +1122,142 @@ function StatsTab() {
           ))}
         </div>
       </div>
+    </div>
+  );
+}
+
+/* ═══════════════════════════════════════
+   🌍 World Lottery Tab
+   ═══════════════════════════════════════ */
+function WorldTab() {
+  const [selectedId, setSelectedId] = useState('us-powerball');
+  const [sets, setSets] = useState(1);
+  const [results, setResults] = useState<GeneratedResult[]>([]);
+  const [msg, setMsg] = useState('');
+
+  const lottery = getLotteryById(selectedId)!;
+
+  const generate = () => { setResults(generateLottery(lottery, sets)); setMsg(''); };
+
+  const handleCopy = async () => {
+    const text = results.map((r) => {
+      const main = r.main.join(', ');
+      const bonus = r.bonus ? ` + ${r.bonusName}: ${r.bonus.join(', ')}` : '';
+      return `${main}${bonus}`;
+    }).join('\n');
+    await navigator.clipboard.writeText(text);
+    setMsg('Copied!'); setTimeout(() => setMsg(''), 2000);
+  };
+
+  const slugMap: Record<string, string> = {
+    'us-powerball': 'powerball', 'us-megamillions': 'mega-millions', 'euromillions': 'euromillions',
+    'eurojackpot': 'eurojackpot', 'uk-lottery': 'uk-lottery', 'japan-loto6': 'japan-loto6',
+    'australia-powerball': 'australia-powerball', 'brazil-megasena': 'mega-sena', 'canada-lottomax': 'lotto-max',
+  };
+
+  return (
+    <div className="space-y-5">
+      {/* Lottery selector */}
+      <div className="grid grid-cols-5 gap-1.5">
+        {worldLotteries.filter((l) => l.id !== 'korea-lotto').map((l) => (
+          <button key={l.id} onClick={() => { setSelectedId(l.id); setResults([]); }}
+            className={`py-2 px-1 rounded-xl text-center text-xs transition ${
+              selectedId === l.id ? 'bg-blue-600 text-white shadow-sm' : 'bg-gray-100 text-gray-600 hover:bg-gray-200'
+            }`}>
+            <span className="text-base block">{l.country}</span>
+            <span className="text-[9px] block mt-0.5 leading-tight">{l.name.split(' ')[0]}</span>
+          </button>
+        ))}
+      </div>
+
+      {/* Info */}
+      <div className="bg-gray-50 rounded-2xl p-4">
+        <div className="flex items-center gap-3">
+          <span className="text-3xl">{lottery.country}</span>
+          <div>
+            <p className="font-bold">{lottery.name}</p>
+            <p className="text-xs text-gray-500">
+              {lottery.mainNumbers.count} from {lottery.mainNumbers.min}-{lottery.mainNumbers.max}
+              {lottery.bonusNumbers && ` + ${lottery.bonusNumbers.count} ${lottery.bonusNumbers.name} (${lottery.bonusNumbers.min}-${lottery.bonusNumbers.max})`}
+            </p>
+            <p className="text-[10px] text-gray-400 mt-0.5">Draw: {lottery.drawDays.join(', ')} · {lottery.ageRestriction}</p>
+          </div>
+        </div>
+      </div>
+
+      {/* Generate */}
+      <div className="flex gap-2">
+        <div className="flex items-center gap-2 bg-gray-50 rounded-xl px-3">
+          <span className="text-xs text-gray-500">Sets</span>
+          {[1, 3, 5].map((n) => (
+            <button key={n} onClick={() => setSets(n)}
+              className={`w-7 h-7 rounded-lg text-xs font-bold transition ${sets === n ? 'bg-blue-600 text-white' : 'text-gray-500 hover:bg-gray-200'}`}>
+              {n}
+            </button>
+          ))}
+        </div>
+        <button onClick={generate}
+          className="flex-1 py-3 bg-blue-600 text-white rounded-xl font-bold text-sm hover:bg-blue-700 active:scale-[0.98] transition">
+          Generate
+        </button>
+      </div>
+
+      {/* Results */}
+      {results.length > 0 && (
+        <div className="bg-white border border-gray-100 rounded-2xl p-4 shadow-sm space-y-3">
+          {results.map((r, i) => (
+            <div key={i} className={`${i > 0 ? 'pt-3 border-t border-gray-100' : ''}`}>
+              <div className="flex items-center gap-1.5 flex-wrap">
+                <span className="text-xs font-bold text-gray-400 w-5">{String.fromCharCode(65 + i)}</span>
+                {r.main.map((n) => (
+                  <LottoBall key={`m${i}-${n}`} number={n} size="md" animated delay={r.main.indexOf(n)} />
+                ))}
+                {r.bonus && r.bonus.map((n) => (
+                  <LottoBall key={`b${i}-${n}`} number={n} size="md" bonus animated delay={r.main.length} />
+                ))}
+              </div>
+              {r.bonus && (
+                <p className="text-[10px] text-gray-400 mt-1 ml-5">
+                  {r.bonusName}: {r.bonus.join(', ')}
+                </p>
+              )}
+            </div>
+          ))}
+
+          <div className="flex gap-2 pt-3 border-t border-gray-100">
+            <button onClick={handleCopy} className="flex-1 py-2.5 bg-gray-100 rounded-xl text-sm font-medium hover:bg-gray-200 transition">
+              📋 Copy
+            </button>
+            <button onClick={async () => {
+              const text = results.map((r) => formatShareText(lottery, r)).join('\n\n');
+              if (navigator.share) { try { await navigator.share({ title: `${lottery.name} Numbers`, text }); return; } catch {} }
+              await navigator.clipboard.writeText(text);
+              setMsg('Copied!'); setTimeout(() => setMsg(''), 2000);
+            }} className="flex-1 py-2.5 bg-blue-600 text-white rounded-xl text-sm font-medium hover:bg-blue-700 transition">
+              Share
+            </button>
+          </div>
+          {msg && <p className="text-center text-xs text-green-600">{msg}</p>}
+        </div>
+      )}
+
+      {/* SEO links */}
+      <div className="pt-4">
+        <p className="text-xs text-gray-400 mb-2">Dedicated pages:</p>
+        <div className="flex flex-wrap gap-1">
+          {worldLotteries.filter((l) => slugMap[l.id]).map((l) => (
+            <Link key={l.id} href={`/lotto/${slugMap[l.id]}`}
+              className="px-2 py-1 bg-gray-50 rounded text-[10px] text-gray-500 hover:bg-gray-100 transition">
+              {l.country} {l.name}
+            </Link>
+          ))}
+        </div>
+      </div>
+
+      <p className="text-center text-[10px] text-gray-400 leading-relaxed">
+        Random number generator for entertainment only.<br />
+        Not affiliated with any official lottery.
+      </p>
     </div>
   );
 }

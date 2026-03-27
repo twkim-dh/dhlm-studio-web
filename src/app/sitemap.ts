@@ -15,6 +15,15 @@ const viralRoutes = [
 // Lotto
 const lottoRoutes = [
   "lotto",
+  "lotto/powerball",
+  "lotto/mega-millions",
+  "lotto/euromillions",
+  "lotto/eurojackpot",
+  "lotto/uk-lottery",
+  "lotto/japan-loto6",
+  "lotto/australia-powerball",
+  "lotto/mega-sena",
+  "lotto/lotto-max",
 ];
 
 // Fortune / AI
