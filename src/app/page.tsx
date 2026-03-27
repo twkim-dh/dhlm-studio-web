@@ -22,10 +22,9 @@ const posts = [
   'Never Write Names in Red Ink',
 ];
 
-// Next month's data
-const now = new Date();
-const nextMonth = now.getMonth() + 2 > 12 ? 1 : now.getMonth() + 2;
-const monthData = monthlyEvents[nextMonth];
+// Current month data
+const currentMonth = new Date().getMonth() + 1; // 1~12
+const monthData = monthlyEvents[currentMonth];
 
 export default function Home() {
   return (
@@ -83,15 +82,15 @@ export default function Home() {
         </div>
       </section>
 
-      {/* ── Coming Next Month ── */}
+      {/* ── This Month in Korea ── */}
       <section style={{ background: '#FFFFFF', borderTop: '1px solid #E5E7EB' }}>
         <div className="mx-auto px-6" style={{ maxWidth: '960px', paddingTop: '80px', paddingBottom: '80px' }}>
           <div className="flex items-baseline gap-4 mb-10">
             <p className="text-sm tracking-[0.2em]" style={{ fontFamily: 'var(--font-playfair), serif', color: '#6B7280' }}>
-              Coming in {getMonthName(nextMonth)}
+              Korea in {getMonthName(currentMonth)}
             </p>
             <p className="text-sm" style={{ fontFamily: serif, color: '#9CA3AF' }}>
-              {getMonthNameKr(nextMonth)}의 한국
+              {getMonthNameKr(currentMonth)}의 한국
             </p>
           </div>
 
@@ -102,11 +101,29 @@ export default function Home() {
               <div key={ev.name} style={{ borderBottom: '1px solid #F3F4F6', paddingBottom: '24px' }}>
                 <div className="flex items-start gap-3">
                   <span className="text-xl mt-0.5">{ev.emoji}</span>
-                  <div>
+                  <div className="flex-1">
                     <p className="text-base font-medium" style={{ color: '#1A1A1A' }}>{ev.name}</p>
                     <p className="text-sm" style={{ fontFamily: serif, color: '#6B7280' }}>{ev.nameKr}</p>
                     <p className="text-[13px] mt-1.5" style={{ color: '#9CA3AF' }}>{ev.period}</p>
                     <p className="text-sm mt-2 leading-relaxed" style={{ color: '#4B5563' }}>{ev.desc}</p>
+                    <div className="flex items-center gap-4 mt-3">
+                      {ev.url && (
+                        <a href={ev.url} target="_blank" rel="noopener noreferrer"
+                          className="text-[12px] transition-colors duration-200 hover:text-[#C73E3A]"
+                          style={{ color: '#6B7280' }}>
+                          Official site →
+                        </a>
+                      )}
+                      <button onClick={() => {
+                        const text = `${ev.emoji} ${ev.name} (${ev.nameKr})\n${ev.period}\n${ev.desc}\n\nhttps://dhlm-studio.com`;
+                        if (navigator.share) { navigator.share({ title: ev.name, text }).catch(() => {}); }
+                        else { navigator.clipboard.writeText(text); }
+                      }}
+                        className="text-[12px] transition-colors duration-200 hover:text-[#C73E3A]"
+                        style={{ color: '#9CA3AF' }}>
+                        Share
+                      </button>
+                    </div>
                   </div>
                 </div>
               </div>

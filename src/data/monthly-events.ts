@@ -1,4 +1,4 @@
-export interface EventItem { name: string; nameKr: string; desc: string; period: string; emoji: string }
+export interface EventItem { name: string; nameKr: string; desc: string; period: string; emoji: string; url?: string }
 export interface FoodItem { name: string; nameKr: string; desc: string; emoji: string }
 export interface MonthData { events: EventItem[]; foods: FoodItem[] }
 
@@ -12,7 +12,7 @@ export const monthlyEvents: Record<number, MonthData> = {
   1: {
     events: [
       { name: 'Seollal (Lunar New Year)', nameKr: '설날', desc: "Korea's biggest holiday. Families eat tteokguk and play yutnori.", period: 'Late Jan ~ Early Feb', emoji: '🎍' },
-      { name: 'Hwacheon Ice Festival', nameKr: '화천 산천어축제', desc: 'Catch trout with bare hands on a frozen river!', period: 'Jan 6 ~ 28', emoji: '🐟' },
+      { name: 'Hwacheon Ice Festival', nameKr: '화천 산천어축제', desc: 'Catch trout with bare hands on a frozen river!', period: 'Jan 6 ~ 28', emoji: '🐟', url: 'https://www.narafestival.com/festival/hwacheon' },
       { name: 'Taebaeksan Snow Festival', nameKr: '태백산 눈축제', desc: 'Snow sculptures and winter activities in the mountains.', period: 'Mid Jan', emoji: '⛄' },
     ],
     foods: [
@@ -23,7 +23,7 @@ export const monthlyEvents: Record<number, MonthData> = {
   },
   2: {
     events: [
-      { name: 'Jeju Fire Festival', nameKr: '제주 들불축제', desc: 'Spectacular fire ceremony on Saebyeol Oreum.', period: 'Late Feb', emoji: '🔥' },
+      { name: 'Jeju Fire Festival', nameKr: '제주 들불축제', desc: 'Spectacular fire ceremony on Saebyeol Oreum.', period: 'Late Feb', emoji: '🔥', url: 'https://www.visitjeju.net' },
       { name: "Valentine's Day", nameKr: '발렌타인데이', desc: 'Women give chocolate to men. (Men return on White Day, Mar 14)', period: 'Feb 14', emoji: '🍫' },
       { name: 'Pyeongchang Trout Festival', nameKr: '평창 송어축제', desc: 'Ice fishing and eating fresh trout sashimi.', period: 'Early Feb', emoji: '🎣' },
     ],
@@ -36,7 +36,7 @@ export const monthlyEvents: Record<number, MonthData> = {
   3: {
     events: [
       { name: 'Samil Independence Day', nameKr: '삼일절', desc: 'National holiday commemorating the 1919 independence movement.', period: 'Mar 1', emoji: '🇰🇷' },
-      { name: 'Jinhae Cherry Blossom Festival', nameKr: '진해 군항제', desc: "Korea's biggest cherry blossom festival. 350,000 trees.", period: 'Late Mar ~ Early Apr', emoji: '🌸' },
+      { name: 'Jinhae Cherry Blossom Festival', nameKr: '진해 군항제', desc: "Korea's biggest cherry blossom festival. 350,000 trees.", period: 'Late Mar ~ Early Apr', emoji: '🌸', url: 'https://www.changwon.go.kr' },
       { name: 'Jeju Canola Flower Season', nameKr: '제주 유채꽃', desc: 'Bright yellow canola fields all over Jeju Island.', period: 'Mar ~ Apr', emoji: '🌼' },
     ],
     foods: [
@@ -80,7 +80,7 @@ export const monthlyEvents: Record<number, MonthData> = {
   },
   7: {
     events: [
-      { name: 'Boryeong Mud Festival', nameKr: '보령 머드축제', desc: "Korea's most famous festival. Mud slides, wrestling, baths.", period: 'Mid Jul', emoji: '🏖️' },
+      { name: 'Boryeong Mud Festival', nameKr: '보령 머드축제', desc: "Korea's most famous festival. Mud slides, wrestling, baths.", period: 'Mid Jul', emoji: '🏖️', url: 'https://www.boryeong.go.kr' },
       { name: 'Beach Season', nameKr: '해수욕장 개장', desc: 'Haeundae, Gwangalli, and Jeju beaches open.', period: 'Jul ~ Aug', emoji: '🏖️' },
     ],
     foods: [
@@ -115,7 +115,7 @@ export const monthlyEvents: Record<number, MonthData> = {
     events: [
       { name: 'Autumn Foliage Peak', nameKr: '단풍 절정', desc: 'Seoraksan, Naejangsan turn red and gold.', period: 'Mid ~ Late Oct', emoji: '🍁' },
       { name: 'Hangeul Day', nameKr: '한글날', desc: 'Celebrating the Korean alphabet. National holiday.', period: 'Oct 9', emoji: '🇰🇷' },
-      { name: 'Busan Film Festival', nameKr: '부산국제영화제', desc: "Asia's biggest film festival.", period: 'Early Oct', emoji: '🎬' },
+      { name: 'Busan Film Festival', nameKr: '부산국제영화제', desc: "Asia's biggest film festival.", period: 'Early Oct', emoji: '🎬', url: 'https://www.biff.kr' },
     ],
     foods: [
       { name: 'Apples', nameKr: '사과', desc: 'Korean apples peak in autumn. Crisp and sweet.', emoji: '🍎' },
