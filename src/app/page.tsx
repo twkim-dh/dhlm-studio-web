@@ -16,11 +16,11 @@ const categories = [
 const moreCategories = ['Language', 'Work Culture', 'Traditions', 'Tech', 'Lifestyle', 'vs World'];
 
 const posts = [
-  'Why Korean Buildings Skip the 4th Floor',
-  'Korean BBQ: The Complete Guide',
-  "Fan Death: Korea's Famous Urban Legend",
-  'Soju Drinking Rules You Must Know',
-  'Never Write Names in Red Ink',
+  { title: 'Why Korean Buildings Skip the 4th Floor', slug: 'number-four' },
+  { title: 'Korean BBQ: The Complete Guide', slug: 'korean-bbq-guide' },
+  { title: "Fan Death: Korea's Famous Urban Legend", slug: 'fan-death' },
+  { title: 'Soju Drinking Rules You Must Know', slug: 'soju-drinking-rules' },
+  { title: 'Never Write Names in Red Ink', slug: 'red-ink-death' },
 ];
 
 // Next month data
@@ -30,64 +30,19 @@ const monthData = monthlyEvents[nextMonth];
 export default function Home() {
   return (
     <>
-      {/* ── Hero — Left: Title / Right: Next Month Events ── */}
+      {/* ── Hero ── */}
       <section className="px-6" style={{ paddingTop: '120px', paddingBottom: '120px', background: '#FFFFFF' }}>
         <div className="mx-auto" style={{ maxWidth: '960px' }}>
-          <div className="grid grid-cols-1 md:grid-cols-2 gap-16 md:gap-20 items-start">
-            {/* Left — Calligraphy-style title */}
-            <div>
-              <p className="text-[11px] tracking-[0.4em] mb-12" style={{ color: '#BCBCBC' }}>
-                DHLM STUDIO
-              </p>
-              <h1 className="text-[clamp(28px,4.5vw,48px)] font-normal leading-[1.6]"
-                style={{ fontFamily: 'var(--font-noto-serif-kr), serif', color: '#1A1A1A', letterSpacing: '0.04em' }}>
-                한국의 문화를<br />세계와 연결합니다
-              </h1>
-              <p className="text-[15px] mt-8 italic leading-relaxed" style={{ fontFamily: 'var(--font-playfair), serif', color: '#B0B0B0' }}>
-                Connecting Korean Culture<br />to the World
-              </p>
-            </div>
-
-            {/* Right — Next Month Events */}
-            <div>
-              <div className="flex items-baseline gap-3 mb-6">
-                <p className="text-[13px] tracking-[0.15em]" style={{ fontFamily: 'var(--font-playfair), serif', color: '#6B7280' }}>
-                  Coming in {getMonthName(nextMonth)}
-                </p>
-                <p className="text-[13px]" style={{ fontFamily: serif, color: '#9CA3AF' }}>
-                  {getMonthNameKr(nextMonth)}
-                </p>
-              </div>
-              <div className="space-y-4">
-                {monthData.events.map((ev) => (
-                  <div key={ev.name} style={{ borderBottom: '1px solid #F3F4F6', paddingBottom: '16px' }}>
-                    <div className="flex items-start gap-2.5">
-                      <span className="text-base mt-0.5">{ev.emoji}</span>
-                      <div className="flex-1 min-w-0">
-                        <p className="text-sm font-medium" style={{ color: '#1A1A1A' }}>{ev.name}</p>
-                        <p className="text-[12px]" style={{ fontFamily: serif, color: '#9CA3AF' }}>{ev.nameKr} · {ev.period}</p>
-                        <p className="text-[13px] mt-1 leading-relaxed" style={{ color: '#6B7280' }}>{ev.desc}</p>
-                        <div className="flex items-center gap-3 mt-1.5">
-                          <Link href={ev.url}
-                            className="text-[11px] transition-colors duration-200 hover:text-[#C73E3A]" style={{ color: '#9CA3AF' }}>
-                            Learn more →
-                          </Link>
-                          <button onClick={() => {
-                            const text = `${ev.emoji} ${ev.name} (${ev.nameKr})\n${ev.period}\n${ev.desc}\n\nhttps://dhlm-studio.com`;
-                            if (navigator.share) { navigator.share({ title: ev.name, text }).catch(() => {}); }
-                            else { navigator.clipboard.writeText(text); }
-                          }} className="text-[11px] transition-colors duration-200 hover:text-[#C73E3A]" style={{ color: '#9CA3AF' }}>
-                            Share
-                          </button>
-                        </div>
-                      </div>
-                    </div>
-                  </div>
-                ))}
-              </div>
-            </div>
-          </div>
-
+          <p className="text-[11px] tracking-[0.4em] mb-12" style={{ color: '#BCBCBC' }}>
+            DHLM STUDIO
+          </p>
+          <h1 className="text-[clamp(28px,4.5vw,48px)] font-normal leading-[1.6]"
+            style={{ fontFamily: 'var(--font-noto-serif-kr), serif', color: '#1A1A1A', letterSpacing: '0.04em' }}>
+            한국의 문화를<br />세계와 연결합니다
+          </h1>
+          <p className="text-[15px] mt-8 italic leading-relaxed" style={{ fontFamily: 'var(--font-playfair), serif', color: '#B0B0B0' }}>
+            Connecting Korean Culture to the World
+          </p>
           <div className="mt-16" style={{ width: '40%', height: '1px', background: '#E5E7EB' }} />
         </div>
       </section>
@@ -129,21 +84,69 @@ export default function Home() {
         </div>
       </section>
 
-      {/* ── Seasonal Food (compact) ── */}
+      {/* ── Coming Next Month ── */}
       <section style={{ background: '#FFFFFF', borderTop: '1px solid #E5E7EB' }}>
-        <div className="mx-auto px-6" style={{ maxWidth: '960px', paddingTop: '60px', paddingBottom: '60px' }}>
-          <p className="text-[13px] tracking-[0.15em] mb-6" style={{ fontFamily: 'var(--font-playfair), serif', color: '#9CA3AF' }}>
-            Seasonal Food · {getMonthNameKr(nextMonth)}
-          </p>
-          <div className="grid grid-cols-1 sm:grid-cols-3 gap-4">
-            {monthData.foods.map((food) => (
-              <div key={food.name} className="border" style={{ borderColor: '#E5E7EB', borderRadius: '4px', padding: '20px', background: '#FAFAFA' }}>
-                <span className="text-xl">{food.emoji}</span>
-                <p className="text-sm font-medium mt-1.5" style={{ color: '#1A1A1A' }}>{food.name}</p>
-                <p className="text-[12px]" style={{ fontFamily: serif, color: '#9CA3AF' }}>{food.nameKr}</p>
-                <p className="text-[12px] mt-1.5 leading-relaxed" style={{ color: '#6B7280' }}>{food.desc}</p>
+        <div className="mx-auto px-6" style={{ maxWidth: '960px', paddingTop: '80px', paddingBottom: '80px' }}>
+          <div className="grid grid-cols-1 md:grid-cols-2 gap-16">
+            {/* Events */}
+            <div>
+              <div className="flex items-baseline gap-3 mb-8">
+                <p className="text-[11px] tracking-[0.25em]" style={{ fontFamily: 'var(--font-playfair), serif', color: '#BCBCBC' }}>
+                  Coming in {getMonthName(nextMonth)}
+                </p>
+                <p className="text-[13px]" style={{ fontFamily: serif, color: '#9CA3AF' }}>
+                  {getMonthNameKr(nextMonth)}
+                </p>
               </div>
-            ))}
+              <div className="space-y-4">
+                {monthData.events.map((ev) => (
+                  <div key={ev.name} style={{ borderBottom: '1px solid #F3F4F6', paddingBottom: '16px' }}>
+                    <div className="flex items-start gap-2.5">
+                      <span className="text-base mt-0.5">{ev.emoji}</span>
+                      <div className="flex-1 min-w-0">
+                        <p className="text-sm font-medium" style={{ color: '#1A1A1A' }}>{ev.name}</p>
+                        <p className="text-[12px]" style={{ fontFamily: serif, color: '#9CA3AF' }}>{ev.nameKr} · {ev.period}</p>
+                        <p className="text-[13px] mt-1 leading-relaxed" style={{ color: '#6B7280' }}>{ev.desc}</p>
+                        <div className="flex items-center gap-3 mt-1.5">
+                          <Link href={ev.url}
+                            className="text-[11px] transition-colors duration-200 hover:text-[#C73E3A]" style={{ color: '#9CA3AF' }}>
+                            Learn more →
+                          </Link>
+                          <button onClick={() => {
+                            const text = `${ev.emoji} ${ev.name} (${ev.nameKr})\n${ev.period}\n${ev.desc}\n\nhttps://dhlm-studio.com`;
+                            if (navigator.share) { navigator.share({ title: ev.name, text }).catch(() => {}); }
+                            else { navigator.clipboard.writeText(text); }
+                          }} className="text-[11px] transition-colors duration-200 hover:text-[#C73E3A]" style={{ color: '#9CA3AF' }}>
+                            Share
+                          </button>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                ))}
+              </div>
+            </div>
+
+            {/* Seasonal Food */}
+            <div>
+              <p className="text-[11px] tracking-[0.25em] mb-8" style={{ fontFamily: 'var(--font-playfair), serif', color: '#BCBCBC' }}>
+                Seasonal Food · {getMonthNameKr(nextMonth)}
+              </p>
+              <div className="space-y-4">
+                {monthData.foods.map((food) => (
+                  <div key={food.name} style={{ borderBottom: '1px solid #F3F4F6', paddingBottom: '16px' }}>
+                    <div className="flex items-start gap-2.5">
+                      <span className="text-base mt-0.5">{food.emoji}</span>
+                      <div className="flex-1">
+                        <p className="text-sm font-medium" style={{ color: '#1A1A1A' }}>{food.name}</p>
+                        <p className="text-[12px]" style={{ fontFamily: serif, color: '#9CA3AF' }}>{food.nameKr}</p>
+                        <p className="text-[13px] mt-1 leading-relaxed" style={{ color: '#6B7280' }}>{food.desc}</p>
+                      </div>
+                    </div>
+                  </div>
+                ))}
+              </div>
+            </div>
           </div>
         </div>
       </section>
@@ -152,12 +155,10 @@ export default function Home() {
       <section style={{ background: '#FAFAFA', borderTop: '1px solid #E5E7EB' }}>
         <div className="mx-auto px-6" style={{ maxWidth: '960px', paddingTop: '80px', paddingBottom: '80px' }}>
           <div className="grid grid-cols-1 md:grid-cols-2 gap-16">
-            {/* K-Pop Comebacks & Concerts */}
             <div>
               <p className="text-[11px] tracking-[0.25em] mb-8" style={{ fontFamily: 'var(--font-playfair), serif', color: '#BCBCBC' }}>
                 K-Pop · {koreaMonthly.updatedAt}
               </p>
-
               <p className="text-[12px] tracking-[0.1em] mb-4" style={{ color: '#9CA3AF' }}>Comebacks</p>
               <div className="space-y-3 mb-8">
                 {koreaMonthly.kpop.comebacks.map((cb) => (
@@ -167,7 +168,6 @@ export default function Home() {
                   </div>
                 ))}
               </div>
-
               <p className="text-[12px] tracking-[0.1em] mb-4" style={{ color: '#9CA3AF' }}>Concerts in Korea</p>
               <div className="space-y-3">
                 {koreaMonthly.kpop.concerts.map((c) => (
@@ -178,13 +178,10 @@ export default function Home() {
                 ))}
               </div>
             </div>
-
-            {/* K-Drama + Trending Slang */}
             <div>
               <p className="text-[11px] tracking-[0.25em] mb-8" style={{ fontFamily: 'var(--font-playfair), serif', color: '#BCBCBC' }}>
                 K-Drama & Trending
               </p>
-
               <p className="text-[12px] tracking-[0.1em] mb-4" style={{ color: '#9CA3AF' }}>Hot Dramas</p>
               <div className="space-y-3 mb-8">
                 {koreaMonthly.drama.map((d) => (
@@ -194,7 +191,6 @@ export default function Home() {
                   </div>
                 ))}
               </div>
-
               <p className="text-[12px] tracking-[0.1em] mb-4" style={{ color: '#9CA3AF' }}>Korean Slang</p>
               <div className="space-y-3">
                 {koreaMonthly.trending.slang.map((s) => (
@@ -216,7 +212,6 @@ export default function Home() {
       <section style={{ background: '#FFFFFF', borderTop: '1px solid #E5E7EB' }}>
         <div className="mx-auto px-6" style={{ maxWidth: '960px', paddingTop: '80px', paddingBottom: '80px' }}>
           <div className="grid grid-cols-1 md:grid-cols-2 gap-16">
-            {/* Olive Young Best Sellers */}
             <div>
               <p className="text-[11px] tracking-[0.25em] mb-8" style={{ fontFamily: 'var(--font-playfair), serif', color: '#BCBCBC' }}>
                 K-Beauty Best Sellers
@@ -233,8 +228,6 @@ export default function Home() {
                 ))}
               </div>
             </div>
-
-            {/* Pop-up Stores */}
             <div>
               <p className="text-[11px] tracking-[0.25em] mb-8" style={{ fontFamily: 'var(--font-playfair), serif', color: '#BCBCBC' }}>
                 Pop-up Stores in Seoul
@@ -252,29 +245,28 @@ export default function Home() {
         </div>
       </section>
 
-      {/* ── Popular ── */}
+      {/* ── Most Read ── */}
       <section style={{ background: '#FFFFFF', borderTop: '1px solid #E5E7EB' }}>
         <div className="mx-auto px-6" style={{ maxWidth: '960px', paddingTop: '100px', paddingBottom: '100px' }}>
           <p className="text-[11px] tracking-[0.25em] mb-12" style={{ fontFamily: 'var(--font-playfair), serif', color: '#BCBCBC' }}>
             Most Read
           </p>
-
           <div>
-            {posts.map((title, i) => (
-              <div key={i} className="group cursor-pointer" style={{ borderBottom: '1px solid #E5E7EB' }}>
+            {posts.map((post, i) => (
+              <Link key={post.slug} href={`/korea/${post.slug}`}
+                className="block group" style={{ borderBottom: '1px solid #E5E7EB' }}>
                 <div style={{ padding: '28px 0' }}>
                   <p className="text-[13px] mb-2" style={{ color: '#C73E3A' }}>
                     {String(i + 1).padStart(2, '0')}
                   </p>
                   <p className="text-[clamp(17px,2.5vw,20px)] font-medium leading-relaxed transition-colors duration-200 group-hover:text-[#C73E3A]"
                     style={{ fontFamily: serif, color: '#1A1A1A' }}>
-                    {title}
+                    {post.title}
                   </p>
                 </div>
-              </div>
+              </Link>
             ))}
           </div>
-
           <div className="mt-10">
             <Link href="/korea" className="text-sm transition-colors duration-200 hover:opacity-70" style={{ color: '#C73E3A' }}>
               View all articles →
@@ -289,7 +281,6 @@ export default function Home() {
           <p className="text-[11px] tracking-[0.25em] mb-12" style={{ fontFamily: 'var(--font-playfair), serif', color: '#555' }}>
             Also from DHLM Studio
           </p>
-
           <div className="grid grid-cols-2 sm:grid-cols-3 gap-y-12">
             {[
               { ko: '복권', en: 'World Lottery', desc: '25+ lotteries', href: '/lotto' },
