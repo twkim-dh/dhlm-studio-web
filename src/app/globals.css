@@ -1,169 +1,129 @@
 @import "tailwindcss";
 
 :root {
-  --brand-green: #31A575;
-  --brand-orange: #FF8C42;
-  --brand-coral: #FF6B6B;
+  /* 궁전 단청 컬러 */
+  --p-red: #8B2500;
+  --p-green: #1B5E20;
+  --p-gold: #C5981A;
+  --p-blue: #1A237E;
+  --p-wall: #F5F0E8;
+  --p-stone: #D5CEC3;
+  --p-wood: #4E342E;
+  --p-sky: #E8EAF6;
+  --p-night: #0D1117;
+  --p-text: #2D2D2D;
+  --p-muted: #8D8478;
+
   --background: #ffffff;
   --foreground: #1a1a1a;
-  --muted: #6b7280;
-  --border: #e5e7eb;
-  --card-bg: #ffffff;
-  --section-alt: #f9fafb;
+  --font-sans: var(--font-noto-sans-kr);
 }
 
 @theme inline {
   --color-background: var(--background);
   --color-foreground: var(--foreground);
-  --color-brand-green: var(--brand-green);
-  --color-brand-orange: var(--brand-orange);
-  --color-brand-coral: var(--brand-coral);
-  --color-muted: var(--muted);
-  --color-border: var(--border);
-  --color-card-bg: var(--card-bg);
-  --color-section-alt: var(--section-alt);
   --font-sans: var(--font-noto-sans-kr);
 }
 
-html {
-  scroll-behavior: smooth;
-}
-
+html { scroll-behavior: smooth; }
 body {
-  background: var(--background);
-  color: var(--foreground);
+  background: var(--p-wall);
+  color: var(--p-text);
   font-family: var(--font-noto-sans-kr), 'Noto Sans KR', sans-serif;
 }
 
-@keyframes fade-in-up {
-  from {
-    opacity: 0;
-    transform: translateY(24px);
-  }
-  to {
-    opacity: 1;
-    transform: translateY(0);
-  }
-}
+.scrollbar-hide::-webkit-scrollbar { display: none; }
+.scrollbar-hide { -ms-overflow-style: none; scrollbar-width: none; }
 
-.animate-fade-in-up {
-  animation: fade-in-up 0.6s ease-out forwards;
-}
+/* ═══ Palace Patterns ═══ */
 
-@keyframes count-up {
-  from {
-    opacity: 0;
-    transform: scale(0.8);
-  }
-  to {
-    opacity: 1;
-    transform: scale(1);
-  }
-}
-
-.animate-count-up {
-  animation: count-up 0.5s ease-out forwards;
-}
-
-.scrollbar-hide::-webkit-scrollbar {
-  display: none;
-}
-.scrollbar-hide {
-  -ms-overflow-style: none;
-  scrollbar-width: none;
-}
-
-/* ═══ Korean Traditional Patterns ═══ */
-
-/* 구름 문양 (Cloud Pattern) */
-.k-cloud {
-  background-image: url("data:image/svg+xml,%3Csvg width='200' height='100' viewBox='0 0 200 100' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath d='M30,80 Q45,30 70,55 Q90,15 120,45 Q145,5 170,45 Q190,25 200,60 L200,100 L0,100 L0,80 Z' fill='%23D4A853' fill-opacity='0.06'/%3E%3C/svg%3E");
-  background-size: 200px 100px;
-}
-
-/* 창살 문양 (Window Lattice) */
-.k-lattice {
+/* 돌바닥 격자 */
+.stone-floor {
+  background-color: var(--p-stone);
   background-image:
-    linear-gradient(#C73E3A 0.5px, transparent 0.5px),
-    linear-gradient(90deg, #C73E3A 0.5px, transparent 0.5px);
-  background-size: 32px 32px;
-  opacity: 0.04;
+    linear-gradient(rgba(0,0,0,0.04) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(0,0,0,0.04) 1px, transparent 1px);
+  background-size: 80px 80px;
 }
 
-/* 물결 문양 (Wave) */
-.k-wave {
-  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 1440 60'%3E%3Cpath fill='%23C73E3A' fill-opacity='0.06' d='M0,30 C240,60 480,0 720,30 C960,60 1200,0 1440,30 L1440,60 L0,60 Z'/%3E%3C/svg%3E");
-  background-size: 720px 30px;
-  background-repeat: repeat-x;
-  background-position: bottom;
-}
-
-/* 꽃 문양 (Flower - Mugunghwa inspired) */
-.k-flower {
-  background-image: url("data:image/svg+xml,%3Csvg width='60' height='60' viewBox='0 0 60 60' xmlns='http://www.w3.org/2000/svg'%3E%3Ccircle cx='30' cy='30' r='4' fill='%23C73E3A' fill-opacity='0.06'/%3E%3Ccircle cx='30' cy='22' r='6' fill='%23C73E3A' fill-opacity='0.03'/%3E%3Ccircle cx='37' cy='27' r='6' fill='%23C73E3A' fill-opacity='0.03'/%3E%3Ccircle cx='34' cy='35' r='6' fill='%23C73E3A' fill-opacity='0.03'/%3E%3Ccircle cx='26' cy='35' r='6' fill='%23C73E3A' fill-opacity='0.03'/%3E%3Ccircle cx='23' cy='27' r='6' fill='%23C73E3A' fill-opacity='0.03'/%3E%3C/svg%3E");
-  background-size: 60px 60px;
-}
-
-/* 산 문양 (Mountain) */
-.k-mountain {
-  background-image: url("data:image/svg+xml,%3Csvg width='240' height='80' viewBox='0 0 240 80' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath d='M0,80 L40,30 L80,60 L120,15 L160,50 L200,25 L240,80 Z' fill='%234A90D9' fill-opacity='0.04'/%3E%3C/svg%3E");
-  background-size: 240px 80px;
-  background-position: bottom;
-}
-
-/* 별 문양 (Star) */
-.k-star {
-  background-image: url("data:image/svg+xml,%3Csvg width='40' height='40' viewBox='0 0 40 40' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath d='M20,5 L23,15 L33,15 L25,21 L28,31 L20,25 L12,31 L15,21 L7,15 L17,15 Z' fill='%23EC4899' fill-opacity='0.04'/%3E%3C/svg%3E");
-  background-size: 40px 40px;
-}
-
-/* 단청 테두리 (Dancheong Border) */
-.k-dancheong-border {
-  border: 2px solid transparent;
-  border-image: linear-gradient(90deg, #C73E3A, #D4A853, #2E7D32, #4A90D9, #C73E3A) 1;
-}
-
-/* 한지 텍스처 배경 */
-.k-hanji {
-  background-color: #FFF8F0;
-  background-image: url("data:image/svg+xml,%3Csvg width='4' height='4' viewBox='0 0 4 4' xmlns='http://www.w3.org/2000/svg'%3E%3Crect width='1' height='1' x='0' y='0' fill='%23D4A853' fill-opacity='0.03'/%3E%3Crect width='1' height='1' x='2' y='2' fill='%23C73E3A' fill-opacity='0.02'/%3E%3C/svg%3E");
+/* 회벽 텍스처 */
+.palace-wall {
+  background-color: var(--p-wall);
+  background-image: url("data:image/svg+xml,%3Csvg width='4' height='4' viewBox='0 0 4 4' xmlns='http://www.w3.org/2000/svg'%3E%3Crect width='1' height='1' x='0' y='0' fill='%23C5981A' fill-opacity='0.02'/%3E%3Crect width='1' height='1' x='2' y='2' fill='%238B2500' fill-opacity='0.015'/%3E%3C/svg%3E");
   background-size: 4px 4px;
 }
 
-/* Fun Fact 박스 */
-.k-fun-fact {
-  background: linear-gradient(135deg, #FFF8F0, #FFF3E0);
-  border-left: 4px solid #D4A853;
-  border-radius: 0 8px 8px 0;
-}
-
-/* Korean Word 박스 */
-.k-word-box {
-  background: #1A1A2E;
-  color: #F0E6D3;
+/* 궁전 카드 */
+.palace-card {
+  background: white;
+  border: 1px solid #E0D8CC;
   border-radius: 8px;
-  font-family: var(--font-noto-serif-kr), serif;
-}
-
-/* 태극 로딩 애니메이션 */
-@keyframes k-spin {
-  to { transform: rotate(360deg); }
-}
-.k-taeguk {
-  animation: k-spin 3s linear infinite;
-}
-
-/* 단청 그라데이션 구분선 */
-.k-divider {
-  height: 2px;
-  background: linear-gradient(90deg, transparent, #C73E3A 20%, #D4A853 50%, #4A90D9 80%, transparent);
-}
-
-/* 카드 호버 - 금색 */
-.k-card-hover {
   transition: all 0.3s;
 }
-.k-card-hover:hover {
-  border-color: rgba(212, 168, 83, 0.4);
-  box-shadow: 0 4px 20px rgba(212, 168, 83, 0.08);
+.palace-card:hover {
+  border-color: var(--p-gold);
+  box-shadow: 0 4px 20px rgba(197, 152, 26, 0.1);
 }
+
+/* 금색 글로우 카드 (어두운 배경) */
+.gold-card {
+  background: #1A1F2E;
+  border: 1px solid #2A2F3E;
+  border-radius: 8px;
+  transition: all 0.3s;
+}
+.gold-card:hover {
+  border-color: rgba(197, 152, 26, 0.4);
+  box-shadow: 0 0 24px rgba(197, 152, 26, 0.08);
+}
+
+/* 단청 구분선 */
+.dancheong-line {
+  height: 3px;
+  background: linear-gradient(90deg,
+    transparent 5%,
+    var(--p-red) 15%, var(--p-green) 30%, var(--p-gold) 50%,
+    var(--p-blue) 70%, var(--p-red) 85%, transparent 95%
+  );
+}
+
+/* 처마 아래 단청 띠 */
+.dancheong-band {
+  height: 6px;
+  background: repeating-linear-gradient(90deg,
+    var(--p-red) 0px, var(--p-red) 20px,
+    var(--p-green) 20px, var(--p-green) 40px,
+    var(--p-gold) 40px, var(--p-gold) 60px,
+    var(--p-blue) 60px, var(--p-blue) 80px
+  );
+}
+
+/* 기둥 느낌 좌우 보더 */
+.pillar-frame {
+  border-left: 3px solid var(--p-red);
+  border-right: 3px solid var(--p-red);
+  padding-left: 1.5rem;
+  padding-right: 1.5rem;
+}
+
+@media (min-width: 640px) {
+  .pillar-frame {
+    border-left-width: 4px;
+    border-right-width: 4px;
+    padding-left: 2.5rem;
+    padding-right: 2.5rem;
+  }
+}
+
+/* 애니메이션 */
+@keyframes fade-in-up {
+  from { opacity: 0; transform: translateY(24px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+.animate-fade-in-up { animation: fade-in-up 0.6s ease-out forwards; }
+
+@keyframes float {
+  0%, 100% { transform: translateY(0); }
+  50% { transform: translateY(-6px); }
+}
+.animate-float { animation: float 4s ease-in-out infinite; }

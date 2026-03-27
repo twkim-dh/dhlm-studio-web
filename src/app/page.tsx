@@ -6,17 +6,21 @@ import { motion } from 'framer-motion';
 import { trendingData, type TrendingItem } from '@/data/trending';
 
 /* ═══════════════════════════════════════
-   Korean Design Tokens
+   Palace Design Tokens
    ═══════════════════════════════════════ */
-const K = {
-  red: '#C73E3A',
-  blue: '#4A90D9',
-  gold: '#D4A853',
-  cream: '#FFF8F0',
-  ink: '#1A1A2E',
-  card: '#2D2D4E',
-  text: '#F0E6D3',
-  muted: '#6B6B80',
+const P = {
+  red: '#8B2500',
+  green: '#1B5E20',
+  gold: '#C5981A',
+  blue: '#1A237E',
+  wall: '#F5F0E8',
+  stone: '#D5CEC3',
+  night: '#0D1117',
+  nightCard: '#1A1F2E',
+  nightBorder: '#2A2F3E',
+  text: '#2D2D2D',
+  muted: '#8D8478',
+  lightText: '#F5F0E8',
   serif: 'var(--font-playfair), var(--font-noto-serif-kr), serif',
 };
 
@@ -24,25 +28,25 @@ const K = {
    Data
    ═══════════════════════════════════════ */
 const popularTools = [
-  { emoji: '🍀', title: '로또 번호 뽑기', desc: '행운의 번호 생성', href: '/lotto' },
+  { emoji: '🍀', title: '로또 번호', desc: '행운의 번호 생성', href: '/lotto' },
   { emoji: '🔮', title: '타로 운세', desc: '카드로 미래 읽기', href: '/lotto#fortune' },
-  { emoji: '💕', title: '궁합 테스트', desc: '생년월일 궁합 확인', href: '/lotto#fortune' },
-  { emoji: '⌨️', title: '타자 속도', desc: '내 타이핑 실력은?', href: '/tools/life/typing-speed' },
-  { emoji: '💰', title: '연봉 계산기', desc: '실수령액 바로 확인', href: '/tools/calc/salary' },
+  { emoji: '💕', title: '궁합 테스트', desc: '궁합 점수 확인', href: '/lotto#fortune' },
+  { emoji: '⌨️', title: '타자 속도', desc: '타이핑 실력 측정', href: '/tools/life/typing-speed' },
+  { emoji: '💰', title: '연봉 계산기', desc: '실수령액 확인', href: '/tools/calc/salary' },
   { emoji: '📱', title: 'QR코드', desc: '무료 QR 생성', href: '/tools/image/qr' },
 ];
 
 const discoverCategories = [
-  { emoji: '🔮', label: 'Beliefs', count: 20, color: '#7C3AED' },
-  { emoji: '🍜', label: 'Food', count: 30, color: '#F97316' },
-  { emoji: '🎵', label: 'K-Pop', count: 20, color: '#EC4899' },
-  { emoji: '🏙️', label: 'Travel', count: 25, color: '#3B82F6' },
-  { emoji: '🏠', label: 'Life', count: 20, color: '#10B981' },
-  { emoji: '🎉', label: 'Traditions', count: 20, color: '#DC2626' },
-  { emoji: '🗣️', label: 'Language', count: 15, color: '#EAB308' },
-  { emoji: '💼', label: 'Business', count: 15, color: '#1E40AF' },
-  { emoji: '📱', label: 'Tech', count: 15, color: '#06B6D4' },
-  { emoji: '🤔', label: 'vs World', count: 20, color: '#6B7280' },
+  { emoji: '🔮', label: 'Beliefs', count: 20, pattern: 'k-cloud' },
+  { emoji: '🍜', label: 'Food', count: 30, pattern: 'k-wave' },
+  { emoji: '🎵', label: 'K-Pop', count: 20, pattern: 'k-star' },
+  { emoji: '🏙️', label: 'Travel', count: 25, pattern: 'k-mountain' },
+  { emoji: '🏠', label: 'Life', count: 20, pattern: '' },
+  { emoji: '🎉', label: 'Traditions', count: 20, pattern: 'k-flower' },
+  { emoji: '🗣️', label: 'Language', count: 15, pattern: '' },
+  { emoji: '💼', label: 'Business', count: 15, pattern: '' },
+  { emoji: '📱', label: 'Tech', count: 15, pattern: '' },
+  { emoji: '🤔', label: 'vs World', count: 20, pattern: '' },
 ];
 
 const discoverPosts = [
@@ -149,102 +153,76 @@ const blogPosts = [
 ];
 
 /* ═══════════════════════════════════════
-   Utilities
+   Components
    ═══════════════════════════════════════ */
-function hashStr(s: string): number {
-  let h = 0;
-  for (let i = 0; i < s.length; i++) h = ((h << 5) - h + s.charCodeAt(i)) | 0;
-  return Math.abs(h);
-}
 
-function getFortune(birthday: string) {
-  const today = new Date();
-  const seed = birthday.replace(/-/g, '') + `${today.getFullYear()}${today.getMonth()}${today.getDate()}`;
-  const hash = hashStr(seed);
-  const score = (hash % 100) + 1;
-  const nums: number[] = [];
-  let h = hash;
-  while (nums.length < 3) {
-    h = ((h * 1103515245 + 12345) & 0x7fffffff);
-    const n = (h % 45) + 1;
-    if (!nums.includes(n)) nums.push(n);
-  }
-  let grade: string;
-  if (score >= 90) grade = '대박';
-  else if (score >= 70) grade = '상승';
-  else if (score >= 50) grade = '평온';
-  else if (score >= 30) grade = '보통';
-  else grade = '충전';
-  return { score, nums: nums.sort((a, b) => a - b), grade };
-}
+/* 처마 SVG */
+const Roofline = ({ flip = false }: { flip?: boolean }) => (
+  <svg viewBox="0 0 1200 35" className={`w-full h-5 sm:h-7 ${flip ? 'rotate-180' : ''}`} preserveAspectRatio="none">
+    <path d="M0,35 Q75,5 150,25 Q225,5 300,25 Q375,5 450,25 Q525,5 600,25 Q675,5 750,25 Q825,5 900,25 Q975,5 1050,25 Q1125,5 1200,25 L1200,35 Z"
+      fill={flip ? P.night : P.wall} />
+    <path d="M0,35 Q75,8 150,28 Q225,8 300,28 Q375,8 450,28 Q525,8 600,28 Q675,8 750,28 Q825,8 900,28 Q975,8 1050,28 Q1125,8 1200,28"
+      fill="none" stroke={P.red} strokeWidth="2" />
+    <path d="M0,32 Q75,12 150,30 Q225,12 300,30 Q375,12 450,30 Q525,12 600,30 Q675,12 750,30 Q825,12 900,30 Q975,12 1050,30 Q1125,12 1200,30"
+      fill="none" stroke={P.green} strokeWidth="1" opacity="0.6" />
+  </svg>
+);
 
-function getVisitorCount() {
-  return Math.floor(10000 + (Date.now() - new Date('2026-03-01').getTime()) / 3600000 * 15);
-}
-
-function AnimatedCount({ target }: { target: number }) {
-  const [count, setCount] = useState(0);
-  const ref = useRef<HTMLSpanElement>(null);
-  useEffect(() => {
-    const observer = new IntersectionObserver(([e]) => {
-      if (e.isIntersecting) {
-        let start = 0;
-        const step = (ts: number) => {
-          if (!start) start = ts;
-          const p = Math.min((ts - start) / 1500, 1);
-          setCount(Math.floor(p * target));
-          if (p < 1) requestAnimationFrame(step);
-        };
-        requestAnimationFrame(step);
-        observer.disconnect();
-      }
-    });
-    if (ref.current) observer.observe(ref.current);
-    return () => observer.disconnect();
-  }, [target]);
-  return <span ref={ref}>{count.toLocaleString()}</span>;
-}
-
-/* Korean Jamo background letter */
-const JamoBg = ({ letter, color = '#C73E3A', position = 'right' }: { letter: string; color?: string; position?: 'left' | 'right' }) => (
+/* 한글 자음 배경 */
+const JamoBg = ({ letter, color = P.red, pos = 'right' }: { letter: string; color?: string; pos?: 'left' | 'right' }) => (
   <div className="absolute inset-0 overflow-hidden pointer-events-none select-none" aria-hidden="true">
-    <span className={`absolute text-[300px] sm:text-[400px] font-black leading-none ${position === 'right' ? '-right-10 -top-10' : '-left-10 -bottom-10'}`}
-      style={{ fontFamily: 'var(--font-noto-serif-kr), serif', color, opacity: 0.035 }}>
+    <span className={`absolute text-[280px] sm:text-[380px] font-black leading-none ${pos === 'right' ? '-right-8 -top-8' : '-left-8 -bottom-8'}`}
+      style={{ fontFamily: 'var(--font-noto-serif-kr), serif', color, opacity: 0.03 }}>
       {letter}
     </span>
   </div>
 );
 
-/* Scroll fade-in wrapper */
+/* 스크롤 fade-in */
 function FadeIn({ children, className = '', delay = 0 }: { children: React.ReactNode; className?: string; delay?: number }) {
   const ref = useRef<HTMLDivElement>(null);
-  const [visible, setVisible] = useState(false);
+  const [vis, setVis] = useState(false);
   useEffect(() => {
-    const observer = new IntersectionObserver(([e]) => { if (e.isIntersecting) { setVisible(true); observer.disconnect(); } }, { threshold: 0.15 });
-    if (ref.current) observer.observe(ref.current);
-    return () => observer.disconnect();
+    const obs = new IntersectionObserver(([e]) => { if (e.isIntersecting) { setVis(true); obs.disconnect(); } }, { threshold: 0.1 });
+    if (ref.current) obs.observe(ref.current);
+    return () => obs.disconnect();
   }, []);
   return (
-    <div ref={ref} className={`transition-all duration-700 ${visible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-8'} ${className}`}
+    <div ref={ref} className={`transition-all duration-700 ${vis ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-6'} ${className}`}
       style={{ transitionDelay: `${delay}ms` }}>
       {children}
     </div>
   );
 }
 
-/* Category pattern class map */
-const catPatternClass: Record<string, string> = {
-  'Beliefs': 'k-cloud',
-  'Food': 'k-wave',
-  'K-Pop': 'k-star',
-  'Travel': 'k-mountain',
-  'Life': 'k-lattice',
-  'Traditions': 'k-flower',
-  'Language': 'k-cloud',
-  'Business': 'k-lattice',
-  'Tech': 'k-lattice',
-  'vs World': 'k-mountain',
-};
+/* 카운터 애니메이션 */
+function AnimatedCount({ target }: { target: number }) {
+  const [count, setCount] = useState(0);
+  const ref = useRef<HTMLSpanElement>(null);
+  useEffect(() => {
+    const obs = new IntersectionObserver(([e]) => {
+      if (e.isIntersecting) {
+        let start = 0;
+        const step = (ts: number) => { if (!start) start = ts; const p = Math.min((ts - start) / 1500, 1); setCount(Math.floor(p * target)); if (p < 1) requestAnimationFrame(step); };
+        requestAnimationFrame(step); obs.disconnect();
+      }
+    });
+    if (ref.current) obs.observe(ref.current);
+    return () => obs.disconnect();
+  }, [target]);
+  return <span ref={ref}>{count.toLocaleString()}</span>;
+}
+
+/* Fortune util */
+function hashStr(s: string) { let h = 0; for (let i = 0; i < s.length; i++) h = ((h << 5) - h + s.charCodeAt(i)) | 0; return Math.abs(h); }
+function getFortune(bd: string) {
+  const t = new Date(); const hash = hashStr(bd.replace(/-/g, '') + `${t.getFullYear()}${t.getMonth()}${t.getDate()}`);
+  const score = (hash % 100) + 1; const nums: number[] = []; let h = hash;
+  while (nums.length < 3) { h = ((h * 1103515245 + 12345) & 0x7fffffff); const n = (h % 45) + 1; if (!nums.includes(n)) nums.push(n); }
+  const grade = score >= 90 ? '대박' : score >= 70 ? '상승' : score >= 50 ? '평온' : score >= 30 ? '보통' : '충전';
+  return { score, nums: nums.sort((a, b) => a - b), grade };
+}
+function getVisitorCount() { return Math.floor(10000 + (Date.now() - new Date('2026-03-01').getTime()) / 3600000 * 15); }
 
 /* ═══════════════════════════════════════
    Page
@@ -255,304 +233,275 @@ export default function Home() {
   const [day, setDay] = useState('');
   const [fortune, setFortune] = useState<ReturnType<typeof getFortune> | null>(null);
   const [activeCat, setActiveCat] = useState<CatId>('all');
-  const visitorCount = getVisitorCount();
   const monthRef = useRef<HTMLInputElement>(null);
   const dayRef = useRef<HTMLInputElement>(null);
 
   const birthday = year.length === 4 && month.length >= 1 && day.length >= 1
     ? `${year}-${month.padStart(2, '0')}-${day.padStart(2, '0')}` : '';
-
-  const handleFortune = () => {
-    if (!birthday) return;
-    setFortune(getFortune(birthday));
-  };
-
+  const handleFortune = () => { if (birthday) setFortune(getFortune(birthday)); };
   const filteredTools = activeCat === 'all' ? tools : tools.filter((t) => t.cat === activeCat);
 
   return (
     <>
-      {/* ════ Hero ════ */}
-      <section className="relative overflow-hidden bg-[#1A1A2E] text-[#F0E6D3] min-h-[100dvh] flex items-center">
-        <div className="absolute inset-0 k-cloud pointer-events-none" />
-        <JamoBg letter="ㅎ" position="right" color="#D4A853" />
-        <div className="absolute top-1/3 left-1/2 -translate-x-1/2 w-[500px] h-[500px] bg-[#C73E3A]/8 rounded-full blur-[120px] pointer-events-none" />
+      {/* ══════ ① 광화문 — Hero ══════ */}
+      <section className="relative overflow-hidden min-h-[100dvh] flex items-center"
+        style={{ background: `linear-gradient(180deg, #E8EAF6 0%, #D5CEC3 100%)` }}>
+        <JamoBg letter="ㅎ" color={P.gold} pos="right" />
+        <div className="absolute bottom-0 left-0 right-0"><Roofline /></div>
 
         <div className="relative mx-auto max-w-lg w-full px-5 py-16 text-center">
-          <motion.div initial={{ opacity: 0, y: 20 }} animate={{ opacity: 1, y: 0 }} transition={{ delay: 0.1 }}>
-            <p className="text-xs tracking-[0.4em] text-[#D4A853] font-medium mb-4">DHLM STUDIO</p>
-          </motion.div>
-
-          <motion.h1 initial={{ opacity: 0, y: 20 }} animate={{ opacity: 1, y: 0 }} transition={{ delay: 0.2 }}
-            className="text-3xl sm:text-4xl font-bold leading-tight"
-            style={{ fontFamily: K.serif }}>
-            <span className="text-[#D4A853]">── </span>한국의 문화와 도구를<span className="text-[#D4A853]"> ──</span><br />
-            <span className="text-[#D4A853]">── </span>세계와 연결합니다<span className="text-[#D4A853]"> ──</span>
-          </motion.h1>
-
-          <motion.p initial={{ opacity: 0 }} animate={{ opacity: 1 }} transition={{ delay: 0.35 }}
-            className="text-[#6B6B80] text-sm mt-4 italic" style={{ fontFamily: K.serif }}>
-            Connecting Korean Culture & Tools to the World
+          <motion.p initial={{ opacity: 0, y: 15 }} animate={{ opacity: 1, y: 0 }} transition={{ delay: 0.1 }}
+            className="text-[10px] tracking-[0.5em] font-medium mb-6" style={{ color: P.gold }}>
+            DHLM STUDIO
           </motion.p>
 
-          <motion.div initial={{ opacity: 0 }} animate={{ opacity: 1 }} transition={{ delay: 0.5 }}
-            className="flex justify-center gap-3 mt-6 mb-8">
-            <Link href="/lotto#fortune" className="px-5 py-2.5 bg-[#C73E3A] text-white rounded-lg text-sm font-medium hover:bg-[#A33230] transition active:scale-95">
-              🔮 오늘의 운세
+          <motion.h1 initial={{ opacity: 0, y: 20 }} animate={{ opacity: 1, y: 0 }} transition={{ delay: 0.25 }}
+            className="text-3xl sm:text-4xl font-bold leading-snug" style={{ fontFamily: P.serif, color: P.text }}>
+            한국의 문화와 도구를<br />세계와 연결합니다
+          </motion.h1>
+
+          <motion.p initial={{ opacity: 0 }} animate={{ opacity: 1 }} transition={{ delay: 0.45 }}
+            className="text-sm mt-3 italic" style={{ fontFamily: P.serif, color: P.muted }}>
+            Gateway to Korean Culture & Digital Tools
+          </motion.p>
+
+          <motion.div initial={{ opacity: 0, y: 15 }} animate={{ opacity: 1, y: 0 }} transition={{ delay: 0.6 }}
+            className="flex justify-center gap-3 mt-8 mb-10">
+            <Link href="/lotto#fortune" className="px-5 py-2.5 rounded text-sm font-medium text-white transition active:scale-95"
+              style={{ background: P.red }}>
+              🔮 운세 보기
             </Link>
-            <Link href="/lotto" className="px-5 py-2.5 bg-[#D4A853]/20 border border-[#D4A853]/30 text-[#D4A853] rounded-lg text-sm font-medium hover:bg-[#D4A853]/30 transition active:scale-95">
+            <Link href="/lotto" className="px-5 py-2.5 rounded text-sm font-medium transition active:scale-95"
+              style={{ border: `2px solid ${P.gold}`, color: P.gold }}>
               🍀 로또 뽑기
             </Link>
           </motion.div>
 
-          <motion.div initial={{ opacity: 0, y: 20 }} animate={{ opacity: 1, y: 0 }} transition={{ delay: 0.5 }}
-            className="space-y-3">
-            <p className="text-xs text-[#8080A0] mb-1">생년월일을 입력하면 오늘의 운세를 확인할 수 있어요</p>
-            <div className="flex gap-2 items-center justify-center">
+          {/* Fortune input */}
+          <motion.div initial={{ opacity: 0, y: 15 }} animate={{ opacity: 1, y: 0 }} transition={{ delay: 0.75 }}
+            className="bg-white/60 backdrop-blur rounded-xl p-5 border" style={{ borderColor: '#E0D8CC' }}>
+            <p className="text-xs mb-3" style={{ color: P.muted }}>생년월일을 입력하면 오늘의 운세를 바로 확인!</p>
+            <div className="flex gap-2 items-center justify-center mb-3">
               <input type="text" inputMode="numeric" placeholder="1990" maxLength={4} value={year}
                 onChange={(e) => { const v = e.target.value.replace(/\D/g, '').slice(0, 4); setYear(v); if (v.length === 4) monthRef.current?.focus(); }}
-                className="w-[90px] px-2 py-3 bg-[#2D2D4E] border border-[#3D3D5E] rounded-lg text-[#F0E6D3] text-center text-lg focus:outline-none focus:border-[#D4A853] transition" />
-              <span className="text-[#4A4A5E]">/</span>
+                className="w-[80px] px-2 py-2.5 bg-white border border-[#D5CEC3] rounded text-center text-base focus:outline-none focus:border-[#C5981A] transition" />
+              <span className="text-[#B5AFA5]">/</span>
               <input ref={monthRef} type="text" inputMode="numeric" placeholder="03" maxLength={2} value={month}
                 onChange={(e) => { const v = e.target.value.replace(/\D/g, '').slice(0, 2); setMonth(v); if (v.length === 2) dayRef.current?.focus(); }}
-                className="w-[60px] px-2 py-3 bg-[#2D2D4E] border border-[#3D3D5E] rounded-lg text-[#F0E6D3] text-center text-lg focus:outline-none focus:border-[#D4A853] transition" />
-              <span className="text-[#4A4A5E]">/</span>
+                className="w-[56px] px-2 py-2.5 bg-white border border-[#D5CEC3] rounded text-center text-base focus:outline-none focus:border-[#C5981A] transition" />
+              <span className="text-[#B5AFA5]">/</span>
               <input ref={dayRef} type="text" inputMode="numeric" placeholder="15" maxLength={2} value={day}
                 onChange={(e) => setDay(e.target.value.replace(/\D/g, '').slice(0, 2))}
                 onKeyDown={(e) => { if (e.key === 'Enter') handleFortune(); }}
-                className="w-[60px] px-2 py-3 bg-[#2D2D4E] border border-[#3D3D5E] rounded-lg text-[#F0E6D3] text-center text-lg focus:outline-none focus:border-[#D4A853] transition" />
+                className="w-[56px] px-2 py-2.5 bg-white border border-[#D5CEC3] rounded text-center text-base focus:outline-none focus:border-[#C5981A] transition" />
             </div>
             <button onClick={handleFortune} disabled={!birthday}
-              className={`w-full py-3 rounded-lg font-bold text-base transition active:scale-[0.98] ${
-                birthday ? 'bg-[#C73E3A] hover:bg-[#A33230] text-white shadow-lg shadow-[#C73E3A]/20' : 'bg-[#2D2D4E] text-[#4A4A5E] cursor-not-allowed'
-              }`}>
-              🔮 오늘의 운세 확인
+              className={`w-full py-2.5 rounded font-bold text-sm transition active:scale-[0.98] ${birthday ? 'text-white' : 'bg-[#D5CEC3] text-[#A5A09A] cursor-not-allowed'}`}
+              style={birthday ? { background: P.red } : {}}>
+              오늘의 운세 확인
             </button>
+
+            {fortune && (
+              <motion.div initial={{ opacity: 0, scale: 0.95 }} animate={{ opacity: 1, scale: 1 }}
+                className="mt-4 pt-4 border-t border-[#E0D8CC] text-center">
+                <p className="text-3xl font-black" style={{ color: P.gold, fontFamily: P.serif }}>{fortune.score}점</p>
+                <p className="text-xs mt-1" style={{ color: P.muted }}>
+                  {fortune.grade === '대박' && '🌟 운이 폭발하는 날!'}{fortune.grade === '상승' && '🔥 좋은 기운 가득!'}{fortune.grade === '평온' && '☀️ 안정적인 하루'}{fortune.grade === '보통' && '🌤️ 작은 행운을 찾으세요'}{fortune.grade === '충전' && '🌙 에너지 충전의 날'}
+                </p>
+                <div className="flex justify-center gap-2 mt-3">
+                  {fortune.nums.map((n) => (
+                    <span key={n} className="w-10 h-10 rounded-full flex items-center justify-center text-sm font-bold text-white"
+                      style={{ background: `linear-gradient(135deg, ${P.gold}, #A07A10)` }}>{n}</span>
+                  ))}
+                </div>
+              </motion.div>
+            )}
           </motion.div>
 
-          {fortune && (
-            <motion.div initial={{ opacity: 0, scale: 0.95 }} animate={{ opacity: 1, scale: 1 }}
-              className="mt-6 bg-[#2D2D4E] border border-[#3D3D5E] rounded-xl p-5 text-center">
-              <p className="text-4xl font-black" style={{ color: K.gold, fontFamily: K.serif }}>{fortune.score}점</p>
-              <p className="text-[#8080A0] text-sm mt-1 mb-4">
-                {fortune.grade === '대박' && '🌟 운이 폭발하는 날!'}
-                {fortune.grade === '상승' && '🔥 좋은 기운이 가득!'}
-                {fortune.grade === '평온' && '☀️ 안정적인 하루'}
-                {fortune.grade === '보통' && '🌤️ 작은 행운을 놓치지 마세요'}
-                {fortune.grade === '충전' && '🌙 에너지를 모으는 날'}
-              </p>
-              <p className="text-[10px] text-[#6B6B80] mb-2">행운의 숫자</p>
-              <div className="flex justify-center gap-3">
-                {fortune.nums.map((n) => (
-                  <span key={n} className="w-11 h-11 rounded-full flex items-center justify-center text-sm font-bold text-[#1A1A2E]"
-                    style={{ background: `linear-gradient(135deg, ${K.gold}, #B8903A)` }}>{n}</span>
-                ))}
-              </div>
-              <div className="flex gap-2 mt-4">
-                <Link href="/lotto#fortune" className="flex-1 py-2 bg-[#C73E3A]/20 border border-[#C73E3A]/30 text-[#E8A0A0] rounded-lg text-xs font-medium hover:bg-[#C73E3A]/30 transition">
-                  자세히 보기 →
-                </Link>
-                <button onClick={async () => {
-                  const text = `오늘의 운세 ${fortune.score}점! 행운번호: ${fortune.nums.join(', ')}\nhttps://dhlm-studio.com`;
-                  if (navigator.share) { try { await navigator.share({ title: '오늘의 운세', text }); } catch {} }
-                  else { await navigator.clipboard.writeText(text); alert('복사되었습니다!'); }
-                }} className="flex-1 py-2 bg-[#D4A853]/20 border border-[#D4A853]/30 text-[#D4A853] rounded-lg text-xs font-medium hover:bg-[#D4A853]/30 transition">
-                  공유하기
-                </button>
-              </div>
-            </motion.div>
-          )}
-
-          <motion.div initial={{ opacity: 0 }} animate={{ opacity: 1 }} transition={{ delay: 1.5 }} className="mt-12 text-[#4A4A5E] text-xs animate-bounce">
-            ↓
-          </motion.div>
+          <motion.p initial={{ opacity: 0 }} animate={{ opacity: 1 }} transition={{ delay: 1.5 }}
+            className="mt-10 text-xs animate-bounce" style={{ color: P.muted }}>
+            ↓ 스크롤하여 입장하세요
+          </motion.p>
         </div>
       </section>
 
-      {/* ════ Discover Korea ════ */}
-      <section className="relative py-16 px-5 overflow-hidden k-hanji">
-        <JamoBg letter="ㄱ" position="left" color="#C73E3A" />
+      {/* ══════ ② 흥례문 — Discover Korea ══════ */}
+      <section className="relative py-16 px-5 overflow-hidden palace-wall">
+        <JamoBg letter="ㄱ" color={P.red} pos="left" />
         <div className="relative mx-auto max-w-2xl">
           <FadeIn>
-            <div className="text-center mb-8">
-              <h2 className="text-2xl font-bold text-[#2D2D2D]" style={{ fontFamily: K.serif }}>
-                🇰🇷 Discover Korea
-              </h2>
-              <p className="text-sm text-[#6B6B80] mt-1">한국의 흥미로운 이야기</p>
-              <div className="w-10 h-[3px] bg-[#C73E3A] mx-auto mt-3" />
+            <div className="pillar-frame text-center mb-8">
+              <h2 className="text-2xl font-bold" style={{ fontFamily: P.serif, color: P.text }}>🇰🇷 Discover Korea</h2>
+              <p className="text-sm mt-1" style={{ color: P.muted }}>한국을 발견하세요</p>
+              <div className="w-10 h-[3px] mx-auto mt-3" style={{ background: P.red }} />
             </div>
           </FadeIn>
 
-          {/* Bento grid — big + small cards */}
+          {/* Bento grid */}
           <FadeIn delay={100}>
-            <div className="grid grid-cols-3 gap-2 mb-4">
-              {/* Big card */}
-              <div className={`col-span-2 row-span-2 relative bg-white border border-[#E8E0D0] rounded-xl p-5 overflow-hidden k-card-hover cursor-pointer group`}>
-                <div className="absolute inset-0 k-cloud pointer-events-none opacity-0 group-hover:opacity-100 transition-opacity" />
-                <span className="relative text-4xl block mb-2">{discoverCategories[0].emoji}</span>
-                <p className="relative text-lg font-bold text-[#2D2D2D]" style={{ fontFamily: K.serif }}>{discoverCategories[0].label}</p>
-                <p className="relative text-xs text-[#6B6B80] mt-1">{discoverCategories[0].count} stories</p>
-                <p className="relative text-[10px] text-[#C73E3A] mt-2 font-medium">Explore →</p>
+            <div className="grid grid-cols-3 gap-2 mb-3">
+              <div className="col-span-2 row-span-2 palace-card p-5 cursor-pointer group relative overflow-hidden">
+                <span className="text-4xl block mb-2">{discoverCategories[0].emoji}</span>
+                <p className="text-lg font-bold" style={{ fontFamily: P.serif, color: P.text }}>{discoverCategories[0].label}</p>
+                <p className="text-xs mt-1" style={{ color: P.muted }}>{discoverCategories[0].count} stories</p>
+                <p className="text-[10px] font-medium mt-2" style={{ color: P.red }}>Explore →</p>
               </div>
-              {/* Small cards */}
-              {discoverCategories.slice(1, 3).map((cat) => (
-                <div key={cat.label} className="bg-white border border-[#E8E0D0] rounded-xl p-3 text-center overflow-hidden k-card-hover cursor-pointer group relative">
-                  <div className={`absolute inset-0 ${catPatternClass[cat.label] || 'k-cloud'} pointer-events-none opacity-0 group-hover:opacity-100 transition-opacity`} />
-                  <span className="relative text-2xl block">{cat.emoji}</span>
-                  <p className="relative text-[10px] font-bold text-[#2D2D2D] mt-1">{cat.label}</p>
-                  <p className="relative text-[9px] text-[#6B6B80]">{cat.count}</p>
+              {discoverCategories.slice(1, 3).map((c) => (
+                <div key={c.label} className="palace-card p-3 text-center cursor-pointer">
+                  <span className="text-2xl block">{c.emoji}</span>
+                  <p className="text-[10px] font-bold mt-1" style={{ color: P.text }}>{c.label}</p>
+                  <p className="text-[9px]" style={{ color: P.muted }}>{c.count}</p>
+                </div>
+              ))}
+            </div>
+            <div className="grid grid-cols-3 gap-2 mb-3">
+              {discoverCategories.slice(3, 5).map((c) => (
+                <div key={c.label} className="palace-card p-3 text-center cursor-pointer">
+                  <span className="text-2xl block">{c.emoji}</span>
+                  <p className="text-[10px] font-bold mt-1" style={{ color: P.text }}>{c.label}</p>
+                  <p className="text-[9px]" style={{ color: P.muted }}>{c.count}</p>
+                </div>
+              ))}
+              <div className="row-span-2 palace-card p-4 cursor-pointer">
+                <span className="text-3xl block mb-1">{discoverCategories[5].emoji}</span>
+                <p className="text-sm font-bold" style={{ fontFamily: P.serif, color: P.text }}>{discoverCategories[5].label}</p>
+                <p className="text-[9px] mt-1" style={{ color: P.muted }}>{discoverCategories[5].count} stories</p>
+              </div>
+              {discoverCategories.slice(6, 8).map((c) => (
+                <div key={c.label} className="palace-card p-3 text-center cursor-pointer">
+                  <span className="text-2xl block">{c.emoji}</span>
+                  <p className="text-[10px] font-bold mt-1" style={{ color: P.text }}>{c.label}</p>
+                  <p className="text-[9px]" style={{ color: P.muted }}>{c.count}</p>
+                </div>
+              ))}
+            </div>
+            <div className="grid grid-cols-4 gap-2 mb-6">
+              {discoverCategories.slice(8).map((c) => (
+                <div key={c.label} className="palace-card p-2.5 text-center cursor-pointer">
+                  <span className="text-xl block">{c.emoji}</span>
+                  <p className="text-[9px] font-bold mt-0.5" style={{ color: P.text }}>{c.label}</p>
                 </div>
               ))}
             </div>
           </FadeIn>
 
           <FadeIn delay={200}>
-            <div className="grid grid-cols-3 gap-2 mb-4">
-              {/* Small cards */}
-              {discoverCategories.slice(3, 5).map((cat) => (
-                <div key={cat.label} className="bg-white border border-[#E8E0D0] rounded-xl p-3 text-center overflow-hidden k-card-hover cursor-pointer group relative">
-                  <div className={`absolute inset-0 ${catPatternClass[cat.label] || 'k-cloud'} pointer-events-none opacity-0 group-hover:opacity-100 transition-opacity`} />
-                  <span className="relative text-2xl block">{cat.emoji}</span>
-                  <p className="relative text-[10px] font-bold text-[#2D2D2D] mt-1">{cat.label}</p>
-                  <p className="relative text-[9px] text-[#6B6B80]">{cat.count}</p>
-                </div>
-              ))}
-              {/* Big card */}
-              <div className={`col-span-1 row-span-2 relative bg-white border border-[#E8E0D0] rounded-xl p-4 overflow-hidden k-card-hover cursor-pointer group`}>
-                <div className="absolute inset-0 k-flower pointer-events-none opacity-0 group-hover:opacity-100 transition-opacity" />
-                <span className="relative text-3xl block mb-2">{discoverCategories[5].emoji}</span>
-                <p className="relative text-sm font-bold text-[#2D2D2D]" style={{ fontFamily: K.serif }}>{discoverCategories[5].label}</p>
-                <p className="relative text-[9px] text-[#6B6B80] mt-1">{discoverCategories[5].count} stories</p>
-              </div>
-              {/* More small cards */}
-              {discoverCategories.slice(6, 8).map((cat) => (
-                <div key={cat.label} className="bg-white border border-[#E8E0D0] rounded-xl p-3 text-center overflow-hidden k-card-hover cursor-pointer group relative">
-                  <div className={`absolute inset-0 ${catPatternClass[cat.label] || 'k-cloud'} pointer-events-none opacity-0 group-hover:opacity-100 transition-opacity`} />
-                  <span className="relative text-2xl block">{cat.emoji}</span>
-                  <p className="relative text-[10px] font-bold text-[#2D2D2D] mt-1">{cat.label}</p>
-                  <p className="relative text-[9px] text-[#6B6B80]">{cat.count}</p>
-                </div>
-              ))}
-            </div>
-          </FadeIn>
-
-          {/* Remaining categories */}
-          <FadeIn delay={300}>
-            <div className="grid grid-cols-4 gap-2 mb-6">
-              {discoverCategories.slice(8).map((cat) => (
-                <div key={cat.label} className="bg-white border border-[#E8E0D0] rounded-xl p-2.5 text-center overflow-hidden k-card-hover cursor-pointer group relative">
-                  <div className={`absolute inset-0 ${catPatternClass[cat.label] || 'k-cloud'} pointer-events-none opacity-0 group-hover:opacity-100 transition-opacity`} />
-                  <span className="relative text-xl block">{cat.emoji}</span>
-                  <p className="relative text-[9px] font-bold text-[#2D2D2D] mt-0.5">{cat.label}</p>
-                </div>
-              ))}
-            </div>
-          </FadeIn>
-
-          {/* Popular posts */}
-          <FadeIn delay={400}>
-            <p className="text-xs text-[#6B6B80] font-medium mb-2 tracking-wider">POPULAR READS</p>
+            <p className="text-[10px] font-medium tracking-widest mb-2" style={{ color: P.muted }}>POPULAR READS</p>
             <div className="space-y-2">
               {discoverPosts.map((post, i) => (
-                <div key={i} className="flex items-center gap-3 bg-white border border-[#E8E0D0] rounded-xl px-4 py-3 hover:border-[#C73E3A]/50 hover:shadow-sm transition cursor-pointer">
+                <div key={i} className="palace-card flex items-center gap-3 px-4 py-3 cursor-pointer">
                   <span className="text-xl">{post.emoji}</span>
-                  <p className="flex-1 text-sm font-medium text-[#2D2D2D]">{post.title}</p>
-                  <span className="text-xs text-[#6B6B80]">👁 {post.views}</span>
+                  <p className="flex-1 text-sm font-medium" style={{ color: P.text }}>{post.title}</p>
+                  <span className="text-xs" style={{ color: P.muted }}>👁 {post.views}</span>
                 </div>
               ))}
             </div>
             <div className="text-center mt-6">
-              <Link href="/blog" className="inline-flex items-center gap-1 px-5 py-2.5 bg-[#C73E3A] text-white rounded-lg text-sm font-medium hover:bg-[#A33230] transition">
-                전체 보기 →
-              </Link>
+              <Link href="/blog" className="inline-flex px-5 py-2.5 rounded text-sm font-medium text-white transition"
+                style={{ background: P.red }}>전체 보기 →</Link>
             </div>
           </FadeIn>
         </div>
       </section>
 
-      {/* ════ Korean Divider ════ */}
-      <div className="k-divider" />
+      {/* ══════ 처마 전환 ══════ */}
+      <div style={{ background: P.night }}><Roofline flip /></div>
+      <div className="dancheong-line" />
 
-      {/* ════ Trending ════ */}
+      {/* ══════ ③ 근정전 마당 — Trending ══════ */}
       <TrendingDashboard />
 
-      {/* ════ Korean Divider ════ */}
-      <div className="k-divider" />
+      {/* ══════ 전환 ══════ */}
+      <div className="dancheong-line" />
 
-      {/* ════ Popular Tools ════ */}
-      <section className="relative bg-[#1A1A2E] text-[#F0E6D3] py-16 px-5 overflow-hidden">
-        <JamoBg letter="ㄷ" position="right" color="#D4A853" />
+      {/* ══════ ④ 근정전 내부 — Popular Tools ══════ */}
+      <section className="relative py-16 px-5 overflow-hidden" style={{ background: P.night }}>
+        <JamoBg letter="ㄷ" color={P.gold} pos="right" />
         <div className="relative mx-auto max-w-lg">
-          <div className="text-center mb-2">
-            <p className="text-[#D4A853] text-xs font-bold tracking-widest mb-1">POPULAR</p>
-            <h2 className="text-xl font-bold" style={{ fontFamily: K.serif }}>인기 도구</h2>
-          </div>
-          <p className="text-center text-sm text-[#6B6B80] mb-6">
-            오늘 <span className="text-[#D4A853] font-bold"><AnimatedCount target={visitorCount} /></span>명이 사용했어요
-          </p>
-          <div className="grid grid-cols-2 sm:grid-cols-3 gap-3">
-            {popularTools.map((s) => (
-              <Link key={s.title} href={s.href}
-                className="group bg-[#2D2D4E] border border-[#3D3D5E] rounded-xl p-4 hover:border-[#D4A853]/50 hover:shadow-lg hover:shadow-[#D4A853]/5 transition-all">
-                <span className="text-2xl block mb-2">{s.emoji}</span>
-                <p className="font-bold text-sm">{s.title}</p>
-                <p className="text-[#6B6B80] text-xs mt-0.5">{s.desc}</p>
-              </Link>
-            ))}
-          </div>
+          <FadeIn>
+            <div className="text-center mb-2">
+              <p className="text-[10px] font-medium tracking-widest mb-1" style={{ color: P.gold }}>POPULAR</p>
+              <h2 className="text-xl font-bold" style={{ fontFamily: P.serif, color: P.lightText }}>✨ 인기 도구</h2>
+            </div>
+            <p className="text-center text-sm mb-6" style={{ color: P.muted }}>
+              오늘 <span className="font-bold" style={{ color: P.gold }}><AnimatedCount target={getVisitorCount()} /></span>명이 사용했어요
+            </p>
+          </FadeIn>
+          <FadeIn delay={100}>
+            <div className="grid grid-cols-2 sm:grid-cols-3 gap-3">
+              {popularTools.map((t) => (
+                <Link key={t.title} href={t.href} className="gold-card p-4 group">
+                  <span className="text-2xl block mb-2 group-hover:scale-110 transition-transform inline-block">{t.emoji}</span>
+                  <p className="font-bold text-sm" style={{ color: P.lightText }}>{t.title}</p>
+                  <p className="text-xs mt-0.5" style={{ color: '#5A5A5A' }}>{t.desc}</p>
+                </Link>
+              ))}
+            </div>
+          </FadeIn>
         </div>
       </section>
 
-      {/* ════ Tools Grid ════ */}
-      <section className="relative bg-[#1A1A2E] text-[#F0E6D3] py-16 px-5 overflow-hidden">
+      {/* ══════ ⑤ 도구 모음 ══════ */}
+      <section className="relative py-16 px-5 overflow-hidden" style={{ background: P.night }}>
         <div className="relative mx-auto max-w-4xl">
-          <div className="text-center mb-6">
-            <h2 className="text-xl font-bold" style={{ fontFamily: K.serif }}>🧮 무료 도구 모음</h2>
-            <p className="text-[#6B6B80] text-xs mt-1">{tools.length}개 도구 무료 사용</p>
-          </div>
+          <FadeIn>
+            <div className="text-center mb-6">
+              <h2 className="text-xl font-bold" style={{ fontFamily: P.serif, color: P.lightText }}>🧮 무료 도구 모음</h2>
+              <p className="text-xs mt-1" style={{ color: '#5A5A5A' }}>{tools.length}개 도구 무료 사용</p>
+            </div>
+          </FadeIn>
           <div className="flex gap-1.5 overflow-x-auto pb-3 mb-5 scrollbar-hide">
             {categories.map((c) => (
               <button key={c.id} onClick={() => setActiveCat(c.id)}
                 className={`shrink-0 px-3 py-1.5 rounded-full text-xs font-medium transition ${
-                  activeCat === c.id ? 'bg-[#C73E3A] text-white' : 'bg-[#2D2D4E] text-[#6B6B80] hover:bg-[#3D3D5E]'
-                }`}>{c.emoji} {c.label}</button>
+                  activeCat === c.id ? 'text-white' : 'text-[#6A6A6A] hover:text-[#9A9A9A]'
+                }`} style={activeCat === c.id ? { background: P.red } : { background: '#1A1F2E' }}>
+                {c.emoji} {c.label}
+              </button>
             ))}
           </div>
           <div className="grid grid-cols-3 sm:grid-cols-4 md:grid-cols-5 gap-2">
             {filteredTools.map((t) => (
-              <Link key={t.href} href={t.href}
-                className="bg-[#2D2D4E] border border-[#3D3D5E] rounded-xl p-3 text-center k-card-hover group">
+              <Link key={t.href} href={t.href} className="gold-card p-3 text-center group">
                 <span className="text-xl block mb-1 group-hover:scale-110 transition-transform inline-block">{t.emoji}</span>
-                <p className="text-[11px] text-[#A0A0B0] font-medium leading-tight">{t.name}</p>
+                <p className="text-[11px] font-medium leading-tight" style={{ color: '#9A9A9A' }}>{t.name}</p>
               </Link>
             ))}
           </div>
           <div className="text-center mt-6">
-            <Link href="/tools" className="inline-flex items-center gap-1 px-5 py-2.5 bg-[#2D2D4E] border border-[#3D3D5E] rounded-lg text-sm text-[#A0A0B0] hover:border-[#D4A853]/50 hover:text-[#F0E6D3] transition">
+            <Link href="/tools" className="inline-flex px-5 py-2.5 rounded text-sm font-medium transition"
+              style={{ background: '#1A1F2E', border: '1px solid #2A2F3E', color: '#9A9A9A' }}>
               전체 도구 보기 →
             </Link>
           </div>
         </div>
       </section>
 
-      {/* ════ Blog ════ */}
-      <section className="relative py-16 px-5 k-hanji">
-        <div className="absolute inset-0 k-cloud pointer-events-none" />
+      {/* ══════ 처마 전환 ══════ */}
+      <Roofline />
+      <div className="dancheong-line" />
+
+      {/* ══════ ⑥ 후원 — Blog ══════ */}
+      <section className="relative py-16 px-5 palace-wall overflow-hidden">
         <div className="relative mx-auto max-w-lg">
-            <h2 className="text-xl font-bold text-[#2D2D2D] text-center mb-6" style={{ fontFamily: K.serif }}>📝 최근 블로그</h2>
+          <FadeIn>
+            <h2 className="text-xl font-bold text-center mb-6" style={{ fontFamily: P.serif, color: P.text }}>
+              📝 최근 이야기
+            </h2>
             <div className="space-y-2">
               {blogPosts.map((post) => (
-                <Link key={post.slug} href={`/blog/${post.slug}`}
-                  className="block bg-white border border-[#E8E0D0] rounded-xl px-4 py-3.5 hover:border-[#C73E3A]/50 hover:shadow-md transition group">
-                  <p className="text-sm font-medium text-[#2D2D2D] group-hover:text-[#C73E3A] transition">{post.title}</p>
-                  <p className="text-xs text-[#6B6B80] mt-1">{post.date}</p>
+                <Link key={post.slug} href={`/blog/${post.slug}`} className="block palace-card px-4 py-3.5 group">
+                  <p className="text-sm font-medium group-hover:text-[#8B2500] transition" style={{ color: P.text }}>{post.title}</p>
+                  <p className="text-xs mt-1" style={{ color: P.muted }}>{post.date}</p>
                 </Link>
               ))}
             </div>
             <div className="text-center mt-5">
-              <Link href="/blog" className="text-sm text-[#C73E3A] hover:text-[#A33230] font-medium transition">
+              <Link href="/blog" className="text-sm font-medium transition" style={{ color: P.red }}>
                 블로그 전체 보기 →
               </Link>
             </div>
+          </FadeIn>
         </div>
       </section>
     </>
@@ -560,10 +509,9 @@ export default function Home() {
 }
 
 /* ═══════════════════════════════════════
-   Trending Dashboard
+   Trending Dashboard (근정전 마당)
    ═══════════════════════════════════════ */
 type RegionId = 'global' | 'kr' | 'us' | 'jp' | 'vn' | 'uk';
-
 const regions: { id: RegionId; flag: string; label: string }[] = [
   { id: 'kr', flag: '🇰🇷', label: 'KR' },
   { id: 'global', flag: '🌍', label: 'Global' },
@@ -572,29 +520,27 @@ const regions: { id: RegionId; flag: string; label: string }[] = [
   { id: 'vn', flag: '🇻🇳', label: 'VN' },
   { id: 'uk', flag: '🇬🇧', label: 'UK' },
 ];
-
-const trendingCategories: { key: keyof typeof trendingData; emoji: string; label: string }[] = [
+const trendCats: { key: keyof typeof trendingData; emoji: string; label: string }[] = [
   { key: 'music', emoji: '🎵', label: 'Music' },
   { key: 'youtube', emoji: '📺', label: 'YouTube' },
   { key: 'movies', emoji: '🎬', label: 'Movies & TV' },
   { key: 'games', emoji: '🎮', label: 'Games' },
   { key: 'apps', emoji: '📱', label: 'Apps' },
-  { key: 'search', emoji: '🔍', label: 'Search Trends' },
+  { key: 'search', emoji: '🔍', label: 'Search' },
 ];
 
 function ChangeIcon({ change }: { change: TrendingItem['change'] }) {
-  if (change === 'up') return <span className="text-[#C73E3A] text-xs font-bold">▲</span>;
-  if (change === 'down') return <span className="text-[#4A90D9] text-xs font-bold">▼</span>;
-  if (change === 'new') return <span className="text-[#D4A853] text-[10px] font-bold">NEW</span>;
-  return <span className="text-[#4A4A5E] text-xs">─</span>;
+  if (change === 'up') return <span className="text-xs font-bold" style={{ color: P.red }}>▲</span>;
+  if (change === 'down') return <span className="text-xs font-bold" style={{ color: P.blue }}>▼</span>;
+  if (change === 'new') return <span className="text-[10px] font-bold" style={{ color: P.gold }}>NEW</span>;
+  return <span className="text-xs text-[#AAA]">─</span>;
 }
 
 function getItemUrl(catKey: string, item: TrendingItem): string {
   if (item.url) return item.url;
   const q = encodeURIComponent(`${item.title}${item.subtitle ? ' ' + item.subtitle : ''}`);
   switch (catKey) {
-    case 'music': return `https://www.youtube.com/results?search_query=${q}`;
-    case 'youtube': return `https://www.youtube.com/results?search_query=${q}`;
+    case 'music': case 'youtube': return `https://www.youtube.com/results?search_query=${q}`;
     case 'movies': return `https://www.youtube.com/results?search_query=${encodeURIComponent(item.title + ' trailer')}`;
     case 'games': return `https://www.youtube.com/results?search_query=${encodeURIComponent(item.title)}`;
     case 'apps': return `https://www.google.com/search?q=${encodeURIComponent(item.title + ' app')}`;
@@ -607,65 +553,69 @@ function TrendingDashboard() {
   const [region, setRegion] = useState<RegionId>('kr');
 
   return (
-    <section className="relative bg-[#1A1A2E] text-[#F0E6D3] py-16 px-5 overflow-hidden">
-      <JamoBg letter="ㅌ" position="left" color="#4A90D9" />
+    <section className="relative py-16 px-5 overflow-hidden stone-floor">
+      <JamoBg letter="ㅌ" color={P.blue} pos="left" />
       <div className="relative mx-auto max-w-2xl">
-        <FadeIn><div className="text-center mb-6">
-          <p className="text-[#D4A853] text-xs font-bold tracking-widest mb-1">UPDATED DAILY</p>
-          <h2 className="text-2xl font-bold" style={{ fontFamily: 'var(--font-playfair), var(--font-noto-serif-kr), serif' }}>
-            What&apos;s Trending Now 🔥
-          </h2>
-          <p className="text-[#6B6B80] text-xs mt-1">Updated: {trendingData.updatedAt}</p>
-        </div></FadeIn>
+        <FadeIn>
+          <div className="text-center mb-6">
+            <p className="text-[10px] font-medium tracking-widest mb-1" style={{ color: P.gold }}>UPDATED DAILY</p>
+            <h2 className="text-2xl font-bold" style={{ fontFamily: P.serif, color: P.text }}>
+              What&apos;s Trending Now 🔥
+            </h2>
+            <p className="text-xs mt-1" style={{ color: P.muted }}>Updated: {trendingData.updatedAt}</p>
+          </div>
+        </FadeIn>
 
         <div className="flex gap-1.5 justify-center mb-8 flex-wrap">
           {regions.map((r) => (
             <button key={r.id} onClick={() => setRegion(r.id)}
               className={`px-3 py-1.5 rounded-full text-xs font-medium transition ${
-                region === r.id ? 'bg-[#C73E3A] text-white' : 'bg-[#2D2D4E] text-[#6B6B80] hover:bg-[#3D3D5E]'
-              }`}>
+                region === r.id ? 'text-white' : 'bg-white/70 hover:bg-white'
+              }`} style={region === r.id ? { background: P.red, color: 'white' } : { color: P.text }}>
               {r.flag} {r.label}
             </button>
           ))}
         </div>
 
         <div className="space-y-4">
-          {trendingCategories.map((cat) => {
+          {trendCats.map((cat) => {
             if (cat.key === 'updatedAt') return null;
             const catData = trendingData[cat.key as keyof Omit<typeof trendingData, 'updatedAt'>];
             if (!catData) return null;
             const items = catData[region] || [];
             return (
-              <div key={cat.key} className="bg-[#2D2D4E] border border-[#3D3D5E] rounded-xl overflow-hidden">
-                <div className="px-4 py-2.5 border-b border-[#3D3D5E] flex items-center justify-between">
-                  <h3 className="font-bold text-sm">{cat.emoji} {cat.label}</h3>
-                  <button onClick={async () => {
-                    const text = `${cat.emoji} ${cat.label} Top 3\n${items.slice(0, 3).map(i => `${i.rank}. ${i.title}`).join('\n')}\n\nhttps://dhlm-studio.com`;
-                    if (navigator.share) { try { await navigator.share({ title: `Trending ${cat.label}`, text }); } catch {} }
-                    else { await navigator.clipboard.writeText(text); }
-                  }} className="text-[10px] text-[#6B6B80] hover:text-[#D4A853] transition">Share ↗</button>
-                </div>
-                <div className="divide-y divide-[#3D3D5E]/50">
-                  {items.slice(0, 3).map((item) => (
-                    <a key={item.rank} href={getItemUrl(cat.key, item)} target="_blank" rel="noopener noreferrer"
-                      className="flex items-center gap-3 px-4 py-2.5 hover:bg-[#3D3D5E]/50 transition">
-                      <span className="text-lg font-black text-[#4A4A5E] w-6 text-right shrink-0">{item.rank}</span>
-                      <ChangeIcon change={item.change} />
-                      <div className="flex-1 min-w-0">
-                        <p className="text-sm font-medium truncate">{item.title}</p>
-                        {item.subtitle && <p className="text-xs text-[#6B6B80] truncate">{item.subtitle}</p>}
-                      </div>
-                      {item.metric && (
-                        <div className="text-right shrink-0">
-                          <p className="text-xs font-bold text-[#D4A853]">{item.metric}</p>
-                          {item.metricLabel && <p className="text-[9px] text-[#4A4A5E]">{item.metricLabel}</p>}
+              <FadeIn key={cat.key}>
+                <div className="palace-card overflow-hidden">
+                  <div className="px-4 py-2.5 border-b border-[#E0D8CC] flex items-center justify-between">
+                    <h3 className="font-bold text-sm" style={{ color: P.text }}>{cat.emoji} {cat.label}</h3>
+                    <button onClick={async () => {
+                      const text = `${cat.emoji} ${cat.label} Top 3\n${items.slice(0, 3).map(i => `${i.rank}. ${i.title}`).join('\n')}\n\nhttps://dhlm-studio.com`;
+                      if (navigator.share) { try { await navigator.share({ title: `Trending ${cat.label}`, text }); } catch {} }
+                      else { await navigator.clipboard.writeText(text); }
+                    }} className="text-[10px] transition" style={{ color: P.muted }}>Share ↗</button>
+                  </div>
+                  <div className="divide-y divide-[#E8E0D0]">
+                    {items.slice(0, 3).map((item) => (
+                      <a key={item.rank} href={getItemUrl(cat.key, item)} target="_blank" rel="noopener noreferrer"
+                        className="flex items-center gap-3 px-4 py-2.5 hover:bg-[#F0EBE0] transition">
+                        <span className="text-lg font-black w-6 text-right shrink-0" style={{ color: '#C5C0B5' }}>{item.rank}</span>
+                        <ChangeIcon change={item.change} />
+                        <div className="flex-1 min-w-0">
+                          <p className="text-sm font-medium truncate" style={{ color: P.text }}>{item.title}</p>
+                          {item.subtitle && <p className="text-xs truncate" style={{ color: P.muted }}>{item.subtitle}</p>}
                         </div>
-                      )}
-                      <span className="text-[#4A4A5E] text-xs shrink-0">↗</span>
-                    </a>
-                  ))}
+                        {item.metric && (
+                          <div className="text-right shrink-0">
+                            <p className="text-xs font-bold" style={{ color: P.gold }}>{item.metric}</p>
+                            {item.metricLabel && <p className="text-[9px]" style={{ color: '#B5AFA5' }}>{item.metricLabel}</p>}
+                          </div>
+                        )}
+                        <span className="text-xs shrink-0" style={{ color: '#C5C0B5' }}>↗</span>
+                      </a>
+                    ))}
+                  </div>
                 </div>
-              </div>
+              </FadeIn>
             );
           })}
         </div>
