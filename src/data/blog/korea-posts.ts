@@ -5,6 +5,7 @@ export interface KoreaPost {
   emoji: string;
   readTime: string;
   description: string;
+  image: string;
   intro: string;
   sections: { heading: string; body: string }[];
   funFact: string;
@@ -12,10 +13,23 @@ export interface KoreaPost {
   tags: string[];
 }
 
+// Category → Unsplash image mapping
+const catImages: Record<string, string> = {
+  Beliefs: 'https://images.unsplash.com/photo-1548115184-bc6544d06a58?w=800&q=75',
+  Food: 'https://images.unsplash.com/photo-1590301157890-4810ed352733?w=800&q=75',
+  'K-Culture': 'https://images.unsplash.com/photo-1517154421773-0529f29ea451?w=800&q=75',
+  Travel: 'https://images.unsplash.com/photo-1538485399081-7191377e8241?w=800&q=75',
+  Language: 'https://images.unsplash.com/photo-1583795128727-6ec3642408f8?w=800&q=75',
+  Work: 'https://images.unsplash.com/photo-1486406146926-c627a92ad1ab?w=800&q=75',
+  Tech: 'https://images.unsplash.com/photo-1550751827-4bd374c3f58b?w=800&q=75',
+  Comparison: 'https://images.unsplash.com/photo-1517154421773-0529f29ea451?w=800&q=75',
+  Lifestyle: 'https://images.unsplash.com/photo-1517154421773-0529f29ea451?w=800&q=75',
+};
+
 export const koreaPosts: KoreaPost[] = [
   // ═══ Beliefs & Superstitions ═══
   {
-    slug: 'red-ink-death', title: 'Why Koreans Never Write Names in Red Ink', category: 'Beliefs', emoji: '🔮', readTime: '3 min',
+    slug: 'red-ink-death', title: 'Why Koreans Never Write Names in Red Ink', category: 'Beliefs', emoji: '🔮', image: 'https://images.unsplash.com/photo-1548115184-bc6544d06a58?w=800&q=75', readTime: '3 min',
     description: 'In Korea, writing someone\'s name in red ink is associated with death. Learn the history behind this superstition.',
     intro: 'Hand someone a red pen in Korea and ask them to write their name. Watch their reaction — most will politely refuse. Writing a living person\'s name in red ink is one of Korea\'s strongest taboos.',
     sections: [
@@ -27,7 +41,7 @@ export const koreaPosts: KoreaPost[] = [
     tags: ['superstition', 'red ink', 'Korean culture', 'death taboo'],
   },
   {
-    slug: 'fan-death', title: 'Fan Death: Korea\'s Most Famous Urban Legend', category: 'Beliefs', emoji: '🔮', readTime: '4 min',
+    slug: 'fan-death', title: 'Fan Death: Korea\'s Most Famous Urban Legend', category: 'Beliefs', emoji: '🔮', image: 'https://images.unsplash.com/photo-1548115184-bc6544d06a58?w=800&q=75', readTime: '4 min',
     description: 'Many Koreans believe sleeping with an electric fan on in a closed room can kill you. Here\'s why.',
     intro: 'Ask any Korean about sleeping with a fan on in a closed room. Many will genuinely warn you it could be fatal. Welcome to "fan death" — Korea\'s most uniquely Korean urban legend.',
     sections: [
@@ -39,7 +53,7 @@ export const koreaPosts: KoreaPost[] = [
     tags: ['urban legend', 'fan death', 'Korean belief', 'superstition'],
   },
   {
-    slug: 'number-four', title: 'Why Korean Buildings Skip the 4th Floor', category: 'Beliefs', emoji: '🔮', readTime: '3 min',
+    slug: 'number-four', title: 'Why Korean Buildings Skip the 4th Floor', category: 'Beliefs', emoji: '🔮', image: 'https://images.unsplash.com/photo-1548115184-bc6544d06a58?w=800&q=75', readTime: '3 min',
     description: 'The number 4 sounds like "death" in Korean. Many buildings skip the 4th floor entirely.',
     intro: 'Step into a Korean elevator and look at the buttons. You might notice something odd: there\'s no 4th floor. Instead, you\'ll see "F" — or the floor simply doesn\'t exist.',
     sections: [
@@ -51,7 +65,7 @@ export const koreaPosts: KoreaPost[] = [
     tags: ['number 4', 'tetraphobia', 'elevator', 'death'],
   },
   {
-    slug: 'dream-pigs', title: 'Dreaming of Pigs Means You\'ll Get Rich', category: 'Beliefs', emoji: '🔮', readTime: '3 min',
+    slug: 'dream-pigs', title: 'Dreaming of Pigs Means You\'ll Get Rich', category: 'Beliefs', emoji: '🔮', image: 'https://images.unsplash.com/photo-1548115184-bc6544d06a58?w=800&q=75', readTime: '3 min',
     description: 'In Korean culture, dreaming about pigs is considered extremely lucky — it means wealth is coming.',
     intro: 'If a Korean tells you they dreamed about pigs last night, don\'t be surprised when they rush to buy a lottery ticket. In Korea, pig dreams = incoming wealth.',
     sections: [
@@ -63,7 +77,7 @@ export const koreaPosts: KoreaPost[] = [
     tags: ['pig dream', 'luck', 'lottery', 'wealth'],
   },
   {
-    slug: 'shoe-gift', title: 'Never Gift Shoes to Your Korean Lover', category: 'Beliefs', emoji: '🔮', readTime: '3 min',
+    slug: 'shoe-gift', title: 'Never Gift Shoes to Your Korean Lover', category: 'Beliefs', emoji: '🔮', image: 'https://images.unsplash.com/photo-1548115184-bc6544d06a58?w=800&q=75', readTime: '3 min',
     description: 'Giving shoes as a gift to your partner means they\'ll walk away from you. A deeply held Korean superstition.',
     intro: 'Planning to buy your Korean boyfriend or girlfriend a nice pair of sneakers? Think twice. In Korea, gifting shoes to a romantic partner is believed to make them "run away" from the relationship.',
     sections: [
@@ -76,7 +90,7 @@ export const koreaPosts: KoreaPost[] = [
   },
   // ═══ Food & Drink ═══
   {
-    slug: 'korean-bbq-guide', title: 'Korean BBQ: The Complete Guide for Beginners', category: 'Food', emoji: '🍜', readTime: '5 min',
+    slug: 'korean-bbq-guide', title: 'Korean BBQ: The Complete Guide for Beginners', category: 'Food', emoji: '🍜', image: 'https://images.unsplash.com/photo-1590301157890-4810ed352733?w=800&q=75', readTime: '5 min',
     description: 'Everything you need to know about Korean BBQ — from ordering to grilling to the unwritten rules.',
     intro: 'Korean BBQ is more than a meal — it\'s a social ritual. Grilling meat at your table, wrapping it in lettuce with garlic and ssamjang, and sharing soju with friends. Here\'s how to do it right.',
     sections: [
@@ -89,7 +103,7 @@ export const koreaPosts: KoreaPost[] = [
     tags: ['BBQ', 'Korean food', 'samgyeopsal', 'dining guide'],
   },
   {
-    slug: 'soju-drinking-rules', title: 'Soju Drinking Rules: 7 Things You Must Know', category: 'Food', emoji: '🍜', readTime: '4 min',
+    slug: 'soju-drinking-rules', title: 'Soju Drinking Rules: 7 Things You Must Know', category: 'Food', emoji: '🍜', image: 'https://images.unsplash.com/photo-1590301157890-4810ed352733?w=800&q=75', readTime: '4 min',
     description: 'Korean drinking culture has strict unwritten rules. Break them and you\'ll get looks. Here\'s the survival guide.',
     intro: 'Soju is Korea\'s national drink — a clear spirit that fuels every Korean social gathering. But drinking soju comes with a set of unwritten rules that every foreigner should know.',
     sections: [
@@ -101,7 +115,7 @@ export const koreaPosts: KoreaPost[] = [
     tags: ['soju', 'drinking culture', 'etiquette', 'Korean rules'],
   },
   {
-    slug: 'street-food-top10', title: 'Top 10 Korean Street Foods You Must Try', category: 'Food', emoji: '🍜', readTime: '4 min',
+    slug: 'street-food-top10', title: 'Top 10 Korean Street Foods You Must Try', category: 'Food', emoji: '🍜', image: 'https://images.unsplash.com/photo-1590301157890-4810ed352733?w=800&q=75', readTime: '4 min',
     description: 'From tteokbokki to hotteok, the definitive guide to Korean street food.',
     intro: 'Korean street food is legendary. Every market, subway exit, and university area has vendors selling snacks that are cheap, delicious, and uniquely Korean.',
     sections: [
@@ -113,7 +127,7 @@ export const koreaPosts: KoreaPost[] = [
     tags: ['street food', 'tteokbokki', 'market', 'snacks'],
   },
   {
-    slug: 'korean-fried-chicken', title: 'Why Korean Fried Chicken Conquered the World', category: 'Food', emoji: '🍜', readTime: '4 min',
+    slug: 'korean-fried-chicken', title: 'Why Korean Fried Chicken Conquered the World', category: 'Food', emoji: '🍜', image: 'https://images.unsplash.com/photo-1590301157890-4810ed352733?w=800&q=75', readTime: '4 min',
     description: 'Korean fried chicken is different. Double-fried for extra crunch, glazed with addictive sauces. Here\'s the story.',
     intro: 'There\'s a reason Korean fried chicken has gone global. The secret? It\'s fried twice — resulting in an impossibly crispy exterior that stays crunchy even after being drenched in sauce.',
     sections: [
@@ -125,7 +139,7 @@ export const koreaPosts: KoreaPost[] = [
     tags: ['fried chicken', 'chimaek', 'Korean food', 'delivery'],
   },
   {
-    slug: 'korean-convenience-store', title: 'Korean Convenience Store Food: Better Than Restaurants?', category: 'Food', emoji: '🍜', readTime: '4 min',
+    slug: 'korean-convenience-store', title: 'Korean Convenience Store Food: Better Than Restaurants?', category: 'Food', emoji: '🍜', image: 'https://images.unsplash.com/photo-1590301157890-4810ed352733?w=800&q=75', readTime: '4 min',
     description: 'CU, GS25, 7-Eleven — Korean convenience stores serve restaurant-quality food at $3. Here\'s what to eat.',
     intro: 'Korean convenience stores aren\'t like anywhere else in the world. They\'re mini restaurants with seating areas, microwaves, and food that\'s genuinely delicious.',
     sections: [
@@ -138,7 +152,7 @@ export const koreaPosts: KoreaPost[] = [
   },
   // ═══ K-Culture & Entertainment ═══
   {
-    slug: 'kpop-trainee-life', title: 'K-Pop Trainee Life: 7 Years of Practice', category: 'K-Culture', emoji: '🎵', readTime: '5 min',
+    slug: 'kpop-trainee-life', title: 'K-Pop Trainee Life: 7 Years of Practice', category: 'K-Culture', emoji: '🎵', image: 'https://images.unsplash.com/photo-1517154421773-0529f29ea451?w=800&q=75', readTime: '5 min',
     description: 'What does it take to become a K-Pop idol? Years of training, strict diets, and an uncertain future.',
     intro: 'Behind every K-Pop group\'s perfect performance are years of grueling training. Most trainees start at 13-15 years old, practice 12+ hours daily, and many never debut.',
     sections: [
@@ -150,7 +164,7 @@ export const koreaPosts: KoreaPost[] = [
     tags: ['K-Pop', 'trainee', 'idol', 'HYBE', 'SM'],
   },
   {
-    slug: 'kdrama-tropes', title: '10 K-Drama Tropes That Always Happen', category: 'K-Culture', emoji: '🎵', readTime: '4 min',
+    slug: 'kdrama-tropes', title: '10 K-Drama Tropes That Always Happen', category: 'K-Culture', emoji: '🎵', image: 'https://images.unsplash.com/photo-1517154421773-0529f29ea451?w=800&q=75', readTime: '4 min',
     description: 'Wrist grabs, piggyback rides, and accidental cohabitation — the K-Drama starter pack.',
     intro: 'If you\'ve watched more than three K-Dramas, you\'ve noticed the patterns. These tropes are so consistent they\'re practically genre requirements.',
     sections: [
@@ -162,7 +176,7 @@ export const koreaPosts: KoreaPost[] = [
     tags: ['K-Drama', 'tropes', 'cliches', 'Korean TV'],
   },
   {
-    slug: 'hallyu-wave', title: 'Hallyu Wave: How Korean Culture Took Over the World', category: 'K-Culture', emoji: '🎵', readTime: '5 min',
+    slug: 'hallyu-wave', title: 'Hallyu Wave: How Korean Culture Took Over the World', category: 'K-Culture', emoji: '🎵', image: 'https://images.unsplash.com/photo-1517154421773-0529f29ea451?w=800&q=75', readTime: '5 min',
     description: 'From BTS to Squid Game to K-Beauty — how Korea became the world\'s cultural superpower.',
     intro: 'In 2000, almost nobody outside Asia knew Korean pop culture existed. By 2025, BTS sells out stadiums worldwide, Korean dramas dominate Netflix, and Korean skincare is in every bathroom. What happened?',
     sections: [
@@ -175,7 +189,7 @@ export const koreaPosts: KoreaPost[] = [
   },
   // ═══ Travel ═══
   {
-    slug: 'seoul-neighborhoods', title: 'Seoul Neighborhoods Guide: 15 Areas Explained', category: 'Travel', emoji: '🏙️', readTime: '6 min',
+    slug: 'seoul-neighborhoods', title: 'Seoul Neighborhoods Guide: 15 Areas Explained', category: 'Travel', emoji: '🏙️', image: 'https://images.unsplash.com/photo-1538485399081-7191377e8241?w=800&q=75', readTime: '6 min',
     description: 'Each Seoul neighborhood has its own personality. Gangnam is different from Hongdae is different from Itaewon.',
     intro: 'Seoul isn\'t one city — it\'s dozens of distinct neighborhoods, each with its own vibe. Knowing which area suits you can make or break your trip.',
     sections: [
@@ -186,7 +200,7 @@ export const koreaPosts: KoreaPost[] = [
     tags: ['Seoul', 'neighborhoods', 'Gangnam', 'Hongdae', 'travel guide'],
   },
   {
-    slug: 'jeju-island-guide', title: 'Jeju Island: Korea\'s Hawaii', category: 'Travel', emoji: '🏙️', readTime: '5 min',
+    slug: 'jeju-island-guide', title: 'Jeju Island: Korea\'s Hawaii', category: 'Travel', emoji: '🏙️', image: 'https://images.unsplash.com/photo-1538485399081-7191377e8241?w=800&q=75', readTime: '5 min',
     description: 'Volcanic landscapes, tangerine groves, and pristine beaches. Jeju is Korea\'s tropical paradise.',
     intro: 'Jeju Island is where Koreans go to escape. A volcanic island off the southern coast, it offers stunning scenery, unique food, and a laid-back atmosphere completely different from mainland Korea.',
     sections: [
@@ -198,7 +212,7 @@ export const koreaPosts: KoreaPost[] = [
     tags: ['Jeju', 'island', 'travel', 'Hallasan', 'beach'],
   },
   {
-    slug: 'korean-temple-stay', title: 'Korean Temple Stay: What to Expect', category: 'Travel', emoji: '🏙️', readTime: '4 min',
+    slug: 'korean-temple-stay', title: 'Korean Temple Stay: What to Expect', category: 'Travel', emoji: '🏙️', image: 'https://images.unsplash.com/photo-1538485399081-7191377e8241?w=800&q=75', readTime: '4 min',
     description: 'Sleep in a Buddhist temple, wake at 4 AM for chanting, eat temple food, and find inner peace.',
     intro: 'Templestay is one of Korea\'s most unique experiences. For $30-60, you sleep in a 1,000-year-old temple, eat vegetarian temple food, and follow the monks\' daily routine.',
     sections: [
@@ -211,7 +225,7 @@ export const koreaPosts: KoreaPost[] = [
   },
   // ═══ Language ═══
   {
-    slug: 'hangul-one-hour', title: 'Learn Hangul in 1 Hour: The Complete Guide', category: 'Language', emoji: '🗣️', readTime: '5 min',
+    slug: 'hangul-one-hour', title: 'Learn Hangul in 1 Hour: The Complete Guide', category: 'Language', emoji: '🗣️', image: 'https://images.unsplash.com/photo-1583795128727-6ec3642408f8?w=800&q=75', readTime: '5 min',
     description: 'Korean alphabet is considered the most scientific writing system in the world. And you can learn it in an hour.',
     intro: 'Hangul, the Korean alphabet, was designed by King Sejong in 1443 specifically to be easy to learn. Unlike Chinese characters or Japanese kanji, Hangul is logical, phonetic, and learnable in a single afternoon.',
     sections: [
@@ -223,7 +237,7 @@ export const koreaPosts: KoreaPost[] = [
     tags: ['Hangul', 'Korean alphabet', 'learn Korean', 'King Sejong'],
   },
   {
-    slug: 'oppa-meaning', title: 'What Does "Oppa" Really Mean?', category: 'Language', emoji: '🗣️', readTime: '3 min',
+    slug: 'oppa-meaning', title: 'What Does "Oppa" Really Mean?', category: 'Language', emoji: '🗣️', image: 'https://images.unsplash.com/photo-1583795128727-6ec3642408f8?w=800&q=75', readTime: '3 min',
     description: 'Oppa doesn\'t just mean "older brother." It\'s one of the most loaded words in Korean.',
     intro: 'If you\'ve watched any K-Drama, you\'ve heard it: "Oppa~!" It\'s one of the first Korean words foreigners learn, but its meaning goes far beyond "older brother."',
     sections: [
@@ -236,7 +250,7 @@ export const koreaPosts: KoreaPost[] = [
   },
   // ═══ Work & Business ═══
   {
-    slug: 'hoesik-work-dinner', title: 'Hoesik: Korea\'s Mandatory Work Dinners', category: 'Work', emoji: '💼', readTime: '4 min',
+    slug: 'hoesik-work-dinner', title: 'Hoesik: Korea\'s Mandatory Work Dinners', category: 'Work', emoji: '💼', image: 'https://images.unsplash.com/photo-1486406146926-c627a92ad1ab?w=800&q=75', readTime: '4 min',
     description: 'In Korea, after-work team dinners with drinking aren\'t optional. They\'re practically mandatory.',
     intro: 'Imagine your boss announcing that tonight, the entire team is going out for dinner and drinks — and there\'s no politely declining. Welcome to hoesik, Korea\'s infamous work dinner culture.',
     sections: [
@@ -248,7 +262,7 @@ export const koreaPosts: KoreaPost[] = [
     tags: ['work culture', 'hoesik', 'drinking', 'office life'],
   },
   {
-    slug: 'ppalli-ppalli', title: 'Ppalli Ppalli: Korea\'s Obsession with Speed', category: 'Work', emoji: '💼', readTime: '3 min',
+    slug: 'ppalli-ppalli', title: 'Ppalli Ppalli: Korea\'s Obsession with Speed', category: 'Work', emoji: '💼', image: 'https://images.unsplash.com/photo-1486406146926-c627a92ad1ab?w=800&q=75', readTime: '3 min',
     description: '"Hurry hurry!" — the unofficial motto of Korean society. Everything must be fast.',
     intro: '"Ppalli ppalli!" (빨리빨리!) — you\'ll hear this everywhere in Korea. It means "hurry hurry" and it captures something fundamental about Korean culture: an obsession with speed.',
     sections: [
@@ -261,7 +275,7 @@ export const koreaPosts: KoreaPost[] = [
   },
   // ═══ Tech ═══
   {
-    slug: 'kakao-everything', title: 'KakaoTalk: The App That Runs Korea', category: 'Tech', emoji: '📱', readTime: '4 min',
+    slug: 'kakao-everything', title: 'KakaoTalk: The App That Runs Korea', category: 'Tech', emoji: '📱', image: 'https://images.unsplash.com/photo-1550751827-4bd374c3f58b?w=800&q=75', readTime: '4 min',
     description: 'Forget WhatsApp. In Korea, KakaoTalk is messaging, banking, taxi, shopping, and everything else.',
     intro: '93% of South Koreans use KakaoTalk. It\'s not just a messaging app — it\'s the operating system of Korean daily life. If you\'re not on Kakao, you basically don\'t exist in Korea.',
     sections: [
@@ -273,7 +287,7 @@ export const koreaPosts: KoreaPost[] = [
     tags: ['KakaoTalk', 'Korean apps', 'technology', 'messaging'],
   },
   {
-    slug: 'naver-not-google', title: 'Why Koreans Use Naver, Not Google', category: 'Tech', emoji: '📱', readTime: '3 min',
+    slug: 'naver-not-google', title: 'Why Koreans Use Naver, Not Google', category: 'Tech', emoji: '📱', image: 'https://images.unsplash.com/photo-1550751827-4bd374c3f58b?w=800&q=75', readTime: '3 min',
     description: 'Google dominates the world, but in Korea, Naver is king. Here\'s why Koreans prefer their own search engine.',
     intro: 'In most countries, "search it" means "Google it." In Korea, it means "Naver it." Naver controls about 60% of Korea\'s search market, while Google has only about 30%.',
     sections: [
@@ -286,7 +300,7 @@ export const koreaPosts: KoreaPost[] = [
   },
   // ═══ Additional Beliefs ═══
   {
-    slug: 'whistling-night', title: "Don't Whistle at Night in Korea", category: 'Beliefs', emoji: '🔮', readTime: '3 min',
+    slug: 'whistling-night', title: "Don't Whistle at Night in Korea", category: 'Beliefs', emoji: '🔮', image: 'https://images.unsplash.com/photo-1548115184-bc6544d06a58?w=800&q=75', readTime: '3 min',
     description: 'Whistling after dark is believed to summon ghosts or snakes in Korean folklore.',
     intro: 'Whistle a tune while walking home at night in Korea, and someone will almost certainly tell you to stop. Whistling after dark is believed to call ghosts — or snakes.',
     sections: [
@@ -298,7 +312,7 @@ export const koreaPosts: KoreaPost[] = [
     tags: ['whistling', 'ghosts', 'night', 'Korean folklore'],
   },
   {
-    slug: 'exam-superstitions', title: 'Korean Exam Day Superstitions: Yeot Candy & More', category: 'Beliefs', emoji: '🔮', readTime: '3 min',
+    slug: 'exam-superstitions', title: 'Korean Exam Day Superstitions: Yeot Candy & More', category: 'Beliefs', emoji: '🔮', image: 'https://images.unsplash.com/photo-1548115184-bc6544d06a58?w=800&q=75', readTime: '3 min',
     description: "On Korea's college entrance exam day, the entire country mobilizes. Here are the superstitions students follow.",
     intro: "Every November, Korea's entire society revolves around one event: the Suneung (college entrance exam). Planes are grounded, offices open late, and police escort late students. The superstitions are just as intense.",
     sections: [
@@ -311,7 +325,7 @@ export const koreaPosts: KoreaPost[] = [
   },
   // ═══ Additional Food ═══
   {
-    slug: 'korean-cafe-culture', title: "Korea's Coffee Obsession: More Cafes Than Convenience Stores", category: 'Food', emoji: '🍜', readTime: '4 min',
+    slug: 'korean-cafe-culture', title: "Korea's Coffee Obsession: More Cafes Than Convenience Stores", category: 'Food', emoji: '🍜', image: 'https://images.unsplash.com/photo-1590301157890-4810ed352733?w=800&q=75', readTime: '4 min',
     description: 'Seoul has more cafes per capita than any city in the world. Koreans take their coffee seriously.',
     intro: "Korea has approximately 100,000 cafes — that's more cafes than McDonald's locations worldwide, all in a country smaller than Pennsylvania.",
     sections: [
@@ -323,7 +337,7 @@ export const koreaPosts: KoreaPost[] = [
     tags: ['cafe', 'coffee', 'Korean culture', 'Seoul'],
   },
   {
-    slug: 'korean-delivery-culture', title: "Korea's Delivery Culture: Anything, Anywhere, Anytime", category: 'Food', emoji: '🍜', readTime: '4 min',
+    slug: 'korean-delivery-culture', title: "Korea's Delivery Culture: Anything, Anywhere, Anytime", category: 'Food', emoji: '🍜', image: 'https://images.unsplash.com/photo-1590301157890-4810ed352733?w=800&q=75', readTime: '4 min',
     description: 'Koreans can get fried chicken delivered to a park bench at midnight. The delivery culture is unmatched.',
     intro: "In Korea, delivery isn't limited to pizza and Chinese food. You can get Korean BBQ sets, full-course meals, coffee, and even fried chicken delivered to a park bench by the Han River at 2 AM.",
     sections: [
@@ -335,7 +349,7 @@ export const koreaPosts: KoreaPost[] = [
     tags: ['delivery', 'food delivery', 'Baedal Minjok', 'Korean apps'],
   },
   {
-    slug: 'korean-ramen-vs-japanese', title: 'Korean Ramyeon vs Japanese Ramen: The Real Difference', category: 'Food', emoji: '🍜', readTime: '3 min',
+    slug: 'korean-ramen-vs-japanese', title: 'Korean Ramyeon vs Japanese Ramen: The Real Difference', category: 'Food', emoji: '🍜', image: 'https://images.unsplash.com/photo-1590301157890-4810ed352733?w=800&q=75', readTime: '3 min',
     description: "They share a name origin but they're completely different foods. Here's the breakdown.",
     intro: "Foreigners often confuse Korean ramyeon with Japanese ramen. While they share an etymological root, they're as different as New York pizza and Italian pizza.",
     sections: [
@@ -348,7 +362,7 @@ export const koreaPosts: KoreaPost[] = [
   },
   // ═══ Additional K-Culture ═══
   {
-    slug: 'mukbang-culture', title: 'Mukbang: Why Millions Watch Koreans Eat', category: 'K-Culture', emoji: '🎵', readTime: '4 min',
+    slug: 'mukbang-culture', title: 'Mukbang: Why Millions Watch Koreans Eat', category: 'K-Culture', emoji: '🎵', image: 'https://images.unsplash.com/photo-1517154421773-0529f29ea451?w=800&q=75', readTime: '4 min',
     description: "Mukbang — eating broadcasts — started in Korea and became a global phenomenon. But why do people watch others eat?",
     intro: "Every night, millions of people around the world watch strangers eat enormous amounts of food on camera. This phenomenon started in Korea, and it's called mukbang (먹방).",
     sections: [
@@ -360,7 +374,7 @@ export const koreaPosts: KoreaPost[] = [
     tags: ['mukbang', 'ASMR', 'YouTube', 'Korean content'],
   },
   {
-    slug: 'webtoon-revolution', title: 'Webtoon: How Korea Changed Comics Forever', category: 'K-Culture', emoji: '🎵', readTime: '4 min',
+    slug: 'webtoon-revolution', title: 'Webtoon: How Korea Changed Comics Forever', category: 'K-Culture', emoji: '🎵', image: 'https://images.unsplash.com/photo-1517154421773-0529f29ea451?w=800&q=75', readTime: '4 min',
     description: "Korean webtoons killed the comic book format and created a new digital art form that's taking over the world.",
     intro: "Forget manga pages and Marvel issues. Korean webtoons are vertical-scrolling, full-color, mobile-first comics that have revolutionized how the world reads comics.",
     sections: [
@@ -372,7 +386,7 @@ export const koreaPosts: KoreaPost[] = [
     tags: ['webtoon', 'comics', 'Naver', 'digital art'],
   },
   {
-    slug: 'korean-beauty-skincare', title: 'K-Beauty: The 10-Step Skincare Routine Explained', category: 'K-Culture', emoji: '🎵', readTime: '5 min',
+    slug: 'korean-beauty-skincare', title: 'K-Beauty: The 10-Step Skincare Routine Explained', category: 'K-Culture', emoji: '🎵', image: 'https://images.unsplash.com/photo-1517154421773-0529f29ea451?w=800&q=75', readTime: '5 min',
     description: "The famous Korean skincare routine that conquered the world. Here's what each step actually does.",
     intro: "Korean skincare isn't about covering imperfections — it's about preventing them. The famous 10-step routine might sound excessive, but each step has a purpose.",
     sections: [
@@ -385,7 +399,7 @@ export const koreaPosts: KoreaPost[] = [
   },
   // ═══ Additional Travel ═══
   {
-    slug: 'dmz-visit-guide', title: 'Visiting the DMZ: The Most Tense Border on Earth', category: 'Travel', emoji: '🏙️', readTime: '5 min',
+    slug: 'dmz-visit-guide', title: 'Visiting the DMZ: The Most Tense Border on Earth', category: 'Travel', emoji: '🏙️', image: 'https://images.unsplash.com/photo-1538485399081-7191377e8241?w=800&q=75', readTime: '5 min',
     description: "The Korean DMZ is the world's most heavily fortified border. And you can visit it on a day trip from Seoul.",
     intro: "Just 50 km north of Seoul — one of the world's most modern cities — lies the DMZ, a 4km-wide strip dividing North and South Korea since 1953. It's surreal, sobering, and one of Korea's most visited sites.",
     sections: [
@@ -397,7 +411,7 @@ export const koreaPosts: KoreaPost[] = [
     tags: ['DMZ', 'North Korea', 'border', 'JSA', 'day trip'],
   },
   {
-    slug: 'korean-jjimjilbang', title: 'Korean Jjimjilbang: The Complete Sauna & Spa Guide', category: 'Travel', emoji: '🏙️', readTime: '4 min',
+    slug: 'korean-jjimjilbang', title: 'Korean Jjimjilbang: The Complete Sauna & Spa Guide', category: 'Travel', emoji: '🏙️', image: 'https://images.unsplash.com/photo-1538485399081-7191377e8241?w=800&q=75', readTime: '4 min',
     description: "Jjimjilbang is Korea's public bathhouse culture. Naked bathing, heated rooms, and sleeping overnight for $10.",
     intro: "A jjimjilbang (찜질방) is part spa, part sauna, part sleepover, and part social club. For about $10-15, you get access to hot baths, saunas, heated rooms, and a place to sleep overnight.",
     sections: [
@@ -410,7 +424,7 @@ export const koreaPosts: KoreaPost[] = [
   },
   // ═══ Additional Language ═══
   {
-    slug: 'korean-texting-decoded', title: 'ㅋㅋㅋ ㅎㅎ ㅠㅠ — Korean Texting Decoded', category: 'Language', emoji: '🗣️', readTime: '3 min',
+    slug: 'korean-texting-decoded', title: 'ㅋㅋㅋ ㅎㅎ ㅠㅠ — Korean Texting Decoded', category: 'Language', emoji: '🗣️', image: 'https://images.unsplash.com/photo-1583795128727-6ec3642408f8?w=800&q=75', readTime: '3 min',
     description: "Korean texting uses consonants as shorthand. Here's what ㅋㅋㅋ, ㅎㅎ, and ㅠㅠ mean.",
     intro: "If a Korean texts you 'ㅋㅋㅋㅋㅋ', don't panic. It's laughter. Korean texting uses individual consonants as emotional shorthand in a way that's uniquely Korean.",
     sections: [
@@ -422,7 +436,7 @@ export const koreaPosts: KoreaPost[] = [
     tags: ['texting', 'slang', 'Korean text', 'ㅋㅋㅋ'],
   },
   {
-    slug: 'nunchi-social-skill', title: "Nunchi: Korea's Secret Social Superpower", category: 'Language', emoji: '🗣️', readTime: '3 min',
+    slug: 'nunchi-social-skill', title: "Nunchi: Korea's Secret Social Superpower", category: 'Language', emoji: '🗣️', image: 'https://images.unsplash.com/photo-1583795128727-6ec3642408f8?w=800&q=75', readTime: '3 min',
     description: "Nunchi is the Korean art of reading the room. It's the most important social skill in Korea — and you've never heard of it.",
     intro: "In Korea, the ability to 'read the room' has a name: nunchi (눈치). It's not just a nice skill to have — it's considered essential for survival in Korean society.",
     sections: [
@@ -435,7 +449,7 @@ export const koreaPosts: KoreaPost[] = [
   },
   // ═══ Additional Work ═══
   {
-    slug: 'chaebol-explained', title: "Chaebol: Samsung, Hyundai & Korea's Family Empires", category: 'Work', emoji: '💼', readTime: '4 min',
+    slug: 'chaebol-explained', title: "Chaebol: Samsung, Hyundai & Korea's Family Empires", category: 'Work', emoji: '💼', image: 'https://images.unsplash.com/photo-1486406146926-c627a92ad1ab?w=800&q=75', readTime: '4 min',
     description: "Five family-owned conglomerates control over 50% of Korea's GDP. Here's how chaebol work.",
     intro: "Samsung alone accounts for about 20% of South Korea's GDP. Add Hyundai, SK, LG, and Lotte, and five families essentially run the Korean economy. These family empires are called chaebol (재벌).",
     sections: [
@@ -448,7 +462,7 @@ export const koreaPosts: KoreaPost[] = [
   },
   // ═══ Additional Tech ═══
   {
-    slug: 'fastest-internet-korea', title: 'Why Korea Has the World\'s Fastest Internet', category: 'Tech', emoji: '📱', readTime: '3 min',
+    slug: 'fastest-internet-korea', title: 'Why Korea Has the World\'s Fastest Internet', category: 'Tech', emoji: '📱', image: 'https://images.unsplash.com/photo-1550751827-4bd374c3f58b?w=800&q=75', readTime: '3 min',
     description: "Average internet speed in Korea is 200+ Mbps. Most homes have gigabit fiber. Here's how it happened.",
     intro: "While many countries still struggle with broadband, Korea achieved near-universal gigabit internet years ago. The average Korean internet speed is over 200 Mbps — many homes have 1 Gbps or even 10 Gbps connections.",
     sections: [
@@ -461,7 +475,7 @@ export const koreaPosts: KoreaPost[] = [
   },
   // ═══ Comparison ═══
   {
-    slug: 'korea-vs-japan', title: 'Korea vs Japan: Cultural Differences Explained', category: 'Comparison', emoji: '🤔', readTime: '5 min',
+    slug: 'korea-vs-japan', title: 'Korea vs Japan: Cultural Differences Explained', category: 'Comparison', emoji: '🤔', image: 'https://images.unsplash.com/photo-1517154421773-0529f29ea451?w=800&q=75', readTime: '5 min',
     description: "Korea and Japan are neighbors but culturally distinct. Here are the key differences tourists notice.",
     intro: "Korea and Japan are geographically close and share some cultural roots, but the differences are striking. Tourists who visit both often say they feel like completely different worlds.",
     sections: [
@@ -473,7 +487,7 @@ export const koreaPosts: KoreaPost[] = [
     tags: ['Korea vs Japan', 'cultural difference', 'comparison', 'travel'],
   },
   {
-    slug: 'korean-age-explained', title: 'Korean Age vs International Age: Why You\'re Older in Korea', category: 'Comparison', emoji: '🤔', readTime: '3 min',
+    slug: 'korean-age-explained', title: 'Korean Age vs International Age: Why You\'re Older in Korea', category: 'Comparison', emoji: '🤔', image: 'https://images.unsplash.com/photo-1517154421773-0529f29ea451?w=800&q=75', readTime: '3 min',
     description: "In Korea, you're 1 year old at birth and everyone ages up on January 1. Here's the confusing system explained.",
     intro: "Tell a Korean your birthday and they might say you're a different age than you think. Until 2023, Korea used a unique age system where everyone was born at age 1.",
     sections: [
@@ -485,7 +499,7 @@ export const koreaPosts: KoreaPost[] = [
     tags: ['Korean age', 'age system', 'culture', 'comparison'],
   },
   {
-    slug: 'korea-safety', title: "Why Korea is One of the Safest Countries in the World", category: 'Comparison', emoji: '🤔', readTime: '3 min',
+    slug: 'korea-safety', title: "Why Korea is One of the Safest Countries in the World", category: 'Comparison', emoji: '🤔', image: 'https://images.unsplash.com/photo-1517154421773-0529f29ea451?w=800&q=75', readTime: '3 min',
     description: "Lost wallets get returned, women walk alone at night, and violent crime is rare. Korea's safety is remarkable.",
     intro: "Leave your laptop at a cafe table and go to the restroom. Walk alone at 3 AM through Seoul's streets. Drop your wallet and expect it back. Korea's safety level genuinely surprises foreigners.",
     sections: [
@@ -497,7 +511,7 @@ export const koreaPosts: KoreaPost[] = [
     tags: ['safety', 'crime rate', 'comparison', 'Korea vs world'],
   },
   {
-    slug: 'no-tipping-korea', title: 'Why You Don\'t Tip in Korea', category: 'Comparison', emoji: '🤔', readTime: '3 min',
+    slug: 'no-tipping-korea', title: 'Why You Don\'t Tip in Korea', category: 'Comparison', emoji: '🤔', image: 'https://images.unsplash.com/photo-1517154421773-0529f29ea451?w=800&q=75', readTime: '3 min',
     description: "Tipping is not just unnecessary in Korea — it can be confusing or even insulting. Here's why.",
     intro: "Coming from a tipping culture? Leave the tip calculator at home. In Korea, tipping doesn't exist — and trying to tip can create awkward situations.",
     sections: [
@@ -510,7 +524,7 @@ export const koreaPosts: KoreaPost[] = [
   },
   // ═══ Lifestyle ═══
   {
-    slug: 'korean-couple-culture', title: 'Korean Couple Culture: Matching Outfits & 100-Day Anniversary', category: 'Lifestyle', emoji: '🏠', readTime: '4 min',
+    slug: 'korean-couple-culture', title: 'Korean Couple Culture: Matching Outfits & 100-Day Anniversary', category: 'Lifestyle', emoji: '🏠', image: 'https://images.unsplash.com/photo-1517154421773-0529f29ea451?w=800&q=75', readTime: '4 min',
     description: "Korean couples wear matching outfits, celebrate in 100-day increments, and follow unique dating customs.",
     intro: "See two people wearing identical outfits in Korea? They're a couple, and it's completely normal. Korean couple culture is intense, public, and full of unique customs.",
     sections: [
@@ -522,7 +536,7 @@ export const koreaPosts: KoreaPost[] = [
     tags: ['dating', 'couple culture', 'relationship', 'Korean customs'],
   },
   {
-    slug: 'korean-military-service', title: "Korean Military Service: Every Man's Duty", category: 'Lifestyle', emoji: '🏠', readTime: '4 min',
+    slug: 'korean-military-service', title: "Korean Military Service: Every Man's Duty", category: 'Lifestyle', emoji: '🏠', image: 'https://images.unsplash.com/photo-1517154421773-0529f29ea451?w=800&q=75', readTime: '4 min',
     description: "All Korean men must serve 18-21 months in the military. It affects K-Pop, careers, and relationships.",
     intro: "Every able-bodied Korean man must serve in the military for 18-21 months. There are no exceptions — even K-Pop idols must go. It's the most significant shared experience among Korean men.",
     sections: [
@@ -534,7 +548,7 @@ export const koreaPosts: KoreaPost[] = [
     tags: ['military', 'conscription', 'Korean men', 'BTS'],
   },
   {
-    slug: 'korean-apartment-life', title: 'Korean Apartment Life: Why Everyone Lives in High-Rises', category: 'Lifestyle', emoji: '🏠', readTime: '4 min',
+    slug: 'korean-apartment-life', title: 'Korean Apartment Life: Why Everyone Lives in High-Rises', category: 'Lifestyle', emoji: '🏠', image: 'https://images.unsplash.com/photo-1517154421773-0529f29ea451?w=800&q=75', readTime: '4 min',
     description: "Over 60% of Koreans live in apartments. The apartment complex is Korea's defining housing form.",
     intro: "Look at any Korean city skyline and you'll see endless rows of identical apartment towers. Over 60% of South Koreans live in apartments — it's not just housing, it's a lifestyle.",
     sections: [
@@ -547,7 +561,7 @@ export const koreaPosts: KoreaPost[] = [
   },
   // ═══ Final 5 to reach 50 ═══
   {
-    slug: 'korean-school-lunch', title: 'Korean School Lunch: Best in the World?', category: 'Food', emoji: '🍜', readTime: '4 min',
+    slug: 'korean-school-lunch', title: 'Korean School Lunch: Best in the World?', category: 'Food', emoji: '🍜', image: 'https://images.unsplash.com/photo-1590301157890-4810ed352733?w=800&q=75', readTime: '4 min',
     description: "Korean school lunches are nutritious, varied, and free. Many foreigners say they're better than restaurant food.",
     intro: "Forget soggy pizza and mystery meat. Korean school lunches include fresh kimchi, grilled fish, seasonal vegetables, rice, and soup — served free to all students, every day.",
     sections: [
@@ -559,7 +573,7 @@ export const koreaPosts: KoreaPost[] = [
     tags: ['school lunch', 'education', 'food', 'nutrition'],
   },
   {
-    slug: 'korean-noraebang', title: "Noraebang: Korea's Karaoke Room Culture", category: 'Lifestyle', emoji: '🏠', readTime: '3 min',
+    slug: 'korean-noraebang', title: "Noraebang: Korea's Karaoke Room Culture", category: 'Lifestyle', emoji: '🏠', image: 'https://images.unsplash.com/photo-1517154421773-0529f29ea451?w=800&q=75', readTime: '3 min',
     description: "In Korea, karaoke means private rooms with friends, not singing in front of strangers. Noraebang is a national pastime.",
     intro: "Noraebang (노래방, literally 'singing room') is everywhere in Korea — there are over 30,000 of them. Unlike Western-style karaoke bars, Korean noraebang gives you a private room with just your friends.",
     sections: [
@@ -571,7 +585,7 @@ export const koreaPosts: KoreaPost[] = [
     tags: ['noraebang', 'karaoke', 'entertainment', 'nightlife'],
   },
   {
-    slug: 'korean-pc-bang', title: "PC Bang: Korea's 24/7 Gaming Cafes", category: 'Lifestyle', emoji: '🏠', readTime: '4 min',
+    slug: 'korean-pc-bang', title: "PC Bang: Korea's 24/7 Gaming Cafes", category: 'Lifestyle', emoji: '🏠', image: 'https://images.unsplash.com/photo-1517154421773-0529f29ea451?w=800&q=75', readTime: '4 min',
     description: "High-end gaming PCs, cup ramen, and all-night sessions for $1/hour. PC Bangs are where Korean esports culture was born.",
     intro: "Walk into a Korean PC Bang (PC방) and you'll find rows of high-spec gaming PCs, ergonomic chairs, and gamers playing League of Legends at 3 AM while eating cup ramen. Welcome to Korea's gaming culture.",
     sections: [
@@ -583,7 +597,7 @@ export const koreaPosts: KoreaPost[] = [
     tags: ['PC Bang', 'gaming', 'esports', 'Korean culture'],
   },
   {
-    slug: 'han-river-culture', title: 'Han River: Where All of Seoul Comes to Relax', category: 'Travel', emoji: '🏙️', readTime: '3 min',
+    slug: 'han-river-culture', title: 'Han River: Where All of Seoul Comes to Relax', category: 'Travel', emoji: '🏙️', image: 'https://images.unsplash.com/photo-1538485399081-7191377e8241?w=800&q=75', readTime: '3 min',
     description: "Ordering chicken to a riverside park, cycling 40km paths, and watching the sunset — Han River is Seoul's living room.",
     intro: "The Han River isn't just a river — it's Seoul's central park, picnic ground, cycling highway, and social hub. On any warm evening, thousands of Seoulites gather along its banks.",
     sections: [
@@ -595,7 +609,7 @@ export const koreaPosts: KoreaPost[] = [
     tags: ['Han River', 'Seoul', 'parks', 'picnic', 'cycling'],
   },
   {
-    slug: 'korean-photo-booth', title: "Korean Photo Booths: Why 4-Cut Photos Are Everywhere", category: 'Lifestyle', emoji: '🏠', readTime: '3 min',
+    slug: 'korean-photo-booth', title: "Korean Photo Booths: Why 4-Cut Photos Are Everywhere", category: 'Lifestyle', emoji: '🏠', image: 'https://images.unsplash.com/photo-1517154421773-0529f29ea451?w=800&q=75', readTime: '3 min',
     description: "인생네컷, Photoism, Haru Film — Korea's photo booth craze is more than a trend. It's a cultural phenomenon.",
     intro: "Walk through any Korean shopping district and you'll see them: colorful photo booth shops packed with young Koreans taking '4-cut' photos (네컷사진). It's not just a fad — it's become a core part of Korean social life.",
     sections: [

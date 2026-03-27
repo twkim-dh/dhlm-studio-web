@@ -149,14 +149,14 @@ export default function sitemap(): MetadataRoute.Sitemap {
     })),
 
     // Discover Korea blog
-    { url: `${BASE}/blog/en/korea`, lastModified: now, changeFrequency: "weekly" as const, priority: 0.8 },
+    { url: `${BASE}/korea`, lastModified: now, changeFrequency: "weekly" as const, priority: 0.8 },
     ...koreaPostSlugs.map(s => ({
-      url: `${BASE}/blog/en/korea/${s}`, lastModified: now, changeFrequency: "monthly" as const, priority: 0.7,
+      url: `${BASE}/korea/${s}`, lastModified: now, changeFrequency: "monthly" as const, priority: 0.7,
     })),
 
     // Event blog
     ...eventSlugs.map(s => ({
-      url: `${BASE}/blog/events/${s}`, lastModified: now, changeFrequency: "monthly" as const, priority: 0.7,
+      url: `${BASE}/events/${s}`, lastModified: now, changeFrequency: "monthly" as const, priority: 0.7,
     })),
 
     // Tools — weekly
