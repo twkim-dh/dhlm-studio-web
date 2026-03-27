@@ -109,21 +109,20 @@ interface CategoryProps {
 
 function CategorySection({ id, icon, title, tools }: CategoryProps) {
   return (
-    <section id={id} className="mb-12">
-      <h2 className="text-xl font-bold text-gray-900 mb-4 flex items-center gap-2">
+    <section id={id} className="mb-14">
+      <h2 className="text-lg font-bold mb-4 flex items-center gap-2"
+        style={{ fontFamily: "var(--font-noto-serif-kr), serif", color: '#2C1810' }}>
         <span>{icon}</span>
         {title}
-        <span className="text-sm font-normal text-gray-400">({tools.length}개)</span>
+        <span className="text-xs font-normal" style={{ color: '#8D8478' }}>({tools.length})</span>
       </h2>
       <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-3">
         {tools.map((tool) => (
-          <Link
-            key={tool.name}
-            href={tool.href}
-            className="block p-4 bg-white rounded-xl border border-gray-200 hover:border-blue-500 hover:shadow-md transition-all"
-          >
-            <h3 className="font-semibold text-gray-900 text-sm mb-1">{tool.name}</h3>
-            <p className="text-xs text-gray-500">{tool.desc}</p>
+          <Link key={tool.name} href={tool.href}
+            className="block p-4 bg-white border transition-all hover:border-[#1A237E] hover:shadow-md"
+            style={{ borderColor: '#D5CEC3', borderRadius: '4px' }}>
+            <h3 className="font-semibold text-sm mb-1" style={{ color: '#2C1810' }}>{tool.name}</h3>
+            <p className="text-xs" style={{ color: '#8D8478' }}>{tool.desc}</p>
           </Link>
         ))}
       </div>
@@ -135,24 +134,30 @@ export default function Home() {
   const totalTools = financeTools.length + lifeTools.length + mfgTools.length + devTools.length + imageTools.length + docTools.length + genTools.length + compareTools.length;
 
   return (
-    <div className="max-w-5xl mx-auto px-4 py-10">
-      <div className="text-center mb-12">
-        <h1 className="text-3xl sm:text-4xl font-bold text-gray-900 mb-3">
-          무료 온라인 도구 모음 🛠️
+    <div style={{ background: '#FAFAF8' }}>
+      {/* Hero */}
+      <div className="py-14 sm:py-18 text-center">
+        <p className="text-[10px] tracking-[0.4em] mb-3" style={{ color: '#1A237E' }}>TOOLS</p>
+        <h1 className="text-2xl sm:text-3xl font-bold tracking-[0.08em]"
+          style={{ fontFamily: "var(--font-noto-serif-kr), serif", color: '#2C1810' }}>
+          무료 도구
         </h1>
-        <p className="text-gray-500 text-base">
-          로그인 없이 바로 사용하는 {totalTools}개 계산기와 도구
+        <p className="text-sm mt-2" style={{ color: '#8D8478' }}>
+          로그인 없이 바로 사용하는 {totalTools}개 도구
         </p>
+        <div className="w-8 h-[2px] mx-auto mt-4" style={{ background: '#1A237E' }} />
       </div>
 
-      <CategorySection id="finance" icon="💰" title="금융/재테크" tools={financeTools} />
-      <CategorySection id="life" icon="🏠" title="생활/건강" tools={lifeTools} />
-      <CategorySection id="mfg" icon="🏭" title="제조/생산" tools={mfgTools} />
-      <CategorySection id="dev" icon="💻" title="개발자 도구" tools={devTools} />
-      <CategorySection id="image" icon="🖼️" title="이미지 도구" tools={imageTools} />
-      <CategorySection id="doc" icon="📝" title="문서/업무" tools={docTools} />
-      <CategorySection id="gen" icon="🎲" title="생성기" tools={genTools} />
-      <CategorySection id="compare" icon="📊" title="비교" tools={compareTools} />
+      <div className="max-w-5xl mx-auto px-5 sm:px-8 pb-16">
+        <CategorySection id="finance" icon="💰" title="금융 · 재테크" tools={financeTools} />
+        <CategorySection id="life" icon="🏠" title="생활 · 건강" tools={lifeTools} />
+        <CategorySection id="mfg" icon="🏭" title="제조 · 생산" tools={mfgTools} />
+        <CategorySection id="dev" icon="💻" title="개발자 도구" tools={devTools} />
+        <CategorySection id="image" icon="🖼️" title="이미지 도구" tools={imageTools} />
+        <CategorySection id="doc" icon="📝" title="문서 · 업무" tools={docTools} />
+        <CategorySection id="gen" icon="🎲" title="생성기" tools={genTools} />
+        <CategorySection id="compare" icon="📊" title="비교" tools={compareTools} />
+      </div>
     </div>
   );
 }

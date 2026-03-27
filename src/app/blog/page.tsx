@@ -231,41 +231,46 @@ const posts = [
 
 export default function BlogPage() {
   return (
-    <section className="py-20 sm:py-28 bg-white">
-      <div className="mx-auto max-w-4xl px-4 sm:px-6">
-        <div className="text-center mb-14">
-          <h1 className="text-3xl sm:text-4xl font-bold text-gray-900">
-            블로그
+    <div style={{ background: '#F5F0E8' }}>
+      {/* Hero */}
+      <div className="relative py-16 sm:py-20 text-center overflow-hidden">
+        <div className="absolute inset-0 bg-cover bg-center opacity-10"
+          style={{ backgroundImage: `url('https://images.unsplash.com/photo-1548115184-bc6544d06a58?w=800&q=60')` }} />
+        <div className="relative">
+          <p className="text-[10px] tracking-[0.4em] mb-3" style={{ color: '#C73E3A' }}>BLOG</p>
+          <h1 className="text-3xl sm:text-4xl font-bold tracking-[0.1em]"
+            style={{ fontFamily: "var(--font-noto-serif-kr), serif", color: '#2C1810' }}>
+            이야기
           </h1>
-          <p className="mt-4 text-gray-600 text-lg">
+          <p className="mt-3 text-sm" style={{ color: '#8D8478' }}>
             일상에 유용한 정보와 무료 도구 활용법
           </p>
+          <div className="w-10 h-[2px] mx-auto mt-4" style={{ background: '#C73E3A' }} />
         </div>
+      </div>
 
-        <div className="grid gap-8">
+      {/* Posts */}
+      <div className="mx-auto max-w-3xl px-5 sm:px-8 pb-20">
+        <div className="space-y-4">
           {posts.map((post) => (
-            <Link
-              key={post.slug}
-              href={`/blog/${post.slug}`}
-              className="block rounded-2xl border border-gray-100 bg-white p-6 sm:p-8 shadow-sm hover:shadow-md transition-shadow group"
-            >
+            <Link key={post.slug} href={`/blog/${post.slug}`}
+              className="block bg-white border rounded p-6 sm:p-8 transition-all hover:border-[#C5981A] hover:shadow-md group"
+              style={{ borderColor: '#E0D8CC', borderRadius: '4px' }}>
               <div className="flex items-center gap-3 mb-3">
-                <time className="text-sm text-gray-400">{post.date}</time>
-                <span className="text-sm font-medium text-[#31A575]">
-                  DHLM-STUDIO
-                </span>
+                <time className="text-xs" style={{ color: '#8D8478' }}>{post.date}</time>
               </div>
-              <h2 className="text-xl sm:text-2xl font-bold text-gray-900 group-hover:text-[#31A575] transition-colors mb-3">
+              <h2 className="text-lg sm:text-xl font-bold transition-colors group-hover:text-[#8B2500] mb-2"
+                style={{ fontFamily: "var(--font-noto-serif-kr), serif", color: '#2C1810' }}>
                 {post.title}
               </h2>
-              <p className="text-gray-600 leading-relaxed">{post.excerpt}</p>
-              <span className="mt-4 inline-block text-sm font-semibold text-[#31A575]">
-                자세히 읽기 &rarr;
+              <p className="text-sm leading-relaxed" style={{ color: '#8D8478' }}>{post.excerpt}</p>
+              <span className="mt-3 inline-block text-xs font-medium tracking-widest" style={{ color: '#8B2500' }}>
+                READ →
               </span>
             </Link>
           ))}
         </div>
       </div>
-    </section>
+    </div>
   );
 }

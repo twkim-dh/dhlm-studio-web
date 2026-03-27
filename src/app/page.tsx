@@ -70,7 +70,7 @@ export default function Home() {
       <section className="relative min-h-[100dvh] flex items-center justify-center overflow-hidden">
         {/* Background photo */}
         <div className="absolute inset-0 bg-cover bg-center"
-          style={{ backgroundImage: `url('https://images.unsplash.com/photo-1553621042-f6e147245754?w=1400&q=80')` }} />
+          style={{ backgroundImage: `url('https://images.unsplash.com/photo-1600298881979-2fee2e0e9ba5?w=1400&q=80')` }} />
         <div className="absolute inset-0 bg-black/40" />
 
         {/* Content */}
