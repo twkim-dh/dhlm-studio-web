@@ -1,77 +1,67 @@
 "use client";
 
 import { useState, useEffect } from "react";
-import { usePathname } from "next/navigation";
 import Link from "next/link";
 
 const links = [
+  { label: "Markets", href: "#markets" },
+  { label: "Creators", href: "#creators" },
+  { label: "Rankings", href: "#rankings" },
+  { label: "Compare", href: "#compare" },
   { label: "Korea", href: "/korea" },
-  { label: "블로그", href: "/blog" },
   { label: "Lottery", href: "/lotto" },
   { label: "Tools", href: "/tools" },
 ];
 
-export default function Header() {
-  const pathname = usePathname();
-  const [menuOpen, setMenuOpen] = useState(false);
+function DhlmMono({ size = 28 }: { size?: number }) {
+  const s = size, r = Math.max(s*0.275,3), fs = s*0.3;
+  return (
+    <svg viewBox={`0 0 ${s} ${s}`} width={size} height={size} style={{ display: "block", flexShrink: 0 }}>
+      <defs><linearGradient id="dG" x1="0%" y1="0%" x2="100%" y2="100%"><stop offset="0%" stopColor="#E85D59"/><stop offset="100%" stopColor="#C73E3A"/></linearGradient></defs>
+      <rect x={s*0.04} y={s*0.04} width={s*0.92} height={s*0.92} rx={r} fill="#0D1117" stroke="#1E293B" strokeWidth={Math.max(s*0.015,0.8)}/>
+      <text x={s*0.18} y={s*0.43} fontFamily="'Playfair Display',serif" fontSize={fs} fontWeight="900" fill="#F1F5F9">D</text>
+      <text x={s*0.52} y={s*0.43} fontFamily="'Playfair Display',serif" fontSize={fs} fontWeight="900" fill="#F1F5F9" opacity="0.7">H</text>
+      <text x={s*0.24} y={s*0.78} fontFamily="'Playfair Display',serif" fontSize={fs} fontWeight="900" fill="#F1F5F9" opacity="0.5">L</text>
+      <text x={s*0.54} y={s*0.78} fontFamily="'Playfair Display',serif" fontSize={fs} fontWeight="900" fill="url(#dG)">M</text>
+      <line x1={s*0.22} y1={s*0.5} x2={s*0.78} y2={s*0.5} stroke="#1E293B" strokeWidth={Math.max(s*0.008,0.5)}/>
+      <circle cx={s*0.15} cy={s*0.15} r={s*0.028} fill="url(#dG)"/><circle cx={s*0.85} cy={s*0.85} r={s*0.028} fill="url(#dG)"/>
+    </svg>
+  );
+}
 
-  useEffect(() => {
-    if (menuOpen) document.body.style.overflow = "hidden";
-    else document.body.style.overflow = "";
-    return () => { document.body.style.overflow = ""; };
-  }, [menuOpen]);
+export { DhlmMono };
+
+export default function Header() {
+  const [scrolled, setScrolled] = useState(false);
+  const [menuOpen, setMenuOpen] = useState(false);
+  useEffect(() => { const h = () => setScrolled(window.scrollY > 30); window.addEventListener("scroll", h, { passive: true }); return () => window.removeEventListener("scroll", h); }, []);
+  useEffect(() => { document.body.style.overflow = menuOpen ? "hidden" : ""; return () => { document.body.style.overflow = ""; }; }, [menuOpen]);
 
   return (
     <>
-      <header className="fixed top-0 left-0 right-0 z-50 bg-white" style={{ borderBottom: '1px solid #E5E7EB', height: '56px' }}>
-        <div className="mx-auto h-full flex items-center justify-between px-6" style={{ maxWidth: '960px' }}>
-          <Link href="/" className="flex items-center gap-1.5">
-            <span className="text-base font-bold tracking-wide" style={{ color: '#1A1A1A' }}>DHLM</span>
-            <span className="w-1 h-1 rounded-full" style={{ background: '#C73E3A' }} />
+      <nav style={{ position: "fixed", top: 0, left: 0, right: 0, zIndex: 100, padding: scrolled ? "12px 24px" : "18px 24px", background: scrolled ? "#0B0F19E8" : "transparent", backdropFilter: scrolled ? "blur(20px)" : "none", borderBottom: scrolled ? "1px solid #1C2333" : "none", transition: "all 0.3s" }}>
+        <div style={{ maxWidth: 1100, margin: "0 auto", display: "flex", alignItems: "center", justifyContent: "space-between" }}>
+          <Link href="/" style={{ display: "flex", alignItems: "center", gap: 8 }}>
+            <DhlmMono size={30} />
+            <span style={{ fontFamily: "var(--serif)", fontSize: 17, fontWeight: 800, color: "#F1F5F9", letterSpacing: -0.3 }}>
+              DHLM<span style={{ color: "#C73E3A", fontFamily: "var(--sans)", fontSize: 10, fontWeight: 600, letterSpacing: 2, marginLeft: 4, verticalAlign: "super" }}>STUDIO</span>
+            </span>
           </Link>
-
-          <nav className="hidden sm:flex items-center gap-8">
-            {links.map((link) => {
-              const active = pathname.startsWith(link.href);
-              return (
-                <Link key={link.href} href={link.href}
-                  className="text-[13px] transition-colors duration-200"
-                  style={{ color: active ? '#1A1A1A' : '#BCBCBC' }}
-                  onMouseEnter={(e) => { if (!active) e.currentTarget.style.color = '#1A1A1A'; }}
-                  onMouseLeave={(e) => { if (!active) e.currentTarget.style.color = '#BCBCBC'; }}>
-                  {link.label}
-                </Link>
-              );
-            })}
-          </nav>
-
-          <button className="sm:hidden p-2" onClick={() => setMenuOpen(true)} aria-label="Menu">
-            <div className="space-y-1.5">
-              <span className="block w-5 h-[1px] bg-[#1A1A1A]" />
-              <span className="block w-5 h-[1px] bg-[#1A1A1A]" />
-            </div>
+          <div className="hidden md:flex" style={{ gap: 28, alignItems: "center" }}>
+            {links.map(l => <Link key={l.label} href={l.href} style={{ fontSize: 13, fontWeight: 500, color: "#94A3B8", fontFamily: "var(--sans)" }}>{l.label}</Link>)}
+          </div>
+          <button className="md:hidden" onClick={() => setMenuOpen(true)} style={{ background: "none", border: "none", padding: 8, cursor: "pointer" }}>
+            <div style={{ width: 20, height: 1.5, background: "#94A3B8", marginBottom: 5 }} /><div style={{ width: 20, height: 1.5, background: "#94A3B8" }} />
           </button>
         </div>
-      </header>
-
-      {/* Spacer */}
-      <div style={{ height: '56px' }} />
-
-      {menuOpen && <div className="fixed inset-0 z-50 bg-black/30" onClick={() => setMenuOpen(false)} />}
-      <div className={`fixed top-0 right-0 z-50 h-full w-64 bg-white transform transition-transform duration-200 ${menuOpen ? "translate-x-0" : "translate-x-full"}`}
-        style={{ borderLeft: '1px solid #E5E7EB' }}>
-        <div className="flex justify-end p-5">
-          <button onClick={() => setMenuOpen(false)} className="text-xl text-[#6B7280]">&times;</button>
+      </nav>
+      <div style={{ height: 64 }} />
+      {menuOpen && <div style={{ position: "fixed", inset: 0, zIndex: 150, background: "rgba(0,0,0,0.6)" }} onClick={() => setMenuOpen(false)} />}
+      <div style={{ position: "fixed", top: 0, right: 0, zIndex: 151, height: "100%", width: 260, background: "#0B0F19", transform: menuOpen ? "translateX(0)" : "translateX(100%)", transition: "transform 0.2s", borderLeft: "1px solid #1E293B" }}>
+        <div style={{ display: "flex", justifyContent: "flex-end", padding: 16 }}><button onClick={() => setMenuOpen(false)} style={{ background: "none", border: "none", color: "#94A3B8", fontSize: 24, cursor: "pointer" }}>&times;</button></div>
+        <div style={{ display: "flex", flexDirection: "column", padding: "0 24px" }}>
+          {links.map(l => <Link key={l.label} href={l.href} onClick={() => setMenuOpen(false)} style={{ padding: "14px 0", fontSize: 15, fontWeight: 500, color: "#94A3B8", borderBottom: "1px solid #1E293B", fontFamily: "var(--sans)" }}>{l.label}</Link>)}
         </div>
-        <nav className="flex flex-col px-6">
-          {links.map((link) => (
-            <Link key={link.href} href={link.href} onClick={() => setMenuOpen(false)}
-              className="py-4 text-base transition-colors duration-200 hover:text-[#C73E3A]"
-              style={{ color: '#1A1A1A', borderBottom: '1px solid #E5E7EB' }}>
-              {link.label}
-            </Link>
-          ))}
-        </nav>
       </div>
     </>
   );

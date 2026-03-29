@@ -1,24 +1,26 @@
 @import "tailwindcss";
 
 :root {
-  /* Korean Traditional Colors */
-  --k-gold: #C5981A;
-  --k-red: #8B2500;
-  --k-green: #1B5E20;
-  --k-blue: #1A237E;
-  --k-cream: #F5F0E8;
-  --k-ink: #2C1810;
-  --k-night: #0B0D17;
-  --k-stone: #D5CEC3;
-  --k-roof: #2C1810;
-
-  /* Default (main page) — white */
-  --area-bg: #FFFFFF;
-  --area-card: #FFFFFF;
-  --area-accent: #C73E3A;
-  --area-text: #1A1A1A;
-  --area-muted: #6B7280;
-
+  /* DHLM Dark Premium Fintech */
+  --bg: #0B0F19;
+  --card: #111827;
+  --border: #1E293B;
+  --elevated: #1C2333;
+  --text-primary: #F1F5F9;
+  --text-secondary: #94A3B8;
+  --text-muted: #64748B;
+  --text-dim: #475569;
+  --accent: #C73E3A;
+  --green: #00D474;
+  --red-neg: #FF4545;
+  --blue: #3B82F6;
+  --gold: #D4A843;
+  --purple: #A78BFA;
+  --serif: 'Playfair Display', Georgia, serif;
+  --sans: 'DM Sans', -apple-system, sans-serif;
+  --mono: 'IBM Plex Mono', 'SF Mono', monospace;
+  --area-bg: var(--bg);
+  --area-text: var(--text-primary);
   --font-sans: var(--font-noto-sans-kr);
 }
 
@@ -28,163 +30,16 @@
   --font-sans: var(--font-noto-sans-kr);
 }
 
-/* ═══ Area Themes — all white-based, unified ═══ */
-
-[data-area="lotto"] {
-  --area-bg: #FFFFFF;
-  --area-card: #FFFFFF;
-  --area-accent: #C73E3A;
-  --area-text: #1A1A1A;
-  --area-muted: #6B7280;
-  --area-border: #E5E7EB;
-  --area-input-bg: #FFFFFF;
-  --area-btn: #C73E3A;
-  --area-btn-text: #FFFFFF;
-}
-
-[data-area="korea"] {
-  --area-bg: #FFFFFF;
-  --area-card: #FFFFFF;
-  --area-accent: #C73E3A;
-  --area-text: #1A1A1A;
-  --area-muted: #6B7280;
-  --area-border: #E5E7EB;
-  --area-input-bg: #FFFFFF;
-  --area-btn: #C73E3A;
-  --area-btn-text: #FFFFFF;
-}
-
-[data-area="tools"] {
-  --area-bg: #FFFFFF;
-  --area-card: #FFFFFF;
-  --area-accent: #C73E3A;
-  --area-text: #1A1A1A;
-  --area-muted: #6B7280;
-  --area-border: #E5E7EB;
-  --area-input-bg: #FFFFFF;
-  --area-btn: #C73E3A;
-  --area-btn-text: #FFFFFF;
-}
+[data-area="korea"] { --area-bg: #FFFFFF; --area-text: #1A1A1A; }
+[data-area="tools"] { --area-bg: #FFFFFF; --area-text: #1A1A1A; }
 
 html { scroll-behavior: smooth; }
-body {
-  background: var(--area-bg);
-  color: var(--area-text);
-  font-family: var(--font-noto-sans-kr), 'Noto Sans KR', sans-serif;
-}
+body { background: var(--area-bg); color: var(--area-text); font-family: var(--sans); }
+* { box-sizing: border-box; margin: 0; }
+input::placeholder { color: #475569; }
 
 .scrollbar-hide::-webkit-scrollbar { display: none; }
 .scrollbar-hide { -ms-overflow-style: none; scrollbar-width: none; }
-
-/* ═══ Palace Patterns ═══ */
-
-.stone-floor {
-  background-color: var(--k-stone);
-  background-image:
-    linear-gradient(rgba(0,0,0,0.04) 1px, transparent 1px),
-    linear-gradient(90deg, rgba(0,0,0,0.04) 1px, transparent 1px);
-  background-size: 80px 80px;
-}
-
-.palace-wall {
-  background-color: var(--k-cream);
-  background-image: url("data:image/svg+xml,%3Csvg width='4' height='4' viewBox='0 0 4 4' xmlns='http://www.w3.org/2000/svg'%3E%3Crect width='1' height='1' x='0' y='0' fill='%23C5981A' fill-opacity='0.02'/%3E%3Crect width='1' height='1' x='2' y='2' fill='%238B2500' fill-opacity='0.015'/%3E%3C/svg%3E");
-  background-size: 4px 4px;
-}
-
-/* ═══ Area Cards ═══ */
-
-.palace-card {
-  background: var(--area-card);
-  border: 1px solid var(--area-border, #E0D8CC);
-  border-radius: 4px;
-  transition: all 0.4s ease;
-}
-.palace-card:hover {
-  border-color: var(--k-gold);
-  box-shadow: 0 6px 24px rgba(197, 152, 26, 0.1);
-  transform: translateY(-2px);
-}
-
-.gold-card {
-  background: var(--area-card, #13162B);
-  border: 1px solid var(--area-border, #1E2240);
-  border-radius: 4px;
-  transition: all 0.4s ease;
-}
-.gold-card:hover {
-  border-color: rgba(197, 152, 26, 0.4);
-  box-shadow: 0 0 28px rgba(197, 152, 26, 0.08);
-}
-
-/* ═══ Area Buttons ═══ */
-
-.area-btn {
-  background: var(--area-btn);
-  color: var(--area-btn-text);
-  border-radius: 4px;
-  font-weight: 600;
-  transition: all 0.3s;
-}
-.area-btn:hover {
-  opacity: 0.9;
-  box-shadow: 0 4px 12px rgba(0,0,0,0.15);
-}
-
-/* ═══ Dividers ═══ */
-
-.dancheong-line {
-  height: 3px;
-  background: linear-gradient(90deg,
-    transparent 5%, var(--k-red) 15%, var(--k-green) 30%,
-    var(--k-gold) 50%, var(--k-blue) 70%, var(--k-red) 85%, transparent 95%
-  );
-}
-
-.dancheong-band {
-  height: 6px;
-  background: repeating-linear-gradient(90deg,
-    var(--k-red) 0 20px, var(--k-green) 20px 40px,
-    var(--k-gold) 40px 60px, var(--k-blue) 60px 80px
-  );
-}
-
-/* ═══ Animations ═══ */
-
-@keyframes fade-in-up {
-  from { opacity: 0; transform: translateY(24px); }
-  to { opacity: 1; transform: translateY(0); }
-}
-.animate-fade-in-up { animation: fade-in-up 0.6s ease-out forwards; }
-
-@keyframes float {
-  0%, 100% { transform: translateY(0); }
-  50% { transform: translateY(-6px); }
-}
-.animate-float { animation: float 4s ease-in-out infinite; }
-
-/* ═══ Lotto Ball Korean Colors ═══ */
-
-[data-area="lotto"] .lotto-ball-1-10 { background: #8B2500 !important; }
-[data-area="lotto"] .lotto-ball-11-20 { background: #1A237E !important; }
-[data-area="lotto"] .lotto-ball-21-30 { background: #1B5E20 !important; }
-[data-area="lotto"] .lotto-ball-31-40 { background: #C5981A !important; }
-[data-area="lotto"] .lotto-ball-41-45 { background: #2C1810 !important; }
-
-/* ═══ Tools Area Specifics ═══ */
-
-[data-area="tools"] input:focus,
-[data-area="tools"] select:focus {
-  border-color: var(--k-blue) !important;
-  box-shadow: 0 0 0 2px rgba(26, 35, 126, 0.1) !important;
-}
-
-[data-area="tools"] .result-card {
-  background: var(--k-cream);
-  border: 1px solid var(--k-stone);
-}
-
-/* ═══ Korea Area Specifics ═══ */
-
-[data-area="korea"] a { color: var(--k-red); }
-[data-area="korea"] a:hover { opacity: 0.8; }
+::-webkit-scrollbar { width: 5px; }
+::-webkit-scrollbar-track { background: transparent; }
+::-webkit-scrollbar-thumb { background: #1E293B; border-radius: 3px; }

@@ -2,17 +2,33 @@
 
 import Link from "next/link";
 
+const YEAR = new Date().getFullYear();
+
 export default function Footer() {
   return (
-    <footer style={{ background: '#111111', borderTop: '1px solid #333' }}>
-      <div className="mx-auto px-6 text-center" style={{ maxWidth: '960px', padding: '60px 24px' }}>
-        <p className="text-[11px] tracking-[0.3em]" style={{ color: '#BCBCBC' }}>DHLM STUDIO</p>
-        <div className="flex justify-center gap-6 mt-4 text-[13px]" style={{ color: '#4B5563' }}>
-          <Link href="/about" className="transition-colors duration-200 hover:text-[#9CA3AF]">About</Link>
-          <Link href="/privacy" className="transition-colors duration-200 hover:text-[#9CA3AF]">Privacy</Link>
-          <a href="mailto:tw.kim@dhlm.co.kr" className="transition-colors duration-200 hover:text-[#9CA3AF]">Contact</a>
+    <footer style={{ padding: "32px 24px", maxWidth: 1100, margin: "0 auto", borderTop: "1px solid #1E293B" }}>
+      <div style={{ display: "flex", justifyContent: "space-between", alignItems: "center", flexWrap: "wrap", gap: 12 }}>
+        <div>
+          <span style={{ fontFamily: "var(--serif)", fontSize: 15, fontWeight: 800, color: "#94A3B8" }}>DHLM</span>
+          <span style={{ fontSize: 9, fontWeight: 600, color: "#C73E3A", letterSpacing: 2, marginLeft: 4 }}>STUDIO</span>
+          <div style={{ fontFamily: "var(--sans)", fontSize: 10, color: "#475569", marginTop: 2 }}>Data-Driven Insights · © {YEAR}</div>
         </div>
-        <p className="text-xs mt-4" style={{ color: '#333' }}>&copy; 2026</p>
+        <div style={{ display: "flex", gap: 20 }}>
+          {[
+            { label: "About", href: "/about" },
+            { label: "Privacy", href: "/privacy" },
+            { label: "Terms", href: "/terms" },
+            { label: "Contact", href: "mailto:tw.kim@dhlm.co.kr" },
+          ].map(l => (
+            <Link key={l.label} href={l.href} style={{ fontSize: 11, color: "#475569", fontFamily: "var(--sans)" }}>
+              {l.label}
+            </Link>
+          ))}
+        </div>
+      </div>
+      <div style={{ fontFamily: "var(--sans)", fontSize: 10, color: "#334155", marginTop: 16, lineHeight: 1.6, textAlign: "center" }}>
+        Market data is for informational purposes only and does not constitute investment advice.<br />
+        Cost of living data is based on publicly available sources and may not reflect individual circumstances.
       </div>
     </footer>
   );
