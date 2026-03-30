@@ -1,47 +1,52 @@
 import { NextResponse } from "next/server";
 
 const cache = new Map<string, { data: unknown; ts: number }>();
-const CACHE_TTL = 3600000; // 1 hour
+const CACHE_TTL = 3600000;
 
 export async function GET(
   request: Request,
   { params }: { params: Promise<{ round: string }> }
 ) {
   const { round } = await params;
-
   const cached = cache.get(round);
   if (cached && Date.now() - cached.ts < CACHE_TTL) {
     return NextResponse.json(cached.data);
   }
 
-  try {
-    const res = await fetch(
-      `https://www.dhlottery.co.kr/common.do?method=getLottoNumber&drwNo=${round}`,
-      {
-        headers: {
-          'User-Agent': 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/120.0.0.0 Safari/537.36',
-          'Referer': 'https://www.dhlottery.co.kr/',
-          'Accept': 'application/json, text/javascript, */*',
-        },
-        cache: 'no-store',
-      }
-    );
+  // Try multiple endpoints
+  const urls = [
+    `https://www.dhlottery.co.kr/common.do?method=getLottoNumber&drwNo=${round}`,
+    `http://www.dhlottery.co.kr/common.do?method=getLottoNumber&drwNo=${round}`,
+  ];
 
-    const text = await res.text();
-
-    // Try to parse as JSON
+  for (const url of urls) {
     try {
-      const data = JSON.parse(text);
-      if (data.returnValue === 'success') {
-        cache.set(round, { data, ts: Date.now() });
-        return NextResponse.json(data);
+      const res = await fetch(url, {
+        headers: {
+          'User-Agent': 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36',
+          'Accept': 'application/json, text/javascript, */*; q=0.01',
+          'Accept-Language': 'ko-KR,ko;q=0.9,en-US;q=0.8,en;q=0.7',
+          'Referer': 'https://www.dhlottery.co.kr/gameResult.do?method=byWin',
+          'X-Requested-With': 'XMLHttpRequest',
+        },
+        redirect: 'follow',
+        cache: 'no-store',
+      });
+
+      const text = await res.text();
+
+      // Check if it starts with { (JSON)
+      if (text.trim().startsWith('{')) {
+        try {
+          const data = JSON.parse(text);
+          if (data.returnValue === 'success') {
+            cache.set(round, { data, ts: Date.now() });
+            return NextResponse.json(data);
+          }
+        } catch {}
       }
-      return NextResponse.json({ error: "No data for this round", raw: data }, { status: 404 });
-    } catch {
-      // Not JSON — probably HTML redirect
-      return NextResponse.json({ error: "API returned non-JSON response", status: res.status }, { status: 502 });
-    }
-  } catch (err) {
-    return NextResponse.json({ error: "Failed to fetch from dhlottery.co.kr" }, { status: 500 });
+    } catch {}
   }
+
+  return NextResponse.json({ error: "Unable to fetch lottery data. The lottery server may be blocking requests." }, { status: 503 });
 }
