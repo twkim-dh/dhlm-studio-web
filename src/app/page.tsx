@@ -97,6 +97,20 @@ export default function Home() {
         <p style={{ fontFamily: 'var(--sans)', fontSize: 16, color: '#64748B', lineHeight: 1.7, maxWidth: 460, margin: '0 0 28px' }}>
           Market movers, trending creators, global rankings, cost of living — updated daily.
         </p>
+        {/* Quick navigation tags */}
+        <div style={{ display: 'flex', gap: 8, flexWrap: 'wrap' }}>
+          {[
+            { label: 'Top Stock Movers', href: '/markets' },
+            { label: 'Trending Creators', href: '/creators' },
+            { label: `${YEAR} Billionaire Rankings`, href: '/rankings' },
+            { label: 'NYC vs LA Cost of Living', href: '/compare/new-york-vs-los-angeles' },
+            { label: 'Lotto PRO', href: '/lotto' },
+          ].map(t => (
+            <Link key={t.label} href={t.href} style={{ fontSize: 11, color: '#475569', padding: '5px 12px', borderRadius: 20, background: '#111827', border: '1px solid #1E293B', fontFamily: 'var(--sans)', transition: 'border-color 0.2s' }}>
+              {t.label}
+            </Link>
+          ))}
+        </div>
       </section>
 
       {/* ── Stats ── */}

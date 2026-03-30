@@ -110,6 +110,97 @@ export const blogPosts: BlogPost[] = [
       { heading: 'The Future', body: 'AI is transforming data visualization. Natural language queries ("show me tech stocks that beat earnings") are replacing manual filters. Personalized dashboards that learn user preferences are becoming standard. And mobile-first data design is critical — over 60% of financial data consumption now happens on phones.' },
     ],
   },
+  // ═══ Additional 10 posts ═══
+  {
+    slug: 'nvidia-3-trillion', title: 'NVIDIA at $3.4 Trillion: How Jensen Huang Built an Empire',
+    category: 'Markets', catColor: '#00D474', date: '2026-03-18', readTime: '6 min',
+    description: 'NVIDIA surpassed Apple as the world\'s most valuable company. The GPU maker\'s AI dominance explained.',
+    sections: [
+      { heading: 'The AI Kingmaker', body: 'NVIDIA\'s market cap crossed $3.4 trillion in 2026, making it the world\'s second most valuable company. The secret? Every major AI system — from ChatGPT to autonomous vehicles — runs on NVIDIA GPUs. Their H100 and new Blackwell chips are sold out years in advance.' },
+      { heading: 'Jensen\'s Strategy', body: 'CEO Jensen Huang made a bet on AI computing a decade ago when everyone thought GPUs were just for gaming. That bet paid off spectacularly. NVIDIA now controls 80%+ of the AI training chip market. Their software ecosystem (CUDA) makes switching to competitors nearly impossible.' },
+    ],
+  },
+  {
+    slug: 'richest-self-made-women', title: 'Top 10 Richest Self-Made Women in 2026',
+    category: 'Rankings', catColor: '#D4A843', date: '2026-03-17', readTime: '5 min',
+    description: 'From Rihanna to MacKenzie Scott, the women who built billion-dollar fortunes from scratch.',
+    sections: [
+      { heading: 'The List', body: '1. Diane Hendricks ($15B, ABC Supply) 2. Judy Faulkner ($8.5B, Epic Systems) 3. Rihanna ($1.4B, Fenty Beauty) 4. Kim Kardashian ($1.7B, SKIMS/KKW) 5. Oprah Winfrey ($2.8B, Media/OWN). These women built their fortunes in diverse industries — from construction to healthcare IT to beauty.' },
+      { heading: 'Trends', body: 'The fastest-growing segment is tech and DTC brands. Rihanna\'s Fenty Beauty reached $1.4B in just 6 years. Whitney Wolfe Herd (Bumble) became the youngest self-made female billionaire at 31. The beauty and fashion industries continue to produce the most female billionaires.' },
+    ],
+  },
+  {
+    slug: 'tokyo-vs-seoul-cost', title: 'Tokyo vs Seoul: Which Is Cheaper to Live In?',
+    category: 'Cost of Living', catColor: '#3B82F6', date: '2026-03-16', readTime: '5 min',
+    description: 'Two Asian megacities compared: rent, food, transport, and entertainment costs.',
+    sections: [
+      { heading: 'The Verdict', body: 'Seoul is approximately 8% cheaper than Tokyo overall. The biggest difference is in dining out — Korean restaurants are significantly cheaper, especially for solo diners. Tokyo wins on public transport efficiency and grocery prices. Both cities have world-class infrastructure.' },
+      { heading: 'Key Differences', body: 'Rent: Seoul $800-1,200 vs Tokyo $900-1,500 for 1BR central. Food: Korean BBQ dinner $15 vs Japanese izakaya $25. Transit: Seoul $1.25 vs Tokyo $1.80 per ride. Entertainment: Seoul $8 movie vs Tokyo $15. Both are significantly cheaper than NYC or London.' },
+    ],
+  },
+  {
+    slug: 'tiktok-vs-youtube-creators', title: 'TikTok vs YouTube: Where Creators Make More Money',
+    category: 'Creators', catColor: '#A78BFA', date: '2026-03-15', readTime: '4 min',
+    description: 'YouTube pays more per view, but TikTok grows faster. The economics of being a creator on each platform.',
+    sections: [
+      { heading: 'Revenue Comparison', body: 'YouTube: $3-5 per 1,000 views (AdSense). TikTok Creator Fund: $0.02-0.04 per 1,000 views. YouTube clearly pays more per view — about 100x more. But TikTok videos can go viral more easily, reaching millions with less production effort.' },
+      { heading: 'The Smart Strategy', body: 'Top creators use TikTok for growth and YouTube for revenue. Short-form TikTok clips drive viewers to long-form YouTube content. MrBeast, Khaby Lame, and most successful creators maintain presence on both platforms. The real money is in brand deals and merchandise, not platform payouts.' },
+    ],
+  },
+  {
+    slug: 'sp500-vs-bitcoin', title: 'S&P 500 vs Bitcoin: 10-Year Performance Comparison',
+    category: 'Markets', catColor: '#00D474', date: '2026-03-14', readTime: '5 min',
+    description: 'Which investment performed better over the last decade? The data tells a surprising story.',
+    sections: [
+      { heading: 'The Numbers', body: 'From 2016 to 2026: S&P 500 returned approximately 180% (12.5% annualized). Bitcoin returned approximately 8,500% (57% annualized). But Bitcoin\'s volatility was extreme — it dropped 70%+ three separate times during this period. Risk-adjusted, the comparison is much closer.' },
+      { heading: 'The Takeaway', body: 'Bitcoin had dramatically higher returns but with stomach-churning volatility. The S&P 500 provided steady, predictable growth. A portfolio with 90% S&P 500 and 10% Bitcoin outperformed both individually on a risk-adjusted basis. Diversification remains the only free lunch in investing.' },
+    ],
+  },
+  {
+    slug: 'world-population-8-billion', title: 'World Population Trends: What 8 Billion Means',
+    category: 'Rankings', catColor: '#D4A843', date: '2026-03-13', readTime: '5 min',
+    description: 'India leads, China declines, Africa surges. The demographic shifts reshaping the global economy.',
+    sections: [
+      { heading: 'The Big Picture', body: 'World population reached 8.1 billion in 2026. India (1.44B) officially surpassed China (1.41B) as the most populous country. Africa is the only continent with rapidly growing population — Nigeria alone is expected to surpass the US by 2050. Europe and East Asia face declining populations.' },
+      { heading: 'Economic Implications', body: 'Demographics drive economics. India\'s young population (median age 28) gives it a massive workforce advantage. China\'s aging population (median age 39) threatens its economic model. African countries with young populations could see "demographic dividends" if education and infrastructure keep pace.' },
+    ],
+  },
+  {
+    slug: 'best-cities-tech-workers', title: 'Best Cities for Tech Workers in 2026: Salary vs Cost',
+    category: 'Cost of Living', catColor: '#3B82F6', date: '2026-03-12', readTime: '5 min',
+    description: 'Where tech salaries go furthest: comparing purchasing power in 15 major tech hubs.',
+    sections: [
+      { heading: 'Top 5 by Purchasing Power', body: '1. Austin, TX — $165K avg salary, low cost = highest purchasing power. 2. Raleigh, NC — $145K salary, very low cost. 3. Denver, CO — $155K salary, moderate cost. 4. Seattle, WA — $180K salary, no state income tax offsets high rent. 5. Remote (from low-cost area) — Bay Area salary, anywhere cost.' },
+      { heading: 'Worst Value', body: 'San Francisco and New York offer the highest raw salaries ($200K+) but the lowest purchasing power after rent ($3,500+/mo) and state/city taxes. A $200K SF salary equals about $130K in Austin after cost adjustments. Remote work has been the biggest equalizer in tech compensation.' },
+    ],
+  },
+  {
+    slug: 'youtube-subscriber-milestones', title: 'YouTube Subscriber Milestones: From 1M to 100M',
+    category: 'Creators', catColor: '#A78BFA', date: '2026-03-11', readTime: '4 min',
+    description: 'How long does it take to reach major subscriber milestones? Data from the top 100 channels.',
+    sections: [
+      { heading: 'Average Timelines', body: 'Based on top 100 YouTube channels: 0 to 1M subscribers — average 3.2 years. 1M to 10M — average 2.8 years. 10M to 50M — average 3.5 years. 50M to 100M — average 4.2 years. The first million is the hardest. After that, algorithmic momentum kicks in.' },
+      { heading: 'Fastest Growers', body: 'MrBeast reached 100M in about 10 years. T-Series (Indian music label) reached 250M+ but as a corporate channel. Khaby Lame went from 0 to 80M TikTok followers in under 2 years — the fastest individual growth in social media history. Speed matters less than consistency.' },
+    ],
+  },
+  {
+    slug: 'crypto-regulation-2026', title: 'Crypto Regulation in 2026: What Changed',
+    category: 'Markets', catColor: '#00D474', date: '2026-03-10', readTime: '5 min',
+    description: 'Bitcoin ETFs, stablecoin rules, and DeFi frameworks — the regulatory landscape after years of uncertainty.',
+    sections: [
+      { heading: 'Major Changes', body: 'Bitcoin spot ETFs (approved January 2024) attracted $50B+ in their first year. Stablecoin regulation clarified reserve requirements. The SEC\'s approach shifted from "regulation by enforcement" to actual rulemaking. Most major crypto exchanges now operate under clear frameworks.' },
+      { heading: 'What It Means', body: 'Institutional adoption accelerated after regulatory clarity. Bitcoin crossed $95K as pension funds and sovereign wealth funds allocated 1-2% to crypto. The "crypto winter" of 2022-2023 cleaned out bad actors, and the survivors are now legitimate financial institutions. DeFi remains the wild west, but centralized exchanges are fully regulated.' },
+    ],
+  },
+  {
+    slug: 'global-happiness-index', title: 'World Happiness Rankings 2026: Nordic Dominance Continues',
+    category: 'Rankings', catColor: '#D4A843', date: '2026-03-09', readTime: '4 min',
+    description: 'Finland tops the happiness index for the 9th year. But what exactly makes a country "happy"?',
+    sections: [
+      { heading: 'Top 10', body: '1. Finland, 2. Denmark, 3. Iceland, 4. Switzerland, 5. Netherlands, 6. Norway, 7. Sweden, 8. Luxembourg, 9. New Zealand, 10. Austria. Nordic countries dominate because they combine high social trust, strong safety nets, work-life balance, and low corruption.' },
+      { heading: 'Surprising Findings', body: 'GDP alone doesn\'t predict happiness. Costa Rica (#12) outranks the US (#23) and Japan (#51) despite having a fraction of their GDP. The key factors are: social support (having someone to count on), freedom to make life choices, generosity, and low perceived corruption. Money matters up to about $75K/year — after that, it has diminishing returns on happiness.' },
+    ],
+  },
 ];
 
 export function getBlogPostBySlug(slug: string): BlogPost | undefined {

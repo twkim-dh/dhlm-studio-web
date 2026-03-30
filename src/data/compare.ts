@@ -61,6 +61,58 @@ export const comparisons: CityComparison[] = [
     ],
     summary: 'Bangkok is 58% cheaper than Singapore overall',
   },
+  {
+    slug: 'dubai-vs-istanbul',
+    city1: { name: 'Dubai', flag: '🇦🇪', index: 82 },
+    city2: { name: 'Istanbul', flag: '🇹🇷', index: 31 },
+    items: [
+      { item: 'Latte (Café)', icon: '☕', price1: '$5.00', price2: '$2.50', diff: '-50%' },
+      { item: 'Rent (1BR, Center)', icon: '🏠', price1: '$2,200', price2: '$550', diff: '-75%' },
+      { item: 'Monthly Transit', icon: '🚇', price1: '$88', price2: '$25', diff: '-72%' },
+      { item: 'Dinner (2 People)', icon: '🍽️', price1: '$70', price2: '$20', diff: '-71%' },
+      { item: 'Internet', icon: '📶', price1: '$55', price2: '$12', diff: '-78%' },
+    ],
+    summary: 'Istanbul is 62% cheaper than Dubai overall',
+  },
+  {
+    slug: 'sydney-vs-seoul',
+    city1: { name: 'Sydney', flag: '🇦🇺', index: 85 },
+    city2: { name: 'Seoul', flag: '🇰🇷', index: 66 },
+    items: [
+      { item: 'Latte (Café)', icon: '☕', price1: '$4.50', price2: '$4.20', diff: '-7%' },
+      { item: 'Rent (1BR, Center)', icon: '🏠', price1: '$2,400', price2: '$1,100', diff: '-54%' },
+      { item: 'Monthly Transit', icon: '🚇', price1: '$120', price2: '$45', diff: '-63%' },
+      { item: 'Dinner (2 People)', icon: '🍽️', price1: '$85', price2: '$40', diff: '-53%' },
+      { item: 'Internet', icon: '📶', price1: '$55', price2: '$25', diff: '-55%' },
+    ],
+    summary: 'Seoul is 22% cheaper than Sydney overall',
+  },
+  {
+    slug: 'berlin-vs-lisbon',
+    city1: { name: 'Berlin', flag: '🇩🇪', index: 68 },
+    city2: { name: 'Lisbon', flag: '🇵🇹', index: 56 },
+    items: [
+      { item: 'Latte (Café)', icon: '☕', price1: '$3.80', price2: '$2.80', diff: '-26%' },
+      { item: 'Rent (1BR, Center)', icon: '🏠', price1: '$1,200', price2: '$950', diff: '-21%' },
+      { item: 'Monthly Transit', icon: '🚇', price1: '$86', price2: '$40', diff: '-53%' },
+      { item: 'Dinner (2 People)', icon: '🍽️', price1: '$55', price2: '$40', diff: '-27%' },
+      { item: 'Internet', icon: '📶', price1: '$32', price2: '$28', diff: '-13%' },
+    ],
+    summary: 'Lisbon is 18% cheaper than Berlin overall',
+  },
+  {
+    slug: 'toronto-vs-mexico-city',
+    city1: { name: 'Toronto', flag: '🇨🇦', index: 75 },
+    city2: { name: 'Mexico City', flag: '🇲🇽', index: 34 },
+    items: [
+      { item: 'Latte (Café)', icon: '☕', price1: '$4.80', price2: '$3.00', diff: '-38%' },
+      { item: 'Rent (1BR, Center)', icon: '🏠', price1: '$2,000', price2: '$650', diff: '-68%' },
+      { item: 'Monthly Transit', icon: '🚇', price1: '$115', price2: '$22', diff: '-81%' },
+      { item: 'Dinner (2 People)', icon: '🍽️', price1: '$75', price2: '$25', diff: '-67%' },
+      { item: 'Internet', icon: '📶', price1: '$55', price2: '$22', diff: '-60%' },
+    ],
+    summary: 'Mexico City is 55% cheaper than Toronto overall',
+  },
 ];
 
 export function getComparisonBySlug(slug: string): CityComparison | undefined {
