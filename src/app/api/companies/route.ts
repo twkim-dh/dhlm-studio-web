@@ -1,60 +1,65 @@
 import { NextResponse } from 'next/server';
 
-// Yahoo Finance — free, unofficial API for stock data
-const TICKERS = ['AAPL', 'NVDA', 'MSFT', 'GOOGL', 'AMZN', 'META', 'TSM', 'BRK-B', 'AVGO', 'TSLA', 'WMT', 'JPM', 'V', 'LLY', 'MA'];
-const FLAGS: Record<string, string> = { 'AAPL': '🇺🇸', 'NVDA': '🇺🇸', 'MSFT': '🇺🇸', 'GOOGL': '🇺🇸', 'AMZN': '🇺🇸', 'META': '🇺🇸', 'TSM': '🇹🇼', 'BRK-B': '🇺🇸', 'AVGO': '🇺🇸', 'TSLA': '🇺🇸', 'WMT': '🇺🇸', 'JPM': '🇺🇸', 'V': '🇺🇸', 'LLY': '🇺🇸', 'MA': '🇺🇸' };
+// Financial Modeling Prep — commercial use allowed, 250 req/day free
+const FMP_KEY = process.env.FMP_API_KEY || '';
+const BASE = 'https://financialmodelingprep.com/api/v3';
 
 let cacheData: { data: unknown; ts: number } | null = null;
-const CACHE_TTL = 300000; // 5 min
+const CACHE_TTL = 600000; // 10 min
 
 export async function GET() {
   if (cacheData && Date.now() - cacheData.ts < CACHE_TTL) {
     return NextResponse.json(cacheData.data);
   }
 
+  if (!FMP_KEY) {
+    return NextResponse.json({ error: 'FMP_API_KEY not configured' }, { status: 503 });
+  }
+
   try {
-    const companies = [];
+    // Get top companies by market cap
+    const res = await fetch(
+      `${BASE}/stock-screener?marketCapMoreThan=100000000000&limit=20&apikey=${FMP_KEY}`,
+      { cache: 'no-store' }
+    );
+    const raw = await res.json();
 
-    for (const ticker of TICKERS) {
-      try {
-        const res = await fetch(
-          `https://query1.finance.yahoo.com/v8/finance/chart/${ticker}?range=1d&interval=1d`,
-          { cache: 'no-store' }
-        );
-        const json = await res.json();
-        const meta = json?.chart?.result?.[0]?.meta;
-        if (!meta) continue;
-
-        const price = meta.regularMarketPrice;
-        const prevClose = meta.chartPreviousClose || meta.previousClose;
-        const change = prevClose ? ((price - prevClose) / prevClose) * 100 : 0;
-
-        companies.push({
-          ticker,
-          name: meta.shortName || meta.symbol,
-          price,
-          change: +change.toFixed(2),
-          flag: FLAGS[ticker] || '🏳️',
-          exchange: meta.exchangeName,
-          currency: meta.currency,
-        });
-      } catch {
-        // Skip failed ticker
-      }
+    if (!Array.isArray(raw) || raw.length === 0) {
+      return NextResponse.json({ error: 'No data from FMP', detail: raw }, { status: 503 });
     }
 
-    // Sort by price (proxy for market cap since Yahoo doesn't give marketCap in chart API)
-    companies.sort((a, b) => b.price - a.price);
+    // Sort by market cap descending
+    const sorted = raw.sort((a: Record<string, number>, b: Record<string, number>) => (b.marketCap || 0) - (a.marketCap || 0));
+
+    const FLAGS: Record<string, string> = { US: '🇺🇸', CN: '🇨🇳', TW: '🇹🇼', KR: '🇰🇷', JP: '🇯🇵', GB: '🇬🇧', FR: '🇫🇷', DE: '🇩🇪', SA: '🇸🇦', NL: '🇳🇱', CH: '🇨🇭', IE: '🇮🇪', DK: '🇩🇰' };
+
+    const companies = sorted.slice(0, 15).map((c: Record<string, unknown>, i: number) => {
+      const mktCap = c.marketCap as number || 0;
+      return {
+        rank: i + 1,
+        ticker: c.symbol,
+        name: c.companyName,
+        price: c.price,
+        change: c.changesPercentage || 0,
+        marketCap: mktCap,
+        marketCapFmt: mktCap >= 1e12 ? `$${(mktCap / 1e12).toFixed(2)}T` : `$${(mktCap / 1e9).toFixed(0)}B`,
+        sector: c.sector || '',
+        industry: c.industry || '',
+        country: c.country || '',
+        flag: FLAGS[(c.country as string) || ''] || '🏳️',
+        exchange: c.exchangeShortName || c.exchange || '',
+      };
+    });
 
     const result = {
-      companies: companies.map((c, i) => ({ rank: i + 1, ...c })),
+      companies,
       lastUpdated: new Date().toISOString(),
-      source: 'Yahoo Finance',
+      source: 'Financial Modeling Prep',
     };
 
     cacheData = { data: result, ts: Date.now() };
     return NextResponse.json(result);
   } catch {
-    return NextResponse.json({ error: 'Failed to fetch company data' }, { status: 500 });
+    return NextResponse.json({ error: 'Failed to fetch FMP data' }, { status: 500 });
   }
 }

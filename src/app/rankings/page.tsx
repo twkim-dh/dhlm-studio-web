@@ -107,17 +107,17 @@ export default function RankingsPage() {
       return;
     }
 
-    // Companies tab — Yahoo Finance
+    // Companies tab — Financial Modeling Prep
     if (tab === 'companies') {
       setLoading(true);
       fetch('/api/companies')
         .then(r => r.json())
         .then(res => {
           if (res.companies) {
-            const mapped = res.companies.map((c: { rank: number; ticker: string; name: string; flag: string; price: number; change: number }) => ({
-              rank: c.rank, name: `${c.name} (${c.ticker})`, value: `$${c.price.toLocaleString()}`, flag: c.flag,
-              delta: `${c.change >= 0 ? '+' : ''}${c.change}%`,
-              sub: `Source: Yahoo Finance · ${res.lastUpdated?.split('T')[0] || ''}`,
+            const mapped = res.companies.map((c: { rank: number; ticker: string; name: string; flag: string; marketCapFmt: string; change: number; sector: string }) => ({
+              rank: c.rank, name: `${c.name} (${c.ticker})`, value: c.marketCapFmt, flag: c.flag,
+              delta: c.change ? `${c.change >= 0 ? '+' : ''}${Number(c.change).toFixed(1)}%` : '',
+              sub: `${c.sector} · Source: FMP · ${res.lastUpdated?.split('T')[0] || ''}`,
             }));
             setLiveData(prev => ({ ...prev, companies: mapped }));
           }
