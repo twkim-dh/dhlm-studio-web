@@ -7,9 +7,8 @@ const links = [
   { label: "Markets", href: "/markets" },
   { label: "Creators", href: "/creators" },
   { label: "Rankings", href: "/rankings" },
-  { label: "Compare", href: "/compare" },
+  { label: "Crypto", href: "/rankings/crypto" },
   { label: "Lotto", href: "/lotto" },
-  { label: "Tools", href: "/tools" },
   { label: "Blog", href: "/blog" },
 ];
 

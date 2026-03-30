@@ -1,7 +1,6 @@
 import type { MetadataRoute } from "next";
 import { slugToId } from "@/lib/world-lottery";
 import { stocks } from "@/data/markets";
-import { comparisons } from "@/data/compare";
 import { blogPosts } from "@/data/blog-posts";
 
 const BASE = "https://dhlm-studio.com";
@@ -17,18 +16,12 @@ export default function sitemap(): MetadataRoute.Sitemap {
     { url: `${BASE}/markets`, lastModified: now, changeFrequency: "daily", priority: 0.9 },
     { url: `${BASE}/creators`, lastModified: now, changeFrequency: "weekly", priority: 0.9 },
     { url: `${BASE}/rankings`, lastModified: now, changeFrequency: "weekly", priority: 0.9 },
-    { url: `${BASE}/compare`, lastModified: now, changeFrequency: "weekly", priority: 0.9 },
+    { url: `${BASE}/rankings/crypto`, lastModified: now, changeFrequency: "daily", priority: 0.9 },
 
     // Individual stocks
     ...stocks.map(s => ({
       url: `${BASE}/markets/${s.ticker.toLowerCase()}`,
       lastModified: now, changeFrequency: "daily" as const, priority: 0.8,
-    })),
-
-    // Individual comparisons
-    ...comparisons.map(c => ({
-      url: `${BASE}/compare/${c.slug}`,
-      lastModified: now, changeFrequency: "monthly" as const, priority: 0.8,
     })),
 
     // Lotto

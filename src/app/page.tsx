@@ -59,21 +59,13 @@ const RANKINGS = [
   { rank: 5, name: 'Larry Ellison', value: '$176B', flag: '🇺🇸', delta: '+15%' },
 ];
 
-const COMPARE = [
-  { item: 'Latte (Café)', city1: '$5.80', city2: '$5.50', diff: '-5%', icon: '☕' },
-  { item: 'Rent (1BR, Center)', city1: '$3,200', city2: '$2,400', diff: '-25%', icon: '🏠' },
-  { item: 'Monthly Transit Pass', city1: '$127', city2: '$100', diff: '-21%', icon: '🚇' },
-  { item: 'Dinner (2 People)', city1: '$110', city2: '$95', diff: '-14%', icon: '🍽️' },
-  { item: 'Internet (Monthly)', city1: '$70', city2: '$65', diff: '-7%', icon: '📶' },
-];
-
 const CATEGORIES = [
   { icon: '📈', title: 'Market Movers', desc: 'Daily US stock top gainers', color: '#00D474', count: '365+', unit: 'daily reports' },
   { icon: '🔥', title: 'Trending Creators', desc: 'Fastest growing across platforms', color: '#A78BFA', count: '4', unit: 'platforms' },
   { icon: '🏆', title: 'Global Rankings', desc: 'Billionaires, companies, GDP', color: '#D4A843', count: '30+', unit: 'ranking types' },
-  { icon: '⚖️', title: 'Cost of Living', desc: 'Compare 200+ cities', color: '#3B82F6', count: '10K+', unit: 'city pairs' },
+  { icon: '🪙', title: 'Crypto Rankings', desc: 'Live crypto prices & market cap', color: '#F59E0B', count: '100+', unit: 'coins tracked' },
   { icon: '🎯', title: 'Lotto PRO', desc: 'Data-driven lottery analysis', color: '#C73E3A', count: '1,216+', unit: 'rounds analyzed' },
-  { icon: '🧮', title: 'Tools', desc: 'Currency, calculators & more', color: '#64748B', count: '80+', unit: 'free tools' },
+  { icon: '🧮', title: 'Tools', desc: 'QR generator & password tool', color: '#64748B', count: '2', unit: 'free tools' },
 ];
 
 /* ═══ Styles ═══ */
@@ -103,7 +95,7 @@ export default function Home() {
             { label: 'Top Stock Movers', href: '/markets' },
             { label: 'Trending Creators', href: '/creators' },
             { label: `${YEAR} Billionaire Rankings`, href: '/rankings' },
-            { label: 'NYC vs LA Cost of Living', href: '/compare/new-york-vs-los-angeles' },
+            { label: 'Crypto Rankings (Live)', href: '/rankings/crypto' },
             { label: 'Lotto PRO', href: '/lotto' },
           ].map(t => (
             <Link key={t.label} href={t.href} style={{ fontSize: 11, color: '#475569', padding: '5px 12px', borderRadius: 20, background: '#111827', border: '1px solid #1E293B', fontFamily: 'var(--sans)', transition: 'border-color 0.2s' }}>
@@ -205,42 +197,12 @@ export default function Home() {
         </div>
       </section>
 
-      {/* ── Compare ── */}
-      <section id="compare" style={section}>
-        <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'baseline', marginBottom: 16 }}>
-          <div>
-            <div style={sectionLabel('#3B82F6')}>COST OF LIVING · {YEAR}</div>
-            <h2 style={sectionTitle}>New York vs Los Angeles</h2>
-          </div>
-        </div>
-        <div style={{ ...card, borderRadius: 18, overflow: 'hidden' }}>
-          <div style={{ padding: '20px 22px', borderBottom: '1px solid #1E293B', display: 'flex', justifyContent: 'space-between', alignItems: 'center', flexWrap: 'wrap', gap: 12 }}>
-            <div style={{ display: 'flex', gap: 24 }}>
-              <div style={{ textAlign: 'center' as const }}><div style={{ fontSize: 11, color: '#64748B', fontFamily: 'var(--sans)' }}>🗽 New York</div><div style={{ fontFamily: 'var(--serif)', fontSize: 18, fontWeight: 800, color: '#F1F5F9', marginTop: 2 }}>Index 100</div></div>
-              <div style={{ width: 1, background: '#1E293B' }} />
-              <div style={{ textAlign: 'center' as const }}><div style={{ fontSize: 11, color: '#64748B', fontFamily: 'var(--sans)' }}>🌴 Los Angeles</div><div style={{ fontFamily: 'var(--serif)', fontSize: 18, fontWeight: 800, color: '#F1F5F9', marginTop: 2 }}>Index 86</div></div>
-            </div>
-            <div style={{ padding: '8px 16px', borderRadius: 10, background: '#00D47414', border: '1px solid #00D47420' }}>
-              <span style={{ fontFamily: 'var(--sans)', fontSize: 13, fontWeight: 700, color: '#00D474' }}>LA is <span style={{ fontFamily: 'var(--serif)', fontSize: 20 }}>14%</span> cheaper</span>
-            </div>
-          </div>
-          {COMPARE.map((r, i) => (
-            <div key={i} style={{ display: 'grid', gridTemplateColumns: '2fr 1fr 1fr 70px', gap: 8, padding: '12px 22px', alignItems: 'center', background: i % 2 === 0 ? 'transparent' : '#0D111B' }}>
-              <span style={{ fontSize: 13, color: '#E2E8F0', fontFamily: 'var(--sans)', display: 'flex', alignItems: 'center', gap: 8 }}><span>{r.icon}</span>{r.item}</span>
-              <span style={{ fontSize: 13, fontWeight: 600, color: '#94A3B8', fontFamily: 'var(--mono)', textAlign: 'right' as const }}>{r.city1}</span>
-              <span style={{ fontSize: 13, fontWeight: 600, color: '#F1F5F9', fontFamily: 'var(--mono)', textAlign: 'right' as const }}>{r.city2}</span>
-              <span style={{ fontSize: 12, fontWeight: 700, color: '#FF6B6B', fontFamily: 'var(--mono)', textAlign: 'right' as const }}>{r.diff}</span>
-            </div>
-          ))}
-        </div>
-      </section>
-
       {/* ── Categories ── */}
       <section style={section}>
         <div style={sectionLabel('#64748B')}>EXPLORE</div>
         <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(240px, 1fr))', gap: 12, marginTop: 16 }}>
           {CATEGORIES.map(c => (
-            <Link key={c.title} href={c.title === 'Lotto PRO' ? '/lotto' : c.title === 'Tools' ? '/tools' : c.title === 'Market Movers' ? '/markets' : c.title === 'Trending Creators' ? '/creators' : c.title === 'Global Rankings' ? '/rankings' : c.title === 'Cost of Living' ? '/compare' : '/'}
+            <Link key={c.title} href={c.title === 'Lotto PRO' ? '/lotto' : c.title === 'Tools' ? '/tools' : c.title === 'Market Movers' ? '/markets' : c.title === 'Trending Creators' ? '/creators' : c.title === 'Global Rankings' ? '/rankings' : c.title === 'Crypto Rankings' ? '/rankings/crypto' : '/'}
               style={{ ...card, padding: '22px 20px', position: 'relative', overflow: 'hidden', cursor: 'pointer' }}>
               <div style={{ position: 'absolute', top: 0, left: 0, right: 0, height: 2, background: c.color }} />
               <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'flex-start' }}>

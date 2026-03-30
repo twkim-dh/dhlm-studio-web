@@ -11,7 +11,9 @@ const nextConfig: NextConfig = {
       { source: '/tools/msg/:path*', destination: '/', permanent: true },
       { source: '/tools/gen/:path*', destination: '/tools', permanent: true },
       { source: '/tools/image/:path*', destination: '/tools', permanent: true },
-      { source: '/tools/compare/:path*', destination: '/compare', permanent: true },
+      { source: '/tools/compare/:path*', destination: '/rankings', permanent: true },
+      // Deleted compare
+      { source: '/compare/:path*', destination: '/rankings', permanent: true },
       // Deleted Korea/blog content
       { source: '/korea/:path*', destination: '/', permanent: true },
       { source: '/blog/korea/:path*', destination: '/blog', permanent: true },
