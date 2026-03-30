@@ -3,7 +3,7 @@ import { Noto_Sans_KR, Noto_Serif_KR, Playfair_Display } from "next/font/google"
 import Script from "next/script";
 import Header from "@/components/Header";
 import Footer from "@/components/Footer";
-import AreaProvider from "@/components/AreaProvider";
+// AreaProvider removed — single dark theme
 import "./globals.css";
 
 const notoSansKR = Noto_Sans_KR({
@@ -89,7 +89,7 @@ export default function RootLayout({
         />
       </head>
       <body className="min-h-screen flex flex-col font-sans">
-        <AreaProvider />
+        {/* Dark theme global */}
         <Header />
         <main className="flex-1">{children}</main>
         <Footer />
