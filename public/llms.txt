@@ -1,0 +1,24 @@
+# DHLM Studio — The World in Numbers
+> Real-time global data platform: stock market movers, trending creators, billionaire rankings, cost of living comparisons, and lottery analysis.
+
+## Website
+https://dhlm-studio.com
+
+## Main Sections
+- /markets — Daily US stock market top gainers with catalysts
+- /creators — Fastest growing YouTube, TikTok, Instagram, X creators
+- /rankings — Global rankings: billionaires, companies, GDP, population, sports
+- /compare — Cost of living comparison between cities worldwide
+- /lotto — Lotto PRO: data-driven lottery analysis (25+ countries)
+- /blog — Data insights blog: markets, rankings, cost of living analysis
+- /tools — Free tools: QR code generator, password generator
+
+## Data Coverage
+- 200+ cities for cost of living
+- 195 countries for GDP/population
+- 25+ lottery systems worldwide
+- 10+ stock market movers daily
+- Top creators across 4 platforms
+
+## Contact
+tw.kim@dhlm.co.kr
