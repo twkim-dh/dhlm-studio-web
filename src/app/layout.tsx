@@ -40,6 +40,12 @@ export const metadata: Metadata = {
     siteName: "DHLM Studio",
     locale: "en_US",
     type: "website",
+    images: [{ url: "/og-default.png", width: 1200, height: 630, alt: "DHLM Studio — The World in Numbers" }],
+  },
+  twitter: {
+    card: "summary_large_image",
+    title: "DHLM Studio — The World in Numbers",
+    description: "Real-time stock movers, creator trends, global rankings, and city cost comparisons.",
   },
   alternates: {
     canonical: "https://dhlm-studio.com",
@@ -65,7 +71,19 @@ export default function RootLayout({
   return (
     <html lang="en" className={`${notoSansKR.variable} ${playfair.variable} antialiased`}>
       <head>
-        {/* Google Fonts for dark fintech design */}
+        {/* Favicon */}
+        <link rel="icon" href="/favicon.svg" type="image/svg+xml" />
+        <link rel="apple-touch-icon" href="/favicon.svg" />
+        <meta name="theme-color" content="#0B0F19" />
+        {/* Google Analytics 4 — replace G-XXXXXXXXXX with real ID */}
+        <script async src="https://www.googletagmanager.com/gtag/js?id=G-XXXXXXXXXX" />
+        <script dangerouslySetInnerHTML={{ __html: `
+          window.dataLayer = window.dataLayer || [];
+          function gtag(){dataLayer.push(arguments);}
+          gtag('js', new Date());
+          gtag('config', 'G-XXXXXXXXXX');
+        `}} />
+        {/* Google Fonts */}
         <link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700;800&family=IBM+Plex+Mono:wght@400;500;600;700&display=swap" rel="stylesheet" />
         <script
           async
