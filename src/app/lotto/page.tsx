@@ -28,10 +28,31 @@ function gen(): number[] { const s = new Set<number>(); while(s.size<6){ const a
 
 interface Msg { role:'user'|'bot'; text?:string; numbers?:number[]; bonus?:number; numberLabel?:string; numberMeta?:string; numberSets?:{numbers:number[];tag?:string;meta?:string}[]; stats?:{label:string;value:string|number;color?:string;sub?:string}[]; proLock?:{title:string;desc:string}; actions?:{id:string;icon?:string;label:string;primary?:boolean}[] }
 
-const DRAWS = [
-  { round:1216, numbers:[3,13,21,27,35,44], bonus:19, date:'2026.03.28' },
-  { round:1215, numbers:[5,8,16,24,38,42], bonus:31, date:'2026.03.21' },
-];
+// Fetch real data from API
+async function fetchDraw(round: number): Promise<{round:number;numbers:number[];bonus:number;date:string;prize1?:string;winners1?:number}|null> {
+  try {
+    const res = await fetch(`/api/lotto/${round}`);
+    const d = await res.json();
+    if (d.returnValue === 'success') {
+      return {
+        round: d.drwNo,
+        numbers: [d.drwtNo1, d.drwtNo2, d.drwtNo3, d.drwtNo4, d.drwtNo5, d.drwtNo6].sort((a:number,b:number)=>a-b),
+        bonus: d.bnusNo,
+        date: d.drwNoDate?.replace(/-/g, '.') || '',
+        prize1: d.firstWinamnt ? `${Math.round(d.firstWinamnt/100000000)}억원` : undefined,
+        winners1: d.firstPrzwnerCo,
+      };
+    }
+    return null;
+  } catch { return null; }
+}
+
+async function fetchLatestRound(): Promise<number> {
+  // Estimate latest round from date
+  const start = new Date('2002-12-07').getTime();
+  const now = Date.now();
+  return Math.floor((now - start) / (7 * 24 * 60 * 60 * 1000)) + 1;
+}
 
 function Bubble({ msg, onAction }: { msg:Msg; onAction:(id:string)=>void }) {
   const u = msg.role==='user';
@@ -95,7 +116,29 @@ export default function LottoPro() {
 
   const doMulti = () => { usr('5세트 한번에 생성해줘'); sim(()=>{ const sets=Array.from({length:5},()=>{ const n=gen(),s=n.reduce((a,b)=>a+b,0),o=n.filter(x=>x%2).length; return {numbers:n,meta:`합계 ${s} · 홀짝 ${o}:${6-o}`,tag:undefined as string|undefined}; }); sets[0].tag='균형형';sets[1].tag='고합계';sets[2].tag='저합계'; bot({ text:'5세트를 생성했습니다.', numberSets:sets, actions:[{id:'save',icon:'💾',label:'전체 저장',primary:true},{id:'multi',icon:'🔄',label:'다시 생성'}] }); },1800); };
 
-  const doLatest = () => { usr('최근 당첨번호 알려줘'); sim(()=>{ const d=DRAWS[0]; bot({ text:`${d.round}회 (${d.date}) 당첨 결과입니다.`, numbers:d.numbers, bonus:d.bonus, numberLabel:`${d.round}회 당첨번호`, stats:[{label:'합계',value:d.numbers.reduce((a,b)=>a+b,0),color:GOLD},{label:'홀짝',value:`${d.numbers.filter(n=>n%2).length}:${d.numbers.filter(n=>!(n%2)).length}`},{label:'1등',value:'12억',color:'#EF4444'}], actions:[{id:'rec',icon:'🎯',label:'번호 추천',primary:true}] }); }); };
+  const doLatest = () => { usr('최근 당첨번호 알려줘'); setTyping(true);
+    (async () => {
+      const latestRound = await fetchLatestRound();
+      // Try latest, then latest-1
+      let d = await fetchDraw(latestRound);
+      if (!d) d = await fetchDraw(latestRound - 1);
+      if (!d) d = await fetchDraw(latestRound - 2);
+      setTyping(false);
+      if (d) {
+        bot({ text:`${d.round}회 (${d.date}) 당첨 결과입니다.`, numbers:d.numbers, bonus:d.bonus, numberLabel:`${d.round}회 당첨번호`,
+          stats:[
+            {label:'합계',value:d.numbers.reduce((a,b)=>a+b,0),color:GOLD},
+            {label:'홀짝',value:`${d.numbers.filter(n=>n%2).length}:${d.numbers.filter(n=>!(n%2)).length}`},
+            ...(d.prize1 ? [{label:'1등',value:d.prize1,color:'#EF4444'}] : []),
+            ...(d.winners1 !== undefined ? [{label:'당첨자',value:`${d.winners1}명`}] : []),
+          ],
+          actions:[{id:'rec',icon:'🎯',label:'번호 추천',primary:true},{id:'latest-prev',icon:'📋',label:'이전 회차'}] });
+      } else {
+        bot({ text:'동행복권 서버에서 데이터를 가져오지 못했습니다.\n잠시 후 다시 시도해주세요.',
+          actions:[{id:'latest',icon:'🔄',label:'다시 시도'},{id:'rec',icon:'🎯',label:'번호 추천',primary:true}] });
+      }
+    })();
+  };
 
   const doStats = () => { usr('통계 분석 보여줘'); sim(()=>bot({ text:'최근 100회차 기준 주요 통계입니다.', stats:[{label:'평균 합계',value:'138',sub:'적정 범위',color:GOLD},{label:'최빈 홀짝',value:'3:3',sub:'가장 많이 출현'},{label:'연속번호',value:'42%',sub:'연속 포함 비율',color:'#60A5FA'}], actions:[{id:'hot',icon:'🔥',label:'핫/콜드 번호'},{id:'rec',icon:'🎯',label:'번호 추천',primary:true}] })); };
 

@@ -9,7 +9,6 @@ export async function GET(
 ) {
   const { round } = await params;
 
-  // Check cache
   const cached = cache.get(round);
   if (cached && Date.now() - cached.ts < CACHE_TTL) {
     return NextResponse.json(cached.data);
@@ -18,15 +17,31 @@ export async function GET(
   try {
     const res = await fetch(
       `https://www.dhlottery.co.kr/common.do?method=getLottoNumber&drwNo=${round}`,
-      { next: { revalidate: 3600 } }
+      {
+        headers: {
+          'User-Agent': 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/120.0.0.0 Safari/537.36',
+          'Referer': 'https://www.dhlottery.co.kr/',
+          'Accept': 'application/json, text/javascript, */*',
+        },
+        cache: 'no-store',
+      }
     );
-    const data = await res.json();
 
-    // Cache result
-    cache.set(round, { data, ts: Date.now() });
+    const text = await res.text();
 
-    return NextResponse.json(data);
-  } catch {
-    return NextResponse.json({ error: "Failed to fetch" }, { status: 500 });
+    // Try to parse as JSON
+    try {
+      const data = JSON.parse(text);
+      if (data.returnValue === 'success') {
+        cache.set(round, { data, ts: Date.now() });
+        return NextResponse.json(data);
+      }
+      return NextResponse.json({ error: "No data for this round", raw: data }, { status: 404 });
+    } catch {
+      // Not JSON — probably HTML redirect
+      return NextResponse.json({ error: "API returned non-JSON response", status: res.status }, { status: 502 });
+    }
+  } catch (err) {
+    return NextResponse.json({ error: "Failed to fetch from dhlottery.co.kr" }, { status: 500 });
   }
 }
