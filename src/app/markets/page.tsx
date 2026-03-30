@@ -8,6 +8,7 @@ interface LiveMover {
   rank: number; ticker: string; name: string; price: number; change: number; volume: number;
   sector?: string; industry?: string; exchange?: string;
   weekHigh52?: number; weekLow52?: number; prevClose?: number;
+  analysis?: { catalyst: string; outlook: string; signal: 'bullish' | 'bearish' | 'neutral' } | null;
 }
 
 const card = { background: '#111827', borderRadius: 14, border: '1px solid #1E293B' };
@@ -30,18 +31,12 @@ export default function MarketsPage() {
 
   const displayStocks = isLive
     ? liveMovers.map(m => ({
-        ticker: m.ticker,
-        name: m.name || m.ticker,
-        price: m.price,
-        change: m.change,
-        sector: m.sector || '',
-        industry: m.industry || '',
-        exchange: m.exchange || '',
-        volume: m.volume,
-        weekHigh52: m.weekHigh52 || 0,
-        weekLow52: m.weekLow52 || 0,
+        ticker: m.ticker, name: m.name || m.ticker, price: m.price, change: m.change,
+        sector: m.sector || '', industry: m.industry || '', exchange: m.exchange || '',
+        volume: m.volume, weekHigh52: m.weekHigh52 || 0, weekLow52: m.weekLow52 || 0,
+        analysis: m.analysis || null,
       }))
-    : stocks.map(s => ({ ticker: s.ticker, name: s.name, price: s.price, change: s.change, sector: s.sector, industry: '', exchange: '', volume: 0, weekHigh52: 0, weekLow52: 0 }));
+    : stocks.map(s => ({ ticker: s.ticker, name: s.name, price: s.price, change: s.change, sector: s.sector, industry: '', exchange: '', volume: 0, weekHigh52: 0, weekLow52: 0, analysis: null as LiveMover['analysis'] }));
 
   return (
     <div style={{ background: '#0B0F19', minHeight: '100vh' }}>
@@ -79,6 +74,26 @@ export default function MarketsPage() {
                   {s.weekHigh52 > 0 && (
                     <div style={{ fontSize: 11, color: '#475569', marginTop: 6, fontFamily: 'var(--mono)' }}>
                       52wk: ${s.weekLow52.toFixed(2)} — ${s.weekHigh52.toFixed(2)}
+                    </div>
+                  )}
+                  {/* AI Analysis — Top 3 only */}
+                  {s.analysis && (
+                    <div style={{ marginTop: 10, padding: '10px 12px', background: '#0D111B', borderRadius: 8, border: '1px solid #1E293B' }}>
+                      <div style={{ display: 'flex', alignItems: 'center', gap: 6, marginBottom: 6 }}>
+                        <span style={{ fontSize: 10, fontWeight: 700, padding: '2px 6px', borderRadius: 4, fontFamily: 'var(--mono)',
+                          background: s.analysis.signal === 'bullish' ? '#00D47414' : s.analysis.signal === 'bearish' ? '#FF454514' : '#F59E0B14',
+                          color: s.analysis.signal === 'bullish' ? '#00D474' : s.analysis.signal === 'bearish' ? '#FF4545' : '#F59E0B',
+                        }}>
+                          {s.analysis.signal === 'bullish' ? '▲ BULLISH' : s.analysis.signal === 'bearish' ? '▼ BEARISH' : '● NEUTRAL'}
+                        </span>
+                        <span style={{ fontSize: 9, color: '#475569', fontFamily: 'var(--mono)' }}>AI ANALYSIS</span>
+                      </div>
+                      <p style={{ fontSize: 12, color: '#94A3B8', lineHeight: 1.6, margin: '0 0 4px', fontFamily: 'var(--sans)' }}>
+                        <strong style={{ color: '#E2E8F0' }}>Why it moved:</strong> {s.analysis.catalyst}
+                      </p>
+                      <p style={{ fontSize: 12, color: '#64748B', lineHeight: 1.6, margin: 0, fontFamily: 'var(--sans)' }}>
+                        <strong style={{ color: '#94A3B8' }}>Outlook:</strong> {s.analysis.outlook}
+                      </p>
                     </div>
                   )}
                 </div>
