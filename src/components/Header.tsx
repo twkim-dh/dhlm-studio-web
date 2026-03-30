@@ -4,13 +4,13 @@ import { useState, useEffect } from "react";
 import Link from "next/link";
 
 const links = [
-  { label: "Markets", href: "#markets" },
-  { label: "Creators", href: "#creators" },
-  { label: "Rankings", href: "#rankings" },
-  { label: "Compare", href: "#compare" },
-  { label: "Korea", href: "/korea" },
-  { label: "Lottery", href: "/lotto" },
+  { label: "Markets", href: "/markets" },
+  { label: "Creators", href: "/creators" },
+  { label: "Rankings", href: "/rankings" },
+  { label: "Compare", href: "/compare" },
+  { label: "Lotto", href: "/lotto" },
   { label: "Tools", href: "/tools" },
+  { label: "Blog", href: "/blog" },
 ];
 
 function DhlmMono({ size = 28 }: { size?: number }) {

@@ -116,7 +116,7 @@ export default function Home() {
             <div style={sectionLabel('#C73E3A')}>US MARKET · TODAY</div>
             <h2 style={sectionTitle}>Top Movers</h2>
           </div>
-          <Link href="#" style={{ fontSize: 12, color: '#C73E3A', fontWeight: 600, fontFamily: 'var(--sans)' }}>View All →</Link>
+          <Link href="/markets" style={{ fontSize: 12, color: '#C73E3A', fontWeight: 600, fontFamily: 'var(--sans)' }}>View All →</Link>
         </div>
         <div style={{ display: 'flex', flexDirection: 'column', gap: 8 }}>
           {MOVERS.map((s, i) => (
@@ -226,7 +226,7 @@ export default function Home() {
         <div style={sectionLabel('#64748B')}>EXPLORE</div>
         <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(240px, 1fr))', gap: 12, marginTop: 16 }}>
           {CATEGORIES.map(c => (
-            <Link key={c.title} href={c.title === 'Lotto PRO' ? '/lotto' : c.title === 'Tools' ? '/tools' : '#'}
+            <Link key={c.title} href={c.title === 'Lotto PRO' ? '/lotto' : c.title === 'Tools' ? '/tools' : c.title === 'Market Movers' ? '/markets' : c.title === 'Trending Creators' ? '/creators' : c.title === 'Global Rankings' ? '/rankings' : c.title === 'Cost of Living' ? '/compare' : '/'}
               style={{ ...card, padding: '22px 20px', position: 'relative', overflow: 'hidden', cursor: 'pointer' }}>
               <div style={{ position: 'absolute', top: 0, left: 0, right: 0, height: 2, background: c.color }} />
               <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'flex-start' }}>
