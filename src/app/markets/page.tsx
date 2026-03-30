@@ -1,15 +1,48 @@
-import type { Metadata } from "next";
-import Link from "next/link";
-import { stocks } from "@/data/markets";
+'use client';
 
-export const metadata: Metadata = {
-  title: "Today's Top Stock Movers | DHLM Studio",
-  description: "Daily US stock market top gainers with company profiles, catalysts, and key metrics. Updated every trading day.",
-};
+import { useState, useEffect } from 'react';
+import Link from 'next/link';
+import { stocks } from '@/data/markets';
+
+interface LiveMover {
+  rank: number; ticker: string; price: number; change: number; volume: number;
+}
 
 const card = { background: '#111827', borderRadius: 14, border: '1px solid #1E293B' };
 
 export default function MarketsPage() {
+  const [liveMovers, setLiveMovers] = useState<LiveMover[]>([]);
+  const [isLive, setIsLive] = useState(false);
+
+  useEffect(() => {
+    fetch('/api/markets')
+      .then(r => r.json())
+      .then(data => {
+        if (data.movers && data.movers.length > 0) {
+          setLiveMovers(data.movers);
+          setIsLive(true);
+        }
+      })
+      .catch(() => {}); // Fallback to hardcoded
+  }, []);
+
+  const displayStocks = isLive
+    ? liveMovers.map(m => {
+        const match = stocks.find(s => s.ticker === m.ticker);
+        return {
+          ticker: m.ticker,
+          name: match?.name || m.ticker,
+          price: m.price,
+          change: m.change,
+          cap: match?.cap || '',
+          sector: match?.sector || '',
+          catalyst: match?.catalyst || '',
+          tags: match?.tags || [],
+          volume: m.volume,
+        };
+      })
+    : stocks.map(s => ({ ...s, volume: 0 }));
+
   return (
     <div style={{ background: '#0B0F19', minHeight: '100vh' }}>
       <div style={{ maxWidth: 1100, margin: '0 auto', padding: '80px 24px' }}>
@@ -22,32 +55,43 @@ export default function MarketsPage() {
           <Link href="/" style={{ fontSize: 12, color: '#64748B', fontFamily: 'var(--sans)' }}>← Home</Link>
         </div>
 
+        {isLive && (
+          <p style={{ fontFamily: 'var(--mono)', fontSize: 10, color: '#00D474', marginBottom: 8 }}>● LIVE DATA — Alpha Vantage API</p>
+        )}
         <p style={{ fontFamily: 'var(--sans)', fontSize: 11, color: '#334155', marginBottom: 24 }}>
-          Last updated: {new Date().toLocaleDateString('en-US', { weekday: 'long', year: 'numeric', month: 'long', day: 'numeric' })} · Data for informational purposes only. Not investment advice.
+          {isLive ? 'Real-time data. ' : ''}Data for informational purposes only. Not investment advice.
         </p>
 
         <div style={{ display: 'flex', flexDirection: 'column', gap: 8 }}>
-          {stocks.map((s, i) => (
-            <Link key={s.ticker} href={`/markets/${s.ticker.toLowerCase()}`} style={{ ...card, display: 'grid', gridTemplateColumns: '36px 1fr auto', gap: 14, padding: '18px 20px', alignItems: 'center', textDecoration: 'none' }}>
-              <div style={{ fontFamily: 'var(--serif)', fontSize: 15, fontWeight: 800, color: i < 3 ? '#D4A843' : '#475569', textAlign: 'center' }}>#{i + 1}</div>
-              <div>
-                <div style={{ display: 'flex', alignItems: 'center', gap: 8, flexWrap: 'wrap' }}>
-                  <span style={{ fontFamily: 'var(--mono)', fontSize: 16, fontWeight: 700, color: '#60A5FA' }}>{s.ticker}</span>
-                  <span style={{ fontFamily: 'var(--sans)', fontSize: 14, fontWeight: 600, color: '#E2E8F0' }}>{s.name}</span>
-                  <span style={{ fontSize: 11, color: '#475569' }}>· {s.cap} · {s.sector}</span>
+          {displayStocks.map((s, i) => (
+            <div key={s.ticker} style={{ ...card, display: 'grid', gridTemplateColumns: '36px 1fr auto', gap: 14, padding: '18px 20px', alignItems: 'center', cursor: 'pointer' }}>
+                <div style={{ fontFamily: 'var(--serif)', fontSize: 15, fontWeight: 800, color: i < 3 ? '#D4A843' : '#475569', textAlign: 'center' }}>#{i + 1}</div>
+                <div>
+                  <div style={{ display: 'flex', alignItems: 'center', gap: 8, flexWrap: 'wrap' }}>
+                    <span style={{ fontFamily: 'var(--mono)', fontSize: 16, fontWeight: 700, color: '#60A5FA' }}>{s.ticker}</span>
+                    <span style={{ fontFamily: 'var(--sans)', fontSize: 14, fontWeight: 600, color: '#E2E8F0' }}>{s.name}</span>
+                    {s.cap && <span style={{ fontSize: 11, color: '#475569' }}>· {s.cap}</span>}
+                  </div>
+                  {s.catalyst && <div style={{ fontSize: 13, color: '#64748B', marginTop: 6, lineHeight: 1.5 }}>{s.catalyst}</div>}
+                  {s.tags.length > 0 && (
+                    <div style={{ display: 'flex', gap: 4, marginTop: 8 }}>
+                      {s.tags.map(t => <span key={t} style={{ fontSize: 10, fontWeight: 600, padding: '3px 8px', borderRadius: 4, background: '#6B728014', color: '#6B7280', fontFamily: 'var(--mono)' }}>{t}</span>)}
+                    </div>
+                  )}
                 </div>
-                <div style={{ fontSize: 13, color: '#64748B', marginTop: 6, lineHeight: 1.5 }}>{s.catalyst}</div>
-                <div style={{ display: 'flex', gap: 4, marginTop: 8 }}>
-                  {s.tags.map(t => <span key={t} style={{ fontSize: 10, fontWeight: 600, padding: '3px 8px', borderRadius: 4, background: '#6B728014', color: '#6B7280', fontFamily: 'var(--mono)' }}>{t}</span>)}
+                <div style={{ textAlign: 'right' }}>
+                  <div style={{ fontFamily: 'var(--mono)', fontSize: 22, fontWeight: 800, color: '#F1F5F9' }}>${s.price.toFixed(2)}</div>
+                  <div style={{ marginTop: 4 }}>
+                    <span style={{
+                      fontSize: 14, fontWeight: 700, padding: '3px 10px', borderRadius: 6,
+                      background: s.change >= 0 ? '#00D4741A' : '#FF45451A',
+                      color: s.change >= 0 ? '#00D474' : '#FF4545',
+                      fontFamily: 'var(--mono)',
+                    }}>{s.change >= 0 ? '+' : ''}{s.change.toFixed(1)}%</span>
+                  </div>
+                  {s.volume > 0 && <div style={{ fontSize: 10, color: '#475569', marginTop: 4, fontFamily: 'var(--mono)' }}>Vol: {(s.volume / 1e6).toFixed(1)}M</div>}
                 </div>
-              </div>
-              <div style={{ textAlign: 'right' }}>
-                <div style={{ fontFamily: 'var(--mono)', fontSize: 22, fontWeight: 800, color: '#F1F5F9' }}>${s.price}</div>
-                <div style={{ marginTop: 4 }}>
-                  <span style={{ fontSize: 14, fontWeight: 700, padding: '3px 10px', borderRadius: 6, background: '#00D4741A', color: '#00D474', fontFamily: 'var(--mono)' }}>+{s.change}%</span>
-                </div>
-              </div>
-            </Link>
+            </div>
           ))}
         </div>
 

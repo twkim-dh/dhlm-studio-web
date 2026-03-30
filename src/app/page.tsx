@@ -197,6 +197,18 @@ export default function Home() {
         </div>
       </section>
 
+      {/* ── Crypto Preview ── */}
+      <section style={section}>
+        <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'baseline', marginBottom: 16 }}>
+          <div>
+            <div style={sectionLabel('#F59E0B')}>CRYPTO · LIVE</div>
+            <h2 style={sectionTitle}>Crypto Rankings</h2>
+          </div>
+          <Link href="/rankings/crypto" style={{ fontSize: 12, color: '#F59E0B', fontWeight: 600, fontFamily: 'var(--sans)' }}>View All →</Link>
+        </div>
+        <CryptoPreview />
+      </section>
+
       {/* ── Categories ── */}
       <section style={section}>
         <div style={sectionLabel('#64748B')}>EXPLORE</div>
@@ -220,6 +232,50 @@ export default function Home() {
           ))}
         </div>
       </section>
+    </div>
+  );
+}
+
+/* ═══ Crypto Preview (live from CoinGecko) ═══ */
+function CryptoPreview() {
+  const [coins, setCoins] = useState<{name:string;symbol:string;price:number;change24h:number;marketCap:number;image:string}[]>([]);
+
+  useEffect(() => {
+    fetch('/api/crypto')
+      .then(r => r.json())
+      .then(data => { if (data.coins) setCoins(data.coins.slice(0, 5)); })
+      .catch(() => {});
+  }, []);
+
+  if (coins.length === 0) return <p style={{ color: '#475569', fontSize: 13 }}>Loading crypto data...</p>;
+
+  return (
+    <div style={{ display: 'flex', flexDirection: 'column', gap: 6 }}>
+      <p style={{ fontFamily: 'var(--mono)', fontSize: 10, color: '#00D474', marginBottom: 4 }}>● LIVE — CoinGecko</p>
+      {coins.map((c, i) => (
+        <Link key={c.symbol} href="/rankings/crypto" style={{
+          background: '#111827', borderRadius: 14, border: '1px solid #1E293B',
+          display: 'flex', alignItems: 'center', gap: 12, padding: '14px 18px', textDecoration: 'none',
+        }}>
+          <span style={{ fontFamily: 'var(--serif)', fontSize: 14, fontWeight: 800, color: i < 3 ? '#D4A843' : '#475569', width: 24, textAlign: 'center' }}>
+            {i + 1}
+          </span>
+          {c.image && <img src={c.image} alt={c.name} width={24} height={24} style={{ borderRadius: '50%' }} />}
+          <div style={{ flex: 1 }}>
+            <span style={{ fontFamily: 'var(--sans)', fontSize: 14, fontWeight: 600, color: '#E2E8F0' }}>{c.name}</span>
+            <span style={{ fontFamily: 'var(--mono)', fontSize: 11, color: '#475569', marginLeft: 6 }}>{c.symbol.toUpperCase()}</span>
+          </div>
+          <span style={{ fontFamily: 'var(--mono)', fontSize: 16, fontWeight: 700, color: '#F1F5F9' }}>
+            ${c.price >= 1000 ? c.price.toLocaleString(undefined, { maximumFractionDigits: 0 }) : c.price >= 1 ? c.price.toFixed(2) : c.price.toFixed(4)}
+          </span>
+          <span style={{
+            fontFamily: 'var(--mono)', fontSize: 13, fontWeight: 700, minWidth: 60, textAlign: 'right',
+            color: c.change24h >= 0 ? '#00D474' : '#FF4545',
+          }}>
+            {c.change24h >= 0 ? '+' : ''}{c.change24h?.toFixed(1)}%
+          </span>
+        </Link>
+      ))}
     </div>
   );
 }
