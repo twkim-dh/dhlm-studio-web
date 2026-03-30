@@ -5,7 +5,9 @@ import Link from 'next/link';
 import { stocks } from '@/data/markets';
 
 interface LiveMover {
-  rank: number; ticker: string; price: number; change: number; volume: number;
+  rank: number; ticker: string; name: string; price: number; change: number; volume: number;
+  sector?: string; industry?: string; exchange?: string;
+  weekHigh52?: number; weekLow52?: number; prevClose?: number;
 }
 
 const card = { background: '#111827', borderRadius: 14, border: '1px solid #1E293B' };
@@ -27,21 +29,19 @@ export default function MarketsPage() {
   }, []);
 
   const displayStocks = isLive
-    ? liveMovers.map(m => {
-        const match = stocks.find(s => s.ticker === m.ticker);
-        return {
-          ticker: m.ticker,
-          name: match?.name || m.ticker,
-          price: m.price,
-          change: m.change,
-          cap: match?.cap || '',
-          sector: match?.sector || '',
-          catalyst: match?.catalyst || '',
-          tags: match?.tags || [],
-          volume: m.volume,
-        };
-      })
-    : stocks.map(s => ({ ...s, volume: 0 }));
+    ? liveMovers.map(m => ({
+        ticker: m.ticker,
+        name: m.name || m.ticker,
+        price: m.price,
+        change: m.change,
+        sector: m.sector || '',
+        industry: m.industry || '',
+        exchange: m.exchange || '',
+        volume: m.volume,
+        weekHigh52: m.weekHigh52 || 0,
+        weekLow52: m.weekLow52 || 0,
+      }))
+    : stocks.map(s => ({ ticker: s.ticker, name: s.name, price: s.price, change: s.change, sector: s.sector, industry: '', exchange: '', volume: 0, weekHigh52: 0, weekLow52: 0 }));
 
   return (
     <div style={{ background: '#0B0F19', minHeight: '100vh' }}>
@@ -70,12 +70,15 @@ export default function MarketsPage() {
                   <div style={{ display: 'flex', alignItems: 'center', gap: 8, flexWrap: 'wrap' }}>
                     <span style={{ fontFamily: 'var(--mono)', fontSize: 16, fontWeight: 700, color: '#60A5FA' }}>{s.ticker}</span>
                     <span style={{ fontFamily: 'var(--sans)', fontSize: 14, fontWeight: 600, color: '#E2E8F0' }}>{s.name}</span>
-                    {s.cap && <span style={{ fontSize: 11, color: '#475569' }}>· {s.cap}</span>}
                   </div>
-                  {s.catalyst && <div style={{ fontSize: 13, color: '#64748B', marginTop: 6, lineHeight: 1.5 }}>{s.catalyst}</div>}
-                  {s.tags.length > 0 && (
-                    <div style={{ display: 'flex', gap: 4, marginTop: 8 }}>
-                      {s.tags.map(t => <span key={t} style={{ fontSize: 10, fontWeight: 600, padding: '3px 8px', borderRadius: 4, background: '#6B728014', color: '#6B7280', fontFamily: 'var(--mono)' }}>{t}</span>)}
+                  <div style={{ display: 'flex', gap: 6, marginTop: 6, flexWrap: 'wrap' }}>
+                    {s.sector && <span style={{ fontSize: 10, fontWeight: 600, padding: '3px 8px', borderRadius: 4, background: '#3B82F614', color: '#3B82F6', fontFamily: 'var(--mono)' }}>{s.sector}</span>}
+                    {s.industry && <span style={{ fontSize: 10, fontWeight: 600, padding: '3px 8px', borderRadius: 4, background: '#6B728014', color: '#6B7280', fontFamily: 'var(--mono)' }}>{s.industry}</span>}
+                    {s.exchange && <span style={{ fontSize: 10, color: '#475569', fontFamily: 'var(--mono)' }}>{s.exchange}</span>}
+                  </div>
+                  {s.weekHigh52 > 0 && (
+                    <div style={{ fontSize: 11, color: '#475569', marginTop: 6, fontFamily: 'var(--mono)' }}>
+                      52wk: ${s.weekLow52.toFixed(2)} — ${s.weekHigh52.toFixed(2)}
                     </div>
                   )}
                 </div>
