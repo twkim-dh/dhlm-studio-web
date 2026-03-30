@@ -70,7 +70,7 @@ export default function ComparePage() {
         <div style={{ fontFamily: 'var(--mono)', fontSize: 10, fontWeight: 700, color: '#64748B', letterSpacing: 3, marginBottom: 16 }}>POPULAR COMPARISONS</div>
         <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(280px, 1fr))', gap: 8 }}>
           {comparisons.map(c => (
-            <div key={`${c.city1}-${c.city2}`} style={{ ...card, padding: '18px 20px', borderRadius: 14 }}>
+            <Link key={`${c.city1}-${c.city2}`} href={`/compare/${c.city1.toLowerCase().replace(/ /g,'-')}-vs-${c.city2.toLowerCase().replace(/ /g,'-')}`} style={{ ...card, padding: '18px 20px', borderRadius: 14, textDecoration: 'none' }}>
               <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center' }}>
                 <div>
                   <span style={{ fontSize: 14, fontWeight: 600, color: '#E2E8F0', fontFamily: 'var(--sans)' }}>{c.flag1} {c.city1}</span>
@@ -80,7 +80,7 @@ export default function ComparePage() {
                 <span style={{ fontSize: 12, fontWeight: 700, color: '#00D474', fontFamily: 'var(--mono)' }}>{c.diff}</span>
               </div>
               <div style={{ fontSize: 11, color: '#475569', marginTop: 6, fontFamily: 'var(--sans)' }}>{c.cheaper} is cheaper</div>
-            </div>
+            </Link>
           ))}
         </div>
       </div>
