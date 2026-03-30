@@ -72,6 +72,31 @@ export default function RootLayout({
           src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-5182634360822108"
           crossOrigin="anonymous"
         />
+        {/* JSON-LD Organization */}
+        <script
+          type="application/ld+json"
+          dangerouslySetInnerHTML={{ __html: JSON.stringify({
+            "@context": "https://schema.org",
+            "@type": "Organization",
+            "name": "DHLM Studio",
+            "url": "https://dhlm-studio.com",
+            "logo": "https://dhlm-studio.com/favicon.ico",
+            "description": "Real-time global data platform: stock movers, creator trends, rankings, cost of living.",
+            "sameAs": ["https://github.com/twkim-dh"],
+            "contactPoint": { "@type": "ContactPoint", "email": "tw.kim@dhlm.co.kr" }
+          })}}
+        />
+        {/* JSON-LD WebSite with Search */}
+        <script
+          type="application/ld+json"
+          dangerouslySetInnerHTML={{ __html: JSON.stringify({
+            "@context": "https://schema.org",
+            "@type": "WebSite",
+            "name": "DHLM Studio",
+            "url": "https://dhlm-studio.com",
+            "description": "The World in Numbers — real-time data on markets, creators, rankings, and cost of living.",
+          })}}
+        />
       </head>
       <body style={{ background: '#0B0F19', color: '#F1F5F9', fontFamily: "'DM Sans', -apple-system, sans-serif" }} className="min-h-screen flex flex-col">
         <Header />
