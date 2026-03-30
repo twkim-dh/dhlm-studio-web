@@ -87,23 +87,45 @@ export default function RankingsPage() {
 
   // Fetch live data from World Bank API for country tabs
   useEffect(() => {
-    const apiTabs = ['gdp', 'population'] as const;
-    if (!apiTabs.includes(tab as typeof apiTabs[number])) return;
-    if (liveData[tab]) return; // Already fetched
+    if (liveData[tab]) return;
 
-    setLoading(true);
-    fetch(`/api/rankings?type=${tab}`)
-      .then(r => r.json())
-      .then(res => {
-        if (res.rankings) {
-          const mapped = res.rankings.map((r: { rank: number; name: string; flag: string; value: string }) => ({
-            rank: r.rank, name: r.name, value: r.value, flag: r.flag, delta: '', sub: `Source: World Bank · ${res.lastUpdated?.split('T')[0] || ''}`,
-          }));
-          setLiveData(prev => ({ ...prev, [tab]: mapped }));
-        }
-      })
-      .catch(() => {})
-      .finally(() => setLoading(false));
+    // World Bank tabs
+    if (tab === 'gdp' || tab === 'population') {
+      setLoading(true);
+      fetch(`/api/rankings?type=${tab}`)
+        .then(r => r.json())
+        .then(res => {
+          if (res.rankings) {
+            const mapped = res.rankings.map((r: { rank: number; name: string; flag: string; value: string }) => ({
+              rank: r.rank, name: r.name, value: r.value, flag: r.flag, delta: '', sub: `Source: World Bank · ${res.lastUpdated?.split('T')[0] || ''}`,
+            }));
+            setLiveData(prev => ({ ...prev, [tab]: mapped }));
+          }
+        })
+        .catch(() => {})
+        .finally(() => setLoading(false));
+      return;
+    }
+
+    // Companies tab — Yahoo Finance
+    if (tab === 'companies') {
+      setLoading(true);
+      fetch('/api/companies')
+        .then(r => r.json())
+        .then(res => {
+          if (res.companies) {
+            const mapped = res.companies.map((c: { rank: number; ticker: string; name: string; flag: string; price: number; change: number }) => ({
+              rank: c.rank, name: `${c.name} (${c.ticker})`, value: `$${c.price.toLocaleString()}`, flag: c.flag,
+              delta: `${c.change >= 0 ? '+' : ''}${c.change}%`,
+              sub: `Source: Yahoo Finance · ${res.lastUpdated?.split('T')[0] || ''}`,
+            }));
+            setLiveData(prev => ({ ...prev, companies: mapped }));
+          }
+        })
+        .catch(() => {})
+        .finally(() => setLoading(false));
+      return;
+    }
   }, [tab, liveData]);
 
   const items = liveData[tab] || data[tab];

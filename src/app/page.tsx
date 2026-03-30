@@ -124,6 +124,11 @@ export default function Home() {
           </div>
           <Link href="/markets" style={{ fontSize: 12, color: '#C73E3A', fontWeight: 600, fontFamily: 'var(--sans)' }}>View All →</Link>
         </div>
+        <LiveMarketsPreview />
+      </section>
+
+      {/* ── HIDDEN: old static movers kept as fallback data ── */}
+      <section id="markets-static" style={{ ...section, display: 'none' }}>
         <div style={{ display: 'flex', flexDirection: 'column', gap: 8 }}>
           {MOVERS.map((s, i) => (
             <div key={s.ticker} style={{ ...card, display: 'grid', gridTemplateColumns: '32px 1fr auto', gap: 14, padding: '16px 18px', alignItems: 'center', cursor: 'pointer' }}>
@@ -232,6 +237,46 @@ export default function Home() {
           ))}
         </div>
       </section>
+    </div>
+  );
+}
+
+/* ═══ Live Markets Preview (Alpha Vantage) ═══ */
+function LiveMarketsPreview() {
+  const [movers, setMovers] = useState<{ticker:string;price:number;change:number;volume:number}[]>([]);
+  const [live, setLive] = useState(false);
+
+  useEffect(() => {
+    fetch('/api/markets')
+      .then(r => r.json())
+      .then(data => {
+        if (data.movers && data.movers.length > 0) { setMovers(data.movers.slice(0, 5)); setLive(true); }
+      })
+      .catch(() => {});
+  }, []);
+
+  // Fallback to hardcoded MOVERS
+  const display = live ? movers : MOVERS.slice(0, 5).map(m => ({ ticker: m.ticker, price: m.price, change: m.change, volume: 0 }));
+  const getName = (ticker: string) => MOVERS.find(m => m.ticker === ticker)?.name || ticker;
+
+  return (
+    <div>
+      {live && <p style={{ fontFamily: 'var(--mono)', fontSize: 10, color: '#00D474', marginBottom: 8 }}>● LIVE — Alpha Vantage</p>}
+      <div style={{ display: 'flex', flexDirection: 'column', gap: 8 }}>
+        {display.map((s, i) => (
+          <Link key={s.ticker} href="/markets" style={{ ...card, display: 'grid', gridTemplateColumns: '32px 1fr auto', gap: 14, padding: '16px 18px', alignItems: 'center', textDecoration: 'none' }}>
+            <div style={{ fontFamily: 'var(--serif)', fontSize: 14, fontWeight: 800, color: i < 3 ? '#D4A843' : '#475569', textAlign: 'center' }}>#{i + 1}</div>
+            <div>
+              <span style={{ fontFamily: 'var(--mono)', fontSize: 15, fontWeight: 700, color: '#60A5FA' }}>{s.ticker}</span>
+              <span style={{ fontFamily: 'var(--sans)', fontSize: 13, fontWeight: 600, color: '#E2E8F0', marginLeft: 8 }}>{getName(s.ticker)}</span>
+            </div>
+            <div style={{ textAlign: 'right' }}>
+              <div style={{ fontFamily: 'var(--mono)', fontSize: 18, fontWeight: 800, color: '#F1F5F9' }}>${s.price.toFixed(2)}</div>
+              <Change value={s.change} />
+            </div>
+          </Link>
+        ))}
+      </div>
     </div>
   );
 }
