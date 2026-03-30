@@ -1,6 +1,6 @@
 'use client';
 
-import { useState } from 'react';
+import { useState, useEffect } from 'react';
 import Link from 'next/link';
 
 const YEAR = new Date().getFullYear();
@@ -82,7 +82,31 @@ const card = { background: '#111827', borderRadius: 18, border: '1px solid #1E29
 
 export default function RankingsPage() {
   const [tab, setTab] = useState<TabId>('billionaires');
-  const items = data[tab];
+  const [liveData, setLiveData] = useState<Record<string, typeof data['billionaires']>>({});
+  const [loading, setLoading] = useState(false);
+
+  // Fetch live data from World Bank API for country tabs
+  useEffect(() => {
+    const apiTabs = ['gdp', 'population'] as const;
+    if (!apiTabs.includes(tab as typeof apiTabs[number])) return;
+    if (liveData[tab]) return; // Already fetched
+
+    setLoading(true);
+    fetch(`/api/rankings?type=${tab}`)
+      .then(r => r.json())
+      .then(res => {
+        if (res.rankings) {
+          const mapped = res.rankings.map((r: { rank: number; name: string; flag: string; value: string }) => ({
+            rank: r.rank, name: r.name, value: r.value, flag: r.flag, delta: '', sub: `Source: World Bank · ${res.lastUpdated?.split('T')[0] || ''}`,
+          }));
+          setLiveData(prev => ({ ...prev, [tab]: mapped }));
+        }
+      })
+      .catch(() => {})
+      .finally(() => setLoading(false));
+  }, [tab, liveData]);
+
+  const items = liveData[tab] || data[tab];
 
   return (
     <div style={{ background: '#0B0F19', minHeight: '100vh' }}>
@@ -108,6 +132,18 @@ export default function RankingsPage() {
             }}>{t.label}</button>
           ))}
         </div>
+
+        {/* Live data indicator */}
+        {liveData[tab] && (
+          <p style={{ fontFamily: 'var(--mono)', fontSize: 10, color: '#00D474', marginBottom: 8 }}>
+            ● LIVE DATA — World Bank API
+          </p>
+        )}
+        {loading && (
+          <p style={{ fontFamily: 'var(--sans)', fontSize: 13, color: '#64748B', marginBottom: 16 }}>
+            Loading live data...
+          </p>
+        )}
 
         {/* Table */}
         <div style={card}>
