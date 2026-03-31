@@ -28,8 +28,33 @@ export default async function BlogPostPage({ params }: { params: Promise<{ slug:
 
   const related = blogPosts.filter(p => p.category === post.category && p.slug !== post.slug).slice(0, 3);
 
+  const jsonLd = {
+    '@context': 'https://schema.org',
+    '@type': 'Article',
+    headline: post.title,
+    description: post.description,
+    datePublished: post.date,
+    dateModified: post.date,
+    author: { '@type': 'Organization', name: 'DHLM Studio', url: 'https://dhlm-studio.com' },
+    publisher: { '@type': 'Organization', name: 'DHLM Studio', url: 'https://dhlm-studio.com', logo: { '@type': 'ImageObject', url: 'https://dhlm-studio.com/favicon.svg' } },
+    mainEntityOfPage: `https://dhlm-studio.com/blog/${slug}`,
+    articleSection: post.category,
+  };
+
+  const breadcrumb = {
+    '@context': 'https://schema.org',
+    '@type': 'BreadcrumbList',
+    itemListElement: [
+      { '@type': 'ListItem', position: 1, name: 'Home', item: 'https://dhlm-studio.com' },
+      { '@type': 'ListItem', position: 2, name: 'Blog', item: 'https://dhlm-studio.com/blog' },
+      { '@type': 'ListItem', position: 3, name: post.title, item: `https://dhlm-studio.com/blog/${slug}` },
+    ],
+  };
+
   return (
     <div style={{ background: '#0B0F19', minHeight: '100vh' }}>
+      <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLd) }} />
+      <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(breadcrumb) }} />
       <article style={{ maxWidth: 720, margin: '0 auto', padding: '80px 24px' }}>
         <Link href="/blog" style={{ fontSize: 12, color: '#64748B', fontFamily: 'var(--sans)' }}>← Blog</Link>
 
