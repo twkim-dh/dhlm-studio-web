@@ -208,6 +208,7 @@ export default function LottoPro() {
         @keyframes td{0%,100%{opacity:.3;transform:translateY(0)}50%{opacity:1;transform:translateY(-3px)}}
         input::placeholder{color:${GRAY}}
         ::-webkit-scrollbar{width:4px}::-webkit-scrollbar-track{background:transparent}::-webkit-scrollbar-thumb{background:${DARK3};border-radius:2px}
+        @media(prefers-reduced-motion:reduce){*{animation:none!important;transition:none!important}}
       `}</style>
     </div>
   );

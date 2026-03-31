@@ -3,6 +3,8 @@ import { Noto_Sans_KR, Playfair_Display, DM_Sans, IBM_Plex_Mono } from "next/fon
 import Header from "@/components/Header";
 import Footer from "@/components/Footer";
 import MobileNav from "@/components/MobileNav";
+import CookieConsent from "@/components/CookieConsent";
+import TickerMarquee from "@/components/TickerMarquee";
 import "./globals.css";
 
 const notoSansKR = Noto_Sans_KR({
@@ -89,6 +91,7 @@ export default function RootLayout({
         {/* Favicon */}
         <link rel="icon" href="/favicon.svg" type="image/svg+xml" />
         <link rel="apple-touch-icon" href="/favicon.svg" />
+        <link rel="manifest" href="/manifest.json" />
         <meta name="theme-color" content="#0B0F19" />
         {/* Google Analytics 4 — set NEXT_PUBLIC_GA_ID in .env.local and Vercel */}
         {process.env.NEXT_PUBLIC_GA_ID && (
@@ -141,10 +144,13 @@ export default function RootLayout({
       </head>
       <body style={{ background: '#0B0F19', color: '#F1F5F9', fontFamily: "'DM Sans', -apple-system, sans-serif" }} className="min-h-screen flex flex-col">
         <a href="#main-content" className="skip-to-content">Skip to content</a>
+        <TickerMarquee />
+        <div style={{ height: 28 }} /> {/* Marquee spacer */}
         <Header />
         <main id="main-content" className="flex-1 pb-14 md:pb-0">{children}</main>
         <Footer />
         <MobileNav />
+        <CookieConsent />
       </body>
     </html>
   );

@@ -38,7 +38,7 @@ export default function Header() {
 
   return (
     <>
-      <nav aria-label="Main navigation" style={{ position: "fixed", top: 0, left: 0, right: 0, zIndex: 100, padding: scrolled ? "12px 24px" : "18px 24px", background: scrolled ? "#0B0F19E8" : "transparent", backdropFilter: scrolled ? "blur(20px)" : "none", borderBottom: scrolled ? "1px solid #1C2333" : "none", transition: "all 0.3s" }}>
+      <nav aria-label="Main navigation" style={{ position: "fixed", top: 28, left: 0, right: 0, zIndex: 100, padding: scrolled ? "12px 24px" : "18px 24px", background: scrolled ? "#0B0F19E8" : "transparent", backdropFilter: scrolled ? "blur(20px)" : "none", borderBottom: scrolled ? "1px solid #1C2333" : "none", transition: "all 0.3s" }}>
         <div style={{ maxWidth: 1100, margin: "0 auto", display: "flex", alignItems: "center", justifyContent: "space-between" }}>
           <Link href="/" style={{ display: "flex", alignItems: "center", gap: 8 }}>
             <DhlmMono size={30} />
