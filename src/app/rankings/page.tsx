@@ -205,8 +205,48 @@ export default function RankingsPage() {
 
 /* ═══ Country Breakdown Bar Chart ═══ */
 function CountryBreakdown({ items, tab }: { items: typeof data.billionaires; tab: TabId }) {
-  if (tab === 'gdp' || tab === 'population') return null; // already country-based
+  // GDP / Population → value-based bar chart
+  if (tab === 'gdp' || tab === 'population') {
+    const parseVal = (v: string) => {
+      const n = parseFloat(v.replace(/[^0-9.]/g, ''));
+      if (v.includes('T')) return n * 1000;
+      if (v.includes('B')) return n;
+      if (v.includes('M')) return n / 1000;
+      return n;
+    };
+    const maxVal = Math.max(...items.map(r => parseVal(r.value)));
+    return (
+      <div style={{ marginTop: 20, padding: '18px 22px', borderRadius: 14, background: '#111827', border: '1px solid #1E293B' }}>
+        <div style={{ fontFamily: 'var(--mono)', fontSize: 9, fontWeight: 700, color: '#D4A843', letterSpacing: 2, marginBottom: 14 }}>
+          {tab === 'gdp' ? 'GDP COMPARISON' : 'POPULATION COMPARISON'} — TOP {items.length}
+        </div>
+        <div style={{ display: 'flex', flexDirection: 'column', gap: 6 }}>
+          {items.map(r => (
+            <div key={r.name} style={{ display: 'flex', alignItems: 'center', gap: 10 }}>
+              <span style={{ fontSize: 15, width: 22, textAlign: 'center' }}>{r.flag}</span>
+              <span style={{ fontFamily: 'var(--sans)', fontSize: 11, color: '#94A3B8', width: 90, flexShrink: 0, overflow: 'hidden', textOverflow: 'ellipsis', whiteSpace: 'nowrap' }}>{r.name}</span>
+              <div style={{ flex: 1, height: 16, borderRadius: 4, background: '#1E293B', overflow: 'hidden' }}>
+                <div style={{
+                  height: '100%', borderRadius: 4,
+                  width: `${(parseVal(r.value) / maxVal) * 100}%`,
+                  background: r.flag === '🇺🇸' ? 'linear-gradient(90deg, #3B82F6, #60A5FA)' : '#D4A84360',
+                  transition: 'width 0.5s ease',
+                }} />
+              </div>
+              <span style={{ fontFamily: 'var(--mono)', fontSize: 12, fontWeight: 800, color: r.flag === '🇺🇸' ? '#60A5FA' : '#E2E8F0', width: 50, textAlign: 'right' }}>{r.value}</span>
+            </div>
+          ))}
+        </div>
+        {tab === 'gdp' && items[0]?.flag === '🇺🇸' && (
+          <div style={{ marginTop: 12, padding: '8px 12px', borderRadius: 8, background: '#3B82F608', border: '1px solid #3B82F615', textAlign: 'center' }}>
+            <span style={{ fontSize: 11, color: '#60A5FA', fontWeight: 600 }}>🇺🇸 #1 GDP in the world — {items[0].value}</span>
+          </div>
+        )}
+      </div>
+    );
+  }
 
+  // Billionaires / Companies / Sports → country count breakdown
   const counts: Record<string, { flag: string; count: number }> = {};
   items.forEach(r => {
     const key = r.flag;
@@ -220,7 +260,9 @@ function CountryBreakdown({ items, tab }: { items: typeof data.billionaires; tab
     '🇺🇸': 'United States', '🇫🇷': 'France', '🇮🇳': 'India', '🇹🇼': 'Taiwan',
     '🇵🇹': 'Portugal', '🇦🇷': 'Argentina', '🇧🇷': 'Brazil', '🇯🇵': 'Japan',
     '🇬🇷': 'Greece', '🇳🇴': 'Norway', '🇬🇧': 'United Kingdom', '🇩🇪': 'Germany',
-    '🇨🇳': 'China', '🇰🇷': 'South Korea',
+    '🇨🇳': 'China', '🇰🇷': 'South Korea', '🇮🇩': 'Indonesia', '🇵🇰': 'Pakistan',
+    '🇳🇬': 'Nigeria', '🇧🇩': 'Bangladesh', '🇷🇺': 'Russia', '🇲🇽': 'Mexico',
+    '🇮🇹': 'Italy', '🇨🇦': 'Canada',
   };
 
   return (
