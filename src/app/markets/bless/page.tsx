@@ -32,48 +32,44 @@ const RECENT = [
   { name: 'Chris P.', ticker: 'IONQ', amount: 2, time: '25m', msg: 'Quantum karma please' },
 ];
 
-/* ═══ Fortune Buddha — Production Quality SVG ═══ */
+/* ═══ Fortune Buddha — Full Bezier Path SVG (zero circle/ellipse) ═══ */
 function FortuneBuddha({ glowing, blessing, sticks = 1 }: { glowing: boolean; blessing: boolean; sticks: number }) {
   return (
     <div style={{ position: 'relative', width: '100%', maxWidth: 320, margin: '0 auto', aspectRatio: '320/420' }}>
       {/* Glow backdrop */}
       <div style={{
         position: 'absolute', top: '5%', left: '10%', right: '10%', bottom: '20%',
-        background: `radial-gradient(ellipse, ${glowing ? '#D4A84340' : '#D4A84315'} 0%, transparent 70%)`,
-        borderRadius: '50%',
-        transition: 'background 0.8s ease',
-        filter: glowing ? 'blur(20px)' : 'blur(10px)',
+        background: `radial-gradient(ellipse, ${glowing ? '#D4A84345' : '#D4A84315'} 0%, transparent 70%)`,
+        borderRadius: '50%', transition: 'all 1s ease',
+        filter: glowing ? 'blur(24px)' : 'blur(12px)',
       }} />
 
-      {/* Particles — active during blessing */}
+      {/* Particles during blessing */}
       {blessing && (
         <div style={{ position: 'absolute', inset: 0, overflow: 'hidden', pointerEvents: 'none', zIndex: 10 }}>
-          {Array.from({ length: 20 }).map((_, i) => (
+          {Array.from({ length: 24 }).map((_, i) => (
             <div key={i} className="particle" style={{
               position: 'absolute',
-              left: `${20 + Math.random() * 60}%`,
-              bottom: '30%',
-              width: 3 + Math.random() * 4,
-              height: 3 + Math.random() * 4,
+              left: `${15 + Math.random() * 70}%`,
+              bottom: '28%',
+              width: 3 + Math.random() * 5,
+              height: 3 + Math.random() * 5,
               background: `radial-gradient(circle, ${['#E8C86A', '#F5E6A3', '#D4A843', '#FFD700'][i % 4]}, transparent)`,
               borderRadius: '50%',
-              animationDelay: `${i * 0.15}s`,
-              animationDuration: `${2 + Math.random() * 2}s`,
+              animationDelay: `${i * 0.12}s`,
+              animationDuration: `${2 + Math.random() * 2.5}s`,
             }} />
           ))}
         </div>
       )}
 
-      {/* Floating coins — during blessing */}
+      {/* Floating coins during blessing */}
       {blessing && (
         <div style={{ position: 'absolute', inset: 0, overflow: 'hidden', pointerEvents: 'none', zIndex: 10 }}>
-          {[0, 1, 2, 3, 4].map(i => (
+          {[0,1,2,3,4].map(i => (
             <div key={i} className="coin" style={{
-              position: 'absolute',
-              left: `${15 + i * 16}%`,
-              bottom: '25%',
-              fontSize: 16,
-              animationDelay: `${i * 0.3}s`,
+              position: 'absolute', left: `${12 + i * 17}%`, bottom: '22%',
+              fontSize: 18, animationDelay: `${i * 0.25}s`,
             }}>🪙</div>
           ))}
         </div>
@@ -81,215 +77,224 @@ function FortuneBuddha({ glowing, blessing, sticks = 1 }: { glowing: boolean; bl
 
       <svg viewBox="0 0 320 420" width="100%" height="100%" style={{ position: 'relative', zIndex: 2 }}>
         <defs>
-          {/* Gold gradients — 3 levels */}
-          <radialGradient id="bGold" cx="45%" cy="35%" r="60%">
-            <stop offset="0%" stopColor="#F5E6A3"/>
-            <stop offset="40%" stopColor="#D4A843"/>
-            <stop offset="100%" stopColor="#8B6914"/>
+          <radialGradient id="gHead" cx="42%" cy="32%" r="60%">
+            <stop offset="0%" stopColor="#F5E6A3"/><stop offset="40%" stopColor="#D4A843"/><stop offset="100%" stopColor="#8B6914"/>
           </radialGradient>
-          <radialGradient id="bGoldBody" cx="45%" cy="30%" r="65%">
-            <stop offset="0%" stopColor="#EEDFA0"/>
-            <stop offset="35%" stopColor="#D4A843"/>
-            <stop offset="75%" stopColor="#A07D2E"/>
-            <stop offset="100%" stopColor="#7A5F1A"/>
+          <radialGradient id="gBody" cx="44%" cy="28%" r="65%">
+            <stop offset="0%" stopColor="#EEDFA0"/><stop offset="30%" stopColor="#D4A843"/><stop offset="70%" stopColor="#A07D2E"/><stop offset="100%" stopColor="#7A5F1A"/>
           </radialGradient>
-          <linearGradient id="bGoldLotus" x1="0%" y1="0%" x2="100%" y2="100%">
-            <stop offset="0%" stopColor="#E8C86A"/>
-            <stop offset="50%" stopColor="#D4A843"/>
-            <stop offset="100%" stopColor="#8B6914"/>
+          <linearGradient id="gLotus" x1="0%" y1="0%" x2="100%" y2="100%">
+            <stop offset="0%" stopColor="#E8C86A"/><stop offset="50%" stopColor="#D4A843"/><stop offset="100%" stopColor="#8B6914"/>
           </linearGradient>
-          <linearGradient id="bHalo" x1="0%" y1="0%" x2="100%" y2="100%">
-            <stop offset="0%" stopColor="#D4A843"/>
-            <stop offset="100%" stopColor="#E8C86A"/>
-          </linearGradient>
-          <radialGradient id="bFlame" cx="50%" cy="30%" r="50%">
-            <stop offset="0%" stopColor="#FFA040"/>
-            <stop offset="60%" stopColor="#FF6B35"/>
-            <stop offset="100%" stopColor="#CC3300"/>
+          <radialGradient id="gFlame" cx="50%" cy="25%" r="55%">
+            <stop offset="0%" stopColor="#FFD060"/><stop offset="50%" stopColor="#FF8030"/><stop offset="100%" stopColor="#CC3300"/>
           </radialGradient>
-          {/* Glow filter */}
-          <filter id="goldGlow">
-            <feGaussianBlur stdDeviation="4" result="blur"/>
-            <feMerge><feMergeNode in="blur"/><feMergeNode in="SourceGraphic"/></feMerge>
-          </filter>
-          <filter id="softShadow">
-            <feDropShadow dx="0" dy="4" stdDeviation="6" floodColor="#00000060"/>
-          </filter>
+          <linearGradient id="gHalo" x1="0%" y1="0%" x2="100%" y2="100%">
+            <stop offset="0%" stopColor="#D4A843"/><stop offset="100%" stopColor="#E8C86A"/>
+          </linearGradient>
+          <filter id="fGlow"><feGaussianBlur stdDeviation="5" result="b"/><feMerge><feMergeNode in="b"/><feMergeNode in="SourceGraphic"/></feMerge></filter>
+          <filter id="fShadow"><feDropShadow dx="0" dy="5" stdDeviation="8" floodColor="#00000050"/></filter>
         </defs>
 
-        {/* ── Mandala / Halo ── */}
-        <g className="halo" style={{ transformOrigin: '160px 165px' }}>
-          {/* Outer ring */}
-          <circle cx="160" cy="165" r="120" fill="none" stroke="url(#bHalo)"
-            strokeWidth="0.8" opacity={glowing ? 0.6 : 0.2} strokeDasharray="3 6"/>
-          {/* Middle ring with lotus pattern */}
-          <circle cx="160" cy="165" r="105" fill="none" stroke="url(#bHalo)"
-            strokeWidth="0.5" opacity={glowing ? 0.5 : 0.15} strokeDasharray="8 4 2 4"/>
-          {/* Inner glow ring */}
-          <circle cx="160" cy="165" r="88" fill="none" stroke="#D4A843"
-            strokeWidth="1.2" opacity={glowing ? 0.4 : 0.1}/>
-          {/* Radiating lines */}
+        {/* ── Halo / Mandala (path arcs, no circle) ── */}
+        <g className="halo" style={{ transformOrigin: '160px 170px' }}>
+          <path d="M160,45 A115,115 0 1,1 159.9,45" fill="none" stroke="url(#gHalo)" strokeWidth="0.7" opacity={glowing ? 0.55 : 0.15} strokeDasharray="3 7"/>
+          <path d="M160,60 A100,100 0 1,1 159.9,60" fill="none" stroke="url(#gHalo)" strokeWidth="0.5" opacity={glowing ? 0.45 : 0.12} strokeDasharray="6 4 2 4"/>
+          <path d="M160,78 A82,82 0 1,1 159.9,78" fill="none" stroke="#D4A843" strokeWidth="1" opacity={glowing ? 0.35 : 0.08}/>
+          {/* Radiating rays (path lines) */}
           {Array.from({ length: 16 }).map((_, i) => {
-            const angle = (i * 22.5) * Math.PI / 180;
-            const x1 = 160 + Math.cos(angle) * 90;
-            const y1 = 165 + Math.sin(angle) * 90;
-            const x2 = 160 + Math.cos(angle) * 118;
-            const y2 = 165 + Math.sin(angle) * 118;
-            return <line key={i} x1={x1} y1={y1} x2={x2} y2={y2}
-              stroke="#D4A843" strokeWidth="0.3" opacity={glowing ? 0.35 : 0.08}/>;
+            const a = (i * 22.5) * Math.PI / 180;
+            const cx = 160, cy = 170;
+            return <path key={i} d={`M${cx + Math.cos(a)*84},${cy + Math.sin(a)*84} L${cx + Math.cos(a)*113},${cy + Math.sin(a)*113}`}
+              stroke="#D4A843" strokeWidth="0.3" opacity={glowing ? 0.3 : 0.06}/>;
           })}
         </g>
 
-        {/* ── Lotus Pedestal ── */}
-        <g filter="url(#softShadow)">
-          {/* Base */}
-          <ellipse cx="160" cy="340" rx="70" ry="12" fill="#1E293B"/>
-          {/* Lower petals */}
-          {[-45, -25, -8, 8, 25, 45].map((angle, i) => (
-            <path key={`lp${i}`}
-              d={`M160,320 Q${160 + angle * 1.8},${310 - Math.abs(angle) * 0.3} ${160 + angle * 2.2},330 Q${160 + angle * 1.2},335 160,332`}
-              fill="url(#bGoldLotus)" opacity={0.6 + i * 0.05}
-              stroke="#8B6914" strokeWidth="0.3"/>
-          ))}
-          {/* Upper petals */}
-          {[-30, -12, 12, 30].map((angle, i) => (
-            <path key={`up${i}`}
-              d={`M160,315 Q${160 + angle * 1.6},305 ${160 + angle * 1.8},322 Q${160 + angle * 0.8},328 160,325`}
-              fill="url(#bGoldLotus)" opacity={0.7 + i * 0.05}
-              stroke="#A07D2E" strokeWidth="0.3"/>
-          ))}
-          {/* Center cushion */}
-          <ellipse cx="160" cy="318" rx="35" ry="8" fill="#B8922E"/>
-          <ellipse cx="160" cy="316" rx="33" ry="7" fill="#D4A843"/>
+        {/* ── Lotus Pedestal (all path) ── */}
+        <g filter="url(#fShadow)">
+          {/* Shadow base */}
+          <path d="M88,342 C88,336 130,330 160,330 C190,330 232,336 232,342 C232,348 190,354 160,354 C130,354 88,348 88,342Z" fill="#0D111780"/>
+          {/* Outer petals — 7 petals fanning out */}
+          <path d="M160,318 C140,312 100,316 92,328 C98,332 130,330 160,330Z" fill="url(#gLotus)" opacity="0.55" stroke="#8B6914" strokeWidth="0.3"/>
+          <path d="M160,318 C145,310 112,310 108,324 C114,329 138,328 160,328Z" fill="url(#gLotus)" opacity="0.6" stroke="#8B6914" strokeWidth="0.3"/>
+          <path d="M160,318 C152,308 128,306 126,318 C130,324 148,325 160,325Z" fill="url(#gLotus)" opacity="0.65" stroke="#8B6914" strokeWidth="0.3"/>
+          <path d="M160,318 C180,312 220,316 228,328 C222,332 190,330 160,330Z" fill="url(#gLotus)" opacity="0.55" stroke="#8B6914" strokeWidth="0.3"/>
+          <path d="M160,318 C175,310 208,310 212,324 C206,329 182,328 160,328Z" fill="url(#gLotus)" opacity="0.6" stroke="#8B6914" strokeWidth="0.3"/>
+          <path d="M160,318 C168,308 192,306 194,318 C190,324 172,325 160,325Z" fill="url(#gLotus)" opacity="0.65" stroke="#8B6914" strokeWidth="0.3"/>
+          <path d="M160,316 C155,306 148,304 160,302 C172,304 165,306 160,316Z" fill="#E8C86A" opacity="0.7" stroke="#A07D2E" strokeWidth="0.3"/>
+          {/* Cushion top */}
+          <path d="M124,316 C124,310 140,306 160,306 C180,306 196,310 196,316 C196,322 180,326 160,326 C140,326 124,322 124,316Z" fill="#B8922E"/>
+          <path d="M126,314 C126,309 141,305 160,305 C179,305 194,309 194,314 C194,319 179,323 160,323 C141,323 126,319 126,314Z" fill="#D4A843"/>
         </g>
 
-        {/* ── Buddha Body ── */}
-        <g filter={glowing ? 'url(#goldGlow)' : undefined}>
-          {/* Body (big belly Budai style) */}
-          <path d="M120,310 C115,290 108,260 112,235 C116,215 125,200 135,192
-                   C140,188 148,186 160,186
-                   C172,186 180,188 185,192
-                   C195,200 204,215 208,235
-                   C212,260 205,290 200,310 Z"
-            fill="url(#bGoldBody)" stroke="#8B6914" strokeWidth="0.5"/>
-
-          {/* Belly highlight */}
-          <ellipse cx="160" cy="270" rx="30" ry="25" fill="#E8C86A" opacity="0.25"/>
-
-          {/* Robe folds */}
-          <path d="M130,230 Q145,245 135,270" fill="none" stroke="#A07D2E" strokeWidth="0.8" opacity="0.5"/>
-          <path d="M190,230 Q175,245 185,270" fill="none" stroke="#A07D2E" strokeWidth="0.8" opacity="0.5"/>
-          <path d="M140,260 Q160,275 180,260" fill="none" stroke="#A07D2E" strokeWidth="0.6" opacity="0.4"/>
-          {/* Robe collar */}
-          <path d="M135,198 Q160,210 185,198" fill="none" stroke="#A07D2E" strokeWidth="1" opacity="0.6"/>
+        {/* ── Buddha Body (Budai — big belly, all bezier) ── */}
+        <g filter={glowing ? 'url(#fGlow)' : undefined}>
+          {/* Torso + belly */}
+          <path d="M118,312 C114,295 106,262 110,238 C113,220 120,206 130,196
+                   C138,189 148,186 160,186 C172,186 182,189 190,196
+                   C200,206 207,220 210,238 C214,262 206,295 202,312
+                   C192,316 172,318 160,318 C148,318 128,316 118,312Z"
+            fill="url(#gBody)" stroke="#7A5F1A" strokeWidth="0.5"/>
+          {/* Belly button area — soft highlight */}
+          <path d="M135,255 C140,248 155,244 160,244 C165,244 180,248 185,255
+                   C188,268 182,282 175,288 C168,292 152,292 145,288 C138,282 132,268 135,255Z"
+            fill="#E8C86A" opacity="0.18"/>
+          {/* Robe drape left */}
+          <path d="M125,204 C130,215 128,235 124,260 C122,275 126,295 130,308"
+            fill="none" stroke="#8B6914" strokeWidth="0.8" opacity="0.35"/>
+          {/* Robe drape right */}
+          <path d="M195,204 C190,215 192,235 196,260 C198,275 194,295 190,308"
+            fill="none" stroke="#8B6914" strokeWidth="0.8" opacity="0.35"/>
+          {/* Belly crease */}
+          <path d="M142,268 C150,278 170,278 178,268" fill="none" stroke="#A07D2E" strokeWidth="0.6" opacity="0.3"/>
+          {/* Robe V-collar */}
+          <path d="M134,198 C142,206 155,212 160,214 C165,212 178,206 186,198"
+            fill="none" stroke="#8B6914" strokeWidth="1.2" opacity="0.45"/>
+          {/* Chest line */}
+          <path d="M145,210 C152,218 160,220 160,220 C160,220 168,218 175,210"
+            fill="none" stroke="#A07D2E" strokeWidth="0.5" opacity="0.25"/>
         </g>
 
-        {/* ── Head ── */}
-        <g filter={glowing ? 'url(#goldGlow)' : undefined}>
-          {/* Head shape */}
-          <ellipse cx="160" cy="158" rx="36" ry="40" fill="url(#bGold)"/>
-          {/* Ushnisha (top bump) */}
-          <circle cx="160" cy="120" r="12" fill="url(#bGold)"/>
-          <circle cx="160" cy="114" r="6" fill="#E8C86A"/>
-          {/* Hair bumps (curly) */}
+        {/* ── Head (all bezier path) ── */}
+        <g filter={glowing ? 'url(#fGlow)' : undefined}>
+          {/* Head — egg-ish shape */}
+          <path d="M160,118 C130,118 122,138 122,158 C122,178 132,198 160,198
+                   C188,198 198,178 198,158 C198,138 190,118 160,118Z"
+            fill="url(#gHead)"/>
+          {/* Ushnisha (topknot) — organic bump */}
+          <path d="M160,118 C148,118 142,108 144,98 C146,88 152,82 160,80
+                   C168,82 174,88 176,98 C178,108 172,118 160,118Z"
+            fill="url(#gHead)"/>
+          {/* Topknot jewel */}
+          <path d="M155,84 C155,78 165,78 165,84 C165,90 155,90 155,84Z" fill="#F5E6A3" stroke="#B8922E" strokeWidth="0.4"/>
+          {/* Hair curls — small bumps via path arcs */}
           {[
-            [140,128], [152,122], [168,122], [180,128],
-            [135,140], [145,132], [160,128], [175,132], [185,140],
-            [132,155], [140,148], [180,148], [188,155]
-          ].map(([x, y], i) => (
-            <circle key={`hb${i}`} cx={x} cy={y} r={4.5} fill="#B8922E" opacity="0.7"/>
-          ))}
+            'M138,115 C134,110 140,106 144,110 C148,114 142,118 138,115Z',
+            'M150,108 C147,103 153,99 157,103 C160,107 154,111 150,108Z',
+            'M164,108 C161,103 167,99 171,103 C174,107 168,111 164,108Z',
+            'M178,115 C174,110 180,106 184,110 C188,114 182,118 178,115Z',
+            'M130,128 C126,123 132,119 136,123 C140,127 134,131 130,128Z',
+            'M144,120 C141,115 147,112 150,116 C153,120 147,123 144,120Z',
+            'M160,116 C157,112 163,108 166,112 C169,116 163,119 160,116Z',
+            'M176,120 C173,115 179,112 182,116 C185,120 179,123 176,120Z',
+            'M190,128 C186,123 192,119 196,123 C200,127 194,131 190,128Z',
+            'M126,145 C122,140 128,136 132,140 C136,144 130,148 126,145Z',
+            'M194,145 C190,140 196,136 200,140 C204,144 198,148 194,145Z',
+            'M134,136 C131,131 137,128 140,132 C143,136 137,139 134,136Z',
+            'M186,136 C183,131 189,128 192,132 C195,136 189,139 186,136Z',
+          ].map((d, i) => <path key={`curl${i}`} d={d} fill="#B8922E" opacity="0.6"/>)}
 
-          {/* Ears (long, Buddha style) */}
-          <path d="M123,150 C118,142 116,155 118,170 C120,180 124,182 126,175 C128,165 127,155 123,150Z"
-            fill="url(#bGold)"/>
-          <path d="M197,150 C202,142 204,155 202,170 C200,180 196,182 194,175 C192,165 193,155 197,150Z"
-            fill="url(#bGold)"/>
+          {/* Left ear (long, drooping) */}
+          <path d="M122,148 C116,140 114,150 115,165 C116,178 120,186 125,183
+                   C129,180 128,168 127,158 C126,150 124,144 122,148Z"
+            fill="url(#gHead)" stroke="#A07D2E" strokeWidth="0.3"/>
+          {/* Right ear */}
+          <path d="M198,148 C204,140 206,150 205,165 C204,178 200,186 195,183
+                   C191,180 192,168 193,158 C194,150 196,144 198,148Z"
+            fill="url(#gHead)" stroke="#A07D2E" strokeWidth="0.3"/>
 
-          {/* Face */}
+          {/* ── Face ── */}
           {/* Urna (forehead dot) */}
-          <circle cx="160" cy="148" r="2.5" fill="#E8C86A" stroke="#B8922E" strokeWidth="0.5"/>
-          {/* Eyes (closed, happy) */}
-          <path d="M145,160 Q150,156 156,160" fill="none" stroke="#7A5F1A" strokeWidth="1.8" strokeLinecap="round"/>
-          <path d="M164,160 Q170,156 175,160" fill="none" stroke="#7A5F1A" strokeWidth="1.8" strokeLinecap="round"/>
+          <path d="M157.5,147 C157.5,144.5 162.5,144.5 162.5,147 C162.5,149.5 157.5,149.5 157.5,147Z"
+            fill="#F5E6A3" stroke="#B8922E" strokeWidth="0.4"/>
+          {/* Left eye (closed, curved happy arc) */}
+          <path d="M142,161 C145,155 151,155 155,161" fill="none" stroke="#6B5210" strokeWidth="2" strokeLinecap="round"/>
+          {/* Right eye */}
+          <path d="M165,161 C168,155 174,155 178,161" fill="none" stroke="#6B5210" strokeWidth="2" strokeLinecap="round"/>
+          {/* Left eyebrow */}
+          <path d="M140,155 C144,150 152,150 157,154" fill="none" stroke="#8B6914" strokeWidth="0.6" opacity="0.4"/>
+          {/* Right eyebrow */}
+          <path d="M163,154 C168,150 176,150 180,155" fill="none" stroke="#8B6914" strokeWidth="0.6" opacity="0.4"/>
           {/* Nose */}
-          <path d="M158,166 Q160,169 162,166" fill="none" stroke="#A07D2E" strokeWidth="0.8" strokeLinecap="round"/>
-          {/* Smile (big, happy Budai smile) */}
-          <path d="M146,174 Q153,182 160,183 Q167,182 174,174"
-            fill="none" stroke="#7A5F1A" strokeWidth="1.5" strokeLinecap="round"/>
-          {/* Cheek highlights */}
-          <circle cx="143" cy="172" r="4" fill="#E8C86A" opacity="0.2"/>
-          <circle cx="177" cy="172" r="4" fill="#E8C86A" opacity="0.2"/>
+          <path d="M157,168 C158,171 160,172 162,171 C163,168 163,168 163,168" fill="none" stroke="#A07D2E" strokeWidth="0.7" strokeLinecap="round"/>
+          {/* Big happy smile (Budai signature) */}
+          <path d="M143,176 C148,185 155,189 160,190 C165,189 172,185 177,176"
+            fill="none" stroke="#6B5210" strokeWidth="1.8" strokeLinecap="round"/>
+          {/* Smile dimples */}
+          <path d="M141,176 C139,178 140,180 142,179" fill="none" stroke="#8B6914" strokeWidth="0.6" opacity="0.5"/>
+          <path d="M179,176 C181,178 180,180 178,179" fill="none" stroke="#8B6914" strokeWidth="0.6" opacity="0.5"/>
+          {/* Cheek blush (soft paths) */}
+          <path d="M136,174 C136,170 144,170 144,174 C144,178 136,178 136,174Z" fill="#E8C86A" opacity="0.15"/>
+          <path d="M176,174 C176,170 184,170 184,174 C184,178 176,178 176,174Z" fill="#E8C86A" opacity="0.15"/>
         </g>
 
-        {/* ── Arms ── */}
-        {/* Left arm — raised in blessing (Abhaya Mudra) */}
-        <path d="M126,210 C118,205 108,195 105,180 C103,170 106,165 110,168 C114,172 112,178 112,185"
-          fill="url(#bGold)" stroke="#A07D2E" strokeWidth="0.5"/>
-        {/* Left hand — open palm */}
-        <path d="M105,180 C102,174 100,168 103,164 C106,160 110,162 112,166
-                 C113,163 115,160 118,162 C120,164 119,168 117,172
-                 C118,170 120,167 122,169 C123,172 121,176 118,179 Z"
-          fill="url(#bGold)" stroke="#A07D2E" strokeWidth="0.3"/>
+        {/* ── Left Arm + Hand (blessing gesture — Abhaya Mudra) ── */}
+        <path d="M128,208 C120,202 112,192 108,178 C106,168 108,162 113,165 C116,168 115,175 114,184"
+          fill="url(#gHead)" stroke="#8B6914" strokeWidth="0.4"/>
+        {/* Open palm with fingers */}
+        <path d="M108,178 C105,170 103,162 106,157 C109,153 113,155 114,160
+                 C115,156 118,153 121,156 C123,159 121,164 119,168
+                 C121,165 124,162 126,165 C127,169 124,174 120,178
+                 C116,181 112,182 108,178Z"
+          fill="url(#gHead)" stroke="#8B6914" strokeWidth="0.3"/>
+        {/* Palm line detail */}
+        <path d="M110,170 C114,168 118,170 120,173" fill="none" stroke="#A07D2E" strokeWidth="0.3" opacity="0.4"/>
 
-        {/* Right arm — holding gold ingot */}
-        <path d="M194,210 C202,215 210,225 215,240 C218,250 214,255 210,252"
-          fill="url(#bGold)" stroke="#A07D2E" strokeWidth="0.5"/>
-        {/* Right hand */}
-        <ellipse cx="212" cy="248" rx="8" ry="6" fill="url(#bGold)" stroke="#A07D2E" strokeWidth="0.3"/>
-        {/* Gold ingot / yuanbao */}
-        <path d="M202,240 L208,232 L222,232 L228,240 L222,244 L208,244 Z"
-          fill="#E8C86A" stroke="#B8922E" strokeWidth="0.5"/>
-        <path d="M208,232 L215,228 L222,232" fill="none" stroke="#F5E6A3" strokeWidth="0.5"/>
-        <text x="215" y="241" textAnchor="middle" fontSize="8" fontWeight="900" fill="#8B6914" fontFamily="serif">$</text>
+        {/* ── Right Arm + Hand + Gold Yuanbao ── */}
+        <path d="M192,208 C200,214 210,226 214,242 C216,250 213,256 209,254
+                 C206,252 208,245 210,238"
+          fill="url(#gHead)" stroke="#8B6914" strokeWidth="0.4"/>
+        {/* Right hand cupped */}
+        <path d="M210,244 C214,240 218,242 218,248 C218,254 212,256 208,254
+                 C204,252 206,246 210,244Z"
+          fill="url(#gHead)" stroke="#8B6914" strokeWidth="0.3"/>
+        {/* Gold Yuanbao (ingot) */}
+        <path d="M200,238 C202,232 208,228 215,226 C222,228 228,232 230,238
+                 C228,244 222,248 215,248 C208,248 202,244 200,238Z"
+          fill="#E8C86A" stroke="#B8922E" strokeWidth="0.6"/>
+        {/* Yuanbao top curve */}
+        <path d="M206,230 C210,224 220,224 224,230" fill="none" stroke="#F5E6A3" strokeWidth="0.8"/>
+        {/* $ symbol */}
+        <path d="M213,234 L213,244 M210,236 C210,234 216,233 216,236 C216,238 210,239 210,241 C210,243 216,244 216,242"
+          fill="none" stroke="#8B6914" strokeWidth="0.8" strokeLinecap="round"/>
 
-        {/* ── Incense Sticks ── */}
+        {/* ── Incense System (all path) ── */}
         {sticks >= 1 && (
           <g>
-            {/* Bowl left */}
-            <ellipse cx="65" cy="338" rx="14" ry="5" fill="#4A3520"/>
-            <path d="M51,338 Q52,330 58,328 L72,328 Q78,330 79,338" fill="#5C4633" stroke="#3A2815" strokeWidth="0.5"/>
+            {/* Bowl (path, no ellipse) */}
+            <path d="M50,340 C50,336 56,332 65,332 C74,332 80,336 80,340 C80,344 74,348 65,348 C56,348 50,344 50,340Z" fill="#4A3520"/>
+            <path d="M52,338 C53,332 58,330 65,330 C72,330 77,332 78,338" fill="#5C4633" stroke="#3A2815" strokeWidth="0.5"/>
             {/* Stick */}
-            <line x1="65" y1="328" x2="65" y2="278" stroke="#C4956A" strokeWidth="1.5"/>
+            <path d="M65,330 L65,278" stroke="#C4956A" strokeWidth="1.5" strokeLinecap="round"/>
             {/* Flame */}
-            <ellipse cx="65" cy="276" rx="2.5" ry="3.5" fill="url(#bFlame)" className="flame"/>
+            <path d="M65,278 C62,274 61,270 63,266 C64,264 66,264 67,266 C69,270 68,274 65,278Z"
+              fill="url(#gFlame)" className="flame"/>
             {/* Smoke */}
-            <path className="smoke smoke1" d="M65,272 Q60,255 67,238 Q74,220 62,200"
-              fill="none" stroke="#D4A84325" strokeWidth="2.5" strokeLinecap="round"/>
+            <path className="smoke smoke1" d="M65,264 C60,248 70,232 62,216 C56,202 68,188 63,172"
+              fill="none" stroke="#D4A84320" strokeWidth="3" strokeLinecap="round"/>
           </g>
         )}
         {sticks >= 2 && (
           <g>
-            {/* Center stick (in lotus area) */}
-            <line x1="160" y1="340" x2="160" y2="295" stroke="#C4956A" strokeWidth="1.5"/>
-            <ellipse cx="160" cy="293" rx="2.5" ry="3.5" fill="url(#bFlame)" className="flame"/>
-            <path className="smoke smoke2" d="M160,289 Q155,272 162,255 Q169,238 157,218"
-              fill="none" stroke="#D4A84320" strokeWidth="2" strokeLinecap="round"/>
+            <path d="M160,342 L160,296" stroke="#C4956A" strokeWidth="1.5" strokeLinecap="round"/>
+            <path d="M160,296 C157,292 156,288 158,284 C159,282 161,282 162,284 C164,288 163,292 160,296Z"
+              fill="url(#gFlame)" className="flame"/>
+            <path className="smoke smoke2" d="M160,282 C155,266 165,250 158,234 C152,220 164,206 158,190"
+              fill="none" stroke="#D4A84318" strokeWidth="2.5" strokeLinecap="round"/>
           </g>
         )}
         {sticks >= 3 && (
           <g>
-            {/* Bowl right */}
-            <ellipse cx="255" cy="338" rx="14" ry="5" fill="#4A3520"/>
-            <path d="M241,338 Q242,330 248,328 L262,328 Q268,330 269,338" fill="#5C4633" stroke="#3A2815" strokeWidth="0.5"/>
-            {/* Stick */}
-            <line x1="255" y1="328" x2="255" y2="278" stroke="#C4956A" strokeWidth="1.5"/>
-            <ellipse cx="255" cy="276" rx="2.5" ry="3.5" fill="url(#bFlame)" className="flame"/>
-            <path className="smoke smoke3" d="M255,272 Q250,255 257,238 Q264,220 252,200"
-              fill="none" stroke="#D4A84325" strokeWidth="2.5" strokeLinecap="round"/>
+            <path d="M240,340 C240,336 246,332 255,332 C264,332 270,336 270,340 C270,344 264,348 255,348 C246,348 240,344 240,340Z" fill="#4A3520"/>
+            <path d="M242,338 C243,332 248,330 255,330 C262,330 267,332 268,338" fill="#5C4633" stroke="#3A2815" strokeWidth="0.5"/>
+            <path d="M255,330 L255,278" stroke="#C4956A" strokeWidth="1.5" strokeLinecap="round"/>
+            <path d="M255,278 C252,274 251,270 253,266 C254,264 256,264 257,266 C259,270 258,274 255,278Z"
+              fill="url(#gFlame)" className="flame"/>
+            <path className="smoke smoke3" d="M255,264 C250,248 260,232 252,216 C246,202 258,188 253,172"
+              fill="none" stroke="#D4A84320" strokeWidth="3" strokeLinecap="round"/>
           </g>
         )}
 
-        {/* ── Sparkle stars (glowing state) ── */}
+        {/* ── Sparkle stars (path-based 4-point stars) ── */}
         {glowing && (
           <g>
-            <text x="45" y="100" fontSize="14" fill="#D4A843" className="twinkle1">✦</text>
-            <text x="270" y="90" fontSize="11" fill="#E8C86A" className="twinkle2">✧</text>
-            <text x="80" y="140" fontSize="8" fill="#F5E6A3" className="twinkle3">✦</text>
-            <text x="240" y="150" fontSize="9" fill="#D4A843" className="twinkle1">✧</text>
-            <text x="160" y="60" fontSize="16" fill="#E8C86A" className="twinkle2">✶</text>
-            <text x="50" y="200" fontSize="7" fill="#D4A843" className="twinkle3">✦</text>
-            <text x="268" y="210" fontSize="8" fill="#E8C86A" className="twinkle1">✧</text>
+            <path className="twinkle1" d="M48,95 L50,90 L52,95 L57,97 L52,99 L50,104 L48,99 L43,97Z" fill="#D4A843" opacity="0.7"/>
+            <path className="twinkle2" d="M270,88 L271.5,84 L273,88 L277,89.5 L273,91 L271.5,95 L270,91 L266,89.5Z" fill="#E8C86A" opacity="0.6"/>
+            <path className="twinkle3" d="M82,135 L83,132 L84,135 L87,136 L84,137 L83,140 L82,137 L79,136Z" fill="#F5E6A3" opacity="0.5"/>
+            <path className="twinkle1" d="M238,148 L239.5,144 L241,148 L245,149.5 L241,151 L239.5,155 L238,151 L234,149.5Z" fill="#D4A843" opacity="0.5"/>
+            <path className="twinkle2" d="M157,52 L159,46 L161,52 L167,54 L161,56 L159,62 L157,56 L151,54Z" fill="#E8C86A" opacity="0.8"/>
+            <path className="twinkle3" d="M52,196 L53,193 L54,196 L57,197 L54,198 L53,201 L52,198 L49,197Z" fill="#D4A843" opacity="0.4"/>
+            <path className="twinkle1" d="M266,205 L267.5,201 L269,205 L273,206.5 L269,208 L267.5,212 L266,208 L262,206.5Z" fill="#E8C86A" opacity="0.5"/>
           </g>
         )}
       </svg>
