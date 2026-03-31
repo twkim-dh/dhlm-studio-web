@@ -2,6 +2,7 @@
 
 import { useState, useEffect } from 'react';
 import Link from 'next/link';
+import LikeButton from '@/components/LikeButton';
 
 const YEAR = new Date().getFullYear();
 
@@ -139,7 +140,10 @@ export default function RankingsPage() {
             <h1 style={{ fontFamily: 'var(--serif)', fontSize: 32, fontWeight: 900, color: '#F1F5F9', margin: 0 }}>World Rankings</h1>
             <p style={{ fontFamily: 'var(--sans)', fontSize: 14, color: '#64748B', marginTop: 4 }}>Real-time data on wealth, companies, countries, and sports</p>
           </div>
-          <Link href="/" style={{ fontSize: 12, color: '#64748B', fontFamily: 'var(--sans)' }}>← Home</Link>
+          <div style={{ display: 'flex', alignItems: 'center', gap: 12 }}>
+            <LikeButton pageId={`rankings-${tab}`} />
+            <Link href="/" style={{ fontSize: 12, color: '#64748B', fontFamily: 'var(--sans)' }}>← Home</Link>
+          </div>
         </div>
 
         {/* Tabs */}

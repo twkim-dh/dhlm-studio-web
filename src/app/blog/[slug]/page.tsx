@@ -2,6 +2,7 @@ import type { Metadata } from 'next';
 import Link from 'next/link';
 import { blogPosts, getBlogPostBySlug } from '@/data/blog-posts';
 import AdUnit from '@/components/AdUnit';
+import LikeButton from '@/components/LikeButton';
 
 export function generateStaticParams() {
   return blogPosts.map(p => ({ slug: p.slug }));
@@ -71,6 +72,7 @@ export default async function BlogPostPage({ params }: { params: Promise<{ slug:
           <p style={{ fontFamily: 'var(--sans)', fontSize: 15, color: '#64748B', lineHeight: 1.7, marginTop: 16 }}>
             {post.description}
           </p>
+          <div style={{ marginTop: 16 }}><LikeButton pageId={`blog-${slug}`} /></div>
         </div>
 
         {/* Sections */}

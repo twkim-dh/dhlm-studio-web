@@ -3,6 +3,7 @@
 import { useState, useEffect } from 'react';
 import Link from 'next/link';
 import Image from 'next/image';
+import ReactionButtons from '@/components/ReactionButtons';
 
 interface Mover {
   rank: number; ticker: string; name: string; price: number; change: number; volume: number;
@@ -164,13 +165,7 @@ function StockCard({ s }: { s: Mover }) {
               </div>
               <div style={{ padding: 14, opacity: revealed ? 1 : 0, transform: revealed ? 'translateY(0)' : 'translateY(6px)', transition: 'all 0.5s' }}>
                 <p style={{ fontSize: 13, color: '#E2E8F0', lineHeight: 1.8, fontStyle: 'italic', margin: 0 }}>"{roast.roast}"</p>
-                <div style={{ display: 'flex', gap: 5, marginTop: 10, flexWrap: 'wrap' }}>
-                  {[{ e: '😂', l: 'Hilarious' }, { e: '🎯', l: 'True' }, { e: '😤', l: 'Rude' }, { e: '🤔', l: 'Fair' }].map(r => (
-                    <button key={r.l} style={{ padding: '5px 10px', borderRadius: 16, background: '#1F2937', border: '1px solid #374151', color: '#94A3B8', fontSize: 10, cursor: 'pointer', display: 'flex', alignItems: 'center', gap: 3 }}>
-                      {r.e} {r.l}
-                    </button>
-                  ))}
-                </div>
+                <ReactionButtons ticker={s.ticker} />
               </div>
               <div style={{ padding: '8px 14px', borderTop: '1px solid #1F2937', background: '#0D111780' }}>
                 <p style={{ fontSize: 8, color: '#475569', margin: 0, textAlign: 'center' }}>🤖 Satirical AI. Entertainment only. NOT investment advice.</p>
