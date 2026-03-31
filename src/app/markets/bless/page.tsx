@@ -179,8 +179,9 @@ export default function BlessMyStock() {
   };
 
   const share = () => {
-    const text = `🪷 I just blessed $${ticker} with the Fortune Buddha on DHLM Studio.\n\n"${blessingText.replace(/[🐉✨🔥🪷🐲💰🪙🙏🔮🌏🛡️]/g, '').trim()}"\n\n$${amount} donated to St. Jude Children's Hospital ❤️\n\nBless your stock → dhlm-studio.com/markets/bless`;
-    window.open(`https://twitter.com/intent/tweet?text=${encodeURIComponent(text)}`, '_blank');
+    const text = `🪷 I just blessed $${ticker} with the Fortune Buddha on DHLM Studio.\n\n$${amount} donated to St. Jude Children's Hospital ❤️\n\nBless your stock →`;
+    const url = `https://dhlm-studio.com/markets/bless`;
+    window.open(`https://twitter.com/intent/tweet?text=${encodeURIComponent(text)}&url=${encodeURIComponent(url)}`, '_blank');
   };
 
   const reset = () => { setTicker(''); setName(''); setMessage(''); setAmount(1); setBlessingText(''); setFortune(''); setStep('input'); setGlowing(false); setBlessing(false); };
