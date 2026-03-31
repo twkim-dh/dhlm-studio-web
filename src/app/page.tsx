@@ -71,8 +71,6 @@ const sectionTitle = { fontFamily: 'var(--serif)', fontSize: 26, fontWeight: 800
 export default function Home() {
   return (
     <div style={{ background: '#0B0F19', color: '#F1F5F9', minHeight: '100vh' }}>
-      <link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700;800&family=IBM+Plex+Mono:wght@400;500;600;700&family=Playfair+Display:wght@700;800;900&display=swap" rel="stylesheet" />
-
       {/* ── Hero ── */}
       <section style={{ padding: '60px 24px 32px', maxWidth: 1100, margin: '0 auto' }}>
         <Tag color="#C73E3A">REAL-TIME DATA · {YEAR}</Tag>

@@ -40,7 +40,7 @@ export const metadata: Metadata = {
     siteName: "DHLM Studio",
     locale: "en_US",
     type: "website",
-    images: [{ url: "/og-default.png", width: 1200, height: 630, alt: "DHLM Studio — The World in Numbers" }],
+    images: [{ url: "/opengraph-image", width: 1200, height: 630, alt: "DHLM Studio — The World in Numbers" }],
   },
   twitter: {
     card: "summary_large_image",
@@ -75,14 +75,18 @@ export default function RootLayout({
         <link rel="icon" href="/favicon.svg" type="image/svg+xml" />
         <link rel="apple-touch-icon" href="/favicon.svg" />
         <meta name="theme-color" content="#0B0F19" />
-        {/* Google Analytics 4 — replace G-XXXXXXXXXX with real ID */}
-        <script async src="https://www.googletagmanager.com/gtag/js?id=G-XXXXXXXXXX" />
-        <script dangerouslySetInnerHTML={{ __html: `
-          window.dataLayer = window.dataLayer || [];
-          function gtag(){dataLayer.push(arguments);}
-          gtag('js', new Date());
-          gtag('config', 'G-XXXXXXXXXX');
-        `}} />
+        {/* Google Analytics 4 — set NEXT_PUBLIC_GA_ID in .env.local and Vercel */}
+        {process.env.NEXT_PUBLIC_GA_ID && (
+          <>
+            <script async src={`https://www.googletagmanager.com/gtag/js?id=${process.env.NEXT_PUBLIC_GA_ID}`} />
+            <script dangerouslySetInnerHTML={{ __html: `
+              window.dataLayer = window.dataLayer || [];
+              function gtag(){dataLayer.push(arguments);}
+              gtag('js', new Date());
+              gtag('config', '${process.env.NEXT_PUBLIC_GA_ID}');
+            `}} />
+          </>
+        )}
         {/* Google Fonts */}
         <link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700;800&family=IBM+Plex+Mono:wght@400;500;600;700&display=swap" rel="stylesheet" />
         <script
@@ -104,7 +108,7 @@ export default function RootLayout({
             "contactPoint": { "@type": "ContactPoint", "email": "tw.kim@dhlm.co.kr" }
           })}}
         />
-        {/* JSON-LD WebSite with Search */}
+        {/* JSON-LD WebSite with SearchAction */}
         <script
           type="application/ld+json"
           dangerouslySetInnerHTML={{ __html: JSON.stringify({
@@ -113,12 +117,18 @@ export default function RootLayout({
             "name": "DHLM Studio",
             "url": "https://dhlm-studio.com",
             "description": "The World in Numbers — real-time data on markets, creators, rankings, and cost of living.",
+            "potentialAction": {
+              "@type": "SearchAction",
+              "target": "https://dhlm-studio.com/markets/search?q={search_term_string}",
+              "query-input": "required name=search_term_string"
+            }
           })}}
         />
       </head>
       <body style={{ background: '#0B0F19', color: '#F1F5F9', fontFamily: "'DM Sans', -apple-system, sans-serif" }} className="min-h-screen flex flex-col">
+        <a href="#main-content" className="skip-to-content">Skip to content</a>
         <Header />
-        <main className="flex-1">{children}</main>
+        <main id="main-content" className="flex-1">{children}</main>
         <Footer />
       </body>
     </html>
