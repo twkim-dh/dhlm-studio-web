@@ -1,6 +1,7 @@
 import type { Metadata } from 'next';
 import Link from 'next/link';
 import { Counter, LiveMarketsPreview, CryptoPreview } from '@/components/HomeClient';
+import FadeIn from '@/components/FadeIn';
 
 const YEAR = new Date().getFullYear();
 
@@ -86,6 +87,7 @@ export default function Home() {
       </div>
 
       {/* ── Top Movers (client) ── */}
+      <FadeIn>
       <section id="markets" style={section}>
         <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'baseline', marginBottom: 16 }}>
           <div>
@@ -96,8 +98,10 @@ export default function Home() {
         </div>
         <LiveMarketsPreview />
       </section>
+      </FadeIn>
 
       {/* ── Creators (static — server rendered) ── */}
+      <FadeIn delay={0.1}>
       <section id="creators" style={section}>
         <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'baseline', marginBottom: 16 }}>
           <div>
@@ -127,8 +131,10 @@ export default function Home() {
           ))}
         </div>
       </section>
+      </FadeIn>
 
       {/* ── Rankings (static — server rendered) ── */}
+      <FadeIn delay={0.1}>
       <section id="rankings" style={{ padding: '12px 24px 48px', maxWidth: 1100, margin: '0 auto' }}>
         <div style={{ padding: '20px 22px', marginBottom: 16, background: 'linear-gradient(135deg, #D4A84308, #D4A84303)', borderRadius: 16, border: '1px solid #D4A84315' }}>
           <div style={sectionLabel('#D4A843')}>🏆 GLOBAL RANKINGS · {YEAR}</div>
@@ -147,8 +153,10 @@ export default function Home() {
           ))}
         </div>
       </section>
+      </FadeIn>
 
       {/* ── Crypto Preview (client) ── */}
+      <FadeIn>
       <section style={section}>
         <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'baseline', marginBottom: 16 }}>
           <div>
@@ -159,8 +167,10 @@ export default function Home() {
         </div>
         <CryptoPreview />
       </section>
+      </FadeIn>
 
       {/* ── Categories (static — server rendered) ── */}
+      <FadeIn delay={0.1}>
       <section style={section}>
         <div style={sectionLabel('#64748B')}>EXPLORE</div>
         <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(240px, 1fr))', gap: 12, marginTop: 16 }}>
@@ -182,6 +192,7 @@ export default function Home() {
           ))}
         </div>
       </section>
+      </FadeIn>
     </div>
   );
 }

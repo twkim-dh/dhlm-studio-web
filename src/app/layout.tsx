@@ -2,6 +2,7 @@ import type { Metadata } from "next";
 import { Noto_Sans_KR, Playfair_Display, DM_Sans, IBM_Plex_Mono } from "next/font/google";
 import Header from "@/components/Header";
 import Footer from "@/components/Footer";
+import MobileNav from "@/components/MobileNav";
 import "./globals.css";
 
 const notoSansKR = Noto_Sans_KR({
@@ -141,8 +142,9 @@ export default function RootLayout({
       <body style={{ background: '#0B0F19', color: '#F1F5F9', fontFamily: "'DM Sans', -apple-system, sans-serif" }} className="min-h-screen flex flex-col">
         <a href="#main-content" className="skip-to-content">Skip to content</a>
         <Header />
-        <main id="main-content" className="flex-1">{children}</main>
+        <main id="main-content" className="flex-1 pb-14 md:pb-0">{children}</main>
         <Footer />
+        <MobileNav />
       </body>
     </html>
   );

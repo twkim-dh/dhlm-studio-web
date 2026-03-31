@@ -1,6 +1,7 @@
 import type { Metadata } from 'next';
 import Link from 'next/link';
 import { blogPosts, getBlogPostBySlug } from '@/data/blog-posts';
+import AdUnit from '@/components/AdUnit';
 
 export function generateStaticParams() {
   return blogPosts.map(p => ({ slug: p.slug }));
@@ -85,6 +86,9 @@ export default async function BlogPostPage({ params }: { params: Promise<{ slug:
             ))}
           </div>
         ))}
+
+        {/* Ad Unit */}
+        <AdUnit format="horizontal" />
 
         {/* Related */}
         {related.length > 0 && (
