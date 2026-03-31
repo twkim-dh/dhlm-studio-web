@@ -32,34 +32,266 @@ const RECENT = [
   { name: 'Chris P.', ticker: 'IONQ', amount: 2, time: '25m', msg: 'Quantum karma please' },
 ];
 
-function FortuneBuddha({ glowing, sticks = 1 }: { glowing: boolean; sticks: number }) {
+/* ═══ Fortune Buddha — Production Quality SVG ═══ */
+function FortuneBuddha({ glowing, blessing, sticks = 1 }: { glowing: boolean; blessing: boolean; sticks: number }) {
   return (
-    <div style={{ position: 'relative', width: 200, height: 240, margin: '0 auto' }}>
-      {glowing && <div style={{ position: 'absolute', top: 10, left: 0, right: 0, bottom: 30, background: 'radial-gradient(ellipse, #D4A84325 0%, transparent 70%)', borderRadius: '50%', animation: 'glow 2s ease-in-out infinite' }} />}
-      <svg viewBox="0 0 200 240" width="200" height="240" style={{ position: 'relative', zIndex: 1 }}>
+    <div style={{ position: 'relative', width: '100%', maxWidth: 320, margin: '0 auto', aspectRatio: '320/420' }}>
+      {/* Glow backdrop */}
+      <div style={{
+        position: 'absolute', top: '5%', left: '10%', right: '10%', bottom: '20%',
+        background: `radial-gradient(ellipse, ${glowing ? '#D4A84340' : '#D4A84315'} 0%, transparent 70%)`,
+        borderRadius: '50%',
+        transition: 'background 0.8s ease',
+        filter: glowing ? 'blur(20px)' : 'blur(10px)',
+      }} />
+
+      {/* Particles — active during blessing */}
+      {blessing && (
+        <div style={{ position: 'absolute', inset: 0, overflow: 'hidden', pointerEvents: 'none', zIndex: 10 }}>
+          {Array.from({ length: 20 }).map((_, i) => (
+            <div key={i} className="particle" style={{
+              position: 'absolute',
+              left: `${20 + Math.random() * 60}%`,
+              bottom: '30%',
+              width: 3 + Math.random() * 4,
+              height: 3 + Math.random() * 4,
+              background: `radial-gradient(circle, ${['#E8C86A', '#F5E6A3', '#D4A843', '#FFD700'][i % 4]}, transparent)`,
+              borderRadius: '50%',
+              animationDelay: `${i * 0.15}s`,
+              animationDuration: `${2 + Math.random() * 2}s`,
+            }} />
+          ))}
+        </div>
+      )}
+
+      {/* Floating coins — during blessing */}
+      {blessing && (
+        <div style={{ position: 'absolute', inset: 0, overflow: 'hidden', pointerEvents: 'none', zIndex: 10 }}>
+          {[0, 1, 2, 3, 4].map(i => (
+            <div key={i} className="coin" style={{
+              position: 'absolute',
+              left: `${15 + i * 16}%`,
+              bottom: '25%',
+              fontSize: 16,
+              animationDelay: `${i * 0.3}s`,
+            }}>🪙</div>
+          ))}
+        </div>
+      )}
+
+      <svg viewBox="0 0 320 420" width="100%" height="100%" style={{ position: 'relative', zIndex: 2 }}>
         <defs>
-          <linearGradient id="g1" x1="0%" y1="0%" x2="100%" y2="100%"><stop offset="0%" stopColor="#E8C86A"/><stop offset="100%" stopColor="#B8922E"/></linearGradient>
-          <linearGradient id="g2" x1="0%" y1="0%" x2="100%" y2="100%"><stop offset="0%" stopColor="#B8922E"/><stop offset="100%" stopColor="#8B6914"/></linearGradient>
+          {/* Gold gradients — 3 levels */}
+          <radialGradient id="bGold" cx="45%" cy="35%" r="60%">
+            <stop offset="0%" stopColor="#F5E6A3"/>
+            <stop offset="40%" stopColor="#D4A843"/>
+            <stop offset="100%" stopColor="#8B6914"/>
+          </radialGradient>
+          <radialGradient id="bGoldBody" cx="45%" cy="30%" r="65%">
+            <stop offset="0%" stopColor="#EEDFA0"/>
+            <stop offset="35%" stopColor="#D4A843"/>
+            <stop offset="75%" stopColor="#A07D2E"/>
+            <stop offset="100%" stopColor="#7A5F1A"/>
+          </radialGradient>
+          <linearGradient id="bGoldLotus" x1="0%" y1="0%" x2="100%" y2="100%">
+            <stop offset="0%" stopColor="#E8C86A"/>
+            <stop offset="50%" stopColor="#D4A843"/>
+            <stop offset="100%" stopColor="#8B6914"/>
+          </linearGradient>
+          <linearGradient id="bHalo" x1="0%" y1="0%" x2="100%" y2="100%">
+            <stop offset="0%" stopColor="#D4A843"/>
+            <stop offset="100%" stopColor="#E8C86A"/>
+          </linearGradient>
+          <radialGradient id="bFlame" cx="50%" cy="30%" r="50%">
+            <stop offset="0%" stopColor="#FFA040"/>
+            <stop offset="60%" stopColor="#FF6B35"/>
+            <stop offset="100%" stopColor="#CC3300"/>
+          </radialGradient>
+          {/* Glow filter */}
+          <filter id="goldGlow">
+            <feGaussianBlur stdDeviation="4" result="blur"/>
+            <feMerge><feMergeNode in="blur"/><feMergeNode in="SourceGraphic"/></feMerge>
+          </filter>
+          <filter id="softShadow">
+            <feDropShadow dx="0" dy="4" stdDeviation="6" floodColor="#00000060"/>
+          </filter>
         </defs>
-        {glowing && <circle cx="100" cy="90" r="80" fill="none" stroke="#D4A84312" strokeWidth="1" strokeDasharray="4 4" style={{animation:'spin 20s linear infinite',transformOrigin:'100px 90px'}}/>}
-        <ellipse cx="100" cy="205" rx="55" ry="14" fill="#1E293B"/>
-        <ellipse cx="100" cy="150" rx="40" ry="45" fill="url(#g1)"/>
-        <circle cx="100" cy="80" r="30" fill="url(#g1)"/>
-        {[72,85,100,115,128].map((x,i)=><circle key={i} cx={x} cy={55} r={5} fill="url(#g2)"/>)}
-        {[80,95,110,120].map((x,i)=><circle key={i} cx={x} cy={48} r={4} fill="url(#g2)"/>)}
-        <circle cx="100" cy="43" r={4} fill="url(#g2)"/>
-        <path d="M87 78 Q92 82 98 78" fill="none" stroke="#8B6914" strokeWidth="1.3" strokeLinecap="round"/>
-        <path d="M102 78 Q107 82 113 78" fill="none" stroke="#8B6914" strokeWidth="1.3" strokeLinecap="round"/>
-        <path d="M91 92 Q100 99 109 92" fill="none" stroke="#8B6914" strokeWidth="1.3" strokeLinecap="round"/>
-        <circle cx="100" cy="68" r="2" fill="#E8C86A"/>
-        <ellipse cx="68" cy="80" rx="4" ry="12" fill="url(#g1)"/>
-        <ellipse cx="132" cy="80" rx="4" ry="12" fill="url(#g1)"/>
-        <circle cx="100" cy="168" r="8" fill="#E8C86A" stroke="#B8922E" strokeWidth="0.8"/>
-        <text x="100" y="172" textAnchor="middle" fontSize="9" fontWeight="900" fill="#8B6914" fontFamily="serif">$</text>
-        {sticks>=1&&<><line x1="50" y1="195" x2="50" y2="160" stroke="#C4956A" strokeWidth="1.2"/><circle cx="50" cy="158" r="1.5" fill="#FF6B35"/>{glowing&&<path d="M50 155 Q46 142 50 128" fill="none" stroke="#94A3B850" strokeWidth="0.6"/>}</>}
-        {sticks>=2&&<><line x1="100" y1="200" x2="100" y2="182" stroke="#C4956A" strokeWidth="1.2"/><circle cx="100" cy="180" r="1.5" fill="#FF6B35"/>{glowing&&<path d="M100 177 Q96 165 100 152" fill="none" stroke="#94A3B850" strokeWidth="0.6"/>}</>}
-        {sticks>=3&&<><line x1="150" y1="195" x2="150" y2="160" stroke="#C4956A" strokeWidth="1.2"/><circle cx="150" cy="158" r="1.5" fill="#FF6B35"/>{glowing&&<path d="M150 155 Q146 142 150 128" fill="none" stroke="#94A3B850" strokeWidth="0.6"/>}</>}
-        {glowing&&<><text x="30" y="50" fontSize="11" fill="#D4A843" style={{animation:'twinkle 1.5s ease infinite'}}>✦</text><text x="165" y="45" fontSize="9" fill="#E8C86A" style={{animation:'twinkle 2s ease infinite'}}>✧</text><text x="100" y="28" fontSize="13" fill="#D4A843" style={{animation:'twinkle 1.2s ease infinite'}}>✶</text></>}
+
+        {/* ── Mandala / Halo ── */}
+        <g className="halo" style={{ transformOrigin: '160px 165px' }}>
+          {/* Outer ring */}
+          <circle cx="160" cy="165" r="120" fill="none" stroke="url(#bHalo)"
+            strokeWidth="0.8" opacity={glowing ? 0.6 : 0.2} strokeDasharray="3 6"/>
+          {/* Middle ring with lotus pattern */}
+          <circle cx="160" cy="165" r="105" fill="none" stroke="url(#bHalo)"
+            strokeWidth="0.5" opacity={glowing ? 0.5 : 0.15} strokeDasharray="8 4 2 4"/>
+          {/* Inner glow ring */}
+          <circle cx="160" cy="165" r="88" fill="none" stroke="#D4A843"
+            strokeWidth="1.2" opacity={glowing ? 0.4 : 0.1}/>
+          {/* Radiating lines */}
+          {Array.from({ length: 16 }).map((_, i) => {
+            const angle = (i * 22.5) * Math.PI / 180;
+            const x1 = 160 + Math.cos(angle) * 90;
+            const y1 = 165 + Math.sin(angle) * 90;
+            const x2 = 160 + Math.cos(angle) * 118;
+            const y2 = 165 + Math.sin(angle) * 118;
+            return <line key={i} x1={x1} y1={y1} x2={x2} y2={y2}
+              stroke="#D4A843" strokeWidth="0.3" opacity={glowing ? 0.35 : 0.08}/>;
+          })}
+        </g>
+
+        {/* ── Lotus Pedestal ── */}
+        <g filter="url(#softShadow)">
+          {/* Base */}
+          <ellipse cx="160" cy="340" rx="70" ry="12" fill="#1E293B"/>
+          {/* Lower petals */}
+          {[-45, -25, -8, 8, 25, 45].map((angle, i) => (
+            <path key={`lp${i}`}
+              d={`M160,320 Q${160 + angle * 1.8},${310 - Math.abs(angle) * 0.3} ${160 + angle * 2.2},330 Q${160 + angle * 1.2},335 160,332`}
+              fill="url(#bGoldLotus)" opacity={0.6 + i * 0.05}
+              stroke="#8B6914" strokeWidth="0.3"/>
+          ))}
+          {/* Upper petals */}
+          {[-30, -12, 12, 30].map((angle, i) => (
+            <path key={`up${i}`}
+              d={`M160,315 Q${160 + angle * 1.6},305 ${160 + angle * 1.8},322 Q${160 + angle * 0.8},328 160,325`}
+              fill="url(#bGoldLotus)" opacity={0.7 + i * 0.05}
+              stroke="#A07D2E" strokeWidth="0.3"/>
+          ))}
+          {/* Center cushion */}
+          <ellipse cx="160" cy="318" rx="35" ry="8" fill="#B8922E"/>
+          <ellipse cx="160" cy="316" rx="33" ry="7" fill="#D4A843"/>
+        </g>
+
+        {/* ── Buddha Body ── */}
+        <g filter={glowing ? 'url(#goldGlow)' : undefined}>
+          {/* Body (big belly Budai style) */}
+          <path d="M120,310 C115,290 108,260 112,235 C116,215 125,200 135,192
+                   C140,188 148,186 160,186
+                   C172,186 180,188 185,192
+                   C195,200 204,215 208,235
+                   C212,260 205,290 200,310 Z"
+            fill="url(#bGoldBody)" stroke="#8B6914" strokeWidth="0.5"/>
+
+          {/* Belly highlight */}
+          <ellipse cx="160" cy="270" rx="30" ry="25" fill="#E8C86A" opacity="0.25"/>
+
+          {/* Robe folds */}
+          <path d="M130,230 Q145,245 135,270" fill="none" stroke="#A07D2E" strokeWidth="0.8" opacity="0.5"/>
+          <path d="M190,230 Q175,245 185,270" fill="none" stroke="#A07D2E" strokeWidth="0.8" opacity="0.5"/>
+          <path d="M140,260 Q160,275 180,260" fill="none" stroke="#A07D2E" strokeWidth="0.6" opacity="0.4"/>
+          {/* Robe collar */}
+          <path d="M135,198 Q160,210 185,198" fill="none" stroke="#A07D2E" strokeWidth="1" opacity="0.6"/>
+        </g>
+
+        {/* ── Head ── */}
+        <g filter={glowing ? 'url(#goldGlow)' : undefined}>
+          {/* Head shape */}
+          <ellipse cx="160" cy="158" rx="36" ry="40" fill="url(#bGold)"/>
+          {/* Ushnisha (top bump) */}
+          <circle cx="160" cy="120" r="12" fill="url(#bGold)"/>
+          <circle cx="160" cy="114" r="6" fill="#E8C86A"/>
+          {/* Hair bumps (curly) */}
+          {[
+            [140,128], [152,122], [168,122], [180,128],
+            [135,140], [145,132], [160,128], [175,132], [185,140],
+            [132,155], [140,148], [180,148], [188,155]
+          ].map(([x, y], i) => (
+            <circle key={`hb${i}`} cx={x} cy={y} r={4.5} fill="#B8922E" opacity="0.7"/>
+          ))}
+
+          {/* Ears (long, Buddha style) */}
+          <path d="M123,150 C118,142 116,155 118,170 C120,180 124,182 126,175 C128,165 127,155 123,150Z"
+            fill="url(#bGold)"/>
+          <path d="M197,150 C202,142 204,155 202,170 C200,180 196,182 194,175 C192,165 193,155 197,150Z"
+            fill="url(#bGold)"/>
+
+          {/* Face */}
+          {/* Urna (forehead dot) */}
+          <circle cx="160" cy="148" r="2.5" fill="#E8C86A" stroke="#B8922E" strokeWidth="0.5"/>
+          {/* Eyes (closed, happy) */}
+          <path d="M145,160 Q150,156 156,160" fill="none" stroke="#7A5F1A" strokeWidth="1.8" strokeLinecap="round"/>
+          <path d="M164,160 Q170,156 175,160" fill="none" stroke="#7A5F1A" strokeWidth="1.8" strokeLinecap="round"/>
+          {/* Nose */}
+          <path d="M158,166 Q160,169 162,166" fill="none" stroke="#A07D2E" strokeWidth="0.8" strokeLinecap="round"/>
+          {/* Smile (big, happy Budai smile) */}
+          <path d="M146,174 Q153,182 160,183 Q167,182 174,174"
+            fill="none" stroke="#7A5F1A" strokeWidth="1.5" strokeLinecap="round"/>
+          {/* Cheek highlights */}
+          <circle cx="143" cy="172" r="4" fill="#E8C86A" opacity="0.2"/>
+          <circle cx="177" cy="172" r="4" fill="#E8C86A" opacity="0.2"/>
+        </g>
+
+        {/* ── Arms ── */}
+        {/* Left arm — raised in blessing (Abhaya Mudra) */}
+        <path d="M126,210 C118,205 108,195 105,180 C103,170 106,165 110,168 C114,172 112,178 112,185"
+          fill="url(#bGold)" stroke="#A07D2E" strokeWidth="0.5"/>
+        {/* Left hand — open palm */}
+        <path d="M105,180 C102,174 100,168 103,164 C106,160 110,162 112,166
+                 C113,163 115,160 118,162 C120,164 119,168 117,172
+                 C118,170 120,167 122,169 C123,172 121,176 118,179 Z"
+          fill="url(#bGold)" stroke="#A07D2E" strokeWidth="0.3"/>
+
+        {/* Right arm — holding gold ingot */}
+        <path d="M194,210 C202,215 210,225 215,240 C218,250 214,255 210,252"
+          fill="url(#bGold)" stroke="#A07D2E" strokeWidth="0.5"/>
+        {/* Right hand */}
+        <ellipse cx="212" cy="248" rx="8" ry="6" fill="url(#bGold)" stroke="#A07D2E" strokeWidth="0.3"/>
+        {/* Gold ingot / yuanbao */}
+        <path d="M202,240 L208,232 L222,232 L228,240 L222,244 L208,244 Z"
+          fill="#E8C86A" stroke="#B8922E" strokeWidth="0.5"/>
+        <path d="M208,232 L215,228 L222,232" fill="none" stroke="#F5E6A3" strokeWidth="0.5"/>
+        <text x="215" y="241" textAnchor="middle" fontSize="8" fontWeight="900" fill="#8B6914" fontFamily="serif">$</text>
+
+        {/* ── Incense Sticks ── */}
+        {sticks >= 1 && (
+          <g>
+            {/* Bowl left */}
+            <ellipse cx="65" cy="338" rx="14" ry="5" fill="#4A3520"/>
+            <path d="M51,338 Q52,330 58,328 L72,328 Q78,330 79,338" fill="#5C4633" stroke="#3A2815" strokeWidth="0.5"/>
+            {/* Stick */}
+            <line x1="65" y1="328" x2="65" y2="278" stroke="#C4956A" strokeWidth="1.5"/>
+            {/* Flame */}
+            <ellipse cx="65" cy="276" rx="2.5" ry="3.5" fill="url(#bFlame)" className="flame"/>
+            {/* Smoke */}
+            <path className="smoke smoke1" d="M65,272 Q60,255 67,238 Q74,220 62,200"
+              fill="none" stroke="#D4A84325" strokeWidth="2.5" strokeLinecap="round"/>
+          </g>
+        )}
+        {sticks >= 2 && (
+          <g>
+            {/* Center stick (in lotus area) */}
+            <line x1="160" y1="340" x2="160" y2="295" stroke="#C4956A" strokeWidth="1.5"/>
+            <ellipse cx="160" cy="293" rx="2.5" ry="3.5" fill="url(#bFlame)" className="flame"/>
+            <path className="smoke smoke2" d="M160,289 Q155,272 162,255 Q169,238 157,218"
+              fill="none" stroke="#D4A84320" strokeWidth="2" strokeLinecap="round"/>
+          </g>
+        )}
+        {sticks >= 3 && (
+          <g>
+            {/* Bowl right */}
+            <ellipse cx="255" cy="338" rx="14" ry="5" fill="#4A3520"/>
+            <path d="M241,338 Q242,330 248,328 L262,328 Q268,330 269,338" fill="#5C4633" stroke="#3A2815" strokeWidth="0.5"/>
+            {/* Stick */}
+            <line x1="255" y1="328" x2="255" y2="278" stroke="#C4956A" strokeWidth="1.5"/>
+            <ellipse cx="255" cy="276" rx="2.5" ry="3.5" fill="url(#bFlame)" className="flame"/>
+            <path className="smoke smoke3" d="M255,272 Q250,255 257,238 Q264,220 252,200"
+              fill="none" stroke="#D4A84325" strokeWidth="2.5" strokeLinecap="round"/>
+          </g>
+        )}
+
+        {/* ── Sparkle stars (glowing state) ── */}
+        {glowing && (
+          <g>
+            <text x="45" y="100" fontSize="14" fill="#D4A843" className="twinkle1">✦</text>
+            <text x="270" y="90" fontSize="11" fill="#E8C86A" className="twinkle2">✧</text>
+            <text x="80" y="140" fontSize="8" fill="#F5E6A3" className="twinkle3">✦</text>
+            <text x="240" y="150" fontSize="9" fill="#D4A843" className="twinkle1">✧</text>
+            <text x="160" y="60" fontSize="16" fill="#E8C86A" className="twinkle2">✶</text>
+            <text x="50" y="200" fontSize="7" fill="#D4A843" className="twinkle3">✦</text>
+            <text x="268" y="210" fontSize="8" fill="#E8C86A" className="twinkle1">✧</text>
+          </g>
+        )}
       </svg>
     </div>
   );
@@ -72,6 +304,7 @@ export default function BlessMyStock() {
   const [amount, setAmount] = useState(1);
   const [step, setStep] = useState<'input'|'blessing'|'done'>('input');
   const [glowing, setGlowing] = useState(false);
+  const [blessing, setBlessing] = useState(false);
   const [blessingText, setBlessingText] = useState('');
   const [fortune, setFortune] = useState('');
   const [totalDonated, setTotalDonated] = useState(18247);
@@ -82,19 +315,25 @@ export default function BlessMyStock() {
 
   const bless = () => {
     if (!ticker.trim()) return;
-    setStep('blessing'); setGlowing(true);
+    setStep('blessing'); setGlowing(true); setBlessing(true);
     setTimeout(() => {
       setBlessingText(BLESSINGS[Math.floor(Math.random() * BLESSINGS.length)]);
       setFortune(FORTUNES[Math.floor(Math.random() * FORTUNES.length)]);
-      setTotalDonated(p => p + amount); setTotalBlessings(p => p + 1); setStep('done');
-      setTimeout(() => setGlowing(false), 4000);
+      setTotalDonated(p => p + amount); setTotalBlessings(p => p + 1);
+      setStep('done'); setBlessing(false);
+      setTimeout(() => setGlowing(false), 5000);
     }, 3000);
   };
 
-  const reset = () => { setTicker(''); setName(''); setMessage(''); setAmount(1); setBlessingText(''); setFortune(''); setStep('input'); setGlowing(false); };
+  const share = () => {
+    const text = `🪷 I just blessed $${ticker} with the Fortune Buddha on DHLM Studio.\n\n"${blessingText.replace(/[🐉✨🔥🪷🐲💰🪙🙏🔮🌏🛡️]/g, '').trim()}"\n\n$${amount} donated to St. Jude Children's Hospital ❤️\n\nBless your stock → dhlm-studio.com/markets/bless`;
+    window.open(`https://twitter.com/intent/tweet?text=${encodeURIComponent(text)}`, '_blank');
+  };
+
+  const reset = () => { setTicker(''); setName(''); setMessage(''); setAmount(1); setBlessingText(''); setFortune(''); setStep('input'); setGlowing(false); setBlessing(false); };
 
   return (
-    <div style={{ background: '#0B0F19', color: '#F1F5F9', minHeight: '100vh' }}>
+    <div style={{ background: '#0C1222', color: '#F1F5F9', minHeight: '100vh' }}>
       <div style={{ maxWidth: 520, margin: '0 auto', padding: '80px 16px 40px' }}>
         {/* Header */}
         <div style={{ textAlign: 'center', marginBottom: 6 }}>
@@ -108,7 +347,7 @@ export default function BlessMyStock() {
           <p style={{ fontSize: 13, color: '#64748B', lineHeight: 1.6, margin: '6px 0 0' }}>Light incense before the <span style={{ color: '#D4A843' }}>Fortune Buddha</span>.<br/>Your offering goes <strong style={{ color: '#00D474' }}>100% to charity</strong>.</p>
         </div>
 
-        <FortuneBuddha glowing={glowing} sticks={step === 'input' ? sticks : 3} />
+        <FortuneBuddha glowing={glowing} blessing={blessing} sticks={step === 'input' ? sticks : 3} />
 
         {/* Stats */}
         <div style={{ display: 'flex', gap: 10, justifyContent: 'center', margin: '8px 0 20px' }}>
@@ -186,7 +425,12 @@ export default function BlessMyStock() {
               <div style={{ padding: '8px 12px', borderRadius: 8, background: '#111827', border: '1px solid #1E293B', textAlign: 'center' }}><div style={{ fontSize: 8, color: '#6B7280', fontFamily: 'var(--mono)' }}>DONATED</div><div style={{ fontSize: 16, fontWeight: 800, color: '#D4A843', fontFamily: 'var(--mono)' }}>${amount}</div></div>
               <div style={{ padding: '8px 12px', borderRadius: 8, background: '#111827', border: '1px solid #1E293B', textAlign: 'center' }}><div style={{ fontSize: 8, color: '#6B7280', fontFamily: 'var(--mono)' }}>BY</div><div style={{ fontSize: 13, fontWeight: 600, color: '#E2E8F0' }}>{name || 'Anonymous'}</div></div>
             </div>
-            <button onClick={reset} style={{ marginTop: 8, padding: '10px 20px', borderRadius: 10, background: 'transparent', border: '1px solid #D4A84330', color: '#D4A843', fontSize: 12, fontWeight: 700, cursor: 'pointer' }}>🪷 Bless Another Stock</button>
+            <div style={{ display: 'flex', gap: 8, justifyContent: 'center' }}>
+              <button onClick={share} style={{ padding: '10px 20px', borderRadius: 10, background: '#1D9BF0', border: 'none', color: '#fff', fontSize: 12, fontWeight: 700, cursor: 'pointer', display: 'flex', alignItems: 'center', gap: 6 }}>
+                Share on 𝕏
+              </button>
+              <button onClick={reset} style={{ padding: '10px 20px', borderRadius: 10, background: 'transparent', border: '1px solid #D4A84330', color: '#D4A843', fontSize: 12, fontWeight: 700, cursor: 'pointer' }}>🪷 Bless Another</button>
+            </div>
           </div>
         )}
 
@@ -241,11 +485,62 @@ export default function BlessMyStock() {
 
       <style>{`
         @keyframes pulse{0%,100%{opacity:1}50%{opacity:.5}}
-        @keyframes glow{0%,100%{opacity:.3;transform:scale(1)}50%{opacity:.6;transform:scale(1.05)}}
-        @keyframes twinkle{0%,100%{opacity:.2}50%{opacity:1}}
-        @keyframes spin{from{transform:rotate(0deg)}to{transform:rotate(360deg)}}
         @keyframes loading{from{transform:translateX(-100%)}to{transform:translateX(0)}}
         input::placeholder{color:#475569}
+
+        /* Halo rotation */
+        .halo { animation: haloSpin 30s linear infinite; }
+        .halo { transition: opacity 0.5s; }
+
+        @keyframes haloSpin { from{transform:rotate(0deg)} to{transform:rotate(360deg)} }
+
+        /* Buddha subtle float */
+        svg { animation: buddhaFloat 4s ease-in-out infinite; }
+        @keyframes buddhaFloat { 0%,100%{transform:translateY(0)} 50%{transform:translateY(-3px)} }
+
+        /* Smoke animation */
+        .smoke { animation: smokeWave 4s ease-in-out infinite; }
+        .smoke1 { animation-delay: 0s; }
+        .smoke2 { animation-delay: 1.2s; }
+        .smoke3 { animation-delay: 0.6s; }
+        @keyframes smokeWave {
+          0% { d: path("M0,0 Q-4,-15 2,-30 Q8,-45 -2,-60 Q-8,-75 0,-90"); opacity: 0.15; }
+          50% { d: path("M0,0 Q4,-15 -2,-30 Q-8,-45 2,-60 Q8,-75 0,-90"); opacity: 0.3; }
+          100% { d: path("M0,0 Q-4,-15 2,-30 Q8,-45 -2,-60 Q-8,-75 0,-90"); opacity: 0.15; }
+        }
+
+        /* Flame flicker */
+        .flame { animation: flamePulse 0.8s ease-in-out infinite alternate; }
+        @keyframes flamePulse { 0%{opacity:0.7;transform:scale(0.9)} 100%{opacity:1;transform:scale(1.1)} }
+
+        /* Twinkle stars */
+        .twinkle1 { animation: twinkle 2s ease-in-out infinite; }
+        .twinkle2 { animation: twinkle 2.5s ease-in-out 0.5s infinite; }
+        .twinkle3 { animation: twinkle 1.8s ease-in-out 1s infinite; }
+        @keyframes twinkle { 0%,100%{opacity:0.15} 50%{opacity:0.9} }
+
+        /* Particles — float up */
+        .particle { animation: particleUp 2.5s ease-out forwards; }
+        @keyframes particleUp {
+          0% { opacity:0; transform:translateY(0) scale(0); }
+          15% { opacity:1; transform:translateY(-15px) scale(1); }
+          100% { opacity:0; transform:translateY(-140px) scale(0.2); }
+        }
+
+        /* Coins — float up with wobble */
+        .coin { animation: coinUp 3s ease-out forwards; }
+        @keyframes coinUp {
+          0% { opacity:0; transform:translateY(0) rotate(0deg); }
+          20% { opacity:1; }
+          100% { opacity:0; transform:translateY(-180px) rotate(360deg); }
+        }
+
+        /* Reduced motion */
+        @media (prefers-reduced-motion: reduce) {
+          .halo, svg, .smoke, .flame, .twinkle1, .twinkle2, .twinkle3, .particle, .coin {
+            animation: none !important;
+          }
+        }
       `}</style>
     </div>
   );
