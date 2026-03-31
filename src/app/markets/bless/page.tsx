@@ -33,8 +33,46 @@ const RECENT = [
   { name: 'Chris P.', ticker: 'IONQ', amount: 2, time: '25m', msg: 'Quantum karma please' },
 ];
 
+/* ═══ Incense Smoke Overlay ═══ */
+function IncenseSmoke({ intensity = 1 }: { intensity?: number }) {
+  const baseSmoke = [
+    { left: '14%', delay: '0s', dur: '4s', drift: '-8px' },
+    { left: '17%', delay: '1.5s', dur: '5s', drift: '6px' },
+    { left: '12%', delay: '3s', dur: '4.5s', drift: '-12px' },
+    { left: '16%', delay: '0.8s', dur: '5.5s', drift: '10px' },
+    { left: '83%', delay: '0.5s', dur: '4.5s', drift: '8px' },
+    { left: '86%', delay: '2s', dur: '5s', drift: '-6px' },
+    { left: '81%', delay: '3.5s', dur: '4s', drift: '12px' },
+    { left: '84%', delay: '1.2s', dur: '5.5s', drift: '-10px' },
+  ];
+  const extra = [
+    { left: '15%', delay: '0.3s', dur: '3.8s', drift: '-15px' },
+    { left: '19%', delay: '2.5s', dur: '4.2s', drift: '14px' },
+    { left: '80%', delay: '1s', dur: '3.5s', drift: '15px' },
+    { left: '87%', delay: '2.8s', dur: '4.8s', drift: '-14px' },
+  ];
+  const particles = intensity >= 2 ? [...baseSmoke, ...extra] : baseSmoke;
+
+  return (
+    <div style={{ position: 'absolute', inset: 0, pointerEvents: 'none', overflow: 'hidden', zIndex: 20 }}>
+      {particles.map((p, i) => (
+        <div key={i} className="smoke-strand" style={{
+          position: 'absolute', bottom: '22%', left: p.left,
+          width: 12, height: 32, borderRadius: '50%',
+          background: `radial-gradient(ellipse, rgba(212,168,67,${0.12 * intensity}), rgba(180,160,120,${0.06 * intensity}), transparent)`,
+          filter: `blur(${3 + intensity}px)`,
+          animationDelay: p.delay,
+          animationDuration: p.dur,
+          // @ts-expect-error CSS custom property
+          '--drift': p.drift,
+        }} />
+      ))}
+    </div>
+  );
+}
+
 /* ═══ Fortune Buddha — High-Quality PNG Image ═══ */
-function FortuneBuddha({ glowing, blessing }: { glowing: boolean; blessing: boolean }) {
+function FortuneBuddha({ glowing, blessing, smokeIntensity = 1 }: { glowing: boolean; blessing: boolean; smokeIntensity?: number }) {
   return (
     <div style={{ position: 'relative', width: '100%', maxWidth: 320, margin: '0 auto' }}>
       {/* Outer glow — blessing state */}
@@ -44,6 +82,9 @@ function FortuneBuddha({ glowing, blessing }: { glowing: boolean; blessing: bool
           background: 'radial-gradient(circle, rgba(212,168,67,0.3) 0%, rgba(212,168,67,0.1) 40%, transparent 70%)',
         }} />
       )}
+
+      {/* Incense smoke overlay — always visible */}
+      <IncenseSmoke intensity={blessing ? smokeIntensity * 2 : smokeIntensity} />
 
       {/* Gold particles — blessing animation */}
       {blessing && (
@@ -159,7 +200,7 @@ export default function BlessMyStock() {
           <p style={{ fontSize: 13, color: '#64748B', lineHeight: 1.6, margin: '6px 0 0' }}>Light incense before the <span style={{ color: '#D4A843' }}>Fortune Buddha</span>.<br/>Your offering goes <strong style={{ color: '#00D474' }}>100% to charity</strong>.</p>
         </div>
 
-        <FortuneBuddha glowing={glowing} blessing={blessing} />
+        <FortuneBuddha glowing={glowing} blessing={blessing} smokeIntensity={amount >= 10 ? 3 : amount >= 5 ? 2.5 : amount >= 3 ? 1.8 : 1} />
 
         {/* Stats */}
         <div style={{ display: 'flex', gap: 10, justifyContent: 'center', margin: '8px 0 20px' }}>
@@ -285,6 +326,10 @@ export default function BlessMyStock() {
             <span style={{ fontSize: 9, padding: '2px 7px', borderRadius: 4, background: '#3B82F612', color: '#3B82F6', fontFamily: 'var(--mono)' }}>✓ Tax Deductible</span>
             <span style={{ fontSize: 9, padding: '2px 7px', borderRadius: 4, background: '#D4A84312', color: '#D4A843', fontFamily: 'var(--mono)' }}>✓ 0% to DHLM</span>
           </div>
+          <a href="https://www.stjude.org/donate" target="_blank" rel="noopener noreferrer"
+            style={{ display: 'block', marginTop: 10, padding: '10px 0', borderRadius: 10, background: '#C73E3A', color: '#fff', fontSize: 12, fontWeight: 700, textAlign: 'center', textDecoration: 'none', cursor: 'pointer' }}>
+            ❤️ Donate Directly to St. Jude
+          </a>
         </div>
 
         {/* Disclaimer */}
@@ -324,9 +369,19 @@ export default function BlessMyStock() {
           100% { opacity:0; transform:translateY(-200px) rotate(360deg); }
         }
 
+        /* Incense smoke — S-curve rise */
+        .smoke-strand { animation: smokeRise var(--dur, 4s) ease-out infinite; }
+        @keyframes smokeRise {
+          0% { opacity:0; transform:translateY(0) translateX(0) scale(0.5); }
+          15% { opacity:0.7; transform:translateY(-20px) translateX(calc(var(--drift) * 0.3)) scale(0.8); }
+          40% { opacity:0.45; transform:translateY(-55px) translateX(calc(var(--drift) * -0.5)) scale(1); }
+          70% { opacity:0.2; transform:translateY(-95px) translateX(calc(var(--drift) * 0.8)) scale(1.3); }
+          100% { opacity:0; transform:translateY(-140px) translateX(var(--drift)) scale(1.5); }
+        }
+
         /* Reduced motion */
         @media (prefers-reduced-motion: reduce) {
-          .buddha-float, .buddha-glow, .particle, .coin {
+          .buddha-float, .buddha-glow, .particle, .coin, .smoke-strand {
             animation: none !important;
           }
         }
