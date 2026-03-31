@@ -254,6 +254,7 @@ export default function MarketsPage() {
             { href: '/markets/losers', label: '🔴 All Losers' },
             { href: '/markets/most-active', label: '📊 Most Active' },
             { href: '/markets/search', label: '🔍 Search' },
+            { href: '/markets/sectors', label: '🗺️ Sector Heatmap' },
           ].map(l => (
             <Link key={l.href} href={l.href} style={{ fontSize: 11, color: '#475569', padding: '5px 12px', borderRadius: 20, background: '#111827', border: '1px solid #1E293B', fontFamily: 'var(--sans)' }}>
               {l.label}
