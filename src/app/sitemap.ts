@@ -1,6 +1,8 @@
 import type { MetadataRoute } from "next";
 import { slugToId } from "@/lib/world-lottery";
 import { stocks } from "@/data/markets";
+import { TOP_STOCKS } from "@/data/top-stocks";
+import { TOP_CRYPTOS } from "@/data/top-cryptos";
 import { blogPosts } from "@/data/blog-posts";
 import { WISDOM } from "@/data/wisdom";
 
@@ -19,10 +21,16 @@ export default function sitemap(): MetadataRoute.Sitemap {
     { url: `${BASE}/rankings`, lastModified: now, changeFrequency: "weekly", priority: 0.9 },
     { url: `${BASE}/rankings/crypto`, lastModified: now, changeFrequency: "daily", priority: 0.9 },
 
-    // Individual stocks
-    ...stocks.map(s => ({
-      url: `${BASE}/markets/${s.ticker.toLowerCase()}`,
-      lastModified: now, changeFrequency: "daily" as const, priority: 0.8,
+    // Individual stocks (500+)
+    ...[...new Set([...stocks.map(s => s.ticker.toLowerCase()), ...TOP_STOCKS.map(t => t.toLowerCase())])].map(t => ({
+      url: `${BASE}/markets/${t}`,
+      lastModified: now, changeFrequency: "daily" as const, priority: 0.7,
+    })),
+
+    // Individual crypto (100)
+    ...TOP_CRYPTOS.map(id => ({
+      url: `${BASE}/rankings/crypto/${id}`,
+      lastModified: now, changeFrequency: "daily" as const, priority: 0.7,
     })),
 
     // Lotto

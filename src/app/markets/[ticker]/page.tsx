@@ -2,12 +2,19 @@ import type { Metadata } from 'next';
 import Link from 'next/link';
 import Image from 'next/image';
 import { stocks, getStockByTicker } from '@/data/markets';
+import { TOP_STOCKS } from '@/data/top-stocks';
 
 const FMP_KEY = process.env.FMP_API_KEY || '';
 const FMP_BASE = 'https://financialmodelingprep.com/stable';
+const YEAR = new Date().getFullYear();
 
 export function generateStaticParams() {
-  return stocks.map(s => ({ ticker: s.ticker.toLowerCase() }));
+  // Combine hardcoded stocks + top 500
+  const all = new Set([
+    ...stocks.map(s => s.ticker.toLowerCase()),
+    ...TOP_STOCKS.map(t => t.toLowerCase()),
+  ]);
+  return [...all].map(ticker => ({ ticker }));
 }
 
 async function fetchLiveData(ticker: string) {
@@ -54,10 +61,11 @@ export async function generateMetadata({ params }: { params: Promise<{ ticker: s
   const { ticker } = await params;
   const live = await fetchLiveData(ticker);
   const stock = live || getStockByTicker(ticker);
-  if (!stock) return { title: `${ticker.toUpperCase()} — Stock Profile` };
+  if (!stock) return { title: `${ticker.toUpperCase()} — Stock Profile ${YEAR}` };
   return {
-    title: `${stock.ticker} — ${stock.name} Stock Profile`,
-    description: `${stock.name} (${stock.ticker}) stock profile: $${typeof stock.price === 'number' ? stock.price.toFixed(2) : stock.price}, market cap ${stock.cap}.`,
+    title: `${stock.ticker} — ${stock.name} Stock Price & Analysis ${YEAR}`,
+    description: `${stock.name} (${stock.ticker}) stock price $${typeof stock.price === 'number' ? stock.price.toFixed(2) : stock.price}, market cap ${stock.cap}. Real-time data, company profile, key metrics. ${YEAR}.`,
+    keywords: [stock.ticker, stock.name, 'stock price', 'market cap', `${stock.ticker} stock ${YEAR}`],
   };
 }
 
@@ -84,6 +92,16 @@ export default async function StockPage({ params }: { params: Promise<{ ticker: 
   const changeStr = typeof stock.change === 'number' ? `${isUp ? '+' : ''}${stock.change.toFixed(1)}%` : '';
   const priceStr = typeof stock.price === 'number' ? `$${stock.price.toFixed(2)}` : `$${stock.price}`;
 
+  // JSON-LD
+  const jsonLd = {
+    '@context': 'https://schema.org',
+    '@type': 'FinancialProduct',
+    name: `${stock.name} (${stock.ticker})`,
+    description: stock.description || `${stock.name} stock profile`,
+    url: `https://dhlm-studio.com/markets/${ticker}`,
+    provider: { '@type': 'Organization', name: 'DHLM Studio' },
+  };
+
   // Build metrics array from available data
   const metrics: { label: string; value: string }[] = [];
   if (stock.cap) metrics.push({ label: 'Market Cap', value: stock.cap });
@@ -101,6 +119,7 @@ export default async function StockPage({ params }: { params: Promise<{ ticker: 
 
   return (
     <div style={{ background: '#0B0F19', minHeight: '100vh' }}>
+      <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLd) }} />
       <div style={{ maxWidth: 800, margin: '0 auto', padding: '80px 24px' }}>
         <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center' }}>
           <Link href="/markets" style={{ fontSize: 12, color: '#64748B', fontFamily: 'var(--sans)' }}>← Markets</Link>
@@ -161,6 +180,18 @@ export default async function StockPage({ params }: { params: Promise<{ ticker: 
             </div>
           </div>
         )}
+
+        {/* Internal Links */}
+        <div style={{ ...card, padding: '16px 20px', marginBottom: 16 }}>
+          <div style={{ fontFamily: 'var(--mono)', fontSize: 9, fontWeight: 700, color: '#475569', letterSpacing: 2, marginBottom: 10 }}>EXPLORE MORE</div>
+          <div style={{ display: 'flex', gap: 6, flexWrap: 'wrap' }}>
+            <Link href="/markets" style={{ fontSize: 11, color: '#60A5FA', padding: '4px 10px', borderRadius: 6, background: '#3B82F610', border: '1px solid #3B82F620' }}>Today&apos;s Top Movers</Link>
+            <Link href="/markets/sectors" style={{ fontSize: 11, color: '#60A5FA', padding: '4px 10px', borderRadius: 6, background: '#3B82F610', border: '1px solid #3B82F620' }}>Sector Heatmap</Link>
+            <Link href="/rankings" style={{ fontSize: 11, color: '#D4A843', padding: '4px 10px', borderRadius: 6, background: '#D4A84310', border: '1px solid #D4A84320' }}>Company Rankings</Link>
+            <Link href="/rankings/crypto" style={{ fontSize: 11, color: '#F59E0B', padding: '4px 10px', borderRadius: 6, background: '#F59E0B10', border: '1px solid #F59E0B20' }}>Crypto Rankings</Link>
+            <Link href="/blog" style={{ fontSize: 11, color: '#A78BFA', padding: '4px 10px', borderRadius: 6, background: '#A78BFA10', border: '1px solid #A78BFA20' }}>Market Analysis</Link>
+          </div>
+        </div>
 
         {/* Disclaimer */}
         <p style={{ fontFamily: 'var(--sans)', fontSize: 10, color: '#334155', marginTop: 24, lineHeight: 1.6, textAlign: 'center' }}>
