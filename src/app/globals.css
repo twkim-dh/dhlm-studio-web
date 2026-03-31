@@ -16,9 +16,9 @@
   --blue: #3B82F6;
   --gold: #D4A843;
   --purple: #A78BFA;
-  --serif: 'Playfair Display', Georgia, serif;
-  --sans: 'DM Sans', -apple-system, sans-serif;
-  --mono: 'IBM Plex Mono', 'SF Mono', monospace;
+  --serif: var(--font-playfair), 'Playfair Display', Georgia, serif;
+  --sans: var(--font-dm-sans), 'DM Sans', -apple-system, sans-serif;
+  --mono: var(--font-ibm-plex-mono), 'IBM Plex Mono', 'SF Mono', monospace;
   --area-bg: var(--bg);
   --area-text: var(--text-primary);
   --font-sans: var(--font-noto-sans-kr);

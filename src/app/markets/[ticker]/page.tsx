@@ -1,5 +1,6 @@
 import type { Metadata } from 'next';
 import Link from 'next/link';
+import Image from 'next/image';
 import { stocks, getStockByTicker } from '@/data/markets';
 
 const FMP_KEY = process.env.FMP_API_KEY || '';
@@ -110,7 +111,7 @@ export default async function StockPage({ params }: { params: Promise<{ ticker: 
         <div style={{ marginTop: 24, marginBottom: 32 }}>
           <div style={{ display: 'flex', alignItems: 'center', gap: 12, flexWrap: 'wrap' }}>
             {'image' in stock && stock.image && (
-              <img src={stock.image as string} alt="" width={36} height={36} style={{ borderRadius: 8 }} />
+              <Image src={stock.image as string} alt={stock.name || stock.ticker} width={36} height={36} style={{ borderRadius: 8 }} unoptimized />
             )}
             <span style={{ fontFamily: 'var(--mono)', fontSize: 24, fontWeight: 800, color: '#60A5FA' }}>{stock.ticker}</span>
             <span style={{ fontFamily: 'var(--sans)', fontSize: 20, fontWeight: 700, color: '#F1F5F9' }}>{stock.name}</span>

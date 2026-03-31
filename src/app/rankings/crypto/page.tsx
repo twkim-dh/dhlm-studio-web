@@ -2,6 +2,7 @@
 
 import { useState, useEffect } from 'react';
 import Link from 'next/link';
+import Image from 'next/image';
 
 interface Coin {
   rank: number; id: string; symbol: string; name: string; image: string;
@@ -80,7 +81,7 @@ export default function CryptoPage() {
                     {c.rank}
                   </span>
                   <div style={{ display: 'flex', alignItems: 'center', gap: 10 }}>
-                    {c.image && <img src={c.image} alt={c.name} width={24} height={24} style={{ borderRadius: '50%' }} />}
+                    {c.image && <Image src={c.image} alt={c.name} width={24} height={24} style={{ borderRadius: '50%' }} unoptimized />}
                     <div>
                       <span style={{ fontFamily: 'var(--sans)', fontSize: 14, fontWeight: 600, color: '#E2E8F0' }}>{c.name}</span>
                       <span style={{ fontFamily: 'var(--mono)', fontSize: 11, color: '#475569', marginLeft: 6 }}>{c.symbol}</span>
