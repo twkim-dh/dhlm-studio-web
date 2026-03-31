@@ -95,12 +95,12 @@ export default function LottoPro() {
   const usr = (t:string) => setMsgs(p=>[...p,{role:'user',text:t}]);
   const sim = (cb:()=>void, d=1200) => { setTyping(true); setTimeout(()=>{setTyping(false);cb();},d); };
 
-  const doRec = () => { usr('이번 주 번호 추천해줘'); sim(()=>{ const n=gen(), s=n.reduce((a,b)=>a+b,0), o=n.filter(x=>x%2).length; bot({ text:'1,216회차 데이터를 분석해서 생성했습니다.\n최근 출현 패턴과 미출현 보정을 적용했어요.', numbers:n, numberLabel:'AI 추천 번호', numberMeta:`합계 ${s} · 홀짝 ${o}:${6-o}`, actions:[{id:'save',icon:'💾',label:'이 번호 저장',primary:true},{id:'rec',icon:'🔄',label:'다시 생성'},{id:'multi',icon:'📦',label:'5세트 생성'}] }); }); };
+  const doRec = (silent?:boolean) => { if(!silent) usr('이번 주 번호 추천해줘'); sim(()=>{ const n=gen(), s=n.reduce((a,b)=>a+b,0), o=n.filter(x=>x%2).length; bot({ text:'1,216회차 데이터를 분석해서 생성했습니다.\n최근 출현 패턴과 미출현 보정을 적용했어요.', numbers:n, numberLabel:'AI 추천 번호', numberMeta:`합계 ${s} · 홀짝 ${o}:${6-o}`, actions:[{id:'save',icon:'💾',label:'이 번호 저장',primary:true},{id:'rec',icon:'🔄',label:'다시 생성'},{id:'multi',icon:'📦',label:'5세트 생성'}] }); }); };
 
-  const doMulti = () => { usr('5세트 한번에 생성해줘'); sim(()=>{ const sets=Array.from({length:5},()=>{ const n=gen(),s=n.reduce((a,b)=>a+b,0),o=n.filter(x=>x%2).length; return {numbers:n,meta:`합계 ${s} · 홀짝 ${o}:${6-o}`,tag:undefined as string|undefined}; }); sets[0].tag='균형형';sets[1].tag='고합계';sets[2].tag='저합계'; bot({ text:'5세트를 생성했습니다.', numberSets:sets, actions:[{id:'save',icon:'💾',label:'전체 저장',primary:true},{id:'multi',icon:'🔄',label:'다시 생성'}] }); },1800); };
+  const doMulti = (silent?:boolean) => { if(!silent) usr('5세트 한번에 생성해줘'); sim(()=>{ const sets=Array.from({length:5},()=>{ const n=gen(),s=n.reduce((a,b)=>a+b,0),o=n.filter(x=>x%2).length; return {numbers:n,meta:`합계 ${s} · 홀짝 ${o}:${6-o}`,tag:undefined as string|undefined}; }); sets[0].tag='균형형';sets[1].tag='고합계';sets[2].tag='저합계'; bot({ text:'5세트를 생성했습니다.', numberSets:sets, actions:[{id:'save',icon:'💾',label:'전체 저장',primary:true},{id:'multi',icon:'🔄',label:'다시 생성'}] }); },1800); };
 
   const [latestIdx, setLatestIdx] = useState(0);
-  const doLatest = () => { usr('최근 당첨번호 알려줘'); sim(()=>{
+  const doLatest = (silent?:boolean) => { if(!silent) usr('최근 당첨번호 알려줘'); sim(()=>{
     const d = DRAWS[latestIdx];
     bot({ text:`제 ${d.round}회 (${d.date} 추첨) 당첨 결과입니다.`,
       numbers:d.numbers, bonus:d.bonus, numberLabel:`${d.round}회 당첨번호`,
@@ -111,20 +111,20 @@ export default function LottoPro() {
       ],
       actions:[{id:'rec',icon:'🎯',label:'번호 추천',primary:true},{id:'latest-prev',icon:'📋',label:'이전 회차'},{id:'latest-all',icon:'📊',label:'최근 5회차'}] });
   }); };
-  const doLatestPrev = () => { const ni = Math.min(latestIdx+1, DRAWS.length-1); setLatestIdx(ni); usr(`${DRAWS[ni].round}회 당첨번호`); sim(()=>{
+  const doLatestPrev = (silent?:boolean) => { const ni = Math.min(latestIdx+1, DRAWS.length-1); setLatestIdx(ni); if(!silent) usr(`${DRAWS[ni].round}회 당첨번호`); sim(()=>{
     const d = DRAWS[ni];
     bot({ text:`제 ${d.round}회 (${d.date} 추첨) 당첨 결과입니다.`,
       numbers:d.numbers, bonus:d.bonus, numberLabel:`${d.round}회 당첨번호`,
       stats:[{label:'합계',value:d.numbers.reduce((a,b)=>a+b,0),color:GOLD},{label:'홀짝',value:`${d.numbers.filter(n=>n%2).length}:${d.numbers.filter(n=>!(n%2)).length}`},{label:'보너스',value:d.bonus,color:'#A78BFA'}],
       actions:[{id:'rec',icon:'🎯',label:'번호 추천',primary:true},...(ni<DRAWS.length-1?[{id:'latest-prev',icon:'📋',label:'이전 회차'}]:[])] });
   }); };
-  const doLatestAll = () => { usr('최근 5회차 전체 보여줘'); sim(()=>{
+  const doLatestAll = (silent?:boolean) => { if(!silent) usr('최근 5회차 전체 보여줘'); sim(()=>{
     bot({ text:'최근 5회차 당첨번호입니다.',
       numberSets: DRAWS.map(d => ({ numbers: d.numbers, tag: `${d.round}회 (${d.date})`, meta: `보너스 ${d.bonus} · 합계 ${d.numbers.reduce((a,b)=>a+b,0)}` })),
       actions:[{id:'rec',icon:'🎯',label:'번호 추천',primary:true},{id:'stats',icon:'📈',label:'통계 분석'}] });
   },1500); };
 
-  const doStats = () => { usr('통계 분석 보여줘'); sim(()=>{
+  const doStats = (silent?:boolean) => { if(!silent) usr('통계 분석 보여줘'); sim(()=>{
     // Calculate real stats from DRAWS
     const allNums = DRAWS.flatMap(d=>d.numbers);
     const avgSum = Math.round(DRAWS.reduce((a,d)=>a+d.numbers.reduce((x,y)=>x+y,0),0)/DRAWS.length);
@@ -139,7 +139,7 @@ export default function LottoPro() {
       actions:[{id:'hot',icon:'🔥',label:'핫/콜드 번호'},{id:'latest-all',icon:'📊',label:'최근 5회차'},{id:'rec',icon:'🎯',label:'번호 추천',primary:true}] });
   }); };
 
-  const doHot = () => { usr('핫/콜드 번호 알려줘'); sim(()=>{
+  const doHot = (silent?:boolean) => { if(!silent) usr('핫/콜드 번호 알려줘'); sim(()=>{
     const allNums = DRAWS.flatMap(d=>d.numbers);
     const freq: Record<number,number> = {}; for(let i=1;i<=45;i++) freq[i]=0; allNums.forEach(n=>{ freq[n]++; });
     const sorted = Object.entries(freq).sort((a,b)=>b[1]-a[1]);
@@ -153,16 +153,16 @@ export default function LottoPro() {
       actions:[{id:'rec',icon:'🎯',label:'핫 번호 기반 추천',primary:true},{id:'stats',icon:'📈',label:'통계 분석'}] });
   }); };
 
-  const doSave = () => { usr('이 번호 저장할게'); sim(()=>bot({ text:'번호를 저장하면 이런 것들이 가능해요:', proLock:{title:'PRO 기능이 필요합니다',desc:'번호 저장 → 자동 결과 체크 → 내 패턴 분석\n주 ₩1,000 (로또 1게임 값)'}, actions:[{id:'rec',icon:'🔄',label:'다른 번호 생성'}] })); };
+  const doSave = (silent?:boolean) => { if(!silent) usr('이 번호 저장할게'); sim(()=>bot({ text:'번호를 저장하면 이런 것들이 가능해요:', proLock:{title:'PRO 기능이 필요합니다',desc:'번호 저장 → 자동 결과 체크 → 내 패턴 분석\n주 ₩1,000 (로또 1게임 값)'}, actions:[{id:'rec',icon:'🔄',label:'다른 번호 생성'}] })); };
 
   const act = (id:string) => { switch(id){ case 'rec':doRec();break; case 'multi':doMulti();break; case 'latest':setLatestIdx(0);doLatest();break; case 'latest-prev':doLatestPrev();break; case 'latest-all':doLatestAll();break; case 'stats':doStats();break; case 'hot':doHot();break; case 'save':doSave();break; } };
 
   const send = () => { const t=input.trim(); if(!t)return; setInput(''); usr(t); const l=t.toLowerCase();
-    if(l.includes('추천')||l.includes('번호')||l.includes('생성')) sim(doRec,300);
-    else if(l.includes('당첨')||l.includes('결과')||l.includes('최근')) sim(doLatest,300);
-    else if(l.includes('통계')||l.includes('분석')) sim(doStats,300);
-    else if(l.includes('핫')||l.includes('콜드')||l.includes('빈도')) sim(doHot,300);
-    else if(l.includes('저장')) sim(doSave,300);
+    if(l.includes('추천')||l.includes('번호')||l.includes('생성')) doRec(true);
+    else if(l.includes('당첨')||l.includes('결과')||l.includes('최근')) { setLatestIdx(0); doLatest(true); }
+    else if(l.includes('통계')||l.includes('분석')) doStats(true);
+    else if(l.includes('핫')||l.includes('콜드')||l.includes('빈도')) doHot(true);
+    else if(l.includes('저장')) doSave(true);
     else sim(()=>bot({ text:'아래 기능 중에서 선택해주세요!', actions:[{id:'rec',icon:'🎯',label:'번호 추천',primary:true},{id:'latest',icon:'📊',label:'최근 당첨번호'},{id:'stats',icon:'📈',label:'통계 분석'},{id:'hot',icon:'🔥',label:'핫/콜드 번호'}] }));
   };
 
