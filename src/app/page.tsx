@@ -35,13 +35,6 @@ function Change({ value }: { value: number }) {
 }
 
 /* ═══ Data ═══ */
-const MOVERS = [
-  { ticker: 'QBTS', name: 'D-Wave Quantum', price: 12.47, change: 34.2, cap: '$3.2B', catalyst: 'Won $150M US DoD quantum computing contract', tags: ['Quantum', 'Defense'] },
-  { ticker: 'SMCI', name: 'Super Micro Computer', price: 48.32, change: 28.7, cap: '$28.4B', catalyst: 'Exclusive NVIDIA Blackwell Ultra server supply deal', tags: ['AI', 'Servers'] },
-  { ticker: 'IONQ', name: 'IonQ Inc.', price: 42.18, change: 22.4, cap: '$9.1B', catalyst: 'Major European bank quantum finance partnership', tags: ['Quantum', 'FinTech'] },
-  { ticker: 'RKLB', name: 'Rocket Lab USA', price: 28.95, change: 18.6, cap: '$14.2B', catalyst: '2 new NASA Artemis satellite launch contracts', tags: ['Space', 'NASA'] },
-  { ticker: 'PLTR', name: 'Palantir Technologies', price: 87.43, change: 15.2, cap: '$198B', catalyst: 'US Army extends $480M AI platform contract', tags: ['AI', 'Gov'] },
-];
 
 const CREATORS = [
   { rank: 1, name: 'MrBeast', handle: '@MrBeast', platform: 'YouTube', metric: '+2.4M subs', total: '382M', tags: ['Entertainment'], color: '#FF0000' },
@@ -125,30 +118,6 @@ export default function Home() {
           <Link href="/markets" style={{ fontSize: 12, color: '#C73E3A', fontWeight: 600, fontFamily: 'var(--sans)' }}>View All →</Link>
         </div>
         <LiveMarketsPreview />
-      </section>
-
-      {/* ── HIDDEN: old static movers kept as fallback data ── */}
-      <section id="markets-static" style={{ ...section, display: 'none' }}>
-        <div style={{ display: 'flex', flexDirection: 'column', gap: 8 }}>
-          {MOVERS.map((s, i) => (
-            <div key={s.ticker} style={{ ...card, display: 'grid', gridTemplateColumns: '32px 1fr auto', gap: 14, padding: '16px 18px', alignItems: 'center', cursor: 'pointer' }}>
-              <div style={{ fontFamily: 'var(--serif)', fontSize: 14, fontWeight: 800, color: i < 3 ? '#D4A843' : '#475569', textAlign: 'center' }}>#{i + 1}</div>
-              <div>
-                <div style={{ display: 'flex', alignItems: 'center', gap: 8, flexWrap: 'wrap' }}>
-                  <span style={{ fontFamily: 'var(--mono)', fontSize: 15, fontWeight: 700, color: '#60A5FA' }}>{s.ticker}</span>
-                  <span style={{ fontFamily: 'var(--sans)', fontSize: 13, fontWeight: 600, color: '#E2E8F0' }}>{s.name}</span>
-                  <span style={{ fontSize: 11, color: '#475569', fontFamily: 'var(--sans)' }}>· {s.cap}</span>
-                </div>
-                <div style={{ fontSize: 12, color: '#64748B', marginTop: 4, fontFamily: 'var(--sans)', lineHeight: 1.5 }}>{s.catalyst}</div>
-                <div style={{ display: 'flex', gap: 4, marginTop: 6 }}>{s.tags.map(t => <Tag key={t} color="#64748B">{t}</Tag>)}</div>
-              </div>
-              <div style={{ textAlign: 'right' }}>
-                <div style={{ fontFamily: 'var(--mono)', fontSize: 20, fontWeight: 800, color: '#F1F5F9' }}>${s.price}</div>
-                <div style={{ marginTop: 4 }}><Change value={s.change} /></div>
-              </div>
-            </div>
-          ))}
-        </div>
       </section>
 
       {/* ── Creators ── */}
@@ -243,32 +212,46 @@ export default function Home() {
 
 /* ═══ Live Markets Preview (Alpha Vantage) ═══ */
 function LiveMarketsPreview() {
-  const [movers, setMovers] = useState<{ticker:string;price:number;change:number;volume:number}[]>([]);
-  const [live, setLive] = useState(false);
+  const [movers, setMovers] = useState<{ticker:string;name:string;price:number;change:number}[]>([]);
+  const [loading, setLoading] = useState(true);
 
   useEffect(() => {
     fetch('/api/markets')
       .then(r => r.json())
       .then(data => {
-        if (data.movers && data.movers.length > 0) { setMovers(data.movers.slice(0, 5)); setLive(true); }
+        if (data.gainers && data.gainers.length > 0) {
+          setMovers(data.gainers.slice(0, 5).map((g: {ticker:string;name:string;price:number;change:number}) => ({
+            ticker: g.ticker, name: g.name || g.ticker, price: g.price, change: g.change,
+          })));
+        }
       })
-      .catch(() => {});
+      .catch(() => {})
+      .finally(() => setLoading(false));
   }, []);
 
-  // Fallback to hardcoded MOVERS
-  const display = live ? movers : MOVERS.slice(0, 5).map(m => ({ ticker: m.ticker, price: m.price, change: m.change, volume: 0 }));
-  const getName = (ticker: string) => MOVERS.find(m => m.ticker === ticker)?.name || ticker;
+  if (loading) {
+    return <p style={{ fontFamily: 'var(--sans)', fontSize: 13, color: '#64748B', padding: '20px 0' }}>Loading live market data...</p>;
+  }
+
+  if (movers.length === 0) {
+    return (
+      <div style={{ ...card, padding: '24px 18px', textAlign: 'center' }}>
+        <p style={{ fontSize: 13, color: '#475569', margin: 0 }}>Market data unavailable right now.</p>
+        <Link href="/markets" style={{ fontSize: 12, color: '#C73E3A', marginTop: 8, display: 'inline-block' }}>Go to Markets →</Link>
+      </div>
+    );
+  }
 
   return (
     <div>
-      {live && <p style={{ fontFamily: 'var(--mono)', fontSize: 10, color: '#00D474', marginBottom: 8 }}>● LIVE — Alpha Vantage</p>}
+      <p style={{ fontFamily: 'var(--mono)', fontSize: 10, color: '#00D474', marginBottom: 8 }}>● LIVE — Alpha Vantage</p>
       <div style={{ display: 'flex', flexDirection: 'column', gap: 8 }}>
-        {display.map((s, i) => (
+        {movers.map((s, i) => (
           <Link key={s.ticker} href="/markets" style={{ ...card, display: 'grid', gridTemplateColumns: '32px 1fr auto', gap: 14, padding: '16px 18px', alignItems: 'center', textDecoration: 'none' }}>
             <div style={{ fontFamily: 'var(--serif)', fontSize: 14, fontWeight: 800, color: i < 3 ? '#D4A843' : '#475569', textAlign: 'center' }}>#{i + 1}</div>
             <div>
               <span style={{ fontFamily: 'var(--mono)', fontSize: 15, fontWeight: 700, color: '#60A5FA' }}>{s.ticker}</span>
-              <span style={{ fontFamily: 'var(--sans)', fontSize: 13, fontWeight: 600, color: '#E2E8F0', marginLeft: 8 }}>{getName(s.ticker)}</span>
+              <span style={{ fontFamily: 'var(--sans)', fontSize: 13, fontWeight: 600, color: '#E2E8F0', marginLeft: 8 }}>{s.name}</span>
             </div>
             <div style={{ textAlign: 'right' }}>
               <div style={{ fontFamily: 'var(--mono)', fontSize: 18, fontWeight: 800, color: '#F1F5F9' }}>${s.price.toFixed(2)}</div>
