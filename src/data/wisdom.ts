@@ -1166,9 +1166,21 @@ export function getWisdomById(id: number): WisdomEntry | undefined {
   return WISDOM.find(w => w.id === id);
 }
 
+/** Day index since launch (2026-03-31 = day 0), cycles every 100 */
+export function getTodayIndex(): number {
+  const launch = new Date('2026-03-31T00:00:00').getTime();
+  return Math.floor((Date.now() - launch) / (1000 * 60 * 60 * 24)) % WISDOM.length;
+}
+
+/** Today's wisdom — changes automatically every day */
 export function getTodaysWisdom(): WisdomEntry {
-  const dayOfYear = Math.floor(
-    (Date.now() - new Date(new Date().getFullYear(), 0, 0).getTime()) / 86400000
-  );
-  return WISDOM[dayOfYear % WISDOM.length];
+  const idx = getTodayIndex();
+  return WISDOM[idx < 0 ? 0 : idx];
+}
+
+/** All wisdom entries published up to today (day 0 = #1, day 1 = #1+#2, ...) */
+export function getPublishedWisdom(): WisdomEntry[] {
+  const idx = getTodayIndex();
+  if (idx < 0) return [WISDOM[0]];
+  return WISDOM.slice(0, idx + 1);
 }
