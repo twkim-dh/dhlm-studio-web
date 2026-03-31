@@ -34,7 +34,7 @@ const CATEGORIES = [
   { icon: '🔥', title: 'Trending Creators', desc: 'Fastest growing across platforms', color: '#A78BFA', count: '4', unit: 'platforms', href: '/creators' },
   { icon: '🏆', title: 'Global Rankings', desc: 'Billionaires, companies, GDP', color: '#D4A843', count: '30+', unit: 'ranking types', href: '/rankings' },
   { icon: '🪙', title: 'Crypto Rankings', desc: 'Live crypto prices & market cap', color: '#F59E0B', count: '100+', unit: 'coins tracked', href: '/rankings/crypto' },
-  { icon: '🎯', title: 'Lotto PRO', desc: 'Data-driven lottery analysis', color: '#C73E3A', count: '1,216+', unit: 'rounds analyzed', href: '/lotto' },
+  { icon: '🎰', title: 'US Lottery', desc: 'Powerball & Mega Millions jackpots', color: '#C73E3A', count: '$427M', unit: 'Powerball jackpot', href: '/lottery' },
   { icon: '🧮', title: 'Tools', desc: 'QR generator & password tool', color: '#64748B', count: '2', unit: 'free tools', href: '/tools' },
 ];
 
@@ -68,7 +68,7 @@ export default function Home() {
             { label: 'Trending Creators', href: '/creators' },
             { label: `${YEAR} Billionaire Rankings`, href: '/rankings' },
             { label: 'Crypto Rankings (Live)', href: '/rankings/crypto' },
-            { label: 'Lotto PRO', href: '/lotto' },
+            { label: 'US Lottery', href: '/lottery' },
           ].map(t => (
             <Link key={t.label} href={t.href} style={{ fontSize: 11, color: '#475569', padding: '5px 12px', borderRadius: 20, background: '#111827', border: '1px solid #1E293B', fontFamily: 'var(--sans)' }}>
               {t.label}

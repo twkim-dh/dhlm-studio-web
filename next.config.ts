@@ -33,7 +33,10 @@ const nextConfig: NextConfig = {
       { source: '/guessme/:path*', destination: '/', permanent: true },
       { source: '/balance/:path*', destination: '/', permanent: true },
       { source: '/spin/:path*', destination: '/', permanent: true },
-      { source: '/fortune/:path*', destination: '/lotto', permanent: true },
+      { source: '/fortune/:path*', destination: '/lottery', permanent: true },
+      // Korean Lotto → US Lottery redirect
+      { source: '/lotto', destination: '/lottery', permanent: true },
+      { source: '/lotto/:path*', destination: '/lottery', permanent: true },
       { source: '/today/:path*', destination: '/', permanent: true },
       { source: '/services', destination: '/', permanent: true },
       // Old blog posts → blog hub

@@ -1,5 +1,4 @@
 import type { MetadataRoute } from "next";
-import { slugToId } from "@/lib/world-lottery";
 import { stocks } from "@/data/markets";
 import { TOP_STOCKS } from "@/data/top-stocks";
 import { TOP_CRYPTOS } from "@/data/top-cryptos";
@@ -33,12 +32,12 @@ export default function sitemap(): MetadataRoute.Sitemap {
       lastModified: now, changeFrequency: "daily" as const, priority: 0.7,
     })),
 
-    // Lotto
-    { url: `${BASE}/lotto`, lastModified: now, changeFrequency: "daily", priority: 0.9 },
-    ...Object.keys(slugToId).map(slug => ({
-      url: `${BASE}/lotto/${slug}`,
-      lastModified: now, changeFrequency: "weekly" as const, priority: 0.8,
-    })),
+    // US Lottery
+    { url: `${BASE}/lottery`, lastModified: now, changeFrequency: "daily", priority: 0.9 },
+    { url: `${BASE}/lottery/powerball`, lastModified: now, changeFrequency: "daily", priority: 0.9 },
+    { url: `${BASE}/lottery/mega-millions`, lastModified: now, changeFrequency: "daily", priority: 0.9 },
+    { url: `${BASE}/lottery/jackpot-tracker`, lastModified: now, changeFrequency: "daily", priority: 0.9 },
+    { url: `${BASE}/lottery/number-generator`, lastModified: now, changeFrequency: "weekly", priority: 0.8 },
 
     // Blog
     { url: `${BASE}/blog`, lastModified: now, changeFrequency: "weekly", priority: 0.8 },

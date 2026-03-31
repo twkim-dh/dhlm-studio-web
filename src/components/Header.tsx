@@ -8,7 +8,7 @@ const links = [
   { label: "Creators", href: "/creators" },
   { label: "Rankings", href: "/rankings" },
   { label: "Crypto", href: "/rankings/crypto" },
-  { label: "Lotto", href: "/lotto" },
+  { label: "Lottery", href: "/lottery" },
   { label: "Blog", href: "/blog" },
 ];
 

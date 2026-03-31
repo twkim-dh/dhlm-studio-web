@@ -9,7 +9,7 @@ https://dhlm-studio.com
 - /creators — Fastest growing YouTube, TikTok, Instagram, X creators
 - /rankings — Global rankings: billionaires, companies, GDP, population, sports
 - /rankings/crypto — Live cryptocurrency rankings (CoinGecko)
-- /lotto — Lotto PRO: data-driven lottery analysis (25+ countries)
+- /lottery — US Lottery: Powerball & Mega Millions jackpots, results, number generator
 - /blog — Data insights blog: markets, rankings, cost of living analysis
 - /tools — Free tools: QR code generator, password generator
 
