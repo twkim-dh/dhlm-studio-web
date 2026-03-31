@@ -11,6 +11,56 @@ export interface BlogPost {
 
 export const blogPosts: BlogPost[] = [
   {
+    slug: 'tariff-impact-markets-2026', title: 'How Trump\'s 2026 Tariffs Are Reshaping Global Markets',
+    category: 'Markets', catColor: '#00D474', date: '2026-03-31', readTime: '6 min',
+    description: 'New reciprocal tariffs are causing massive volatility. Which sectors benefit and which get crushed.',
+    sections: [
+      { heading: 'The Tariff Landscape', body: 'In early 2026, the Trump administration announced sweeping reciprocal tariffs affecting over 180 countries. The baseline 10% tariff on all imports was followed by targeted rates: 34% on China, 20% on EU, 24% on Japan, and 25% on South Korea. Markets reacted with the S&P 500 dropping 4.8% in a single week — the worst since 2020.' },
+      { heading: 'Winners: Domestic Manufacturing', body: 'US steel producers (X, NUE, STLD) surged 15-25% as import competition decreased. Defense contractors benefited from "Buy American" provisions. Small-cap domestic manufacturers outperformed large-cap multinationals by 12% in March alone.' },
+      { heading: 'Losers: Tech & Consumer', body: 'Apple fell 8% on fears of iPhone cost increases from China tariffs. Retailers like Walmart and Target warned of price hikes. Auto manufacturers face component cost increases of $2,000-5,000 per vehicle. The real question: are these tariffs permanent or a negotiation tactic?' },
+    ],
+  },
+  {
+    slug: 'crypto-market-recovery-2026', title: 'Crypto in 2026: The Recovery Nobody Expected',
+    category: 'Markets', catColor: '#00D474', date: '2026-03-30', readTime: '5 min',
+    description: 'Bitcoin reclaimed $65K and Ethereum topped $2,000. Institutional adoption is driving the next wave.',
+    sections: [
+      { heading: 'The Numbers', body: 'Bitcoin started 2026 at $42,000 and has climbed to $66,700 — a 58% gain in just 3 months. Ethereum followed with a 40% rally to $2,022. The total crypto market cap reached $2.8 trillion, approaching the 2021 all-time high. Spot Bitcoin ETFs now hold over $75 billion in assets.' },
+      { heading: 'What Changed?', body: 'Three catalysts drove the recovery: 1) The Bitcoin halving in April 2024 reduced supply issuance, 2) Spot ETF inflows exceeded $2 billion per month in Q1 2026, and 3) Stablecoin legislation passed Congress, giving institutional investors regulatory clarity they needed.' },
+      { heading: 'What\'s Next?', body: 'Analysts are divided. Bulls point to the halving cycle suggesting $100K+ by year-end. Bears note that macro headwinds (tariffs, inflation) could stall the rally. One thing is clear: crypto is no longer a fringe asset — it\'s a permanent part of the financial landscape.' },
+    ],
+  },
+  {
+    slug: 'ai-stocks-bubble-or-boom', title: 'AI Stocks in 2026: Bubble or Boom?',
+    category: 'Markets', catColor: '#00D474', date: '2026-03-29', readTime: '7 min',
+    description: 'NVIDIA hit $3.4T market cap. Is the AI trade overcrowded, or are we still in the early innings?',
+    sections: [
+      { heading: 'The AI Magnificent Seven', body: 'The concentration of market returns in AI stocks has reached historic levels. NVIDIA alone added $1.2 trillion in market cap in 2025-2026. The "AI Seven" (NVDA, MSFT, GOOGL, AMZN, META, AAPL, TSLA) now represent 35% of the S&P 500 — surpassing the dot-com era concentration.' },
+      { heading: 'Revenue vs Hype', body: 'Unlike the dot-com bubble, AI companies are generating real revenue. NVIDIA\'s data center revenue hit $130B annually. Microsoft\'s Azure AI revenue grows 50%+ year-over-year. Meta\'s AI-driven ad targeting improvements added $10B in annual revenue. These aren\'t projections — they\'re actual results.' },
+      { heading: 'The Bear Case', body: 'Critics argue that P/E ratios of 50-380x are unsustainable regardless of revenue growth. Enterprise AI adoption is slower than expected — many companies are stuck in "proof of concept" phase. And the biggest risk: if interest rates stay higher for longer, growth stock valuations compress dramatically.' },
+    ],
+  },
+  {
+    slug: 'global-gdp-rankings-shift-2026', title: 'Global GDP Rankings 2026: India Passes Japan',
+    category: 'Rankings', catColor: '#D4A843', date: '2026-03-29', readTime: '5 min',
+    description: 'India officially became the 4th largest economy. Here\'s how the global economic order is reshaping.',
+    sections: [
+      { heading: 'The New Order', body: 'The 2026 GDP rankings show a significant shift: 1) United States ($28.8T), 2) China ($18.7T), 3) Germany ($4.7T), 4) India ($3.9T), 5) Japan ($4.2T nominal but PPP-adjusted India surpasses). India\'s 6.5% growth rate dwarfs developed economies, and the IMF projects India will be the 3rd largest economy by 2028.' },
+      { heading: 'What\'s Driving India?', body: 'India\'s growth story is multifaceted: a booming tech sector (Bangalore is now the world\'s 3rd largest tech hub), massive infrastructure spending ($1.4T planned through 2030), a young demographic (median age 28 vs 38 in the US), and the "China+1" manufacturing strategy bringing factories to India.' },
+      { heading: 'Implications for Investors', body: 'Indian equity markets (Nifty 50, Sensex) have outperformed every major index over the past 3 years. ETFs like INDA and SMIN provide easy exposure. However, rupee depreciation remains a risk for dollar-denominated returns. The opportunity is real, but timing matters.' },
+    ],
+  },
+  {
+    slug: 'youtube-vs-tiktok-creator-economy', title: 'YouTube vs TikTok: Where Creators Make Real Money in 2026',
+    category: 'Creators', catColor: '#A78BFA', date: '2026-03-28', readTime: '6 min',
+    description: 'Creator earnings data shows YouTube still dominates monetization while TikTok wins on reach.',
+    sections: [
+      { heading: 'The Revenue Gap', body: 'Despite TikTok\'s explosive growth, YouTube creators earn 5-10x more per view. A YouTube video with 1M views earns $3,000-8,000 through AdSense. The same view count on TikTok earns $200-400 through the Creator Fund. The difference is advertiser CPMs: YouTube\'s average CPM is $7-15, while TikTok\'s is $0.50-2.' },
+      { heading: 'But TikTok Wins on Speed', body: 'TikTok\'s algorithm can catapult unknown creators to millions of views overnight. MrBeast took 6 years to reach 10M YouTube subscribers. Khaby Lame reached 50M TikTok followers in under 18 months. For brand deals and sponsorships (which account for 60-80% of top creator income), TikTok\'s virality is invaluable.' },
+      { heading: 'The Smart Strategy', body: 'The top creators in 2026 use a multi-platform approach: TikTok for discovery and virality, YouTube for long-form revenue and evergreen content, Instagram for brand partnerships, and X/Twitter for real-time engagement. The winners aren\'t platform-loyal — they\'re audience-loyal.' },
+    ],
+  },
+  {
     slug: 'top-stock-movers-explained', title: 'How to Read Today\'s Top Stock Movers',
     category: 'Markets', catColor: '#00D474', date: '2026-03-28', readTime: '5 min',
     description: 'Understanding daily stock movers: what causes price surges, how to analyze catalysts, and what metrics matter most.',
