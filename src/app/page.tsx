@@ -1,41 +1,16 @@
-'use client';
-
-import { useState, useEffect, useRef } from 'react';
+import type { Metadata } from 'next';
 import Link from 'next/link';
+import { Counter, LiveMarketsPreview, CryptoPreview } from '@/components/HomeClient';
 
 const YEAR = new Date().getFullYear();
 
-/* ═══ Helpers ═══ */
-function Counter({ to, suffix = '' }: { to: number; suffix?: string }) {
-  const [v, setV] = useState(0);
-  const ref = useRef<HTMLSpanElement>(null);
-  const ran = useRef(false);
-  useEffect(() => {
-    const obs = new IntersectionObserver(([e]) => {
-      if (e.isIntersecting && !ran.current) {
-        ran.current = true;
-        const s = Date.now();
-        const t = () => { const p = Math.min((Date.now() - s) / 1600, 1); setV(Math.floor((1 - (1 - p) ** 3) * to)); if (p < 1) requestAnimationFrame(t); };
-        t();
-      }
-    }, { threshold: 0.3 });
-    if (ref.current) obs.observe(ref.current);
-    return () => obs.disconnect();
-  }, [to]);
-  return <span ref={ref}>{v.toLocaleString()}{suffix}</span>;
-}
-
-function Tag({ children, color = '#6B7280' }: { children: React.ReactNode; color?: string }) {
-  return <span style={{ fontSize: 10, fontWeight: 600, padding: '3px 8px', borderRadius: 4, background: `${color}14`, color, fontFamily: 'var(--mono)' }}>{children}</span>;
-}
-
-function Change({ value }: { value: number }) {
-  const up = value > 0;
-  return <span style={{ fontSize: 13, fontWeight: 700, padding: '3px 10px', borderRadius: 6, background: up ? '#00D4741A' : '#FF45451A', color: up ? '#00D474' : '#FF4545', fontFamily: 'var(--mono)' }}>{up ? '+' : ''}{value.toFixed(1)}%</span>;
-}
+export const metadata: Metadata = {
+  title: `DHLM Studio — The World in Numbers | Real-Time Data ${YEAR}`,
+  description: `Real-time stock market movers, trending creators, billionaire rankings, crypto prices, and global data. Updated daily. ${YEAR}.`,
+  alternates: { canonical: 'https://dhlm-studio.com' },
+};
 
 /* ═══ Data ═══ */
-
 const CREATORS = [
   { rank: 1, name: 'MrBeast', handle: '@MrBeast', platform: 'YouTube', metric: '+2.4M subs', total: '382M', tags: ['Entertainment'], color: '#FF0000' },
   { rank: 2, name: 'Khaby Lame', handle: '@khaborlame', platform: 'TikTok', metric: '+1.8M followers', total: '163M', tags: ['Comedy'], color: '#00F2EA' },
@@ -53,13 +28,18 @@ const RANKINGS = [
 ];
 
 const CATEGORIES = [
-  { icon: '📈', title: 'Market Movers', desc: 'Daily US stock top gainers', color: '#00D474', count: '365+', unit: 'daily reports' },
-  { icon: '🔥', title: 'Trending Creators', desc: 'Fastest growing across platforms', color: '#A78BFA', count: '4', unit: 'platforms' },
-  { icon: '🏆', title: 'Global Rankings', desc: 'Billionaires, companies, GDP', color: '#D4A843', count: '30+', unit: 'ranking types' },
-  { icon: '🪙', title: 'Crypto Rankings', desc: 'Live crypto prices & market cap', color: '#F59E0B', count: '100+', unit: 'coins tracked' },
-  { icon: '🎯', title: 'Lotto PRO', desc: 'Data-driven lottery analysis', color: '#C73E3A', count: '1,216+', unit: 'rounds analyzed' },
-  { icon: '🧮', title: 'Tools', desc: 'QR generator & password tool', color: '#64748B', count: '2', unit: 'free tools' },
+  { icon: '📈', title: 'Market Movers', desc: 'Daily US stock top gainers', color: '#00D474', count: '365+', unit: 'daily reports', href: '/markets' },
+  { icon: '🔥', title: 'Trending Creators', desc: 'Fastest growing across platforms', color: '#A78BFA', count: '4', unit: 'platforms', href: '/creators' },
+  { icon: '🏆', title: 'Global Rankings', desc: 'Billionaires, companies, GDP', color: '#D4A843', count: '30+', unit: 'ranking types', href: '/rankings' },
+  { icon: '🪙', title: 'Crypto Rankings', desc: 'Live crypto prices & market cap', color: '#F59E0B', count: '100+', unit: 'coins tracked', href: '/rankings/crypto' },
+  { icon: '🎯', title: 'Lotto PRO', desc: 'Data-driven lottery analysis', color: '#C73E3A', count: '1,216+', unit: 'rounds analyzed', href: '/lotto' },
+  { icon: '🧮', title: 'Tools', desc: 'QR generator & password tool', color: '#64748B', count: '2', unit: 'free tools', href: '/tools' },
 ];
+
+/* ═══ Helpers ═══ */
+function Tag({ children, color = '#6B7280' }: { children: React.ReactNode; color?: string }) {
+  return <span style={{ fontSize: 10, fontWeight: 600, padding: '3px 8px', borderRadius: 4, background: `${color}14`, color, fontFamily: 'var(--mono)' }}>{children}</span>;
+}
 
 /* ═══ Styles ═══ */
 const card = { background: '#111827', borderRadius: 14, border: '1px solid #1E293B' };
@@ -67,7 +47,7 @@ const section = { padding: '0 24px 48px', maxWidth: 1100, margin: '0 auto' } as 
 const sectionLabel = (color: string) => ({ fontFamily: 'var(--mono)', fontSize: 10, fontWeight: 700, color, letterSpacing: 3, marginBottom: 4 } as const);
 const sectionTitle = { fontFamily: 'var(--serif)', fontSize: 26, fontWeight: 800, color: '#F1F5F9', margin: 0 } as const;
 
-/* ═══ Page ═══ */
+/* ═══ Page (Server Component) ═══ */
 export default function Home() {
   return (
     <div style={{ background: '#0B0F19', color: '#F1F5F9', minHeight: '100vh' }}>
@@ -80,7 +60,6 @@ export default function Home() {
         <p style={{ fontFamily: 'var(--sans)', fontSize: 16, color: '#64748B', lineHeight: 1.7, maxWidth: 460, margin: '0 0 28px' }}>
           Market movers, trending creators, global rankings, cost of living — updated daily.
         </p>
-        {/* Quick navigation tags */}
         <div style={{ display: 'flex', gap: 8, flexWrap: 'wrap' }}>
           {[
             { label: 'Top Stock Movers', href: '/markets' },
@@ -89,14 +68,14 @@ export default function Home() {
             { label: 'Crypto Rankings (Live)', href: '/rankings/crypto' },
             { label: 'Lotto PRO', href: '/lotto' },
           ].map(t => (
-            <Link key={t.label} href={t.href} style={{ fontSize: 11, color: '#475569', padding: '5px 12px', borderRadius: 20, background: '#111827', border: '1px solid #1E293B', fontFamily: 'var(--sans)', transition: 'border-color 0.2s' }}>
+            <Link key={t.label} href={t.href} style={{ fontSize: 11, color: '#475569', padding: '5px 12px', borderRadius: 20, background: '#111827', border: '1px solid #1E293B', fontFamily: 'var(--sans)' }}>
               {t.label}
             </Link>
           ))}
         </div>
       </section>
 
-      {/* ── Stats ── */}
+      {/* ── Stats (Counter is client) ── */}
       <div style={{ padding: '0 24px 24px', maxWidth: 1100, margin: '0 auto', display: 'flex', gap: 32, flexWrap: 'wrap', justifyContent: 'center' }}>
         {[{ v: 200, s: '+', l: 'Cities', c: '#3B82F6' }, { v: 195, s: '', l: 'Countries', c: '#D4A843' }, { v: 14, s: '', l: 'Languages', c: '#00D474' }, { v: 50000, s: '+', l: 'Data Points', c: '#A78BFA' }].map((d, i) => (
           <div key={i} style={{ textAlign: 'center', minWidth: 80 }}>
@@ -106,7 +85,7 @@ export default function Home() {
         ))}
       </div>
 
-      {/* ── Top Movers ── */}
+      {/* ── Top Movers (client) ── */}
       <section id="markets" style={section}>
         <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'baseline', marginBottom: 16 }}>
           <div>
@@ -118,7 +97,7 @@ export default function Home() {
         <LiveMarketsPreview />
       </section>
 
-      {/* ── Creators ── */}
+      {/* ── Creators (static — server rendered) ── */}
       <section id="creators" style={section}>
         <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'baseline', marginBottom: 16 }}>
           <div>
@@ -128,7 +107,7 @@ export default function Home() {
         </div>
         <div style={{ display: 'flex', flexDirection: 'column', gap: 8 }}>
           {CREATORS.map((c, i) => (
-            <div key={c.handle} style={{ ...card, display: 'grid', gridTemplateColumns: '32px 1fr auto', gap: 14, padding: '16px 18px', alignItems: 'center', cursor: 'pointer' }}>
+            <div key={c.handle} style={{ ...card, display: 'grid', gridTemplateColumns: '32px 1fr auto', gap: 14, padding: '16px 18px', alignItems: 'center' }}>
               <div style={{ fontFamily: 'var(--serif)', fontSize: 14, fontWeight: 800, color: i < 3 ? '#D4A843' : '#475569', textAlign: 'center' }}>#{c.rank}</div>
               <div>
                 <div style={{ display: 'flex', alignItems: 'center', gap: 8, flexWrap: 'wrap' }}>
@@ -149,7 +128,7 @@ export default function Home() {
         </div>
       </section>
 
-      {/* ── Rankings ── */}
+      {/* ── Rankings (static — server rendered) ── */}
       <section id="rankings" style={{ padding: '12px 24px 48px', maxWidth: 1100, margin: '0 auto' }}>
         <div style={{ padding: '20px 22px', marginBottom: 16, background: 'linear-gradient(135deg, #D4A84308, #D4A84303)', borderRadius: 16, border: '1px solid #D4A84315' }}>
           <div style={sectionLabel('#D4A843')}>🏆 GLOBAL RANKINGS · {YEAR}</div>
@@ -169,7 +148,7 @@ export default function Home() {
         </div>
       </section>
 
-      {/* ── Crypto Preview ── */}
+      {/* ── Crypto Preview (client) ── */}
       <section style={section}>
         <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'baseline', marginBottom: 16 }}>
           <div>
@@ -181,13 +160,12 @@ export default function Home() {
         <CryptoPreview />
       </section>
 
-      {/* ── Categories ── */}
+      {/* ── Categories (static — server rendered) ── */}
       <section style={section}>
         <div style={sectionLabel('#64748B')}>EXPLORE</div>
         <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(240px, 1fr))', gap: 12, marginTop: 16 }}>
           {CATEGORIES.map(c => (
-            <Link key={c.title} href={c.title === 'Lotto PRO' ? '/lotto' : c.title === 'Tools' ? '/tools' : c.title === 'Market Movers' ? '/markets' : c.title === 'Trending Creators' ? '/creators' : c.title === 'Global Rankings' ? '/rankings' : c.title === 'Crypto Rankings' ? '/rankings/crypto' : '/'}
-              style={{ ...card, padding: '22px 20px', position: 'relative', overflow: 'hidden', cursor: 'pointer' }}>
+            <Link key={c.title} href={c.href} style={{ ...card, padding: '22px 20px', position: 'relative', overflow: 'hidden' }}>
               <div style={{ position: 'absolute', top: 0, left: 0, right: 0, height: 2, background: c.color }} />
               <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'flex-start' }}>
                 <div>
@@ -204,104 +182,6 @@ export default function Home() {
           ))}
         </div>
       </section>
-    </div>
-  );
-}
-
-/* ═══ Live Markets Preview (Alpha Vantage) ═══ */
-function LiveMarketsPreview() {
-  const [movers, setMovers] = useState<{ticker:string;name:string;price:number;change:number}[]>([]);
-  const [loading, setLoading] = useState(true);
-
-  useEffect(() => {
-    fetch('/api/markets')
-      .then(r => r.json())
-      .then(data => {
-        if (data.gainers && data.gainers.length > 0) {
-          setMovers(data.gainers.slice(0, 5).map((g: {ticker:string;name:string;price:number;change:number}) => ({
-            ticker: g.ticker, name: g.name || g.ticker, price: g.price, change: g.change,
-          })));
-        }
-      })
-      .catch(() => {})
-      .finally(() => setLoading(false));
-  }, []);
-
-  if (loading) {
-    return <p style={{ fontFamily: 'var(--sans)', fontSize: 13, color: '#64748B', padding: '20px 0' }}>Loading live market data...</p>;
-  }
-
-  if (movers.length === 0) {
-    return (
-      <div style={{ ...card, padding: '24px 18px', textAlign: 'center' }}>
-        <p style={{ fontSize: 13, color: '#475569', margin: 0 }}>Market data unavailable right now.</p>
-        <Link href="/markets" style={{ fontSize: 12, color: '#C73E3A', marginTop: 8, display: 'inline-block' }}>Go to Markets →</Link>
-      </div>
-    );
-  }
-
-  return (
-    <div>
-      <p style={{ fontFamily: 'var(--mono)', fontSize: 10, color: '#00D474', marginBottom: 8 }}>● LIVE — Alpha Vantage</p>
-      <div style={{ display: 'flex', flexDirection: 'column', gap: 8 }}>
-        {movers.map((s, i) => (
-          <Link key={s.ticker} href="/markets" style={{ ...card, display: 'grid', gridTemplateColumns: '32px 1fr auto', gap: 14, padding: '16px 18px', alignItems: 'center', textDecoration: 'none' }}>
-            <div style={{ fontFamily: 'var(--serif)', fontSize: 14, fontWeight: 800, color: i < 3 ? '#D4A843' : '#475569', textAlign: 'center' }}>#{i + 1}</div>
-            <div>
-              <span style={{ fontFamily: 'var(--mono)', fontSize: 15, fontWeight: 700, color: '#60A5FA' }}>{s.ticker}</span>
-              <span style={{ fontFamily: 'var(--sans)', fontSize: 13, fontWeight: 600, color: '#E2E8F0', marginLeft: 8 }}>{s.name}</span>
-            </div>
-            <div style={{ textAlign: 'right' }}>
-              <div style={{ fontFamily: 'var(--mono)', fontSize: 18, fontWeight: 800, color: '#F1F5F9' }}>${s.price.toFixed(2)}</div>
-              <Change value={s.change} />
-            </div>
-          </Link>
-        ))}
-      </div>
-    </div>
-  );
-}
-
-/* ═══ Crypto Preview (live from CoinGecko) ═══ */
-function CryptoPreview() {
-  const [coins, setCoins] = useState<{name:string;symbol:string;price:number;change24h:number;marketCap:number;image:string}[]>([]);
-
-  useEffect(() => {
-    fetch('/api/crypto')
-      .then(r => r.json())
-      .then(data => { if (data.coins) setCoins(data.coins.slice(0, 5)); })
-      .catch(() => {});
-  }, []);
-
-  if (coins.length === 0) return <p style={{ color: '#475569', fontSize: 13 }}>Loading crypto data...</p>;
-
-  return (
-    <div style={{ display: 'flex', flexDirection: 'column', gap: 6 }}>
-      <p style={{ fontFamily: 'var(--mono)', fontSize: 10, color: '#00D474', marginBottom: 4 }}>● LIVE — CoinGecko</p>
-      {coins.map((c, i) => (
-        <Link key={c.symbol} href="/rankings/crypto" style={{
-          background: '#111827', borderRadius: 14, border: '1px solid #1E293B',
-          display: 'flex', alignItems: 'center', gap: 12, padding: '14px 18px', textDecoration: 'none',
-        }}>
-          <span style={{ fontFamily: 'var(--serif)', fontSize: 14, fontWeight: 800, color: i < 3 ? '#D4A843' : '#475569', width: 24, textAlign: 'center' }}>
-            {i + 1}
-          </span>
-          {c.image && <img src={c.image} alt={c.name} width={24} height={24} style={{ borderRadius: '50%' }} />}
-          <div style={{ flex: 1 }}>
-            <span style={{ fontFamily: 'var(--sans)', fontSize: 14, fontWeight: 600, color: '#E2E8F0' }}>{c.name}</span>
-            <span style={{ fontFamily: 'var(--mono)', fontSize: 11, color: '#475569', marginLeft: 6 }}>{c.symbol.toUpperCase()}</span>
-          </div>
-          <span style={{ fontFamily: 'var(--mono)', fontSize: 16, fontWeight: 700, color: '#F1F5F9' }}>
-            ${c.price >= 1000 ? c.price.toLocaleString(undefined, { maximumFractionDigits: 0 }) : c.price >= 1 ? c.price.toFixed(2) : c.price.toFixed(4)}
-          </span>
-          <span style={{
-            fontFamily: 'var(--mono)', fontSize: 13, fontWeight: 700, minWidth: 60, textAlign: 'right',
-            color: c.change24h >= 0 ? '#00D474' : '#FF4545',
-          }}>
-            {c.change24h >= 0 ? '+' : ''}{c.change24h?.toFixed(1)}%
-          </span>
-        </Link>
-      ))}
     </div>
   );
 }
