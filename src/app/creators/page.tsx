@@ -7,16 +7,16 @@ export const metadata: Metadata = {
 };
 
 const CREATORS = [
-  { rank: 1, name: 'MrBeast', handle: '@MrBeast', platform: 'YouTube', metric: '+2.4M subs', total: '382M', tags: ['Entertainment'], color: '#FF0000' },
-  { rank: 2, name: 'Khaby Lame', handle: '@khaborlame', platform: 'TikTok', metric: '+1.8M followers', total: '163M', tags: ['Comedy'], color: '#00F2EA' },
-  { rank: 3, name: 'Cristiano Ronaldo', handle: '@cristiano', platform: 'Instagram', metric: '+1.2M followers', total: '648M', tags: ['Sports'], color: '#E4405F' },
-  { rank: 4, name: 'Elon Musk', handle: '@elonmusk', platform: 'X', metric: '+890K followers', total: '218M', tags: ['Tech', 'Business'], color: '#F5F5F5' },
-  { rank: 5, name: 'IShowSpeed', handle: '@IShowSpeed', platform: 'YouTube', metric: '+680K subs', total: '42M', tags: ['Gaming', 'Entertainment'], color: '#FF0000' },
-  { rank: 6, name: 'Charli D\'Amelio', handle: '@charlidamelio', platform: 'TikTok', metric: '+520K followers', total: '155M', tags: ['Dance', 'Lifestyle'], color: '#00F2EA' },
-  { rank: 7, name: 'Kai Cenat', handle: '@KaiCenat', platform: 'YouTube', metric: '+480K subs', total: '18M', tags: ['Streaming', 'Entertainment'], color: '#FF0000' },
-  { rank: 8, name: 'Taylor Swift', handle: '@taylorswift', platform: 'Instagram', metric: '+450K followers', total: '283M', tags: ['Music'], color: '#E4405F' },
-  { rank: 9, name: 'Jenna Ortega', handle: '@jennaortega', platform: 'Instagram', metric: '+380K followers', total: '51M', tags: ['Acting'], color: '#E4405F' },
-  { rank: 10, name: 'Mark Rober', handle: '@MarkRober', platform: 'YouTube', metric: '+350K subs', total: '58M', tags: ['Science', 'Engineering'], color: '#FF0000' },
+  { rank: 1, name: 'MrBeast', handle: '@MrBeast', platform: 'YouTube', metric: '+2.4M subs', total: '382M', tags: ['Entertainment'], color: '#FF0000', flag: '🇺🇸' },
+  { rank: 2, name: 'Khaby Lame', handle: '@khaborlame', platform: 'TikTok', metric: '+1.8M followers', total: '163M', tags: ['Comedy'], color: '#00F2EA', flag: '🇮🇹' },
+  { rank: 3, name: 'Cristiano Ronaldo', handle: '@cristiano', platform: 'Instagram', metric: '+1.2M followers', total: '648M', tags: ['Sports'], color: '#E4405F', flag: '🇵🇹' },
+  { rank: 4, name: 'Elon Musk', handle: '@elonmusk', platform: 'X', metric: '+890K followers', total: '218M', tags: ['Tech', 'Business'], color: '#F5F5F5', flag: '🇺🇸' },
+  { rank: 5, name: 'IShowSpeed', handle: '@IShowSpeed', platform: 'YouTube', metric: '+680K subs', total: '42M', tags: ['Gaming', 'Entertainment'], color: '#FF0000', flag: '🇺🇸' },
+  { rank: 6, name: 'Charli D\'Amelio', handle: '@charlidamelio', platform: 'TikTok', metric: '+520K followers', total: '155M', tags: ['Dance', 'Lifestyle'], color: '#00F2EA', flag: '🇺🇸' },
+  { rank: 7, name: 'Kai Cenat', handle: '@KaiCenat', platform: 'YouTube', metric: '+480K subs', total: '18M', tags: ['Streaming', 'Entertainment'], color: '#FF0000', flag: '🇺🇸' },
+  { rank: 8, name: 'Taylor Swift', handle: '@taylorswift', platform: 'Instagram', metric: '+450K followers', total: '283M', tags: ['Music'], color: '#E4405F', flag: '🇺🇸' },
+  { rank: 9, name: 'Jenna Ortega', handle: '@jennaortega', platform: 'Instagram', metric: '+380K followers', total: '51M', tags: ['Acting'], color: '#E4405F', flag: '🇺🇸' },
+  { rank: 10, name: 'Mark Rober', handle: '@MarkRober', platform: 'YouTube', metric: '+350K subs', total: '58M', tags: ['Science', 'Engineering'], color: '#FF0000', flag: '🇺🇸' },
 ];
 
 const card = { background: '#111827', borderRadius: 14, border: '1px solid #1E293B' };
@@ -40,6 +40,7 @@ export default function CreatorsPage() {
               <div style={{ fontFamily: 'var(--serif)', fontSize: 15, fontWeight: 800, color: c.rank <= 3 ? '#D4A843' : '#475569', textAlign: 'center' }}>#{c.rank}</div>
               <div>
                 <div style={{ display: 'flex', alignItems: 'center', gap: 8, flexWrap: 'wrap' }}>
+                  <span style={{ fontSize: 14, marginRight: 2 }}>{c.flag}</span>
                   <span style={{ fontFamily: 'var(--sans)', fontSize: 15, fontWeight: 700, color: '#E2E8F0' }}>{c.name}</span>
                   <span style={{ fontFamily: 'var(--mono)', fontSize: 11, color: '#64748B' }}>{c.handle}</span>
                   <span style={{ fontSize: 10, fontWeight: 600, padding: '2px 8px', borderRadius: 4, background: `${c.color}18`, color: c.color, fontFamily: 'var(--mono)' }}>{c.platform}</span>

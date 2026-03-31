@@ -53,6 +53,7 @@ function generateRoast(s: Mover): { roast: string; rating: string; ratingColor: 
     `Up ${abs}%! ${name} is on FIRE and everyone's running TOWARD it instead of away. You know what else was hot? Pets.com. WeWork. FTX. Being hot doesn't mean being SMART. This stock needs to PROVE itself, not just PERFORM.`,
     `${name} gained ${abs}% today.${cap} Sounds great, right? WRONG. This kind of move attracts the WORST kind of investor — the ones who buy high and pray. The institutions are already setting their SELL orders. You're bringing a spoon to a KNIFE fight.`,
     `BOOM! ${name} explodes ${abs}%. I love it. TREMENDOUS energy. But you know what? Energy without fundamentals is just a FIREWORK — bright, loud, and gone in 30 seconds. Show me the EARNINGS. Show me the MOAT. Otherwise this is just NOISE.`,
+    `${name} surges ${abs}%. Only in AMERICA can a stock go up this much in ONE DAY. 🇺🇸 God bless American capitalism. But remember — what goes up MUST come down. Unless you're the DOLLAR. The dollar NEVER loses. Well, almost never.`,
   ]) };
 
   if (s.change > 15) return { rating: 'RISKY', ratingColor: '#F59E0B', emoji: '⚠️', roast: pickRandom([
@@ -71,6 +72,7 @@ function generateRoast(s: Mover): { roast: string; rating: string; ratingColor: 
     `${name} climbs ${abs}%.${cap} Look, this isn't gonna get you on the news. Nobody's writing Reddit posts about a ${abs}% gain. But you know what? The BEST investors are BORING investors. Slow and steady. Like a TURTLE with a Bloomberg terminal.`,
     `${abs}% up for ${name}. That's the kind of gain that makes you feel SMART but not smart enough to do anything STUPID. Keep it. Don't get greedy. I've seen more fortunes lost to GREED than to bad picks.`,
     `${name} adds ${abs}% today. That's what we call "walking money" — nothing to run about, nothing to cry about. If all your stocks moved like this every day, you'd be a BILLIONAIRE in... well, a very long time. But you'd GET there.`,
+    `${name} up ${abs}%. 🇺🇸 MADE IN AMERICA, WINNING IN AMERICA. This is what happens when you invest in the GREATEST economy on earth. The rest of the world wishes they had a stock market like OURS.`,
   ]) };
 
   if (s.change < -5) return { rating: 'WATCH', ratingColor: '#F59E0B', emoji: '👀', roast: pickRandom([

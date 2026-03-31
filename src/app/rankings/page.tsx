@@ -195,7 +195,61 @@ export default function RankingsPage() {
             </div>
           ))}
         </div>
+
+        {/* Country Breakdown — bar chart */}
+        <CountryBreakdown items={items} tab={tab} />
       </div>
+    </div>
+  );
+}
+
+/* ═══ Country Breakdown Bar Chart ═══ */
+function CountryBreakdown({ items, tab }: { items: typeof data.billionaires; tab: TabId }) {
+  if (tab === 'gdp' || tab === 'population') return null; // already country-based
+
+  const counts: Record<string, { flag: string; count: number }> = {};
+  items.forEach(r => {
+    const key = r.flag;
+    if (!counts[key]) counts[key] = { flag: key, count: 0 };
+    counts[key].count++;
+  });
+  const sorted = Object.values(counts).sort((a, b) => b.count - a.count);
+  const max = sorted[0]?.count || 1;
+
+  const labels: Record<string, string> = {
+    '🇺🇸': 'United States', '🇫🇷': 'France', '🇮🇳': 'India', '🇹🇼': 'Taiwan',
+    '🇵🇹': 'Portugal', '🇦🇷': 'Argentina', '🇧🇷': 'Brazil', '🇯🇵': 'Japan',
+    '🇬🇷': 'Greece', '🇳🇴': 'Norway', '🇬🇧': 'United Kingdom', '🇩🇪': 'Germany',
+    '🇨🇳': 'China', '🇰🇷': 'South Korea',
+  };
+
+  return (
+    <div style={{ marginTop: 20, padding: '18px 22px', borderRadius: 14, background: '#111827', border: '1px solid #1E293B' }}>
+      <div style={{ fontFamily: 'var(--mono)', fontSize: 9, fontWeight: 700, color: '#D4A843', letterSpacing: 2, marginBottom: 14 }}>
+        COUNTRY BREAKDOWN — {tab.toUpperCase()} TOP {items.length}
+      </div>
+      <div style={{ display: 'flex', flexDirection: 'column', gap: 8 }}>
+        {sorted.map(c => (
+          <div key={c.flag} style={{ display: 'flex', alignItems: 'center', gap: 10 }}>
+            <span style={{ fontSize: 16, width: 24, textAlign: 'center' }}>{c.flag}</span>
+            <span style={{ fontFamily: 'var(--sans)', fontSize: 11, color: '#94A3B8', width: 100, flexShrink: 0 }}>{labels[c.flag] || c.flag}</span>
+            <div style={{ flex: 1, height: 16, borderRadius: 4, background: '#1E293B', overflow: 'hidden' }}>
+              <div style={{
+                height: '100%', borderRadius: 4,
+                width: `${(c.count / max) * 100}%`,
+                background: c.flag === '🇺🇸' ? 'linear-gradient(90deg, #3B82F6, #60A5FA)' : '#D4A84360',
+                transition: 'width 0.5s ease',
+              }} />
+            </div>
+            <span style={{ fontFamily: 'var(--mono)', fontSize: 13, fontWeight: 800, color: c.flag === '🇺🇸' ? '#60A5FA' : '#E2E8F0', width: 20, textAlign: 'right' }}>{c.count}</span>
+          </div>
+        ))}
+      </div>
+      {sorted[0]?.flag === '🇺🇸' && sorted[0]?.count >= items.length * 0.6 && (
+        <div style={{ marginTop: 12, padding: '8px 12px', borderRadius: 8, background: '#3B82F608', border: '1px solid #3B82F615', textAlign: 'center' }}>
+          <span style={{ fontSize: 11, color: '#60A5FA', fontWeight: 600 }}>🇺🇸 {sorted[0].count} of {items.length} are American — data speaks for itself.</span>
+        </div>
+      )}
     </div>
   );
 }
