@@ -79,24 +79,13 @@ export default async function StockPage({ params }: { params: Promise<{ ticker: 
   const { ticker } = await params;
   const live = await fetchLiveData(ticker);
   const staticStock = getStockByTicker(ticker);
-  // Minimal fallback for known tickers when FMP is rate-limited
-  const knownTicker = TOP_STOCKS.includes(ticker.toUpperCase());
-  const minimalStock = knownTicker ? {
+  // Fallback for ANY ticker when FMP is rate-limited or data unavailable
+  const minimalStock = {
     ticker: ticker.toUpperCase(), name: ticker.toUpperCase(), price: 0, change: 0,
-    cap: '', sector: '', description: `Stock profile for ${ticker.toUpperCase()}. Data temporarily unavailable — please try again later.`,
+    cap: '', sector: '', description: `Stock profile for ${ticker.toUpperCase()}. Live data is temporarily unavailable — it will load automatically when the data source refreshes. Try again in a few minutes.`,
     pe: '', revenue: '', ceo: '', hq: '', employees: '', website: '',
-  } : null;
+  };
   const stock = live || staticStock || minimalStock;
-
-  if (!stock) {
-    return (
-      <div style={{ background: '#0B0F19', minHeight: '100vh', padding: '120px 24px', textAlign: 'center' }}>
-        <h1 style={{ color: '#F1F5F9', fontFamily: 'var(--serif)', fontSize: 28 }}>Stock Not Found</h1>
-        <p style={{ color: '#64748B', fontSize: 14, marginTop: 8 }}>{ticker.toUpperCase()} could not be found. Try searching for a different ticker.</p>
-        <Link href="/markets/search" style={{ color: '#C73E3A', fontSize: 14, marginTop: 16, display: 'inline-block' }}>Search Stocks →</Link>
-      </div>
-    );
-  }
 
   const isLive = 'live' in stock && stock.live;
   const isUp = (stock.change || 0) >= 0;

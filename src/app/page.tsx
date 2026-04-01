@@ -109,7 +109,7 @@ export default function Home() {
             <div style={sectionLabel('#A78BFA')}>TRENDING CREATORS · THIS WEEK</div>
             <h2 style={sectionTitle}>Fastest Growing</h2>
           </div>
-          <Link href="/creators" style={{ fontSize: 12, color: '#A78BFA', fontWeight: 600, fontFamily: 'var(--sans)' }}>View All →</Link>
+          <Link href="/creators" style={{ fontSize: 12, color: '#A78BFA', fontWeight: 600, fontFamily: 'var(--sans)', padding: '8px 12px', margin: '-8px -12px' }}>View All →</Link>
         </div>
         <div style={{ display: 'flex', flexDirection: 'column', gap: 8 }}>
           {CREATORS.map((c, i) => (
