@@ -8,21 +8,25 @@ const FMP_KEY = process.env.FMP_API_KEY || '';
 const FMP_BASE = 'https://financialmodelingprep.com/stable';
 const YEAR = new Date().getFullYear();
 
+// ISR: don't pre-build any stock pages at build time (saves 1000+ FMP API calls)
+// Pages are generated on first visit and cached for 1 hour
 export function generateStaticParams() {
-  // Combine hardcoded stocks + top 500
-  const all = new Set([
-    ...stocks.map(s => s.ticker.toLowerCase()),
-    ...TOP_STOCKS.map(t => t.toLowerCase()),
-  ]);
-  return [...all].map(ticker => ({ ticker }));
+  // Only pre-build the 10 hardcoded stocks (no API calls needed)
+  return stocks.map(s => ({ ticker: s.ticker.toLowerCase() }));
 }
+
+// Allow any ticker to be dynamically rendered on first visit
+export const dynamicParams = true;
+
+// Revalidate every hour — balances freshness vs API usage
+export const revalidate = 3600;
 
 async function fetchLiveData(ticker: string) {
   if (!FMP_KEY) return null;
   try {
     const [profileRes, finRes] = await Promise.all([
-      fetch(`${FMP_BASE}/profile?symbol=${ticker.toUpperCase()}&apikey=${FMP_KEY}`, { cache: 'no-store' }),
-      fetch(`${FMP_BASE}/income-statement?symbol=${ticker.toUpperCase()}&period=annual&limit=1&apikey=${FMP_KEY}`, { cache: 'no-store' }),
+      fetch(`${FMP_BASE}/profile?symbol=${ticker.toUpperCase()}&apikey=${FMP_KEY}`, { next: { revalidate: 3600 } }),
+      fetch(`${FMP_BASE}/income-statement?symbol=${ticker.toUpperCase()}&period=annual&limit=1&apikey=${FMP_KEY}`, { next: { revalidate: 86400 } }),
     ]);
     const profileData = await profileRes.json();
     const finData = await finRes.json();
