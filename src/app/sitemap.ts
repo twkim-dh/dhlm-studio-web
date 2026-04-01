@@ -66,6 +66,9 @@ export default function sitemap(): MetadataRoute.Sitemap {
     { url: `${BASE}/markets/search`, lastModified: now, changeFrequency: "weekly", priority: 0.7 },
     { url: `${BASE}/markets/sectors`, lastModified: now, changeFrequency: "daily", priority: 0.8 },
     { url: `${BASE}/markets/bless`, lastModified: now, changeFrequency: "weekly", priority: 0.7 },
+    { url: `${BASE}/markets/roast-portfolio`, lastModified: now, changeFrequency: "weekly", priority: 0.9 },
+    { url: `${BASE}/markets/most-roasted`, lastModified: now, changeFrequency: "daily", priority: 0.8 },
+    { url: `${BASE}/markets/most-blessed`, lastModified: now, changeFrequency: "daily", priority: 0.8 },
 
     // Tools
     { url: `${BASE}/tools`, lastModified: now, changeFrequency: "monthly", priority: 0.7 },
