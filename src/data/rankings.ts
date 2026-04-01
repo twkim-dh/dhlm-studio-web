@@ -1,0 +1,68 @@
+export interface RankingItem {
+  rank: number; name: string; value: string; flag: string; delta: string; sub?: string;
+}
+
+export const RANKINGS = {
+  billionaires: [
+    { rank: 1, name: 'Elon Musk', value: '$287B', flag: '🇺🇸', delta: '+12%', sub: 'Tesla, SpaceX, X' },
+    { rank: 2, name: 'Bernard Arnault', value: '$241B', flag: '🇫🇷', delta: '-3%', sub: 'LVMH' },
+    { rank: 3, name: 'Jeff Bezos', value: '$218B', flag: '🇺🇸', delta: '+8%', sub: 'Amazon' },
+    { rank: 4, name: 'Mark Zuckerberg', value: '$198B', flag: '🇺🇸', delta: '+22%', sub: 'Meta' },
+    { rank: 5, name: 'Larry Ellison', value: '$176B', flag: '🇺🇸', delta: '+15%', sub: 'Oracle' },
+    { rank: 6, name: 'Warren Buffett', value: '$143B', flag: '🇺🇸', delta: '+5%', sub: 'Berkshire Hathaway' },
+    { rank: 7, name: 'Bill Gates', value: '$138B', flag: '🇺🇸', delta: '+3%', sub: 'Microsoft' },
+    { rank: 8, name: 'Mukesh Ambani', value: '$122B', flag: '🇮🇳', delta: '+18%', sub: 'Reliance' },
+    { rank: 9, name: 'Steve Ballmer', value: '$118B', flag: '🇺🇸', delta: '+10%', sub: 'Microsoft, LA Clippers' },
+    { rank: 10, name: 'Jensen Huang', value: '$112B', flag: '🇺🇸', delta: '+45%', sub: 'NVIDIA' },
+  ] as RankingItem[],
+  companies: [
+    { rank: 1, name: 'NVIDIA', value: '$4.2T', flag: '🇺🇸', delta: '+45%', sub: 'NVDA' },
+    { rank: 2, name: 'Apple', value: '$3.8T', flag: '🇺🇸', delta: '+8%', sub: 'AAPL' },
+    { rank: 3, name: 'Alphabet', value: '$3.6T', flag: '🇺🇸', delta: '+18%', sub: 'GOOGL' },
+    { rank: 4, name: 'Microsoft', value: '$3.0T', flag: '🇺🇸', delta: '+10%', sub: 'MSFT' },
+    { rank: 5, name: 'Amazon', value: '$2.3T', flag: '🇺🇸', delta: '+15%', sub: 'AMZN' },
+    { rank: 6, name: 'Broadcom', value: '$1.7T', flag: '🇺🇸', delta: '+38%', sub: 'AVGO' },
+    { rank: 7, name: 'Meta', value: '$1.7T', flag: '🇺🇸', delta: '+28%', sub: 'META' },
+    { rank: 8, name: 'TSMC', value: '$1.5T', flag: '🇹🇼', delta: '+22%', sub: 'TSM' },
+    { rank: 9, name: 'Tesla', value: '$1.5T', flag: '🇺🇸', delta: '+12%', sub: 'TSLA' },
+    { rank: 10, name: 'JPMorgan Chase', value: '$850B', flag: '🇺🇸', delta: '+9%', sub: 'JPM' },
+  ] as RankingItem[],
+  gdp: [
+    { rank: 1, name: 'United States', value: '$28.8T', flag: '🇺🇸', delta: '+2.8%' },
+    { rank: 2, name: 'China', value: '$18.5T', flag: '🇨🇳', delta: '+4.6%' },
+    { rank: 3, name: 'Germany', value: '$4.6T', flag: '🇩🇪', delta: '+0.8%' },
+    { rank: 4, name: 'Japan', value: '$4.2T', flag: '🇯🇵', delta: '+1.2%' },
+    { rank: 5, name: 'India', value: '$3.9T', flag: '🇮🇳', delta: '+6.5%' },
+    { rank: 6, name: 'United Kingdom', value: '$3.4T', flag: '🇬🇧', delta: '+1.5%' },
+    { rank: 7, name: 'France', value: '$3.1T', flag: '🇫🇷', delta: '+1.1%' },
+    { rank: 8, name: 'Brazil', value: '$2.2T', flag: '🇧🇷', delta: '+2.9%' },
+    { rank: 9, name: 'Italy', value: '$2.2T', flag: '🇮🇹', delta: '+0.9%' },
+    { rank: 10, name: 'Canada', value: '$2.1T', flag: '🇨🇦', delta: '+1.8%' },
+  ] as RankingItem[],
+  population: [
+    { rank: 1, name: 'India', value: '1.44B', flag: '🇮🇳', delta: '+0.8%' },
+    { rank: 2, name: 'China', value: '1.41B', flag: '🇨🇳', delta: '-0.2%' },
+    { rank: 3, name: 'United States', value: '340M', flag: '🇺🇸', delta: '+0.5%' },
+    { rank: 4, name: 'Indonesia', value: '279M', flag: '🇮🇩', delta: '+0.8%' },
+    { rank: 5, name: 'Pakistan', value: '240M', flag: '🇵🇰', delta: '+1.7%' },
+    { rank: 6, name: 'Nigeria', value: '230M', flag: '🇳🇬', delta: '+2.4%' },
+    { rank: 7, name: 'Brazil', value: '217M', flag: '🇧🇷', delta: '+0.5%' },
+    { rank: 8, name: 'Bangladesh', value: '173M', flag: '🇧🇩', delta: '+1.0%' },
+    { rank: 9, name: 'Russia', value: '144M', flag: '🇷🇺', delta: '-0.3%' },
+    { rank: 10, name: 'Mexico', value: '130M', flag: '🇲🇽', delta: '+0.7%' },
+  ] as RankingItem[],
+  sports: [
+    { rank: 1, name: 'Cristiano Ronaldo', value: '$260M', flag: '🇵🇹', delta: '', sub: 'Al Nassr · Football' },
+    { rank: 2, name: 'Lionel Messi', value: '$135M', flag: '🇦🇷', delta: '', sub: 'Inter Miami · Football' },
+    { rank: 3, name: 'Neymar Jr', value: '$110M', flag: '🇧🇷', delta: '', sub: 'Al Hilal · Football' },
+    { rank: 4, name: 'Stephen Curry', value: '$52M', flag: '🇺🇸', delta: '', sub: 'Warriors · NBA' },
+    { rank: 5, name: 'LeBron James', value: '$48M', flag: '🇺🇸', delta: '', sub: 'Lakers · NBA' },
+    { rank: 6, name: 'Kylian Mbappé', value: '$90M', flag: '🇫🇷', delta: '', sub: 'Real Madrid · Football' },
+    { rank: 7, name: 'Shohei Ohtani', value: '$70M', flag: '🇯🇵', delta: '', sub: 'Dodgers · MLB' },
+    { rank: 8, name: 'Patrick Mahomes', value: '$53M', flag: '🇺🇸', delta: '', sub: 'Chiefs · NFL' },
+    { rank: 9, name: 'Giannis Antetokounmpo', value: '$46M', flag: '🇬🇷', delta: '', sub: 'Bucks · NBA' },
+    { rank: 10, name: 'Erling Haaland', value: '$44M', flag: '🇳🇴', delta: '', sub: 'Man City · Football' },
+  ] as RankingItem[],
+};
+
+export type RankingCategory = keyof typeof RANKINGS;

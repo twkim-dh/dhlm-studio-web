@@ -19,6 +19,11 @@ export default function sitemap(): MetadataRoute.Sitemap {
     { url: `${BASE}/creators`, lastModified: now, changeFrequency: "weekly", priority: 0.9 },
     { url: `${BASE}/rankings`, lastModified: now, changeFrequency: "weekly", priority: 0.9 },
     { url: `${BASE}/rankings/crypto`, lastModified: now, changeFrequency: "daily", priority: 0.9 },
+    { url: `${BASE}/rankings/billionaires`, lastModified: now, changeFrequency: "weekly", priority: 0.9 },
+    { url: `${BASE}/rankings/companies`, lastModified: now, changeFrequency: "weekly", priority: 0.9 },
+    { url: `${BASE}/rankings/gdp`, lastModified: now, changeFrequency: "monthly", priority: 0.8 },
+    { url: `${BASE}/rankings/population`, lastModified: now, changeFrequency: "monthly", priority: 0.8 },
+    { url: `${BASE}/rankings/sports`, lastModified: now, changeFrequency: "weekly", priority: 0.8 },
 
     // Individual stocks (500+)
     ...[...new Set([...stocks.map(s => s.ticker.toLowerCase()), ...TOP_STOCKS.map(t => t.toLowerCase())])].map(t => ({

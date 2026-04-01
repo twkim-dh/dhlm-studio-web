@@ -37,12 +37,7 @@ const nextConfig: NextConfig = {
       // Korean Lotto → US Lottery redirect
       { source: '/lotto', destination: '/lottery', permanent: true },
       { source: '/lotto/:path*', destination: '/lottery', permanent: true },
-      // Rankings sub-URLs → main rankings page (tabs)
-      { source: '/rankings/billionaires', destination: '/rankings', permanent: false },
-      { source: '/rankings/companies', destination: '/rankings', permanent: false },
-      { source: '/rankings/gdp', destination: '/rankings', permanent: false },
-      { source: '/rankings/population', destination: '/rankings', permanent: false },
-      { source: '/rankings/sports', destination: '/rankings', permanent: false },
+      // Rankings sub-pages now have dedicated routes — no redirect needed
       { source: '/today/:path*', destination: '/', permanent: true },
       { source: '/services', destination: '/', permanent: true },
       // Old blog posts → blog hub
