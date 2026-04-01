@@ -75,7 +75,14 @@ export default async function StockPage({ params }: { params: Promise<{ ticker: 
   const { ticker } = await params;
   const live = await fetchLiveData(ticker);
   const staticStock = getStockByTicker(ticker);
-  const stock = live || staticStock;
+  // Minimal fallback for known tickers when FMP is rate-limited
+  const knownTicker = TOP_STOCKS.includes(ticker.toUpperCase());
+  const minimalStock = knownTicker ? {
+    ticker: ticker.toUpperCase(), name: ticker.toUpperCase(), price: 0, change: 0,
+    cap: '', sector: '', description: `Stock profile for ${ticker.toUpperCase()}. Data temporarily unavailable — please try again later.`,
+    pe: '', revenue: '', ceo: '', hq: '', employees: '', website: '',
+  } : null;
+  const stock = live || staticStock || minimalStock;
 
   if (!stock) {
     return (

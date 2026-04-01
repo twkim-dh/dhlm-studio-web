@@ -1,7 +1,35 @@
 import { NextResponse } from 'next/server';
+import { TOP_STOCKS } from '@/data/top-stocks';
 
 const FMP_KEY = process.env.FMP_API_KEY || '';
 const FMP_BASE = 'https://financialmodelingprep.com/stable';
+
+// Local fallback search when FMP is rate-limited
+const STOCK_NAMES: Record<string, string> = {
+  NVDA:'NVIDIA Corp',AAPL:'Apple Inc',MSFT:'Microsoft Corp',GOOGL:'Alphabet Inc',AMZN:'Amazon.com Inc',
+  META:'Meta Platforms',TSLA:'Tesla Inc',AVGO:'Broadcom Inc',JPM:'JPMorgan Chase',V:'Visa Inc',
+  UNH:'UnitedHealth Group',XOM:'Exxon Mobil',MA:'Mastercard',ORCL:'Oracle Corp',NVO:'Novo Nordisk',
+  COST:'Costco Wholesale',HD:'Home Depot',PG:'Procter & Gamble',JNJ:'Johnson & Johnson',NFLX:'Netflix Inc',
+  BAC:'Bank of America',ABBV:'AbbVie Inc',CRM:'Salesforce Inc',AMD:'AMD Inc',CVX:'Chevron Corp',
+  KO:'Coca-Cola Co',MRK:'Merck & Co',TMUS:'T-Mobile US',CSCO:'Cisco Systems',PEP:'PepsiCo Inc',
+  TMO:'Thermo Fisher',ACN:'Accenture',LIN:'Linde PLC',MCD:"McDonald's Corp",ABT:'Abbott Labs',
+  WFC:'Wells Fargo',IBM:'IBM Corp',GE:'GE Aerospace',ADBE:'Adobe Inc',PM:'Philip Morris',
+  ISRG:'Intuitive Surgical',NOW:'ServiceNow',MS:'Morgan Stanley',AXP:'American Express',
+  QCOM:'Qualcomm',GS:'Goldman Sachs',DIS:'Walt Disney',TXN:'Texas Instruments',INTU:'Intuit',
+  CAT:'Caterpillar',PFE:'Pfizer',BKNG:'Booking Holdings',VZ:'Verizon',T:'AT&T Inc',
+  PLTR:'Palantir Tech',COIN:'Coinbase',SNOW:'Snowflake',SHOP:'Shopify',SQ:'Block Inc',
+  PYPL:'PayPal',GME:'GameStop',AMC:'AMC Entertainment',RIVN:'Rivian',NIO:'NIO Inc',
+  MSTR:'MicroStrategy',MARA:'Marathon Digital',RIOT:'Riot Platforms',BABA:'Alibaba Group',
+  SOFI:'SoFi Technologies',RBLX:'Roblox Corp',SNAP:'Snap Inc',SPOT:'Spotify',
+};
+
+function localSearch(q: string) {
+  const query = q.toUpperCase();
+  return TOP_STOCKS
+    .filter(t => t.toUpperCase().includes(query) || (STOCK_NAMES[t] || '').toUpperCase().includes(query))
+    .slice(0, 15)
+    .map(t => ({ symbol: t, name: STOCK_NAMES[t] || t, currency: 'USD', exchangeShortName: 'US' }));
+}
 
 export async function GET(request: Request) {
   const { searchParams } = new URL(request.url);
@@ -54,8 +82,15 @@ export async function GET(request: Request) {
       }
     }
 
+    // If all FMP endpoints failed, use local fallback
+    if (results.length === 0) {
+      results = localSearch(q);
+    }
+
     return NextResponse.json({ results });
   } catch {
-    return NextResponse.json({ results: [], error: 'Search failed' }, { status: 500 });
+    // FMP completely down — use local search
+    const fallback = localSearch(q);
+    return NextResponse.json({ results: fallback });
   }
 }
