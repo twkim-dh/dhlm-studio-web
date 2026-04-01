@@ -38,6 +38,8 @@ export default function sitemap(): MetadataRoute.Sitemap {
     { url: `${BASE}/lottery/mega-millions`, lastModified: now, changeFrequency: "daily", priority: 0.9 },
     { url: `${BASE}/lottery/jackpot-tracker`, lastModified: now, changeFrequency: "daily", priority: 0.9 },
     { url: `${BASE}/lottery/number-generator`, lastModified: now, changeFrequency: "weekly", priority: 0.8 },
+    { url: `${BASE}/lottery/powerball/stats`, lastModified: now, changeFrequency: "daily", priority: 0.8 },
+    { url: `${BASE}/lottery/mega-millions/stats`, lastModified: now, changeFrequency: "daily", priority: 0.8 },
 
     // Blog
     { url: `${BASE}/blog`, lastModified: now, changeFrequency: "weekly", priority: 0.8 },

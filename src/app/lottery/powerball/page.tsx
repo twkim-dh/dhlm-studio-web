@@ -23,6 +23,7 @@ export default function PowerballPage() {
         <div style={{ display: 'flex', gap: 6, marginBottom: 20, flexWrap: 'wrap' }}>
           <Link href="/lottery/number-generator" style={{ fontSize: 11, color: '#A78BFA', padding: '5px 12px', borderRadius: 20, background: '#111827', border: '1px solid #1E293B' }}>🎲 Generate Numbers</Link>
           <Link href="/lottery/jackpot-tracker" style={{ fontSize: 11, color: '#00D474', padding: '5px 12px', borderRadius: 20, background: '#111827', border: '1px solid #1E293B' }}>💰 Jackpot Tracker</Link>
+          <Link href="/lottery/powerball/stats" style={{ fontSize: 11, color: '#EF4444', padding: '5px 12px', borderRadius: 20, background: '#111827', border: '1px solid #1E293B' }}>📊 Number Stats</Link>
         </div>
 
         <div style={{ display: 'flex', flexDirection: 'column', gap: 8 }}>
