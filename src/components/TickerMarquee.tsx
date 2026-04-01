@@ -78,10 +78,15 @@ export default function TickerMarquee() {
           100% { transform: translateX(-33.333%); }
         }
         .ticker-scroll {
-          animation: tickerScroll 30s linear infinite;
+          animation: tickerScroll 30s linear infinite !important;
+          will-change: transform;
+          -webkit-animation: tickerScroll 30s linear infinite !important;
         }
         @media (prefers-reduced-motion: reduce) {
-          .ticker-scroll { animation: none; }
+          .ticker-scroll {
+            animation: tickerScroll 60s linear infinite !important;
+            -webkit-animation: tickerScroll 60s linear infinite !important;
+          }
         }
       `}</style>
     </>

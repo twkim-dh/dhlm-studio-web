@@ -65,7 +65,11 @@ export default function GainersPage() {
             </Link>
           ))}
           {!loading && items.length === 0 && (
-            <p style={{ fontSize: 13, color: '#475569', textAlign: 'center', padding: 40 }}>No gainers data available. Try again later.</p>
+            <div style={{ textAlign: 'center', padding: 40 }}>
+              <p style={{ fontSize: 13, color: '#475569' }}>Market data is temporarily unavailable.</p>
+              <p style={{ fontSize: 11, color: '#374151', marginTop: 8 }}>Data updates during US market hours (9:30 AM - 4:00 PM ET).</p>
+              <Link href="/markets" style={{ fontSize: 12, color: '#C73E3A', marginTop: 12, display: 'inline-block' }}>← Back to Markets</Link>
+            </div>
           )}
         </div>
       </div>
