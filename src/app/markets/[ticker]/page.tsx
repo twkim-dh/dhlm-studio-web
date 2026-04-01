@@ -21,44 +21,71 @@ export const dynamicParams = true;
 // Revalidate every hour — balances freshness vs API usage
 export const revalidate = 3600;
 
+const AV_KEY = process.env.ALPHA_VANTAGE_KEY || 'demo';
+
 async function fetchLiveData(ticker: string) {
-  if (!FMP_KEY) return null;
-  try {
-    const [profileRes, finRes] = await Promise.all([
-      fetch(`${FMP_BASE}/profile?symbol=${ticker.toUpperCase()}&apikey=${FMP_KEY}`, { next: { revalidate: 3600 } }),
-      fetch(`${FMP_BASE}/income-statement?symbol=${ticker.toUpperCase()}&period=annual&limit=1&apikey=${FMP_KEY}`, { next: { revalidate: 86400 } }),
-    ]);
-    const profileData = await profileRes.json();
-    const finData = await finRes.json();
-    const p = Array.isArray(profileData) && profileData[0] ? profileData[0] : null;
-    const f = Array.isArray(finData) && finData[0] ? finData[0] : null;
-    if (!p) return null;
-    const mc = p.marketCap as number || 0;
-    return {
-      ticker: p.symbol || ticker.toUpperCase(),
-      name: p.companyName || ticker.toUpperCase(),
-      price: p.price || 0,
-      change: p.changes ? ((p.changes / (p.price - p.changes)) * 100) : 0,
-      cap: mc >= 1e12 ? `$${(mc / 1e12).toFixed(2)}T` : mc >= 1e9 ? `$${(mc / 1e9).toFixed(0)}B` : `$${(mc / 1e6).toFixed(0)}M`,
-      sector: p.sector || '',
-      industry: p.industry || '',
-      description: p.description || '',
-      ceo: p.ceo || '',
-      employees: p.fullTimeEmployees ? Number(p.fullTimeEmployees).toLocaleString() + '+' : '',
-      hq: [p.city, p.state, p.country].filter(Boolean).join(', '),
-      website: p.website ? (p.website as string).replace(/^https?:\/\//, '') : '',
-      image: p.image || '',
-      range52w: p.range || '',
-      exchange: p.exchangeShortName || p.exchange || '',
-      pe: p.peRatio ? String(Number(p.peRatio).toFixed(1)) : 'N/A',
-      revenue: f?.revenue ? (f.revenue >= 1e9 ? `$${(f.revenue / 1e9).toFixed(0)}B` : `$${(f.revenue / 1e6).toFixed(0)}M`) : '',
-      netIncome: f?.netIncome ? (f.netIncome >= 1e9 ? `$${(f.netIncome / 1e9).toFixed(1)}B` : `$${(f.netIncome / 1e6).toFixed(0)}M`) : '',
-      eps: f?.epsDiluted ? `$${Number(f.epsDiluted).toFixed(2)}` : '',
-      live: true,
-    };
-  } catch {
-    return null;
+  const sym = ticker.toUpperCase();
+
+  // Try FMP first (full profile)
+  if (FMP_KEY) {
+    try {
+      const [profileRes, finRes] = await Promise.all([
+        fetch(`${FMP_BASE}/profile?symbol=${sym}&apikey=${FMP_KEY}`, { next: { revalidate: 3600 } }),
+        fetch(`${FMP_BASE}/income-statement?symbol=${sym}&period=annual&limit=1&apikey=${FMP_KEY}`, { next: { revalidate: 86400 } }),
+      ]);
+      const profileData = await profileRes.json();
+      const finData = await finRes.json();
+      const p = Array.isArray(profileData) && profileData[0] ? profileData[0] : null;
+      const f = Array.isArray(finData) && finData[0] ? finData[0] : null;
+      if (p && p.price) {
+        const mc = p.marketCap as number || 0;
+        return {
+          ticker: p.symbol || sym, name: p.companyName || sym,
+          price: p.price || 0,
+          change: p.changes ? ((p.changes / (p.price - p.changes)) * 100) : 0,
+          cap: mc >= 1e12 ? `$${(mc / 1e12).toFixed(2)}T` : mc >= 1e9 ? `$${(mc / 1e9).toFixed(0)}B` : `$${(mc / 1e6).toFixed(0)}M`,
+          sector: p.sector || '', industry: p.industry || '',
+          description: p.description || '',
+          ceo: p.ceo || '',
+          employees: p.fullTimeEmployees ? Number(p.fullTimeEmployees).toLocaleString() + '+' : '',
+          hq: [p.city, p.state, p.country].filter(Boolean).join(', '),
+          website: p.website ? (p.website as string).replace(/^https?:\/\//, '') : '',
+          image: p.image || '', range52w: p.range || '',
+          exchange: p.exchangeShortName || p.exchange || '',
+          pe: p.peRatio ? String(Number(p.peRatio).toFixed(1)) : 'N/A',
+          revenue: f?.revenue ? (f.revenue >= 1e9 ? `$${(f.revenue / 1e9).toFixed(0)}B` : `$${(f.revenue / 1e6).toFixed(0)}M`) : '',
+          netIncome: f?.netIncome ? (f.netIncome >= 1e9 ? `$${(f.netIncome / 1e9).toFixed(1)}B` : `$${(f.netIncome / 1e6).toFixed(0)}M`) : '',
+          eps: f?.epsDiluted ? `$${Number(f.epsDiluted).toFixed(2)}` : '',
+          live: true,
+        };
+      }
+    } catch { /* FMP failed, try Alpha Vantage */ }
   }
+
+  // Fallback: Alpha Vantage GLOBAL_QUOTE (price + change only)
+  try {
+    const avRes = await fetch(
+      `https://www.alphavantage.co/query?function=GLOBAL_QUOTE&symbol=${sym}&apikey=${AV_KEY}`,
+      { next: { revalidate: 3600 } }
+    );
+    const avData = await avRes.json();
+    const q = avData['Global Quote'];
+    if (q && q['05. price']) {
+      const price = parseFloat(q['05. price']);
+      const change = parseFloat(q['10. change percent']?.replace('%', '') || '0');
+      return {
+        ticker: sym, name: sym, price, change,
+        cap: '', sector: '', industry: '',
+        description: `Real-time quote for ${sym}. Detailed company profile will load when available.`,
+        ceo: '', employees: '', hq: '', website: '', image: '',
+        range52w: '', exchange: '', pe: 'N/A',
+        revenue: '', netIncome: '', eps: '',
+        live: true,
+      };
+    }
+  } catch { /* Alpha Vantage also failed */ }
+
+  return null;
 }
 
 export async function generateMetadata({ params }: { params: Promise<{ ticker: string }> }): Promise<Metadata> {

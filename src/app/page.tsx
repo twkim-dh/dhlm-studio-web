@@ -102,8 +102,7 @@ export default function Home() {
       </section>
       </FadeIn>
 
-      {/* ── Creators (static — server rendered) ── */}
-      <FadeIn delay={0.1}>
+      {/* ── Creators (static — server rendered, no FadeIn to ensure link works) ── */}
       <section id="creators" style={section}>
         <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'baseline', marginBottom: 16 }}>
           <div>
@@ -134,7 +133,6 @@ export default function Home() {
           ))}
         </div>
       </section>
-      </FadeIn>
 
       {/* ── Rankings (static — server rendered) ── */}
       <FadeIn delay={0.1}>
