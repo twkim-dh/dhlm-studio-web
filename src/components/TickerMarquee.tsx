@@ -32,9 +32,7 @@ export default function TickerMarquee() {
           const live = [...(d.gainers || []), ...(d.losers || []), ...(d.actives || [])]
             .slice(0, 12)
             .map((m: { ticker: string; price: number; change: number }) => ({
-              symbol: m.ticker,
-              price: m.price,
-              change: m.change,
+              symbol: m.ticker, price: m.price, change: m.change,
             }));
           if (live.length > 0) setItems(live);
         }
@@ -42,37 +40,50 @@ export default function TickerMarquee() {
       .catch(() => {});
   }, []);
 
-  // Duplicate for seamless loop
-  const doubled = [...items, ...items];
+  const doubled = [...items, ...items, ...items]; // 3x for seamless
 
   return (
-    <div style={{
-      position: 'fixed', top: 0, left: 0, right: 0, zIndex: 110,
-      height: 28, overflow: 'hidden',
-      background: '#080C14', borderBottom: '1px solid #1E293B40',
-    }}>
-      <div className="marquee-track" style={{
-        display: 'flex', alignItems: 'center', height: '100%',
-        width: 'max-content',
+    <>
+      <div style={{
+        position: 'fixed', top: 0, left: 0, right: 0, zIndex: 110,
+        height: 28, overflow: 'hidden',
+        background: '#080C14', borderBottom: '1px solid #1E293B40',
       }}>
-        {doubled.map((t, i) => (
-          <div key={i} style={{
-            display: 'flex', alignItems: 'center', gap: 6,
-            padding: '0 20px', whiteSpace: 'nowrap',
-          }}>
-            <span style={{ fontFamily: 'var(--mono)', fontSize: 10, fontWeight: 700, color: '#94A3B8' }}>{t.symbol}</span>
-            <span style={{ fontFamily: 'var(--mono)', fontSize: 10, fontWeight: 600, color: '#E2E8F0' }}>
-              ${t.price >= 1000 ? t.price.toLocaleString(undefined, { maximumFractionDigits: 0 }) : t.price.toFixed(2)}
-            </span>
-            <span style={{
-              fontFamily: 'var(--mono)', fontSize: 9, fontWeight: 700,
-              color: t.change >= 0 ? '#00D474' : '#FF4545',
+        <div className="ticker-scroll" style={{
+          display: 'inline-flex', alignItems: 'center', height: '100%',
+          whiteSpace: 'nowrap',
+        }}>
+          {doubled.map((t, i) => (
+            <span key={i} style={{
+              display: 'inline-flex', alignItems: 'center', gap: 6,
+              padding: '0 20px',
             }}>
-              {t.change >= 0 ? '▲' : '▼'} {Math.abs(t.change).toFixed(1)}%
+              <span style={{ fontFamily: 'var(--mono)', fontSize: 10, fontWeight: 700, color: '#94A3B8' }}>{t.symbol}</span>
+              <span style={{ fontFamily: 'var(--mono)', fontSize: 10, fontWeight: 600, color: '#E2E8F0' }}>
+                ${t.price >= 1000 ? t.price.toLocaleString(undefined, { maximumFractionDigits: 0 }) : t.price.toFixed(2)}
+              </span>
+              <span style={{
+                fontFamily: 'var(--mono)', fontSize: 9, fontWeight: 700,
+                color: t.change >= 0 ? '#00D474' : '#FF4545',
+              }}>
+                {t.change >= 0 ? '▲' : '▼'} {Math.abs(t.change).toFixed(1)}%
+              </span>
             </span>
-          </div>
-        ))}
+          ))}
+        </div>
       </div>
-    </div>
+      <style>{`
+        @keyframes tickerScroll {
+          0% { transform: translateX(0); }
+          100% { transform: translateX(-33.333%); }
+        }
+        .ticker-scroll {
+          animation: tickerScroll 30s linear infinite;
+        }
+        @media (prefers-reduced-motion: reduce) {
+          .ticker-scroll { animation: none; }
+        }
+      `}</style>
+    </>
   );
 }

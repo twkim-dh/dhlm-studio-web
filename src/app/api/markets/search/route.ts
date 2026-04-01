@@ -16,22 +16,43 @@ export async function GET(request: Request) {
   }
 
   try {
-    const res = await fetch(
-      `${FMP_BASE}/search-name?query=${encodeURIComponent(q)}&limit=15&apikey=${FMP_KEY}`,
-      { cache: 'no-store' }
-    );
-    const data = await res.json();
+    // Try search-name first, then search-symbol as fallback
+    let results: { symbol: string; name: string; currency: string; exchangeShortName: string }[] = [];
 
-    if (!Array.isArray(data)) {
-      return NextResponse.json({ results: [], raw: data });
+    for (const endpoint of ['search-name', 'search-symbol']) {
+      const res = await fetch(
+        `${FMP_BASE}/${endpoint}?query=${encodeURIComponent(q)}&limit=15&apikey=${FMP_KEY}`,
+        { cache: 'no-store' }
+      );
+      const data = await res.json();
+
+      if (Array.isArray(data) && data.length > 0) {
+        results = data.map((item: Record<string, unknown>) => ({
+          symbol: String(item.symbol || ''),
+          name: String(item.name || item.symbol || ''),
+          currency: String(item.currency || ''),
+          exchangeShortName: String(item.exchangeShortName || item.exchange || ''),
+        }));
+        break;
+      }
     }
 
-    const results = data.map((item: Record<string, unknown>) => ({
-      symbol: item.symbol,
-      name: item.name,
-      currency: item.currency || '',
-      exchangeShortName: item.exchangeShortName || '',
-    }));
+    // If FMP returns nothing, try v3 endpoint as last resort
+    if (results.length === 0) {
+      const v3Res = await fetch(
+        `https://financialmodelingprep.com/api/v3/search?query=${encodeURIComponent(q)}&limit=15&apikey=${FMP_KEY}`,
+        { cache: 'no-store' }
+      );
+      const v3Data = await v3Res.json();
+      if (Array.isArray(v3Data) && v3Data.length > 0) {
+        results = v3Data.map((item: Record<string, unknown>) => ({
+          symbol: String(item.symbol || ''),
+          name: String(item.name || ''),
+          currency: String(item.currency || ''),
+          exchangeShortName: String(item.exchangeShortName || ''),
+        }));
+      }
+    }
 
     return NextResponse.json({ results });
   } catch {

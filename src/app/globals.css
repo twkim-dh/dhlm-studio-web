@@ -44,15 +44,6 @@ input::placeholder { color: #475569; }
 ::-webkit-scrollbar-track { background: transparent; }
 ::-webkit-scrollbar-thumb { background: #1E293B; border-radius: 3px; }
 
-/* Ticker Marquee */
-.marquee-track {
-  animation: marquee 40s linear infinite;
-}
-@keyframes marquee {
-  0% { transform: translateX(0); }
-  100% { transform: translateX(-50%); }
-}
-
 /* Skeleton shimmer animation */
 @keyframes shimmer {
   0% { background-position: 200% 0; }
