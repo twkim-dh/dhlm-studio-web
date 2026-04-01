@@ -119,7 +119,7 @@ function FortuneBuddha({ glowing, blessing, smokeIntensity = 1 }: { glowing: boo
 
       {/* Buddha Image */}
       <Image
-        src="/images/fortune-buddha.png"
+        src="/images/fortune-buddha.webp"
         alt="Fortune Buddha - Bless your stock"
         width={640}
         height={640}

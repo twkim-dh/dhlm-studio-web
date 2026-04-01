@@ -21,13 +21,11 @@
   --mono: var(--font-ibm-plex-mono), 'IBM Plex Mono', 'SF Mono', monospace;
   --area-bg: var(--bg);
   --area-text: var(--text-primary);
-  --font-sans: var(--font-noto-sans-kr);
 }
 
 @theme inline {
   --color-background: var(--area-bg);
   --color-foreground: var(--area-text);
-  --font-sans: var(--font-noto-sans-kr);
 }
 
 [data-area="korea"] { --area-bg: #FFFFFF; --area-text: #1A1A1A; }

@@ -1,18 +1,13 @@
 import type { Metadata } from "next";
-import { Noto_Sans_KR, Playfair_Display, DM_Sans, IBM_Plex_Mono } from "next/font/google";
+import { Playfair_Display, DM_Sans, IBM_Plex_Mono } from "next/font/google";
 import Header from "@/components/Header";
 import Footer from "@/components/Footer";
 import MobileNav from "@/components/MobileNav";
-import CookieConsent from "@/components/CookieConsent";
-import TickerMarquee from "@/components/TickerMarquee";
-import "./globals.css";
+import dynamic from "next/dynamic";
 
-const notoSansKR = Noto_Sans_KR({
-  variable: "--font-noto-sans-kr",
-  subsets: ["latin"],
-  weight: ["400", "500", "700", "900"],
-  display: "swap",
-});
+const TickerMarquee = dynamic(() => import("@/components/TickerMarquee"), { ssr: false });
+const CookieConsent = dynamic(() => import("@/components/CookieConsent"), { ssr: false });
+import "./globals.css";
 
 const playfair = Playfair_Display({
   variable: "--font-playfair",
@@ -86,7 +81,7 @@ export default function RootLayout({
   children: React.ReactNode;
 }>) {
   return (
-    <html lang="en" className={`${notoSansKR.variable} ${playfair.variable} ${dmSans.variable} ${ibmPlexMono.variable} antialiased`}>
+    <html lang="en" className={`${playfair.variable} ${dmSans.variable} ${ibmPlexMono.variable} antialiased`}>
       <head>
         {/* Favicon */}
         <link rel="icon" href="/favicon.svg" type="image/svg+xml" />
@@ -110,6 +105,7 @@ export default function RootLayout({
           async
           src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-5182634360822108"
           crossOrigin="anonymous"
+          data-loading="lazy"
         />
         {/* JSON-LD Organization */}
         <script
