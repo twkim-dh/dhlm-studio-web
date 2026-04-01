@@ -2,6 +2,7 @@ import type { Metadata } from 'next';
 import Link from 'next/link';
 import { Counter, LiveMarketsPreview, CryptoPreview } from '@/components/HomeClient';
 import FadeIn from '@/components/FadeIn';
+import FortuneCookie from '@/components/FortuneCookie';
 import { getTodaysWisdom } from '@/data/wisdom';
 
 const YEAR = new Date().getFullYear();
@@ -109,7 +110,7 @@ export default function Home() {
             <div style={sectionLabel('#A78BFA')}>TRENDING CREATORS · THIS WEEK</div>
             <h2 style={sectionTitle}>Fastest Growing</h2>
           </div>
-          <Link href="/creators" style={{ fontSize: 12, color: '#A78BFA', fontWeight: 600, fontFamily: 'var(--sans)', padding: '8px 12px', margin: '-8px -12px' }}>View All →</Link>
+          <Link href="/creators" style={{ fontSize: 12, color: '#A78BFA', fontWeight: 600, fontFamily: 'var(--sans)', padding: '10px 16px', margin: '-10px -16px', position: 'relative', zIndex: 10, display: 'inline-block' }}>View All →</Link>
         </div>
         <div style={{ display: 'flex', flexDirection: 'column', gap: 8 }}>
           {CREATORS.map((c, i) => (
@@ -192,6 +193,16 @@ export default function Home() {
               </div>
             </Link>
           ))}
+        </div>
+      </section>
+      </FadeIn>
+
+      {/* ── Fortune Cookie ── */}
+      <FadeIn delay={0.1}>
+      <section style={{ padding: '0 24px 48px', maxWidth: 1100, margin: '0 auto' }}>
+        <div style={{ padding: '24px', borderRadius: 16, background: '#111827', border: '1px solid #1E293B' }}>
+          <div style={{ fontFamily: 'var(--mono)', fontSize: 9, fontWeight: 700, color: '#D4A843', letterSpacing: 3, textAlign: 'center', marginBottom: 12 }}>🥠 DAILY FORTUNE COOKIE</div>
+          <FortuneCookie />
         </div>
       </section>
       </FadeIn>

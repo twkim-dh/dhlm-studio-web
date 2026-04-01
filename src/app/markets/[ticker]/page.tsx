@@ -63,13 +63,12 @@ async function fetchLiveData(ticker: string) {
 
 export async function generateMetadata({ params }: { params: Promise<{ ticker: string }> }): Promise<Metadata> {
   const { ticker } = await params;
-  const live = await fetchLiveData(ticker);
-  const stock = live || getStockByTicker(ticker);
-  if (!stock) return { title: `${ticker.toUpperCase()} — Stock Profile ${YEAR}` };
+  const t = ticker.toUpperCase();
+  // Don't call FMP for metadata — saves API calls, use static data only
+  const stock = getStockByTicker(ticker);
   return {
-    title: `${stock.ticker} — ${stock.name} Stock Price & Analysis ${YEAR}`,
-    description: `${stock.name} (${stock.ticker}) stock price $${typeof stock.price === 'number' ? stock.price.toFixed(2) : stock.price}, market cap ${stock.cap}. Real-time data, company profile, key metrics. ${YEAR}.`,
-    keywords: [stock.ticker, stock.name, 'stock price', 'market cap', `${stock.ticker} stock ${YEAR}`],
+    title: stock ? `${stock.ticker} — ${stock.name} Stock Price & Analysis ${YEAR}` : `${t} — Stock Profile ${YEAR}`,
+    description: stock ? `${stock.name} (${stock.ticker}) real-time stock data, company profile, key metrics. ${YEAR}.` : `${t} stock profile — real-time price, market cap, analysis. ${YEAR}.`,
   };
 }
 
