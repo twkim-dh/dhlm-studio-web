@@ -117,7 +117,7 @@ export default async function StockPage({ params }: { params: Promise<{ ticker: 
   const isUp = (stock.change || 0) >= 0;
   const hasPrice = typeof stock.price === 'number' && stock.price > 0;
   const changeStr = hasPrice ? `${isUp ? '+' : ''}${(stock.change || 0).toFixed(1)}%` : '';
-  const priceStr = hasPrice ? `$${stock.price.toFixed(2)}` : 'Price loading...';
+  const priceStr = hasPrice ? `$${stock.price.toFixed(2)}` : '$—';
 
   // JSON-LD
   const jsonLd = {
@@ -163,9 +163,12 @@ export default async function StockPage({ params }: { params: Promise<{ ticker: 
             <span style={{ fontFamily: 'var(--sans)', fontSize: 20, fontWeight: 700, color: '#F1F5F9' }}>{stock.name}</span>
           </div>
           <div style={{ display: 'flex', alignItems: 'baseline', gap: 12, marginTop: 8 }}>
-            <span style={{ fontFamily: 'var(--mono)', fontSize: 36, fontWeight: 900, color: '#F1F5F9' }}>{priceStr}</span>
+            <span style={{ fontFamily: 'var(--mono)', fontSize: 36, fontWeight: 900, color: hasPrice ? '#F1F5F9' : '#475569' }}>{priceStr}</span>
             {changeStr && (
               <span style={{ fontSize: 16, fontWeight: 700, padding: '4px 12px', borderRadius: 8, background: isUp ? '#00D4741A' : '#FF45451A', color: isUp ? '#00D474' : '#FF4545', fontFamily: 'var(--mono)' }}>{changeStr}</span>
+            )}
+            {!hasPrice && (
+              <span style={{ fontSize: 11, color: '#64748B', marginLeft: 4 }}>Data delayed up to 15 min. Refresh to update.</span>
             )}
           </div>
           <div style={{ display: 'flex', gap: 6, marginTop: 12, flexWrap: 'wrap' }}>

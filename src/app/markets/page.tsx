@@ -214,6 +214,9 @@ export default function MarketsPage() {
           </div>
         </div>
 
+        {/* Data delay notice */}
+        <div style={{ fontFamily: 'var(--mono)', fontSize: 9, color: '#475569', textAlign: 'center', marginBottom: 10 }}>📊 Market data is delayed up to 15 minutes · Source: Alpha Vantage + FMP</div>
+
         {/* Banner */}
         <div style={{ padding: '16px 18px', borderRadius: 14, background: 'linear-gradient(135deg,#C73E3A10,#C73E3A05)', border: '1px solid #C73E3A15', marginBottom: 16 }}>
           <div style={{ display: 'flex', alignItems: 'center', gap: 10, marginBottom: 6 }}>

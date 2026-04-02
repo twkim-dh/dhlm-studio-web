@@ -40,7 +40,9 @@ export default function TickerMarquee() {
       .catch(() => {});
   }, []);
 
-  const doubled = [...items, ...items, ...items]; // 3x for seamless
+  // Add delay notice as last item in each cycle
+  const withNotice = [...items, { symbol: '·', price: 0, change: 0, _notice: true } as TickerItem & { _notice?: boolean }];
+  const doubled = [...withNotice, ...withNotice, ...withNotice];
 
   return (
     <>
@@ -54,6 +56,11 @@ export default function TickerMarquee() {
           whiteSpace: 'nowrap',
         }}>
           {doubled.map((t, i) => (
+            (t as TickerItem & { _notice?: boolean })._notice ? (
+              <span key={i} style={{ display: 'inline-flex', alignItems: 'center', padding: '0 20px' }}>
+                <span style={{ fontFamily: 'var(--mono)', fontSize: 8, color: '#374151' }}>Delayed 15min</span>
+              </span>
+            ) : (
             <span key={i} style={{
               display: 'inline-flex', alignItems: 'center', gap: 6,
               padding: '0 20px',
@@ -68,7 +75,7 @@ export default function TickerMarquee() {
               }}>
                 {t.change >= 0 ? '▲' : '▼'} {Math.abs(t.change).toFixed(1)}%
               </span>
-            </span>
+            </span>)
           ))}
         </div>
       </div>

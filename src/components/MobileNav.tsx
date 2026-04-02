@@ -17,6 +17,7 @@ const moreLinks = [
   { href: '/blog', label: '📖 Blog', color: '#60A5FA' },
   { href: '/blog/wisdom', label: '💡 Wisdom', color: '#D4A843' },
   { href: '/tools', label: '🧮 Tools', color: '#64748B' },
+  { href: '/about', label: 'ℹ️ About', color: '#94A3B8' },
 ];
 
 export default function MobileNav() {

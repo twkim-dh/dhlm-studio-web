@@ -3,6 +3,7 @@
 import { useState, useEffect } from 'react';
 import Link from 'next/link';
 import LikeButton from '@/components/LikeButton';
+import { RANKINGS as SHARED_RANKINGS } from '@/data/rankings';
 
 const YEAR = new Date().getFullYear();
 
@@ -53,18 +54,7 @@ const data: Record<TabId, { rank: number; name: string; value: string; flag: str
     { rank: 9, name: 'Italy', value: '$2.2T', flag: '🇮🇹', delta: '+0.9%' },
     { rank: 10, name: 'Canada', value: '$2.1T', flag: '🇨🇦', delta: '+1.8%' },
   ],
-  population: [
-    { rank: 1, name: 'India', value: '1.44B', flag: '🇮🇳', delta: '+0.8%' },
-    { rank: 2, name: 'China', value: '1.41B', flag: '🇨🇳', delta: '-0.2%' },
-    { rank: 3, name: 'United States', value: '340M', flag: '🇺🇸', delta: '+0.5%' },
-    { rank: 4, name: 'Indonesia', value: '279M', flag: '🇮🇩', delta: '+0.8%' },
-    { rank: 5, name: 'Pakistan', value: '240M', flag: '🇵🇰', delta: '+1.7%' },
-    { rank: 6, name: 'Nigeria', value: '230M', flag: '🇳🇬', delta: '+2.4%' },
-    { rank: 7, name: 'Brazil', value: '217M', flag: '🇧🇷', delta: '+0.5%' },
-    { rank: 8, name: 'Bangladesh', value: '173M', flag: '🇧🇩', delta: '+1.0%' },
-    { rank: 9, name: 'Russia', value: '144M', flag: '🇷🇺', delta: '-0.3%' },
-    { rank: 10, name: 'Mexico', value: '130M', flag: '🇲🇽', delta: '+0.7%' },
-  ],
+  population: SHARED_RANKINGS.population,
   sports: [
     { rank: 1, name: 'Cristiano Ronaldo', value: '$260M', flag: '🇵🇹', delta: '', sub: 'Al Nassr · Football' },
     { rank: 2, name: 'Lionel Messi', value: '$135M', flag: '🇦🇷', delta: '', sub: 'Inter Miami · Football' },
