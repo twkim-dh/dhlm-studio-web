@@ -26,7 +26,7 @@ const AV_KEY = process.env.ALPHA_VANTAGE_KEY || 'demo';
 async function fetchLiveData(ticker: string) {
   const sym = ticker.toUpperCase();
 
-  // Try FMP first (full profile)
+  // Try FMP first (full profile) — never throw, always return null on failure
   if (FMP_KEY) {
     try {
       const [profileRes, finRes] = await Promise.all([
@@ -34,6 +34,8 @@ async function fetchLiveData(ticker: string) {
         fetch(`${FMP_BASE}/income-statement?symbol=${sym}&period=annual&limit=1&apikey=${FMP_KEY}`, { next: { revalidate: 86400 } }),
       ]);
       const profileData = await profileRes.json();
+      // Check for FMP rate limit error
+      if (profileData && profileData['Error Message']) return null;
       const finData = await finRes.json();
       const p = Array.isArray(profileData) && profileData[0] ? profileData[0] : null;
       const f = Array.isArray(finData) && finData[0] ? finData[0] : null;

@@ -13,7 +13,7 @@ export async function GET() {
   }
 
   if (!FMP_KEY) {
-    return NextResponse.json({ error: 'FMP_API_KEY not configured' }, { status: 503 });
+    return NextResponse.json({ error: 'FMP_API_KEY not configured' }, /* graceful */);
   }
 
   try {
@@ -25,7 +25,8 @@ export async function GET() {
     const raw = await res.json();
 
     if (!Array.isArray(raw) || raw.length === 0) {
-      return NextResponse.json({ error: 'No data from FMP', detail: raw }, { status: 503 });
+      // FMP rate limit or empty data — return empty array (not error)
+      return NextResponse.json({ companies: [], error: 'Data temporarily unavailable' });
     }
 
     // Sort by market cap descending
@@ -60,6 +61,6 @@ export async function GET() {
     cacheData = { data: result, ts: Date.now() };
     return NextResponse.json(result);
   } catch {
-    return NextResponse.json({ error: 'Failed to fetch FMP data' }, { status: 500 });
+    return NextResponse.json({ error: 'Failed to fetch FMP data' }, /* graceful */);
   }
 }

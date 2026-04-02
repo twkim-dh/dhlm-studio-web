@@ -43,6 +43,6 @@ export async function GET() {
     cacheData = { data: result, ts: Date.now() };
     return NextResponse.json(result);
   } catch {
-    return NextResponse.json({ error: 'Failed to fetch exchange rates' }, { status: 500 });
+    return NextResponse.json({ error: 'Failed to fetch exchange rates' }, /* graceful */);
   }
 }

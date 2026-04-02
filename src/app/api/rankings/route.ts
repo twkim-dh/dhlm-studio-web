@@ -77,7 +77,7 @@ export async function GET(request: Request) {
   const data = await fetchWorldBank(indicator, countries);
 
   if (!data) {
-    return NextResponse.json({ error: 'Failed to fetch World Bank data' }, { status: 503 });
+    return NextResponse.json({ error: 'Failed to fetch World Bank data' }, /* graceful */);
   }
 
   const rankings = (data as { country: string; code: string; flag: string; value: number; year: string }[]).map((d, i) => ({

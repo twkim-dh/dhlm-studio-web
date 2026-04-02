@@ -65,7 +65,7 @@ export async function GET(request: Request) {
     const avRes = await fetch(`https://www.alphavantage.co/query?function=TOP_GAINERS_LOSERS&apikey=${AV_KEY}`, { cache: 'no-store' });
     const avData = await avRes.json();
     if (!avData.top_gainers) {
-      return NextResponse.json({ error: 'No data', note: avData.Note || avData.Information || '' }, { status: 503 });
+      return NextResponse.json({ error: 'No data', note: avData.Note || avData.Information || '' }, /* graceful */);
     }
 
     // Enrich top 3 gainers with FMP profiles + financials
@@ -94,6 +94,6 @@ export async function GET(request: Request) {
     cacheData = { data: result, ts: Date.now() };
     return NextResponse.json(result);
   } catch {
-    return NextResponse.json({ error: 'Failed to fetch market data' }, { status: 500 });
+    return NextResponse.json({ error: 'Failed to fetch market data' }, /* graceful */);
   }
 }

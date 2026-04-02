@@ -40,7 +40,7 @@ export async function GET(request: Request) {
   }
 
   if (!FMP_KEY) {
-    return NextResponse.json({ results: [], error: 'FMP_API_KEY not configured' }, { status: 503 });
+    return NextResponse.json({ results: [], error: 'FMP_API_KEY not configured' }, /* graceful */);
   }
 
   try {
