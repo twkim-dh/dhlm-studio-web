@@ -3,6 +3,7 @@ import Link from 'next/link';
 import { Counter, LiveMarketsPreview, CryptoPreview } from '@/components/HomeClient';
 import FadeIn from '@/components/FadeIn';
 import FortuneCookie from '@/components/FortuneCookie';
+import NewsletterCTA from '@/components/NewsletterCTA';
 import { getTodaysWisdom } from '@/data/wisdom';
 
 const YEAR = new Date().getFullYear();
@@ -80,7 +81,7 @@ export default function Home() {
 
       {/* ── Stats (Counter is client) ── */}
       <div style={{ padding: '0 24px 24px', maxWidth: 1100, margin: '0 auto', display: 'flex', gap: 32, flexWrap: 'wrap', justifyContent: 'center' }}>
-        {[{ v: 500, s: '+', l: 'Stocks Tracked', c: '#3B82F6' }, { v: 100, s: '+', l: 'Crypto Coins', c: '#F59E0B' }, { v: 7, s: '', l: 'Live APIs', c: '#00D474' }, { v: 690, s: '+', l: 'Pages', c: '#A78BFA' }].map((d, i) => (
+        {[{ v: 500, s: '+', l: 'Stocks', c: '#3B82F6' }, { v: 195, s: '', l: 'Countries', c: '#D4A843' }, { v: 100, s: '+', l: 'Crypto', c: '#F59E0B' }, { v: 830, s: '+', l: 'Pages', c: '#A78BFA' }].map((d, i) => (
           <div key={i} style={{ textAlign: 'center', minWidth: 80 }}>
             <div style={{ fontFamily: 'var(--serif)', fontSize: 32, fontWeight: 900, color: d.c }}><Counter to={d.v} suffix={d.s} /></div>
             <div style={{ fontFamily: 'var(--sans)', fontSize: 11, color: '#64748B', marginTop: 2 }}>{d.l}</div>
@@ -209,6 +210,11 @@ export default function Home() {
         <TodaysWisdom />
       </section>
       </FadeIn>
+
+      {/* ── Newsletter CTA ── */}
+      <section style={{ padding: '0 24px 48px', maxWidth: 1100, margin: '0 auto' }}>
+        <NewsletterCTA />
+      </section>
     </div>
   );
 }
