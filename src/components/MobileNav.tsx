@@ -20,6 +20,7 @@ const moreLinks = [
   { href: '/about', label: 'ℹ️ About', color: '#94A3B8' },
 ];
 
+// v2 — includes About link in More menu
 export default function MobileNav() {
   const pathname = usePathname();
   const [moreOpen, setMoreOpen] = useState(false);
