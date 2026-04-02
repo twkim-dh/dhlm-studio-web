@@ -86,8 +86,17 @@ export default function RootLayout({
         <link rel="apple-touch-icon" href="/favicon.svg" />
         <link rel="manifest" href="/manifest.json" />
         <meta name="theme-color" content="#0B0F19" />
-        {/* Twemoji — flag emoji support on Windows */}
-        <script async src="https://cdn.jsdelivr.net/npm/twemoji@14.0.2/dist/twemoji.min.js" />
+        {/* Twemoji — flag emoji rendering on Windows */}
+        <script dangerouslySetInnerHTML={{ __html: `
+          if(typeof window!=='undefined'){
+            var s=document.createElement('script');
+            s.src='https://cdn.jsdelivr.net/npm/twemoji@14.0.2/dist/twemoji.min.js';
+            s.onload=function(){twemoji.parse(document.body,{folder:'svg',ext:'.svg'})};
+            document.head.appendChild(s);
+            var ob=new MutationObserver(function(){if(window.twemoji)twemoji.parse(document.body,{folder:'svg',ext:'.svg'})});
+            ob.observe(document.body,{childList:true,subtree:true});
+          }
+        `}} />
         {/* Google Analytics 4 — set NEXT_PUBLIC_GA_ID in .env.local and Vercel */}
         {process.env.NEXT_PUBLIC_GA_ID && (
           <>
