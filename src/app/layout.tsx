@@ -86,6 +86,8 @@ export default function RootLayout({
         <link rel="apple-touch-icon" href="/favicon.svg" />
         <link rel="manifest" href="/manifest.json" />
         <meta name="theme-color" content="#0B0F19" />
+        {/* Twemoji — flag emoji support on Windows */}
+        <script async src="https://cdn.jsdelivr.net/npm/twemoji@14.0.2/dist/twemoji.min.js" />
         {/* Google Analytics 4 — set NEXT_PUBLIC_GA_ID in .env.local and Vercel */}
         {process.env.NEXT_PUBLIC_GA_ID && (
           <>

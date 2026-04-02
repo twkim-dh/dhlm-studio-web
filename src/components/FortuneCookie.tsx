@@ -1,6 +1,7 @@
 'use client';
 
 import { useState } from 'react';
+import Image from 'next/image';
 import { getTodaysWisdom } from '@/data/wisdom';
 
 export default function FortuneCookie() {
@@ -25,13 +26,18 @@ export default function FortuneCookie() {
         <div>
           <button onClick={crack} style={{
             background: 'none', border: 'none', cursor: 'pointer',
-            fontSize: animating ? 56 : 48,
             transition: 'all 0.3s ease',
-            transform: animating ? 'rotate(20deg) scale(1.2)' : 'none',
-            filter: animating ? 'brightness(1.5)' : 'none',
-            animation: animating ? 'none' : undefined,
+            transform: animating ? 'rotate(15deg) scale(1.1)' : 'none',
+            filter: animating ? 'brightness(1.3)' : 'none',
           }}>
-            🥠
+            <Image
+              src="/images/fortune-cookie.webp"
+              alt="Fortune Cookie — tap to crack"
+              width={160}
+              height={160}
+              style={{ width: 160, height: 'auto' }}
+              priority
+            />
           </button>
           <p style={{ fontSize: 12, color: '#64748B', marginTop: 8 }}>
             {animating ? 'Cracking...' : 'Tap the cookie for today\'s fortune'}
@@ -43,7 +49,13 @@ export default function FortuneCookie() {
           background: 'linear-gradient(135deg, #D4A84308, #D4A84303)',
           border: '1px solid #D4A84320',
         }}>
-          <div style={{ fontSize: 28, marginBottom: 12 }}>🥠✨</div>
+          <Image
+            src="/images/fortune-cookie.webp"
+            alt="Fortune Cookie cracked"
+            width={80}
+            height={80}
+            style={{ width: 80, height: 'auto', margin: '0 auto 12px', opacity: 0.7 }}
+          />
           <blockquote style={{
             fontFamily: 'var(--serif)', fontSize: 16, fontWeight: 700,
             color: '#F1F5F9', lineHeight: 1.6, fontStyle: 'italic', margin: '0 0 12px',
