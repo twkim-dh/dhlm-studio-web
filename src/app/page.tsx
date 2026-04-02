@@ -88,6 +88,14 @@ export default function Home() {
         ))}
       </div>
 
+      {/* ── Fortune Cookie ── */}
+      <section style={{ padding: '0 24px 32px', maxWidth: 1100, margin: '0 auto' }}>
+        <div style={{ padding: '24px', borderRadius: 16, background: '#111827', border: '1px solid #1E293B' }}>
+          <div style={{ fontFamily: 'var(--mono)', fontSize: 9, fontWeight: 700, color: '#D4A843', letterSpacing: 3, textAlign: 'center', marginBottom: 12 }}>🥠 DAILY FORTUNE COOKIE</div>
+          <FortuneCookie />
+        </div>
+      </section>
+
       {/* ── Top Movers (client) ── */}
       <FadeIn>
       <section id="markets" style={section}>
@@ -191,16 +199,6 @@ export default function Home() {
               </div>
             </Link>
           ))}
-        </div>
-      </section>
-      </FadeIn>
-
-      {/* ── Fortune Cookie ── */}
-      <FadeIn delay={0.1}>
-      <section style={{ padding: '0 24px 48px', maxWidth: 1100, margin: '0 auto' }}>
-        <div style={{ padding: '24px', borderRadius: 16, background: '#111827', border: '1px solid #1E293B' }}>
-          <div style={{ fontFamily: 'var(--mono)', fontSize: 9, fontWeight: 700, color: '#D4A843', letterSpacing: 3, textAlign: 'center', marginBottom: 12 }}>🥠 DAILY FORTUNE COOKIE</div>
-          <FortuneCookie />
         </div>
       </section>
       </FadeIn>
