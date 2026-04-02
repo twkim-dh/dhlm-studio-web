@@ -10,37 +10,6 @@ export interface BlogPost {
 }
 
 export const blogPosts: BlogPost[] = [
-  {
-    slug: 'weekly-stock-movers-2026-04-02', title: 'This Week\'s Top Stock Movers — Week of April 2, 2026',
-    category: 'Markets', catColor: '#00D474', date: '2026-04-02', readTime: '4 min',
-    description: 'Top stock gainers and losers this week. Week of April 2, 2026. Live market data from Alpha Vantage.',
-    sections: [
-      { heading: 'Top Gainers This Week', body: 'Here are the stocks that surged the most this week. These movers caught Wall Street\\'s attention with significant price action. Check our Markets page for real-time updates.\n\n1. **GAB^** — $0.035 (400.0%)\n2. **CYCN** — $6.38 (315.6352%)\n3. **ELAB** — $14.0 (133.7229%)\n4. **AGPU** — $3.56 (119.7531%)\n5. **SRTAW** — $0.0098 (88.4615%)' },
-      { heading: 'Top Losers This Week', body: 'Not every stock had a good week. These tickers experienced the biggest declines. Visit our individual stock pages for detailed analysis on each.\n\n1. **NCI** — $0.83 (-53.3708%)\n2. **LNKS** — $0.0128 (-46.2185%)\n3. **XTKG** — $0.5971 (-42.5865%)\n4. **ORIC** — $7.475 (-41.0024%)\n5. **UBXG** — $2.0 (-40.1198%)' },
-      { heading: 'Market Context', body: 'This week\\'s movers reflect ongoing trends in the US market. Technology and AI-related stocks continue to dominate both the gainers and losers lists, showing the sector\\'s volatility. For sector-level analysis, check our Sector Heatmap. For individual stock roasts, try our Brutal AI commentary on the Markets page.' },
-      { heading: 'FAQ', body: 'Q: How often is market mover data updated?\nA: Our data updates in real-time during US market hours (9:30 AM - 4:00 PM ET) via Alpha Vantage API.\n\nQ: Should I buy top gainers?\nA: Past performance doesn\\'t predict future results. Stocks that surge often pull back. Always do your own research.' }
-    ],
-  },
-  {
-    slug: 'crypto-weekly-2026-04-02', title: 'Crypto Market Weekly — Week of April 2, 2026',
-    category: 'Crypto', catColor: '#F59E0B', date: '2026-04-02', readTime: '4 min',
-    description: 'Weekly crypto market summary: Bitcoin, Ethereum, and top altcoins. Prices, 7-day changes, and analysis. Week of April 2, 2026.',
-    sections: [
-      { heading: 'Top 10 Cryptocurrencies This Week', body: 'Here\\'s how the top 10 cryptocurrencies by market cap performed this week. View live prices on our Crypto Rankings page.\n\n1. **Bitcoin** (BTC) — $67352.00 · 7d: +0.0%\n2. **Ethereum** (ETH) — $2099.78 · 7d: +0.0%\n3. **Tether** (USDT) — $0.9999 · 7d: +0.0%\n4. **BNB** (BNB) — $604.25 · 7d: +0.0%\n5. **XRP** (XRP) — $1.33 · 7d: +0.0%\n6. **USDC** (USDC) — $0.9998 · 7d: +0.0%\n7. **Solana** (SOL) — $79.29 · 7d: +0.0%\n8. **TRON** (TRX) — $0.3158 · 7d: +0.0%\n9. **Figure Heloc** (FIGR_HELOC) — $1.02 · 7d: +0.0%\n10. **Dogecoin** (DOGE) — $0.0906 · 7d: +0.0%' },
-      { heading: 'Weekly Winners & Losers', body: '**Winners:** N/A\n\n**Losers:** BTC (0.0%), ETH (0.0%), USDT (0.0%)\n\nFor individual coin analysis, visit our crypto detail pages where you can see market cap, volume, and historical data.' },
-      { heading: 'FAQ', body: 'Q: Where does the crypto data come from?\nA: All cryptocurrency data is sourced from the CoinGecko API, one of the most trusted crypto data providers.\n\nQ: Is this financial advice?\nA: No. Cryptocurrency is highly volatile. This is informational content only. Always DYOR.' }
-    ],
-  },
-  {
-    slug: 'weekly-creators-2026-04-02', title: 'Fastest Growing Creators — Week of April 2, 2026',
-    category: 'Creators', catColor: '#A78BFA', date: '2026-04-02', readTime: '3 min',
-    description: 'This week\'s fastest growing YouTube, TikTok, and Instagram creators. Week of April 2, 2026.',
-    sections: [
-      { heading: 'YouTube Growth Leaders', body: 'MrBeast continues to dominate YouTube with over 382M subscribers. IShowSpeed and Kai Cenat are the fastest growing gaming/streaming creators. Mark Rober\\'s science content sees steady growth. Check our Creators page for the full rankings.' },
-      { heading: 'TikTok & Instagram Trends', body: 'Khaby Lame maintains his position as TikTok\\'s most-followed creator at 163M. Cristiano Ronaldo leads Instagram growth among non-entertainment accounts. The creator economy continues to shift toward short-form video content across all platforms.' },
-      { heading: 'FAQ', body: 'Q: How is creator growth measured?\nA: We track subscriber/follower count changes on a weekly basis across YouTube, TikTok, Instagram, and X.\n\nQ: Where can I see the full creator rankings?\nA: Visit our Creators page for the complete top 10 across all platforms.' }
-    ],
-  },
   // ═══ April 2026 — New Posts ═══
   {
     slug: 'nvidia-worlds-most-valuable-company-2026',

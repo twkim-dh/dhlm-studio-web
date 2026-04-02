@@ -45,6 +45,15 @@ export default function sitemap(): MetadataRoute.Sitemap {
     { url: `${BASE}/lottery/number-generator`, lastModified: now, changeFrequency: "weekly", priority: 0.8 },
     { url: `${BASE}/lottery/powerball/stats`, lastModified: now, changeFrequency: "daily", priority: 0.8 },
     { url: `${BASE}/lottery/mega-millions/stats`, lastModified: now, changeFrequency: "daily", priority: 0.8 },
+    // Individual number pages (69 PB + 70 MM = 139 pages)
+    ...Array.from({ length: 69 }, (_, i) => ({
+      url: `${BASE}/lottery/powerball/number/${i + 1}`,
+      lastModified: now, changeFrequency: "monthly" as const, priority: 0.5,
+    })),
+    ...Array.from({ length: 70 }, (_, i) => ({
+      url: `${BASE}/lottery/mega-millions/number/${i + 1}`,
+      lastModified: now, changeFrequency: "monthly" as const, priority: 0.5,
+    })),
 
     // Blog
     { url: `${BASE}/blog`, lastModified: now, changeFrequency: "weekly", priority: 0.8 },
