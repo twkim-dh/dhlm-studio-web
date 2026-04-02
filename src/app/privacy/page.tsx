@@ -23,7 +23,7 @@ export default function PrivacyPage() {
           { h: '5. Data Security', b: 'We implement reasonable security measures to protect data. However, no method of transmission over the Internet is 100% secure. We cannot guarantee absolute security.' },
           { h: '6. Children\'s Privacy', b: 'Our service is not directed to children under 13. We do not knowingly collect personal information from children.' },
           { h: '7. Changes to This Policy', b: 'We may update this policy from time to time. Changes will be posted on this page with an updated revision date.' },
-          { h: '8. Contact', b: 'For privacy-related inquiries: tw.kim@dhlm.co.kr' },
+          { h: '8. Contact', b: 'For privacy-related inquiries: dhlmstudio2026@gmail.com' },
         ].map(s => (
           <div key={s.h} style={{ marginBottom: 28 }}>
             <h2 style={{ fontFamily: 'var(--sans)', fontSize: 16, fontWeight: 700, color: '#E2E8F0', marginBottom: 8 }}>{s.h}</h2>

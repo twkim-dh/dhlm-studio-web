@@ -18,7 +18,7 @@ export default function Footer() {
             { label: "About", href: "/about" },
             { label: "Privacy", href: "/privacy" },
             { label: "Terms", href: "/terms" },
-            { label: "Contact", href: "mailto:tw.kim@dhlm.co.kr" },
+            { label: "Contact", href: "mailto:dhlmstudio2026@gmail.com" },
           ].map(l => (
             <Link key={l.label} href={l.href} style={{ fontSize: 11, color: "#475569", fontFamily: "var(--sans)" }}>
               {l.label}
@@ -27,8 +27,7 @@ export default function Footer() {
         </div>
       </div>
       <div style={{ fontFamily: "var(--sans)", fontSize: 10, color: "#334155", marginTop: 16, lineHeight: 1.6, textAlign: "center" }}>
-        Market data is for informational purposes only and does not constitute investment advice.<br />
-        Cost of living data is based on publicly available sources and may not reflect individual circumstances.
+        Market data is for informational purposes only and does not constitute investment advice. Always do your own research.
       </div>
     </footer>
   );

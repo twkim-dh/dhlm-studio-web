@@ -25,7 +25,7 @@ export default function TermsPage() {
           { h: '7. User Conduct', b: 'You agree not to: misuse the service, attempt to access unauthorized areas, interfere with service operation, or use automated systems to scrape content without permission.' },
           { h: '8. Limitation of Liability', b: 'DHLM Studio is provided "as is" without warranties of any kind. We are not liable for any damages arising from the use of our service, including but not limited to financial losses from acting on information provided.' },
           { h: '9. Changes to Terms', b: 'We reserve the right to modify these terms at any time. Continued use of the service after changes constitutes acceptance of the new terms.' },
-          { h: '10. Contact', b: 'For questions about these terms: tw.kim@dhlm.co.kr' },
+          { h: '10. Contact', b: 'For questions about these terms: dhlmstudio2026@gmail.com' },
         ].map(s => (
           <div key={s.h} style={{ marginBottom: 28 }}>
             <h2 style={{ fontFamily: 'var(--sans)', fontSize: 16, fontWeight: 700, color: '#E2E8F0', marginBottom: 8 }}>{s.h}</h2>

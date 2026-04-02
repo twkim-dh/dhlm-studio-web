@@ -116,7 +116,7 @@ export default function RootLayout({
             "logo": "https://dhlm-studio.com/favicon.ico",
             "description": "Real-time global data platform: stock movers, creator trends, rankings, cost of living.",
             "sameAs": ["https://github.com/twkim-dh"],
-            "contactPoint": { "@type": "ContactPoint", "email": "tw.kim@dhlm.co.kr" }
+            "contactPoint": { "@type": "ContactPoint", "email": "dhlmstudio2026@gmail.com" }
           })}}
         />
         {/* JSON-LD WebSite with SearchAction */}

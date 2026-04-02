@@ -34,9 +34,9 @@ export default function PasswordGen() {
     if (/[a-z]/.test(pw)) score++;
     if (/[0-9]/.test(pw)) score++;
     if (/[^A-Za-z0-9]/.test(pw)) score++;
-    if (score <= 2) return { label: "약함", color: "text-red-500" };
-    if (score <= 4) return { label: "보통", color: "text-yellow-500" };
-    return { label: "강함", color: "text-green-600" };
+    if (score <= 2) return { label: "Weak", color: "text-red-500" };
+    if (score <= 4) return { label: "Medium", color: "text-yellow-500" };
+    return { label: "Strong", color: "text-green-600" };
   };
 
   const copy = async (text: string, idx: number) => {
@@ -48,15 +48,15 @@ export default function PasswordGen() {
   return (
     <div className="space-y-4">
       <div>
-        <label className="text-sm font-medium">길이: {length}자</label>
+        <label className="text-sm font-medium">Length: {length} characters</label>
         <input type="range" min={6} max={64} value={length} onChange={(e) => setLength(Number(e.target.value))} className="w-full" />
       </div>
       <div className="flex flex-wrap gap-3">
-        {[{label:"대문자",v:upper,s:setUpper},{label:"소문자",v:lower,s:setLower},{label:"숫자",v:numbers,s:setNumbers},{label:"특수문자",v:symbols,s:setSymbols}].map(o => (
+        {[{label:"Uppercase",v:upper,s:setUpper},{label:"Lowercase",v:lower,s:setLower},{label:"Numbers",v:numbers,s:setNumbers},{label:"Symbols",v:symbols,s:setSymbols}].map(o => (
           <label key={o.label} className="flex items-center gap-1 text-sm"><input type="checkbox" checked={o.v} onChange={(e) => o.s(e.target.checked)} /> {o.label}</label>
         ))}
       </div>
-      <button onClick={generate} className="px-4 py-2 bg-blue-600 text-white rounded-lg hover:bg-blue-700">5개 생성</button>
+      <button onClick={generate} className="px-4 py-2 bg-blue-600 text-white rounded-lg hover:bg-blue-700">Generate 5 Passwords</button>
       {results.length > 0 && (
         <div className="grid gap-2">
           {results.map((pw, i) => {
@@ -65,7 +65,7 @@ export default function PasswordGen() {
               <div key={i} className="flex justify-between items-center p-3 border rounded-lg bg-gray-50">
                 <span className="font-mono text-sm break-all flex-1 mr-2">{pw}</span>
                 <span className={`text-xs mr-2 ${strength.color}`}>{strength.label}</span>
-                <button onClick={() => copy(pw, i)} className="px-3 py-1 bg-blue-600 text-white text-xs rounded shrink-0">{copied===i?"복사됨!":"복사"}</button>
+                <button onClick={() => copy(pw, i)} className="px-3 py-1 bg-blue-600 text-white text-xs rounded shrink-0">{copied===i?"Copied!":"Copy"}</button>
               </div>
             );
           })}
