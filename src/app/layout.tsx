@@ -3,10 +3,8 @@ import { Playfair_Display, DM_Sans, IBM_Plex_Mono } from "next/font/google";
 import Header from "@/components/Header";
 import Footer from "@/components/Footer";
 import MobileNav from "@/components/MobileNav";
-import dynamic from "next/dynamic";
-
-const TickerMarquee = dynamic(() => import("@/components/TickerMarquee"), { ssr: false });
-const CookieConsent = dynamic(() => import("@/components/CookieConsent"), { ssr: false });
+import TickerMarquee from "@/components/TickerMarquee";
+import CookieConsent from "@/components/CookieConsent";
 import "./globals.css";
 
 const playfair = Playfair_Display({

@@ -33,7 +33,7 @@ function BallMM({ num, special }: { num: number; special?: boolean }) {
   );
 }
 
-export { BallPB, BallMM };
+// BallPB, BallMM are local to this page — not exported (Next.js route constraint)
 
 export default function LotteryHub() {
   const pb = POWERBALL_DRAWS[0];
