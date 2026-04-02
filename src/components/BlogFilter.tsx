@@ -52,7 +52,7 @@ export default function BlogFilter({ posts }: { posts: BlogPost[] }) {
           <Link key={post.slug} href={`/blog/${post.slug}`} style={{ display: 'block', borderBottom: '1px solid #1E293B', padding: '20px 0', textDecoration: 'none' }}>
             <div style={{ display: 'flex', alignItems: 'center', gap: 8, marginBottom: 6 }}>
               <span style={{ fontFamily: 'var(--mono)', fontSize: 10, fontWeight: 600, color: post.catColor, padding: '2px 8px', borderRadius: 4, background: `${post.catColor}14` }}>{post.category}</span>
-              <span style={{ fontFamily: 'var(--sans)', fontSize: 11, color: '#475569' }}>{post.date} · {post.readTime}</span>
+              <span style={{ fontFamily: 'var(--sans)', fontSize: 11, color: '#475569' }}>{post.date} · {post.readTime} read</span>
             </div>
             <p style={{ fontFamily: 'var(--serif)', fontSize: 17, fontWeight: 700, color: '#E2E8F0', margin: 0, lineHeight: 1.5 }}>
               {post.title}

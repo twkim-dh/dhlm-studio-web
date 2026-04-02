@@ -18,8 +18,8 @@ export function generateStaticParams() {
 // Allow any ticker to be dynamically rendered on first visit
 export const dynamicParams = true;
 
-// Revalidate every hour — balances freshness vs API usage
-export const revalidate = 3600;
+// Short revalidate: if API was down, bad data expires fast
+export const revalidate = 300; // 5 minutes
 
 const AV_KEY = process.env.ALPHA_VANTAGE_KEY || 'demo';
 
@@ -115,8 +115,9 @@ export default async function StockPage({ params }: { params: Promise<{ ticker: 
 
   const isLive = 'live' in stock && stock.live;
   const isUp = (stock.change || 0) >= 0;
-  const changeStr = typeof stock.change === 'number' ? `${isUp ? '+' : ''}${stock.change.toFixed(1)}%` : '';
-  const priceStr = typeof stock.price === 'number' ? `$${stock.price.toFixed(2)}` : `$${stock.price}`;
+  const hasPrice = typeof stock.price === 'number' && stock.price > 0;
+  const changeStr = hasPrice ? `${isUp ? '+' : ''}${(stock.change || 0).toFixed(1)}%` : '';
+  const priceStr = hasPrice ? `$${stock.price.toFixed(2)}` : 'Price loading...';
 
   // JSON-LD
   const jsonLd = {

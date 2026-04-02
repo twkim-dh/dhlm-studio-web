@@ -2,7 +2,7 @@
 
 import { useState, useEffect } from 'react';
 import Link from 'next/link';
-import Image from 'next/image';
+import StockLogo from '@/components/StockLogo';
 import ReactionButtons from '@/components/ReactionButtons';
 
 interface Mover {
@@ -117,7 +117,7 @@ function StockCard({ s }: { s: Mover }) {
     <div style={cardStyle}>
       <div onClick={() => setExpanded(!expanded)} style={{ padding: '16px 18px', cursor: 'pointer', display: 'flex', alignItems: 'center', gap: 12 }}>
         <div style={{ width: 40, height: 40, borderRadius: 10, background: '#0D1117', border: '1px solid #1F2937', display: 'flex', alignItems: 'center', justifyContent: 'center', fontSize: 11, fontWeight: 800, color: '#60A5FA', fontFamily: 'var(--mono)' }}>
-          {s.image ? <Image src={s.image} alt={s.name || s.ticker} width={26} height={26} style={{ borderRadius: 5 }} unoptimized /> : s.ticker.slice(0, 4)}
+          <StockLogo src={s.image} ticker={s.ticker} size={26} />
         </div>
         <div style={{ flex: 1, minWidth: 0 }}>
           <div style={{ fontSize: 14, fontWeight: 700, color: '#E2E8F0' }}>{s.name || s.ticker}</div>

@@ -2,7 +2,7 @@
 
 import { useState, useEffect } from 'react';
 import Link from 'next/link';
-import Image from 'next/image';
+import StockLogo from '@/components/StockLogo';
 
 interface Mover {
   rank: number; ticker: string; name: string; price: number; change: number; volume: number;
@@ -45,7 +45,7 @@ export default function MostActivePage() {
             return (
               <Link key={s.ticker} href={`/markets/${s.ticker}`} style={{ ...card, display: 'flex', alignItems: 'center', gap: 12, padding: '14px 18px', textDecoration: 'none' }}>
                 <div style={{ width: 32, height: 32, borderRadius: 8, background: '#0D1117', border: '1px solid #1F2937', display: 'flex', alignItems: 'center', justifyContent: 'center', fontSize: 10, fontWeight: 800, color: '#60A5FA', fontFamily: 'var(--mono)', flexShrink: 0 }}>
-                  {s.image ? <Image src={s.image} alt={s.ticker} width={20} height={20} style={{ borderRadius: 4 }} unoptimized /> : s.ticker.slice(0, 4)}
+                  <StockLogo src={s.image} ticker={s.ticker} size={20} />
                 </div>
                 <div style={{ flex: 1, minWidth: 0 }}>
                   <div style={{ display: 'flex', alignItems: 'center', gap: 6 }}>
