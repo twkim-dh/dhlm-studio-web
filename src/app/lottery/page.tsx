@@ -9,6 +9,7 @@ export const metadata: Metadata = {
 
 const YEAR = new Date().getFullYear();
 const card = { background: '#111827', borderRadius: 14, border: '1px solid #1E293B' };
+const lotteryJsonLd = { "@context": "https://schema.org", "@type": "WebPage", name: "US Lottery — Powerball & Mega Millions", url: "https://dhlm-studio.com/lottery", description: "Live Powerball and Mega Millions jackpot tracker, results, and number generator." };
 const fmtJackpot = (n: number) => n >= 1e9 ? `$${(n / 1e9).toFixed(1)}B` : `$${Math.round(n / 1e6)}M`;
 
 function BallPB({ num, special }: { num: number; special?: boolean }) {
@@ -40,6 +41,7 @@ export default function LotteryHub() {
 
   return (
     <div style={{ background: '#0B0F19', minHeight: '100vh' }}>
+      <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(lotteryJsonLd) }} />
       <div style={{ maxWidth: 800, margin: '0 auto', padding: '80px 24px' }}>
         <div style={{ textAlign: 'center', marginBottom: 32 }}>
           <div style={{ fontFamily: 'var(--mono)', fontSize: 10, fontWeight: 700, color: '#C73E3A', letterSpacing: 3, marginBottom: 8 }}>🎰 US LOTTERY · {YEAR}</div>

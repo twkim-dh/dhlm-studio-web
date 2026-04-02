@@ -24,6 +24,7 @@ const card = { background: '#111827', borderRadius: 14, border: '1px solid #1E29
 export default function CreatorsPage() {
   return (
     <div style={{ background: '#0B0F19', minHeight: '100vh' }}>
+      <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify({ "@context": "https://schema.org", "@type": "WebPage", name: "Fastest Growing Creators", url: "https://dhlm-studio.com/creators", description: "Trending creators across YouTube, TikTok, Instagram, and X." }) }} />
       <div style={{ maxWidth: 1100, margin: '0 auto', padding: '80px 24px' }}>
         <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'baseline', marginBottom: 24 }}>
           <div>
