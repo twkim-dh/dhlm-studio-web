@@ -61,6 +61,7 @@ export default function CryptoPage() {
         {coins.length > 0 && (
           <>
             <p style={{ fontFamily: 'var(--mono)', fontSize: 10, color: '#00D474', marginBottom: 16 }}>● LIVE DATA — CoinGecko API</p>
+          <div style={{ overflowX: 'auto', WebkitOverflowScrolling: 'touch' }}>
 
             {/* Header */}
             <div style={{ display: 'grid', gridTemplateColumns: '36px 2fr 1fr 1fr 1fr', gap: 8, padding: '8px 20px', marginBottom: 4 }}>
@@ -102,6 +103,7 @@ export default function CryptoPage() {
                 </div>
               ))}
             </div>
+          </div>
           </>
         )}
 

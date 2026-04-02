@@ -41,7 +41,7 @@ const nextConfig: NextConfig = {
       { source: '/today/:path*', destination: '/', permanent: true },
       { source: '/services', destination: '/', permanent: true },
       // Old blog posts → blog hub
-      { source: '/blog/lotto/:path*', destination: '/lotto', permanent: true },
+      { source: '/blog/lotto/:path*', destination: '/lottery', permanent: true },
       { source: '/blog/salary-calculator', destination: '/blog', permanent: true },
       { source: '/blog/bmi-guide', destination: '/blog', permanent: true },
       { source: '/blog/typing-speed-test', destination: '/blog', permanent: true },

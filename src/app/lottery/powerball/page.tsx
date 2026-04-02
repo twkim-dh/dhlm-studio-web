@@ -45,7 +45,7 @@ export default function PowerballPage() {
           ))}
         </div>
 
-        <p style={{ fontSize: 9, color: '#334155', textAlign: 'center', marginTop: 16 }}>Verify results at powerball.com · NOT financial advice</p>
+        <p style={{ fontSize: 9, color: '#334155', textAlign: 'center', marginTop: 16, lineHeight: 1.6 }}>Verify results at powerball.com. Lottery is for entertainment only. Play responsibly. NOT financial advice. You must be 18+ to play.</p>
       </div>
     </div>
   );
