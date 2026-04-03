@@ -88,14 +88,18 @@ export default function RootLayout({
         <meta name="theme-color" content="#0B0F19" />
         {/* Twemoji — flag emoji rendering on Windows */}
         <script dangerouslySetInnerHTML={{ __html: `
-          if(typeof window!=='undefined'){
-            var s=document.createElement('script');
-            s.src='https://cdn.jsdelivr.net/npm/twemoji@14.0.2/dist/twemoji.min.js';
-            s.onload=function(){twemoji.parse(document.body,{folder:'svg',ext:'.svg'})};
-            document.head.appendChild(s);
-            var ob=new MutationObserver(function(){if(window.twemoji)twemoji.parse(document.body,{folder:'svg',ext:'.svg'})});
-            ob.observe(document.body,{childList:true,subtree:true});
-          }
+          (function(){
+            function loadTwemoji(){
+              var s=document.createElement('script');
+              s.src='https://cdn.jsdelivr.net/npm/twemoji@14.0.2/dist/twemoji.min.js';
+              s.onload=function(){
+                twemoji.parse(document.body,{folder:'svg',ext:'.svg'});
+                new MutationObserver(function(){twemoji.parse(document.body,{folder:'svg',ext:'.svg'})}).observe(document.body,{childList:true,subtree:true});
+              };
+              document.head.appendChild(s);
+            }
+            if(document.readyState==='loading'){document.addEventListener('DOMContentLoaded',loadTwemoji)}else{loadTwemoji()}
+          })();
         `}} />
         {/* Google Analytics 4 — set NEXT_PUBLIC_GA_ID in .env.local and Vercel */}
         {process.env.NEXT_PUBLIC_GA_ID && (
