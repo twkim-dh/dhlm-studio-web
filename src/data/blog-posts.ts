@@ -10,6 +10,34 @@ export interface BlogPost {
 }
 
 export const blogPosts: BlogPost[] = [
+  {
+    slug: 'weekly-stock-movers-2026-04-03', title: 'Top Stock Movers This Week - 2026-04-03',
+    category: 'Markets', catColor: '#00D474', date: '2026-04-03', readTime: '4 min',
+    description: 'Top stock gainers and losers this week. Live market data updated 2026-04-03.',
+    sections: [
+      { heading: 'Top Gainers', body: 'The biggest gainers this week: 1. GV at $0.4444 (116.7805%), 2. SKYQ at $5.1 (101.581%), 3. KTTAW at $0.0175 (92.3077%), 4. TMDE at $1.88 (77.3585%), 5. NRXPW at $0.0244 (74.2857%). Check our Markets page for live updates.' },
+      { heading: 'Top Losers', body: 'The biggest losers this week: 1. INVZW at $0.0001 (-95.0%), 2. LPCN at $2.05 (-77.8378%), 3. ELAB at $5.72 (-59.1429%), 4. RNWWW at $0.0034 (-54.6667%), 5. NXPLW at $0.0106 (-47.5248%). Visit individual stock pages for details.' },
+      { heading: 'FAQ', body: 'Q: How often is data updated?\\nA: Market data updates in real-time during US market hours via Alpha Vantage API.\\n\\nQ: Is this financial advice?\\nA: No. This is informational content only. Always do your own research.' }
+    ],
+  },
+  {
+    slug: 'crypto-weekly-2026-04-03', title: 'Crypto Market Weekly - 2026-04-03',
+    category: 'Crypto', catColor: '#F59E0B', date: '2026-04-03', readTime: '4 min',
+    description: 'Weekly crypto summary: Bitcoin, Ethereum, and top altcoins. Prices and 7-day changes for 2026-04-03.',
+    sections: [
+      { heading: 'Top 10 Cryptocurrencies', body: 'This week in crypto: 1. Bitcoin (BTC) at $66933.00, 7d: +0.0%, 2. Ethereum (ETH) at $2053.19, 7d: +0.0%, 3. Tether (USDT) at $0.9999, 7d: +0.0%, 4. XRP (XRP) at $1.32, 7d: +0.0%, 5. BNB (BNB) at $588.16, 7d: +0.0%, 6. USDC (USDC) at $1.00, 7d: +0.0%, 7. Solana (SOL) at $80.36, 7d: +0.0%, 8. TRON (TRX) at $0.3152, 7d: +0.0%, 9. Figure Heloc (FIGR_HELOC) at $1.03, 7d: +0.0%, 10. Dogecoin (DOGE) at $0.0915, 7d: +0.0%. View live prices on our Crypto Rankings page.' },
+      { heading: 'FAQ', body: 'Q: Where does crypto data come from?\\nA: All data is from CoinGecko API.\\n\\nQ: Is this financial advice?\\nA: No. Crypto is highly volatile. Always DYOR.' }
+    ],
+  },
+  {
+    slug: 'weekly-creators-2026-04-03', title: 'Fastest Growing Creators - 2026-04-03',
+    category: 'Creators', catColor: '#A78BFA', date: '2026-04-03', readTime: '3 min',
+    description: 'Fastest growing YouTube, TikTok, and Instagram creators this week. Updated 2026-04-03.',
+    sections: [
+      { heading: 'YouTube Growth', body: 'MrBeast continues to lead YouTube with 382M+ subscribers. IShowSpeed and Kai Cenat are the fastest growing gaming creators. Check our Creators page for full rankings.' },
+      { heading: 'FAQ', body: 'Q: How is creator growth measured?\\nA: We track subscriber and follower changes weekly across YouTube, TikTok, Instagram, and X.' }
+    ],
+  },
   // ═══ April 2026 — New Posts ═══
   {
     slug: 'nvidia-worlds-most-valuable-company-2026',
