@@ -56,6 +56,7 @@ jobs:
         run: |
           git config user.name "github-actions[bot]"
           git config user.email "github-actions[bot]@users.noreply.github.com"
+          git pull --rebase
           git add public/data/powerball-history.json public/data/megamillions-history.json
           git commit -m "data: auto-update lottery results $(date +%Y-%m-%d)"
           git push
