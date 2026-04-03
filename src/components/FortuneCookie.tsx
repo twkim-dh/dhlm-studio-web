@@ -5,7 +5,7 @@ import Image from 'next/image';
 import { getTodaysWisdom } from '@/data/wisdom';
 
 const IMG_STYLE = { width: 180, height: 180, maxWidth: 180, maxHeight: 180, objectFit: 'contain' as const };
-const IMG_OPEN_STYLE = { width: 220, height: 220, maxWidth: 220, maxHeight: 220, objectFit: 'contain' as const };
+const IMG_OPEN_STYLE = { width: 220, height: 220, maxWidth: 220, maxHeight: 220, objectFit: 'contain' as const, display: 'block' as const, margin: '0 auto' };
 const IMG_SMALL_STYLE = { width: 60, height: 60, maxWidth: 60, maxHeight: 60, objectFit: 'contain' as const, opacity: 0.5 };
 
 export default function FortuneCookie() {
