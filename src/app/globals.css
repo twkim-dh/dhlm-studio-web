@@ -34,6 +34,7 @@
 html { scroll-behavior: smooth; }
 body { background: var(--area-bg); color: var(--area-text); font-family: var(--sans); }
 * { box-sizing: border-box; margin: 0; }
+img { max-width: 100%; height: auto; }
 input::placeholder { color: #475569; }
 
 .scrollbar-hide::-webkit-scrollbar { display: none; }
