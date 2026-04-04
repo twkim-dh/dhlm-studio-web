@@ -2,6 +2,7 @@ import type { Metadata } from 'next';
 import Link from 'next/link';
 import { TOP_CRYPTOS } from '@/data/top-cryptos';
 import LikeButton from '@/components/LikeButton';
+import BrutalCryptoRoast from '@/components/BrutalCryptoRoast';
 
 const YEAR = new Date().getFullYear();
 
@@ -121,6 +122,9 @@ export default async function CryptoDetailPage({ params }: { params: Promise<{ s
             <p style={{ fontSize: 14, color: '#94A3B8', lineHeight: 1.8, margin: 0 }}>{desc}{desc.length >= 500 ? '...' : ''}</p>
           </div>
         )}
+
+        {/* Brutal AI Roast */}
+        <BrutalCryptoRoast symbol={symbol} />
 
         {/* Internal Links */}
         <div style={{ ...card, padding: '16px 20px', marginBottom: 16 }}>
