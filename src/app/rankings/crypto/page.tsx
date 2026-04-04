@@ -3,6 +3,7 @@
 import { useState, useEffect } from 'react';
 import Link from 'next/link';
 import Image from 'next/image';
+import { getCryptoRoast } from '@/lib/crypto-roast';
 
 interface Coin {
   rank: number; id: string; symbol: string; name: string; image: string;
@@ -73,35 +74,42 @@ export default function CryptoPage() {
             </div>
 
             <div style={{ display: 'flex', flexDirection: 'column', gap: 4 }}>
-              {coins.map((c) => (
-                <div key={c.id} style={{
-                  ...card, display: 'grid', gridTemplateColumns: '36px 2fr 1fr 1fr 1fr',
-                  gap: 8, padding: '14px 20px', alignItems: 'center',
-                }}>
-                  <span style={{ fontFamily: 'var(--serif)', fontSize: 14, fontWeight: 800, color: c.rank <= 3 ? '#D4A843' : '#475569', textAlign: 'center' }}>
-                    {c.rank}
-                  </span>
-                  <div style={{ display: 'flex', alignItems: 'center', gap: 10 }}>
-                    {c.image && <Image src={c.image} alt={c.name} width={24} height={24} style={{ borderRadius: '50%' }} unoptimized />}
-                    <div>
-                      <span style={{ fontFamily: 'var(--sans)', fontSize: 14, fontWeight: 600, color: '#E2E8F0' }}>{c.name}</span>
-                      <span style={{ fontFamily: 'var(--mono)', fontSize: 11, color: '#475569', marginLeft: 6 }}>{c.symbol}</span>
-                    </div>
-                  </div>
-                  <span style={{ fontFamily: 'var(--mono)', fontSize: 15, fontWeight: 700, color: '#F1F5F9', textAlign: 'right' }}>
-                    {fmtPrice(c.price)}
-                  </span>
-                  <span style={{
-                    fontFamily: 'var(--mono)', fontSize: 13, fontWeight: 700, textAlign: 'right',
-                    color: c.change24h >= 0 ? '#00D474' : '#FF4545',
+              {coins.map((c) => {
+                const roast = c.rank <= 20 ? getCryptoRoast(c.id) : null;
+                return (
+                <Link key={c.id} href={`/rankings/crypto/${c.id}`} style={{ textDecoration: 'none', display: 'block' }}>
+                  <div style={{
+                    ...card, display: 'grid', gridTemplateColumns: '36px 2fr 1fr 1fr 1fr',
+                    gap: 8, padding: '14px 20px', alignItems: 'center',
+                    cursor: 'pointer', transition: 'border-color 0.2s',
                   }}>
-                    {c.change24h >= 0 ? '+' : ''}{c.change24h?.toFixed(1)}%
-                  </span>
-                  <span style={{ fontFamily: 'var(--mono)', fontSize: 13, color: '#94A3B8', textAlign: 'right' }}>
-                    {fmt(c.marketCap)}
-                  </span>
-                </div>
-              ))}
+                    <span style={{ fontFamily: 'var(--serif)', fontSize: 14, fontWeight: 800, color: c.rank <= 3 ? '#D4A843' : '#475569', textAlign: 'center' }}>
+                      {c.rank}
+                    </span>
+                    <div style={{ display: 'flex', alignItems: 'center', gap: 10 }}>
+                      {c.image && <Image src={c.image} alt={c.name} width={24} height={24} style={{ borderRadius: '50%' }} unoptimized />}
+                      <div>
+                        <span style={{ fontFamily: 'var(--sans)', fontSize: 14, fontWeight: 600, color: '#E2E8F0' }}>{c.name}</span>
+                        <span style={{ fontFamily: 'var(--mono)', fontSize: 11, color: '#475569', marginLeft: 6 }}>{c.symbol}</span>
+                        {roast && <div style={{ fontSize: 9, color: '#C73E3A', fontStyle: 'italic', marginTop: 2, overflow: 'hidden', textOverflow: 'ellipsis', whiteSpace: 'nowrap', maxWidth: 200 }}>🔥 {roast.roast.slice(0, 50)}...</div>}
+                      </div>
+                    </div>
+                    <span style={{ fontFamily: 'var(--mono)', fontSize: 15, fontWeight: 700, color: '#F1F5F9', textAlign: 'right' }}>
+                      {fmtPrice(c.price)}
+                    </span>
+                    <span style={{
+                      fontFamily: 'var(--mono)', fontSize: 13, fontWeight: 700, textAlign: 'right',
+                      color: c.change24h >= 0 ? '#00D474' : '#FF4545',
+                    }}>
+                      {c.change24h >= 0 ? '+' : ''}{c.change24h?.toFixed(1)}%
+                    </span>
+                    <span style={{ fontFamily: 'var(--mono)', fontSize: 13, color: '#94A3B8', textAlign: 'right' }}>
+                      {fmt(c.marketCap)}
+                    </span>
+                  </div>
+                </Link>
+                );
+              })}
             </div>
           </div>
           </>
