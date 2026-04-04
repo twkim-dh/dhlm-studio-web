@@ -11,34 +11,43 @@ export interface BlogPost {
 
 export const blogPosts: BlogPost[] = [
   {
-    slug: 'weekly-stock-movers-2026-04-03', title: 'Top Stock Movers This Week - 2026-04-03',
-    category: 'Markets', catColor: '#00D474', date: '2026-04-03', readTime: '4 min',
-    description: 'Top stock gainers and losers this week. Live market data updated 2026-04-03.',
+    slug: 'deep-dive-nvda-april-2026', title: 'Deep Dive: NVIDIA — April 2026 Analysis',
+    category: 'Markets', catColor: '#00D474', date: '2026-04-04', readTime: '8 min',
+    description: 'NVIDIA stock analysis: $4.2T market cap, AI chip dominance, bull vs bear case, key metrics, and Brutal AI rating.',
     sections: [
-      { heading: 'Top Gainers', body: 'The biggest gainers this week: 1. GV at $0.4444 (116.7805%), 2. SKYQ at $5.1 (101.581%), 3. KTTAW at $0.0175 (92.3077%), 4. TMDE at $1.88 (77.3585%), 5. NRXPW at $0.0244 (74.2857%). Check our Markets page for live updates.' },
-      { heading: 'Top Losers', body: 'The biggest losers this week: 1. INVZW at $0.0001 (-95.0%), 2. LPCN at $2.05 (-77.8378%), 3. ELAB at $5.72 (-59.1429%), 4. RNWWW at $0.0034 (-54.6667%), 5. NXPLW at $0.0106 (-47.5248%). Visit individual stock pages for details.' },
-      { heading: 'FAQ', body: 'Q: How often is data updated?\\nA: Market data updates in real-time during US market hours via Alpha Vantage API.\\n\\nQ: Is this financial advice?\\nA: No. This is informational content only. Always do your own research.' }
+      { heading: 'Company Overview', body: 'NVIDIA (NVDA) is the world\'s most valuable company at $4.2 trillion market cap. The stock trades around $175, with a 52-week range of $80-$195. P/E ratio stands at 65, revenue at $130B annually, and net income at $72B. In one sentence: NVIDIA owns 90%+ of the AI training chip market and shows no signs of slowing down. Check our Markets page for live NVDA data.' },
+      { heading: 'What Happened This Month', body: 'April 2026 saw NVIDIA consolidate after the massive Q1 rally. The stock gained 8% month-over-month, driven by continued data center demand and a new partnership with major cloud providers. Jensen Huang announced the next-generation Blackwell Ultra architecture at GTC, promising 4x performance improvement. Institutional ownership increased to 72%, with major funds adding positions.' },
+      { heading: 'Bull Case vs Bear Case', body: 'BULL: AI infrastructure spending is accelerating, not slowing. Every major tech company is building data centers with NVIDIA GPUs. Revenue is growing 50%+ YoY with expanding margins. The AI revolution is in early innings — enterprise adoption is just starting. BEAR: P/E of 65 is historically expensive for any company. Competition is coming from AMD, Intel, and custom chips from Google/Amazon/Meta. If AI spending slows even slightly, the stock could correct 30-40%. Cyclical semiconductor risk remains real.' },
+      { heading: 'Key Metrics', body: 'Revenue Growth: +55% YoY ($130B annual run rate). Gross Margin: 75% (industry-leading). P/E Ratio: 65x (vs semiconductor average 25x). Debt/Equity: 0.41 (conservative). Free Cash Flow: $60B+ annually. Data Center Revenue: 83% of total (up from 56% two years ago). These metrics paint a picture of a company firing on all cylinders, but at a premium valuation that leaves no room for mistakes.' },
+      { heading: 'Brutal AI Take', body: 'GRADE: B- (Overhyped but Earning It). "NVIDIA is the ONLY company where a P/E of 65 doesn\'t make me LAUGH. Because they actually DELIVER. $130 billion in revenue is not a JOKE. But here\'s the thing — everyone KNOWS this. Your grandmother knows NVIDIA is good. And when EVERYONE agrees, that\'s exactly when the market decides to DISAGREE. I respect Jensen. I fear the valuation. HOLD if you own it. WAIT if you don\'t." This is satirical commentary, NOT investment advice.' },
+      { heading: 'Related Stocks', body: 'AMD (NVDA\'s closest competitor in AI chips), INTC (legacy chipmaker pivoting to AI), TSM (manufactures NVDA\'s chips), AVGO (networking chips for AI data centers), MSFT/GOOGL/AMZN (biggest NVDA customers). View all on our Rankings page.' },
+      { heading: 'FAQ', body: 'Q: Is NVIDIA overvalued at $4.2T?\\nA: That depends on whether AI spending growth continues at 50%+ YoY. At current growth rates, the P/E normalizes to 35x by 2027. If growth slows, yes, it\'s expensive.\\n\\nQ: Is this investment advice?\\nA: Absolutely not. This is data-driven analysis for educational purposes. Always consult a financial advisor before making investment decisions.' },
     ],
   },
   {
-    slug: 'crypto-weekly-2026-04-03', title: 'Crypto Market Weekly - 2026-04-03',
-    category: 'Crypto', catColor: '#F59E0B', date: '2026-04-03', readTime: '4 min',
-    description: 'Weekly crypto summary: Bitcoin, Ethereum, and top altcoins. Prices and 7-day changes for 2026-04-03.',
+    slug: 'deep-dive-tsla-april-2026', title: 'Deep Dive: Tesla — April 2026 Analysis',
+    category: 'Markets', catColor: '#00D474', date: '2026-04-04', readTime: '7 min',
+    description: 'Tesla stock analysis: $1.5T market cap, robotaxi updates, production numbers, and why Brutal AI rates it a C+.',
     sections: [
-      { heading: 'Top 10 Cryptocurrencies', body: 'This week in crypto: 1. Bitcoin (BTC) at $66933.00, 7d: +0.0%, 2. Ethereum (ETH) at $2053.19, 7d: +0.0%, 3. Tether (USDT) at $0.9999, 7d: +0.0%, 4. XRP (XRP) at $1.32, 7d: +0.0%, 5. BNB (BNB) at $588.16, 7d: +0.0%, 6. USDC (USDC) at $1.00, 7d: +0.0%, 7. Solana (SOL) at $80.36, 7d: +0.0%, 8. TRON (TRX) at $0.3152, 7d: +0.0%, 9. Figure Heloc (FIGR_HELOC) at $1.03, 7d: +0.0%, 10. Dogecoin (DOGE) at $0.0915, 7d: +0.0%. View live prices on our Crypto Rankings page.' },
-      { heading: 'FAQ', body: 'Q: Where does crypto data come from?\\nA: All data is from CoinGecko API.\\n\\nQ: Is this financial advice?\\nA: No. Crypto is highly volatile. Always DYOR.' }
+      { heading: 'Company Overview', body: 'Tesla (TSLA) trades at $262 with a market cap of $1.5 trillion. P/E ratio: 120x. Revenue: $97B annually. The 52-week range is $180-$380, reflecting the stock\'s signature volatility. Tesla is simultaneously a car company, energy company, AI company, and robot company — depending on which Elon tweet you read last.' },
+      { heading: 'What Happened This Month', body: 'April brought mixed signals for Tesla. Q1 deliveries came in at 410,000 vehicles — slightly below estimates. The Cybertruck is ramping but margins remain thin. Robotaxi timeline was pushed to "late 2026" from "mid 2026." FSD v13 received positive reviews but regulatory approval remains uncertain. Energy storage revenue surprised to the upside at $3.2B quarterly.' },
+      { heading: 'Bull Case vs Bear Case', body: 'BULL: Robotaxi could be a $500B revenue opportunity if it works. Energy storage is growing 100%+ YoY. FSD is improving rapidly with real-world data advantage. Brand loyalty is unmatched. BEAR: Core auto business is decelerating. Competition from BYD, Hyundai, and legacy OEMs is intensifying. Margins are compressing. Elon\'s attention is split across 6 companies. Valuation assumes robotaxi success that hasn\'t been proven.' },
+      { heading: 'Brutal AI Take', body: 'GRADE: C+ (Potential Trapped in Chaos). "Tesla at $1.5 TRILLION for a company that sells 1.8 million cars a year. Toyota sells 10 million and is worth $350B. The MATH doesn\'t math unless you believe in robotaxis. I don\'t believe in anything I can\'t see, and I can\'t see a single robotaxi on the road. But I\'ve been wrong about Elon before. EVERYONE has." NOT investment advice.' },
+      { heading: 'FAQ', body: 'Q: Will Tesla robotaxis launch in 2026?\\nA: Tesla has promised autonomous driving since 2016. The technology is improving but regulatory and liability challenges remain significant.\\n\\nQ: Is Tesla a car company or tech company?\\nA: Investors pay for the tech vision, but 85%+ of revenue comes from selling cars. The answer matters for valuation.' },
     ],
   },
   {
-    slug: 'weekly-creators-2026-04-03', title: 'Fastest Growing Creators - 2026-04-03',
-    category: 'Creators', catColor: '#A78BFA', date: '2026-04-03', readTime: '3 min',
-    description: 'Fastest growing YouTube, TikTok, and Instagram creators this week. Updated 2026-04-03.',
+    slug: 'deep-dive-aapl-april-2026', title: 'Deep Dive: Apple — April 2026 Analysis',
+    category: 'Markets', catColor: '#00D474', date: '2026-04-04', readTime: '7 min',
+    description: 'Apple stock analysis: $3.8T market cap, Apple Intelligence rollout, iPhone cycle, and Services growth.',
     sections: [
-      { heading: 'YouTube Growth', body: 'MrBeast continues to lead YouTube with 382M+ subscribers. IShowSpeed and Kai Cenat are the fastest growing gaming creators. Check our Creators page for full rankings.' },
-      { heading: 'FAQ', body: 'Q: How is creator growth measured?\\nA: We track subscriber and follower changes weekly across YouTube, TikTok, Instagram, and X.' }
+      { heading: 'Company Overview', body: 'Apple (AAPL) is the world\'s second most valuable company at $3.8 trillion. Stock price: $228. P/E: 34x. Revenue: $391B annually. Apple generates $100B+ in free cash flow and returns most of it through buybacks and dividends. The ecosystem of 2.2 billion active devices creates an unbreakable moat.' },
+      { heading: 'What Happened This Month', body: 'Apple Intelligence features continued rolling out in April, driving a modest iPhone upgrade cycle. Services revenue hit a record $25B quarterly, growing 16% YoY. The Vision Pro saw a price cut to $2,499 but adoption remains niche. India manufacturing expansion continued with 20% of iPhones now assembled locally. Tim Cook visited China amid tariff concerns.' },
+      { heading: 'Bull Case vs Bear Case', body: 'BULL: Services growing at 16% on a massive base. Apple Intelligence driving upgrade cycles. $100B+ buybacks annually shrink share count. Ecosystem lock-in is strongest in tech. India and emerging market expansion. BEAR: iPhone revenue is 52% of total and growth is flat. China competition from Huawei is real. AI features lag behind Google and Samsung. Hardware innovation has plateaued. Regulatory risk from app store lawsuits.' },
+      { heading: 'Brutal AI Take', body: 'GRADE: B (Boring but Beautiful). "Apple makes the SAME phone every year and the whole WORLD keeps buying it. That\'s not innovation, that\'s ADDICTION. Tim Cook turned Apple into the world\'s most profitable SUBSCRIPTION business disguised as a hardware company. GENIUS. The stock is boring. The returns are boring. The cash flow is MAGNIFICENT. Sometimes boring makes you RICH." NOT investment advice.' },
+      { heading: 'FAQ', body: 'Q: Is Apple Intelligence competitive with ChatGPT?\\nA: Apple Intelligence focuses on on-device privacy-first AI. It\'s different from cloud-based AI, not necessarily better or worse.\\n\\nQ: Will Apple ever make a car?\\nA: Project Titan was cancelled in early 2024. Apple is focusing on AI and Vision Pro instead.' },
     ],
   },
-  // ═══ April 2026 — New Posts ═══
   {
     slug: 'nvidia-worlds-most-valuable-company-2026',
     title: 'NVIDIA Becomes World\'s Most Valuable Company 2026',
