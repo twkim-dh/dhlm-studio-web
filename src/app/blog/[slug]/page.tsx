@@ -47,6 +47,7 @@ export default async function BlogPostPage({ params }: { params: Promise<{ slug:
     );
   }
 
+  const isDeepDive = slug.startsWith('deep-dive-');
   const related = blogPosts.filter(p => p.category === post.category && p.slug !== post.slug).slice(0, 3);
 
   const jsonLd = {
@@ -77,10 +78,21 @@ export default async function BlogPostPage({ params }: { params: Promise<{ slug:
       <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLd) }} />
       <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(breadcrumb) }} />
       <article style={{ maxWidth: 720, margin: '0 auto', padding: '80px 24px' }}>
-        <Link href="/blog" style={{ fontSize: 12, color: '#64748B', fontFamily: 'var(--sans)' }}>← Blog</Link>
+        <Link href={isDeepDive ? '/reports' : '/blog'} style={{ fontSize: 12, color: '#64748B', fontFamily: 'var(--sans)' }}>← {isDeepDive ? 'Reports' : 'Blog'}</Link>
+
+        {/* Brutal AI Header (deep-dive only) */}
+        {isDeepDive && (
+          <div style={{ marginTop: 20, padding: '20px 22px', borderRadius: 14, background: 'linear-gradient(135deg, #C73E3A08, #C73E3A03)', border: '1px solid #C73E3A20', marginBottom: 24 }}>
+            <div style={{ display: 'flex', alignItems: 'center', gap: 8, marginBottom: 8 }}>
+              <span style={{ fontSize: 18 }}>🔥</span>
+              <span style={{ fontFamily: 'var(--mono)', fontSize: 11, fontWeight: 800, color: '#C73E3A', letterSpacing: 2 }}>BRUTAL AI&trade; DEEP DIVE</span>
+            </div>
+            <div style={{ fontSize: 11, color: '#64748B', fontStyle: 'italic' }}>AI-generated analysis. Data-driven. Zero feelings.</div>
+          </div>
+        )}
 
         {/* Header */}
-        <div style={{ marginTop: 24, marginBottom: 40 }}>
+        <div style={{ marginTop: isDeepDive ? 0 : 24, marginBottom: 40 }}>
           <div style={{ display: 'flex', alignItems: 'center', gap: 8, marginBottom: 12 }}>
             <span style={{ fontFamily: 'var(--mono)', fontSize: 10, fontWeight: 600, padding: '3px 8px', borderRadius: 4, background: `${post.catColor}14`, color: post.catColor }}>{post.category}</span>
             <span style={{ fontFamily: 'var(--sans)', fontSize: 11, color: '#475569' }}>{post.date} · {post.readTime} read</span>
@@ -124,8 +136,20 @@ export default async function BlogPostPage({ params }: { params: Promise<{ slug:
           </div>
         )}
 
+        {/* Brutal AI Footer (deep-dive only) */}
+        {isDeepDive && (
+          <div style={{ marginTop: 40, padding: '20px 22px', borderRadius: 14, background: '#111827', border: '1px solid #1E293B', textAlign: 'center' }}>
+            <div style={{ fontFamily: 'var(--mono)', fontSize: 10, fontWeight: 800, color: '#C73E3A', letterSpacing: 2, marginBottom: 6 }}>🔥 ANALYZED BY BRUTAL AI&trade;</div>
+            <div style={{ fontSize: 11, color: '#64748B', marginBottom: 8 }}>DHLM Studio&apos;s AI Analysis Engine</div>
+            <div style={{ fontSize: 9, color: '#475569', lineHeight: 1.6 }}>
+              Data: Financial Modeling Prep, Alpha Vantage, CoinGecko<br />
+              NOT investment advice. Always do your own research.
+            </div>
+          </div>
+        )}
+
         {/* Disclaimer */}
-        <p style={{ fontFamily: 'var(--sans)', fontSize: 10, color: '#334155', marginTop: 40, lineHeight: 1.6, textAlign: 'center' }}>
+        <p style={{ fontFamily: 'var(--sans)', fontSize: 10, color: '#334155', marginTop: isDeepDive ? 16 : 40, lineHeight: 1.6, textAlign: 'center' }}>
           Content is for informational purposes only. Always verify data from primary sources.
         </p>
       </article>
