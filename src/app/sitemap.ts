@@ -56,6 +56,7 @@ export default function sitemap(): MetadataRoute.Sitemap {
     })),
 
     // Blog
+    { url: `${BASE}/reports`, lastModified: now, changeFrequency: "weekly", priority: 0.8 },
     { url: `${BASE}/blog`, lastModified: now, changeFrequency: "weekly", priority: 0.8 },
     ...blogPosts.map(p => ({
       url: `${BASE}/blog/${p.slug}`,

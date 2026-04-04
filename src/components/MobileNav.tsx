@@ -14,6 +14,7 @@ const tabs = [
 const moreLinks = [
   { href: '/rankings/crypto', label: '🪙 Crypto', color: '#F59E0B' },
   { href: '/creators', label: '🔥 Creators', color: '#A78BFA' },
+  { href: '/reports', label: '📊 Reports', color: '#C73E3A' },
   { href: '/blog', label: '📖 Blog', color: '#60A5FA' },
   { href: '/blog/wisdom', label: '💡 Wisdom', color: '#D4A843' },
   { href: '/tools', label: '🧮 Tools', color: '#64748B' },
