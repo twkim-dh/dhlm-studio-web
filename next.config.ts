@@ -37,7 +37,10 @@ const nextConfig: NextConfig = {
       // Korean Lotto → US Lottery redirect
       { source: '/lotto', destination: '/lottery', permanent: true },
       { source: '/lotto/:path*', destination: '/lottery', permanent: true },
-      // Rankings sub-pages now have dedicated routes — no redirect needed
+      // Search Console top pages → redirect to new locations
+      { source: '/blog/lotto-statistics', destination: '/lottery/powerball/stats', permanent: true },
+      { source: '/blog/lotto/:path*', destination: '/lottery', permanent: true },
+      { source: '/korea/no-tipping-korea', destination: '/', permanent: true },
       { source: '/today/:path*', destination: '/', permanent: true },
       { source: '/services', destination: '/', permanent: true },
       // Old blog posts → blog hub
