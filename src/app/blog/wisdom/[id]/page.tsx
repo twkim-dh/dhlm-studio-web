@@ -14,6 +14,7 @@ export async function generateMetadata({ params }: { params: Promise<{ id: strin
   return {
     title: `"${w.quote.slice(0, 60)}${w.quote.length > 60 ? '...' : ''}" — ${w.author} | Wall Street Wisdom`,
     description: `${w.author}: "${w.quote}" — ${w.explanation.slice(0, 140)}`,
+    robots: { index: false, follow: true },
   };
 }
 

@@ -19,7 +19,7 @@ export default function Footer() {
             { label: "Editorial", href: "/editorial" },
             { label: "Privacy", href: "/privacy" },
             { label: "Terms", href: "/terms" },
-            { label: "Contact", href: "mailto:dhlmstudio2026@gmail.com" },
+            { label: "Contact", href: "/contact" },
           ].map(l => (
             <Link key={l.label} href={l.href} style={{ fontSize: 11, color: "#475569", fontFamily: "var(--sans)" }}>
               {l.label}

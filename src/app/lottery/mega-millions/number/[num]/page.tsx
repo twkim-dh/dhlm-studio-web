@@ -25,6 +25,7 @@ export async function generateMetadata({ params }: { params: Promise<{ num: stri
   return {
     title: `Mega Millions Number ${num} — Statistics & History ${YEAR}`,
     description: `How often does number ${num} appear in Mega Millions? Frequency, last drawn date, companion numbers. ${YEAR}.`,
+    robots: { index: false, follow: true },
   };
 }
 

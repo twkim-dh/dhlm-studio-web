@@ -25,6 +25,7 @@ export async function generateMetadata({ params }: { params: Promise<{ num: stri
   return {
     title: `Powerball Number ${num} — Statistics & History ${YEAR}`,
     description: `How often does number ${num} appear in Powerball? Frequency, last drawn date, most common companions. ${YEAR} data.`,
+    robots: { index: false, follow: true },
   };
 }
 
