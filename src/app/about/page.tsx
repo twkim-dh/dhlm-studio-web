@@ -107,6 +107,17 @@ export default function AboutPage() {
             </div>
           </div>
 
+          {/* Editorial Policy Link */}
+          <Link href="/editorial" style={{ display: 'block', ...card, padding: '16px 20px', textDecoration: 'none' }}>
+            <div style={{ display: 'flex', alignItems: 'center', justifyContent: 'space-between' }}>
+              <div>
+                <div style={{ fontSize: 14, fontWeight: 700, color: '#C73E3A' }}>Editorial Policy</div>
+                <div style={{ fontSize: 12, color: '#64748B', marginTop: 2 }}>How Brutal AI analyzes stocks — methodology, data sources, disclaimers</div>
+              </div>
+              <span style={{ color: '#475569', fontSize: 12 }}>→</span>
+            </div>
+          </Link>
+
           {/* Contact */}
           <div style={{ ...card, padding: '24px 22px' }}>
             <div style={{ fontFamily: 'var(--mono)', fontSize: 9, fontWeight: 700, color: '#64748B', letterSpacing: 2, marginBottom: 10 }}>CONTACT</div>

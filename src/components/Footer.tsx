@@ -16,6 +16,7 @@ export default function Footer() {
         <div style={{ display: "flex", gap: 20 }}>
           {[
             { label: "About", href: "/about" },
+            { label: "Editorial", href: "/editorial" },
             { label: "Privacy", href: "/privacy" },
             { label: "Terms", href: "/terms" },
             { label: "Contact", href: "mailto:dhlmstudio2026@gmail.com" },

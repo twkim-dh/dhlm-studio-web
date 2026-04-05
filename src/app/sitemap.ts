@@ -87,6 +87,7 @@ export default function sitemap(): MetadataRoute.Sitemap {
 
     // Static
     { url: `${BASE}/about`, lastModified: now, changeFrequency: "monthly", priority: 0.4 },
+    { url: `${BASE}/editorial`, lastModified: now, changeFrequency: "monthly", priority: 0.5 },
     { url: `${BASE}/privacy`, lastModified: now, changeFrequency: "monthly", priority: 0.3 },
     { url: `${BASE}/terms`, lastModified: now, changeFrequency: "monthly", priority: 0.3 },
   ];
