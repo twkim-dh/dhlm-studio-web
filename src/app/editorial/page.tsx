@@ -104,6 +104,51 @@ export default function EditorialPage() {
             </div>
           </div>
 
+          {/* What We Are NOT */}
+          <div style={{ ...card, padding: '24px 22px' }}>
+            <h2 style={{ fontFamily: 'var(--serif)', fontSize: 20, fontWeight: 800, color: '#EF4444', margin: '0 0 12px' }}>What We Are NOT</h2>
+            <div style={{ display: 'flex', flexDirection: 'column', gap: 8 }}>
+              {[
+                'NOT a financial advisor — we do not provide personalized investment advice',
+                'NOT a broker or dealer — we do not execute trades or hold customer funds',
+                'NOT providing investment recommendations — we never say "buy" or "sell"',
+                'NOT a registered investment company — all content is educational/entertainment',
+              ].map((item, i) => (
+                <div key={i} style={{ display: 'flex', alignItems: 'flex-start', gap: 8 }}>
+                  <span style={{ color: '#EF4444', fontSize: 12, flexShrink: 0, marginTop: 2 }}>✕</span>
+                  <span style={{ fontSize: 13, color: '#94A3B8', lineHeight: 1.6 }}>{item}</span>
+                </div>
+              ))}
+            </div>
+          </div>
+
+          {/* Editorial Independence */}
+          <div style={{ ...card, padding: '24px 22px' }}>
+            <h2 style={{ fontFamily: 'var(--serif)', fontSize: 20, fontWeight: 800, color: '#E2E8F0', margin: '0 0 12px' }}>Editorial Independence</h2>
+            <div style={{ display: 'flex', flexDirection: 'column', gap: 8 }}>
+              {[
+                'No sponsored content — we do not accept payment to write about any stock or crypto',
+                'No paid stock promotions — every analysis is editorially independent',
+                'No affiliate trading links — we do not earn commissions on trades',
+                'Revenue from display advertising only — Google AdSense is our sole revenue model',
+                'No conflicts of interest — DHLM Studio does not hold positions in stocks we analyze',
+              ].map((item, i) => (
+                <div key={i} style={{ display: 'flex', alignItems: 'flex-start', gap: 8 }}>
+                  <span style={{ color: '#00D474', fontSize: 12, flexShrink: 0, marginTop: 2 }}>✓</span>
+                  <span style={{ fontSize: 13, color: '#94A3B8', lineHeight: 1.6 }}>{item}</span>
+                </div>
+              ))}
+            </div>
+          </div>
+
+          {/* Corrections Policy */}
+          <div style={{ ...card, padding: '18px 22px' }}>
+            <h2 style={{ fontFamily: 'var(--serif)', fontSize: 18, fontWeight: 800, color: '#E2E8F0', margin: '0 0 8px' }}>Corrections Policy</h2>
+            <p style={{ fontSize: 13, color: '#94A3B8', lineHeight: 1.7, margin: 0 }}>
+              Data errors are corrected within 24 hours of discovery. If you find an error, please contact us at <a href="mailto:dhlmstudio2026@gmail.com" style={{ color: '#60A5FA' }}>dhlmstudio2026@gmail.com</a>. Corrections are noted at the bottom of the affected article.
+            </p>
+          </div>
+
           {/* Important Disclaimers */}
           <div style={{ ...card, padding: '24px 22px', borderColor: '#C73E3A30' }}>
             <h2 style={{ fontFamily: 'var(--serif)', fontSize: 20, fontWeight: 800, color: '#C73E3A', margin: '0 0 12px' }}>Important Disclaimers</h2>
