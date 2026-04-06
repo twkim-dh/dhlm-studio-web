@@ -11,6 +11,18 @@ baafScore: 83
 description: "NVIDIA at $4.2T: 90% AI chip dominance, $60B locked backlog, but P/E 65x at a CAPE of 39.7. BAAF Score 83/100."
 ---
 
+| | |
+|---|---|
+| **Ticker** | NVDA (NASDAQ) |
+| **Price** | $175 (as of April 4, 2026) |
+| **Market Cap** | $4.2 Trillion |
+| **52-Week Range** | $80 — $195 |
+| **P/E (TTM)** | 65x |
+| **Forward P/E** | 42x (FY2027E) |
+| **BAAF Score** | 83/100 (B+) |
+| **Sector** | Semiconductors |
+| **Brutal AI Rating** | B+ — Reluctant Respect |
+
 ## $4.2 Trillion. For a Chip Company in Santa Clara.
 
 Revenue: $130 billion. Net income: $72 billion. Free cash flow: $60 billion. P/E: 65x. Gross margin: 75%.
@@ -164,6 +176,24 @@ The comparison every investor makes. Let's do the math properly instead of wavin
 **But the comparison holds on one critical dimension:** valuation. Everyone said "this time is different" about the internet in 2000. They were right — the internet WAS different. It was transformative. Cisco was RIGHT about the internet. They were still overvalued at 196x. Being right about the technology does not mean the stock is right at any price.
 
 NVIDIA's situation is materially better than Cisco 2000 on fundamentals. But "better than the worst bubble in modern history" is a low bar for a $4.2 trillion company.
+
+## Forward Earnings Projections
+
+| Metric | FY2026A | FY2027E | FY2028E | FY2029E |
+|--------|---------|---------|---------|---------|
+| Revenue | $130B | $170B | $205B | $235B |
+| Revenue Growth | +55% | +31% | +21% | +15% |
+| Gross Margin | 75% | 74% | 72% | 70% |
+| Operating Income | $82B | $104B | $120B | $132B |
+| Net Income | $72B | $91B | $105B | $115B |
+| EPS | $2.90 | $3.70 | $4.30 | $4.70 |
+| P/E at Current Price | 65x | 47x | 41x | 37x |
+
+*Source: LSEG consensus estimates (as of April 2026), NVIDIA SEC filings for actuals*
+
+The forward estimates reveal the core of the NVIDIA thesis: at $175 per share, the stock trades at 65x trailing earnings but only 37x FY2029 estimates. The question is whether consensus FY2029 estimates — which assume revenue growth decelerating from 55% to 15% over three years while maintaining 70% gross margins — are achievable.
+
+The deceleration path (55% → 31% → 21% → 15%) follows the law of large numbers. Sustaining 55% growth on a $130B base would require adding $72B in new revenue annually — more than AMD's entire revenue. Consensus assumes this is unsustainable, which is why forward P/E compresses from 65x to 37x. If consensus is right, the stock is fairly valued. If growth sustains above 30% through FY2029, the stock is cheap.
 
 ## Valuation Scenarios
 
