@@ -11,6 +11,28 @@ export interface BlogPost {
 
 export const blogPosts: BlogPost[] = [
   {
+    slug: 'wall-street-weekly-2026-04-06', title: 'This Week on Wall Street — April 6, 2026',
+    category: 'Markets', catColor: '#00D474', date: '2026-04-06', readTime: '5 min',
+    description: 'Weekly market recap: top gainers, biggest losers, and what moved Wall Street. April 6, 2026.',
+    sections: [
+      { heading: 'Market Summary', body: 'Here is your weekly Wall Street recap for the week ending April 6, 2026. Markets continued to react to earnings season, macro data, and global trade developments. Check our Markets page for real-time data throughout the week.' },
+      { heading: 'Top Gainers (Large-Cap)', body: 'The biggest winners among large-cap stocks this week: 1. SKYQ — $5.10 (101.581%). 2. FC — $23.54 (45.7276%). 3. AAOX — $26.35 (40.5333%). These moves were driven by earnings beats, analyst upgrades, and sector momentum. Visit individual stock pages for Brutal AI commentary on each.' },
+      { heading: 'Top Losers (Large-Cap)', body: 'The biggest decliners this week: 1. ELAB — $5.72 (-59.1429%). 2. EEIQ — $7.25 (-31.4745%). Earnings misses, guidance cuts, and macro headwinds drove these losses. Check our Sector Heatmap to see which sectors were hit hardest.' },
+      { heading: 'Week Ahead', body: 'Key events to watch next week include Federal Reserve commentary, major earnings reports, and economic data releases. Stay updated with our daily market movers at dhlm-studio.com/markets.' },
+      { heading: 'FAQ', body: 'Q: Where does this data come from?\\nA: Market data is sourced from Alpha Vantage API. Large-cap stocks only ($5+ price, no warrants or penny stocks).\\n\\nQ: Is this investment advice?\\nA: No. This is informational content only. Always do your own research before making investment decisions.' }
+    ],
+  },
+  {
+    slug: 'crypto-weekly-2026-04-06', title: 'Crypto Market Weekly — April 6, 2026',
+    category: 'Crypto', catColor: '#F59E0B', date: '2026-04-06', readTime: '4 min',
+    description: 'Weekly crypto recap: Bitcoin, Ethereum, and top altcoins performance. April 6, 2026.',
+    sections: [
+      { heading: 'Top 10 Cryptocurrencies', body: 'This week in crypto: 1. Bitcoin (BTC) at $68962.00, 7d: +0.0%. 2. Ethereum (ETH) at $2129.86, 7d: +0.0%. 3. Tether (USDT) at $0.9997, 7d: +0.0%. 4. XRP (XRP) at $1.34, 7d: +0.0%. 5. BNB (BNB) at $600.80, 7d: +0.0%. 6. USDC (USDC) at $0.9998, 7d: +0.0%. 7. Solana (SOL) at $81.58, 7d: +0.0%. 8. TRON (TRX) at $0.3175, 7d: +0.0%. 9. Figure Heloc (FIGR_HELOC) at $1.03, 7d: +0.0%. 10. Dogecoin (DOGE) at $0.0920, 7d: +0.0%. View live prices and Brutal AI commentary on our Crypto Rankings page.' },
+      { heading: 'Winners and Losers', body: 'Weekly winners: N/A. Weekly losers: BTC (0.0%), ETH (0.0%), USDT (0.0%). For detailed analysis on any coin, visit our individual crypto pages.' },
+      { heading: 'FAQ', body: 'Q: Where does crypto data come from?\\nA: All data is from CoinGecko API, updated in real-time.\\n\\nQ: Is this financial advice?\\nA: No. Crypto is highly volatile. This is informational content only.' }
+    ],
+  },
+  {
     slug: 'deep-dive-msft-april-2026', title: 'Deep Dive: Microsoft — April 2026 Analysis',
     category: 'Markets', catColor: '#00D474', date: '2026-04-06', readTime: '8 min',
     description: 'Microsoft at $3T: Copilot everywhere, Azure AI growing 50%+, but antitrust clouds gathering. BAAF Score: 81/100 (B+).',
