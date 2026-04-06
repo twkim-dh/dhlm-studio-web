@@ -86,6 +86,22 @@ Counterpoint: backlog covers the next 18 months. If hyperscaler CapEx decelerate
 
 The table reveals a core tension: NVIDIA has the highest P/E (65x) but the lowest PEG (1.2). On an absolute basis, it's the most expensive semiconductor stock. On a growth-adjusted basis, it's arguably the cheapest. This paradox defines the NVIDIA investment debate.
 
+### What Must Be True for BAAF 83 (B+) to Hold
+
+For the B+ grade to be justified over the next 12 months, the following must remain true:
+
+1. **Revenue growth stays above 40% YoY** — If growth decelerates to 25% (LSEG FY2028 estimate), the GROWTH axis drops from 22 to 16, pulling total BAAF to 77 (B).
+2. **Gross margins hold above 70%** — Custom chip competition from Google/Amazon could compress margins to 65%, dropping PROFITABILITY from 19 to 16.
+3. **No major hyperscaler CapEx cut** — A single large customer reducing orders by 20%+ would trigger a MOMENTUM collapse from 9 to 4.
+
+If all three fail simultaneously, BAAF drops to approximately 62 (C) — a two-grade downgrade.
+
+### Brutal Translation: Key Metrics in Plain English
+
+- **P/E 65x** = You're paying $65 for every $1 NVIDIA earns. A savings account pays more income per dollar invested.
+- **FCF Yield 1.8%** = For every $100 invested, NVIDIA generates $1.80 in free cash. A Treasury bill currently yields 4.3%.
+- **Gross Margin 75%** = For every $100 in revenue, $75 is profit before operating costs. The average restaurant operates at 5-10%. NVIDIA is not a restaurant.
+
 ## Competitive Landscape
 
 ### AMD: The Persistent Challenger
