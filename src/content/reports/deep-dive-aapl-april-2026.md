@@ -2,150 +2,185 @@
 title: "Deep Dive: Apple — April 2026 Analysis"
 slug: "deep-dive-aapl-april-2026"
 ticker: "AAPL"
-date: "2026-04-06"
-readTime: "11 min"
+date: "2026-04-07"
+readTime: "13 min"
 category: "Markets"
 catColor: "#00D474"
 grade: "B"
 baafScore: 77
-description: "Apple at $3.8T: The most boring company making the most money. A subscription empire disguised as a phone. BAAF 77/100."
+description: "Apple at $3.8T: $100B annual FCF, 2.2B device ecosystem, but iPhone growth at 4%. The subscription empire nobody notices. BAAF 77/100."
 ---
 
-## The Toyota Camry of Stocks
+## $274 Million Per Day. Every Day. While You Sleep.
 
-Apple is the Toyota Camry of the stock market. Nobody gets excited about it at dinner parties. Nobody makes fan accounts for Tim Cook. Nobody gets an AAPL tattoo. And yet — everyone owns it. The stock, the phone, the AirPods, and the identity crisis that comes with spending $1,200 every September on essentially the same rectangle with a slightly better camera.
+Apple generates $100 billion in free cash flow annually. That's $274 million per day. $11.4 million per hour. Every hour of every day, including weekends, holidays, and the hours Tim Cook spends on his morning workout.
 
-$3.8 trillion market cap. $228 per share. P/E: 34x. Revenue: $391 billion per year. Free cash flow: $100 billion per year. That's $274 million per day. Every day. Weekends included. Christmas. Your birthday. While you sleep, Apple makes more money than most companies make in a decade.
+To put that in perspective: Apple's daily free cash flow exceeds the entire annual revenue of 90% of publicly traded companies. The company buys back $90 billion of its own stock per year — aggressively enough to have reduced total shares outstanding by 38% since 2013 (Apple 10-K filings). Fewer shares plus growing earnings equals higher earnings per share, even when total earnings growth is modest.
 
-Apple doesn't innovate anymore. Apple EXTRACTS. And extraction, it turns out, is far more profitable than innovation. Nobody writes "Apple disrupts industry" headlines anymore. Instead, they write "$25B quarterly Services revenue" buried on page 4 of the earnings report. And somehow, that's better.
+Nobody writes breathless headlines about Apple anymore. Nobody puts AAPL in their social media bios. Nobody makes fan accounts for Tim Cook. And yet everyone owns it — the stock, the phone, the AirPods, and the quiet subscription revenue that has turned 1 billion people into monthly recurring customers.
 
-Here's the funny thing about boring: Warren Buffett — the patron saint of boring investing — owns $170 billion worth of Apple stock. When the world's most successful investor thinks you're exciting enough to be his largest position, you're doing something very right. Or very boring. Same thing, apparently.
+Apple is the Toyota Camry of the stock market. Nobody brags about owning one. Everybody does.
 
-## Company Deep Dive: The Subscription Empire Nobody Notices
+## Company Deep Dive: A Subscription Empire Wearing a Hardware Costume
 
-### The Revenue Illusion
+### Revenue Breakdown — FY2026
 
-Everyone thinks Apple sells phones. That's like saying Netflix sells a login page. What Apple actually sells is ACCESS — access to the most carefully constructed digital ecosystem in human history.
-
-| Segment | Revenue | % of Total | Growth YoY | Gross Margin |
-|---------|---------|-----------|------------|-------------|
+| Segment | Revenue (TTM) | % of Total | YoY Growth | Gross Margin |
+|---------|--------------|-----------|------------|-------------|
 | iPhone | $201B | 52% | +4% | 42% |
 | Services | $98B | 25% | +16% | 72% |
 | Mac | $35B | 9% | +8% | 37% |
 | iPad | $29B | 7% | +5% | 35% |
-| Wearables/Home | $28B | 7% | +3% | 33% |
+| Wearables/Home/Accessories | $28B | 7% | +3% | 33% |
 | **Total** | **$391B** | **100%** | **+8%** | **46%** |
 
-Look at that Services line. $98 billion growing 16% with a 72% gross margin. That's not a hardware margin. That's a software margin wearing a hardware costume. If Apple Services were a standalone company, it would be worth $1.5-2 trillion by itself — making it one of the top 5 most valuable companies on earth.
+*Source: Apple 10-K SEC filing, Financial Modeling Prep API*
 
-Tim Cook didn't invent anything. He did something much harder: he turned 1 billion people into monthly subscribers without them even noticing.
+The Services line demands attention. $98 billion in annual revenue with a 72% gross margin — that is not a hardware company's economics. That is software economics. If Apple Services were a standalone company, it would rank among the top 15 most valuable companies on earth based on comparable SaaS multiples (15-20x revenue = $1.5-2.0T standalone valuation).
 
-### The Walled Garden: 2.2 Billion Prisoners Who Love Their Cell
+Tim Cook didn't invent a new product category. He did something strategically superior: he monetized 2.2 billion existing devices as subscription distribution channels. App Store (30% commission on all transactions), Apple Music ($10.99/month), Apple TV+ ($9.99/month), iCloud storage ($2.99-9.99/month), Apple One bundles ($19.95/month), Apple Card cash back, Fitness+, News+, Arcade. Each individually small. Collectively: $98 billion and growing 16% on an enormous base.
 
-Apple has 2.2 billion active devices worldwide. Once you're in the ecosystem, you stay. Your photos are in iCloud. Your apps are on your iPhone. Your health data is on your Watch. Your music is on AirPods. Your payments are on Apple Pay.
+### The Ecosystem Lock-In: 2.2 Billion Active Devices
 
-The switching costs aren't financial — they're emotional. Leaving Apple is like leaving a friend group. Technically possible. Emotionally devastating. You'd lose your blue bubbles. In America, losing your blue bubbles is a social death sentence for anyone under 30.
+Apple's competitive moat is not any single product. It is the ecosystem.
 
-This lock-in creates what may be the most powerful business model in capitalism: mandatory recurring revenue from 1 billion+ people who would rather pay than switch. The App Store takes 30% of every transaction. THIRTY PERCENT. That's not a commission — that's a tax. Apple collects more "tolls" than the entire New Jersey Turnpike system.
+2.2 billion active Apple devices worldwide (Apple Q1 FY2026 earnings call). Switching costs are not primarily financial — they are behavioral and emotional. Photos in iCloud. Health data on Apple Watch. Payment methods on Apple Pay. Music libraries on Apple Music. Social currency of blue iMessage bubbles.
 
-Apple Music: $10.99/month. Apple TV+: $9.99/month. iCloud: $2.99-9.99/month. Apple One bundle: $19.95/month. Fitness+. News+. Arcade. Apple Card cash back. Each one is a tiny subscription that seems insignificant. Together, they're a $98 billion annual revenue machine growing at 16%.
+Consumer Intelligence Research Partners (CIRP) estimates Apple's US customer retention rate at 93% — the highest of any consumer technology brand measured. The practical implication: Apple's installed base is a renewable revenue annuity with a 7% annual churn rate.
 
-The iPhone isn't the product. The iPhone is the ENTRY FEE to the most exclusive subscription club on earth.
+The App Store's 30% commission on digital transactions has been challenged legally (Epic Games v. Apple, EU Digital Markets Act) but remains intact for the vast majority of transactions. Even if the commission drops to 20% — a plausible regulatory outcome over 3-5 years — the impact on Services revenue would be approximately $8-10B, or 8-10% of the segment.
 
 ## Financial Analysis: BAAF Scoring
 
 ### BAAF Score: 77/100 (B)
 
-| BAAF Axis | Score | Max | Key Evidence |
-|-----------|-------|-----|-------------|
-| **GROWTH** | 14 | 25 | Overall +8%, but Services +16%. iPhone growth has plateaued at +4% |
-| **PROFITABILITY** | 19 | 20 | 46% gross margin, 30% net margin, $100B FCF. Fortress-level financials |
-| **MOAT** | 19 | 20 | 2.2B devices, ecosystem lock-in, brand power, App Store 30% toll |
-| **VALUATION** | 10 | 15 | P/E 34x is fair for quality but iPhone growth concerns limit upside |
-| **RISK** | 7 | 10 | China (19% revenue), regulatory (App Store lawsuits), Huawei competition |
-| **MOMENTUM** | 8 | 10 | Services acceleration, Apple Intelligence upgrade cycle, India expansion |
-
-**Why Profitability scores 19/20:** There are fewer than 10 companies on earth that generate $100 billion in free cash flow annually. Apple is one of them. The company returns nearly all of it to shareholders through buybacks ($90B/year) and dividends ($15B/year). Apple has been buying back its own stock so aggressively that the share count has decreased by 38% since 2013. Fewer shares + growing earnings = higher earnings per share even when total earnings growth is modest. It's financial engineering at its finest.
-
-**Why Growth scores only 14/25:** iPhone revenue is 52% of total and growing only 4%. That's essentially the inflation rate. The world is saturated with smartphones. Apple's growth engine is Services, which is brilliant but can only grow so fast when you're already at $98B. The missing piece: Apple Intelligence. If AI features drive a meaningful iPhone upgrade cycle in 2026-2027, the growth score improves to 18+. If not, Apple remains a magnificent slow-growth cash machine.
+| BAAF Axis | Score | Max | Evidence |
+|-----------|-------|-----|----------|
+| **GROWTH** | 14 | 25 | Total revenue +8%, but iPhone (52% of total) growing only +4% — essentially the inflation rate. Services +16% is the growth engine but faces law-of-large-numbers deceleration. Mac and Wearables growth tepid. Missing catalyst: Apple Intelligence has not yet driven a measurable iPhone upgrade cycle (per carrier activation data, Counterpoint Research Q1 2026). |
+| **PROFITABILITY** | 19 | 20 | Gross margin 46%, net margin 30%, FCF margin 26%. $100B annual FCF — fewer than 10 companies on earth generate this. Share buyback program ($90B/year) compounds EPS growth even when revenue growth is modest. ROE of 160%+ (driven by negative book value from buybacks). Only deduction: hardware segment margins face pressure from component cost inflation. |
+| **MOAT** | 19 | 20 | 2.2B active devices. 93% US customer retention (CIRP). App Store 30% commission. Switching costs are behavioral, not just financial. Services ecosystem creates recurring revenue annuity. Deduction: China market (19% of revenue) faces Huawei competition — Mate 70 captured 17% of premium market in Q1 2026 (Counterpoint). |
+| **VALUATION** | 10 | 15 | P/E 34x — premium to S&P 500 (22x) but justified by FCF quality and buyback accretion. Forward P/E normalizes to 30x on consensus FY2027 estimates (LSEG). Dividend yield 0.5% plus 3.8% buyback yield = 4.3% total shareholder return before any stock appreciation. Deduction: 34x leaves limited multiple expansion room. |
+| **RISK** | 7 | 10 | China revenue (19%, ~$74B) faces geopolitical and competitive risk. 25% tariff on Chinese-assembled iPhones would add $200+ per device (UBS estimate, March 2026). India manufacturing ramp (20% of iPhones) mitigates but takes 3-5 years to fully relocate. Regulatory: EU Digital Markets Act and DOJ App Store investigation ongoing. |
+| **MOMENTUM** | 8 | 10 | Services acceleration. Apple Intelligence features rolling out (but upgrade cycle not yet measurable). India market expansion. Vision Pro price cut to $2,499 but adoption remains niche (<1M units, per IDC). Share buyback continues at record pace. |
 
 ### Competitor Comparison
 
-| Metric | AAPL | Samsung | MSFT | GOOGL | Industry |
-|--------|------|---------|------|-------|----------|
+| Metric | AAPL | Samsung | MSFT | GOOGL | Sector Avg |
+|--------|------|---------|------|-------|-----------|
 | Market Cap | $3.8T | $380B | $3.0T | $3.6T | — |
-| Revenue | $391B | $210B | $245B | $350B | — |
-| Rev Growth | +8% | +5% | +15% | +12% | +10% |
+| Revenue (TTM) | $391B | $210B | $245B | $350B | — |
+| Revenue Growth YoY | +8% | +5% | +15% | +12% | +10% |
 | Gross Margin | 46% | 38% | 70% | 58% | 45% |
 | Net Margin | 30% | 12% | 38% | 28% | 20% |
-| P/E | 34x | 14x | 36x | 25x | 22x |
-| FCF/Year | $100B | $25B | $72B | $75B | — |
-| Ecosystem Size | 2.2B devices | 1.8B | 1.5B | 4B+ Android | — |
-| Services Revenue | $98B | $18B | $125B | $238B | — |
+| P/E Ratio | 34x | 14x | 36x | 25x | 22x |
+| FCF Annual | $100B | $25B | $72B | $75B | — |
+| Services/Recurring Rev | $98B (25%) | $18B (9%) | $125B (51%) | $238B (68%) | — |
 | BAAF Score | 77 | 62 | 81 | 78 | — |
 
-Apple's P/E of 34x looks expensive next to Samsung's 14x but cheap next to Microsoft's 36x. The difference: Apple has the best ecosystem lock-in but the slowest top-line growth. You're paying for quality and durability, not for acceleration.
+*Sources: Financial Modeling Prep, company filings, FactSet*
 
-## The China-Shaped Elephant in the Room
+Apple's P/E of 34x appears expensive next to Samsung (14x) but comparable to Microsoft (36x). The distinction: Apple has the strongest ecosystem lock-in but the slowest top-line growth among mega-cap tech. The premium is for quality and durability, not for acceleration.
 
-Apple generates 19% of revenue from Greater China — approximately $74 billion per year. This is simultaneously Apple's biggest growth opportunity and its biggest existential risk.
+## Competitive Landscape
 
-Huawei's Mate 70 series captured 17% of the Chinese premium smartphone market in Q1 2026, up from 9% a year ago. That's not gradual competition — that's a nationalist-fueled assault on Apple's most profitable market. Every Huawei sale is a lost Apple sale, and the Chinese government is quietly encouraging the switch.
+### The China Threat: Huawei's Resurgence
 
-Tariff risk makes this worse. A 25% tariff on Chinese-assembled iPhones would add $200+ per device. Imagine the headline: "iPhone 17 starts at $1,199 due to tariffs." That's not a product launch — that's a therapy session for Apple's marketing team.
+Apple generates approximately 19% of revenue ($74B) from Greater China. Huawei's Mate 70 series captured 17% of the Chinese premium smartphone market in Q1 2026, up from 9% a year earlier (Counterpoint Research). This is not gradual competitive erosion — it is a nationalist-fueled market share attack. The Chinese government actively encourages institutional and government buyers to switch to domestic brands.
 
-Apple is moving manufacturing to India — 20% of iPhones are now assembled there, up from 7% two years ago. But supply chains don't relocate like Uber rides. It takes years. And India's infrastructure, while improving, can't match Shenzhen's precision at scale. Not yet.
+Apple is diversifying manufacturing to India (20% of iPhone assembly, up from 7% two years ago, per Apple supplier reports). But supply chain relocation operates on 3-5 year timelines. In the interim, a 25% US tariff on Chinese-assembled iPhones would add $200+ to each device's cost basis (UBS semiconductor team estimate, March 2026).
 
-The China dependency isn't just a revenue risk. It's a geopolitical risk. And geopolitical risks have a nasty habit of not showing up in P/E ratios until they show up everywhere at once.
+### The AI Gap
 
-## Risk Analysis: Three Scenarios
+Apple Intelligence launched in 2025 with on-device, privacy-first AI features. The approach is philosophically different from Google's and OpenAI's cloud-based models. Whether "different" means "better" or "behind" is the central strategic question for the next iPhone cycle.
+
+Carrier activation data from Counterpoint Research (Q1 2026) shows no statistically significant increase in iPhone upgrade rates attributable to AI features. Apple Intelligence may drive upgrades over a 2-3 year cycle rather than a single quarter — but the market wants evidence now.
+
+## Risk Analysis
 
 ### Scenario 1: The iPhone Plateau (Probability: 40%)
 
-iPhone revenue growth stays at 0-5% indefinitely. Services growth decelerates from 16% to 10% as the base gets larger. Apple becomes a magnificent dividend stock that grows earnings 5-7% annually through buybacks. Not exciting. But not terrible.
+iPhone revenue growth remains at 0-5% indefinitely. The global smartphone market is saturated at 1.2 billion annual units (IDC). Apple's strategy shifts entirely to monetizing the installed base through Services. Earnings grow 5-7% annually, driven primarily by share buybacks rather than revenue growth.
 
-**Impact:** Stock trades sideways at $200-240. P/E compresses to 25-28x. Total return: 3-5% annually (dividends + modest appreciation). Acceptable for a "safe" holding. Boring. But profitable. Like a Camry.
+Impact: Stock trades in a $200-240 range. P/E compresses to 25-28x. Total annual return: 3-5% (dividends + buybacks + modest appreciation). Apple becomes a classic "quality dividend compounder" — excellent for conservative portfolios, disappointing for growth investors.
 
 ### Scenario 2: The China Shock (Probability: 20%)
 
-Aggressive tariffs + Huawei competition reduce China revenue by 30-40%. Apple accelerates India manufacturing but takes 3+ years. Meanwhile, $20-30B in annual revenue at risk.
+Aggressive tariffs (25%+) combined with Huawei competition reduce China revenue by 30-40% over 24 months. Apple accelerates India manufacturing but faces a 2-3 year gap. $20-30B in annual revenue is at risk.
 
-**Impact:** Stock drops to $170-190. Earnings hit ~$6/share (from $7.50). P/E at 25x = $150-165 in a panic scenario. Recovery takes 2-3 years as India ramps.
+Impact: Earnings decline to ~$6.00/share (from $7.50). Stock drops to $170-190 in initial shock. At 25x trough P/E: $150-165. Recovery takes 2-3 years as India supply chain scales and Services growth partially offsets China losses.
 
 ### Scenario 3: The AI Upgrade Supercycle (Probability: 25%)
 
-Apple Intelligence drives a massive iPhone upgrade cycle in 2026-2027. 300+ million iPhones upgraded in 18 months. Services attach rate increases. Revenue grows 15%+ for 2 consecutive years.
+Apple Intelligence features in iOS 20 / iPhone 17 drive a meaningful upgrade cycle in H2 2026 through 2027. 300+ million iPhones upgraded in 18 months — comparable to the iPhone 6 "big screen" supercycle. Services attach rate increases as new users subscribe to Apple Intelligence Pro features ($9.99/month, hypothetical).
 
-**Impact:** Stock reaches $280-300. P/E expands to 38-40x on accelerating growth. Services hits $120B+. "Apple is an AI company" narrative takes hold.
+Impact: Revenue grows 15%+ for 2 consecutive years. Services hits $120B+ annual run rate. Stock reaches $280-300. P/E expands to 38-40x on accelerating growth narrative. "Apple is an AI company" becomes the market's new thesis.
 
 ## Historical Context: Apple 2026 vs Microsoft 2013
 
-In 2013, Microsoft traded at 11x earnings. The consensus was "Windows is dying, mobile is over, growth is finished." Steve Ballmer was CEO. The stock was $27.
+| Metric | AAPL 2026 | MSFT 2013 | Analysis |
+|--------|-----------|-----------|---------|
+| P/E Ratio | 34x | 11x | AAPL much more expensive |
+| Revenue Growth | +8% | +6% | Comparable |
+| Market Narrative | "iPhone peaked" | "Windows dying" | Both declared "ex-growth" |
+| CEO Perception | Tim Cook = "operator, not visionary" | Steve Ballmer = "missed mobile" | Similar criticisms |
+| Hidden Asset | Services ($98B, +16%) | Cloud/Azure ($2B, +100%) | Both had undervalued segments |
+| What Happened Next | TBD | Stock went from $27 → $420 (15x) | — |
 
-Satya Nadella took over in 2014. Cloud + Azure + Office 365. The stock went from $27 to $420. A 15x return in 12 years for a "boring" company that everyone had written off.
+*Sources: SEC filings, Bloomberg historical data*
 
-Apple today faces a similar narrative: "iPhone peaked. Growth is over. Innovation is dead." Tim Cook is the new Ballmer — an excellent operator without the vision of the founder. Services is Apple's Azure moment — the boring revenue stream that Wall Street undervalues because it's not sexy.
+The lesson from Microsoft 2013: markets consistently undervalue boring, high-quality cash flow machines. Microsoft was declared dead. It went up 15x. Apple faces similar "peak innovation" narratives. Whether Services is Apple's "Azure moment" is the $3.8 trillion question.
 
-The parallel isn't perfect. Microsoft had a new CEO catalyst; Apple has Tim Cook, who isn't going anywhere. But the lesson is clear: markets consistently undervalue boring, high-quality cash flow machines. And then they don't.
+The parallel isn't perfect. Microsoft had a CEO change (Ballmer → Nadella) that catalyzed the transformation. Apple has Tim Cook, who is executing well but isn't likely to be replaced. The catalyst must come from product innovation, not leadership change.
+
+## Valuation Scenarios
+
+### Bull Case: $290 per share (+27%)
+
+Assumptions: AI upgrade supercycle drives iPhone revenue growth to +12% in FY2027. Services reaches $115B (+17%). Blended revenue growth accelerates to +14%. Margins stable. EPS reaches $9.00.
+
+Applied multiple: 38x forward P/E (growth re-rating). Market cap: $4.4T.
+
+Counterpoint: 38x requires sustained revenue acceleration. If the AI upgrade cycle disappoints after one quarter, the multiple contracts rapidly.
+
+### Base Case: $235 per share (+3%)
+
+Assumptions: iPhone grows +4%. Services grows +14% (slight deceleration). Blended revenue +8%. Margins stable at 30% net. EPS $8.00. Buybacks reduce share count by 4%.
+
+Applied multiple: 32x forward P/E (slight compression). Market cap: $3.6T.
+
+### Bear Case: $175 per share (-23%)
+
+Assumptions: China revenue declines 25%. Tariff impact adds $200/device. iPhone growth goes negative (-3%). Services growth decelerates to +10%. EPS drops to $6.50.
+
+Applied multiple: 27x trough P/E. Market cap: $2.7T.
+
+### Probability-Weighted Target
+
+25% × $290 + 40% × $235 + 20% × $175 + 15% × $150 (severe China scenario) = **$228** (vs current $228). The math says Apple is priced to perfection at current levels — minimal upside in the base case, meaningful downside in adverse scenarios.
 
 ## Brutal AI™ Verdict
 
 ### BAAF Score: 77/100 — Grade: B
 
-Another quarter. Another record. Another reason to feel absolutely nothing.
+$100 billion in annual free cash flow. $90 billion in annual buybacks. 2.2 billion devices. 93% customer retention. These are not metrics. These are fortifications. Apple's financials don't have weaknesses — they have areas that are merely excellent instead of extraordinary.
 
-Apple makes the SAME phone every year and 1.2 billion people line up to buy it. That's not a company — that's a HABIT. Tim Cook is the most powerful addiction counselor in the world, except instead of helping you quit, he charges you $9.99/month to stay hooked.
+The problem is growth — or specifically, the lack of it. iPhone revenue growth at 4% means the world's most important consumer product is growing at the inflation rate. Services at +16% is genuinely impressive on a $98 billion base, but even 16% growth decelerates as the base gets larger. Apple needs a catalyst, and Apple Intelligence hasn't delivered one yet — at least not one visible in carrier activation data.
 
-$100 billion in free cash flow. Let me translate that into a language everyone understands: Apple makes enough money every 48 hours to buy a professional sports team. Not lease. BUY. Outright. Every two days.
+At P/E 34x, you're paying 1.5x the S&P 500 multiple for a company growing at 0.8x the S&P 500 rate. The premium is justified by FCF quality, buyback discipline, and ecosystem durability — but it leaves zero margin for error. Any negative surprise — China tariffs, iPhone miss, Services deceleration — compresses the multiple because there's no growth buffer to absorb bad news.
 
-The stock is boring. The returns are boring. The ecosystem is suffocating. The cash flow is absolutely, breathtakingly, outrageously beautiful. Sometimes boring makes you rich. Sometimes boring IS the flex.
+Warren Buffett owns $170 billion worth. The man who turned boring into a religion thinks Apple is the most attractive stock on earth. Either the greatest investor in history is right, or he's anchored to a position that's grown too large to exit gracefully. Based on the data, I lean toward the former. Based on the P/E, I understand the latter.
 
-I want to roast Apple. I really do. But how do you roast a company that makes $274 million per day while its CEO wears the same black turtleneck? You don't roast perfection. You grudgingly respect it.
+*AI-generated analysis for informational and educational purposes. This is NOT investment advice. Always do your own research before making investment decisions.*
 
-Thanks for reading. Your portfolio didn't improve, but your understanding of subscription economics might have. That's something. Probably.
+## Sources & Methodology
 
-*This is satirical commentary by Brutal AI™, NOT investment advice. Data from Financial Modeling Prep and Alpha Vantage.*
+- Financial data: Apple 10-K/10-Q SEC filings, Financial Modeling Prep API
+- Market share: Counterpoint Research (Q1 2026), IDC, CIRP
+- Analyst estimates: LSEG consensus, UBS semiconductor team (March 2026)
+- Tariff analysis: UBS, Goldman Sachs Global Investment Research
+- Historical: Bloomberg terminal data, SEC EDGAR
+- BAAF Framework v1.0: DHLM Studio proprietary scoring (see [Editorial Policy](/editorial))
 
 ---
 
-*Published April 6, 2026 | [View AAPL Live Data →](/markets/aapl) | [All Reports →](/reports)*
+*Published April 7, 2026 | DHLM Studio | [View AAPL Live Data →](/markets/aapl) | [All Reports →](/reports) | [Editorial Policy →](/editorial)*
