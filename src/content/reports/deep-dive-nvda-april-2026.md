@@ -169,6 +169,14 @@ Assumptions: Hyperscaler CapEx cycle moderates in H2 2027. Revenue grows only 12
 
 25% × $220 + 50% × $170 + 25% × $105 = **$166** (vs current $175). The math suggests NVIDIA is approximately fairly valued — you're paying a fair price for an unfair amount of market dominance.
 
+### What the Market Is Pricing In (Reverse DCF)
+
+Reverse DCF asks a different question: instead of "what is the stock worth?", it asks "what growth rate does the current price ASSUME?"
+
+At $175 per share, using a 10.5% WACC (Damodaran's semiconductor industry estimate) and a 3% terminal growth rate, the market is implicitly pricing in **28% annual free cash flow growth for the next decade**. That would require NVIDIA to generate approximately $480 billion in cumulative FCF over 10 years — more free cash flow than the entire global semiconductor industry generates in revenue today ($580B, per SIA 2025 data).
+
+Is 28% annual FCF growth for a decade possible? Yes — if AI infrastructure spending follows the most optimistic trajectory and NVIDIA maintains 70%+ market share throughout. Is it probable? That depends on whether you believe the AI capex cycle is a permanent structural shift (like the internet) or a cyclical investment boom (like telecom in 1999). The current price requires you to believe the former.
+
 ## Brutal AI™ Verdict
 
 ### BAAF Score: 83/100 — Grade: B+
