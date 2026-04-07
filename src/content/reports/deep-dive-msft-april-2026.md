@@ -9,6 +9,10 @@ catColor: "#00D474"
 grade: "B+"
 baafScore: 81
 description: "Microsoft at $3T: Copilot generating $18B, Azure AI at 50%+, 44% operating margins. But $50B annual CapEx must pay off. BAAF 81/100."
+seoTitle: "Microsoft BAAF 81/100: Is $50B AI CapEx Working? | April 2026"
+seoDescription: "Microsoft scores 81/100 on BAAF. Copilot at $18B run rate. Azure AI growing 50%+. 44% operating margins. But $50B annual CapEx must pay off."
+relatedSlugs: ["deep-dive-nvda-april-2026","deep-dive-googl-april-2026","deep-dive-aapl-april-2026"]
+faqs: [{"q":"What is Microsoft's BAAF score?","a":"81/100 (Grade B+). Microsoft scores high on Profitability (44% operating margin) and Moat (enterprise lock-in) but loses points on Valuation as AI CapEx pressures free cash flow. See full BAAF breakdown in our Deep Dive →"},{"q":"Is Microsoft Copilot actually profitable?","a":"Microsoft reports Copilot at an $18B annualized run rate, but the $50B+ in annual AI CapEx means net margin contribution remains unclear until fiscal 2027. See full Copilot economics in our Deep Dive →"},{"q":"What is the biggest risk to Microsoft stock?","a":"Azure deceleration. If Azure AI growth slips below 40%, the entire $50B CapEx thesis comes under scrutiny and the multiple compresses. See full risk analysis in our Deep Dive →"}]
 ---
 
 ## The Most Boring $3 Trillion Company on Earth

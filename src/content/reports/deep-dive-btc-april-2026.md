@@ -9,6 +9,10 @@ catColor: "#F59E0B"
 grade: "C+"
 baafScore: 68
 description: "Bitcoin at $66K: Post-halving, ETF billions, institutional adoption, and existential questions. BAAF Score 68/100 (modified for crypto)."
+seoTitle: "Bitcoin BAAF 68/100: Post-Halving, Post-ETF, Post-Doubt? | April 2026"
+seoDescription: "Bitcoin scores 68/100 on modified BAAF. ETF inflows topped $36B. Hashrate 650 EH/s. Lightning Network at 5K BTC capacity. Is digital gold validated?"
+relatedSlugs: ["deep-dive-nvda-april-2026","deep-dive-msft-april-2026","deep-dive-googl-april-2026"]
+faqs: [{"q":"What is Bitcoin's BAAF score?","a":"68/100 (Grade C+). Bitcoin uses a modified BAAF for crypto: high marks on Moat (Lindy effect plus institutional ETF adoption) but loses points on Valuation as no traditional cash-flow model applies. See full BAAF breakdown in our Deep Dive →"},{"q":"Did the 2024 halving actually move the price?","a":"Post-halving block rewards dropped to 3.125 BTC. Combined with $36B+ in spot ETF inflows, supply absorption pushed price beyond the prior cycle peak within 6 months. See full halving cycle analysis in our Deep Dive →"},{"q":"What is the biggest risk to Bitcoin?","a":"A liquidity shock cascading through leveraged positions on centralized exchanges, plus regulatory shifts in major jurisdictions. See full risk analysis in our Deep Dive →"}]
 ---
 
 ## An Asset Class Without Peers

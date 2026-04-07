@@ -6,6 +6,8 @@ import LikeButton from '@/components/LikeButton';
 
 const REPORTS_DIR = path.join(process.cwd(), 'src/content/reports');
 
+interface FaqItem { q: string; a: string }
+
 interface ReportFrontmatter {
   title: string;
   slug: string;
@@ -17,6 +19,11 @@ interface ReportFrontmatter {
   grade: string;
   baafScore: number;
   description: string;
+  // Optional SEO + cross-link fields (added April 2026)
+  seoTitle?: string;
+  seoDescription?: string;
+  relatedSlugs?: string[];
+  faqs?: FaqItem[];
 }
 
 function parseMarkdown(content: string): { frontmatter: ReportFrontmatter; body: string } {
@@ -24,10 +31,25 @@ function parseMarkdown(content: string): { frontmatter: ReportFrontmatter; body:
   if (!fmMatch) return { frontmatter: {} as ReportFrontmatter, body: content };
 
   const fmLines = fmMatch[1].split('\n');
-  const fm: Record<string, string | number> = {};
+  const fm: Record<string, unknown> = {};
   fmLines.forEach(line => {
-    const match = line.match(/^(\w+):\s*"?([^"]*)"?\s*$/);
-    if (match) fm[match[1]] = isNaN(Number(match[2])) ? match[2] : Number(match[2]);
+    const m = line.match(/^(\w+):\s*(.+)$/);
+    if (!m) return;
+    const key = m[1];
+    let raw = m[2].trim();
+    // JSON array / object
+    if (raw.startsWith('[') || raw.startsWith('{')) {
+      try { fm[key] = JSON.parse(raw); return; } catch { /* fall through */ }
+    }
+    // Quoted string
+    if ((raw.startsWith('"') && raw.endsWith('"')) || (raw.startsWith("'") && raw.endsWith("'"))) {
+      raw = raw.slice(1, -1);
+      fm[key] = raw;
+      return;
+    }
+    // Number
+    if (raw !== '' && !isNaN(Number(raw))) { fm[key] = Number(raw); return; }
+    fm[key] = raw;
   });
 
   return { frontmatter: fm as unknown as ReportFrontmatter, body: fmMatch[2] };
@@ -57,9 +79,14 @@ export async function generateMetadata({ params }: { params: Promise<{ slug: str
   const { slug } = await params;
   const report = getReport(slug);
   if (!report) return { title: 'Report Not Found' };
+  const fm = report.frontmatter;
+  const title = fm.seoTitle || `${fm.title} | DHLM Studio`;
+  const description = fm.seoDescription || fm.description;
   return {
-    title: `${report.frontmatter.title} | DHLM Studio`,
-    description: report.frontmatter.description,
+    title: title.includes('DHLM Studio') ? title : `${title} | DHLM Studio`,
+    description,
+    openGraph: { title, description, type: 'article', publishedTime: fm.date },
+    twitter: { card: 'summary_large_image', title, description },
   };
 }
 
@@ -152,16 +179,38 @@ export default async function ReportPage({ params }: { params: Promise<{ slug: s
 
   const { frontmatter: fm, body } = report;
 
-  const jsonLd = {
+  // Article schema
+  const articleLd = {
     '@context': 'https://schema.org', '@type': 'Article',
-    headline: fm.title, description: fm.description, datePublished: fm.date,
+    headline: fm.seoTitle || fm.title,
+    description: fm.seoDescription || fm.description,
+    datePublished: fm.date,
     author: { '@type': 'Organization', name: 'DHLM Studio' },
     publisher: { '@type': 'Organization', name: 'DHLM Studio' },
   };
 
+  // FAQPage schema (only if FAQs present)
+  const faqLd = fm.faqs && fm.faqs.length > 0 ? {
+    '@context': 'https://schema.org', '@type': 'FAQPage',
+    mainEntity: fm.faqs.map(f => ({
+      '@type': 'Question',
+      name: f.q,
+      acceptedAnswer: { '@type': 'Answer', text: f.a },
+    })),
+  } : null;
+
+  // Resolve related reports (titles from disk)
+  const related = (fm.relatedSlugs || [])
+    .map(s => {
+      const r = getReport(s);
+      return r ? { slug: s, ticker: r.frontmatter.ticker, title: r.frontmatter.title, grade: r.frontmatter.grade, score: r.frontmatter.baafScore } : null;
+    })
+    .filter(Boolean) as { slug: string; ticker: string; title: string; grade: string; score: number }[];
+
   return (
     <div style={{ background: '#0B0F19', minHeight: '100vh' }}>
-      <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLd) }} />
+      <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(articleLd) }} />
+      {faqLd && <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(faqLd) }} />}
       <article style={{ maxWidth: 760, margin: '0 auto', padding: '80px 24px' }}>
         <Link href="/reports" style={{ fontSize: 12, color: '#64748B' }}>← Reports</Link>
 
@@ -188,6 +237,40 @@ export default async function ReportPage({ params }: { params: Promise<{ slug: s
 
         {/* Body */}
         <div>{renderMarkdown(body)}</div>
+
+        {/* FAQ Section */}
+        {fm.faqs && fm.faqs.length > 0 && (
+          <section style={{ marginTop: 40, padding: '24px 22px', borderRadius: 14, background: '#0D1117', border: '1px solid #1E293B' }}>
+            <div style={{ fontFamily: 'var(--mono)', fontSize: 10, fontWeight: 800, color: '#3B82F6', letterSpacing: 2, marginBottom: 14 }}>📋 FREQUENTLY ASKED QUESTIONS</div>
+            <h2 style={{ fontFamily: 'var(--serif)', fontSize: 22, fontWeight: 800, color: '#E2E8F0', margin: '0 0 18px' }}>About {fm.ticker}</h2>
+            <div style={{ display: 'flex', flexDirection: 'column', gap: 16 }}>
+              {fm.faqs.map((f, i) => (
+                <div key={i}>
+                  <div style={{ fontSize: 14, fontWeight: 700, color: '#F1F5F9', lineHeight: 1.5, marginBottom: 6 }}>Q. {f.q}</div>
+                  <div style={{ fontSize: 13, color: '#94A3B8', lineHeight: 1.7 }}>{f.a}</div>
+                </div>
+              ))}
+            </div>
+          </section>
+        )}
+
+        {/* Related Reports */}
+        {related.length > 0 && (
+          <section style={{ marginTop: 32 }}>
+            <div style={{ fontFamily: 'var(--mono)', fontSize: 10, fontWeight: 800, color: '#C73E3A', letterSpacing: 2, marginBottom: 12 }}>🔗 RELATED DEEP DIVES</div>
+            <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(220px, 1fr))', gap: 10 }}>
+              {related.map(r => (
+                <Link key={r.slug} href={`/reports/${r.slug}`} style={{ display: 'block', padding: '14px 16px', borderRadius: 10, background: '#111827', border: '1px solid #1E293B', textDecoration: 'none' }}>
+                  <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'baseline', marginBottom: 4 }}>
+                    <span style={{ fontFamily: 'var(--mono)', fontSize: 13, fontWeight: 800, color: '#60A5FA' }}>{r.ticker}</span>
+                    <span style={{ fontFamily: 'var(--mono)', fontSize: 10, color: '#D4A843', fontWeight: 700 }}>BAAF {r.score} · {r.grade}</span>
+                  </div>
+                  <div style={{ fontSize: 12, color: '#94A3B8', lineHeight: 1.5 }}>{r.title.replace(/^Deep Dive:\s*/, '')}</div>
+                </Link>
+              ))}
+            </div>
+          </section>
+        )}
 
         {/* Brutal AI Footer */}
         <div style={{ marginTop: 40, padding: '20px 22px', borderRadius: 14, background: '#111827', border: '1px solid #1E293B', textAlign: 'center' }}>

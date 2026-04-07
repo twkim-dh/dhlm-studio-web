@@ -9,6 +9,10 @@ catColor: "#00D474"
 grade: "C+"
 baafScore: 58
 description: "Tesla at $1.5T: 120x earnings for a company with 15% promise delivery rate. Energy storage is the hidden gem nobody prices. BAAF 58/100."
+seoTitle: "Tesla BAAF 58/100: 120x Earnings, 15% Promise Delivery | April 2026"
+seoDescription: "Tesla scores 58/100 on BAAF. 120x earnings. Auto margins compressing to 17%. Energy storage growing 60%. Is FSD optionality worth the multiple?"
+relatedSlugs: ["deep-dive-nvda-april-2026","deep-dive-amd-april-2026","deep-dive-pltr-april-2026"]
+faqs: [{"q":"What is Tesla's BAAF score?","a":"58/100 (Grade C+). Tesla scores high on Brand and Momentum but loses points on Valuation (120x P/E) and Risk due to slowing auto growth and concentrated key-person risk. See full BAAF breakdown in our Deep Dive →"},{"q":"Is Tesla's energy business actually material?","a":"Energy storage revenue grew 60%+ YoY to $10B annualized at 25% gross margin, now roughly 12% of revenue. It is the fastest-growing segment but still smaller than auto. See full energy analysis in our Deep Dive →"},{"q":"What is the biggest risk to Tesla stock?","a":"BYD and Chinese EV competition compressing auto margins, plus the optionality discount if FSD and Robotaxi timelines slip again. See full risk analysis in our Deep Dive →"}]
 ---
 
 ## A $1.5 Trillion Faith-Based Financial Instrument

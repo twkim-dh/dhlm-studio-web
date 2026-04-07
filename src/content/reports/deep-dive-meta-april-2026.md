@@ -9,6 +9,10 @@ catColor: "#00D474"
 grade: "B-"
 baafScore: 74
 description: "Meta at $1.6T: $36B metaverse losses, but AI-powered ads saving everything. BAAF Score 74/100."
+seoTitle: "Meta BAAF 74/100: Is the $36B Reality Labs Bet Paying Off? | April 2026"
+seoDescription: "Meta scores 74/100 on BAAF. Reality Labs lost $36B cumulative. Ad revenue +22% on AI targeting. 3.2B daily users. Is the AI ad engine enough?"
+relatedSlugs: ["deep-dive-googl-april-2026","deep-dive-amzn-april-2026","deep-dive-msft-april-2026"]
+faqs: [{"q":"What is Meta's BAAF score?","a":"74/100 (Grade B-). Meta scores high on Profitability (40%+ operating margin in Family of Apps) but loses points on Risk due to ongoing $16B+ annual Reality Labs losses and concentrated insider control. See full BAAF breakdown in our Deep Dive →"},{"q":"Is Meta's AI ad targeting actually working?","a":"Family of Apps revenue grew 22% YoY with management attributing the lift to Andromeda and Lattice AI ranking models. Average revenue per user reached an all-time high. See full ads analysis in our Deep Dive →"},{"q":"What is the biggest risk to Meta stock?","a":"Reality Labs cash burn with no clear path to profitability, plus the discretionary nature of Mark Zuckerberg's voting control. See full risk analysis in our Deep Dive →"}]
 ---
 
 ## The $36 Billion Lesson

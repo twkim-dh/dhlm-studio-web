@@ -9,6 +9,10 @@ catColor: "#00D474"
 grade: "B"
 baafScore: 77
 description: "Apple at $3.8T: $100B annual FCF, 2.2B device ecosystem, but iPhone growth at 4%. The subscription empire nobody notices. BAAF 77/100."
+seoTitle: "Apple BAAF 77/100: Is the Subscription Pivot Enough? | April 2026"
+seoDescription: "Apple scores 77/100 on BAAF. iPhone growth at just 4%. Services revenue $96B at 70% margin. 2.2B device ecosystem. Is on-device AI enough?"
+relatedSlugs: ["deep-dive-msft-april-2026","deep-dive-googl-april-2026","deep-dive-amzn-april-2026"]
+faqs: [{"q":"What is Apple's BAAF score?","a":"77/100 (Grade B). Apple scores top on Moat (2.2 billion device ecosystem) and Profitability ($100B FCF) but loses points on Growth as iPhone unit growth slows to 4%. See full BAAF breakdown in our Deep Dive →"},{"q":"Is Apple Services growth enough to offset iPhone slowdown?","a":"Services revenue grew to $96B at 70%+ gross margin, now 25% of total revenue. Whether it can keep pace as iPhone matures is the central question. See full Services analysis in our Deep Dive →"},{"q":"What is the biggest risk to Apple stock?","a":"China regulatory risk and the absence of a category-defining AI product. Vision Pro underwhelmed and on-device Apple Intelligence rollout has been gradual. See full risk analysis in our Deep Dive →"}]
 ---
 
 ## $274 Million Per Day. Every Day. While You Sleep.

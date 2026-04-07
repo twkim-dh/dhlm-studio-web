@@ -9,6 +9,10 @@ catColor: "#00D474"
 grade: "B+"
 baafScore: 83
 description: "NVIDIA at $4.2T: 90% AI chip dominance, $60B locked backlog, but P/E 65x at a CAPE of 39.7. BAAF Score 83/100."
+seoTitle: "NVIDIA BAAF 83/100: Is $4.2T Justified? | April 2026 Deep Dive"
+seoDescription: "NVIDIA scores 83/100 on BAAF. P/E 65x vs sector avg 25x. $60B backlog locked. Is the AI arms dealer fairly priced at $4.2 trillion?"
+relatedSlugs: ["deep-dive-amd-april-2026","deep-dive-msft-april-2026","deep-dive-googl-april-2026"]
+faqs: [{"q":"What is NVIDIA's BAAF score?","a":"83/100 (Grade B+). NVIDIA scores top marks on Profitability (75% gross margin) and Moat (90% AI training share, CUDA ecosystem) but loses points on Valuation due to a P/E of 65 vs the semiconductor industry average of 25. See full BAAF breakdown in our Deep Dive →"},{"q":"Is NVIDIA overvalued at $4.2 trillion?","a":"At current 55% revenue growth, the forward P/E normalizes to roughly 35x by 2027. Whether that is fair depends on whether AI infrastructure spending sustains 50%+ growth. See full valuation analysis in our Deep Dive →"},{"q":"What is the biggest risk to NVIDIA stock?","a":"Hyperscaler capex concentration. If even one major cloud provider cuts GPU orders, the signal would ripple across the entire AI trade. See full risk analysis in our Deep Dive →"}]
 ---
 
 | | |
