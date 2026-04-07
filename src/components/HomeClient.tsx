@@ -1,6 +1,6 @@
 'use client';
 
-import { useState, useEffect, useRef } from 'react';
+import { useState, useEffect } from 'react';
 import Link from 'next/link';
 import Image from 'next/image';
 
@@ -13,25 +13,10 @@ function Change({ value }: { value: number }) {
 
 /* ═══ Counter — IntersectionObserver animated count-up ═══ */
 export function Counter({ to, suffix = '' }: { to: number; suffix?: string }) {
-  // Render the final value immediately so SSR/no-JS/before-scroll users never
-  // see "0+". On mount, animate from 0 → to once when the element scrolls in.
-  const [v, setV] = useState(to);
-  const ref = useRef<HTMLSpanElement>(null);
-  const ran = useRef(false);
-  useEffect(() => {
-    setV(0);
-    const obs = new IntersectionObserver(([e]) => {
-      if (e.isIntersecting && !ran.current) {
-        ran.current = true;
-        const s = Date.now();
-        const t = () => { const p = Math.min((Date.now() - s) / 1600, 1); setV(Math.floor((1 - (1 - p) ** 3) * to)); if (p < 1) requestAnimationFrame(t); };
-        t();
-      }
-    }, { threshold: 0.3 });
-    if (ref.current) obs.observe(ref.current);
-    return () => obs.disconnect();
-  }, [to]);
-  return <span ref={ref}>{v.toLocaleString()}{suffix}</span>;
+  // Always render the final value. The visual count-up animation was causing
+  // "0+ Stocks" to display whenever JS hadn't completed the animation, which
+  // looks broken to AdSense crawlers and first-time visitors.
+  return <span>{to.toLocaleString()}{suffix}</span>;
 }
 
 /* ═══ Live Markets Preview (Alpha Vantage) ═══ */
