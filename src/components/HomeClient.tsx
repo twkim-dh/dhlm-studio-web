@@ -19,27 +19,35 @@ export function Counter({ to, suffix = '' }: { to: number; suffix?: string }) {
   return <span>{to.toLocaleString()}{suffix}</span>;
 }
 
-/* ═══ Live Markets Preview (Alpha Vantage) ═══ */
-const FALLBACK_MOVERS = [
-  { ticker: 'NVDA', name: 'NVIDIA Corporation', price: 132.65, change: 2.4 },
-  { ticker: 'TSLA', name: 'Tesla, Inc.', price: 262.50, change: 3.2 },
-  { ticker: 'META', name: 'Meta Platforms', price: 582.10, change: 1.8 },
-  { ticker: 'MSFT', name: 'Microsoft', price: 420.72, change: 1.2 },
-  { ticker: 'AMZN', name: 'Amazon.com', price: 198.65, change: -1.5 },
+/* ═══ Market Leaders (Top 10 by market cap) ═══ */
+const MARKET_LEADERS = [
+  { ticker: 'AAPL',  name: 'Apple',             cap: '$3.42T', price: 228.40, change: -0.8 },
+  { ticker: 'MSFT',  name: 'Microsoft',         cap: '$3.13T', price: 420.72, change:  1.2 },
+  { ticker: 'NVDA',  name: 'NVIDIA',            cap: '$3.27T', price: 132.65, change:  2.4 },
+  { ticker: 'GOOGL', name: 'Alphabet',          cap: '$2.18T', price: 178.30, change:  0.6 },
+  { ticker: 'AMZN',  name: 'Amazon',            cap: '$2.07T', price: 198.65, change: -1.5 },
+  { ticker: 'META',  name: 'Meta Platforms',    cap: '$1.47T', price: 582.10, change:  1.8 },
+  { ticker: 'TSLA',  name: 'Tesla',             cap: '$839B',  price: 262.50, change:  3.2 },
+  { ticker: 'BRK-B', name: 'Berkshire Hathaway',cap: '$985B',  price: 456.20, change:  0.3 },
+  { ticker: 'AVGO',  name: 'Broadcom',          cap: '$782B',  price: 168.40, change:  1.1 },
+  { ticker: 'JPM',   name: 'JPMorgan Chase',    cap: '$614B',  price: 218.90, change: -0.2 },
 ];
 
 export function LiveMarketsPreview() {
-  // Start with fallback so the section never shows "Loading…" or empty.
-  const [movers, setMovers] = useState<{ticker:string;name:string;price:number;change:number}[]>(FALLBACK_MOVERS);
+  const [leaders, setLeaders] = useState(MARKET_LEADERS);
 
   useEffect(() => {
+    // Best-effort live price update from /api/markets (gainers/losers/actives).
+    // If a leader's ticker appears in the live feed, refresh its price/change.
     fetch('/api/markets')
       .then(r => r.json())
       .then(data => {
-        if (data.gainers && data.gainers.length > 0) {
-          setMovers(data.gainers.slice(0, 5).map((g: {ticker:string;name:string;price:number;change:number}) => ({
-            ticker: g.ticker, name: g.name || g.ticker, price: g.price, change: g.change,
-          })));
+        const live: Record<string, { price: number; change: number }> = {};
+        for (const g of [...(data.gainers || []), ...(data.losers || []), ...(data.actives || [])]) {
+          if (g?.ticker) live[g.ticker] = { price: g.price, change: g.change };
+        }
+        if (Object.keys(live).length > 0) {
+          setLeaders(prev => prev.map(l => live[l.ticker] ? { ...l, ...live[l.ticker] } : l));
         }
       })
       .catch(() => {});
@@ -47,19 +55,18 @@ export function LiveMarketsPreview() {
 
   return (
     <div>
-      <p style={{ fontFamily: 'var(--mono)', fontSize: 10, color: '#00D474', marginBottom: 8 }}>● LIVE — Alpha Vantage</p>
+      <p style={{ fontFamily: 'var(--mono)', fontSize: 10, color: '#00D474', marginBottom: 8 }}>● LIVE — Top 10 by Market Cap</p>
       <div style={{ display: 'flex', flexDirection: 'column', gap: 8 }}>
-        {movers.map((s, i) => (
-          <Link key={s.ticker} href="/markets" style={{ ...card, display: 'grid', gridTemplateColumns: '32px 1fr auto', gap: 14, padding: '16px 18px', alignItems: 'center', textDecoration: 'none' }}>
-            <div style={{ fontFamily: 'var(--serif)', fontSize: 14, fontWeight: 800, color: i < 3 ? '#D4A843' : '#475569', textAlign: 'center' }}>#{i + 1}</div>
-            <div>
-              <span style={{ fontFamily: 'var(--mono)', fontSize: 15, fontWeight: 700, color: '#60A5FA' }}>{s.ticker}</span>
-              <span style={{ fontFamily: 'var(--sans)', fontSize: 13, fontWeight: 600, color: '#E2E8F0', marginLeft: 8 }}>{s.name}</span>
+        {leaders.map((s, i) => (
+          <Link key={s.ticker} href={`/markets/${s.ticker}`} style={{ ...card, display: 'grid', gridTemplateColumns: '28px 1fr auto auto', gap: 14, padding: '14px 18px', alignItems: 'center', textDecoration: 'none' }}>
+            <div style={{ fontFamily: 'var(--serif)', fontSize: 13, fontWeight: 800, color: i < 3 ? '#D4A843' : '#475569', textAlign: 'center' }}>#{i + 1}</div>
+            <div style={{ minWidth: 0 }}>
+              <span style={{ fontFamily: 'var(--mono)', fontSize: 14, fontWeight: 700, color: '#60A5FA' }}>{s.ticker}</span>
+              <span style={{ fontFamily: 'var(--sans)', fontSize: 12, fontWeight: 600, color: '#E2E8F0', marginLeft: 8 }}>{s.name}</span>
+              <div style={{ fontFamily: 'var(--mono)', fontSize: 10, color: '#64748B', marginTop: 2 }}>{s.cap}</div>
             </div>
-            <div style={{ textAlign: 'right' }}>
-              <div style={{ fontFamily: 'var(--mono)', fontSize: 18, fontWeight: 800, color: '#F1F5F9' }}>${s.price.toFixed(2)}</div>
-              <Change value={s.change} />
-            </div>
+            <div style={{ fontFamily: 'var(--mono)', fontSize: 16, fontWeight: 800, color: '#F1F5F9', textAlign: 'right' }}>${s.price.toFixed(2)}</div>
+            <Change value={s.change} />
           </Link>
         ))}
       </div>
