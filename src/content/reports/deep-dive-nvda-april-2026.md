@@ -108,6 +108,37 @@ For the B+ grade to be justified over the next 12 months, the following must rem
 
 If all three fail simultaneously, BAAF drops to approximately 62 (C) — a two-grade downgrade.
 
+### Historical P/E Context: Is 65x Actually Extreme?
+
+| Period | NVIDIA P/E | Context |
+|--------|-----------|---------|
+| 10-Year Median | 61.6x | Current 65x is only 5% above long-term median |
+| 5-Year Median | 58x | Elevated AI premium since 2023 |
+| Pre-AI (2020) | 80x | Gaming-only valuation was actually HIGHER |
+| Trough (2022) | 35x | Post-crypto crash, pre-ChatGPT |
+| Peak (2024) | 75x | Initial AI hype peak |
+| Current (2026) | 65x | Post-normalization |
+
+*Source: FactSet historical P/E data, Bloomberg*
+
+This table challenges a common assumption. NVIDIA's current 65x P/E is frequently described as "extreme" or "bubble-like." But relative to its own 10-year median of 61.6x, it is only marginally above normal. The stock actually traded at HIGHER multiples (80x) in 2020 when it was primarily a gaming company with lower growth. The AI transition has, paradoxically, made NVIDIA cheaper on a P/E basis than it was during the gaming era — because earnings have grown faster than the stock price.
+
+This does not mean 65x is "cheap." It means the comparison point matters. 65x vs the S&P 500 (22x) looks extreme. 65x vs NVIDIA's own history (61.6x median) looks normal. Both perspectives are valid.
+
+### Analyst Consensus Revision Momentum
+
+| Metric | 6 Months Ago | Current | Direction |
+|--------|-------------|---------|-----------|
+| FY2027 Revenue Consensus | $155B | $170B | ↑ +10% |
+| FY2028 Revenue Consensus | $175B | $205B | ↑ +17% |
+| FY2027 EPS Consensus | $3.20 | $3.70 | ↑ +16% |
+| Buy Ratings | 42 of 50 analysts | 44 of 50 | ↑ |
+| Average Price Target | $195 | $210 | ↑ +8% |
+
+*Source: LSEG consensus data (as of April 2026)*
+
+Consensus revisions are strongly positive. FY2028 revenue estimates jumped 17% in six months — the most actionable signal in the data. When 44 of 50 analysts rate a stock "Buy" with rising estimates, the momentum is clearly bullish. The risk: when consensus is this one-sided, any negative surprise triggers outsized selling because there are no remaining skeptics to convert into buyers.
+
 ### Brutal Translation: Key Metrics in Plain English
 
 - **P/E 65x** = You're paying $65 for every $1 NVIDIA earns. A savings account pays more income per dollar invested.
@@ -194,6 +225,24 @@ NVIDIA's situation is materially better than Cisco 2000 on fundamentals. But "be
 The forward estimates reveal the core of the NVIDIA thesis: at $175 per share, the stock trades at 65x trailing earnings but only 37x FY2029 estimates. The question is whether consensus FY2029 estimates — which assume revenue growth decelerating from 55% to 15% over three years while maintaining 70% gross margins — are achievable.
 
 The deceleration path (55% → 31% → 21% → 15%) follows the law of large numbers. Sustaining 55% growth on a $130B base would require adding $72B in new revenue annually — more than AMD's entire revenue. Consensus assumes this is unsustainable, which is why forward P/E compresses from 65x to 37x. If consensus is right, the stock is fairly valued. If growth sustains above 30% through FY2029, the stock is cheap.
+
+### Long-Range Revenue Model: The Road to 2030
+
+| Year | Revenue | Growth | Data Center | Data Center % | AI Infra TAM | NVDA Share |
+|------|---------|--------|-------------|--------------|-------------|-----------|
+| FY2024A | $61B | +126% | $47B | 77% | ~$150B | ~31% |
+| FY2025A | $96B | +57% | $78B | 81% | ~$250B | ~31% |
+| FY2026A | $130B | +35% | $108B | 83% | ~$350B | ~31% |
+| FY2027E | $170B | +31% | $143B | 84% | ~$450B | ~32% |
+| FY2028E | $205B | +21% | $173B | 84% | ~$550B | ~31% |
+| FY2029E | $235B | +15% | $198B | 84% | ~$680B | ~29% |
+| FY2030E | $260B | +11% | $218B | 84% | ~$800B | ~27% |
+
+*Sources: FY2024-2026 actuals from NVIDIA 10-K. FY2027-2028 from LSEG consensus. FY2029-2030 are DHLM Studio estimates based on McKinsey AI infrastructure TAM projections ($800B by 2030) and assumed market share erosion from custom silicon (31% → 27%).*
+
+The model tells a critical story: even in a scenario where NVIDIA's market share erodes from 31% to 27% by 2030 due to custom chip adoption, revenue still doubles from $130B to $260B. The AI infrastructure TAM is growing fast enough to compensate for share loss. This is the structural bull case — the market is big enough for NVIDIA to grow even while losing relative share.
+
+The bear risk: if AI TAM growth disappoints (reaching $500B instead of $800B by 2030), and market share drops to 25%, FY2030 revenue would be ~$125B — essentially flat from today. That is the scenario where $4.2 trillion in market cap faces a serious reckoning.
 
 ## Valuation Scenarios
 

@@ -76,7 +76,7 @@ export default function NewsletterCTA() {
         </button>
       </div>
       <div style={{ fontSize: 10, color: '#475569', textAlign: 'center', marginTop: 8 }}>
-        Join {count > 0 ? count.toLocaleString() : '0'} investors · Free forever · No spam
+        {count > 0 ? `Join ${count.toLocaleString()} readers` : 'Join our community'} · Free · No spam
       </div>
     </div>
   );

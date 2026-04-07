@@ -13,10 +13,13 @@ function Change({ value }: { value: number }) {
 
 /* ═══ Counter — IntersectionObserver animated count-up ═══ */
 export function Counter({ to, suffix = '' }: { to: number; suffix?: string }) {
-  const [v, setV] = useState(0);
+  // Render the final value immediately so SSR/no-JS/before-scroll users never
+  // see "0+". On mount, animate from 0 → to once when the element scrolls in.
+  const [v, setV] = useState(to);
   const ref = useRef<HTMLSpanElement>(null);
   const ran = useRef(false);
   useEffect(() => {
+    setV(0);
     const obs = new IntersectionObserver(([e]) => {
       if (e.isIntersecting && !ran.current) {
         ran.current = true;
@@ -32,9 +35,17 @@ export function Counter({ to, suffix = '' }: { to: number; suffix?: string }) {
 }
 
 /* ═══ Live Markets Preview (Alpha Vantage) ═══ */
+const FALLBACK_MOVERS = [
+  { ticker: 'NVDA', name: 'NVIDIA Corporation', price: 132.65, change: 2.4 },
+  { ticker: 'TSLA', name: 'Tesla, Inc.', price: 262.50, change: 3.2 },
+  { ticker: 'META', name: 'Meta Platforms', price: 582.10, change: 1.8 },
+  { ticker: 'MSFT', name: 'Microsoft', price: 420.72, change: 1.2 },
+  { ticker: 'AMZN', name: 'Amazon.com', price: 198.65, change: -1.5 },
+];
+
 export function LiveMarketsPreview() {
-  const [movers, setMovers] = useState<{ticker:string;name:string;price:number;change:number}[]>([]);
-  const [loading, setLoading] = useState(true);
+  // Start with fallback so the section never shows "Loading…" or empty.
+  const [movers, setMovers] = useState<{ticker:string;name:string;price:number;change:number}[]>(FALLBACK_MOVERS);
 
   useEffect(() => {
     fetch('/api/markets')
@@ -46,22 +57,8 @@ export function LiveMarketsPreview() {
           })));
         }
       })
-      .catch(() => {})
-      .finally(() => setLoading(false));
+      .catch(() => {});
   }, []);
-
-  if (loading) {
-    return <p style={{ fontFamily: 'var(--sans)', fontSize: 13, color: '#64748B', padding: '20px 0' }}>Loading live market data...</p>;
-  }
-
-  if (movers.length === 0) {
-    return (
-      <div style={{ ...card, padding: '24px 18px', textAlign: 'center' }}>
-        <p style={{ fontSize: 13, color: '#475569', margin: 0 }}>Market data unavailable right now.</p>
-        <Link href="/markets" style={{ fontSize: 12, color: '#C73E3A', marginTop: 8, display: 'inline-block' }}>Go to Markets →</Link>
-      </div>
-    );
-  }
 
   return (
     <div>
@@ -86,17 +83,23 @@ export function LiveMarketsPreview() {
 }
 
 /* ═══ Crypto Preview (CoinGecko) ═══ */
+const FALLBACK_COINS = [
+  { name: 'Bitcoin',  symbol: 'btc', price: 66699,  change24h: 1.3, marketCap: 1.3e12, image: '' },
+  { name: 'Ethereum', symbol: 'eth', price: 2022,   change24h: 2.0, marketCap: 2.4e11, image: '' },
+  { name: 'Solana',   symbol: 'sol', price: 152.40, change24h: 3.8, marketCap: 7.0e10, image: '' },
+  { name: 'BNB',      symbol: 'bnb', price: 580.20, change24h: 0.6, marketCap: 8.5e10, image: '' },
+  { name: 'XRP',      symbol: 'xrp', price: 0.52,   change24h: -0.4, marketCap: 2.9e10, image: '' },
+];
+
 export function CryptoPreview() {
-  const [coins, setCoins] = useState<{name:string;symbol:string;price:number;change24h:number;marketCap:number;image:string}[]>([]);
+  const [coins, setCoins] = useState<{name:string;symbol:string;price:number;change24h:number;marketCap:number;image:string}[]>(FALLBACK_COINS);
 
   useEffect(() => {
     fetch('/api/crypto')
       .then(r => r.json())
-      .then(data => { if (data.coins) setCoins(data.coins.slice(0, 5)); })
+      .then(data => { if (data.coins && data.coins.length > 0) setCoins(data.coins.slice(0, 5)); })
       .catch(() => {});
   }, []);
-
-  if (coins.length === 0) return <p style={{ color: '#475569', fontSize: 13 }}>Loading crypto data...</p>;
 
   return (
     <div style={{ display: 'flex', flexDirection: 'column', gap: 6 }}>

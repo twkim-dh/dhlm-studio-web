@@ -58,7 +58,7 @@ export async function GET(req: NextRequest) {
 
         {/* Footer */}
         <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center' }}>
-          <span style={{ fontSize: 11, color: '#334155' }}>🤖 Satirical AI. NOT investment advice.</span>
+          <span style={{ fontSize: 11, color: '#334155' }}>🤖 Informational AI commentary. NOT investment advice.</span>
           <span style={{ fontSize: 13, color: '#C73E3A', fontWeight: 700 }}>🔥 Get your own roast →</span>
         </div>
       </div>

@@ -168,7 +168,7 @@ function StockCard({ s }: { s: Mover }) {
                 <ReactionButtons ticker={s.ticker} />
               </div>
               <div style={{ padding: '8px 14px', borderTop: '1px solid #1F2937', background: '#0D111780' }}>
-                <p style={{ fontSize: 8, color: '#475569', margin: 0, textAlign: 'center' }}>🤖 Satirical AI. Entertainment only. NOT investment advice.</p>
+                <p style={{ fontSize: 8, color: '#475569', margin: 0, textAlign: 'center' }}>🤖 Informational and educational AI commentary. NOT investment advice.</p>
               </div>
             </div>
           )}
@@ -290,7 +290,7 @@ export default function MarketsPage() {
         {/* Disclaimer */}
         <div style={{ marginTop: 20, padding: '12px 14px', borderRadius: 10, background: '#C73E3A08', border: '1px solid #C73E3A10' }}>
           <p style={{ fontSize: 9, color: '#6B7280', lineHeight: 1.7, textAlign: 'center', margin: 0 }}>
-            🤖 BRUTAL AI is satirical. <strong style={{ color: '#C73E3A' }}>NOT investment advice</strong>. Data: Alpha Vantage + FMP. Prices may be delayed.
+            🤖 BRUTAL AI is informational and educational. <strong style={{ color: '#C73E3A' }}>NOT investment advice</strong>. Data: Alpha Vantage + FMP. Prices may be delayed.
           </p>
         </div>
       </div>

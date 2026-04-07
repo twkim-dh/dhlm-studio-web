@@ -1,14 +1,14 @@
 'use client';
 
-import { useState, useEffect } from 'react';
-
 interface TickerItem {
   symbol: string;
   price: number;
   change: number;
 }
 
-const FALLBACK: TickerItem[] = [
+// Unified large-cap universe — consistent across all pages.
+// Mega-cap stocks + major crypto + index ETF. No random small-cap gainers.
+const LARGE_CAPS: TickerItem[] = [
   { symbol: 'NVDA', price: 132.65, change: 2.4 },
   { symbol: 'AAPL', price: 228.40, change: -0.8 },
   { symbol: 'MSFT', price: 420.72, change: 1.2 },
@@ -16,29 +16,15 @@ const FALLBACK: TickerItem[] = [
   { symbol: 'GOOGL', price: 178.30, change: 0.6 },
   { symbol: 'TSLA', price: 262.50, change: 3.2 },
   { symbol: 'META', price: 582.10, change: 1.8 },
+  { symbol: 'PLTR', price: 38.20, change: 1.5 },
+  { symbol: 'AMD', price: 158.40, change: -0.9 },
   { symbol: 'BTC', price: 66699, change: 1.3 },
   { symbol: 'ETH', price: 2022, change: 2.0 },
   { symbol: 'SPY', price: 562.30, change: -0.4 },
 ];
 
 export default function TickerMarquee() {
-  const [items, setItems] = useState<TickerItem[]>(FALLBACK);
-
-  useEffect(() => {
-    fetch('/api/markets')
-      .then(r => r.json())
-      .then(d => {
-        if (d.gainers?.length > 0) {
-          const live = [...(d.gainers || []), ...(d.losers || []), ...(d.actives || [])]
-            .slice(0, 12)
-            .map((m: { ticker: string; price: number; change: number }) => ({
-              symbol: m.ticker, price: m.price, change: m.change,
-            }));
-          if (live.length > 0) setItems(live);
-        }
-      })
-      .catch(() => {});
-  }, []);
+  const items: TickerItem[] = LARGE_CAPS;
 
   // Add delay notice as last item in each cycle
   const withNotice = [...items, { symbol: '·', price: 0, change: 0, _notice: true } as TickerItem & { _notice?: boolean }];

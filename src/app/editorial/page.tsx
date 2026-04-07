@@ -67,7 +67,7 @@ export default function EditorialPage() {
                 { step: '2', title: 'Quantitative Analysis', desc: 'Key metrics are compared against sector averages, historical trends, and peer companies. We analyze P/E ratios, revenue growth rates, profit margins, debt levels, and cash flow generation.' },
                 { step: '3', title: 'Qualitative Context', desc: 'We research recent news, earnings reports, product launches, regulatory actions, and competitive dynamics that affect the company\'s outlook.' },
                 { step: '4', title: 'Bull vs Bear Framework', desc: 'Every analysis presents both the optimistic and pessimistic case. We never present a one-sided view. Readers see the strongest arguments for and against.' },
-                { step: '5', title: 'Brutal AI Commentary', desc: 'Our AI character adds satirical commentary that makes complex analysis accessible. The humor is designed to engage readers while the underlying analysis remains data-driven.' },
+                { step: '5', title: 'Brutal AI Commentary', desc: 'Our AI character adds informational and educational commentary that makes complex analysis accessible. The conversational tone is designed to engage readers while the underlying analysis remains rigorously data-driven.' },
               ].map(s => (
                 <div key={s.step} style={{ display: 'flex', gap: 14 }}>
                   <div style={{ width: 28, height: 28, borderRadius: '50%', background: '#C73E3A15', display: 'flex', alignItems: 'center', justifyContent: 'center', fontSize: 12, fontWeight: 800, color: '#C73E3A', flexShrink: 0 }}>{s.step}</div>
@@ -90,15 +90,41 @@ export default function EditorialPage() {
                 'Market data delay (up to 15 minutes) is disclosed on all relevant pages',
                 'We present bull AND bear cases — never one-sided analysis',
                 'We never recommend buying, selling, or holding any security',
-                'All AI commentary is clearly labeled as satirical entertainment',
+                'All AI commentary is clearly labeled as informational and educational content',
                 'NOT investment advice disclaimers appear on every analysis page',
                 'We correct factual errors immediately upon discovery',
                 'Our content is original — we do not copy from other financial sites',
-                'Deep Dive reports are minimum 1,500 words of substantive analysis',
+                'Deep Dive reports are minimum 3,000 words of substantive analysis (BAAF Framework)',
               ].map((item, i) => (
                 <div key={i} style={{ display: 'flex', alignItems: 'flex-start', gap: 8 }}>
                   <span style={{ color: '#00D474', fontSize: 12, flexShrink: 0, marginTop: 2 }}>✓</span>
                   <span style={{ fontSize: 13, color: '#94A3B8', lineHeight: 1.6 }}>{item}</span>
+                </div>
+              ))}
+            </div>
+          </div>
+
+          {/* Data Verification Process */}
+          <div style={{ ...card, padding: '24px 22px' }}>
+            <h2 style={{ fontFamily: 'var(--serif)', fontSize: 20, fontWeight: 800, color: '#E2E8F0', margin: '0 0 12px' }}>Data Verification Process</h2>
+            <p style={{ fontSize: 13, color: '#94A3B8', lineHeight: 1.7, margin: '0 0 14px' }}>
+              Every data point that appears in a Deep Dive report is verified through a multi-step process before publication.
+            </p>
+            <div style={{ display: 'flex', flexDirection: 'column', gap: 10 }}>
+              {[
+                { step: '1', title: 'Primary Source Pull', desc: 'Financial figures (revenue, margins, EPS, debt) are pulled from Financial Modeling Prep, sourced directly from SEC filings (10-K, 10-Q, 8-K).' },
+                { step: '2', title: 'Cross-Reference', desc: 'Key metrics are cross-checked against a second source — typically the company\'s official Investor Relations page or Alpha Vantage.' },
+                { step: '3', title: 'Historical Sanity Check', desc: 'Growth rates and margins are compared to 3-year and 5-year trends. Outliers (>3 standard deviations) are flagged and re-verified manually.' },
+                { step: '4', title: 'Peer Validation', desc: 'Competitor metrics are pulled at the same timestamp to ensure apples-to-apples comparison in the BAAF comparison table.' },
+                { step: '5', title: 'Timestamp Disclosure', desc: 'Every report includes a "Data as of" date. Real-time prices on market pages disclose the 15-minute delay.' },
+                { step: '6', title: 'Correction Protocol', desc: 'If a verified error is found post-publication, the report is updated within 24 hours and a correction note is appended at the bottom.' },
+              ].map(s => (
+                <div key={s.step} style={{ display: 'flex', gap: 14 }}>
+                  <div style={{ width: 28, height: 28, borderRadius: '50%', background: '#3B82F615', display: 'flex', alignItems: 'center', justifyContent: 'center', fontSize: 12, fontWeight: 800, color: '#3B82F6', flexShrink: 0 }}>{s.step}</div>
+                  <div>
+                    <div style={{ fontSize: 14, fontWeight: 700, color: '#E2E8F0' }}>{s.title}</div>
+                    <p style={{ fontSize: 13, color: '#64748B', lineHeight: 1.7, margin: '4px 0 0' }}>{s.desc}</p>
+                  </div>
                 </div>
               ))}
             </div>
@@ -157,7 +183,7 @@ export default function EditorialPage() {
                 <strong style={{ color: '#E2E8F0' }}>Not Investment Advice:</strong> DHLM Studio provides data-driven analysis for educational and entertainment purposes only. Nothing on this website constitutes investment advice, a recommendation to buy or sell any security, or an offer to participate in any investment strategy. Always consult a qualified financial advisor before making investment decisions.
               </p>
               <p style={{ marginBottom: 12 }}>
-                <strong style={{ color: '#E2E8F0' }}>Brutal AI Character:</strong> The &ldquo;Brutal AI&rdquo; is a satirical character that provides humorous commentary on market data. Its opinions are generated for entertainment and do not represent the views of DHLM Studio, its owners, or any financial professional. The character&apos;s &ldquo;grades&rdquo; and &ldquo;ratings&rdquo; are not buy/sell signals.
+                <strong style={{ color: '#E2E8F0' }}>Brutal AI Character:</strong> &ldquo;Brutal AI&rdquo; is an informational and educational analytical voice that provides data-driven commentary on market data. Its observations are generated to make financial concepts accessible and do not represent personalized investment advice. The character&apos;s BAAF scores and grades are quantitative analytical outputs, NOT buy/sell signals.
               </p>
               <p style={{ marginBottom: 12 }}>
                 <strong style={{ color: '#E2E8F0' }}>Data Accuracy:</strong> While we strive for accuracy, financial data may be delayed, incomplete, or subject to revision. Market data on this site is delayed up to 15 minutes. Always verify critical data points with official sources before making decisions.

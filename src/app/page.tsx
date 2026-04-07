@@ -111,6 +111,43 @@ export default function Home() {
       </section>
       </FadeIn>
 
+      {/* ── Featured Analysis (Brutal AI Deep Dives) ── */}
+      <FadeIn delay={0.05}>
+      <section style={section}>
+        <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'baseline', marginBottom: 16 }}>
+          <div>
+            <div style={sectionLabel('#C73E3A')}>🔥 BRUTAL AI™ · DEEP DIVE</div>
+            <h2 style={sectionTitle}>Featured Analysis</h2>
+          </div>
+          <Link href="/reports" style={{ fontSize: 12, color: '#C73E3A', fontWeight: 600, fontFamily: 'var(--sans)' }}>All Reports →</Link>
+        </div>
+        <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(280px, 1fr))', gap: 12 }}>
+          {[
+            { ticker: 'NVDA', name: 'NVIDIA Corporation', slug: 'deep-dive-nvda-april-2026', grade: 'B+', score: 83, color: '#76B900', tag: 'AI Infrastructure', hook: '90% AI training share. P/E 65 vs industry 25. The CUDA moat is real — but so is the price.' },
+            { ticker: 'MSFT', name: 'Microsoft', slug: 'deep-dive-msft-april-2026', grade: 'A-', score: 86, color: '#00A4EF', tag: 'Cloud + AI', hook: 'Azure growing 30%+ on OpenAI tailwind. Most boring monopoly money in the S&P 500.' },
+            { ticker: 'TSLA', name: 'Tesla, Inc.', slug: 'deep-dive-tsla-april-2026', grade: 'B-', score: 71, color: '#E31937', tag: 'EV + Robotaxi', hook: 'Auto margins compressing. Energy + FSD optionality. Priced like a software company, sells like a carmaker.' },
+          ].map(r => (
+            <Link key={r.ticker} href={`/reports/${r.slug}`} style={{ ...card, padding: '20px 20px 18px', textDecoration: 'none', position: 'relative', overflow: 'hidden', display: 'block' }}>
+              <div style={{ position: 'absolute', top: 0, left: 0, right: 0, height: 2, background: r.color }} />
+              <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'flex-start', marginBottom: 10 }}>
+                <div>
+                  <div style={{ fontFamily: 'var(--mono)', fontSize: 16, fontWeight: 800, color: r.color }}>{r.ticker}</div>
+                  <div style={{ fontFamily: 'var(--sans)', fontSize: 11, color: '#64748B', marginTop: 2 }}>{r.name}</div>
+                </div>
+                <div style={{ textAlign: 'right' }}>
+                  <div style={{ fontFamily: 'var(--serif)', fontSize: 22, fontWeight: 900, color: '#F1F5F9', lineHeight: 1 }}>{r.grade}</div>
+                  <div style={{ fontFamily: 'var(--mono)', fontSize: 9, color: '#475569', marginTop: 2 }}>BAAF {r.score}/100</div>
+                </div>
+              </div>
+              <div style={{ display: 'inline-block', fontSize: 9, fontWeight: 700, padding: '3px 8px', borderRadius: 4, background: `${r.color}18`, color: r.color, fontFamily: 'var(--mono)', marginBottom: 10 }}>{r.tag}</div>
+              <p style={{ fontFamily: 'var(--sans)', fontSize: 12, color: '#94A3B8', lineHeight: 1.6, margin: '0 0 12px' }}>{r.hook}</p>
+              <div style={{ fontSize: 11, color: '#C73E3A', fontWeight: 700 }}>Read Deep Dive →</div>
+            </Link>
+          ))}
+        </div>
+      </section>
+      </FadeIn>
+
       {/* ── Creators (static — server rendered, no FadeIn to ensure link works) ── */}
       <section id="creators" style={section}>
         <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'baseline', marginBottom: 16 }}>

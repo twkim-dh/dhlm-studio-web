@@ -336,7 +336,7 @@ export default function BlessMyStock() {
         {/* Disclaimer */}
         <div style={{ marginTop: 14, padding: '10px 14px', borderRadius: 10, background: '#C73E3A06', border: '1px solid #C73E3A10' }}>
           <p style={{ fontSize: 9, color: '#6B7280', lineHeight: 1.7, textAlign: 'center', margin: 0 }}>
-            🪷 <strong style={{ color: '#94A3B8' }}>Bless My Stock</strong> is satirical entertainment. The Fortune Buddha cannot actually influence markets (we think). <strong style={{ color: '#C73E3A' }}>NOT investment advice.</strong>
+            🪷 <strong style={{ color: '#94A3B8' }}>Bless My Stock</strong> is an informational and educational feature. The Fortune Buddha cannot actually influence markets. <strong style={{ color: '#C73E3A' }}>NOT investment advice.</strong>
           </p>
         </div>
       </div>

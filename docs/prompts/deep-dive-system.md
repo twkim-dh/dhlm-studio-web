@@ -59,7 +59,7 @@ Apply the 6-axis scoring to every stock:
 - No "buy," "sell," "invest," "recommend" language
 - Present both sides of every argument
 - Attribute all data sources
-- "Satirical commentary for entertainment purposes"
+- "Informational and educational commentary based on publicly available data"
 
 ## Word Count
 
