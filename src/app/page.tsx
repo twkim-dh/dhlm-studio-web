@@ -4,7 +4,6 @@ import { Counter, LiveMarketsPreview, CryptoPreview } from '@/components/HomeCli
 import FadeIn from '@/components/FadeIn';
 import FortuneCookie from '@/components/FortuneCookie';
 import NewsletterCTA from '@/components/NewsletterCTA';
-import { getTodaysWisdom } from '@/data/wisdom';
 
 const YEAR = new Date().getFullYear();
 
@@ -73,14 +72,6 @@ export default function Home() {
         ))}
       </div>
 
-      {/* ── Fortune Cookie ── */}
-      <section style={{ padding: '0 24px 32px', maxWidth: 1100, margin: '0 auto' }}>
-        <div style={{ padding: '24px', borderRadius: 16, background: '#111827', border: '1px solid #1E293B' }}>
-          <div style={{ fontFamily: 'var(--mono)', fontSize: 9, fontWeight: 700, color: '#D4A843', letterSpacing: 3, textAlign: 'center', marginBottom: 12 }}>🥠 DAILY FORTUNE COOKIE</div>
-          <FortuneCookie />
-        </div>
-      </section>
-
       {/* ── Featured Analysis (Brutal AI Deep Dives) — TOP PRIORITY ── */}
       <FadeIn>
       <section style={section}>
@@ -132,6 +123,14 @@ export default function Home() {
       </section>
       </FadeIn>
 
+      {/* ── Fortune Cookie (post-Market Leaders) ── */}
+      <section style={{ padding: '0 24px 32px', maxWidth: 1100, margin: '0 auto' }}>
+        <div style={{ padding: '24px', borderRadius: 16, background: '#111827', border: '1px solid #1E293B' }}>
+          <div style={{ fontFamily: 'var(--mono)', fontSize: 9, fontWeight: 700, color: '#D4A843', letterSpacing: 3, textAlign: 'center', marginBottom: 12 }}>🥠 DAILY FORTUNE COOKIE</div>
+          <FortuneCookie />
+        </div>
+      </section>
+
       {/* ── Crypto Preview (client) ── */}
       <FadeIn>
       <section style={section}>
@@ -171,13 +170,6 @@ export default function Home() {
       </section>
       </FadeIn>
 
-      {/* ── Today's Wisdom ── */}
-      <FadeIn delay={0.15}>
-      <section style={{ padding: '0 24px 48px', maxWidth: 1100, margin: '0 auto' }}>
-        <TodaysWisdom />
-      </section>
-      </FadeIn>
-
       {/* ── Newsletter CTA ── */}
       <section style={{ padding: '0 24px 48px', maxWidth: 1100, margin: '0 auto' }}>
         <NewsletterCTA />
@@ -186,31 +178,3 @@ export default function Home() {
   );
 }
 
-/* ═══ Today's Wisdom Widget ═══ */
-function TodaysWisdom() {
-  const w = getTodaysWisdom();
-  if (!w) return null;
-  const id = String(w.id).padStart(3, '0');
-  return (
-    <Link href={`/blog/wisdom/${id}`} style={{
-      display: 'block', textDecoration: 'none',
-      padding: '28px 24px', borderRadius: 16,
-      background: 'linear-gradient(135deg, #D4A84308, #D4A84303)',
-      border: '1px solid #D4A84315',
-    }}>
-      <div style={{ fontFamily: 'var(--mono)', fontSize: 9, fontWeight: 700, color: '#D4A843', letterSpacing: 3, marginBottom: 14 }}>💡 TODAY&apos;S WALL STREET WISDOM</div>
-      <blockquote style={{
-        fontFamily: 'var(--serif)', fontSize: 'clamp(16px, 2.5vw, 22px)',
-        fontWeight: 800, color: '#F1F5F9', lineHeight: 1.5, margin: '0 0 12px', fontStyle: 'italic',
-      }}>
-        &ldquo;{w.quote}&rdquo;
-      </blockquote>
-      <div style={{ display: 'flex', alignItems: 'center', gap: 6 }}>
-        <span style={{ fontSize: 14 }}>{w.flag}</span>
-        <span style={{ fontFamily: 'var(--sans)', fontSize: 13, fontWeight: 600, color: '#D4A843' }}>{w.author}</span>
-        <span style={{ fontSize: 11, color: '#64748B' }}>· {w.role}</span>
-      </div>
-      <div style={{ fontSize: 11, color: '#C73E3A', fontWeight: 600, marginTop: 10 }}>Read More →</div>
-    </Link>
-  );
-}
