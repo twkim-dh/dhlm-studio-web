@@ -87,7 +87,23 @@ export default function Home() {
           <Link href="/reports" style={{ fontSize: 12, color: '#C73E3A', fontWeight: 600, fontFamily: 'var(--sans)' }}>All Reports →</Link>
         </div>
         <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(260px, 1fr))', gap: 12 }}>
-          {/* Hot Sector card (first position — THIS WEEK label) */}
+          {/* Hot Sector cards (THIS WEEK label) — newest first */}
+          <Link href="/reports/btc-crossroads-april-2026" style={{ ...card, padding: '20px 20px 18px', textDecoration: 'none', position: 'relative', overflow: 'hidden', display: 'block', borderColor: '#F59E0B40', background: 'linear-gradient(135deg, #F59E0B12, #111827)' }}>
+            <div style={{ position: 'absolute', top: 0, left: 0, right: 0, height: 2, background: '#F59E0B' }} />
+            <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'flex-start', marginBottom: 10 }}>
+              <div style={{ fontFamily: 'var(--mono)', fontSize: 9, fontWeight: 800, color: '#F59E0B', letterSpacing: 2 }}>🔥 THIS WEEK</div>
+              <div style={{ fontFamily: 'var(--mono)', fontSize: 9, fontWeight: 700, color: '#475569' }}>HOT SECTOR</div>
+            </div>
+            <div style={{ fontFamily: 'var(--serif)', fontSize: 16, fontWeight: 800, color: '#F1F5F9', lineHeight: 1.3, marginBottom: 8 }}>Bitcoin&apos;s April 2026 Crossroads</div>
+            <div style={{ display: 'flex', flexWrap: 'wrap', gap: 4, marginBottom: 10 }}>
+              {['BTC','ETF','HALVING'].map(t => (
+                <span key={t} style={{ fontFamily: 'var(--mono)', fontSize: 9, fontWeight: 800, padding: '2px 6px', borderRadius: 4, background: '#0D1117', border: '1px solid #1E293B', color: '#F59E0B' }}>{t}</span>
+              ))}
+            </div>
+            <p style={{ fontFamily: 'var(--sans)', fontSize: 12, color: '#94A3B8', lineHeight: 1.6, margin: '0 0 12px' }}>BTC at $71K, 43 percent below ATH. ETF cumulative $56B. Conviction 44/60. Repricing, not euphoria.</p>
+            <div style={{ fontSize: 11, color: '#F59E0B', fontWeight: 700 }}>Read Hot Sector →</div>
+          </Link>
+
           <Link href="/reports/hot-sector-energy-april-2026" style={{ ...card, padding: '20px 20px 18px', textDecoration: 'none', position: 'relative', overflow: 'hidden', display: 'block', borderColor: '#D4A84340', background: 'linear-gradient(135deg, #D4A84312, #111827)' }}>
             <div style={{ position: 'absolute', top: 0, left: 0, right: 0, height: 2, background: '#D4A843' }} />
             <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'flex-start', marginBottom: 10 }}>
