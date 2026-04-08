@@ -104,6 +104,42 @@ export default function EditorialPage() {
             </div>
           </div>
 
+          {/* Human Editorial Oversight */}
+          <div style={{ ...card, padding: '24px 22px', borderColor: '#D4A84330' }}>
+            <h2 style={{ fontFamily: 'var(--serif)', fontSize: 20, fontWeight: 800, color: '#D4A843', margin: '0 0 12px' }}>Human Editorial Oversight</h2>
+            <p style={{ fontSize: 14, color: '#E2E8F0', lineHeight: 1.8, margin: '0 0 14px' }}>
+              Every piece of content on DHLM Studio goes through a human editorial process before publication.
+            </p>
+            <p style={{ fontSize: 13, color: '#94A3B8', lineHeight: 1.8, margin: '0 0 12px' }}>
+              Our Editor-in-Chief reviews all Deep Dive reports, Daily Briefs, and BAAF scores for:
+            </p>
+            <div style={{ display: 'flex', flexDirection: 'column', gap: 8, marginBottom: 14 }}>
+              {[
+                { t: 'Factual accuracy', d: 'Data cross-verified against SEC filings and consensus estimates' },
+                { t: 'Analytical depth', d: 'Does the analysis add insight beyond what any AI can generate?' },
+                { t: 'Balance', d: 'Are bull and bear cases equally strong?' },
+                { t: 'Tone calibration', d: 'Professional analysis first, personality second' },
+              ].map(item => (
+                <div key={item.t} style={{ display: 'flex', alignItems: 'flex-start', gap: 10, padding: '8px 12px', borderRadius: 8, background: '#0D1117' }}>
+                  <span style={{ color: '#00D474', fontSize: 12, marginTop: 2 }}>✓</span>
+                  <div>
+                    <div style={{ fontSize: 13, fontWeight: 700, color: '#E2E8F0' }}>{item.t}</div>
+                    <div style={{ fontSize: 12, color: '#64748B', marginTop: 2 }}>{item.d}</div>
+                  </div>
+                </div>
+              ))}
+            </div>
+            <p style={{ fontSize: 13, color: '#94A3B8', lineHeight: 1.8, margin: '0 0 10px' }}>
+              AI assists with data collection and initial drafting. The editorial judgment — what to analyze, which angle to take, how to weigh competing narratives, and whether the final product meets our standards — is made by a human editor with business and manufacturing industry experience.
+            </p>
+            <p style={{ fontSize: 13, color: '#94A3B8', lineHeight: 1.8, margin: '0 0 10px' }}>
+              We also employ a <strong style={{ color: '#E2E8F0' }}>multi-AI cross-verification process</strong>: reports are reviewed by multiple AI models (Claude, GPT, Gemini) to identify blind spots, factual errors, and analytical gaps before human final review.
+            </p>
+            <p style={{ fontSize: 13, color: '#D4A843', fontWeight: 700, lineHeight: 1.7, margin: 0 }}>
+              This is not AI-generated content published without oversight. This is AI-assisted analysis under professional editorial control.
+            </p>
+          </div>
+
           {/* Data Verification Process */}
           <div style={{ ...card, padding: '24px 22px' }}>
             <h2 style={{ fontFamily: 'var(--serif)', fontSize: 20, fontWeight: 800, color: '#E2E8F0', margin: '0 0 12px' }}>Data Verification Process</h2>

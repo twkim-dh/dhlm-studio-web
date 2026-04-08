@@ -215,12 +215,19 @@ export default async function ReportPage({ params }: { params: Promise<{ slug: s
         <Link href="/reports" style={{ fontSize: 12, color: '#64748B' }}>← Reports</Link>
 
         {/* Brutal AI Header */}
-        <div style={{ marginTop: 20, padding: '20px 22px', borderRadius: 14, background: 'linear-gradient(135deg, #C73E3A08, #C73E3A03)', border: '1px solid #C73E3A20', marginBottom: 24 }}>
+        <div style={{ marginTop: 20, padding: '20px 22px', borderRadius: 14, background: 'linear-gradient(135deg, #C73E3A08, #C73E3A03)', border: '1px solid #C73E3A20', marginBottom: 16 }}>
           <div style={{ display: 'flex', alignItems: 'center', gap: 8, marginBottom: 8 }}>
             <span style={{ fontSize: 18 }}>🔥</span>
             <span style={{ fontFamily: 'var(--mono)', fontSize: 11, fontWeight: 800, color: '#C73E3A', letterSpacing: 2 }}>BRUTAL AI™ DEEP DIVE</span>
           </div>
-          <div style={{ fontSize: 11, color: '#64748B', fontStyle: 'italic' }}>AI-generated analysis. Data-driven. Zero feelings.</div>
+          <div style={{ fontSize: 11, color: '#64748B', fontStyle: 'italic' }}>AI-assisted analysis under human editorial oversight. Data-driven. Zero feelings.</div>
+        </div>
+
+        {/* Editor Reviewed Badge */}
+        <div style={{ display: 'flex', flexWrap: 'wrap', gap: 6, marginBottom: 24 }}>
+          <span style={{ fontFamily: 'var(--mono)', fontSize: 10, fontWeight: 700, padding: '5px 10px', borderRadius: 6, background: '#00D47412', color: '#00D474', border: '1px solid #00D47425' }}>✓ Editor Reviewed</span>
+          <span style={{ fontFamily: 'var(--mono)', fontSize: 10, fontWeight: 700, padding: '5px 10px', borderRadius: 6, background: '#3B82F612', color: '#3B82F6', border: '1px solid #3B82F625' }}>✓ Multi-AI Verified</span>
+          <span style={{ fontFamily: 'var(--mono)', fontSize: 10, fontWeight: 700, padding: '5px 10px', borderRadius: 6, background: '#D4A84312', color: '#D4A843', border: '1px solid #D4A84325' }}>✓ BAAF Scored</span>
         </div>
 
         {/* Title */}
@@ -277,6 +284,7 @@ export default async function ReportPage({ params }: { params: Promise<{ slug: s
           <div style={{ fontFamily: 'var(--mono)', fontSize: 10, fontWeight: 800, color: '#C73E3A', letterSpacing: 2, marginBottom: 6 }}>🔥 ANALYZED BY BRUTAL AI™</div>
           <div style={{ fontSize: 11, color: '#64748B', marginBottom: 8 }}>DHLM Studio&apos;s AI Analysis Engine</div>
           <div style={{ fontSize: 9, color: '#475569', lineHeight: 1.6 }}>
+            AI-assisted analysis under human editorial oversight, for informational and educational purposes.<br />
             Data: Financial Modeling Prep, Alpha Vantage, CoinGecko<br />
             NOT investment advice. Always do your own research.
           </div>

@@ -33,6 +33,30 @@ export default function AboutPage() {
             </p>
           </div>
 
+          {/* Editorial Team */}
+          <div style={{ ...card, padding: '24px 22px', borderColor: '#D4A84330' }}>
+            <div style={{ fontFamily: 'var(--mono)', fontSize: 9, fontWeight: 700, color: '#D4A843', letterSpacing: 2, marginBottom: 10 }}>EDITORIAL TEAM</div>
+            <div style={{ marginBottom: 16 }}>
+              <div style={{ fontFamily: 'var(--serif)', fontSize: 17, fontWeight: 800, color: '#F1F5F9', marginBottom: 6 }}>Editor-in-Chief</div>
+              <ul style={{ margin: 0, paddingLeft: 18, fontSize: 13, color: '#94A3B8', lineHeight: 1.9 }}>
+                <li>Oversees all published content</li>
+                <li>15+ years in manufacturing and business operations</li>
+                <li>Directs AI analysis framework (BAAF)</li>
+                <li>Final approval on all Deep Dive reports</li>
+                <li>Cross-verifies analysis using multiple AI models</li>
+              </ul>
+            </div>
+            <div>
+              <div style={{ fontFamily: 'var(--serif)', fontSize: 17, fontWeight: 800, color: '#F1F5F9', marginBottom: 6 }}>Brutal AI&trade; Analysis Engine</div>
+              <ul style={{ margin: 0, paddingLeft: 18, fontSize: 13, color: '#94A3B8', lineHeight: 1.9 }}>
+                <li>AI-powered data collection and initial analysis</li>
+                <li>Trained on institutional equity research standards</li>
+                <li>Operates under human editorial oversight</li>
+                <li>Never publishes without editor approval</li>
+              </ul>
+            </div>
+          </div>
+
           {/* BAAF Framework */}
           <div style={{ ...card, padding: '24px 22px', borderColor: '#C73E3A30' }}>
             <div style={{ fontFamily: 'var(--mono)', fontSize: 9, fontWeight: 700, color: '#C73E3A', letterSpacing: 2, marginBottom: 10 }}>OUR FRAMEWORK</div>
