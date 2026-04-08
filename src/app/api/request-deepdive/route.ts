@@ -1,6 +1,9 @@
 import { NextResponse } from 'next/server';
 import { getRedis } from '@/lib/redis';
 
+export const runtime = 'nodejs';
+export const dynamic = 'force-dynamic';
+
 // /api/request-deepdive
 //
 // POST  body: { ticker: string, email?: string }
@@ -46,8 +49,9 @@ export async function POST(req: Request) {
     const newCount = await redis.zscore(ZSET_KEY, tickerRaw);
     return NextResponse.json({ ok: true, ticker: tickerRaw, count: Number(newCount) || 1 });
   } catch (e) {
-    console.error('request-deepdive POST failed:', e);
-    return NextResponse.json({ error: 'server error' }, { status: 500 });
+    const msg = e instanceof Error ? e.message : String(e);
+    console.error('request-deepdive POST failed:', msg);
+    return NextResponse.json({ error: 'server error', detail: msg }, { status: 500 });
   }
 }
 
