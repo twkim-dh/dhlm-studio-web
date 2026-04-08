@@ -4,19 +4,25 @@ import { useState } from 'react';
 import { usePathname } from 'next/navigation';
 import Link from 'next/link';
 
+// Mobile bottom tabs: finance-first per master directive PART 7-D.
+// Daily is the new flagship tab. Reports earns its own slot (it is the
+// site's highest-value content). Rankings/Creators moved to More.
 const tabs = [
   { href: '/', label: 'Home', icon: (a: boolean) => <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke={a ? '#C73E3A' : '#64748B'} strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><path d="M3 9l9-7 9 7v11a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z"/><polyline points="9 22 9 12 15 12 15 22"/></svg> },
+  { href: '/daily', label: 'Daily', icon: (a: boolean) => <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke={a ? '#C73E3A' : '#64748B'} strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><rect x="3" y="4" width="18" height="18" rx="2" ry="2"/><line x1="16" y1="2" x2="16" y2="6"/><line x1="8" y1="2" x2="8" y2="6"/><line x1="3" y1="10" x2="21" y2="10"/></svg> },
   { href: '/markets', label: 'Markets', icon: (a: boolean) => <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke={a ? '#00D474' : '#64748B'} strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><polyline points="22 12 18 12 15 21 9 3 6 12 2 12"/></svg> },
-  { href: '/rankings', label: 'Rankings', icon: (a: boolean) => <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke={a ? '#D4A843' : '#64748B'} strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><path d="M12 2L15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26z"/></svg> },
-  { href: '/lottery', label: 'Lottery', icon: (a: boolean) => <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke={a ? '#EF4444' : '#64748B'} strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><path d="M12 22c5.523 0 10-4.477 10-10S17.523 2 12 2 2 6.477 2 12s4.477 10 10 10z"/><path d="M12 6v6l4 2"/></svg> },
+  { href: '/reports', label: 'Reports', icon: (a: boolean) => <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke={a ? '#C73E3A' : '#64748B'} strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/><polyline points="14 2 14 8 20 8"/><line x1="16" y1="13" x2="8" y2="13"/><line x1="16" y1="17" x2="8" y2="17"/></svg> },
 ];
 
+// Secondary destinations live in the More menu — same set as before plus
+// Creators/Rankings demoted from primary nav, Daily promoted out of More.
 const moreLinks = [
   { href: '/rankings/crypto', label: '🪙 Crypto', color: '#F59E0B' },
-  { href: '/creators', label: '🔥 Creators', color: '#A78BFA' },
-  { href: '/reports', label: '📊 Reports', color: '#C73E3A' },
+  { href: '/lottery', label: '🎰 Lottery', color: '#EF4444' },
   { href: '/blog', label: '📖 Blog', color: '#60A5FA' },
   { href: '/blog/wisdom', label: '💡 Wisdom', color: '#D4A843' },
+  { href: '/rankings', label: '🏆 Rankings', color: '#D4A843' },
+  { href: '/creators', label: '🔥 Creators', color: '#A78BFA' },
   { href: '/tools', label: '🧮 Tools', color: '#64748B' },
   { href: '/about', label: 'ℹ️ About', color: '#94A3B8' },
 ];
