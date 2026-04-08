@@ -2,6 +2,7 @@ import type { Metadata } from 'next';
 import Link from 'next/link';
 import fs from 'fs';
 import path from 'path';
+import RequestDeepDive from '@/components/RequestDeepDive';
 
 export const metadata: Metadata = {
   title: 'Reports — Brutal AI™ Deep Dive Analysis | DHLM Studio',
@@ -67,6 +68,10 @@ export default function ReportsPage() {
             <p style={{ fontSize: 14, color: '#64748B' }}>Reports coming soon.</p>
           </div>
         )}
+
+        <div style={{ marginTop: 24 }}>
+          <RequestDeepDive />
+        </div>
 
         <div style={{ marginTop: 20, textAlign: 'center' }}>
           <Link href="/editorial" style={{ fontSize: 12, color: '#64748B' }}>How we analyze stocks → Editorial Policy</Link>
