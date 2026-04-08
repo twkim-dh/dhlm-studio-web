@@ -4,7 +4,7 @@ import { useState, useEffect } from 'react';
 
 interface Quote { symbol: string; price: number; change: number; changesPercentage: number }
 interface CryptoPrice { id: string; price: number; change24h: number }
-interface FearGreed { value: number; label: string }
+interface FearGreed { value: number; label: string; source?: string }
 interface TodayMarketPayload {
   asOf: string;
   indices: Quote[];
@@ -34,7 +34,7 @@ const SSR_FALLBACK: TodayMarketPayload = {
     { id: 'bitcoin',  price: 66850, change24h: 1.4 },
     { id: 'ethereum', price:  2030, change24h: 2.1 },
   ],
-  fearGreed: { value: 38, label: 'Fear' },
+  fearGreed: { value: 50, label: 'Neutral', source: 'CNN' },
   verdict: { text: 'Loading the latest market snapshot.', trigger: 'neutral' },
   source: 'fallback',
 };
@@ -59,10 +59,13 @@ function changeColor(v: number): string {
   return '#94A3B8';
 }
 
+// CNN Fear & Greed color bands per the official scale.
+// 0-25 Extreme Fear (red), 25-45 Fear (orange), 45-55 Neutral (yellow),
+// 55-75 Greed (light green), 75-100 Extreme Greed (green).
 function fearGreedColor(v: number): string {
   if (v < 25) return '#FF4545';
   if (v < 45) return '#F59E0B';
-  if (v < 55) return '#94A3B8';
+  if (v < 55) return '#FACC15';
   if (v < 75) return '#84CC16';
   return '#00D474';
 }
@@ -171,7 +174,7 @@ export default function TodayMarket() {
           <div style={{ padding: '14px 12px', textAlign: 'center' }}>
             <div style={{ fontFamily: 'var(--serif)', fontSize: 36, fontWeight: 900, color: fgColor, lineHeight: 1 }}>{data.fearGreed.value}</div>
             <div style={{ fontFamily: 'var(--mono)', fontSize: 10, fontWeight: 700, color: fgColor, marginTop: 4, textTransform: 'uppercase', letterSpacing: 1 }}>{data.fearGreed.label}</div>
-            <div style={{ fontFamily: 'var(--sans)', fontSize: 9, color: '#475569', marginTop: 6 }}>Fear &amp; Greed Index</div>
+            <div style={{ fontFamily: 'var(--sans)', fontSize: 9, color: '#475569', marginTop: 6 }}>{data.fearGreed.source || 'CNN'} Fear &amp; Greed</div>
             {/* Simple gauge */}
             <div style={{ marginTop: 10, height: 6, background: '#1E293B', borderRadius: 3, overflow: 'hidden' }}>
               <div style={{ width: `${data.fearGreed.value}%`, height: '100%', background: fgColor }} />

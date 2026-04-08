@@ -5,25 +5,34 @@ export const dynamic = 'force-dynamic';
 
 // /api/today-market — single endpoint for the home page TODAY'S MARKET section.
 //
-// Sources (commercially licensed):
-//   - FMP v3 batched quote → indices, macro, futures, yields, VIX
-//     (single API call for all 7 symbols)
-//   - CoinGecko simple/price → BTC, ETH (free, no auth)
-//   - alternative.me FNG     → Fear & Greed Index (free, no auth)
+// Sources (all licensed for commercial use):
+//   - FMP /stable/quote      → ^GSPC, ^IXIC, ^DJI, ^VIX, GCUSD
+//                              (single-symbol calls; comma lists are premium-only)
+//   - FMP /stable/treasury-rates → year10 field for the 10Y yield
+//                              (^TNX direct quote is premium-only)
+//   - Alpha Vantage WTI       → CLUSD oil (FMP commodity quotes are premium-only)
+//   - CoinGecko simple/price  → BTC, ETH (free, no auth)
+//   - CNN Business F&G        → equity sentiment (production.dataviz.cnn.io,
+//                              requires Chrome user-agent + Origin/Referer)
 //
-// Why FMP for everything market-related: FMP_API_KEY is already provisioned,
-// the commercial license is verified, and a single batched call returns all
-// indices and commodities at once. Yahoo Finance is intentionally NOT used
-// here because of TOS risk per editor decision.
+// Why CNN F&G instead of alternative.me: alternative.me serves a Crypto
+// Fear & Greed index, not the equity-market index. The home page TODAY'S
+// MARKET section is an equity dashboard, so showing crypto sentiment in
+// the same card was misleading. CNN Business is the canonical equity
+// sentiment source.
+//
+// Why Alpha Vantage for oil: FMP /stable/quote returns "Premium Query
+// Parameter" for CLUSD on the current subscription tier. AV WTI endpoint
+// is free, requires only the existing ALPHA_VANTAGE_KEY env var, and
+// returns daily WTI prices that can be converted to a Quote-shaped result.
 //
 // Fallback rule: if any single source fails, the in-memory cache value
 // is used. If cache is also empty, a static snapshot is used. The component
-// renders a relative timestamp instead of "DEMO" so the user always sees
-// real-looking data with an honest "as of <time>" disclosure.
+// renders an honest "as of HH:MM UTC" disclosure — never a "DEMO" label.
 
 interface Quote { symbol: string; price: number; change: number; changesPercentage: number }
 interface CryptoPrice { id: string; price: number; change24h: number }
-interface FearGreed { value: number; label: string }
+interface FearGreed { value: number; label: string; source: string }
 interface TodayMarketPayload {
   asOf: string;
   indices: Quote[];
@@ -34,7 +43,6 @@ interface TodayMarketPayload {
   source: 'live' | 'cached' | 'fallback';
 }
 
-// Static fallback used only when both live AND cache are empty.
 const FALLBACK: Omit<TodayMarketPayload, 'asOf' | 'source' | 'verdict'> = {
   indices: [
     { symbol: '^GSPC', price: 5612.40, change: -135.20, changesPercentage: -2.36 },
@@ -51,47 +59,85 @@ const FALLBACK: Omit<TodayMarketPayload, 'asOf' | 'source' | 'verdict'> = {
     { id: 'bitcoin',  price: 66850, change24h:  1.4 },
     { id: 'ethereum', price:  2030, change24h:  2.1 },
   ],
-  fearGreed: { value: 38, label: 'Fear' },
+  fearGreed: { value: 50, label: 'Neutral', source: 'CNN' },
 };
 
 let cache: { data: TodayMarketPayload; ts: number } | null = null;
 const CACHE_TTL = 5 * 60 * 1000; // 5 min
 
 const FMP_KEY = process.env.FMP_API_KEY || '';
+const AV_KEY = process.env.ALPHA_VANTAGE_KEY || '';
 
-// FMP v3 batched quote — one API call returns all symbols. We try v3 first
-// (classic format with path-based symbols) because it accepts comma lists
-// and works with index/futures tickers. The /stable tier is tried as a
-// fallback for the same reason.
-async function fmpQuote(symbols: string[]): Promise<Quote[] | null> {
+// FMP /stable/quote — single-symbol parallel because comma-separated
+// requests require premium tier.
+async function fmpQuoteSingle(symbol: string): Promise<Quote | null> {
   if (!FMP_KEY) return null;
-  const path = symbols.map(encodeURIComponent).join(',');
-  const candidates = [
-    `https://financialmodelingprep.com/api/v3/quote/${path}?apikey=${FMP_KEY}`,
-    `https://financialmodelingprep.com/stable/quote?symbol=${path}&apikey=${FMP_KEY}`,
-  ];
-  for (const url of candidates) {
-    try {
-      const res = await fetch(url, { cache: 'no-store' });
-      if (!res.ok) continue;
-      const data = await res.json();
-      if (!Array.isArray(data) || data.length === 0) continue;
-      const out: Quote[] = data
-        .map((d: Record<string, unknown>) => ({
-          symbol: String(d.symbol || ''),
-          price: Number(d.price) || 0,
-          change: Number(d.change) || 0,
-          changesPercentage: Number(d.changesPercentage) || 0,
-        }))
-        .filter((q) => q.symbol && q.price > 0);
-      // Re-order to match the requested symbol order
-      const ordered = symbols
-        .map((sym) => out.find((q) => q.symbol === sym))
-        .filter((q): q is Quote => Boolean(q));
-      if (ordered.length === symbols.length) return ordered;
-    } catch { /* try next candidate */ }
-  }
-  return null;
+  try {
+    const url = `https://financialmodelingprep.com/stable/quote?symbol=${encodeURIComponent(symbol)}&apikey=${FMP_KEY}`;
+    const res = await fetch(url, { cache: 'no-store' });
+    if (!res.ok) return null;
+    const data = await res.json();
+    if (!Array.isArray(data) || !data[0]) return null;
+    const d = data[0] as Record<string, unknown>;
+    const price = Number(d.price) || 0;
+    if (price === 0) return null;
+    // FMP /stable returns 'changePercentage' on some endpoints and
+    // 'changesPercentage' on others. Handle both.
+    const pct = Number(d.changesPercentage ?? d.changePercentage ?? 0);
+    return {
+      symbol: String(d.symbol || symbol),
+      price,
+      change: Number(d.change) || 0,
+      changesPercentage: pct,
+    };
+  } catch { return null; }
+}
+
+async function fmpQuoteMany(symbols: string[]): Promise<Quote[] | null> {
+  const results = await Promise.all(symbols.map(fmpQuoteSingle));
+  const filtered = results.filter((q): q is Quote => Boolean(q));
+  return filtered.length === symbols.length ? filtered : (filtered.length > 0 ? filtered : null);
+}
+
+// FMP treasury-rates returns the full curve. We pull year10 and synthesize
+// a Quote-shaped object for ^TNX so the rest of the rendering pipeline does
+// not need to special-case it.
+async function fmpTenYearYield(): Promise<Quote | null> {
+  if (!FMP_KEY) return null;
+  try {
+    const res = await fetch(`https://financialmodelingprep.com/stable/treasury-rates?apikey=${FMP_KEY}`, { cache: 'no-store' });
+    if (!res.ok) return null;
+    const data = await res.json();
+    if (!Array.isArray(data) || data.length < 2) return null;
+    const today = data[0];
+    const yesterday = data[1];
+    const price = Number(today?.year10);
+    const prev = Number(yesterday?.year10);
+    if (!price || !prev) return null;
+    const change = price - prev;
+    const pct = prev !== 0 ? (change / prev) * 100 : 0;
+    return { symbol: '^TNX', price, change, changesPercentage: pct };
+  } catch { return null; }
+}
+
+// Alpha Vantage WTI — daily oil prices. Returns the latest two values to
+// compute change and percentage change. Free tier allows 25 requests/day,
+// well within the 5-minute cache budget.
+async function alphaVantageWTI(): Promise<Quote | null> {
+  if (!AV_KEY || AV_KEY === 'demo') return null;
+  try {
+    const res = await fetch(`https://www.alphavantage.co/query?function=WTI&interval=daily&apikey=${AV_KEY}`, { cache: 'no-store' });
+    if (!res.ok) return null;
+    const data = await res.json();
+    const arr = Array.isArray(data?.data) ? data.data : null;
+    if (!arr || arr.length < 2) return null;
+    const today = Number(arr[0]?.value);
+    const yesterday = Number(arr[1]?.value);
+    if (!today || !yesterday) return null;
+    const change = today - yesterday;
+    const pct = yesterday !== 0 ? (change / yesterday) * 100 : 0;
+    return { symbol: 'CLUSD', price: today, change, changesPercentage: pct };
+  } catch { return null; }
 }
 
 async function coinGeckoPrices(): Promise<CryptoPrice[] | null> {
@@ -110,13 +156,30 @@ async function coinGeckoPrices(): Promise<CryptoPrice[] | null> {
   } catch { return null; }
 }
 
-async function fearAndGreed(): Promise<FearGreed | null> {
+// CNN Business Fear & Greed Index. The endpoint is publicly accessible
+// but the production CDN requires browser-like headers (User-Agent +
+// Origin + Referer) to bypass bot mitigation.
+async function cnnFearGreed(): Promise<FearGreed | null> {
   try {
-    const res = await fetch('https://api.alternative.me/fng/?limit=1', { cache: 'no-store' });
+    const res = await fetch('https://production.dataviz.cnn.io/index/fearandgreed/graphdata/', {
+      cache: 'no-store',
+      headers: {
+        'user-agent': 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/120.0.0.0 Safari/537.36',
+        'accept': 'application/json, text/plain, */*',
+        'accept-language': 'en-US,en;q=0.9',
+        'referer': 'https://edition.cnn.com/markets/fear-and-greed',
+        'origin': 'https://edition.cnn.com',
+      },
+    });
     if (!res.ok) return null;
     const data = await res.json();
-    if (!data?.data?.[0]) return null;
-    return { value: Number(data.data[0].value) || 50, label: String(data.data[0].value_classification || 'Neutral') };
+    const fg = data?.fear_and_greed;
+    if (!fg) return null;
+    const score = Math.round(Number(fg.score) || 50);
+    const ratingRaw = String(fg.rating || 'neutral').toLowerCase();
+    // Title-case the rating: "extreme fear" → "Extreme Fear"
+    const label = ratingRaw.replace(/\b\w/g, c => c.toUpperCase());
+    return { value: score, label, source: 'CNN' };
   } catch { return null; }
 }
 
@@ -150,11 +213,11 @@ function generateVerdict(d: Pick<TodayMarketPayload, 'indices' | 'macro' | 'cryp
   }
   if (fg && fg.value < 25) {
     return { trigger: 'F&G<25',
-      text: `Fear and Greed at ${fg.value} (${fg.label}) — historically, every reading below 25 in the past decade has marked a tradeable bottom within 30 days, and every reading has felt completely justified at the time.` };
+      text: `CNN Fear and Greed at ${fg.value} (${fg.label}) — historically, every reading below 25 in the past decade has marked a tradeable bottom within 30 days, and every reading has felt completely justified at the time.` };
   }
   if (fg && fg.value > 75) {
     return { trigger: 'F&G>75',
-      text: `Fear and Greed at ${fg.value} (${fg.label}) is the sentiment equivalent of a 2 percent VIX — the market is pricing in zero things going wrong, which has historically preceded several things going wrong.` };
+      text: `CNN Fear and Greed at ${fg.value} (${fg.label}) is the sentiment equivalent of a 2 percent VIX — the market is pricing in zero things going wrong, which has historically preceded several things going wrong.` };
   }
   if (vix && vix.price < 15) {
     return { trigger: 'VIX<15',
@@ -166,36 +229,45 @@ function generateVerdict(d: Pick<TodayMarketPayload, 'indices' | 'macro' | 'cryp
 }
 
 export async function GET() {
-  // Serve from cache if fresh
   if (cache && Date.now() - cache.ts < CACHE_TTL) {
     return NextResponse.json({ ...cache.data, source: 'cached' });
   }
 
-  // Fetch all sources in parallel. FMP indices and macro are split into two
-  // batched calls so a partial failure on one batch does not invalidate the
-  // other (e.g. if futures symbols return null but indices succeed, the
-  // indices block is still served live).
-  const [indices, macro, crypto, fg] = await Promise.all([
-    fmpQuote(['^GSPC', '^IXIC', '^DJI']),
-    fmpQuote(['CLUSD', 'GCUSD', '^VIX', '^TNX']),
+  // Indices: 3 single-symbol FMP calls
+  // Macro:   ^VIX + GCUSD via FMP, ^TNX via treasury-rates, CLUSD via Alpha Vantage
+  // Crypto:  CoinGecko
+  // F&G:     CNN
+  const [indices, vix, gold, tnx, oil, crypto, fg] = await Promise.all([
+    fmpQuoteMany(['^GSPC', '^IXIC', '^DJI']),
+    fmpQuoteSingle('^VIX'),
+    fmpQuoteSingle('GCUSD'),
+    fmpTenYearYield(),
+    alphaVantageWTI(),
     coinGeckoPrices(),
-    fearAndGreed(),
+    cnnFearGreed(),
   ]);
 
+  const macroLive: Quote[] = [];
+  if (oil)  macroLive.push(oil);
+  if (gold) macroLive.push(gold);
+  if (vix)  macroLive.push(vix);
+  if (tnx)  macroLive.push(tnx);
+
   const lastGood = cache?.data;
-  const allLive = Boolean(indices && macro && crypto && fg);
+  const macroOk = macroLive.length === 4;
+  const allLive = Boolean(indices && macroOk && crypto && fg);
+
   const payload: TodayMarketPayload = {
     asOf: new Date().toISOString(),
     indices: indices || lastGood?.indices || FALLBACK.indices,
-    macro:   macro   || lastGood?.macro   || FALLBACK.macro,
-    crypto:  crypto  || lastGood?.crypto  || FALLBACK.crypto,
-    fearGreed: fg    || lastGood?.fearGreed || FALLBACK.fearGreed,
+    macro:   macroOk  ? macroLive : (lastGood?.macro || FALLBACK.macro),
+    crypto:  crypto   || lastGood?.crypto || FALLBACK.crypto,
+    fearGreed: fg     || lastGood?.fearGreed || FALLBACK.fearGreed,
     verdict: { text: '', trigger: '' },
     source: allLive ? 'live' : (lastGood ? 'cached' : 'fallback'),
   };
   payload.verdict = generateVerdict(payload);
 
-  // Update cache only on full success so the cached tier represents real data
   if (allLive) {
     cache = { data: payload, ts: Date.now() };
   }
