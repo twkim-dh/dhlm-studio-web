@@ -6,6 +6,7 @@ const nextConfig: NextConfig = {
       { protocol: 'https', hostname: 'images.financialmodelingprep.com' },
       { protocol: 'https', hostname: 'coin-images.coingecko.com' },
       { protocol: 'https', hostname: 'assets.coingecko.com' },
+      { protocol: 'https', hostname: 'logo.clearbit.com' },
     ],
   },
   async redirects() {

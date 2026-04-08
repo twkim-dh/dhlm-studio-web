@@ -4,6 +4,7 @@ import fs from 'fs';
 import path from 'path';
 import ListenButton from '@/components/ListenButton';
 import InlineSubscribe from '@/components/InlineSubscribe';
+import GiscusComments from '@/components/GiscusComments';
 
 const CONTENT_DIR = path.join(process.cwd(), 'src/content/daily');
 
@@ -176,6 +177,9 @@ export default async function DailyBriefPage({ params }: { params: Promise<{ slu
         <div style={{ marginTop: 32 }}>
           <InlineSubscribe source="daily" headline="Never miss a brief" description="Tomorrow's Brutal AI Daily lands in your inbox at 7:30 AM ET. Free." />
         </div>
+
+        {/* Comments — Giscus / GitHub Discussions */}
+        <GiscusComments slug={`daily:${slug}`} />
 
         {/* Footer disclaimer */}
         <div style={{ marginTop: 40, padding: '20px 22px', borderRadius: 14, background: '#111827', border: '1px solid #1E293B', textAlign: 'center' }}>

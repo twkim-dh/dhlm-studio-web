@@ -3,6 +3,7 @@ import Link from 'next/link';
 import { blogPosts, getBlogPostBySlug } from '@/data/blog-posts';
 import AdUnit from '@/components/AdUnit';
 import LikeButton from '@/components/LikeButton';
+import GiscusComments from '@/components/GiscusComments';
 
 export function generateStaticParams() {
   return blogPosts.map(p => ({ slug: p.slug }));
@@ -154,6 +155,9 @@ export default async function BlogPostPage({ params }: { params: Promise<{ slug:
             </div>
           </div>
         )}
+
+        {/* Comments — Giscus / GitHub Discussions */}
+        <GiscusComments slug={`blog:${slug}`} />
 
         {/* Disclaimer */}
         <p style={{ fontFamily: 'var(--sans)', fontSize: 10, color: '#334155', marginTop: isDeepDive ? 16 : 40, lineHeight: 1.6, textAlign: 'center' }}>

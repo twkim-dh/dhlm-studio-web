@@ -30,6 +30,9 @@ export default function Footer() {
       <div style={{ fontFamily: "var(--sans)", fontSize: 10, color: "#334155", marginTop: 16, lineHeight: 1.6, textAlign: "center" }}>
         Market data is for informational purposes only and does not constitute investment advice. Always do your own research.
       </div>
+      <div style={{ fontFamily: "var(--sans)", fontSize: 9, color: "#334155", marginTop: 8, lineHeight: 1.6, textAlign: "center", maxWidth: 720, marginLeft: "auto", marginRight: "auto" }}>
+        All company logos and trademarks are the property of their respective owners. They are used here for identification purposes only. DHLM Studio is not affiliated with, sponsored by, or endorsed by any company analyzed on this site.
+      </div>
     </footer>
   );
 }

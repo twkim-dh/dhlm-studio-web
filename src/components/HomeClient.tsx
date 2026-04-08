@@ -3,6 +3,7 @@
 import { useState, useEffect } from 'react';
 import Link from 'next/link';
 import Image from 'next/image';
+import TickerLogo from '@/components/TickerLogo';
 
 const card = { background: '#111827', borderRadius: 14, border: '1px solid #1E293B' };
 
@@ -58,8 +59,9 @@ export function LiveMarketsPreview() {
       <p style={{ fontFamily: 'var(--mono)', fontSize: 10, color: '#00D474', marginBottom: 8 }}>● LIVE — Top 10 by Market Cap</p>
       <div style={{ display: 'flex', flexDirection: 'column', gap: 8 }}>
         {leaders.map((s, i) => (
-          <Link key={s.ticker} href={`/markets/${s.ticker}`} style={{ ...card, display: 'grid', gridTemplateColumns: '28px 1fr auto auto', gap: 14, padding: '14px 18px', alignItems: 'center', textDecoration: 'none' }}>
+          <Link key={s.ticker} href={`/markets/${s.ticker}`} style={{ ...card, display: 'grid', gridTemplateColumns: '28px 28px 1fr auto auto', gap: 12, padding: '14px 18px', alignItems: 'center', textDecoration: 'none' }}>
             <div style={{ fontFamily: 'var(--serif)', fontSize: 13, fontWeight: 800, color: i < 3 ? '#D4A843' : '#475569', textAlign: 'center' }}>#{i + 1}</div>
+            <TickerLogo ticker={s.ticker} size={26} />
             <div style={{ minWidth: 0 }}>
               <span style={{ fontFamily: 'var(--mono)', fontSize: 14, fontWeight: 700, color: '#60A5FA' }}>{s.ticker}</span>
               <span style={{ fontFamily: 'var(--sans)', fontSize: 12, fontWeight: 600, color: '#E2E8F0', marginLeft: 8 }}>{s.name}</span>

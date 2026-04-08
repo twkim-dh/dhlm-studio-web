@@ -5,6 +5,8 @@ import path from 'path';
 import LikeButton from '@/components/LikeButton';
 import ListenButton from '@/components/ListenButton';
 import InlineSubscribe from '@/components/InlineSubscribe';
+import GiscusComments from '@/components/GiscusComments';
+import TickerLogo from '@/components/TickerLogo';
 
 const REPORTS_DIR = path.join(process.cwd(), 'src/content/reports');
 
@@ -239,10 +241,19 @@ export default async function ReportPage({ params }: { params: Promise<{ slug: s
               </div>
               <div style={{ fontSize: 11, color: '#64748B', fontStyle: 'italic' }}>Analysis under editorial oversight. Data-driven. Zero feelings.</div>
               {isHotSector && Array.isArray(fm.tickers) && fm.tickers.length > 0 && (
-                <div style={{ marginTop: 10, display: 'flex', flexWrap: 'wrap', gap: 6 }}>
+                <div style={{ marginTop: 10, display: 'flex', flexWrap: 'wrap', gap: 6, alignItems: 'center' }}>
                   {fm.tickers.map(t => (
-                    <span key={t} style={{ fontFamily: 'var(--mono)', fontSize: 10, fontWeight: 800, padding: '4px 8px', borderRadius: 6, background: '#0D1117', border: '1px solid #1E293B', color: '#60A5FA' }}>{t}</span>
+                    <span key={t} style={{ fontFamily: 'var(--mono)', fontSize: 10, fontWeight: 800, padding: '4px 8px', borderRadius: 6, background: '#0D1117', border: '1px solid #1E293B', color: '#60A5FA', display: 'inline-flex', alignItems: 'center', gap: 6 }}>
+                      <TickerLogo ticker={t} size={16} />
+                      {t}
+                    </span>
                   ))}
+                </div>
+              )}
+              {!isHotSector && fm.ticker && (
+                <div style={{ marginTop: 10, display: 'flex', alignItems: 'center', gap: 8 }}>
+                  <TickerLogo ticker={fm.ticker} size={28} />
+                  <span style={{ fontFamily: 'var(--mono)', fontSize: 14, fontWeight: 800, color: '#60A5FA' }}>{fm.ticker}</span>
                 </div>
               )}
             </div>
@@ -315,6 +326,9 @@ export default async function ReportPage({ params }: { params: Promise<{ slug: s
         <div style={{ marginTop: 32 }}>
           <InlineSubscribe source="report" headline="Never miss the next Deep Dive" description="One Brutal AI Daily Brief per weekday at 7:30 AM ET. Free." />
         </div>
+
+        {/* Comments — Giscus / GitHub Discussions */}
+        <GiscusComments slug={`report:${slug}`} />
 
         {/* Brutal AI Footer */}
         <div style={{ marginTop: 40, padding: '20px 22px', borderRadius: 14, background: '#111827', border: '1px solid #1E293B', textAlign: 'center' }}>
