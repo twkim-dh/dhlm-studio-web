@@ -86,7 +86,24 @@ export default function Home() {
           </div>
           <Link href="/reports" style={{ fontSize: 12, color: '#C73E3A', fontWeight: 600, fontFamily: 'var(--sans)' }}>All Reports →</Link>
         </div>
-        <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(280px, 1fr))', gap: 12 }}>
+        <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(260px, 1fr))', gap: 12 }}>
+          {/* Hot Sector card (first position — THIS WEEK label) */}
+          <Link href="/reports/hot-sector-energy-april-2026" style={{ ...card, padding: '20px 20px 18px', textDecoration: 'none', position: 'relative', overflow: 'hidden', display: 'block', borderColor: '#D4A84340', background: 'linear-gradient(135deg, #D4A84312, #111827)' }}>
+            <div style={{ position: 'absolute', top: 0, left: 0, right: 0, height: 2, background: '#D4A843' }} />
+            <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'flex-start', marginBottom: 10 }}>
+              <div style={{ fontFamily: 'var(--mono)', fontSize: 9, fontWeight: 800, color: '#D4A843', letterSpacing: 2 }}>🔥 THIS WEEK</div>
+              <div style={{ fontFamily: 'var(--mono)', fontSize: 9, fontWeight: 700, color: '#475569' }}>HOT SECTOR</div>
+            </div>
+            <div style={{ fontFamily: 'var(--serif)', fontSize: 16, fontWeight: 800, color: '#F1F5F9', lineHeight: 1.3, marginBottom: 8 }}>After the Spike: 5 Energy Stocks</div>
+            <div style={{ display: 'flex', flexWrap: 'wrap', gap: 4, marginBottom: 10 }}>
+              {['XOM','CVX','MPC','VLO','OXY'].map(t => (
+                <span key={t} style={{ fontFamily: 'var(--mono)', fontSize: 9, fontWeight: 800, padding: '2px 6px', borderRadius: 4, background: '#0D1117', border: '1px solid #1E293B', color: '#60A5FA' }}>{t}</span>
+              ))}
+            </div>
+            <p style={{ fontFamily: 'var(--sans)', fontSize: 12, color: '#94A3B8', lineHeight: 1.6, margin: '0 0 12px' }}>WTI hit $116. Then the ceasefire dropped. The easy trade is over — refining margins and integrated cash flow now decide who wins.</p>
+            <div style={{ fontSize: 11, color: '#D4A843', fontWeight: 700 }}>Read Hot Sector →</div>
+          </Link>
+
           {[
             { ticker: 'NVDA', name: 'NVIDIA Corporation', slug: 'deep-dive-nvda-april-2026', grade: 'B+', score: 83, color: '#76B900', tag: 'AI Infrastructure', hook: '90% AI training share. P/E 65 vs industry 25. The CUDA moat is real — but so is the price.' },
             { ticker: 'MSFT', name: 'Microsoft', slug: 'deep-dive-msft-april-2026', grade: 'A-', score: 86, color: '#00A4EF', tag: 'Cloud + AI', hook: 'Azure growing 30%+ on OpenAI tailwind. Most boring monopoly money in the S&P 500.' },
