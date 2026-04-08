@@ -5,16 +5,16 @@ export const dynamic = 'force-dynamic';
 
 // /api/today-market — single endpoint for the home page TODAY'S MARKET section.
 //
-// Sources (all key-free):
-//   - Yahoo Finance public chart API → indices (^GSPC, ^IXIC, ^DJI)
-//                                    → macro  (CL=F oil, GC=F gold, ^VIX, ^TNX)
-//   - CoinGecko simple/price        → BTC, ETH
-//   - alternative.me FNG            → Fear & Greed Index
+// Sources (commercially licensed):
+//   - FMP v3 batched quote → indices, macro, futures, yields, VIX
+//     (single API call for all 7 symbols)
+//   - CoinGecko simple/price → BTC, ETH (free, no auth)
+//   - alternative.me FNG     → Fear & Greed Index (free, no auth)
 //
-// Why Yahoo Finance instead of FMP: the FMP stable tier blocks indices on
-// most plans, which previously caused the entire endpoint to fall back to
-// static demo data. Yahoo Finance v8 chart endpoint is free, reliable,
-// and serves indices, futures (oil, gold), and yields.
+// Why FMP for everything market-related: FMP_API_KEY is already provisioned,
+// the commercial license is verified, and a single batched call returns all
+// indices and commodities at once. Yahoo Finance is intentionally NOT used
+// here because of TOS risk per editor decision.
 //
 // Fallback rule: if any single source fails, the in-memory cache value
 // is used. If cache is also empty, a static snapshot is used. The component
@@ -42,10 +42,10 @@ const FALLBACK: Omit<TodayMarketPayload, 'asOf' | 'source' | 'verdict'> = {
     { symbol: '^DJI',  price: 41250.80, change: -780.40, changesPercentage: -1.86 },
   ],
   macro: [
-    { symbol: 'CL=F', price:  78.40, change: 1.20, changesPercentage:  1.55 },
-    { symbol: 'GC=F', price: 2342.50, change: 18.30, changesPercentage:  0.79 },
-    { symbol: '^VIX', price:  23.70, change: 4.10, changesPercentage: 20.92 },
-    { symbol: '^TNX', price:   4.42, change: 0.11, changesPercentage:  2.55 },
+    { symbol: 'CLUSD', price:  78.40, change: 1.20, changesPercentage:  1.55 },
+    { symbol: 'GCUSD', price: 2342.50, change: 18.30, changesPercentage:  0.79 },
+    { symbol: '^VIX',  price:  23.70, change: 4.10, changesPercentage: 20.92 },
+    { symbol: '^TNX',  price:   4.42, change: 0.11, changesPercentage:  2.55 },
   ],
   crypto: [
     { id: 'bitcoin',  price: 66850, change24h:  1.4 },
@@ -57,40 +57,41 @@ const FALLBACK: Omit<TodayMarketPayload, 'asOf' | 'source' | 'verdict'> = {
 let cache: { data: TodayMarketPayload; ts: number } | null = null;
 const CACHE_TTL = 5 * 60 * 1000; // 5 min
 
-// Yahoo Finance v8 chart endpoint. Returns the most recent price plus the
-// previous close, which is enough to compute change and percentage change
-// without paying for any data tier.
-async function yahooQuote(symbols: string[]): Promise<Quote[] | null> {
-  const out: Quote[] = [];
-  // Yahoo returns one symbol per request — fetch in parallel.
-  const results = await Promise.allSettled(
-    symbols.map(async (sym) => {
-      const url = `https://query1.finance.yahoo.com/v8/finance/chart/${encodeURIComponent(sym)}?interval=1d&range=2d`;
-      const res = await fetch(url, {
-        cache: 'no-store',
-        headers: {
-          // Yahoo blocks the default Node fetch User-Agent. A regular browser UA works.
-          'user-agent': 'Mozilla/5.0 (compatible; DHLM-Studio/1.0)',
-          'accept': 'application/json',
-        },
-      });
-      if (!res.ok) throw new Error(`HTTP ${res.status}`);
+const FMP_KEY = process.env.FMP_API_KEY || '';
+
+// FMP v3 batched quote — one API call returns all symbols. We try v3 first
+// (classic format with path-based symbols) because it accepts comma lists
+// and works with index/futures tickers. The /stable tier is tried as a
+// fallback for the same reason.
+async function fmpQuote(symbols: string[]): Promise<Quote[] | null> {
+  if (!FMP_KEY) return null;
+  const path = symbols.map(encodeURIComponent).join(',');
+  const candidates = [
+    `https://financialmodelingprep.com/api/v3/quote/${path}?apikey=${FMP_KEY}`,
+    `https://financialmodelingprep.com/stable/quote?symbol=${path}&apikey=${FMP_KEY}`,
+  ];
+  for (const url of candidates) {
+    try {
+      const res = await fetch(url, { cache: 'no-store' });
+      if (!res.ok) continue;
       const data = await res.json();
-      const result = data?.chart?.result?.[0];
-      if (!result) throw new Error('No chart result');
-      const meta = result.meta || {};
-      const price = Number(meta.regularMarketPrice) || 0;
-      const prevClose = Number(meta.chartPreviousClose ?? meta.previousClose) || 0;
-      if (price === 0 || prevClose === 0) throw new Error('Missing prices');
-      const change = price - prevClose;
-      const pct = prevClose !== 0 ? (change / prevClose) * 100 : 0;
-      return { symbol: sym, price, change, changesPercentage: pct };
-    })
-  );
-  for (const r of results) {
-    if (r.status === 'fulfilled') out.push(r.value);
+      if (!Array.isArray(data) || data.length === 0) continue;
+      const out: Quote[] = data
+        .map((d: Record<string, unknown>) => ({
+          symbol: String(d.symbol || ''),
+          price: Number(d.price) || 0,
+          change: Number(d.change) || 0,
+          changesPercentage: Number(d.changesPercentage) || 0,
+        }))
+        .filter((q) => q.symbol && q.price > 0);
+      // Re-order to match the requested symbol order
+      const ordered = symbols
+        .map((sym) => out.find((q) => q.symbol === sym))
+        .filter((q): q is Quote => Boolean(q));
+      if (ordered.length === symbols.length) return ordered;
+    } catch { /* try next candidate */ }
   }
-  return out.length === symbols.length ? out : null;
+  return null;
 }
 
 async function coinGeckoPrices(): Promise<CryptoPrice[] | null> {
@@ -123,7 +124,7 @@ async function fearAndGreed(): Promise<FearGreed | null> {
 function generateVerdict(d: Pick<TodayMarketPayload, 'indices' | 'macro' | 'crypto' | 'fearGreed'>): { text: string; trigger: string } {
   const sp500 = d.indices.find(x => x.symbol === '^GSPC');
   const vix = d.macro.find(x => x.symbol === '^VIX');
-  const oil = d.macro.find(x => x.symbol === 'CL=F');
+  const oil = d.macro.find(x => x.symbol === 'CLUSD');
   const btc = d.crypto.find(x => x.id === 'bitcoin');
   const fg = d.fearGreed;
 
@@ -170,10 +171,13 @@ export async function GET() {
     return NextResponse.json({ ...cache.data, source: 'cached' });
   }
 
-  // Fetch all sources in parallel
+  // Fetch all sources in parallel. FMP indices and macro are split into two
+  // batched calls so a partial failure on one batch does not invalidate the
+  // other (e.g. if futures symbols return null but indices succeed, the
+  // indices block is still served live).
   const [indices, macro, crypto, fg] = await Promise.all([
-    yahooQuote(['^GSPC', '^IXIC', '^DJI']),
-    yahooQuote(['CL=F', 'GC=F', '^VIX', '^TNX']),
+    fmpQuote(['^GSPC', '^IXIC', '^DJI']),
+    fmpQuote(['CLUSD', 'GCUSD', '^VIX', '^TNX']),
     coinGeckoPrices(),
     fearAndGreed(),
   ]);
