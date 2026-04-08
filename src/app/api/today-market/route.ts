@@ -1,4 +1,5 @@
 import { NextResponse } from 'next/server';
+import { getRedis } from '@/lib/redis';
 
 export const runtime = 'nodejs';
 export const dynamic = 'force-dynamic';
@@ -62,8 +63,51 @@ const FALLBACK: Omit<TodayMarketPayload, 'asOf' | 'source' | 'verdict'> = {
   fearGreed: { value: 50, label: 'Neutral', source: 'CNN' },
 };
 
-let cache: { data: TodayMarketPayload; ts: number } | null = null;
-const CACHE_TTL = 5 * 60 * 1000; // 5 min
+// Two-layer cache: in-memory per serverless instance + Redis shared.
+// Redis is the source of truth — every cold start checks Redis before
+// touching the live APIs. The in-memory layer is just a hot cache for
+// repeat reads on the same warm instance.
+const REDIS_KEY = 'today-market:cache:v2';
+let memCache: { data: TodayMarketPayload; ts: number } | null = null;
+
+// Cache TTL in seconds. Longer after US market close (4:30 PM ET = 21:30 UTC)
+// because the data does not move outside trading hours.
+function cacheTtlSeconds(): number {
+  const utcHour = new Date().getUTCHours();
+  // After market close (21:30 UTC) through pre-market open (12:00 UTC next day):
+  // 60-minute TTL. During market hours: 30-minute TTL.
+  const isAfterClose = utcHour >= 22 || utcHour < 12;
+  return isAfterClose ? 60 * 60 : 30 * 60;
+}
+
+async function readSharedCache(): Promise<TodayMarketPayload | null> {
+  // Try memory first (no network)
+  if (memCache && Date.now() - memCache.ts < cacheTtlSeconds() * 1000) {
+    return memCache.data;
+  }
+  // Then Redis
+  try {
+    const redis = getRedis();
+    const raw = await redis.get(REDIS_KEY);
+    if (!raw) return null;
+    const parsed = JSON.parse(raw) as { data: TodayMarketPayload; ts: number };
+    if (Date.now() - parsed.ts < cacheTtlSeconds() * 1000) {
+      memCache = parsed;
+      return parsed.data;
+    }
+  } catch { /* Redis unavailable — fall through to live fetch */ }
+  return null;
+}
+
+async function writeSharedCache(data: TodayMarketPayload): Promise<void> {
+  const entry = { data, ts: Date.now() };
+  memCache = entry;
+  try {
+    const redis = getRedis();
+    // EX seconds — Redis evicts automatically
+    await redis.set(REDIS_KEY, JSON.stringify(entry), 'EX', cacheTtlSeconds());
+  } catch { /* Redis unavailable — memory cache still works for warm instance */ }
+}
 
 const FMP_KEY = process.env.FMP_API_KEY || '';
 const AV_KEY = process.env.ALPHA_VANTAGE_KEY || '';
@@ -110,6 +154,45 @@ async function fmpQuoteMany(symbols: string[]): Promise<Quote[] | null> {
   const results = await Promise.all(symbols.map(fmpQuoteSingle));
   const filtered = results.filter((q): q is Quote => Boolean(q));
   return filtered.length === symbols.length ? filtered : (filtered.length > 0 ? filtered : null);
+}
+
+// FMP batched quote — single request for multiple symbols. Tries the path
+// format first (legacy convention) and the query-string format second.
+// Many free-tier plans accept the path form for indices even when the
+// query form returns "Premium Query Parameter".
+async function fmpBatchQuote(symbols: string[]): Promise<Quote[] | null> {
+  if (!FMP_KEY) { dbg('fmp:batch', false, { err: 'FMP_KEY missing' }); return null; }
+  const csv = symbols.map(encodeURIComponent).join(',');
+  const candidates = [
+    `https://financialmodelingprep.com/stable/quote?symbol=${csv}&apikey=${FMP_KEY}`,
+    `https://financialmodelingprep.com/api/v3/quote/${csv}?apikey=${FMP_KEY}`,
+  ];
+  for (const url of candidates) {
+    try {
+      const res = await fetch(url, { cache: 'no-store' });
+      if (!res.ok) { dbg('fmp:batch', false, { status: res.status }); continue; }
+      const text = await res.text();
+      let data; try { data = JSON.parse(text); } catch { continue; }
+      if (!Array.isArray(data) || data.length === 0) continue;
+      const out: Quote[] = [];
+      for (const d of data as Array<Record<string, unknown>>) {
+        const sym = String(d.symbol || '');
+        const price = Number(d.price) || 0;
+        if (!sym || price === 0) continue;
+        const pct = Number(d.changesPercentage ?? d.changePercentage ?? 0);
+        out.push({ symbol: sym, price, change: Number(d.change) || 0, changesPercentage: pct });
+      }
+      // Re-order to match the requested symbol order
+      const ordered = symbols.map(s => out.find(q => q.symbol === s)).filter((q): q is Quote => Boolean(q));
+      if (ordered.length === symbols.length) {
+        dbg('fmp:batch', true, { sample: { count: ordered.length } });
+        return ordered;
+      }
+    } catch (e) {
+      dbg('fmp:batch', false, { err: e instanceof Error ? e.message : String(e) });
+    }
+  }
+  return null;
 }
 
 // FMP treasury-rates returns the full curve. We pull year10 and synthesize
@@ -254,23 +337,50 @@ export async function GET(request: Request) {
   const debug = url.searchParams.get('debug') === '1';
   if (debug) debugLog.length = 0;
 
-  if (cache && Date.now() - cache.ts < CACHE_TTL && !debug) {
-    return NextResponse.json({ ...cache.data, source: 'cached' });
+  // Check shared cache first (Redis + memory). Debug mode bypasses cache so
+  // the per-source diagnostic always reflects the current API state.
+  if (!debug) {
+    const cached = await readSharedCache();
+    if (cached) {
+      return NextResponse.json({ ...cached, source: 'cached' });
+    }
   }
 
-  // Indices: 3 single-symbol FMP calls
-  // Macro:   ^VIX + GCUSD via FMP, ^TNX via treasury-rates, CLUSD via Alpha Vantage
-  // Crypto:  CoinGecko
-  // F&G:     CNN
-  const [indices, vix, gold, tnx, oil, crypto, fg] = await Promise.all([
-    fmpQuoteMany(['^GSPC', '^IXIC', '^DJI']),
-    fmpQuoteSingle('^VIX'),
-    fmpQuoteSingle('GCUSD'),
+  // Try one batched FMP call first to minimize the FMP request count.
+  // If batch returns all 5 symbols, indices and macro (sans yield/oil) are
+  // satisfied with a single API hit instead of 5 separate calls.
+  const batched = await fmpBatchQuote(['^GSPC', '^IXIC', '^DJI', '^VIX', 'GCUSD']);
+
+  let indices: Quote[] | null = null;
+  let vix: Quote | null = null;
+  let gold: Quote | null = null;
+
+  if (batched) {
+    indices = batched.filter(q => ['^GSPC', '^IXIC', '^DJI'].includes(q.symbol));
+    vix = batched.find(q => q.symbol === '^VIX') || null;
+    gold = batched.find(q => q.symbol === 'GCUSD') || null;
+    if (indices.length !== 3) indices = null;
+  }
+
+  // If batch did not return everything, fall back to per-symbol calls only
+  // for the missing items. This minimizes total FMP requests when batch works.
+  const needsIndices = !indices;
+  const needsVix = !vix;
+  const needsGold = !gold;
+
+  const [fallbackIndices, fallbackVix, fallbackGold, tnx, oil, crypto, fg] = await Promise.all([
+    needsIndices ? fmpQuoteMany(['^GSPC', '^IXIC', '^DJI']) : Promise.resolve(null),
+    needsVix ? fmpQuoteSingle('^VIX') : Promise.resolve(null),
+    needsGold ? fmpQuoteSingle('GCUSD') : Promise.resolve(null),
     fmpTenYearYield(),
     alphaVantageWTI(),
     coinGeckoPrices(),
     cnnFearGreed(),
   ]);
+
+  if (!indices) indices = fallbackIndices;
+  if (!vix) vix = fallbackVix;
+  if (!gold) gold = fallbackGold;
 
   const macroLive: Quote[] = [];
   if (oil)  macroLive.push(oil);
@@ -278,7 +388,18 @@ export async function GET(request: Request) {
   if (vix)  macroLive.push(vix);
   if (tnx)  macroLive.push(tnx);
 
-  const lastGood = cache?.data;
+  // Read the most recently cached value as the absolute fallback. Even
+  // expired Redis cache is preferable to static demo data.
+  const lastGood = memCache?.data || (await (async () => {
+    try {
+      const redis = getRedis();
+      const raw = await redis.get(REDIS_KEY);
+      if (!raw) return null;
+      const parsed = JSON.parse(raw) as { data: TodayMarketPayload; ts: number };
+      return parsed.data;
+    } catch { return null; }
+  })());
+
   const macroOk = macroLive.length === 4;
   const allLive = Boolean(indices && macroOk && crypto && fg);
 
@@ -293,8 +414,10 @@ export async function GET(request: Request) {
   };
   payload.verdict = generateVerdict(payload);
 
+  // Persist to shared cache only on full success so the cached tier
+  // always represents real live data, never partial fallback.
   if (allLive) {
-    cache = { data: payload, ts: Date.now() };
+    await writeSharedCache(payload);
   }
 
   if (debug) {
@@ -307,6 +430,8 @@ export async function GET(request: Request) {
           ALPHA_VANTAGE_KEY_present: Boolean(process.env.ALPHA_VANTAGE_KEY),
           ALPHA_VANTAGE_KEY_length: (process.env.ALPHA_VANTAGE_KEY || '').length,
         },
+        cacheTtlSeconds: cacheTtlSeconds(),
+        cacheKey: REDIS_KEY,
         sources: debugLog,
         macroLiveCount: macroLive.length,
         indicesCount: indices?.length || 0,
