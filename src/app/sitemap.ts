@@ -16,10 +16,9 @@ export default function sitemap(): MetadataRoute.Sitemap {
     'dis','txn','intu','cat','pypl','pltr','coin','gme','sofi','rivn',
   ];
 
-  // Blog posts with substantial content only (exclude auto-generated thin posts)
-  const qualityBlogs = blogPosts.filter(p =>
-    p.sections.reduce((sum, s) => sum + s.body.length, 0) > 800
-  );
+  // Blog posts: exclude anything explicitly marked noindex.
+  // (Thin-content filter is no longer needed — we noindex at the post level.)
+  const qualityBlogs = blogPosts.filter(p => !p.noindex);
 
   return [
     // Main pages

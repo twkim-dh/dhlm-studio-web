@@ -11,8 +11,12 @@ export function generateStaticParams() {
 export async function generateMetadata({ params }: { params: Promise<{ slug: string }> }): Promise<Metadata> {
   const { slug } = await params;
   const post = getBlogPostBySlug(slug);
-  if (!post) return { title: 'Not Found' };
-  return { title: post.title, description: post.description };
+  if (!post) return { title: 'Not Found', robots: { index: false, follow: false } };
+  return {
+    title: post.title,
+    description: post.description,
+    robots: post.noindex ? { index: false, follow: false } : undefined,
+  };
 }
 
 export default async function BlogPostPage({ params }: { params: Promise<{ slug: string }> }) {
