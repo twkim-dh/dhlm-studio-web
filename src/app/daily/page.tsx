@@ -3,6 +3,7 @@ import Link from 'next/link';
 import fs from 'fs';
 import path from 'path';
 import TodayMarket from '@/components/TodayMarket';
+import InlineSubscribe from '@/components/InlineSubscribe';
 
 export const metadata: Metadata = {
   title: 'Daily Brief — Brutal AI Market Analysis | DHLM Studio',
@@ -87,6 +88,10 @@ export default function DailyIndexPage() {
             ))}
           </div>
         )}
+
+        <div style={{ marginTop: 24 }}>
+          <InlineSubscribe source="daily" headline="Get every Daily Brief in your inbox" description="One email per weekday at 7:30 AM ET. Free. CAN-SPAM compliant unsubscribe." />
+        </div>
 
         <div style={{ marginTop: 24, padding: '18px 22px', borderRadius: 14, background: '#0D1117', border: '1px solid #1E293B' }}>
           <div style={{ fontFamily: 'var(--mono)', fontSize: 9, fontWeight: 700, color: '#D4A843', letterSpacing: 2, marginBottom: 6 }}>WEEKLY SCHEDULE</div>

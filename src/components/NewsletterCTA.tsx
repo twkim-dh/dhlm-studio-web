@@ -1,30 +1,44 @@
 'use client';
 
+// Newsletter signup card. Backed by /api/subscribe (Upstash Redis).
+// `source` is recorded so we can later attribute conversions to the
+// surface that captured them (homepage, daily, request-form, report).
+
 import { useState, useEffect } from 'react';
 
-export default function NewsletterCTA() {
+export default function NewsletterCTA({ source = 'homepage' }: { source?: string }) {
   const [email, setEmail] = useState('');
   const [subscribed, setSubscribed] = useState(false);
   const [count, setCount] = useState(0);
+  const [submitting, setSubmitting] = useState(false);
+  const [error, setError] = useState('');
 
   useEffect(() => {
-    const saved = localStorage.getItem('dhlm-newsletter');
-    if (saved) setSubscribed(true);
-    // Count from localStorage (simulated)
-    const emails = JSON.parse(localStorage.getItem('dhlm-newsletter-list') || '[]');
-    setCount(emails.length);
+    if (typeof window !== 'undefined' && localStorage.getItem('dhlm-newsletter')) {
+      setSubscribed(true);
+    }
+    fetch('/api/subscribe').then(r => r.json()).then(d => { if (typeof d.total === 'number') setCount(d.total); }).catch(() => {});
   }, []);
 
-  const subscribe = () => {
-    if (!email.trim() || !email.includes('@')) return;
-    const emails = JSON.parse(localStorage.getItem('dhlm-newsletter-list') || '[]');
-    if (!emails.includes(email.trim())) {
-      emails.push(email.trim());
-      localStorage.setItem('dhlm-newsletter-list', JSON.stringify(emails));
+  const subscribe = async () => {
+    const e = email.trim().toLowerCase();
+    if (!e || !/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(e)) { setError('Enter a valid email'); return; }
+    setSubmitting(true); setError('');
+    try {
+      const res = await fetch('/api/subscribe', {
+        method: 'POST',
+        headers: { 'content-type': 'application/json' },
+        body: JSON.stringify({ email: e, source }),
+      });
+      const d = await res.json();
+      if (!res.ok) { setError(d.error || 'Server error'); setSubmitting(false); return; }
+      localStorage.setItem('dhlm-newsletter', e);
+      setSubscribed(true);
+      if (typeof d.total === 'number') setCount(d.total);
+    } catch {
+      setError('Network error');
     }
-    localStorage.setItem('dhlm-newsletter', email.trim());
-    setSubscribed(true);
-    setCount(emails.length);
+    setSubmitting(false);
   };
 
   if (subscribed) {
@@ -65,16 +79,17 @@ export default function NewsletterCTA() {
             color: '#F1F5F9', fontSize: 13, outline: 'none',
           }}
         />
-        <button onClick={subscribe} disabled={!email.includes('@')}
+        <button onClick={subscribe} disabled={submitting || !email.includes('@')}
           style={{
             padding: '12px 20px', borderRadius: 10, border: 'none',
             background: email.includes('@') ? '#C73E3A' : '#1E293B',
             color: email.includes('@') ? '#fff' : '#475569',
             fontSize: 13, fontWeight: 700, cursor: email.includes('@') ? 'pointer' : 'not-allowed',
           }}>
-          Subscribe
+          {submitting ? '...' : 'Subscribe'}
         </button>
       </div>
+      {error && <div style={{ fontSize: 10, color: '#FF4545', textAlign: 'center', marginTop: 8 }}>{error}</div>}
       <div style={{ fontSize: 10, color: '#475569', textAlign: 'center', marginTop: 8 }}>
         {count > 0 ? `Join ${count.toLocaleString()} readers` : 'Join our community'} · Free · No spam
       </div>
