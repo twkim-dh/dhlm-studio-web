@@ -17,8 +17,21 @@
 
 const fs = require('fs');
 const path = require('path');
-const Redis = require('ioredis');
-const { Resend } = require('resend');
+
+// Lazy require with graceful skip — if ioredis or resend are not installed
+// in the workflow environment, log and exit 0 instead of crashing the entire
+// daily-brief workflow. The Daily Brief markdown will still publish; only
+// the email distribution step is skipped.
+let Redis, Resend;
+try {
+  Redis = require('ioredis');
+  ({ Resend } = require('resend'));
+} catch (e) {
+  console.warn('[send-daily-email] Required modules not installed:', e.message);
+  console.warn('[send-daily-email] Add `npm install ioredis resend --no-save` step before this one in daily-brief.yml');
+  console.warn('[send-daily-email] Skipping email send (workflow continues).');
+  process.exit(0);
+}
 
 const HOST = 'dhlm-studio.com';
 const SUBSCRIBERS_KEY = 'subscribers:emails';
@@ -29,7 +42,11 @@ const dryRun = process.env.DRY_RUN === '1';
 
 function loadBrief() {
   const fp = path.join(__dirname, '..', 'src', 'content', 'daily', `${date}.md`);
-  if (!fs.existsSync(fp)) throw new Error(`Daily brief not found: ${fp}`);
+  if (!fs.existsSync(fp)) {
+    console.warn(`[send-daily-email] Daily brief not found: ${fp}`);
+    console.warn('[send-daily-email] Skipping email send (workflow continues).');
+    process.exit(0);
+  }
   const raw = fs.readFileSync(fp, 'utf8');
   const m = raw.match(/^---\n([\s\S]*?)\n---\n([\s\S]*)$/);
   if (!m) throw new Error('Invalid frontmatter');
@@ -92,9 +109,15 @@ function buildHtml(fm, body) {
 
 async function main() {
   const apiKey = process.env.RESEND_API_KEY;
-  if (!apiKey) throw new Error('RESEND_API_KEY is not set');
+  if (!apiKey) {
+    console.warn('[send-daily-email] RESEND_API_KEY not set — skipping email send (workflow continues).');
+    return;
+  }
   const redisUrl = process.env.REDIS_URL;
-  if (!redisUrl) throw new Error('REDIS_URL is not set');
+  if (!redisUrl) {
+    console.warn('[send-daily-email] REDIS_URL not set — skipping email send (workflow continues).');
+    return;
+  }
 
   console.log(`Sending Daily Brief for ${date}…`);
   const { fm, body } = loadBrief();

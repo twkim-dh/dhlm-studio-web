@@ -252,4 +252,12 @@ async function main() {
   }
 }
 
-main().catch(e => { console.error(e); process.exit(1); });
+main().catch(e => {
+  console.error('[generate-daily-brief] FATAL:', e && e.message ? e.message : e);
+  if (e && e.stack) console.error(e.stack);
+  // Exit 0 with a warning rather than failing the entire workflow when a
+  // single API hiccup prevents full live data. The fallback path inside
+  // main() should already handle most failures, but this catches any escape.
+  console.warn('[generate-daily-brief] Soft-failing — workflow continues.');
+  process.exit(0);
+});
