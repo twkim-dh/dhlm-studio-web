@@ -3,6 +3,7 @@ import Link from 'next/link';
 import fs from 'fs';
 import path from 'path';
 import LikeButton from '@/components/LikeButton';
+import ListenButton from '@/components/ListenButton';
 
 const REPORTS_DIR = path.join(process.cwd(), 'src/content/reports');
 
@@ -239,7 +240,10 @@ export default async function ReportPage({ params }: { params: Promise<{ slug: s
           </div>
           <h1 style={{ fontFamily: 'var(--serif)', fontSize: 'clamp(24px, 4vw, 34px)', fontWeight: 900, color: '#F1F5F9', lineHeight: 1.3, margin: 0 }}>{fm.title}</h1>
           <p style={{ fontSize: 15, color: '#64748B', lineHeight: 1.7, marginTop: 12 }}>{fm.description}</p>
-          <div style={{ marginTop: 12 }}><LikeButton pageId={`report-${slug}`} /></div>
+          <div style={{ marginTop: 12, display: 'flex', flexWrap: 'wrap', alignItems: 'center', gap: 10 }}>
+            <ListenButton text={body} />
+            <LikeButton pageId={`report-${slug}`} />
+          </div>
         </div>
 
         {/* Body */}
