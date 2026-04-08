@@ -237,7 +237,7 @@ export default async function ReportPage({ params }: { params: Promise<{ slug: s
                 <span style={{ fontFamily: 'var(--mono)', fontSize: 11, fontWeight: 800, color: headerColor, letterSpacing: 2 }}>{headerLabel}</span>
                 {isHotSector && fm.sector && <span style={{ fontFamily: 'var(--mono)', fontSize: 10, fontWeight: 700, padding: '2px 8px', borderRadius: 4, background: '#0D1117', color: '#94A3B8', marginLeft: 'auto' }}>{fm.sector}</span>}
               </div>
-              <div style={{ fontSize: 11, color: '#64748B', fontStyle: 'italic' }}>AI-assisted analysis under human editorial oversight. Data-driven. Zero feelings.</div>
+              <div style={{ fontSize: 11, color: '#64748B', fontStyle: 'italic' }}>Analysis under editorial oversight. Data-driven. Zero feelings.</div>
               {isHotSector && Array.isArray(fm.tickers) && fm.tickers.length > 0 && (
                 <div style={{ marginTop: 10, display: 'flex', flexWrap: 'wrap', gap: 6 }}>
                   {fm.tickers.map(t => (
@@ -319,9 +319,9 @@ export default async function ReportPage({ params }: { params: Promise<{ slug: s
         {/* Brutal AI Footer */}
         <div style={{ marginTop: 40, padding: '20px 22px', borderRadius: 14, background: '#111827', border: '1px solid #1E293B', textAlign: 'center' }}>
           <div style={{ fontFamily: 'var(--mono)', fontSize: 10, fontWeight: 800, color: '#C73E3A', letterSpacing: 2, marginBottom: 6 }}>🔥 ANALYZED BY BRUTAL AI™</div>
-          <div style={{ fontSize: 11, color: '#64748B', marginBottom: 8 }}>DHLM Studio&apos;s AI Analysis Engine</div>
+          <div style={{ fontSize: 11, color: '#64748B', marginBottom: 8 }}>DHLM Studio Analysis Engine</div>
           <div style={{ fontSize: 9, color: '#475569', lineHeight: 1.6 }}>
-            AI-assisted analysis under human editorial oversight, for informational and educational purposes.<br />
+            Analysis under editorial oversight, for informational and educational purposes.<br />
             Data: Financial Modeling Prep, Alpha Vantage, CoinGecko<br />
             NOT investment advice. Always do your own research.
           </div>

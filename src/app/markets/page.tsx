@@ -168,7 +168,7 @@ function StockCard({ s }: { s: Mover }) {
                 <ReactionButtons ticker={s.ticker} />
               </div>
               <div style={{ padding: '8px 14px', borderTop: '1px solid #1F2937', background: '#0D111780' }}>
-                <p style={{ fontSize: 8, color: '#475569', margin: 0, textAlign: 'center' }}>🤖 Informational and educational AI commentary. NOT investment advice.</p>
+                <p style={{ fontSize: 8, color: '#475569', margin: 0, textAlign: 'center' }}>🤖 Informational and educational commentary. NOT investment advice.</p>
               </div>
             </div>
           )}

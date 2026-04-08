@@ -222,7 +222,7 @@ Here is the number that defines AMD's predicament: the 22x developer ecosystem g
 
 The EPYC story alone justifies a $200B+ market cap. The AI GPU story adds optionality that could be worth $50-100B if ROCm matures and hyperscaler diversification mandates accelerate. At $280B, you are paying full price for EPYC and a moderate premium for AI optionality. There is no margin of safety, which means the stock works if AI GPU share expands and declines if it does not. For a company this good, that is a frustrating conclusion.
 
-*AI-generated analysis for informational and educational purposes. This is NOT investment advice. Always do your own research before making investment decisions.*
+*Analysis under editorial oversight, for informational and educational purposes. NOT investment advice. Always do your own research before making investment decisions.*
 
 ## Sources & Methodology
 

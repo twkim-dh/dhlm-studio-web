@@ -43,10 +43,10 @@ export default function Home() {
       <section style={{ padding: '60px 24px 32px', maxWidth: 1100, margin: '0 auto' }}>
         <Tag color="#C73E3A">REAL-TIME DATA · {YEAR}</Tag>
         <h1 style={{ fontFamily: 'var(--serif)', fontSize: 'clamp(36px, 5.5vw, 58px)', fontWeight: 900, color: '#F1F5F9', lineHeight: 1.1, letterSpacing: -1.5, margin: '16px 0' }}>
-          Brutal AI<br /><span style={{ color: '#00D474' }}>Stock Analysis</span>
+          Data-Driven<br /><span style={{ color: '#00D474' }}>Stock Analysis</span>
         </h1>
         <p style={{ fontFamily: 'var(--sans)', fontSize: 16, color: '#64748B', lineHeight: 1.7, maxWidth: 480, margin: '0 0 28px' }}>
-          3,000+ word Deep Dive reports on the world&apos;s biggest stocks — scored on the BAAF 6-axis framework. Real-time market data. Informational and educational, not investment advice.
+          3,000+ word Deep Dive reports on the world&apos;s biggest stocks, scored on the BAAF 6-axis framework. Real-time market intelligence under editorial oversight. Informational and educational, not investment advice.
         </p>
         <div style={{ display: 'flex', gap: 8, flexWrap: 'wrap' }}>
           {[

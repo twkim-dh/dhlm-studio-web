@@ -181,7 +181,7 @@ The energy storage segment — $13 billion, growing 105%, margins above 25% — 
 
 At P/E 120x with auto margins declining, you need simultaneous success in robotaxi, energy, AND robotics to justify the current price. That's three moonshots at once from a CEO who runs six companies. The probability math is unfavorable. The Musk track record says probability math doesn't apply to him. Pick your framework.
 
-*AI-generated analysis for informational and educational purposes. This is NOT investment advice. Always do your own research before making investment decisions.*
+*Analysis under editorial oversight, for informational and educational purposes. NOT investment advice. Always do your own research before making investment decisions.*
 
 ## Sources & Methodology
 

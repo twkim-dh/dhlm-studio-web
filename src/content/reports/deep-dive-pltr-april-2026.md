@@ -215,7 +215,7 @@ The probability-weighted target of $57 against a current price of $78 tells the 
 
 Fascinating company. Dangerous entry point. The plus in D+ is for the technology, not the stock.
 
-*AI-generated analysis for informational and educational purposes. This is NOT investment advice. Always do your own research before making investment decisions.*
+*Analysis under editorial oversight, for informational and educational purposes. NOT investment advice. Always do your own research before making investment decisions.*
 
 ## Sources & Methodology
 

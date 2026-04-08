@@ -202,7 +202,7 @@ But $1.6 trillion is not $235 billion. The 7x return already happened. From here
 
 The dual-class share structure is the risk that deserves more attention than it gets. Zuckerberg controls Meta's destiny regardless of what shareholders think. If he decides to spend $50 billion on metaverse research, shareholders can write letters he will ignore. At 58% voting control, this is a one-man decision. When the dictator is right (AI ads), the returns are extraordinary. When the dictator is wrong (metaverse 2021-2023), the drawdown is 77%.
 
-*AI-generated analysis for informational and educational purposes. This is NOT investment advice. Always do your own research before making investment decisions.*
+*Analysis under editorial oversight, for informational and educational purposes. NOT investment advice. Always do your own research before making investment decisions.*
 
 ## Sources & Methodology
 

@@ -199,7 +199,7 @@ What fascinates me is the sum-of-parts arbitrage. AWS alone at Microsoft Azure's
 
 At 68x earnings, you are buying a dream of margin expansion. The dream is plausible — $52B in FCF, two accelerating profit engines, and an irreplicable logistics moat. But plausible is not the same as probable, and 68x is the price of certainty, not plausibility.
 
-*AI-generated analysis for informational and educational purposes. This is NOT investment advice. Always do your own research before making investment decisions.*
+*Analysis under editorial oversight, for informational and educational purposes. NOT investment advice. Always do your own research before making investment decisions.*
 
 ## Sources & Methodology
 

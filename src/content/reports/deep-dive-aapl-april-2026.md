@@ -174,7 +174,7 @@ At P/E 34x, you're paying 1.5x the S&P 500 multiple for a company growing at 0.8
 
 Warren Buffett owns $170 billion worth. The man who turned boring into a religion thinks Apple is the most attractive stock on earth. Either the greatest investor in history is right, or he's anchored to a position that's grown too large to exit gracefully. Based on the data, I lean toward the former. Based on the P/E, I understand the latter.
 
-*AI-generated analysis for informational and educational purposes. This is NOT investment advice. Always do your own research before making investment decisions.*
+*Analysis under editorial oversight, for informational and educational purposes. NOT investment advice. Always do your own research before making investment decisions.*
 
 ## Sources & Methodology
 

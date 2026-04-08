@@ -29,7 +29,7 @@ export default function AboutPage() {
               We transform complex financial data into clear, engaging insights for everyone.
             </p>
             <p style={{ fontSize: 14, color: '#94A3B8', lineHeight: 1.8, margin: 0 }}>
-              DHLM Studio tracks 500+ stocks, 100+ cryptocurrencies, global rankings, and lottery data — updated in real-time. Our Brutal AI commentary makes financial data entertaining while our tools help you explore the world in numbers.
+              DHLM Studio tracks 500+ stocks, 100+ cryptocurrencies, global rankings, and lottery data — updated in real-time. Our Brutal AI&trade; analytical voice makes complex financial data accessible while our tools help you explore the world in numbers.
             </p>
           </div>
 
@@ -47,11 +47,11 @@ export default function AboutPage() {
               </ul>
             </div>
             <div>
-              <div style={{ fontFamily: 'var(--serif)', fontSize: 17, fontWeight: 800, color: '#F1F5F9', marginBottom: 6 }}>Brutal AI&trade; Analysis Engine</div>
+              <div style={{ fontFamily: 'var(--serif)', fontSize: 17, fontWeight: 800, color: '#F1F5F9', marginBottom: 6 }}>Brutal AI&trade; Analytical Voice</div>
               <ul style={{ margin: 0, paddingLeft: 18, fontSize: 13, color: '#94A3B8', lineHeight: 1.9 }}>
-                <li>AI-powered data collection and initial analysis</li>
-                <li>Trained on institutional equity research standards</li>
-                <li>Operates under human editorial oversight</li>
+                <li>Built on institutional equity research standards</li>
+                <li>Powered by the BAAF 6-axis scoring framework</li>
+                <li>Operates under editorial oversight</li>
                 <li>Never publishes without editor approval</li>
               </ul>
             </div>
@@ -141,14 +141,14 @@ export default function AboutPage() {
             </div>
           </div>
 
-          {/* AI Disclaimer */}
+          {/* Disclaimer */}
           <div style={{ ...card, padding: '24px 22px', borderColor: '#C73E3A30' }}>
-            <div style={{ fontFamily: 'var(--mono)', fontSize: 9, fontWeight: 700, color: '#C73E3A', letterSpacing: 2, marginBottom: 10 }}>AI DISCLAIMER</div>
+            <div style={{ fontFamily: 'var(--mono)', fontSize: 9, fontWeight: 700, color: '#C73E3A', letterSpacing: 2, marginBottom: 10 }}>DISCLAIMER</div>
             <p style={{ fontSize: 14, color: '#E2E8F0', lineHeight: 1.8, margin: '0 0 8px' }}>
-              <strong>Brutal AI&trade;</strong> generates informational and educational commentary based on publicly available financial data.
+              All <strong>Brutal AI&trade;</strong> analysis is informational and educational commentary based on publicly available financial data, published under editorial oversight.
             </p>
             <p style={{ fontSize: 13, color: '#94A3B8', lineHeight: 1.8, margin: 0 }}>
-              It is <strong style={{ color: '#C73E3A' }}>NOT investment advice</strong>. The AI character expresses exaggerated opinions that do not reflect the views of DHLM Studio. Always do your own research and consult a qualified financial advisor before making investment decisions.
+              It is <strong style={{ color: '#C73E3A' }}>NOT investment advice</strong>. Opinions expressed are analytical observations, not personalized recommendations. Always do your own research and consult a qualified financial advisor before making investment decisions.
             </p>
           </div>
 

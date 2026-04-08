@@ -164,7 +164,7 @@ export default function RoastPortfolio() {
               <button onClick={reset} style={{ padding: '10px 20px', borderRadius: 10, background: 'transparent', border: '1px solid #C73E3A30', color: '#C73E3A', fontSize: 12, fontWeight: 700, cursor: 'pointer' }}>🔥 Roast Again</button>
             </div>
 
-            <p style={{ fontSize: 9, color: '#334155', textAlign: 'center' }}>🤖 AI-generated informational commentary. NOT investment advice.</p>
+            <p style={{ fontSize: 9, color: '#334155', textAlign: 'center' }}>🤖 Informational commentary under editorial oversight. NOT investment advice.</p>
           </div>
         )}
       </div>

@@ -188,7 +188,7 @@ At P/E 36x, the market is pricing Microsoft for flawless execution of the AI tra
 
 The probability-weighted math says $418 fair value against a $420 stock price. Microsoft is the rarest thing in today's market: a company that is priced correctly. Neither cheap nor expensive. Just... fair. And in a market of extremes, "fair" might be the most attractive quality a stock can have.
 
-*AI-generated analysis for informational and educational purposes. This is NOT investment advice. Always do your own research before making investment decisions.*
+*Analysis under editorial oversight, for informational and educational purposes. NOT investment advice. Always do your own research before making investment decisions.*
 
 ## Sources & Methodology
 

@@ -26,7 +26,7 @@ export default function EditorialPage() {
           <div style={{ ...card, padding: '24px 22px' }}>
             <h2 style={{ fontFamily: 'var(--serif)', fontSize: 20, fontWeight: 800, color: '#E2E8F0', margin: '0 0 12px' }}>Our Approach</h2>
             <p style={{ fontSize: 14, color: '#94A3B8', lineHeight: 1.8, margin: 0 }}>
-              DHLM Studio combines real-time financial data with AI-generated commentary to make market analysis accessible and engaging. Our analysis follows a structured methodology: we collect data from licensed APIs, apply quantitative analysis frameworks, and present findings in a conversational tone through our Brutal AI character.
+              DHLM Studio combines real-time financial data with structured analytical commentary to make market analysis accessible and engaging. Our analysis follows a defined methodology: we collect data from licensed APIs, apply quantitative analysis frameworks, and present findings in a conversational tone through our Brutal AI&trade; analytical voice — all under editorial oversight.
             </p>
             <p style={{ fontSize: 14, color: '#94A3B8', lineHeight: 1.8, marginTop: 12 }}>
               Every Deep Dive report follows a consistent structure: company overview with key metrics, a unique analytical angle that goes beyond surface-level data, bull vs bear case presentation, and a Brutal AI verdict that synthesizes the analysis. We aim to present both sides of every argument, never recommending specific investment actions.
@@ -67,7 +67,7 @@ export default function EditorialPage() {
                 { step: '2', title: 'Quantitative Analysis', desc: 'Key metrics are compared against sector averages, historical trends, and peer companies. We analyze P/E ratios, revenue growth rates, profit margins, debt levels, and cash flow generation.' },
                 { step: '3', title: 'Qualitative Context', desc: 'We research recent news, earnings reports, product launches, regulatory actions, and competitive dynamics that affect the company\'s outlook.' },
                 { step: '4', title: 'Bull vs Bear Framework', desc: 'Every analysis presents both the optimistic and pessimistic case. We never present a one-sided view. Readers see the strongest arguments for and against.' },
-                { step: '5', title: 'Brutal AI Commentary', desc: 'Our AI character adds informational and educational commentary that makes complex analysis accessible. The conversational tone is designed to engage readers while the underlying analysis remains rigorously data-driven.' },
+                { step: '5', title: 'Brutal AI&trade; Commentary', desc: 'Our analytical voice adds informational and educational commentary that makes complex analysis accessible. The conversational tone is designed to engage readers while the underlying analysis remains rigorously data-driven.' },
               ].map(s => (
                 <div key={s.step} style={{ display: 'flex', gap: 14 }}>
                   <div style={{ width: 28, height: 28, borderRadius: '50%', background: '#C73E3A15', display: 'flex', alignItems: 'center', justifyContent: 'center', fontSize: 12, fontWeight: 800, color: '#C73E3A', flexShrink: 0 }}>{s.step}</div>
@@ -90,7 +90,7 @@ export default function EditorialPage() {
                 'Market data delay (up to 15 minutes) is disclosed on all relevant pages',
                 'We present bull AND bear cases — never one-sided analysis',
                 'We never recommend buying, selling, or holding any security',
-                'All AI commentary is clearly labeled as informational and educational content',
+                'All commentary is clearly labeled as informational and educational content',
                 'NOT investment advice disclaimers appear on every analysis page',
                 'We correct factual errors immediately upon discovery',
                 'Our content is original — we do not copy from other financial sites',
@@ -136,7 +136,7 @@ export default function EditorialPage() {
               We also employ a <strong style={{ color: '#E2E8F0' }}>multi-AI cross-verification process</strong>: reports are reviewed by multiple AI models (Claude, GPT, Gemini) to identify blind spots, factual errors, and analytical gaps before human final review.
             </p>
             <p style={{ fontSize: 13, color: '#D4A843', fontWeight: 700, lineHeight: 1.7, margin: 0 }}>
-              This is not AI-generated content published without oversight. This is AI-assisted analysis under professional editorial control.
+              This is not content published without oversight. Every report is reviewed and approved before publication.
             </p>
           </div>
 

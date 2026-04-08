@@ -290,7 +290,7 @@ Here's the number that should sober you up: at P/E 65x with a sector average of 
 
 The market rewards patience. Not panic. And not P/Es of 65 during wars that spike oil to $110.
 
-*AI-generated analysis for informational and educational purposes. This is NOT investment advice. Always do your own research before making investment decisions.*
+*Analysis under editorial oversight, for informational and educational purposes. NOT investment advice. Always do your own research before making investment decisions.*
 
 ## Sources & Methodology
 

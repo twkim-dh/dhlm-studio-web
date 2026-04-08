@@ -240,7 +240,7 @@ The quantitative verdict: a 1-5% portfolio allocation is reasonable for investor
 
 The honest answer: I cannot tell you what Bitcoin is worth. No one can. I can tell you what the supply schedule looks like (21 million, immutable), what institutional demand looks like ($113B in ETFs, decelerating), and what the probability distribution looks like (13% expected upside, 55% annual volatility). Whether those numbers make Bitcoin attractive depends on which narrative you are buying — and at $1.3 trillion, every narrative is already partially priced in.
 
-*AI-generated analysis for informational and educational purposes. This is NOT investment advice. Always do your own research before making investment decisions.*
+*Analysis under editorial oversight, for informational and educational purposes. NOT investment advice. Always do your own research before making investment decisions.*
 
 ## Sources & Methodology
 

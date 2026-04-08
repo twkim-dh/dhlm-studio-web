@@ -215,7 +215,7 @@ But here is the thing: Google is still really, really good. $380 billion in reve
 
 At 24x earnings with a 4.1% FCF yield, Google is the cheapest mega-cap in technology. Either the market is right that AI will structurally impair Google's search business, or the market is offering a 30% discount on a company with $88B in annual FCF and the resources to compete with anyone. Given Google's research talent, custom TPU infrastructure, and $110B cash position, the probability of "figures it out" exceeds "declines structurally." But the probability of "figures it out quickly enough to close the narrative gap with Microsoft" is lower than bulls want to admit.
 
-*AI-generated analysis for informational and educational purposes. This is NOT investment advice. Always do your own research before making investment decisions.*
+*Analysis under editorial oversight, for informational and educational purposes. NOT investment advice. Always do your own research before making investment decisions.*
 
 ## Sources & Methodology
 

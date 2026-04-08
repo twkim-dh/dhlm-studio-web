@@ -39,7 +39,7 @@ export default function BrutalCryptoRoast({ symbol }: { symbol: string }) {
             &ldquo;{roast.roast}&rdquo;
           </p>
           <div style={{ padding: '6px 12px', borderTop: '1px solid #1F2937', marginTop: 12, background: '#0D111780' }}>
-            <p style={{ fontSize: 8, color: '#475569', margin: 0, textAlign: 'center' }}>🤖 Informational and educational AI commentary. NOT investment advice.</p>
+            <p style={{ fontSize: 8, color: '#475569', margin: 0, textAlign: 'center' }}>🤖 Informational and educational commentary. NOT investment advice.</p>
           </div>
         </div>
       )}

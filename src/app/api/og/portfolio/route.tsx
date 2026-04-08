@@ -36,7 +36,7 @@ export async function GET(req: NextRequest) {
         </div>
 
         <div style={{ display: 'flex', justifyContent: 'space-between' }}>
-          <span style={{ fontSize: 13, color: '#334155' }}>🤖 Informational AI commentary. NOT investment advice.</span>
+          <span style={{ fontSize: 13, color: '#334155' }}>🤖 Informational commentary. NOT investment advice.</span>
           <span style={{ fontSize: 14, color: '#C73E3A', fontWeight: 700 }}>Get YOUR portfolio roasted →</span>
         </div>
       </div>
