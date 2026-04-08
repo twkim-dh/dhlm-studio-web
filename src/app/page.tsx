@@ -4,6 +4,7 @@ import { Counter, LiveMarketsPreview, CryptoPreview } from '@/components/HomeCli
 import FadeIn from '@/components/FadeIn';
 import FortuneCookie from '@/components/FortuneCookie';
 import NewsletterCTA from '@/components/NewsletterCTA';
+import TodayMarket from '@/components/TodayMarket';
 
 const YEAR = new Date().getFullYear();
 
@@ -71,6 +72,9 @@ export default function Home() {
           </div>
         ))}
       </div>
+
+      {/* ── TODAY'S MARKET (first thing visitors see) ── */}
+      <TodayMarket />
 
       {/* ── Featured Analysis (Brutal AI Deep Dives) — TOP PRIORITY ── */}
       <FadeIn>
