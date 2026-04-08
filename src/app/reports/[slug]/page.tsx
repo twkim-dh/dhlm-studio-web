@@ -260,7 +260,10 @@ export default async function ReportPage({ params }: { params: Promise<{ slug: s
         <div style={{ marginBottom: 32 }}>
           <div style={{ display: 'flex', alignItems: 'center', gap: 8, marginBottom: 10, flexWrap: 'wrap' }}>
             <span style={{ fontFamily: 'var(--mono)', fontSize: 10, fontWeight: 600, padding: '3px 8px', borderRadius: 4, background: `${fm.catColor}14`, color: fm.catColor }}>{fm.category}</span>
-            <span style={{ fontFamily: 'var(--mono)', fontSize: 10, fontWeight: 700, padding: '3px 8px', borderRadius: 4, background: '#D4A84314', color: '#D4A843' }}>BAAF: {fm.baafScore}/100 ({fm.grade})</span>
+            {/* BAAF badge only for single-stock Deep Dive reports — Hot Sector / Hidden Gem cover multiple tickers and have no aggregate score. */}
+            {(!fm.type || fm.type === 'deep-dive') && (
+              <span style={{ fontFamily: 'var(--mono)', fontSize: 10, fontWeight: 700, padding: '3px 8px', borderRadius: 4, background: '#D4A84314', color: '#D4A843' }}>BAAF: {fm.baafScore}/100 ({fm.grade})</span>
+            )}
             <span style={{ fontSize: 11, color: '#475569' }}>Published {fm.date} · {fm.readTime} read</span>
           </div>
           <h1 style={{ fontFamily: 'var(--serif)', fontSize: 'clamp(24px, 4vw, 34px)', fontWeight: 900, color: '#F1F5F9', lineHeight: 1.3, margin: 0 }}>{fm.title}</h1>
