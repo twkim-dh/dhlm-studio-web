@@ -1,0 +1,82 @@
+name: Daily Brief
+
+on:
+  schedule:
+    - cron: '30 11 * * 1-5'
+  workflow_dispatch:
+    inputs:
+      date:
+        description: "Override date (YYYY-MM-DD). Leave blank for today."
+        required: false
+        default: ''
+
+permissions:
+  contents: write
+
+jobs:
+  generate:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+
+      - name: Setup Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version: '20'
+
+      - name: Install ioredis + resend
+        run: npm install ioredis resend --no-save
+
+      - name: Generate Daily Brief markdown
+        id: generate
+        env:
+          FMP_API_KEY: ${{ secrets.FMP_API_KEY }}
+          DAILY_BRIEF_DATE: ${{ github.event.inputs.date }}
+        run: node scripts/generate-daily-brief.js
+
+      - name: Commit and push
+        id: commit
+        run: |
+          git config user.name "dhlm-bot"
+          git config user.email "dhlmstudio2026@gmail.com"
+          git add src/content/daily/
+          if git diff --cached --quiet; then
+            echo "skipped=true" >> $GITHUB_OUTPUT
+          else
+            DATE_TAG="${{ github.event.inputs.date }}"
+            if [ -z "$DATE_TAG" ]; then DATE_TAG=$(date -u +%F); fi
+            git commit -m "daily: auto-generate brief for $DATE_TAG"
+            git push
+            echo "skipped=false" >> $GITHUB_OUTPUT
+          fi
+
+      - name: Wait for Vercel deploy
+        if: steps.commit.outputs.skipped != 'true'
+        run: sleep 90
+
+      - name: Notify IndexNow
+        if: steps.commit.outputs.skipped != 'true'
+        env:
+          INDEXNOW_URLS: ${{ steps.generate.outputs.urls }}
+        run: node scripts/notify-indexnow.js
+
+      - name: Send email to subscribers
+        if: steps.commit.outputs.skipped != 'true'
+        env:
+          REDIS_URL: ${{ secrets.REDIS_URL }}
+          RESEND_API_KEY: ${{ secrets.RESEND_API_KEY }}
+          DAILY_BRIEF_DATE: ${{ github.event.inputs.date }}
+        run: node scripts/send-daily-email.js
+
+  notify-failure:
+    needs: generate
+    if: failure()
+    runs-on: ubuntu-latest
+    steps:
+      - name: Mark failure
+        run: |
+          echo "Daily brief generation failed for $(date -u +%F)"
+          exit 1
