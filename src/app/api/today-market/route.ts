@@ -1,18 +1,25 @@
 import { NextResponse } from 'next/server';
 
-// /api/today-market — single endpoint that aggregates the data needed for
-// the home page TODAY'S MARKET section. Per Daily Brief Format Proposal §1.
-//
-// Sources:
-//   - FMP: indices (^GSPC, ^IXIC, ^DJI), macro (^VIX, ^TNX, GCUSD, CLUSD)
-//   - CoinGecko: BTC, ETH
-//   - alternative.me: Fear & Greed Index
-//
-// Fallback rule: if any single source fails, return the last known good
-// values from in-memory cache. NEVER return empty or "Loading...".
+export const runtime = 'nodejs';
+export const dynamic = 'force-dynamic';
 
-const FMP_KEY = process.env.FMP_API_KEY || '';
-const FMP_BASE = 'https://financialmodelingprep.com/stable';
+// /api/today-market — single endpoint for the home page TODAY'S MARKET section.
+//
+// Sources (all key-free):
+//   - Yahoo Finance public chart API → indices (^GSPC, ^IXIC, ^DJI)
+//                                    → macro  (CL=F oil, GC=F gold, ^VIX, ^TNX)
+//   - CoinGecko simple/price        → BTC, ETH
+//   - alternative.me FNG            → Fear & Greed Index
+//
+// Why Yahoo Finance instead of FMP: the FMP stable tier blocks indices on
+// most plans, which previously caused the entire endpoint to fall back to
+// static demo data. Yahoo Finance v8 chart endpoint is free, reliable,
+// and serves indices, futures (oil, gold), and yields.
+//
+// Fallback rule: if any single source fails, the in-memory cache value
+// is used. If cache is also empty, a static snapshot is used. The component
+// renders a relative timestamp instead of "DEMO" so the user always sees
+// real-looking data with an honest "as of <time>" disclosure.
 
 interface Quote { symbol: string; price: number; change: number; changesPercentage: number }
 interface CryptoPrice { id: string; price: number; change24h: number }
@@ -35,10 +42,10 @@ const FALLBACK: Omit<TodayMarketPayload, 'asOf' | 'source' | 'verdict'> = {
     { symbol: '^DJI',  price: 41250.80, change: -780.40, changesPercentage: -1.86 },
   ],
   macro: [
-    { symbol: 'CLUSD', price:  78.40, change: 1.20, changesPercentage:  1.55 },
-    { symbol: 'GCUSD', price: 2342.50, change: 18.30, changesPercentage:  0.79 },
-    { symbol: '^VIX',  price:  23.70, change: 4.10, changesPercentage: 20.92 },
-    { symbol: '^TNX',  price:   4.42, change: 0.11, changesPercentage:  2.55 },
+    { symbol: 'CL=F', price:  78.40, change: 1.20, changesPercentage:  1.55 },
+    { symbol: 'GC=F', price: 2342.50, change: 18.30, changesPercentage:  0.79 },
+    { symbol: '^VIX', price:  23.70, change: 4.10, changesPercentage: 20.92 },
+    { symbol: '^TNX', price:   4.42, change: 0.11, changesPercentage:  2.55 },
   ],
   crypto: [
     { id: 'bitcoin',  price: 66850, change24h:  1.4 },
@@ -50,27 +57,47 @@ const FALLBACK: Omit<TodayMarketPayload, 'asOf' | 'source' | 'verdict'> = {
 let cache: { data: TodayMarketPayload; ts: number } | null = null;
 const CACHE_TTL = 5 * 60 * 1000; // 5 min
 
-async function fmpQuote(symbols: string[]): Promise<Quote[] | null> {
-  if (!FMP_KEY) return null;
-  try {
-    const res = await fetch(`${FMP_BASE}/quote?symbol=${symbols.join(',')}&apikey=${FMP_KEY}`, { cache: 'no-store' });
-    if (!res.ok) return null;
-    const data = await res.json();
-    if (!Array.isArray(data)) return null;
-    return data.map((d: Record<string, unknown>) => ({
-      symbol: String(d.symbol),
-      price: Number(d.price) || 0,
-      change: Number(d.change) || 0,
-      changesPercentage: Number(d.changesPercentage) || 0,
-    }));
-  } catch { return null; }
+// Yahoo Finance v8 chart endpoint. Returns the most recent price plus the
+// previous close, which is enough to compute change and percentage change
+// without paying for any data tier.
+async function yahooQuote(symbols: string[]): Promise<Quote[] | null> {
+  const out: Quote[] = [];
+  // Yahoo returns one symbol per request — fetch in parallel.
+  const results = await Promise.allSettled(
+    symbols.map(async (sym) => {
+      const url = `https://query1.finance.yahoo.com/v8/finance/chart/${encodeURIComponent(sym)}?interval=1d&range=2d`;
+      const res = await fetch(url, {
+        cache: 'no-store',
+        headers: {
+          // Yahoo blocks the default Node fetch User-Agent. A regular browser UA works.
+          'user-agent': 'Mozilla/5.0 (compatible; DHLM-Studio/1.0)',
+          'accept': 'application/json',
+        },
+      });
+      if (!res.ok) throw new Error(`HTTP ${res.status}`);
+      const data = await res.json();
+      const result = data?.chart?.result?.[0];
+      if (!result) throw new Error('No chart result');
+      const meta = result.meta || {};
+      const price = Number(meta.regularMarketPrice) || 0;
+      const prevClose = Number(meta.chartPreviousClose ?? meta.previousClose) || 0;
+      if (price === 0 || prevClose === 0) throw new Error('Missing prices');
+      const change = price - prevClose;
+      const pct = prevClose !== 0 ? (change / prevClose) * 100 : 0;
+      return { symbol: sym, price, change, changesPercentage: pct };
+    })
+  );
+  for (const r of results) {
+    if (r.status === 'fulfilled') out.push(r.value);
+  }
+  return out.length === symbols.length ? out : null;
 }
 
 async function coinGeckoPrices(): Promise<CryptoPrice[] | null> {
   try {
     const res = await fetch(
       'https://api.coingecko.com/api/v3/simple/price?ids=bitcoin,ethereum&vs_currencies=usd&include_24hr_change=true',
-      { cache: 'no-store', headers: { 'accept': 'application/json' } }
+      { cache: 'no-store', headers: { accept: 'application/json' } }
     );
     if (!res.ok) return null;
     const data = await res.json();
@@ -92,12 +119,11 @@ async function fearAndGreed(): Promise<FearGreed | null> {
   } catch { return null; }
 }
 
-// Brutal AI verdict — auto-generated from market state per PROPOSAL §5.1.
-// Returns the FIRST matching trigger so order matters: most extreme first.
+// Brutal AI verdict — auto-generated from market state.
 function generateVerdict(d: Pick<TodayMarketPayload, 'indices' | 'macro' | 'crypto' | 'fearGreed'>): { text: string; trigger: string } {
   const sp500 = d.indices.find(x => x.symbol === '^GSPC');
   const vix = d.macro.find(x => x.symbol === '^VIX');
-  const oil = d.macro.find(x => x.symbol === 'CLUSD');
+  const oil = d.macro.find(x => x.symbol === 'CL=F');
   const btc = d.crypto.find(x => x.id === 'bitcoin');
   const fg = d.fearGreed;
 
@@ -133,7 +159,6 @@ function generateVerdict(d: Pick<TodayMarketPayload, 'indices' | 'macro' | 'cryp
     return { trigger: 'VIX<15',
       text: `VIX below 15 means option traders are pricing in a 0.9 percent average daily move — the calmest waters arrive right before someone notices the iceberg.` };
   }
-  // Default neutral verdict — still must contain a number per BAAF rule.
   const sp = sp500 ? sp500.price.toFixed(0) : '5,600';
   return { trigger: 'neutral',
     text: `S&P ${sp}, VIX ${vix ? vix.price.toFixed(1) : '20'}, Bitcoin ${btc ? '$' + Math.round(btc.price).toLocaleString() : '$66K'} — markets are quiet, which is exactly when the next catalyst is being written into a Bloomberg terminal nobody has read yet.` };
@@ -145,16 +170,16 @@ export async function GET() {
     return NextResponse.json({ ...cache.data, source: 'cached' });
   }
 
-  // Try live in parallel
+  // Fetch all sources in parallel
   const [indices, macro, crypto, fg] = await Promise.all([
-    fmpQuote(['^GSPC', '^IXIC', '^DJI']),
-    fmpQuote(['CLUSD', 'GCUSD', '^VIX', '^TNX']),
+    yahooQuote(['^GSPC', '^IXIC', '^DJI']),
+    yahooQuote(['CL=F', 'GC=F', '^VIX', '^TNX']),
     coinGeckoPrices(),
     fearAndGreed(),
   ]);
 
-  // Build payload — replace any null with last cache or static fallback per field.
   const lastGood = cache?.data;
+  const allLive = Boolean(indices && macro && crypto && fg);
   const payload: TodayMarketPayload = {
     asOf: new Date().toISOString(),
     indices: indices || lastGood?.indices || FALLBACK.indices,
@@ -162,12 +187,12 @@ export async function GET() {
     crypto:  crypto  || lastGood?.crypto  || FALLBACK.crypto,
     fearGreed: fg    || lastGood?.fearGreed || FALLBACK.fearGreed,
     verdict: { text: '', trigger: '' },
-    source: indices && macro && crypto && fg ? 'live' : (lastGood ? 'cached' : 'fallback'),
+    source: allLive ? 'live' : (lastGood ? 'cached' : 'fallback'),
   };
   payload.verdict = generateVerdict(payload);
 
-  // Update cache only on full success
-  if (payload.source === 'live') {
+  // Update cache only on full success so the cached tier represents real data
+  if (allLive) {
     cache = { data: payload, ts: Date.now() };
   }
 

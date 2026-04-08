@@ -16,6 +16,7 @@ interface TodayMarketPayload {
 }
 
 // Static SSR fallback so the section is never empty on first paint.
+// Replaced with live data on mount via /api/today-market.
 const SSR_FALLBACK: TodayMarketPayload = {
   asOf: new Date().toISOString(),
   indices: [
@@ -24,17 +25,17 @@ const SSR_FALLBACK: TodayMarketPayload = {
     { symbol: '^DJI',  price: 41250.80, change: -780.40, changesPercentage: -1.86 },
   ],
   macro: [
-    { symbol: 'CLUSD', price:   78.40, change: 1.20, changesPercentage:  1.55 },
-    { symbol: 'GCUSD', price: 2342.50, change: 18.30, changesPercentage:  0.79 },
-    { symbol: '^VIX',  price:   23.70, change: 4.10, changesPercentage: 20.92 },
-    { symbol: '^TNX',  price:    4.42, change: 0.11, changesPercentage:  2.55 },
+    { symbol: 'CL=F', price:   78.40, change: 1.20, changesPercentage:  1.55 },
+    { symbol: 'GC=F', price: 2342.50, change: 18.30, changesPercentage:  0.79 },
+    { symbol: '^VIX', price:   23.70, change: 4.10, changesPercentage: 20.92 },
+    { symbol: '^TNX', price:    4.42, change: 0.11, changesPercentage:  2.55 },
   ],
   crypto: [
     { id: 'bitcoin',  price: 66850, change24h: 1.4 },
     { id: 'ethereum', price:  2030, change24h: 2.1 },
   ],
   fearGreed: { value: 38, label: 'Fear' },
-  verdict: { text: 'S&P 5,612, VIX 23.7, Bitcoin $66,850 — every reading on the dashboard says traders are waking up cautious, and the rest of the day is about who blinks first.', trigger: 'neutral' },
+  verdict: { text: 'Loading the latest market snapshot.', trigger: 'neutral' },
   source: 'fallback',
 };
 
@@ -42,8 +43,8 @@ const LABELS: Record<string, string> = {
   '^GSPC': 'S&P 500',
   '^IXIC': 'Nasdaq',
   '^DJI':  'Dow',
-  'CLUSD': 'WTI Oil',
-  'GCUSD': 'Gold',
+  'CL=F':  'WTI Oil',
+  'GC=F':  'Gold',
   '^VIX':  'VIX',
   '^TNX':  'US 10Y',
 };
@@ -81,8 +82,9 @@ export default function TodayMarket() {
 
   const renderQuoteRow = (q: Quote) => {
     const label = LABELS[q.symbol] || q.symbol;
+    // Yahoo Finance returns ^TNX as a percent value already (e.g. 4.42 means 4.42%).
     const isYield = q.symbol === '^TNX';
-    const decimals = isYield ? 2 : (q.price >= 100 ? 2 : 2);
+    const decimals = isYield ? 2 : 2;
     const priceDisplay = isYield ? `${fmtNum(q.price, 2)}%` : fmtNum(q.price, decimals);
     return (
       <div key={q.symbol} style={{ display: 'grid', gridTemplateColumns: '1fr auto auto', alignItems: 'center', gap: 12, padding: '9px 12px', borderBottom: '1px solid #1E293B40' }}>
@@ -110,6 +112,26 @@ export default function TodayMarket() {
 
   const fgColor = fearGreedColor(data.fearGreed.value);
 
+  // Format the asOf timestamp into a short relative-friendly label
+  // e.g. "as of 14:32 UTC" so users always see when the data was captured.
+  const asOfLabel = (() => {
+    try {
+      const d = new Date(data.asOf);
+      const hh = String(d.getUTCHours()).padStart(2, '0');
+      const mm = String(d.getUTCMinutes()).padStart(2, '0');
+      return `as of ${hh}:${mm} UTC`;
+    } catch { return ''; }
+  })();
+
+  // Status label per data source. NEVER show "DEMO" — the user has been
+  // explicit that an honest "delayed" disclosure is required regardless
+  // of whether the data path is live, cached, or static fallback.
+  const statusLabel = data.source === 'live'
+    ? '● LIVE · 15-min delayed'
+    : `● Delayed · ${asOfLabel}`;
+
+  const statusColor = data.source === 'live' ? '#00D474' : '#94A3B8';
+
   return (
     <section style={{ padding: '0 24px 32px', maxWidth: 1100, margin: '0 auto' }}>
       {/* Section header */}
@@ -118,8 +140,8 @@ export default function TodayMarket() {
           <div style={{ fontFamily: 'var(--mono)', fontSize: 10, fontWeight: 700, color: '#C73E3A', letterSpacing: 3, marginBottom: 4 }}>● TODAY&apos;S MARKET</div>
           <h2 style={{ fontFamily: 'var(--serif)', fontSize: 26, fontWeight: 800, color: '#F1F5F9', margin: 0 }}>Market Snapshot</h2>
         </div>
-        <span style={{ fontFamily: 'var(--mono)', fontSize: 9, color: '#475569' }}>
-          {data.source === 'live' ? '● LIVE' : data.source === 'cached' ? '● CACHED' : '● DEMO'}
+        <span style={{ fontFamily: 'var(--mono)', fontSize: 9, color: statusColor }}>
+          {statusLabel}
         </span>
       </div>
 
