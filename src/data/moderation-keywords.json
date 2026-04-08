@@ -1,0 +1,108 @@
+{
+  "_meta": {
+    "purpose": "Comment moderation keyword lists used by .github/workflows/moderate-comments.yml",
+    "lastUpdated": "2026-04-08",
+    "tiers": {
+      "auto_delete": "Highest severity. Comment deleted immediately. Logged for record.",
+      "auto_hide": "Comment minimized (hidden by default, expandable by readers). Reviewed weekly.",
+      "flag_for_review": "Comment stays visible but flagged for editor review queue."
+    },
+    "matching": "Substring match, case-insensitive. The workflow normalizes obfuscation (e.g. 'f*ck' → 'fuck', '$ell' → 'sell') before matching."
+  },
+
+  "auto_delete": {
+    "profanity": [
+      "fuck", "fucking", "fucker", "fck", "fuk",
+      "shit", "sht", "bullshit",
+      "asshole", "dickhead",
+      "cunt",
+      "bitch", "btch",
+      "bastard",
+      "motherfucker",
+      "retard", "retarded"
+    ],
+    "sexual_explicit": [
+      "porn", "xxx",
+      "nude", "naked",
+      "onlyfans",
+      "escort", "hookup",
+      "horny",
+      "sex chat", "sex cam"
+    ],
+    "drugs_weapons": [
+      "buy weed", "buy cocaine", "buy meth", "buy heroin",
+      "ar15", "ar-15", "buy gun", "ghost gun",
+      "silencer", "suppressor"
+    ],
+    "hate_speech": [
+      "nazi", "white power", "kkk",
+      "n word", "k word",
+      "kill yourself", "kys",
+      "jew banker", "jewish conspiracy"
+    ],
+    "personal_info": [
+      "my phone is", "call me at",
+      "ssn ", "social security",
+      "passport number"
+    ]
+  },
+
+  "auto_hide": {
+    "investment_advice": [
+      "guaranteed return", "guaranteed profit",
+      "100x", "1000x",
+      "to the moon", "moonshot guaranteed",
+      "pump and dump", "pump it",
+      "buy now or regret",
+      "sell everything",
+      "dump it all",
+      "get rich quick",
+      "easy money",
+      "no risk",
+      "free money",
+      "double your money"
+    ],
+    "spam_promotion": [
+      "telegram.me", "t.me/",
+      "discord.gg/",
+      "whatsapp.com",
+      "join my group",
+      "join my signal",
+      "dm me", "pm me",
+      "follow me on",
+      "check my profile",
+      "click my bio",
+      "link in bio"
+    ],
+    "crypto_pump": [
+      "next bitcoin", "next eth",
+      "10000x gem",
+      "presale alert", "ico alert",
+      "send 1 eth get 2",
+      "free airdrop"
+    ]
+  },
+
+  "flag_for_review": {
+    "directional_recommendation": [
+      "you should buy",
+      "you should sell",
+      "i recommend",
+      "my recommendation",
+      "must buy",
+      "must sell",
+      "do not buy",
+      "do not sell"
+    ],
+    "controversial_topics": [
+      "fed printer",
+      "stocks are rigged",
+      "market is manipulated",
+      "pump and dump scheme"
+    ],
+    "url_density_threshold": {
+      "_note": "Workflow flags comments with 2 or more URLs even if no other keyword match",
+      "max_urls_allowed": 1
+    }
+  }
+}

@@ -78,18 +78,26 @@ export default function GiscusComments({ slug }: Props) {
         </p>
       </div>
 
-      {/* User-content disclaimer */}
+      {/* Discussion rules + user-content disclaimer */}
       <div style={{
-        padding: '12px 16px',
+        padding: '14px 18px',
         borderRadius: 10,
         background: '#0D1117',
         border: '1px solid #1E293B',
         marginBottom: 16,
         fontSize: 11,
         color: '#64748B',
-        lineHeight: 1.7,
+        lineHeight: 1.8,
       }}>
-        Comments are user-generated and do not represent DHLM Studio&apos;s views. This is not investment advice. Please keep discussion data-driven and respectful. GitHub login is required to comment.
+        <div style={{ fontFamily: 'var(--mono)', fontSize: 9, fontWeight: 800, color: '#94A3B8', letterSpacing: 1.5, marginBottom: 6 }}>💬 DISCUSSION RULES</div>
+        <ul style={{ margin: '0 0 10px', paddingLeft: 16 }}>
+          <li>Keep it data-driven and respectful</li>
+          <li>No investment advice (buy / sell / hold)</li>
+          <li>No spam, promotion, or solicitation</li>
+          <li>No profanity or offensive content</li>
+          <li>Violations are automatically removed</li>
+        </ul>
+        Comments are user-generated and do not represent DHLM Studio&apos;s views. This is not investment advice. GitHub login is required to comment.
       </div>
 
       {isConfigured ? (
