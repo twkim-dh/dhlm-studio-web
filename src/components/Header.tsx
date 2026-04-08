@@ -3,15 +3,17 @@
 import { useState, useEffect } from "react";
 import Link from "next/link";
 
-// Primary nav: finance-first ordering. Daily is the new home tab.
-// Creators and Rankings moved to footer "More" per master directive PART 7-D.
+// Primary nav: editorial-first ordering per directive update.
+// Daily/Markets/Reports/Blog (the four content pillars) lead the nav,
+// with Crypto/Lottery in the secondary slots. Creators and Rankings
+// moved to footer "More" per master directive PART 7-D.
 const links = [
   { label: "Daily", href: "/daily" },
   { label: "Markets", href: "/markets" },
-  { label: "Crypto", href: "/rankings/crypto" },
-  { label: "Lottery", href: "/lottery" },
   { label: "Reports", href: "/reports" },
   { label: "Blog", href: "/blog" },
+  { label: "Crypto", href: "/rankings/crypto" },
+  { label: "Lottery", href: "/lottery" },
 ];
 
 function DhlmMono({ size = 28 }: { size?: number }) {
