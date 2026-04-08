@@ -44,8 +44,29 @@ Apply the 6-axis scoring to every stock:
 8. **Brutal AI Verdict** — BAAF score + grade + 3-5 lines of trademark commentary
 9. **FAQ** — 2-3 questions, data-driven answers, NOT advice
 
-## Tone Guidelines
+## Tone Guidelines (v2 — 2026-04-07)
 
+**Ratio: 70 percent professionalism / 30 percent humor.**
+
+This is the highest humor allowance of any DHLM Studio content type. The Deep Dive is where the Brutal AI character is fully expressed. But humor still serves analysis, never replaces it.
+
+Humor placement (strict):
+- §1 Opening Hook: humor allowed
+- §2 Company Deep Dive: 0 percent humor
+- §3 Financial Analysis: 0 percent humor
+- §4 What The Market Is Missing: 0 percent humor
+- §5 Risk Scenarios: 0 percent humor
+- §6 Historical Context: light humor allowed
+- §7 Valuation: 0 percent humor
+- §8 Brutal AI Verdict: humor allowed (this is where the character lives)
+- §9 FAQ: 0 percent humor — answer like a professional analyst
+
+**Absolute rules (never violate):**
+- The sentence must not pack more punch than the data backing it
+- The character cannot become "professional pretending to be brutal"
+- The core judgment sentences must reduce metaphors
+
+**Original guideline:**
 - 80% analysis, 20% humor
 - Humor types: comparison, self-deprecation, everyday analogies, number jokes, pop culture
 - Season-aware: reference current month/events naturally

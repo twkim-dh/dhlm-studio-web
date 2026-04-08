@@ -26,6 +26,13 @@ interface ReportFrontmatter {
   seoDescription?: string;
   relatedSlugs?: string[];
   faqs?: FaqItem[];
+  // Hot Sector / Hidden Gem report support (April 8, 2026 — PART 2-7)
+  /** "deep-dive" (default) | "hot-sector" | "hidden-gem" */
+  type?: string;
+  /** For hot-sector reports: covered industry e.g. "Energy" */
+  sector?: string;
+  /** For hot-sector reports: array of tickers covered */
+  tickers?: string[];
 }
 
 function parseMarkdown(content: string): { frontmatter: ReportFrontmatter; body: string } {
@@ -216,14 +223,31 @@ export default async function ReportPage({ params }: { params: Promise<{ slug: s
       <article style={{ maxWidth: 760, margin: '0 auto', padding: '80px 24px' }}>
         <Link href="/reports" style={{ fontSize: 12, color: '#64748B' }}>← Reports</Link>
 
-        {/* Brutal AI Header */}
-        <div style={{ marginTop: 20, padding: '20px 22px', borderRadius: 14, background: 'linear-gradient(135deg, #C73E3A08, #C73E3A03)', border: '1px solid #C73E3A20', marginBottom: 16 }}>
-          <div style={{ display: 'flex', alignItems: 'center', gap: 8, marginBottom: 8 }}>
-            <span style={{ fontSize: 18 }}>🔥</span>
-            <span style={{ fontFamily: 'var(--mono)', fontSize: 11, fontWeight: 800, color: '#C73E3A', letterSpacing: 2 }}>BRUTAL AI™ DEEP DIVE</span>
-          </div>
-          <div style={{ fontSize: 11, color: '#64748B', fontStyle: 'italic' }}>AI-assisted analysis under human editorial oversight. Data-driven. Zero feelings.</div>
-        </div>
+        {/* Brutal AI Header — type-aware */}
+        {(() => {
+          const isHotSector = fm.type === 'hot-sector' || fm.type === 'hidden-gem';
+          const headerLabel = isHotSector
+            ? (fm.type === 'hidden-gem' ? 'BRUTAL AI™ HIDDEN GEM' : 'BRUTAL AI™ HOT SECTOR')
+            : 'BRUTAL AI™ DEEP DIVE';
+          const headerColor = isHotSector ? '#D4A843' : '#C73E3A';
+          return (
+            <div style={{ marginTop: 20, padding: '20px 22px', borderRadius: 14, background: `linear-gradient(135deg, ${headerColor}10, ${headerColor}05)`, border: `1px solid ${headerColor}30`, marginBottom: 16 }}>
+              <div style={{ display: 'flex', alignItems: 'center', gap: 8, marginBottom: 8 }}>
+                <span style={{ fontSize: 18 }}>🔥</span>
+                <span style={{ fontFamily: 'var(--mono)', fontSize: 11, fontWeight: 800, color: headerColor, letterSpacing: 2 }}>{headerLabel}</span>
+                {isHotSector && fm.sector && <span style={{ fontFamily: 'var(--mono)', fontSize: 10, fontWeight: 700, padding: '2px 8px', borderRadius: 4, background: '#0D1117', color: '#94A3B8', marginLeft: 'auto' }}>{fm.sector}</span>}
+              </div>
+              <div style={{ fontSize: 11, color: '#64748B', fontStyle: 'italic' }}>AI-assisted analysis under human editorial oversight. Data-driven. Zero feelings.</div>
+              {isHotSector && Array.isArray(fm.tickers) && fm.tickers.length > 0 && (
+                <div style={{ marginTop: 10, display: 'flex', flexWrap: 'wrap', gap: 6 }}>
+                  {fm.tickers.map(t => (
+                    <span key={t} style={{ fontFamily: 'var(--mono)', fontSize: 10, fontWeight: 800, padding: '4px 8px', borderRadius: 6, background: '#0D1117', border: '1px solid #1E293B', color: '#60A5FA' }}>{t}</span>
+                  ))}
+                </div>
+              )}
+            </div>
+          );
+        })()}
 
         {/* Editor Reviewed Badge */}
         <div style={{ display: 'flex', flexWrap: 'wrap', gap: 6, marginBottom: 24 }}>
