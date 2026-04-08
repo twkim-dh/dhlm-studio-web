@@ -59,6 +59,9 @@ export default function sitemap(): MetadataRoute.Sitemap {
     { url: `${BASE}/lottery/powerball/stats`, lastModified: now, changeFrequency: "daily", priority: 0.7 },
     { url: `${BASE}/lottery/mega-millions/stats`, lastModified: now, changeFrequency: "daily", priority: 0.7 },
 
+    // Daily Brief
+    { url: `${BASE}/daily`, lastModified: now, changeFrequency: "daily", priority: 0.9 },
+
     // Reports
     { url: `${BASE}/reports`, lastModified: now, changeFrequency: "weekly", priority: 0.8 },
 
