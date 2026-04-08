@@ -10,6 +10,14 @@ const nextConfig: NextConfig = {
   },
   async redirects() {
     return [
+      // Canonical host: www → non-www. All traffic consolidates on
+      // dhlm-studio.com so Google does not split signals across two hosts.
+      {
+        source: '/:path*',
+        has: [{ type: 'host', value: 'www.dhlm-studio.com' }],
+        destination: 'https://dhlm-studio.com/:path*',
+        permanent: true,
+      },
       // Deleted utilities → home or relevant page
       { source: '/tools/calc/:path*', destination: '/', permanent: true },
       { source: '/tools/dev/:path*', destination: '/', permanent: true },
