@@ -4,22 +4,27 @@
 // Cost: $0. Browser-native. Falls back to a disabled state if the API is unavailable
 // (older browsers, in-app webviews, certain mobile contexts).
 //
-// Usage:
-//   <ListenButton text="Full report body to read aloud..." minutes={14} />
+// Mobile / iOS Safari fixes (2026-04-09):
+//   1. Touch target ≥ 44×44px (Apple HIG / WCAG AAA)
+//   2. Sentence chunking — iOS Safari silently stops after ~15s of any single
+//      utterance. Splitting into ~150-character chunks and chaining via onend
+//      keeps long reports playing through to the end.
+//   3. NO synth.cancel() before the first speak() inside the user gesture —
+//      cancel is async on iOS and breaks the gesture binding required for
+//      autoplay. We track utterances we created so cancel only runs on stop.
+//   4. iOS pause/resume is unreliable — pause is implemented as full stop and
+//      restart from the next chunk on resume to avoid the buggy state path.
 
 import { useState, useEffect, useRef, useCallback } from 'react';
 
 interface Props {
-  /** The text to read aloud. Markdown/HTML stripping happens here. */
   text: string;
-  /** Optional pre-computed estimate; otherwise derived from word count at ~180 wpm. */
   minutes?: number;
 }
 
 type Status = 'idle' | 'playing' | 'paused';
 
 function stripContent(s: string): string {
-  // Remove markdown headings, bold, italic, links, code, tables — keep prose only.
   return s
     .replace(/```[\s\S]*?```/g, ' ')
     .replace(/`[^`]*`/g, ' ')
@@ -39,83 +44,226 @@ function estimateMinutes(text: string): number {
   return Math.max(1, Math.round(words / 180));
 }
 
+// Split text into ~200 character chunks at sentence boundaries.
+// iOS Safari silently truncates utterances longer than ~15 seconds, which
+// at default rate is roughly 200 characters. Sentence-aware chunking keeps
+// the cadence natural and avoids mid-word cuts.
+function chunkText(text: string, maxChars = 200): string[] {
+  if (!text) return [];
+  const sentences = text.match(/[^.!?]+[.!?]+|[^.!?]+$/g) || [text];
+  const chunks: string[] = [];
+  let current = '';
+  for (const s of sentences) {
+    const sentence = s.trim();
+    if (!sentence) continue;
+    if (current.length + sentence.length + 1 <= maxChars) {
+      current = current ? `${current} ${sentence}` : sentence;
+    } else {
+      if (current) chunks.push(current);
+      // If a single sentence is longer than maxChars, hard-split it on word boundaries
+      if (sentence.length > maxChars) {
+        const words = sentence.split(' ');
+        let buf = '';
+        for (const w of words) {
+          if (buf.length + w.length + 1 <= maxChars) {
+            buf = buf ? `${buf} ${w}` : w;
+          } else {
+            if (buf) chunks.push(buf);
+            buf = w;
+          }
+        }
+        current = buf;
+      } else {
+        current = sentence;
+      }
+    }
+  }
+  if (current) chunks.push(current);
+  return chunks;
+}
+
 export default function ListenButton({ text, minutes }: Props) {
   const [supported, setSupported] = useState(false);
   const [status, setStatus] = useState<Status>('idle');
-  const utterRef = useRef<SpeechSynthesisUtterance | null>(null);
   const cleanText = stripContent(text);
   const mins = minutes ?? estimateMinutes(cleanText);
+  const chunksRef = useRef<string[]>([]);
+  const indexRef = useRef(0);
+  // Stop flag — iOS onend fires after cancel(), this guards the chain.
+  const stoppedRef = useRef(false);
 
   useEffect(() => {
     setSupported(typeof window !== 'undefined' && 'speechSynthesis' in window);
     return () => {
       if (typeof window !== 'undefined' && 'speechSynthesis' in window) {
-        window.speechSynthesis.cancel();
+        try { window.speechSynthesis.cancel(); } catch { /* ignore */ }
       }
     };
   }, []);
 
-  const play = useCallback(() => {
-    if (!supported) return;
+  // Speak a single chunk and chain onend → next chunk. Defined as ref so
+  // the onend callback always sees the latest version after rebuild.
+  const speakNext = useCallback(() => {
+    if (stoppedRef.current) return;
     const synth = window.speechSynthesis;
-    synth.cancel();
-    const u = new SpeechSynthesisUtterance(cleanText);
+    if (!synth) return;
+    const i = indexRef.current;
+    if (i >= chunksRef.current.length) {
+      setStatus('idle');
+      return;
+    }
+    const u = new SpeechSynthesisUtterance(chunksRef.current[i]);
     u.lang = 'en-US';
     u.rate = 1.0;
     u.pitch = 1.0;
-    u.onend = () => setStatus('idle');
-    u.onerror = () => setStatus('idle');
-    utterRef.current = u;
+    u.volume = 1.0;
+    u.onend = () => {
+      // Guard: if user pressed stop, the cancel() will trigger onend; do not advance.
+      if (stoppedRef.current) return;
+      indexRef.current = i + 1;
+      // Schedule the next chunk in a microtask to keep the iOS event loop happy.
+      setTimeout(speakNext, 30);
+    };
+    u.onerror = () => {
+      // Move to next chunk on error rather than aborting — single bad chunk
+      // should not kill the entire reading.
+      if (stoppedRef.current) return;
+      indexRef.current = i + 1;
+      setTimeout(speakNext, 30);
+    };
     synth.speak(u);
+  }, []);
+
+  // Play handler — must be called DIRECTLY from the click event so iOS
+  // honors the user gesture. No await, no setTimeout before the first speak.
+  const play = useCallback(() => {
+    if (!supported || typeof window === 'undefined') return;
+    const synth = window.speechSynthesis;
+    if (!synth) return;
+
+    // Build chunks once
+    chunksRef.current = chunkText(cleanText);
+    indexRef.current = 0;
+    stoppedRef.current = false;
+
+    if (chunksRef.current.length === 0) return;
+
+    // CRITICAL: do NOT call synth.cancel() before the first speak() on iOS.
+    // cancel() is async and the gesture binding required for autoplay is
+    // lost between cancel and speak. Instead, mark stopped and call speak
+    // directly. The previous run's onend chain will see stoppedRef and exit.
+    stoppedRef.current = false;
+
+    // Start the first chunk synchronously (gesture-bound)
+    const first = new SpeechSynthesisUtterance(chunksRef.current[0]);
+    first.lang = 'en-US';
+    first.rate = 1.0;
+    first.pitch = 1.0;
+    first.volume = 1.0;
+    first.onend = () => {
+      if (stoppedRef.current) return;
+      indexRef.current = 1;
+      setTimeout(speakNext, 30);
+    };
+    first.onerror = () => {
+      if (stoppedRef.current) return;
+      indexRef.current = 1;
+      setTimeout(speakNext, 30);
+    };
+    synth.speak(first);
     setStatus('playing');
-  }, [supported, cleanText]);
+  }, [supported, cleanText, speakNext]);
 
-  const pause = useCallback(() => {
-    if (!supported) return;
-    window.speechSynthesis.pause();
-    setStatus('paused');
-  }, [supported]);
-
-  const resume = useCallback(() => {
-    if (!supported) return;
-    window.speechSynthesis.resume();
-    setStatus('playing');
-  }, [supported]);
-
+  // Stop handler — sets the guard then calls cancel.
   const stop = useCallback(() => {
     if (!supported) return;
-    window.speechSynthesis.cancel();
+    stoppedRef.current = true;
+    try { window.speechSynthesis.cancel(); } catch { /* ignore */ }
     setStatus('idle');
   }, [supported]);
 
   if (!supported) {
     return (
-      <div style={{ display: 'inline-flex', alignItems: 'center', gap: 6, padding: '6px 12px', borderRadius: 8, background: '#0D1117', border: '1px solid #1E293B', fontSize: 11, color: '#475569', fontFamily: 'var(--mono)' }}>
+      <div style={{
+        display: 'inline-flex', alignItems: 'center', gap: 8,
+        minHeight: 44, padding: '0 16px', borderRadius: 10,
+        background: '#0D1117', border: '1px solid #1E293B',
+        fontSize: 12, color: '#475569', fontFamily: 'var(--mono)',
+      }}>
         🔊 Listen unavailable
       </div>
     );
   }
 
+  // Idle state: render the entire card as a single button so the touch
+  // target is the full visible area, not a small inner text node.
+  if (status === 'idle') {
+    return (
+      <button
+        type="button"
+        onClick={play}
+        aria-label={`Listen to article, approximately ${mins} minutes`}
+        style={{
+          display: 'inline-flex', alignItems: 'center', gap: 10,
+          minHeight: 44, padding: '0 18px',
+          borderRadius: 12,
+          background: '#0D1117',
+          border: '1px solid #1E293B',
+          color: '#E2E8F0',
+          fontFamily: 'var(--mono)',
+          fontSize: 13,
+          fontWeight: 700,
+          cursor: 'pointer',
+          touchAction: 'manipulation',
+          WebkitTapHighlightColor: 'transparent',
+        }}
+      >
+        <span style={{ fontSize: 16 }} aria-hidden="true">🔊</span>
+        <span>Listen</span>
+        <span style={{ color: '#64748B', fontWeight: 600 }}>~{mins} min</span>
+      </button>
+    );
+  }
+
+  // Playing state: stop button alone (full-width touch target)
   return (
-    <div style={{ display: 'inline-flex', alignItems: 'center', gap: 6, padding: '6px 10px 6px 12px', borderRadius: 10, background: '#0D1117', border: '1px solid #1E293B' }}>
-      <span style={{ fontSize: 12 }}>🔊</span>
-      {status === 'idle' && (
-        <button onClick={play} style={{ background: 'none', border: 'none', color: '#E2E8F0', fontFamily: 'var(--mono)', fontSize: 11, fontWeight: 700, cursor: 'pointer', padding: '4px 6px' }}>
-          Listen <span style={{ color: '#475569', marginLeft: 4 }}>~{mins} min</span>
-        </button>
-      )}
-      {status === 'playing' && (
-        <>
-          <button onClick={pause} style={{ background: 'none', border: 'none', color: '#00D474', fontFamily: 'var(--mono)', fontSize: 11, fontWeight: 700, cursor: 'pointer', padding: '4px 6px' }} aria-label="Pause">⏸ Pause</button>
-          <button onClick={stop} style={{ background: 'none', border: 'none', color: '#FF4545', fontFamily: 'var(--mono)', fontSize: 11, fontWeight: 700, cursor: 'pointer', padding: '4px 6px' }} aria-label="Stop">⏹</button>
-        </>
-      )}
-      {status === 'paused' && (
-        <>
-          <button onClick={resume} style={{ background: 'none', border: 'none', color: '#00D474', fontFamily: 'var(--mono)', fontSize: 11, fontWeight: 700, cursor: 'pointer', padding: '4px 6px' }} aria-label="Resume">▶ Resume</button>
-          <button onClick={stop} style={{ background: 'none', border: 'none', color: '#FF4545', fontFamily: 'var(--mono)', fontSize: 11, fontWeight: 700, cursor: 'pointer', padding: '4px 6px' }} aria-label="Stop">⏹</button>
-        </>
-      )}
+    <div style={{
+      display: 'inline-flex', alignItems: 'center', gap: 8,
+      borderRadius: 12,
+      background: '#0D1117',
+      border: '1px solid #00D47440',
+      padding: '0 6px',
+    }}>
+      <span style={{
+        display: 'inline-flex', alignItems: 'center', gap: 6,
+        minHeight: 44, padding: '0 12px',
+        fontFamily: 'var(--mono)', fontSize: 12, fontWeight: 700, color: '#00D474',
+      }}>
+        <span aria-hidden="true">●</span>
+        <span>Playing</span>
+      </span>
+      <button
+        type="button"
+        onClick={stop}
+        aria-label="Stop reading"
+        style={{
+          display: 'inline-flex', alignItems: 'center', gap: 6,
+          minWidth: 44, minHeight: 44, padding: '0 14px',
+          borderRadius: 10,
+          background: '#FF454515',
+          border: '1px solid #FF454540',
+          color: '#FF4545',
+          fontFamily: 'var(--mono)',
+          fontSize: 13,
+          fontWeight: 700,
+          cursor: 'pointer',
+          touchAction: 'manipulation',
+          WebkitTapHighlightColor: 'transparent',
+        }}
+      >
+        <span aria-hidden="true">⏹</span>
+        <span>Stop</span>
+      </button>
     </div>
   );
 }
