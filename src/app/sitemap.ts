@@ -43,6 +43,7 @@ export default function sitemap(): MetadataRoute.Sitemap {
     { url: `${BASE}/markets/roast-portfolio`, lastModified: now, changeFrequency: "weekly", priority: 0.8 },
     { url: `${BASE}/markets/most-roasted`, lastModified: now, changeFrequency: "daily", priority: 0.7 },
     { url: `${BASE}/markets/most-blessed`, lastModified: now, changeFrequency: "daily", priority: 0.7 },
+    { url: `${BASE}/markets/fear-and-greed`, lastModified: now, changeFrequency: "daily", priority: 0.8 },
 
     // Top 50 stocks only (with content)
     ...topStocks.map(t => ({
@@ -61,6 +62,9 @@ export default function sitemap(): MetadataRoute.Sitemap {
 
     // Daily Brief
     { url: `${BASE}/daily`, lastModified: now, changeFrequency: "daily", priority: 0.9 },
+
+    // Research Lab
+    { url: `${BASE}/research`, lastModified: now, changeFrequency: "weekly", priority: 0.8 },
 
     // Reports
     { url: `${BASE}/reports`, lastModified: now, changeFrequency: "weekly", priority: 0.8 },

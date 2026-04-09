@@ -11,6 +11,7 @@ const links = [
   { label: "Daily", href: "/daily" },
   { label: "Markets", href: "/markets" },
   { label: "Reports", href: "/reports" },
+  { label: "Research", href: "/research" },
   { label: "Blog", href: "/blog" },
   { label: "Crypto", href: "/rankings/crypto" },
   { label: "Lottery", href: "/lottery" },

@@ -70,14 +70,30 @@ const FALLBACK: Omit<TodayMarketPayload, 'asOf' | 'source' | 'verdict'> = {
 const REDIS_KEY = 'today-market:cache:v2';
 let memCache: { data: TodayMarketPayload; ts: number } | null = null;
 
-// Cache TTL in seconds. Longer after US market close (4:30 PM ET = 21:30 UTC)
-// because the data does not move outside trading hours.
+// Cache TTL in seconds. Three buckets driven by US market session:
+//   - Weekend (Sat/Sun UTC): 120 minutes — almost no real movement
+//   - After US close (~21:00 UTC) through pre-open (~13:00 UTC): 60 minutes
+//   - During US market hours (13:30-21:00 UTC): 15 minutes — fresh enough
+//
+// At worst: market hours (6.5 hours / 15 min = 26 windows) +
+//           non-market (17.5 hours / 60 min = 17.5 windows) ≈ 44 cache windows.
+// With FMP batched call (1 request) + treasury (1 request) per window,
+// daily upper bound is ~88 FMP requests, well under the 250 daily limit.
 function cacheTtlSeconds(): number {
-  const utcHour = new Date().getUTCHours();
-  // After market close (21:30 UTC) through pre-market open (12:00 UTC next day):
-  // 60-minute TTL. During market hours: 30-minute TTL.
-  const isAfterClose = utcHour >= 22 || utcHour < 12;
-  return isAfterClose ? 60 * 60 : 30 * 60;
+  const now = new Date();
+  const day = now.getUTCDay(); // 0=Sun, 6=Sat
+  if (day === 0 || day === 6) return 120 * 60;
+  const utcHour = now.getUTCHours();
+  const utcMin = now.getUTCMinutes();
+  const minutesIntoDay = utcHour * 60 + utcMin;
+  // US market open 13:30 UTC, close 20:00 UTC (rough — slightly conservative
+  // so the 15-min bucket only fires during actual session hours)
+  const marketOpen = 13 * 60 + 30;
+  const marketClose = 20 * 60;
+  if (minutesIntoDay >= marketOpen && minutesIntoDay < marketClose) {
+    return 15 * 60;
+  }
+  return 60 * 60;
 }
 
 async function readSharedCache(): Promise<TodayMarketPayload | null> {

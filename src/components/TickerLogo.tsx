@@ -1,19 +1,25 @@
 'use client';
 
-// TickerLogo — looks up the corporate domain for a ticker and renders the
-// Clearbit Logo API result. Falls back to a monospace badge with the first
-// 2 characters of the ticker when the logo cannot be loaded (network error,
-// unknown ticker, or company without a Clearbit-indexed domain).
+// TickerLogo — renders a company logo for the given ticker via FMP's
+// image-stock CDN. The image-stock URL is open (no API key required) and
+// does not count toward the FMP API quota — it serves logos as a static
+// CDN.
 //
-// Used in: home page Market Leaders, Hot Sector card, /reports/[slug] header,
-// /daily/[slug] Movers & Shakers tables, and any future Movers list.
+// Format: https://financialmodelingprep.com/image-stock/{TICKER}.png
+//
+// Falls back to a monospace badge with the first 2 characters of the
+// ticker when the logo cannot be loaded.
 //
 // Trademark notice: All company logos remain the property of their respective
 // owners. The site footer carries a global identification-only disclaimer.
 
 import { useState } from 'react';
 import Image from 'next/image';
-import { tickerToLogoUrl } from '@/lib/ticker-domains';
+
+function tickerToLogoUrl(ticker: string): string {
+  // FMP uses upper-case ticker with .png. BRK-B → BRK-B.png works.
+  return `https://financialmodelingprep.com/image-stock/${ticker.toUpperCase()}.png`;
+}
 
 interface Props {
   ticker: string;
@@ -26,7 +32,7 @@ export default function TickerLogo({ ticker, size = 24, rounded = true }: Props)
   const [error, setError] = useState(false);
   const url = tickerToLogoUrl(ticker);
 
-  if (!url || error) {
+  if (error) {
     return (
       <div
         aria-label={ticker}

@@ -33,29 +33,29 @@ const YEAR = new Date().getFullYear();
 export const metadata: Metadata = {
   metadataBase: new URL("https://dhlm-studio.com"),
   title: {
-    default: `DHLM Studio — The World in Numbers | ${YEAR}`,
+    default: `DHLM Studio — Brutal AI Market Intelligence | ${YEAR}`,
     template: `%s | DHLM Studio`,
   },
-  description: `Real-time global data: stock market movers, trending creators, billionaire rankings, cost of living comparisons, and lottery analysis. Updated daily. ${YEAR}.`,
+  description: `Real-time market data, CNN Fear & Greed Index, Brutal AI Deep Dive reports, and data-driven stock analysis under editorial oversight. ${YEAR}.`,
   keywords: [
-    "DHLM Studio", "stock market movers", "top stocks today", "billionaire rankings",
-    "cost of living comparison", "trending creators", "GDP rankings", "world rankings",
-    "lottery number generator", "QR code generator", "password generator",
-    "global data", "real-time data", "market analysis",
+    "DHLM Studio", "Brutal AI", "stock market analysis", "Deep Dive reports",
+    "Fear and Greed Index", "BAAF framework", "crypto analysis", "Bitcoin analysis",
+    "data-driven stock analysis", "Hot Sector reports", "market intelligence",
+    "real-time market data", "TODAY'S MARKET", "S&P 500 live",
   ],
   openGraph: {
-    title: `DHLM Studio — The World in Numbers`,
-    description: `Real-time stock movers, creator trends, global rankings, and city cost comparisons. Data-driven insights updated daily.`,
+    title: `DHLM Studio — Brutal AI Market Intelligence`,
+    description: `Real-time market data, Fear & Greed Index, Deep Dive reports, and data-driven stock analysis under editorial oversight.`,
     url: "https://dhlm-studio.com",
     siteName: "DHLM Studio",
     locale: "en_US",
     type: "website",
-    images: [{ url: "/opengraph-image", width: 1200, height: 630, alt: "DHLM Studio — The World in Numbers" }],
+    images: [{ url: "/opengraph-image", width: 1200, height: 630, alt: "DHLM Studio — Brutal AI Market Intelligence" }],
   },
   twitter: {
     card: "summary_large_image",
-    title: "DHLM Studio — The World in Numbers",
-    description: "Real-time stock movers, creator trends, global rankings, and city cost comparisons.",
+    title: "DHLM Studio — Brutal AI Market Intelligence",
+    description: "Real-time market data, Fear & Greed Index, Deep Dive reports, and data-driven stock analysis.",
   },
   alternates: {
     canonical: "https://dhlm-studio.com",
@@ -115,7 +115,7 @@ export default function RootLayout({
             "name": "DHLM Studio",
             "url": "https://dhlm-studio.com",
             "logo": "https://dhlm-studio.com/favicon.ico",
-            "description": "Real-time global data platform: stock movers, creator trends, rankings, cost of living.",
+            "description": "Brutal AI market intelligence: real-time market data, Fear & Greed Index, Deep Dive reports, and data-driven stock analysis under editorial oversight.",
             "sameAs": ["https://github.com/twkim-dh"],
             "contactPoint": { "@type": "ContactPoint", "email": "dhlmstudio2026@gmail.com" }
           })}}
@@ -128,7 +128,7 @@ export default function RootLayout({
             "@type": "WebSite",
             "name": "DHLM Studio",
             "url": "https://dhlm-studio.com",
-            "description": "The World in Numbers — real-time data on markets, creators, rankings, and cost of living.",
+            "description": "Brutal AI Market Intelligence — real-time market data, Fear & Greed Index, Deep Dive reports, and data-driven stock analysis.",
             "potentialAction": {
               "@type": "SearchAction",
               "target": "https://dhlm-studio.com/markets/search?q={search_term_string}",
