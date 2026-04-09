@@ -57,20 +57,43 @@ export default function TickerLogo({ ticker, size = 24, rounded = true }: Props)
     );
   }
 
+  // Two layers:
+  //   1. Outer fixed-size container = clean square box with white bg + padding.
+  //      Padding (~12% of size) gives the logo breathing room so non-square
+  //      logos do not touch the edges, and the white background ensures
+  //      dark monochrome logos stay visible against the dark site theme.
+  //   2. Inner Image with objectFit: contain. fill mode + container sizing
+  //      lets next/image respect the source aspect ratio without stretching
+  //      or cropping — the logo always fits inside the box.
+  const padding = Math.max(2, Math.round(size * 0.12));
+  const radius = rounded ? Math.max(4, Math.round(size * 0.18)) : 0;
   return (
-    <Image
-      src={url}
-      alt={`${ticker} logo`}
-      width={size}
-      height={size}
+    <div
       style={{
-        borderRadius: rounded ? Math.max(4, size * 0.2) : 0,
+        position: 'relative',
+        width: size,
+        height: size,
+        borderRadius: radius,
         background: '#fff',
-        objectFit: 'contain',
+        padding,
+        boxSizing: 'border-box',
         flexShrink: 0,
+        display: 'inline-block',
+        overflow: 'hidden',
       }}
-      unoptimized
-      onError={() => setError(true)}
-    />
+    >
+      <Image
+        src={url}
+        alt={`${ticker} logo`}
+        fill
+        sizes={`${size}px`}
+        style={{
+          objectFit: 'contain',
+          padding: 0,
+        }}
+        unoptimized
+        onError={() => setError(true)}
+      />
+    </div>
   );
 }
