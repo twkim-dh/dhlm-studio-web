@@ -128,6 +128,37 @@ async function writeSharedCache(data: TodayMarketPayload): Promise<void> {
 const FMP_KEY = process.env.FMP_API_KEY || '';
 const AV_KEY = process.env.ALPHA_VANTAGE_KEY || '';
 
+// Circuit breaker — when FMP returns 429, set this Redis key with a TTL.
+// All FMP fetchers check the flag first and return null without calling
+// the API while it is set. This prevents debug requests, cron jobs, or
+// stale cache requests from continuing to hammer FMP after the daily
+// quota is exhausted.
+const FMP_RATE_LIMIT_KEY = 'fmp:rate-limited';
+const FMP_RATE_LIMIT_TTL = 6 * 60 * 60; // 6 hours — covers a typical FMP rolling reset
+
+let fmpRateLimitedMem = false;
+
+async function isFmpRateLimited(): Promise<boolean> {
+  if (fmpRateLimitedMem) return true;
+  try {
+    const redis = getRedis();
+    const flag = await redis.get(FMP_RATE_LIMIT_KEY);
+    if (flag) {
+      fmpRateLimitedMem = true;
+      return true;
+    }
+  } catch { /* Redis unavailable — fall through, allow FMP attempt */ }
+  return false;
+}
+
+async function markFmpRateLimited(): Promise<void> {
+  fmpRateLimitedMem = true;
+  try {
+    const redis = getRedis();
+    await redis.set(FMP_RATE_LIMIT_KEY, '1', 'EX', FMP_RATE_LIMIT_TTL);
+  } catch { /* ignore */ }
+}
+
 // Per-source debug log accumulated within a single GET invocation.
 // Returned only when ?debug=1 query param is present.
 const debugLog: { source: string; ok: boolean; status?: number; err?: string; sample?: unknown }[] = [];
@@ -140,9 +171,11 @@ function dbg(source: string, ok: boolean, extra: { status?: number; err?: string
 // requests require premium tier.
 async function fmpQuoteSingle(symbol: string): Promise<Quote | null> {
   if (!FMP_KEY) { dbg(`fmp:${symbol}`, false, { err: 'FMP_KEY missing' }); return null; }
+  if (await isFmpRateLimited()) { dbg(`fmp:${symbol}`, false, { err: 'FMP rate-limited (circuit breaker)' }); return null; }
   try {
     const url = `https://financialmodelingprep.com/stable/quote?symbol=${encodeURIComponent(symbol)}&apikey=${FMP_KEY}`;
     const res = await fetch(url, { cache: 'no-store' });
+    if (res.status === 429) { await markFmpRateLimited(); dbg(`fmp:${symbol}`, false, { status: 429, err: 'Rate limited — circuit breaker tripped' }); return null; }
     if (!res.ok) { dbg(`fmp:${symbol}`, false, { status: res.status, err: 'HTTP not ok' }); return null; }
     const text = await res.text();
     let data;
@@ -178,6 +211,7 @@ async function fmpQuoteMany(symbols: string[]): Promise<Quote[] | null> {
 // query form returns "Premium Query Parameter".
 async function fmpBatchQuote(symbols: string[]): Promise<Quote[] | null> {
   if (!FMP_KEY) { dbg('fmp:batch', false, { err: 'FMP_KEY missing' }); return null; }
+  if (await isFmpRateLimited()) { dbg('fmp:batch', false, { err: 'FMP rate-limited (circuit breaker)' }); return null; }
   const csv = symbols.map(encodeURIComponent).join(',');
   const candidates = [
     `https://financialmodelingprep.com/stable/quote?symbol=${csv}&apikey=${FMP_KEY}`,
@@ -186,6 +220,7 @@ async function fmpBatchQuote(symbols: string[]): Promise<Quote[] | null> {
   for (const url of candidates) {
     try {
       const res = await fetch(url, { cache: 'no-store' });
+      if (res.status === 429) { await markFmpRateLimited(); dbg('fmp:batch', false, { status: 429, err: 'Rate limited — circuit breaker tripped' }); return null; }
       if (!res.ok) { dbg('fmp:batch', false, { status: res.status }); continue; }
       const text = await res.text();
       let data; try { data = JSON.parse(text); } catch { continue; }
@@ -216,8 +251,10 @@ async function fmpBatchQuote(symbols: string[]): Promise<Quote[] | null> {
 // not need to special-case it.
 async function fmpTenYearYield(): Promise<Quote | null> {
   if (!FMP_KEY) { dbg('fmp:treasury', false, { err: 'FMP_KEY missing' }); return null; }
+  if (await isFmpRateLimited()) { dbg('fmp:treasury', false, { err: 'FMP rate-limited (circuit breaker)' }); return null; }
   try {
     const res = await fetch(`https://financialmodelingprep.com/stable/treasury-rates?apikey=${FMP_KEY}`, { cache: 'no-store' });
+    if (res.status === 429) { await markFmpRateLimited(); dbg('fmp:treasury', false, { status: 429, err: 'Rate limited — circuit breaker tripped' }); return null; }
     if (!res.ok) { dbg('fmp:treasury', false, { status: res.status }); return null; }
     const text = await res.text();
     let data; try { data = JSON.parse(text); } catch { dbg('fmp:treasury', false, { err: 'Not JSON', sample: text.slice(0, 120) }); return null; }
@@ -350,15 +387,67 @@ function generateVerdict(d: Pick<TodayMarketPayload, 'indices' | 'macro' | 'cryp
 
 export async function GET(request: Request) {
   const url = new URL(request.url);
-  const debug = url.searchParams.get('debug') === '1';
-  if (debug) debugLog.length = 0;
+  const debugParam = url.searchParams.get('debug');
+  const debugLive = debugParam === '1' || debugParam === 'live';
+  const debugCache = debugParam === 'cache';
+  if (debugLive || debugCache) debugLog.length = 0;
 
-  // Check shared cache first (Redis + memory). Debug mode bypasses cache so
-  // the per-source diagnostic always reflects the current API state.
-  if (!debug) {
+  // ?debug=cache — read-only mode that touches Redis ONLY and never calls
+  // any external API. Use this to verify cache state without burning quota.
+  // Returns the cached payload plus envCheck and circuit breaker state.
+  if (debugCache) {
+    let cachedRaw: { data: TodayMarketPayload; ts: number } | null = null;
+    let rateLimited = false;
+    try {
+      const redis = getRedis();
+      const raw = await redis.get(REDIS_KEY);
+      if (raw) cachedRaw = JSON.parse(raw);
+      const flag = await redis.get(FMP_RATE_LIMIT_KEY);
+      rateLimited = Boolean(flag);
+    } catch { /* ignore */ }
+    return NextResponse.json({
+      mode: 'cache-read-only',
+      hasCachedPayload: Boolean(cachedRaw),
+      cacheAgeSeconds: cachedRaw ? Math.floor((Date.now() - cachedRaw.ts) / 1000) : null,
+      cacheTtlSeconds: cacheTtlSeconds(),
+      cachedAt: cachedRaw ? new Date(cachedRaw.ts).toISOString() : null,
+      cachedPayload: cachedRaw?.data || null,
+      circuitBreaker: { fmpRateLimited: rateLimited, key: FMP_RATE_LIMIT_KEY },
+      envCheck: {
+        FMP_API_KEY_present: Boolean(process.env.FMP_API_KEY),
+        FMP_API_KEY_length: (process.env.FMP_API_KEY || '').length,
+        ALPHA_VANTAGE_KEY_present: Boolean(process.env.ALPHA_VANTAGE_KEY),
+        ALPHA_VANTAGE_KEY_length: (process.env.ALPHA_VANTAGE_KEY || '').length,
+      },
+    });
+  }
+
+  // Even ?debug=1 (live mode) checks the cache first now. The previous
+  // behavior of always bypassing cache in debug mode was the root cause
+  // of the FMP 429 — every diagnostic check was costing 8 API calls.
+  // Use ?debug=fresh to explicitly force a live re-fetch (intentionally
+  // costs quota; reserved for cases where the cache is suspected stale).
+  const debugFresh = debugParam === 'fresh';
+  if (!debugFresh) {
     const cached = await readSharedCache();
     if (cached) {
-      return NextResponse.json({ ...cached, source: 'cached' });
+      const payload = { ...cached, source: 'cached' as const };
+      if (debugLive) {
+        return NextResponse.json({
+          ...payload,
+          _debug: {
+            note: 'Returned cached payload (no API calls were made). Pass ?debug=fresh to force a live re-fetch (costs FMP quota).',
+            cacheAgeSeconds: memCache ? Math.floor((Date.now() - memCache.ts) / 1000) : null,
+            envCheck: {
+              FMP_API_KEY_present: Boolean(process.env.FMP_API_KEY),
+              FMP_API_KEY_length: (process.env.FMP_API_KEY || '').length,
+              ALPHA_VANTAGE_KEY_present: Boolean(process.env.ALPHA_VANTAGE_KEY),
+              ALPHA_VANTAGE_KEY_length: (process.env.ALPHA_VANTAGE_KEY || '').length,
+            },
+          },
+        });
+      }
+      return NextResponse.json(payload);
     }
   }
 
@@ -436,10 +525,11 @@ export async function GET(request: Request) {
     await writeSharedCache(payload);
   }
 
-  if (debug) {
+  if (debugLive || debugFresh) {
     return NextResponse.json({
       ...payload,
       _debug: {
+        mode: debugFresh ? 'fresh-fetch (cache bypassed)' : 'live (cache miss)',
         envCheck: {
           FMP_API_KEY_present: Boolean(process.env.FMP_API_KEY),
           FMP_API_KEY_length: (process.env.FMP_API_KEY || '').length,
@@ -448,6 +538,7 @@ export async function GET(request: Request) {
         },
         cacheTtlSeconds: cacheTtlSeconds(),
         cacheKey: REDIS_KEY,
+        circuitBreakerKey: FMP_RATE_LIMIT_KEY,
         sources: debugLog,
         macroLiveCount: macroLive.length,
         indicesCount: indices?.length || 0,
