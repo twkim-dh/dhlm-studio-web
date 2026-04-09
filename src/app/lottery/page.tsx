@@ -5,6 +5,7 @@ import { JACKPOT_INFO, POWERBALL_DRAWS, MEGAMILLIONS_DRAWS } from '@/data/lotter
 export const metadata: Metadata = {
   title: 'US Lottery — Powerball & Mega Millions Results | DHLM Studio',
   description: 'Live Powerball and Mega Millions jackpot tracker, winning numbers, statistics, and number generator. Updated after every draw.',
+  alternates: { canonical: 'https://dhlm-studio.com/lottery' },
 };
 
 const YEAR = new Date().getFullYear();

@@ -89,14 +89,20 @@ export function generateStaticParams() {
 export async function generateMetadata({ params }: { params: Promise<{ slug: string }> }): Promise<Metadata> {
   const { slug } = await params;
   const report = getReport(slug);
-  if (!report) return { title: 'Report Not Found' };
+  // 404 case: explicit noindex so Google does not soft-404 a missing report
+  if (!report) return { title: 'Report Not Found', robots: { index: false, follow: false } };
   const fm = report.frontmatter;
   const title = fm.seoTitle || `${fm.title} | DHLM Studio`;
   const description = fm.seoDescription || fm.description;
+  const url = `https://dhlm-studio.com/reports/${slug}`;
   return {
     title: title.includes('DHLM Studio') ? title : `${title} | DHLM Studio`,
     description,
-    openGraph: { title, description, type: 'article', publishedTime: fm.date },
+    // Self-canonical — every report points to itself, not to the site root.
+    // Without this, Google inherits the layout.tsx root canonical and
+    // judges every report as a near-duplicate of the home page (Soft 404).
+    alternates: { canonical: url },
+    openGraph: { title, description, type: 'article', publishedTime: fm.date, url },
     twitter: { card: 'summary_large_image', title, description },
   };
 }
@@ -241,19 +247,27 @@ export default async function ReportPage({ params }: { params: Promise<{ slug: s
               </div>
               <div style={{ fontSize: 11, color: '#64748B', fontStyle: 'italic' }}>Analysis under editorial oversight. Data-driven. Zero feelings.</div>
               {isHotSector && Array.isArray(fm.tickers) && fm.tickers.length > 0 && (
-                <div style={{ marginTop: 10, display: 'flex', flexWrap: 'wrap', gap: 6, alignItems: 'center' }}>
+                <div style={{ marginTop: 14, display: 'flex', flexWrap: 'wrap', gap: 12, alignItems: 'center' }}>
                   {fm.tickers.map(t => (
-                    <span key={t} style={{ fontFamily: 'var(--mono)', fontSize: 10, fontWeight: 800, padding: '4px 8px', borderRadius: 6, background: '#0D1117', border: '1px solid #1E293B', color: '#60A5FA', display: 'inline-flex', alignItems: 'center', gap: 6 }}>
-                      <TickerLogo ticker={t} size={16} />
-                      {t}
-                    </span>
+                    <div key={t} style={{
+                      display: 'inline-flex', flexDirection: 'column', alignItems: 'center', gap: 6,
+                      padding: '10px 14px', borderRadius: 10,
+                      background: '#0D1117', border: '1px solid #1E293B',
+                      minWidth: 64,
+                    }}>
+                      <TickerLogo ticker={t} size={36} />
+                      <span style={{ fontFamily: 'var(--mono)', fontSize: 11, fontWeight: 800, color: '#60A5FA' }}>{t}</span>
+                    </div>
                   ))}
                 </div>
               )}
               {!isHotSector && fm.ticker && (
-                <div style={{ marginTop: 10, display: 'flex', alignItems: 'center', gap: 8 }}>
-                  <TickerLogo ticker={fm.ticker} size={28} />
-                  <span style={{ fontFamily: 'var(--mono)', fontSize: 14, fontWeight: 800, color: '#60A5FA' }}>{fm.ticker}</span>
+                <div style={{ marginTop: 14, display: 'flex', alignItems: 'center', gap: 14 }}>
+                  <TickerLogo ticker={fm.ticker} size={56} />
+                  <div style={{ display: 'flex', flexDirection: 'column', gap: 2 }}>
+                    <span style={{ fontFamily: 'var(--mono)', fontSize: 18, fontWeight: 900, color: '#60A5FA', letterSpacing: 0.5 }}>{fm.ticker}</span>
+                    <span style={{ fontSize: 11, color: '#64748B', fontFamily: 'var(--sans)' }}>Brutal AI™ analyzed</span>
+                  </div>
                 </div>
               )}
             </div>

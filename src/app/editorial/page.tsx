@@ -4,6 +4,7 @@ import Link from 'next/link';
 export const metadata: Metadata = {
   title: 'Editorial Policy — How Brutal AI Analyzes Stocks | DHLM Studio',
   description: 'Our methodology: how Brutal AI generates stock analysis, data sources we use, quality standards, and important disclaimers.',
+  alternates: { canonical: 'https://dhlm-studio.com/editorial' },
 };
 
 const card = { background: '#111827', borderRadius: 14, border: '1px solid #1E293B' };

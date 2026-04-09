@@ -3,10 +3,18 @@ import Link from 'next/link';
 import fs from 'fs';
 import path from 'path';
 import RequestDeepDive from '@/components/RequestDeepDive';
+import TickerLogo from '@/components/TickerLogo';
 
 export const metadata: Metadata = {
   title: 'Reports — Brutal AI™ Deep Dive Analysis | DHLM Studio',
   description: 'In-depth stock and crypto analysis with BAAF scoring. 3,000+ word deep dives. Data-driven insights, not investment advice.',
+  alternates: { canonical: 'https://dhlm-studio.com/reports' },
+  openGraph: {
+    title: 'Brutal AI™ Deep Dive Reports',
+    description: 'In-depth stock and crypto analysis with BAAF scoring. 3,000+ word deep dives.',
+    type: 'website',
+    url: 'https://dhlm-studio.com/reports',
+  },
 };
 
 const REPORTS_DIR = path.join(process.cwd(), 'src/content/reports');
@@ -82,15 +90,18 @@ export default function ReportsPage() {
 
         <div style={{ display: 'flex', flexDirection: 'column', gap: 10 }}>
           {reports.map(r => (
-            <Link key={r.slug} href={`/reports/${r.slug}`} style={{ ...card, padding: '20px 22px', textDecoration: 'none', display: 'block' }}>
-              <div style={{ display: 'flex', alignItems: 'center', gap: 8, marginBottom: 8, flexWrap: 'wrap' }}>
-                <span style={{ fontFamily: 'var(--mono)', fontSize: 18, fontWeight: 900, color: '#60A5FA' }}>{r.ticker}</span>
-                <span style={{ fontFamily: 'var(--mono)', fontSize: 10, fontWeight: 700, padding: '3px 8px', borderRadius: 4, background: '#D4A84314', color: '#D4A843' }}>BAAF {r.baafScore}/100 ({r.grade})</span>
-                <span style={{ fontFamily: 'var(--mono)', fontSize: 10, fontWeight: 600, padding: '3px 8px', borderRadius: 4, background: `${r.catColor}14`, color: r.catColor }}>{r.category}</span>
-                <span style={{ fontSize: 11, color: '#475569' }}>{r.date} · {r.readTime}</span>
+            <Link key={r.slug} href={`/reports/${r.slug}`} style={{ ...card, padding: '20px 22px', textDecoration: 'none', display: 'flex', gap: 16, alignItems: 'flex-start' }}>
+              <TickerLogo ticker={r.ticker} size={48} />
+              <div style={{ flex: 1, minWidth: 0 }}>
+                <div style={{ display: 'flex', alignItems: 'center', gap: 8, marginBottom: 8, flexWrap: 'wrap' }}>
+                  <span style={{ fontFamily: 'var(--mono)', fontSize: 18, fontWeight: 900, color: '#60A5FA' }}>{r.ticker}</span>
+                  <span style={{ fontFamily: 'var(--mono)', fontSize: 10, fontWeight: 700, padding: '3px 8px', borderRadius: 4, background: '#D4A84314', color: '#D4A843' }}>BAAF {r.baafScore}/100 ({r.grade})</span>
+                  <span style={{ fontFamily: 'var(--mono)', fontSize: 10, fontWeight: 600, padding: '3px 8px', borderRadius: 4, background: `${r.catColor}14`, color: r.catColor }}>{r.category}</span>
+                  <span style={{ fontSize: 11, color: '#475569' }}>{r.date} · {r.readTime}</span>
+                </div>
+                <div style={{ fontFamily: 'var(--serif)', fontSize: 17, fontWeight: 700, color: '#E2E8F0', lineHeight: 1.4 }}>{r.title}</div>
+                <p style={{ fontSize: 12, color: '#64748B', margin: '6px 0 0', lineHeight: 1.5 }}>{r.description}</p>
               </div>
-              <div style={{ fontFamily: 'var(--serif)', fontSize: 17, fontWeight: 700, color: '#E2E8F0', lineHeight: 1.4 }}>{r.title}</div>
-              <p style={{ fontSize: 12, color: '#64748B', margin: '6px 0 0', lineHeight: 1.5 }}>{r.description}</p>
             </Link>
           ))}
         </div>

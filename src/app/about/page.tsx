@@ -4,6 +4,7 @@ import Link from "next/link";
 export const metadata: Metadata = {
   title: "About DHLM Studio — Dream · Horizon · Link · Media",
   description: "DHLM Studio transforms complex financial data into clear, engaging insights. Learn about our mission, data sources, and charity commitment.",
+  alternates: { canonical: 'https://dhlm-studio.com/about' },
 };
 
 const card = { background: '#111827', borderRadius: 14, border: '1px solid #1E293B' };
