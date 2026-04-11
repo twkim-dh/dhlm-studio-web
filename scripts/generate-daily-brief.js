@@ -563,11 +563,15 @@ function generateHeadline(data) {
 
   const pct    = sp.pct;
   const pctStr = fmt(Math.abs(pct), 2);
+  const driver = detectTopDriverText(data);
+  const sector = detectTopSector(data);
 
-  if (pct > 2)    return `S&P 500 surges ${pctStr}% in broad-based rally`;
-  if (pct > 0.5)  return `S&P 500 gains ${pctStr}% as ${detectTopSector(data)} leads`;
-  if (pct > -0.5) return `Markets flat as investors weigh ${detectTopDriverText(data)}`;
-  if (pct > -2)   return `S&P 500 drops ${pctStr}% on ${detectTopDriverText(data)}`;
+  if (pct > 3)    return `S&P 500 surges ${pctStr}% as risk appetite returns`;
+  if (pct > 2)    return `S&P 500 rallies ${pctStr}% as ${sector} leads`;
+  if (pct > 0.5)  return `S&P 500 gains ${pctStr}% as ${sector} leads`;
+  if (pct > -0.5) return `S&P 500 closes flat as investors weigh ${driver}`;
+  if (pct > -2)   return `S&P 500 drops ${pctStr}% on ${driver}`;
+  if (pct > -3)   return `S&P 500 falls ${pctStr}% amid broad selling`;
   return `S&P 500 tumbles ${pctStr}% in heavy selling`;
 }
 
@@ -580,40 +584,48 @@ function generateMarketOverview(data) {
 
   if (!sp) return '_Market data unavailable._';
 
-  // S&P sentence
+  // ── S&P 500 + Nasdaq sentence ───────────────────────────────────────────────
   const spDir    = sp.pct >= 0 ? 'rose' : 'fell';
   const spPctStr = fmt(Math.abs(sp.pct), 2);
   const spClose  = fmt(sp.price, 0);
-  let nasClause  = '';
+
+  let nasClause = '';
   if (nas) {
     const aligned = (sp.pct >= 0) === (nas.pct >= 0);
     nasClause = aligned
-      ? `, with the Nasdaq ${nas.pct >= 0 ? 'adding' : 'losing'} ${fmt(Math.abs(nas.pct), 2)}% in step`
-      : `, while the Nasdaq diverged at ${sign(nas.pct)}${fmt(nas.pct, 2)}%`;
+      ? `, while the Nasdaq ${nas.pct >= 0 ? 'gained' : 'dropped'} ${fmt(Math.abs(nas.pct), 2)}%`
+      : `, while the Nasdaq diverged — ${nas.pct >= 0 ? 'rising' : 'falling'} ${fmt(Math.abs(nas.pct), 2)}%`;
   }
 
-  // VIX sentence
+  // ── VIX sentence (toned by level) ──────────────────────────────────────────
   let vixSentence = '';
   if (vix) {
-    const vixDir     = vix.pct >= 0 ? 'rose' : 'fell';
-    const vixContext = vix.price > 25 ? 'signaling elevated volatility' : vix.price < 15 ? 'signaling unusually low volatility' : 'remaining within normal range';
-    vixSentence = `VIX ${vixDir} to ${fmt(vix.price, 1)}, ${vixContext}.`;
+    const vixDir = vix.pct >= 0 ? 'rose' : 'fell';
+    let vixTone;
+    if      (vix.price > 30) vixTone = 'at crisis levels — fear is extreme';
+    else if (vix.price > 25) vixTone = 'signaling significant market stress';
+    else if (vix.price > 20) vixTone = 'elevated but still below panic levels';
+    else if (vix.price >= 15) vixTone = 'within a normal range';
+    else                      vixTone = 'reflecting calm conditions';
+    vixSentence = `The VIX ${vixDir} to ${fmt(vix.price, 1)}, ${vixTone}.`;
   }
 
-  // BTC sentence
+  // ── BTC sentence (directional tone vs equities) ─────────────────────────────
   let btcSentence = '';
   if (btc) {
-    const btcDir  = btc.change24h >= 0 ? 'gained' : 'lost';
-    const aligned = (sp.pct >= 0) === (btc.change24h >= 0);
-    btcSentence   = `Bitcoin ${btcDir} ${fmt(Math.abs(btc.change24h), 1)}% to $${Math.round(btc.price).toLocaleString('en-US')}, ${aligned ? 'aligned with' : 'diverging from'} equity sentiment.`;
+    const btcDir = btc.change24h >= 0 ? 'gained' : 'lost';
+    let btcTone;
+    if      (btc.change24h >= 0 && sp.pct <  0) btcTone = 'bucking the broader risk-off mood';
+    else if (btc.change24h <  0 && sp.pct >= 0) btcTone = 'lagging despite the equity rally';
+    else                                          btcTone = 'tracking the broader equity move';
+    btcSentence = `Bitcoin ${btcDir} ${fmt(Math.abs(btc.change24h), 1)}% to $${Math.round(btc.price).toLocaleString('en-US')}, ${btcTone}.`;
   }
 
-  // Sentiment add-ons
+  // ── Fear & Greed add-on (only at extremes) ─────────────────────────────────
   const addOns = [];
-  if (vix && vix.price > 25)  addOns.push('Fear is elevated.');
-  if (vix && vix.price < 15)  addOns.push('Complacency is high.');
-  if (fg.value < 25)          addOns.push(`Extreme Fear territory — Fear & Greed at ${fg.value}.`);
-  if (fg.value > 75)          addOns.push(`Extreme Greed territory — Fear & Greed at ${fg.value}.`);
+  if (fg.value <= 20)      addOns.push(`Fear & Greed at ${fg.value} — markets are pricing in disaster.`);
+  else if (fg.value <= 40) addOns.push(`Fear & Greed at ${fg.value} — sentiment remains cautious.`);
+  else if (fg.value > 75)  addOns.push(`Fear & Greed at ${fg.value} — complacency is building.`);
 
   return [
     `The S&P 500 ${spDir} ${spPctStr}% to ${spClose}${nasClause}.`,
@@ -733,21 +745,27 @@ function generateMarketSignals(data) {
     else if (vix.price > 25)  interp = 'Elevated fear — above-normal hedging activity';
     else if (vix.price < 12)  interp = '⚠️ Extreme complacency — historically precedes spikes';
     else if (vix.price < 15)  interp = 'Low — calm conditions, limited hedging';
-    if (vix.pct > 15 && sp && sp.pct < 0)  interp += ' · VIX confirming the selloff';
-    if (vix.pct < -15 && sp && sp.pct > 0) interp += ' · Rally with conviction';
+    if (vix.pct > 10 && sp && sp.pct < 0)   interp += ' · VIX reinforcing the risk-off move';
+    else if (vix.pct < -10 && sp && sp.pct > 0) interp += ' · Falling VIX supports the rally';
     rows.push(`| VIX | ${fmt(vix.price, 1)} (${sign(vix.pct)}${fmt(vix.pct, 1)}%) | ${interp} |`);
   }
 
-  let fgInterp = 'Neutral sentiment';
-  if (fg.value < 20)      fgInterp = '⚠️ Extreme Fear — historically a contrarian buy signal';
-  else if (fg.value < 35) fgInterp = 'Fear zone — elevated retail caution';
-  else if (fg.value > 80) fgInterp = '⚠️ Extreme Greed — crowded long positioning';
-  else if (fg.value > 65) fgInterp = 'Greed zone — momentum-chasing risk present';
+  // F&G: full 5-band coverage (fixes 35-55 showing as "Neutral" bug)
+  let fgInterp;
+  if      (fg.value <= 20) fgInterp = '⚠️ Extreme fear — markets are pricing in disaster';
+  else if (fg.value <= 40) fgInterp = 'Fear remains elevated — cautious sentiment';
+  else if (fg.value <= 55) fgInterp = 'Neutral — markets lack conviction';
+  else if (fg.value <= 75) fgInterp = 'Greed building — confidence is rising';
+  else                     fgInterp = '⚠️ Extreme greed — complacency is high';
   rows.push(`| Fear & Greed | ${fg.value} (${fg.label}) | ${fgInterp} |`);
 
   if (btc && sp) {
-    const sameDir = (btc.change24h >= 0) === (sp.pct >= 0);
-    rows.push(`| BTC vs SPX | BTC ${sign(btc.change24h)}${fmt(btc.change24h, 1)}% / SPX ${sign(sp.pct)}${fmt(sp.pct, 1)}% | ${sameDir ? 'Risk-on correlation intact' : '⚠️ Crypto diverging from equities — watch for follow-through'} |`);
+    let btcSpxInterp;
+    if      (btc.change24h >= 0 && sp.pct >= 0) btcSpxInterp = 'Risk appetite aligned across asset classes';
+    else if (btc.change24h <  0 && sp.pct <  0) btcSpxInterp = 'Risk-off confirmed across crypto and equities';
+    else if (btc.change24h >= 0 && sp.pct <  0) btcSpxInterp = '⚠️ Crypto bucking risk-off — divergence worth monitoring';
+    else                                          btcSpxInterp = '⚠️ Bitcoin lagging equity rally — watch for catch-up or reversal';
+    rows.push(`| BTC vs SPX | BTC ${sign(btc.change24h)}${fmt(btc.change24h, 1)}% / SPX ${sign(sp.pct)}${fmt(sp.pct, 1)}% | ${btcSpxInterp} |`);
   }
 
   if (tnx) {
@@ -797,7 +815,7 @@ function generateBrutalEdgeTake(data) {
     return { trigger: 'SP≤-2%+VIX↑', text: `S&P down ${fmt(Math.abs(spPct), 1)}% with VIX confirming — this is a genuine risk-off session, not noise. Whether it's a single-day event or the start of a repricing cycle will be answered by the bond market's next move.` };
 
   if (spPct <= -2)
-    return { trigger: 'SP≤-2%', text: `S&P down ${fmt(Math.abs(spPct), 1)}% in a single session is a 1-in-30 trading day event — the mega-caps trading at 40x+ forward earnings have a precision intolerance for any macro volatility.` };
+    return { trigger: 'SP≤-2%', text: `A ${fmt(Math.abs(spPct), 1)}% one-day drop in the S&P 500 is large enough to demand attention. With AI mega-caps still trading at roughly 45x forward earnings, the market is showing little tolerance for macro volatility.` };
 
   if (btcChg < -8)
     return { trigger: 'BTC<-8%', text: `Bitcoin down ${fmt(Math.abs(btcChg), 1)}% in 24 hours. The ETF outflow data will print in 48 hours and tell the real story. Until then, every "this is the bottom" call is guesswork dressed as analysis.` };
@@ -871,6 +889,28 @@ function generateBrutalEdgeTake(data) {
     trigger: 'neutral',
     text: `S&P ${sp ? fmt(sp.price, 0) : '5,600'}, VIX ${vixVal ? fmt(vixVal, 1) : '20'}, Bitcoin ${btc ? '$' + Math.round(btc.price).toLocaleString('en-US') : '$66K'} — markets are quiet, which is exactly when the next catalyst is being written into a Bloomberg terminal nobody has read yet.`,
   };
+}
+
+// ── Output Validator ──────────────────────────────────────────────────────────
+// Warn at runtime if any banned phrase slips through into the generated output.
+const FORBIDDEN_PHRASES = [
+  { pattern: /\bin step\b/i,                          label: '"in step"' },
+  { pattern: /precision intolerance/i,                label: '"precision intolerance"' },
+  { pattern: /1-in-\d+\s*trading day/i,               label: '"1-in-X trading day event"' },
+  { pattern: /remaining within normal range/i,         label: '"remaining within normal range"' },
+  { pattern: /diverging from equity sentiment/i,       label: '"diverging from equity sentiment"' },
+  { pattern: /diverging from \w+ sentiment/i,          label: '"diverging from … sentiment"' },
+];
+
+function validateOutput(text) {
+  let clean = true;
+  for (const { pattern, label } of FORBIDDEN_PHRASES) {
+    if (pattern.test(text)) {
+      console.warn(`⚠️  FORBIDDEN PHRASE detected: ${label}`);
+      clean = false;
+    }
+  }
+  if (clean) console.log('✓ Output validation passed — no forbidden phrases detected.');
 }
 
 // ── Hero Image ─────────────────────────────────────────────────────────────────
@@ -960,11 +1000,27 @@ function buildMarkdown(params) {
     ? '\n\n' + gatedSections.map(s => `---\n\n${s}`).join('\n\n')
     : '';
 
-  // SEO description
+  // SEO description — "The S&P 500 fell X%, the VIX rose to Y, and the F&G Index dropped to Z, {tone}."
   const sp    = indices.find(x => x.symbol === '^GSPC');
   const vix   = macro.find(x => x.symbol === '^VIX');
-  const spDir = sp && sp.pct >= 0 ? 'rose' : 'fell';
-  const desc  = `S&P 500 ${spDir} ${sp ? fmt(Math.abs(sp.pct), 2) + ' percent' : ''}, VIX ${vix ? fmt(vix.price, 1) : ''}, Fear & Greed ${fg.value} (${fg.label}). ${verdict.text.slice(0, 120)}`
+  const spDir = sp?.pct >= 0 ? 'rose' : 'fell';
+  const vixDir = vix ? (vix.pct >= 0 ? 'rose' : 'fell') : null;
+
+  // F&G directional verb vs prior day (use score alone — no prior available, use neutral "stands at")
+  let fgChangeVerb = 'stands at';
+  // F&G tone
+  let fgTone;
+  if      (fg.value <= 20) fgTone = 'deep in Extreme Fear territory';
+  else if (fg.value <= 40) fgTone = 'signaling cautious sentiment';
+  else if (fg.value <= 55) fgTone = 'reflecting neutral positioning';
+  else if (fg.value <= 75) fgTone = 'indicating rising confidence';
+  else                     fgTone = 'deep in Extreme Greed territory';
+
+  const spPart  = sp  ? `The S&P 500 ${spDir} ${fmt(Math.abs(sp.pct), 2)}%` : 'Markets were mixed';
+  const vixPart = vix ? `, the VIX ${vixDir} to ${fmt(vix.price, 1)}` : '';
+  const fgPart  = `, and the Fear & Greed Index ${fgChangeVerb} ${fg.value}, ${fgTone}.`;
+
+  const desc = (spPart + vixPart + fgPart)
     .replace(/"/g, "'").replace(/\s+/g, ' ').trim();
 
   return `---
@@ -1004,9 +1060,7 @@ ${cryptoTable}${altMoversSection}
 ## Market Overview
 
 ${marketOverview}
-${buildHeadlinesSection(headlines)}
-
----
+${buildHeadlinesSection(headlines) ? '\n' + buildHeadlinesSection(headlines) : '\n---'}
 
 ## Key Drivers
 
@@ -1117,6 +1171,7 @@ async function main() {
   fs.writeFileSync(outPath, md);
   console.log(`Wrote ${outPath} (${md.length} bytes)`);
   console.log(`Verdict: ${verdict.trigger} | Hero: ${heroImage}`);
+  validateOutput(md);
 
   const urls = ['https://dhlm-studio.com/daily', `https://dhlm-studio.com/daily/${date}`];
   if (process.env.GITHUB_OUTPUT) {
