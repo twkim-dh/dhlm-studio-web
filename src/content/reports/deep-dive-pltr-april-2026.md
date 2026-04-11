@@ -7,6 +7,7 @@ readTime: "14 min"
 category: "Markets"
 catColor: "#00D474"
 grade: "D+"
+heroImage: "/images/content/deep-dive-report.png"
 beafScore: 52
 description: "Palantir at $185B: 165x earnings, government AI, and AIP bootcamps. Brilliant or insane? BEAF Score 52/100."
 seoTitle: "Palantir BEAF 52/100: 165x P/E for $3B Revenue? | April 2026"

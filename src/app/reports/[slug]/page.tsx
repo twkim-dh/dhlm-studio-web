@@ -7,6 +7,7 @@ import ListenButton from '@/components/ListenButton';
 import InlineSubscribe from '@/components/InlineSubscribe';
 import GiscusComments from '@/components/GiscusComments';
 import TickerLogo from '@/components/TickerLogo';
+import BeafRadarChart, { type BeafAxisScore } from '@/components/BeafRadarChart';
 
 const REPORTS_DIR = path.join(process.cwd(), 'src/content/reports');
 
@@ -28,6 +29,7 @@ interface ReportFrontmatter {
   seoDescription?: string;
   relatedSlugs?: string[];
   faqs?: FaqItem[];
+  heroImage?: string;
   // Hot Sector / Hidden Gem report support (April 8, 2026 — PART 2-7)
   /** "deep-dive" (default) | "hot-sector" | "hidden-gem" */
   type?: string;
@@ -105,6 +107,24 @@ export async function generateMetadata({ params }: { params: Promise<{ slug: str
     openGraph: { title, description, type: 'article', publishedTime: fm.date, url },
     twitter: { card: 'summary_large_image', title, description },
   };
+}
+
+/** Extract BEAF axis scores from report body markdown.
+ *  Looks for: | **AXIS** | SCORE | MAX | Evidence |
+ *  Returns null if no BEAF table found (e.g. hot-sector reports). */
+function parseBeafScores(body: string): BeafAxisScore[] | null {
+  const AXES = ['GROWTH', 'PROFITABILITY', 'MOAT', 'VALUATION', 'RISK', 'MOMENTUM'];
+  const scores: BeafAxisScore[] = [];
+  for (const axis of AXES) {
+    // Match line like: | **GROWTH** | 22 | 25 | ...
+    const re = new RegExp(`\\|\\s*\\*\\*${axis}\\*\\*\\s*\\|\\s*(\\d+)\\s*\\|\\s*(\\d+)\\s*\\|`);
+    const m = body.match(re);
+    if (!m) return null;
+    const raw = Number(m[1]);
+    const max = Number(m[2]);
+    scores.push({ axis, score: max > 0 ? Math.round((raw / max) * 100) : 0, raw, max });
+  }
+  return scores.length > 0 ? scores : null;
 }
 
 // Simple Markdown to HTML (headings, bold, italic, tables, paragraphs)
@@ -195,6 +215,7 @@ export default async function ReportPage({ params }: { params: Promise<{ slug: s
   }
 
   const { frontmatter: fm, body } = report;
+  const beafScores = parseBeafScores(body);
 
   // Article schema
   const articleLd = {
@@ -230,6 +251,16 @@ export default async function ReportPage({ params }: { params: Promise<{ slug: s
       {faqLd && <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(faqLd) }} />}
       <article style={{ maxWidth: 760, margin: '0 auto', padding: '80px 24px' }}>
         <Link href="/reports" style={{ fontSize: 12, color: '#64748B' }}>← Reports</Link>
+
+        {/* Hero Image */}
+        {fm.heroImage && (
+          // eslint-disable-next-line @next/next/no-img-element
+          <img
+            src={fm.heroImage}
+            alt={fm.title}
+            style={{ width: '100%', borderRadius: 14, margin: '16px 0', display: 'block', objectFit: 'cover', maxHeight: 280 }}
+          />
+        )}
 
         {/* Brutal Edge Header — type-aware */}
         {(() => {
@@ -298,6 +329,11 @@ export default async function ReportPage({ params }: { params: Promise<{ slug: s
             <LikeButton pageId={`report-${slug}`} />
           </div>
         </div>
+
+        {/* BEAF Radar Chart — only for deep-dive reports with sub-scores */}
+        {beafScores && beafScores.length > 0 && (
+          <BeafRadarChart scores={beafScores} totalScore={fm.beafScore} grade={fm.grade} />
+        )}
 
         {/* Body */}
         <div>{renderMarkdown(body)}</div>

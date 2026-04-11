@@ -1,4 +1,5 @@
 ---
+heroImage: "/images/content/paper-vs-profit.png"
 slug: "intraday-ml-stock-prediction"
 title: "Paper vs. Profit #002: Can Machine Learning Predict Intraday Stock Moves Using High-Frequency Data?"
 category: "Market Prediction"

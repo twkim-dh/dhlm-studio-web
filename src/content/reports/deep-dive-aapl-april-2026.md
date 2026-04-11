@@ -7,6 +7,7 @@ readTime: "13 min"
 category: "Markets"
 catColor: "#00D474"
 grade: "B"
+heroImage: "/images/content/deep-dive-report.png"
 beafScore: 77
 description: "Apple at $3.8T: $100B annual FCF, 2.2B device ecosystem, but iPhone growth at 4%. The subscription empire nobody notices. BEAF 77/100."
 seoTitle: "Apple BEAF 77/100: Is the Subscription Pivot Enough? | April 2026"

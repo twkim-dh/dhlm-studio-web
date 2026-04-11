@@ -7,6 +7,7 @@ readTime: "14 min"
 category: "Markets"
 catColor: "#00D474"
 grade: "B-"
+heroImage: "/images/content/deep-dive-report.png"
 beafScore: 74
 description: "Meta at $1.6T: $36B metaverse losses, but AI-powered ads saving everything. BEAF Score 74/100."
 seoTitle: "Meta BEAF 74/100: Is the $36B Reality Labs Bet Paying Off? | April 2026"

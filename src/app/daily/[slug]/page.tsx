@@ -5,23 +5,37 @@ import path from 'path';
 import ListenButton from '@/components/ListenButton';
 import InlineSubscribe from '@/components/InlineSubscribe';
 import GiscusComments from '@/components/GiscusComments';
+import DailyCharts from '@/components/DailyCharts';
 
 const CONTENT_DIR = path.join(process.cwd(), 'src/content/daily');
 
 interface DailyBriefFM {
-  slug: string;
-  date: string;
-  title: string;
+  slug:        string;
+  date:        string;
+  title:       string;
   description: string;
+  heroImage?:  string;
+  // Chart data (written by generate-daily-brief.js)
+  spPct?:   number;
+  nasPct?:  number;
+  dowPct?:  number;
+  vixVal?:  number;
+  vixPct?:  number;
+  btcPct?:  number;
+  fgScore?: number;
+  fgLabel?: string;
 }
 
 function parseMd(content: string): { frontmatter: DailyBriefFM; body: string } | null {
   const m = content.match(/^---\n([\s\S]*?)\n---\n([\s\S]*)$/);
   if (!m) return null;
-  const fm: Record<string, string> = {};
+  const fm: Record<string, string | number> = {};
   for (const line of m[1].split('\n')) {
     const lm = line.match(/^(\w+):\s*"?([^"]*)"?\s*$/);
-    if (lm) fm[lm[1]] = lm[2];
+    if (!lm) continue;
+    const val = lm[2];
+    // Parse numbers; keep strings as strings
+    fm[lm[1]] = val !== '' && !isNaN(Number(val)) ? Number(val) : val;
   }
   return { frontmatter: fm as unknown as DailyBriefFM, body: m[2] };
 }
@@ -186,6 +200,17 @@ export default async function DailyBriefPage({ params }: { params: Promise<{ slu
           {fm.description && <p style={{ fontSize: 15, color: '#64748B', lineHeight: 1.7, marginTop: 12 }}>{fm.description}</p>}
           <div style={{ marginTop: 14 }}><ListenButton text={brief.body} /></div>
         </div>
+
+        {/* Charts — Index Return BarChart + F&G Gauge (from frontmatter data) */}
+        {fm.spPct != null && fm.fgScore != null && (
+          <DailyCharts
+            spPct={fm.spPct}
+            nasPct={fm.nasPct ?? 0}
+            dowPct={fm.dowPct ?? 0}
+            fgScore={fm.fgScore}
+            fgLabel={fm.fgLabel ?? 'Neutral'}
+          />
+        )}
 
         {/* Body */}
         <div>{renderMarkdown(brief.body)}</div>

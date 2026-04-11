@@ -7,6 +7,7 @@ readTime: "14 min"
 category: "Markets"
 catColor: "#00D474"
 grade: "B"
+heroImage: "/images/content/deep-dive-report.png"
 beafScore: 78
 description: "Google at $2.3T: ChatGPT eating search, YouTube holding strong, Cloud accelerating. BEAF Score 78/100."
 seoTitle: "Alphabet BEAF 78/100: Can Search Survive ChatGPT? | April 2026"

@@ -7,6 +7,7 @@ readTime: "14 min"
 category: "Markets"
 catColor: "#00D474"
 grade: "B+"
+heroImage: "/images/content/deep-dive-report.png"
 beafScore: 83
 description: "NVIDIA at $4.2T: 90% AI chip dominance, $60B locked backlog, but P/E 65x at a CAPE of 39.7. BEAF Score 83/100."
 seoTitle: "NVIDIA BEAF 83/100: Is $4.2T Justified? | April 2026 Deep Dive"

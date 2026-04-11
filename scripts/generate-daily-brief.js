@@ -1085,12 +1085,27 @@ function buildMarkdown(params) {
   const desc = (spPart + vixPart + fgPart)
     .replace(/"/g, "'").replace(/\s+/g, ' ').trim();
 
+  // Chart data fields for DailyCharts component (numeric, no quotes)
+  const spD  = sp;
+  const nasD = indices.find(x => x.symbol === '^IXIC');
+  const dowD = indices.find(x => x.symbol === '^DJI');
+  const vixD = macro.find(x => x.symbol === '^VIX');
+  const btcD = crypto.find(x => x.id === 'bitcoin');
+
   return `---
 slug: "${date}"
 date: "${date}"
 title: "Daily Brief — ${date}"
 description: "${desc}"
 heroImage: "${heroImage}"
+spPct: ${(spD?.pct   ?? 0).toFixed(2)}
+nasPct: ${(nasD?.pct  ?? 0).toFixed(2)}
+dowPct: ${(dowD?.pct  ?? 0).toFixed(2)}
+vixVal: ${(vixD?.price ?? 20).toFixed(1)}
+vixPct: ${(vixD?.pct  ?? 0).toFixed(2)}
+btcPct: ${(btcD?.change24h ?? 0).toFixed(2)}
+fgScore: ${fg.value}
+fgLabel: "${fg.label}"
 ---
 
 ![Daily Market Brief](${heroImage})
