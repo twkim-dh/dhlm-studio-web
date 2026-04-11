@@ -386,15 +386,6 @@
       "unsplashUrl": "https://unsplash.com/photos/5KxA53UU6Yo?utm_source=dhlm_studio&utm_medium=referral"
     }
   },
-  "deep-dive-tsla-april-2026": {
-    "src": "https://images.unsplash.com/photo-1667123057116-40cbf20e5a9d?ixid=M3w5MjE0MDh8MHwxfHNlYXJjaHwxfHx0ZXNsYSUyMGVsZWN0cmljJTIwdmVoaWNsZSUyMGNhciUyMGZ1dHVyZXxlbnwxfDB8fHwxNzc1ODg0OTAyfDA&ixlib=rb-4.1.0&w=720&h=380&fit=crop&q=80&fm=jpg&auto=format",
-    "alt": "a white car with its front facing the camera",
-    "credit": {
-      "author": "Eyosias G",
-      "authorUrl": "https://unsplash.com/@yozz_t?utm_source=dhlm_studio&utm_medium=referral",
-      "unsplashUrl": "https://unsplash.com/photos/Ppl7kJSPTYU?utm_source=dhlm_studio&utm_medium=referral"
-    }
-  },
   "hot-sector-energy-april-2026": {
     "src": "https://images.unsplash.com/photo-1768128834332-7d3479c8d634?ixid=M3w5MjE0MDh8MHwxfHNlYXJjaHwxfHxvaWwlMjByZWZpbmVyeSUyMGVuZXJneSUyMGluZHVzdHJpYWwlMjBwb3dlcnxlbnwxfDB8fHwxNzc1ODg0OTA0fDA&ixlib=rb-4.1.0&w=720&h=380&fit=crop&q=80&fm=jpg&auto=format",
     "alt": "Industrial complex illuminated at night against dark sky",
@@ -411,6 +402,15 @@
       "author": "Growtika",
       "authorUrl": "https://unsplash.com/@growtika?utm_source=dhlm_studio&utm_medium=referral",
       "unsplashUrl": "https://unsplash.com/photos/KPZNNKQbTMw?utm_source=dhlm_studio&utm_medium=referral"
+    }
+  },
+  "deep-dive-tsla-april-2026": {
+    "src": "https://images.unsplash.com/photo-1768310465625-5824a01fff4c?ixid=M3w5MjE0MDh8MHwxfHNlYXJjaHwxfHx0ZXNsYSUyMHN1cGVyY2hhcmdlciUyMHN0YXRpb24lMjBlbGVjdHJpY3xlbnwxfDB8fHwxNzc1ODg1Njc0fDA&ixlib=rb-4.1.0&w=720&h=380&fit=crop&q=80&fm=jpg&auto=format",
+    "alt": "Tesla electric car charging stations on a sunny day.",
+    "credit": {
+      "author": "Autotrader UK",
+      "authorUrl": "https://unsplash.com/@autotraderuk?utm_source=dhlm_studio&utm_medium=referral",
+      "unsplashUrl": "https://unsplash.com/photos/YsjxnzCOjP0?utm_source=dhlm_studio&utm_medium=referral"
     }
   }
 }

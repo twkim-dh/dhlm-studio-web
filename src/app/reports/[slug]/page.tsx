@@ -258,32 +258,6 @@ export default async function ReportPage({ params }: { params: Promise<{ slug: s
       <article style={{ maxWidth: 760, margin: '0 auto', padding: '80px 24px' }}>
         <Link href="/reports" style={{ fontSize: 12, color: '#64748B' }}>← Reports</Link>
 
-        {/* Hero Image — Unsplash CDN if available, else frontmatter static fallback */}
-        {heroSrc && (
-          <div style={{ borderRadius: 14, overflow: 'hidden', border: '1px solid #1E293B', margin: '16px 0' }}>
-            {/* eslint-disable-next-line @next/next/no-img-element */}
-            <img
-              src={heroSrc}
-              alt={heroAlt}
-              style={{ width: '100%', height: 'auto', objectFit: 'contain', display: 'block', background: '#0f172a', borderRadius: 12 }}
-            />
-            {unsplashEntry && (
-              <div style={{ padding: '4px 10px', textAlign: 'right', background: '#0D1117' }}>
-                <span style={{ fontSize: 9, color: '#334155' }}>
-                  Photo by{' '}
-                  <a href={unsplashEntry.credit.authorUrl} target="_blank" rel="noopener noreferrer" style={{ color: '#475569', textDecoration: 'none' }}>
-                    {unsplashEntry.credit.author}
-                  </a>
-                  {' '}on{' '}
-                  <a href={unsplashEntry.credit.unsplashUrl} target="_blank" rel="noopener noreferrer" style={{ color: '#475569', textDecoration: 'none' }}>
-                    Unsplash
-                  </a>
-                </span>
-              </div>
-            )}
-          </div>
-        )}
-
         {/* Brutal Edge Header — type-aware */}
         {(() => {
           const isHotSector = fm.type === 'hot-sector' || fm.type === 'hidden-gem';
@@ -351,6 +325,32 @@ export default async function ReportPage({ params }: { params: Promise<{ slug: s
             <LikeButton pageId={`report-${slug}`} />
           </div>
         </div>
+
+        {/* Hero Image — Unsplash CDN if available, else frontmatter static fallback */}
+        {heroSrc && (
+          <div style={{ borderRadius: 14, overflow: 'hidden', border: '1px solid #1E293B', margin: '0 0 24px' }}>
+            {/* eslint-disable-next-line @next/next/no-img-element */}
+            <img
+              src={heroSrc}
+              alt={heroAlt}
+              style={{ width: '100%', height: 'auto', objectFit: 'contain', display: 'block', background: '#0f172a', borderRadius: 12 }}
+            />
+            {unsplashEntry && (
+              <div style={{ padding: '4px 10px', textAlign: 'right', background: '#0D1117' }}>
+                <span style={{ fontSize: 9, color: '#334155' }}>
+                  Photo by{' '}
+                  <a href={unsplashEntry.credit.authorUrl} target="_blank" rel="noopener noreferrer" style={{ color: '#475569', textDecoration: 'none' }}>
+                    {unsplashEntry.credit.author}
+                  </a>
+                  {' '}on{' '}
+                  <a href={unsplashEntry.credit.unsplashUrl} target="_blank" rel="noopener noreferrer" style={{ color: '#475569', textDecoration: 'none' }}>
+                    Unsplash
+                  </a>
+                </span>
+              </div>
+            )}
+          </div>
+        )}
 
         {/* BEAF Radar Chart — only for deep-dive reports with sub-scores */}
         {beafScores && beafScores.length > 0 && (

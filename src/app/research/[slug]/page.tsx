@@ -213,16 +213,6 @@ export default async function ResearchArticlePage({ params }: { params: Promise<
           <div style={{ marginTop: 14 }}><ListenButton text={a.body} /></div>
         </div>
 
-        {/* Paper info card */}
-        {fm.paperTitle && (
-          <div style={{ padding: '14px 18px', borderRadius: 12, background: '#0D1117', border: '1px solid #1E293B', marginBottom: 24 }}>
-            <div style={{ fontFamily: 'var(--mono)', fontSize: 9, fontWeight: 800, color: '#94A3B8', letterSpacing: 1.5, marginBottom: 6 }}>📄 SOURCE PAPER</div>
-            <div style={{ fontSize: 14, fontWeight: 700, color: '#E2E8F0', lineHeight: 1.4, marginBottom: 4 }}>{fm.paperTitle}</div>
-            <div style={{ fontSize: 12, color: '#94A3B8' }}>{fm.paperAuthors} ({fm.paperYear}){fm.paperInstitution && ` · ${fm.paperInstitution}`}</div>
-            {fm.paperAdvisor && <div style={{ fontSize: 11, color: '#64748B', marginTop: 2 }}>Advisor: {fm.paperAdvisor}</div>}
-          </div>
-        )}
-
         {/* Hero image from Unsplash manifest */}
         {unsplashEntry?.src && (
           <div style={{ borderRadius: 12, overflow: 'hidden', border: '1px solid #1E293B', marginBottom: 24 }}>
@@ -244,6 +234,16 @@ export default async function ResearchArticlePage({ params }: { params: Promise<
                 </a>
               </span>
             </div>
+          </div>
+        )}
+
+        {/* Paper info card */}
+        {fm.paperTitle && (
+          <div style={{ padding: '14px 18px', borderRadius: 12, background: '#0D1117', border: '1px solid #1E293B', marginBottom: 24 }}>
+            <div style={{ fontFamily: 'var(--mono)', fontSize: 9, fontWeight: 800, color: '#94A3B8', letterSpacing: 1.5, marginBottom: 6 }}>📄 SOURCE PAPER</div>
+            <div style={{ fontSize: 14, fontWeight: 700, color: '#E2E8F0', lineHeight: 1.4, marginBottom: 4 }}>{fm.paperTitle}</div>
+            <div style={{ fontSize: 12, color: '#94A3B8' }}>{fm.paperAuthors} ({fm.paperYear}){fm.paperInstitution && ` · ${fm.paperInstitution}`}</div>
+            {fm.paperAdvisor && <div style={{ fontSize: 11, color: '#64748B', marginTop: 2 }}>Advisor: {fm.paperAdvisor}</div>}
           </div>
         )}
 

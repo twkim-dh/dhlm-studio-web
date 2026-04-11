@@ -163,9 +163,27 @@ export default async function BlogPostPage({ params }: { params: Promise<{ slug:
           </div>
         )}
 
+        {/* Header */}
+        <div style={{ marginTop: isDeepDive ? 0 : 24, marginBottom: 24 }}>
+          <div style={{ display: 'flex', alignItems: 'center', gap: 8, marginBottom: 12 }}>
+            <span style={{ fontFamily: 'var(--mono)', fontSize: 10, fontWeight: 600, padding: '3px 8px', borderRadius: 4, background: `${post.catColor}14`, color: post.catColor }}>{post.category}</span>
+            <span style={{ fontFamily: 'var(--sans)', fontSize: 11, color: '#475569' }}>Published {post.date} · {post.readTime} read</span>
+            {post.lastUpdated && (
+              <span style={{ fontFamily: 'var(--sans)', fontSize: 11, color: '#475569' }}>· Updated {post.lastUpdated}</span>
+            )}
+          </div>
+          <h1 style={{ fontFamily: 'var(--serif)', fontSize: 'clamp(24px, 4vw, 36px)', fontWeight: 900, color: '#F1F5F9', lineHeight: 1.3, margin: 0 }}>
+            {post.title}
+          </h1>
+          <p style={{ fontFamily: 'var(--sans)', fontSize: 15, color: '#64748B', lineHeight: 1.7, marginTop: 16 }}>
+            {post.description}
+          </p>
+          <div style={{ marginTop: 16 }}><LikeButton pageId={`blog-${slug}`} /></div>
+        </div>
+
         {/* Hero image (explicit GPT image > Unsplash manifest) */}
         {heroSrc && (
-          <div style={{ marginTop: 24, borderRadius: 12, overflow: 'hidden', border: '1px solid #1E293B' }}>
+          <div style={{ marginBottom: 28, borderRadius: 12, overflow: 'hidden', border: '1px solid #1E293B' }}>
             <Image
               src={heroSrc}
               alt={unsplashEntry?.alt || post.title}
@@ -191,24 +209,6 @@ export default async function BlogPostPage({ params }: { params: Promise<{ slug:
             )}
           </div>
         )}
-
-        {/* Header */}
-        <div style={{ marginTop: heroSrc ? 24 : (isDeepDive ? 0 : 24), marginBottom: 24 }}>
-          <div style={{ display: 'flex', alignItems: 'center', gap: 8, marginBottom: 12 }}>
-            <span style={{ fontFamily: 'var(--mono)', fontSize: 10, fontWeight: 600, padding: '3px 8px', borderRadius: 4, background: `${post.catColor}14`, color: post.catColor }}>{post.category}</span>
-            <span style={{ fontFamily: 'var(--sans)', fontSize: 11, color: '#475569' }}>Published {post.date} · {post.readTime} read</span>
-            {post.lastUpdated && (
-              <span style={{ fontFamily: 'var(--sans)', fontSize: 11, color: '#475569' }}>· Updated {post.lastUpdated}</span>
-            )}
-          </div>
-          <h1 style={{ fontFamily: 'var(--serif)', fontSize: 'clamp(24px, 4vw, 36px)', fontWeight: 900, color: '#F1F5F9', lineHeight: 1.3, margin: 0 }}>
-            {post.title}
-          </h1>
-          <p style={{ fontFamily: 'var(--sans)', fontSize: 15, color: '#64748B', lineHeight: 1.7, marginTop: 16 }}>
-            {post.description}
-          </p>
-          <div style={{ marginTop: 16 }}><LikeButton pageId={`blog-${slug}`} /></div>
-        </div>
 
         {/* Table of Contents */}
         {contentSections.length > 2 && (
