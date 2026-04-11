@@ -19,6 +19,7 @@ interface DailyBriefFM {
   spPct?:   number;
   nasPct?:  number;
   dowPct?:  number;
+  rus2Pct?: number;
   vixVal?:  number;
   vixPct?:  number;
   btcPct?:  number;
@@ -69,7 +70,9 @@ export async function generateMetadata({ params }: { params: Promise<{ slug: str
 }
 
 // Simple markdown renderer mirroring the style of /reports/[slug]
-function renderMarkdown(md: string): React.ReactNode[] {
+// skipImage: if provided, standalone image lines matching this src are suppressed
+// (avoids double-rendering when the same image is already shown as heroImage)
+function renderMarkdown(md: string, skipImage?: string): React.ReactNode[] {
   const lines = md.split('\n');
   const elements: React.ReactNode[] = [];
   let inTable = false;
@@ -116,15 +119,17 @@ function renderMarkdown(md: string): React.ReactNode[] {
       flushTable();
     }
 
-    // Image: ![alt](src) on its own line
+    // Image: ![alt](src) on its own line — skip if src matches heroImage (already rendered above)
     const imgMatch = line.match(/^!\[([^\]]*)\]\(([^)]+)\)/);
     if (imgMatch) {
-      elements.push(
-        // eslint-disable-next-line @next/next/no-img-element
-        <img key={key++} src={imgMatch[2]} alt={imgMatch[1]}
-          style={{ width: '100%', height: 'auto', borderRadius: 12, margin: '8px 0 20px', display: 'block', objectFit: 'contain', background: '#0f172a' }}
-        />
-      );
+      if (!skipImage || imgMatch[2] !== skipImage) {
+        elements.push(
+          // eslint-disable-next-line @next/next/no-img-element
+          <img key={key++} src={imgMatch[2]} alt={imgMatch[1]}
+            style={{ width: '100%', height: 'auto', borderRadius: 12, margin: '8px 0 20px', display: 'block', objectFit: 'contain', background: '#0f172a' }}
+          />
+        );
+      }
     } else if (line.startsWith('# ')) {
       // Market headline — render as visually large h2 (h1 already used for page title)
       elements.push(<h2 key={key++} style={{ fontFamily: 'var(--serif)', fontSize: 'clamp(20px, 3.5vw, 28px)', fontWeight: 900, color: '#F1F5F9', margin: '4px 0 28px', lineHeight: 1.3, borderLeft: '4px solid #C73E3A', paddingLeft: 14 }} dangerouslySetInnerHTML={{ __html: inline(line.slice(2)) }} />);
@@ -217,13 +222,22 @@ export default async function DailyBriefPage({ params }: { params: Promise<{ slu
             spPct={fm.spPct}
             nasPct={fm.nasPct ?? 0}
             dowPct={fm.dowPct ?? 0}
+            rus2Pct={fm.rus2Pct}
             fgScore={fm.fgScore}
             fgLabel={fm.fgLabel ?? 'Neutral'}
           />
         )}
 
-        {/* Body */}
-        <div>{renderMarkdown(brief.body)}</div>
+        {/* Body — strip heroImage line before rendering to prevent duplicate */}
+        {(() => {
+          let body = brief.body;
+          if (fm.heroImage) {
+            // Remove every occurrence of the heroImage markdown line from the body
+            const escaped = fm.heroImage.replace(/[.*+?^${}()|[\]\\]/g, '\\$&');
+            body = body.replace(new RegExp(`!\\[[^\\]]*\\]\\(${escaped}\\)\\n?`, 'g'), '');
+          }
+          return <div>{renderMarkdown(body)}</div>;
+        })()}
 
         {/* Newsletter signup */}
         <div style={{ marginTop: 32 }}>

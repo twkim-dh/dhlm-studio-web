@@ -45,6 +45,10 @@ function getAllResearch(): ResearchMeta[] {
         if ((raw.startsWith('"') && raw.endsWith('"'))) raw = raw.slice(1, -1);
         fm[m[1]] = raw !== '' && !isNaN(Number(raw)) ? Number(raw) : raw;
       }
+      // Filter out future-dated posts (scheduled publishing)
+      const today = new Date().toISOString().slice(0, 10);
+      const pubDate = String(fm['publishDate'] || fm['date'] || '');
+      if (pubDate > today) continue;
       out.push(fm as unknown as ResearchMeta);
     }
     return out.sort((a, b) => (b.date > a.date ? 1 : -1));

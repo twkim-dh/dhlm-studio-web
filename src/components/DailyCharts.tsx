@@ -7,11 +7,12 @@
 import { BarChart, Bar, XAxis, YAxis, Cell, ReferenceLine, ResponsiveContainer, Tooltip } from 'recharts';
 
 interface Props {
-  spPct:  number;
-  nasPct: number;
-  dowPct: number;
-  fgScore: number;
-  fgLabel: string;
+  spPct:    number;
+  nasPct:   number;
+  dowPct:   number;
+  rus2Pct?: number;
+  fgScore:  number;
+  fgLabel:  string;
 }
 
 function fgColor(score: number): string {
@@ -42,8 +43,9 @@ function FGGauge({ score, color }: { score: number; color: string }) {
   );
 }
 
-export default function DailyCharts({ spPct, nasPct, dowPct, fgScore, fgLabel }: Props) {
+export default function DailyCharts({ spPct, nasPct, dowPct, rus2Pct, fgScore, fgLabel }: Props) {
   const indexData = [
+    ...(rus2Pct != null ? [{ name: 'RUT',    pct: rus2Pct }] : []),
     { name: 'Dow',    pct: dowPct  },
     { name: 'Nasdaq', pct: nasPct  },
     { name: 'S&P',    pct: spPct   },
@@ -60,7 +62,7 @@ export default function DailyCharts({ spPct, nasPct, dowPct, fgScore, fgLabel }:
         <div style={{ fontFamily: 'var(--mono)', fontSize: 9, fontWeight: 800, color: '#475569', letterSpacing: 1.5, marginBottom: 10 }}>
           INDEX RETURNS
         </div>
-        <ResponsiveContainer width="100%" height={80}>
+        <ResponsiveContainer width="100%" height={rus2Pct != null ? 104 : 80}>
           <BarChart data={indexData} layout="vertical" margin={{ top: 0, right: 44, bottom: 0, left: 44 }}>
             <XAxis
               type="number"

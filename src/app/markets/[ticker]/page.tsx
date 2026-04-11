@@ -33,9 +33,11 @@ async function fetchLiveData(ticker: string) {
         fetch(`${FMP_BASE}/profile?symbol=${sym}&apikey=${FMP_KEY}`, { next: { revalidate: 3600 } }),
         fetch(`${FMP_BASE}/income-statement?symbol=${sym}&period=annual&limit=1&apikey=${FMP_KEY}`, { next: { revalidate: 86400 } }),
       ]);
+      // Check HTTP status before parsing (catches 429 rate-limit responses)
+      if (!profileRes.ok) { console.warn(`FMP profile ${profileRes.status} for ${sym}`); throw new Error(`FMP ${profileRes.status}`); }
       const profileData = await profileRes.json();
-      // Check for FMP rate limit error
-      if (profileData && profileData['Error Message']) return null;
+      // Check for FMP error body
+      if (profileData && (profileData['Error Message'] || profileData['message'])) return null;
       const finData = await finRes.json();
       const p = Array.isArray(profileData) && profileData[0] ? profileData[0] : null;
       const f = Array.isArray(finData) && finData[0] ? finData[0] : null;
@@ -110,7 +112,7 @@ export default async function StockPage({ params }: { params: Promise<{ ticker: 
   // Fallback for ANY ticker when FMP is rate-limited or data unavailable
   const minimalStock = {
     ticker: ticker.toUpperCase(), name: ticker.toUpperCase(), price: 0, change: 0,
-    cap: '', sector: '', description: `Stock profile for ${ticker.toUpperCase()}. Live data is temporarily unavailable — it will load automatically when the data source refreshes. Try again in a few minutes.`,
+    cap: '', sector: '', description: '',
     pe: '', revenue: '', ceo: '', hq: '', employees: '', website: '',
   };
   const stock = live || staticStock || minimalStock;
@@ -152,7 +154,10 @@ export default async function StockPage({ params }: { params: Promise<{ ticker: 
       <div style={{ maxWidth: 800, margin: '0 auto', padding: '80px 24px' }}>
         <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center' }}>
           <Link href="/markets" style={{ fontSize: 12, color: '#64748B', fontFamily: 'var(--sans)' }}>← Markets</Link>
-          {isLive && <span style={{ fontSize: 9, padding: '3px 8px', borderRadius: 4, background: '#00D47418', color: '#00D474', fontWeight: 700, fontFamily: 'var(--mono)' }}>● LIVE — FMP</span>}
+          {isLive
+            ? <span style={{ fontSize: 9, padding: '3px 8px', borderRadius: 4, background: '#00D47418', color: '#00D474', fontWeight: 700, fontFamily: 'var(--mono)' }}>● LIVE — FMP</span>
+            : <span style={{ fontSize: 9, padding: '3px 8px', borderRadius: 4, background: '#47556918', color: '#94A3B8', fontWeight: 700, fontFamily: 'var(--mono)' }}>● Data delayed</span>
+          }
         </div>
 
         {/* Header */}

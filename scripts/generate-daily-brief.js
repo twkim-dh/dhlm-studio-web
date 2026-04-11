@@ -13,19 +13,21 @@
 const fs   = require('fs');
 const path = require('path');
 
-const FMP_KEY     = process.env.FMP_API_KEY       || '';
-const AV_KEY      = process.env.ALPHA_VANTAGE_KEY || '';
-const FMP_PREMIUM = process.env.FMP_PREMIUM === 'true';
-const OUT_DIR     = path.join(__dirname, '..', 'src', 'content', 'daily');
+const FMP_KEY       = process.env.FMP_API_KEY         || '';
+const AV_KEY        = process.env.ALPHA_VANTAGE_KEY   || '';
+const UNSPLASH_KEY  = process.env.UNSPLASH_ACCESS_KEY || '';
+const FMP_PREMIUM   = process.env.FMP_PREMIUM === 'true';
+const OUT_DIR       = path.join(__dirname, '..', 'src', 'content', 'daily');
 
 const date = process.env.DAILY_BRIEF_DATE || new Date().toISOString().slice(0, 10);
 
 // ── Fallback data ──────────────────────────────────────────────────────────────
 const FALLBACK = {
   indices: [
-    { symbol: '^GSPC', label: 'S&P 500',  price: 5612.40,  change: -135.20, pct: -2.36 },
-    { symbol: '^IXIC', label: 'Nasdaq',   price: 17834.50, change: -485.30, pct: -2.65 },
-    { symbol: '^DJI',  label: 'Dow',      price: 41250.80, change: -780.40, pct: -1.86 },
+    { symbol: '^GSPC', label: 'S&P 500',     price: 5612.40,  change: -135.20, pct: -2.36 },
+    { symbol: '^IXIC', label: 'Nasdaq',      price: 17834.50, change: -485.30, pct: -2.65 },
+    { symbol: '^DJI',  label: 'Dow',         price: 41250.80, change: -780.40, pct: -1.86 },
+    { symbol: '^RUT',  label: 'Russell 2000', price: 2010.50, change:  -52.30, pct: -2.54 },
   ],
   macro: [
     { symbol: 'CLUSD', label: 'WTI Oil', price: 78.40,   change:  1.20, pct:  1.55 },
@@ -41,7 +43,7 @@ const FALLBACK = {
 };
 
 const LABELS = {
-  '^GSPC': 'S&P 500', '^IXIC': 'Nasdaq', '^DJI': 'Dow',
+  '^GSPC': 'S&P 500', '^IXIC': 'Nasdaq', '^DJI': 'Dow', '^RUT': 'Russell 2000',
   'CLUSD': 'WTI Oil', 'GCUSD': 'Gold', '^VIX': 'VIX', '^TNX': 'US 10Y',
 };
 
@@ -972,11 +974,28 @@ function validateOutput(text) {
   if (clean) console.log('✓ Output validation passed — no forbidden phrases detected.');
 }
 
-// ── Hero Image ─────────────────────────────────────────────────────────────────
-function assignHeroImage(spPct) {
-  if (spPct > 0.5)  return '/images/content/daily-bull.png';
-  if (spPct < -0.5) return '/images/content/daily-bear.png';
-  return '/images/content/daily-mixed.png';
+// ── Hero Image — Unsplash with static fallback ─────────────────────────────────
+async function fetchUnsplashHero(keyword) {
+  if (!UNSPLASH_KEY) return null;
+  try {
+    const res = await fetch(
+      `https://api.unsplash.com/photos/random?query=${encodeURIComponent(keyword)}&orientation=landscape&content_filter=high`,
+      { headers: { Authorization: `Client-ID ${UNSPLASH_KEY}` } }
+    );
+    if (!res.ok) { console.warn(`Unsplash ${res.status} for "${keyword}"`); return null; }
+    const data = await res.json();
+    return data?.urls?.regular || null;
+  } catch (e) { console.warn('Unsplash fetch failed:', e.message); return null; }
+}
+
+async function assignHeroImage(spPct) {
+  if (spPct > 0.5) {
+    return (await fetchUnsplashHero('stock market bull rally green')) || '/images/content/daily-bull.png';
+  }
+  if (spPct < -0.5) {
+    return (await fetchUnsplashHero('stock market crash red bear')) || '/images/content/daily-bear.png';
+  }
+  return (await fetchUnsplashHero('wall street trading floor')) || '/images/content/daily-mixed.png';
 }
 
 // ── Markdown Builder ───────────────────────────────────────────────────────────
@@ -1089,6 +1108,7 @@ function buildMarkdown(params) {
   const spD  = sp;
   const nasD = indices.find(x => x.symbol === '^IXIC');
   const dowD = indices.find(x => x.symbol === '^DJI');
+  const rutD = indices.find(x => x.symbol === '^RUT');
   const vixD = macro.find(x => x.symbol === '^VIX');
   const btcD = crypto.find(x => x.id === 'bitcoin');
 
@@ -1101,6 +1121,7 @@ heroImage: "${heroImage}"
 spPct: ${(spD?.pct   ?? 0).toFixed(2)}
 nasPct: ${(nasD?.pct  ?? 0).toFixed(2)}
 dowPct: ${(dowD?.pct  ?? 0).toFixed(2)}
+rus2Pct: ${(rutD?.pct ?? 0).toFixed(2)}
 vixVal: ${(vixD?.price ?? 20).toFixed(1)}
 vixPct: ${(vixD?.pct  ?? 0).toFixed(2)}
 btcPct: ${(btcD?.change24h ?? 0).toFixed(2)}
@@ -1169,7 +1190,7 @@ async function main() {
   console.log(`Generating Daily Brief for ${date} (FMP Premium: ${FMP_PREMIUM})…`);
 
   const [batchRaw, tnxRaw, oilRaw, moversRaw, earningsRaw, cryptoRaw, altMoversRaw, fgRaw, headlinesRaw] = await Promise.all([
-    fmpBatchQuote(['^GSPC', '^IXIC', '^DJI', '^VIX', 'GCUSD']),
+    fmpBatchQuote(['^GSPC', '^IXIC', '^DJI', '^RUT', '^VIX', 'GCUSD']),
     fmpTenYearYield(),
     alphaVantageWTI(),
     fmpNotableMovers(),
@@ -1183,12 +1204,12 @@ async function main() {
   // Indices
   let indices = FALLBACK.indices;
   if (Array.isArray(batchRaw)) {
-    const mapped = ['^GSPC', '^IXIC', '^DJI'].map(sym => {
+    const mapped = ['^GSPC', '^IXIC', '^DJI', '^RUT'].map(sym => {
       const d = batchRaw.find(q => q.symbol === sym);
       if (!d) return null;
       return { symbol: sym, label: LABELS[sym], price: Number(d.price)||0, change: Number(d.change)||0, pct: Number(d.changesPercentage)||0 };
     }).filter(Boolean);
-    if (mapped.length === 3) indices = mapped;
+    if (mapped.length >= 3) indices = mapped;
   }
 
   // Macro
@@ -1232,7 +1253,7 @@ async function main() {
   const fearGreed = fgRaw || FALLBACK.fearGreed;
   const verdict   = generateBrutalEdgeTake({ indices, macro, crypto, fearGreed });
   const sp500     = indices.find(x => x.symbol === '^GSPC');
-  const heroImage = assignHeroImage(sp500?.pct ?? 0);
+  const heroImage = await assignHeroImage(sp500?.pct ?? 0);
 
   const md = buildMarkdown({
     indices, macro, crypto, fearGreed, verdict,

@@ -1,4 +1,5 @@
 import type { Metadata } from 'next';
+import { notFound } from 'next/navigation';
 import Link from 'next/link';
 import fs from 'fs';
 import path from 'path';
@@ -58,7 +59,18 @@ function getArticle(slug: string) {
 export function generateStaticParams() {
   try {
     if (!fs.existsSync(CONTENT_DIR)) return [];
-    return fs.readdirSync(CONTENT_DIR).filter(f => f.endsWith('.md')).map(f => ({ slug: f.replace(/\.md$/, '') }));
+    const today = new Date().toISOString().slice(0, 10);
+    return fs.readdirSync(CONTENT_DIR)
+      .filter(f => f.endsWith('.md'))
+      .map(f => f.replace(/\.md$/, ''))
+      .filter(slug => {
+        const a = getArticle(slug);
+        if (!a) return true;
+        // publishDate in frontmatter overrides date for scheduling
+        const pubDate = (a.fm as unknown as Record<string, string>)['publishDate'] || a.fm.date;
+        return pubDate <= today;
+      })
+      .map(slug => ({ slug }));
   } catch { return []; }
 }
 
@@ -154,6 +166,11 @@ export default async function ResearchArticlePage({ params }: { params: Promise<
       </div>
     );
   }
+
+  // publishDate scheduling: hide future-dated content
+  const today = new Date().toISOString().slice(0, 10);
+  const publishDate = (a.fm as unknown as Record<string, string>)['publishDate'] || a.fm.date;
+  if (publishDate > today) notFound();
 
   const fm = a.fm;
   const c = verdictColor(fm.verdict);

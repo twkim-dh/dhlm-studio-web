@@ -4,6 +4,7 @@ import { useState, useEffect } from 'react';
 import Link from 'next/link';
 import Image from 'next/image';
 import { getCryptoRoast } from '@/lib/crypto-roast';
+import CryptoHeatmap from '@/components/CryptoHeatmap';
 
 interface Coin {
   rank: number; id: string; symbol: string; name: string; image: string;
@@ -64,6 +65,11 @@ export default function CryptoPage() {
 
         {coins.length > 0 && (
           <>
+            {/* Crypto Heatmap */}
+            <div style={{ background: '#111827', borderRadius: 14, border: '1px solid #1E293B', padding: '16px 16px 12px', marginBottom: 24 }}>
+              <CryptoHeatmap coins={coins} />
+            </div>
+
             <p style={{ fontFamily: 'var(--mono)', fontSize: 10, color: '#00D474', marginBottom: 16 }}>● LIVE DATA — CoinGecko API</p>
           <div style={{ overflowX: 'auto', WebkitOverflowScrolling: 'touch' }}>
 
