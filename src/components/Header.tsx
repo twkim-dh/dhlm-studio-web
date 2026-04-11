@@ -14,6 +14,7 @@ const links = [
   { label: "Research", href: "/research" },
   { label: "Blog", href: "/blog" },
   { label: "Crypto", href: "/rankings/crypto" },
+  { label: "Crypto 101", href: "/crypto-101" },
   { label: "Lottery", href: "/lottery" },
 ];
 

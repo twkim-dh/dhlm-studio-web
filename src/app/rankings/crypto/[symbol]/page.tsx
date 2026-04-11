@@ -2,7 +2,6 @@ import type { Metadata } from 'next';
 import Link from 'next/link';
 import { TOP_CRYPTOS } from '@/data/top-cryptos';
 import LikeButton from '@/components/LikeButton';
-import BrutalCryptoRoast from '@/components/BrutalCryptoRoast';
 import CandlestickChart from '@/components/CandlestickChart';
 import { getCoinDetail, getCoinOHLC } from '@/lib/coingecko';
 
@@ -50,11 +49,38 @@ export default async function CryptoDetailPage({ params }: { params: Promise<{ s
   const change30d = md?.price_change_percentage_30d || 0;
   const mcap = md?.market_cap?.usd || 0;
   const vol24h = md?.total_volume?.usd || 0;
+  const high24h = md?.high_24h?.usd || 0;
+  const low24h  = md?.low_24h?.usd || 0;
   const ath = md?.ath?.usd || 0;
   const athDate = md?.ath_date?.usd ? new Date(md.ath_date.usd).toLocaleDateString('en-US') : '';
+  const athChangePct = md?.ath_change_percentage?.usd || 0;
+  const circSupply = md?.circulating_supply || 0;
+  const totalSupply = md?.total_supply || 0;
   const rank = coin.market_cap_rank || '?';
   const desc = coin.description?.en?.replace(/<[^>]+>/g, '').slice(0, 500) || '';
   const isUp = change24h >= 0;
+
+  // Brutal Edge Take (rule-based)
+  function cryptoTake(): string {
+    const parts: string[] = [];
+    if (change24h > 10)      parts.push('Double-digit move in 24 hours. Sharp rally — watch volume for conviction.');
+    else if (change24h > 5)  parts.push('Strong session. Momentum is building, but crypto moves fast in both directions.');
+    else if (change24h > 2)  parts.push('Solid 24h gain. Not decisive on its own — context matters.');
+    else if (change24h > 0)  parts.push('Modest green. Nothing to act on yet.');
+    else if (change24h > -2) parts.push('Mild weakness. No alarm — within normal volatility range.');
+    else if (change24h > -5) parts.push('Meaningful drop. Check if BTC-wide or coin-specific.');
+    else if (change24h > -10)parts.push('Significant selling pressure. Support levels being tested.');
+    else                      parts.push('Heavy 24h selling. Risk-off or specific catalyst — verify before acting.');
+    if (change7d > 20)  parts.push(' 7-day trend is strongly bullish.');
+    else if (change7d < -20) parts.push(' 7-day trend is sharply negative — broader trend under pressure.');
+    if (price > 0 && ath > 0 && (price / ath) > 0.95) parts.push(' Trading near all-time high.');
+    else if (ath > 0 && athChangePct < -80) parts.push(' More than 80% below ATH — deep in drawdown territory.');
+    return parts.join('');
+  }
+  const beTake = cryptoTake();
+
+  // Related coins (top coins from list, exclude current)
+  const relatedCoins = TOP_CRYPTOS.filter(id => id !== symbol).slice(0, 6);
 
   // Fetch 30-day OHLC for candlestick chart — fail gracefully
   const ohlcPoints = await getCoinOHLC(symbol, 30).catch(() => []);
@@ -98,21 +124,33 @@ export default async function CryptoDetailPage({ params }: { params: Promise<{ s
           <div style={{ marginTop: 8 }}><LikeButton pageId={`crypto-${symbol}`} /></div>
         </div>
 
-        {/* Metrics */}
-        <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(140px, 1fr))', gap: 8, marginBottom: 20 }}>
-          {[
-            { label: 'Market Cap', value: fmtUsd(mcap) },
-            { label: '24h Volume', value: fmtUsd(vol24h) },
-            { label: '7d Change', value: `${change7d >= 0 ? '+' : ''}${change7d.toFixed(1)}%`, color: change7d >= 0 ? '#00D474' : '#FF4545' },
-            { label: '30d Change', value: `${change30d >= 0 ? '+' : ''}${change30d.toFixed(1)}%`, color: change30d >= 0 ? '#00D474' : '#FF4545' },
-            { label: 'All-Time High', value: fmtPrice(ath) },
-            { label: 'ATH Date', value: athDate },
-          ].map(m => (
-            <div key={m.label} style={{ ...card, padding: '12px 14px', textAlign: 'center' }}>
-              <div style={{ fontSize: 9, color: '#475569', fontFamily: 'var(--mono)', textTransform: 'uppercase' }}>{m.label}</div>
-              <div style={{ fontSize: 15, fontWeight: 700, color: ('color' in m && m.color) || '#E2E8F0', fontFamily: 'var(--mono)', marginTop: 4 }}>{m.value}</div>
-            </div>
-          ))}
+        {/* ③ Key Metrics table */}
+        <div style={{ ...card, padding: '20px 22px', marginBottom: 16 }}>
+          <div style={{ fontFamily: 'var(--mono)', fontSize: 10, fontWeight: 700, color: '#64748B', letterSpacing: 2, marginBottom: 12 }}>KEY METRICS</div>
+          {([
+            ['Market Cap',       fmtUsd(mcap),                '24h Volume',    fmtUsd(vol24h)],
+            ['24h High',         fmtPrice(high24h),            '24h Low',       fmtPrice(low24h)],
+            ['7d Change',        `${change7d >= 0 ? '+' : ''}${change7d.toFixed(1)}%`, '30d Change', `${change30d >= 0 ? '+' : ''}${change30d.toFixed(1)}%`],
+            ['All-Time High',    fmtPrice(ath),                'ATH Date',      athDate],
+            ['vs ATH',           `${athChangePct.toFixed(1)}%`, 'Rank',          `#${rank}`],
+            ...(circSupply ? [['Circulating Supply', `${(circSupply / 1e6).toFixed(1)}M`, 'Total Supply', totalSupply ? `${(totalSupply / 1e6).toFixed(1)}M` : '—']] : []),
+          ] as string[][]).map((row, i) => {
+            const c7d = row[0] === '7d Change' ? (change7d >= 0 ? '#00D474' : '#FF4545') : undefined;
+            const c30d = row[2] === '30d Change' ? (change30d >= 0 ? '#00D474' : '#FF4545') : undefined;
+            const cAth = row[0] === 'vs ATH' ? '#F59E0B' : undefined;
+            return (
+              <div key={i} style={{ display: 'grid', gridTemplateColumns: '1fr 1fr', borderBottom: i < 5 ? '1px solid #1E293B40' : 'none', padding: '8px 0' }}>
+                <div style={{ padding: '0 4px' }}>
+                  <div style={{ fontSize: 11, color: '#475569' }}>{row[0]}</div>
+                  <div style={{ fontSize: 13, fontWeight: 600, color: c7d || cAth || '#E2E8F0', fontFamily: 'var(--mono)' }}>{row[1]}</div>
+                </div>
+                <div style={{ padding: '0 4px' }}>
+                  <div style={{ fontSize: 11, color: '#475569' }}>{row[2]}</div>
+                  <div style={{ fontSize: 13, fontWeight: 600, color: c30d || '#E2E8F0', fontFamily: 'var(--mono)' }}>{row[3]}</div>
+                </div>
+              </div>
+            );
+          })}
         </div>
 
         {/* Candlestick chart */}
@@ -131,17 +169,39 @@ export default async function CryptoDetailPage({ params }: { params: Promise<{ s
           </div>
         )}
 
-        {/* Brutal Edge Roast */}
-        <BrutalCryptoRoast symbol={symbol} />
+        {/* ④ Brutal Edge Take */}
+        {beTake && (
+          <div style={{ ...card, padding: '20px 22px', marginBottom: 16, borderColor: '#C73E3A20' }}>
+            <div style={{ fontFamily: 'var(--mono)', fontSize: 10, fontWeight: 700, color: '#C73E3A', letterSpacing: 2, marginBottom: 10 }}>🔥 BRUTAL EDGE TAKE</div>
+            <p style={{ fontSize: 14, color: '#E2E8F0', lineHeight: 1.8, margin: 0 }}>{beTake}</p>
+            <p style={{ fontSize: 9, color: '#475569', margin: '10px 0 0' }}>Informational and educational. NOT financial advice.</p>
+          </div>
+        )}
+
+        {/* ⑥ Related Coins */}
+        {relatedCoins.length > 0 && (
+          <div style={{ ...card, padding: '20px 22px', marginBottom: 16 }}>
+            <div style={{ fontFamily: 'var(--mono)', fontSize: 10, fontWeight: 700, color: '#64748B', letterSpacing: 2, marginBottom: 12 }}>RELATED COINS</div>
+            <div style={{ display: 'flex', gap: 8, flexWrap: 'wrap' }}>
+              {relatedCoins.map(id => (
+                <Link key={id} href={`/rankings/crypto/${id}`} style={{ padding: '8px 14px', borderRadius: 8, background: '#0D1117', border: '1px solid #1E293B', textDecoration: 'none' }}>
+                  <span style={{ fontSize: 12, fontWeight: 700, color: '#F59E0B', fontFamily: 'var(--mono)' }}>
+                    {id.replace(/-/g, ' ').replace(/\b\w/g, c => c.toUpperCase()).slice(0, 16)}
+                  </span>
+                </Link>
+              ))}
+            </div>
+          </div>
+        )}
 
         {/* Internal Links */}
         <div style={{ ...card, padding: '16px 20px', marginBottom: 16 }}>
           <div style={{ fontFamily: 'var(--mono)', fontSize: 9, fontWeight: 700, color: '#475569', letterSpacing: 2, marginBottom: 10 }}>EXPLORE MORE</div>
           <div style={{ display: 'flex', gap: 6, flexWrap: 'wrap' }}>
             <Link href="/rankings/crypto" style={{ fontSize: 11, color: '#F59E0B', padding: '4px 10px', borderRadius: 6, background: '#F59E0B10', border: '1px solid #F59E0B20' }}>All Crypto Rankings</Link>
+            <Link href="/crypto-101" style={{ fontSize: 11, color: '#A78BFA', padding: '4px 10px', borderRadius: 6, background: '#A78BFA10', border: '1px solid #A78BFA20' }}>📚 Crypto 101</Link>
             <Link href="/markets" style={{ fontSize: 11, color: '#60A5FA', padding: '4px 10px', borderRadius: 6, background: '#3B82F610', border: '1px solid #3B82F620' }}>Stock Markets</Link>
             <Link href="/rankings" style={{ fontSize: 11, color: '#D4A843', padding: '4px 10px', borderRadius: 6, background: '#D4A84310', border: '1px solid #D4A84320' }}>World Rankings</Link>
-            <Link href="/blog" style={{ fontSize: 11, color: '#A78BFA', padding: '4px 10px', borderRadius: 6, background: '#A78BFA10', border: '1px solid #A78BFA20' }}>Analysis Blog</Link>
           </div>
         </div>
 

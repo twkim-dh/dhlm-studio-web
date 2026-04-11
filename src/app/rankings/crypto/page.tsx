@@ -60,6 +60,15 @@ export default function CryptoPage() {
           </div>
         </div>
 
+        {/* Crypto 101 link */}
+        <Link href="/crypto-101" style={{ display: 'flex', alignItems: 'center', justifyContent: 'space-between', padding: '12px 16px', borderRadius: 10, background: '#A78BFA10', border: '1px solid #A78BFA20', textDecoration: 'none', marginBottom: 20 }}>
+          <div style={{ display: 'flex', alignItems: 'center', gap: 8 }}>
+            <span style={{ fontSize: 16 }}>📚</span>
+            <span style={{ fontSize: 12, color: '#A78BFA', fontWeight: 600 }}>New to crypto? Learn the basics → <span style={{ fontWeight: 800 }}>Crypto 101</span></span>
+          </div>
+          <span style={{ fontSize: 11, color: '#64748B', fontFamily: 'var(--mono)' }}>Free 12-week course →</span>
+        </Link>
+
         {loading && <p style={{ color: '#64748B', fontSize: 14, fontFamily: 'var(--sans)' }}>Loading live crypto data...</p>}
         {!loading && delayed && <p style={{ color: '#94A3B8', fontSize: 13, fontFamily: 'var(--sans)' }}>Data may be delayed. Retrying shortly...</p>}
 

@@ -21,6 +21,18 @@ export default function BlogPage() {
           <Link href="/" style={{ fontSize: 12, color: '#64748B', fontFamily: 'var(--sans)' }}>← Home</Link>
         </div>
 
+        {/* Crypto 101 banner */}
+        <Link href="/crypto-101" style={{ display: 'flex', alignItems: 'center', justifyContent: 'space-between', padding: '14px 18px', borderRadius: 12, background: '#A78BFA10', border: '1px solid #A78BFA20', textDecoration: 'none', marginBottom: 24 }}>
+          <div style={{ display: 'flex', alignItems: 'center', gap: 10 }}>
+            <span style={{ fontSize: 18 }}>📚</span>
+            <div>
+              <div style={{ fontSize: 13, fontWeight: 700, color: '#A78BFA' }}>New to crypto?</div>
+              <div style={{ fontSize: 11, color: '#64748B', marginTop: 1 }}>Start with Crypto 101 — 12-week beginner curriculum</div>
+            </div>
+          </div>
+          <span style={{ fontSize: 12, color: '#A78BFA', fontFamily: 'var(--mono)' }}>Start →</span>
+        </Link>
+
         <BlogFilter posts={blogPosts} />
       </div>
     </div>
