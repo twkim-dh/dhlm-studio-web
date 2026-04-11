@@ -181,29 +181,24 @@ export default async function BlogPostPage({ params }: { params: Promise<{ slug:
           <div style={{ marginTop: 16 }}><LikeButton pageId={`blog-${slug}`} /></div>
         </div>
 
-        {/* Hero image (explicit GPT image > Unsplash manifest) */}
+        {/* Hero image */}
         {heroSrc && (
-          <div style={{ marginBottom: 28, borderRadius: 12, overflow: 'hidden', border: '1px solid #1E293B' }}>
-            <Image
-              src={heroSrc}
-              alt={unsplashEntry?.alt || post.title}
-              width={720}
-              height={380}
-              style={{ width: '100%', height: 'auto', objectFit: 'contain', display: 'block', background: '#0f172a' }}
-              priority
-              unoptimized={heroSrc.startsWith('https://images.unsplash.com')}
-            />
+          <div style={{ margin: '24px 0' }}>
+            <div style={{ width: '100%', maxHeight: 300, display: 'flex', alignItems: 'center', justifyContent: 'center', background: '#0f172a', borderRadius: 12, overflow: 'hidden', border: '1px solid #1E293B' }}>
+              <Image
+                src={heroSrc}
+                alt={unsplashEntry?.alt || post.title}
+                width={720}
+                height={380}
+                style={{ maxWidth: '100%', maxHeight: 300, objectFit: 'contain', height: 'auto', display: 'block' }}
+                priority
+                unoptimized={heroSrc.startsWith('https://images.unsplash.com')}
+              />
+            </div>
             {heroCredit && (
-              <div style={{ padding: '4px 10px', textAlign: 'right', background: '#0D1117' }}>
+              <div style={{ padding: '3px 8px', textAlign: 'right' }}>
                 <span style={{ fontSize: 9, color: '#334155' }}>
-                  Photo by{' '}
-                  <a href={heroCredit.authorUrl} target="_blank" rel="noopener noreferrer" style={{ color: '#475569', textDecoration: 'none' }}>
-                    {heroCredit.author}
-                  </a>
-                  {' '}on{' '}
-                  <a href={heroCredit.unsplashUrl} target="_blank" rel="noopener noreferrer" style={{ color: '#475569', textDecoration: 'none' }}>
-                    Unsplash
-                  </a>
+                  Photo by <a href={heroCredit.authorUrl} target="_blank" rel="noopener noreferrer" style={{ color: '#475569', textDecoration: 'none' }}>{heroCredit.author}</a> on <a href={heroCredit.unsplashUrl} target="_blank" rel="noopener noreferrer" style={{ color: '#475569', textDecoration: 'none' }}>Unsplash</a>
                 </span>
               </div>
             )}

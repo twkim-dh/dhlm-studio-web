@@ -201,6 +201,16 @@ export default async function DailyBriefPage({ params }: { params: Promise<{ slu
           <div style={{ marginTop: 14 }}><ListenButton text={brief.body} /></div>
         </div>
 
+        {/* Hero Image */}
+        {fm.heroImage && (
+          <div style={{ margin: '24px 0' }}>
+            <div style={{ width: '100%', maxHeight: 300, display: 'flex', alignItems: 'center', justifyContent: 'center', background: '#0f172a', borderRadius: 12, overflow: 'hidden', border: '1px solid #1E293B' }}>
+              {/* eslint-disable-next-line @next/next/no-img-element */}
+              <img src={fm.heroImage} alt={fm.title} style={{ maxWidth: '100%', maxHeight: 300, objectFit: 'contain', height: 'auto', display: 'block' }} />
+            </div>
+          </div>
+        )}
+
         {/* Charts — Index Return BarChart + F&G Gauge (from frontmatter data) */}
         {fm.spPct != null && fm.fgScore != null && (
           <DailyCharts

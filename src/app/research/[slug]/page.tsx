@@ -213,25 +213,16 @@ export default async function ResearchArticlePage({ params }: { params: Promise<
           <div style={{ marginTop: 14 }}><ListenButton text={a.body} /></div>
         </div>
 
-        {/* Hero image from Unsplash manifest */}
+        {/* Hero image */}
         {unsplashEntry?.src && (
-          <div style={{ borderRadius: 12, overflow: 'hidden', border: '1px solid #1E293B', marginBottom: 24 }}>
-            {/* eslint-disable-next-line @next/next/no-img-element */}
-            <img
-              src={unsplashEntry.src}
-              alt={unsplashEntry.alt}
-              style={{ width: '100%', height: 'auto', objectFit: 'contain', display: 'block', background: '#0f172a', borderRadius: 12 }}
-            />
-            <div style={{ padding: '4px 10px', textAlign: 'right', background: '#0D1117' }}>
+          <div style={{ margin: '24px 0' }}>
+            <div style={{ width: '100%', maxHeight: 300, display: 'flex', alignItems: 'center', justifyContent: 'center', background: '#0f172a', borderRadius: 12, overflow: 'hidden', border: '1px solid #1E293B' }}>
+              {/* eslint-disable-next-line @next/next/no-img-element */}
+              <img src={unsplashEntry.src} alt={unsplashEntry.alt} style={{ maxWidth: '100%', maxHeight: 300, objectFit: 'contain', height: 'auto', display: 'block' }} />
+            </div>
+            <div style={{ padding: '3px 8px', textAlign: 'right' }}>
               <span style={{ fontSize: 9, color: '#334155' }}>
-                Photo by{' '}
-                <a href={unsplashEntry.credit.authorUrl} target="_blank" rel="noopener noreferrer" style={{ color: '#475569', textDecoration: 'none' }}>
-                  {unsplashEntry.credit.author}
-                </a>
-                {' '}on{' '}
-                <a href={unsplashEntry.credit.unsplashUrl} target="_blank" rel="noopener noreferrer" style={{ color: '#475569', textDecoration: 'none' }}>
-                  Unsplash
-                </a>
+                Photo by <a href={unsplashEntry.credit.authorUrl} target="_blank" rel="noopener noreferrer" style={{ color: '#475569', textDecoration: 'none' }}>{unsplashEntry.credit.author}</a> on <a href={unsplashEntry.credit.unsplashUrl} target="_blank" rel="noopener noreferrer" style={{ color: '#475569', textDecoration: 'none' }}>Unsplash</a>
               </span>
             </div>
           </div>
