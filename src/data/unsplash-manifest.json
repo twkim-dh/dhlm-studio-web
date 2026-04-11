@@ -223,5 +223,64 @@
       "authorUrl": "https://unsplash.com/@outsideclick?utm_source=dhlm_studio&utm_medium=referral",
       "unsplashUrl": "https://unsplash.com/photos/MdDV8akgY2c?utm_source=dhlm_studio&utm_medium=referral"
     }
+  },
+  "ethereum-vs-solana-2026-which-blockchain-wins": {
+    "src": "https://images.unsplash.com/photo-1660836709468-acd4e164d948?ixid=M3w5MjE0MDh8MHwxfHNlYXJjaHwxfHxldGhlcmV1bSUyMGJsb2NrY2hhaW4lMjBuZXR3b3JrJTIwbm9kZXN8ZW58MXwwfHx8MTc3NTg4MTA5Nnww&ixlib=rb-4.1.0&w=720&h=380&fit=crop&q=80&fm=jpg&auto=format",
+    "alt": "a group of blue lights",
+    "credit": {
+      "author": "GuerrillaBuzz",
+      "authorUrl": "https://unsplash.com/@guerrillabuzz?utm_source=dhlm_studio&utm_medium=referral",
+      "unsplashUrl": "https://unsplash.com/photos/lBXpVIhN_Us?utm_source=dhlm_studio&utm_medium=referral"
+    }
+  },
+  "nvidia-vs-amd-ai-inference-cost-2026": {
+    "src": "https://images.unsplash.com/photo-1648275913341-7973ae7bc9b3?ixid=M3w5MjE0MDh8MHwxfHNlYXJjaHwxfHxzdG9jayUyMG1hcmtldCUyMHRyYWRpbmclMjB3YWxsJTIwc3RyZWV0JTIwZmluYW5jZXxlbnwxfDB8fHwxNzc1ODgxMDk5fDA&ixlib=rb-4.1.0&w=720&h=380&fit=crop&q=80&fm=jpg&auto=format",
+    "alt": "a close up of a clock with different colored numbers",
+    "credit": {
+      "author": "Tyler Prahm",
+      "authorUrl": "https://unsplash.com/@tprahm?utm_source=dhlm_studio&utm_medium=referral",
+      "unsplashUrl": "https://unsplash.com/photos/lmV3gJSAgbo?utm_source=dhlm_studio&utm_medium=referral"
+    }
+  },
+  "tesla-vs-byd-global-ev-market-share-2026": {
+    "src": "https://images.unsplash.com/photo-1648275913341-7973ae7bc9b3?ixid=M3w5MjE0MDh8MHwxfHNlYXJjaHwxfHxzdG9jayUyMG1hcmtldCUyMHRyYWRpbmclMjB3YWxsJTIwc3RyZWV0JTIwZmluYW5jZXxlbnwxfDB8fHwxNzc1ODgxMDk5fDA&ixlib=rb-4.1.0&w=720&h=380&fit=crop&q=80&fm=jpg&auto=format",
+    "alt": "a close up of a clock with different colored numbers",
+    "credit": {
+      "author": "Tyler Prahm",
+      "authorUrl": "https://unsplash.com/@tprahm?utm_source=dhlm_studio&utm_medium=referral",
+      "unsplashUrl": "https://unsplash.com/photos/lmV3gJSAgbo?utm_source=dhlm_studio&utm_medium=referral"
+    }
+  },
+  "microsoft-copilot-vs-google-gemini-enterprise-2026": {
+    "src": "https://images.unsplash.com/photo-1648275913341-7973ae7bc9b3?ixid=M3w5MjE0MDh8MHwxfHNlYXJjaHwxfHxzdG9jayUyMG1hcmtldCUyMHRyYWRpbmclMjB3YWxsJTIwc3RyZWV0JTIwZmluYW5jZXxlbnwxfDB8fHwxNzc1ODgxMDk5fDA&ixlib=rb-4.1.0&w=720&h=380&fit=crop&q=80&fm=jpg&auto=format",
+    "alt": "a close up of a clock with different colored numbers",
+    "credit": {
+      "author": "Tyler Prahm",
+      "authorUrl": "https://unsplash.com/@tprahm?utm_source=dhlm_studio&utm_medium=referral",
+      "unsplashUrl": "https://unsplash.com/photos/lmV3gJSAgbo?utm_source=dhlm_studio&utm_medium=referral"
+    }
+  },
+  "palantir-vs-snowflake-government-ai-contracts-2026": {
+    "src": "https://images.unsplash.com/photo-1648275913341-7973ae7bc9b3?ixid=M3w5MjE0MDh8MHwxfHNlYXJjaHwxfHxzdG9jayUyMG1hcmtldCUyMHRyYWRpbmclMjB3YWxsJTIwc3RyZWV0JTIwZmluYW5jZXxlbnwxfDB8fHwxNzc1ODgxMDk5fDA&ixlib=rb-4.1.0&w=720&h=380&fit=crop&q=80&fm=jpg&auto=format",
+    "alt": "a close up of a clock with different colored numbers",
+    "credit": {
+      "author": "Tyler Prahm",
+      "authorUrl": "https://unsplash.com/@tprahm?utm_source=dhlm_studio&utm_medium=referral",
+      "unsplashUrl": "https://unsplash.com/photos/lmV3gJSAgbo?utm_source=dhlm_studio&utm_medium=referral"
+    }
+  },
+  "apple-services-vs-google-cloud-revenue-growth-2026": {
+    "src": "https://images.unsplash.com/photo-1648275913341-7973ae7bc9b3?ixid=M3w5MjE0MDh8MHwxfHNlYXJjaHwxfHxzdG9jayUyMG1hcmtldCUyMHRyYWRpbmclMjB3YWxsJTIwc3RyZWV0JTIwZmluYW5jZXxlbnwxfDB8fHwxNzc1ODgxMDk5fDA&ixlib=rb-4.1.0&w=720&h=380&fit=crop&q=80&fm=jpg&auto=format",
+    "alt": "a close up of a clock with different colored numbers",
+    "credit": {
+      "author": "Tyler Prahm",
+      "authorUrl": "https://unsplash.com/@tprahm?utm_source=dhlm_studio&utm_medium=referral",
+      "unsplashUrl": "https://unsplash.com/photos/lmV3gJSAgbo?utm_source=dhlm_studio&utm_medium=referral"
+    }
+  },
+  "top-10-countries-gdp-world-economy-2026": {
+    "src": "https://images.unsplash.com/photo-1628271368791-fb45b3d2d797?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w5MjE0MDh8MHwxfHNlYXJjaHwxfHxnbG9iYWwlMjBlY29ub215JTIwZ2RwJTIwY291bnRyaWVzJTIwZmxhZ3xlbnwxfDB8fHwxNzc1ODgxNDc1fDA&ixlib=rb-4.1.0&q=80&w=1080",
+    "alt": "flags on poles near green trees during daytime",
+    "credit": "Jerry Harrow"
   }
 }
