@@ -207,6 +207,245 @@ async function cnnFearGreed() {
   } catch (e) { console.warn('CNN F&G error:', e.message); return null; }
 }
 
+// ── Headline Summarizer (rule-based rewrite — no AI) ──────────────────────────
+
+// Map keywords → internal site URLs
+const INTERNAL_LINK_MAP = [
+  { kw: ['palantir','pltr'],                          url: '/reports/deep-dive-pltr-april-2026',  label: 'PLTR Deep Dive' },
+  { kw: ['nvidia','nvda'],                             url: '/reports/deep-dive-nvda-april-2026',  label: 'NVDA Deep Dive' },
+  { kw: ['apple','aapl'],                              url: '/reports/deep-dive-aapl-april-2026',  label: 'AAPL Deep Dive' },
+  { kw: ['tesla','tsla'],                              url: '/reports/deep-dive-tsla-april-2026',  label: 'TSLA Deep Dive' },
+  { kw: ['amazon','amzn'],                             url: '/reports/deep-dive-amzn-april-2026',  label: 'AMZN Deep Dive' },
+  { kw: ['meta','zuckerberg'],                         url: '/reports/deep-dive-meta-april-2026',  label: 'META Deep Dive' },
+  { kw: ['microsoft','msft'],                          url: '/reports/deep-dive-msft-april-2026',  label: 'MSFT Deep Dive' },
+  { kw: ['google','googl','alphabet'],                 url: '/reports/deep-dive-googl-april-2026', label: 'GOOGL Deep Dive' },
+  { kw: ['amd'],                                       url: '/reports/deep-dive-amd-april-2026',   label: 'AMD Deep Dive' },
+  { kw: ['bitcoin','btc'],                             url: '/rankings/crypto/bitcoin',            label: 'BTC Tracker' },
+  { kw: ['ethereum','eth'],                            url: '/rankings/crypto/ethereum',           label: 'ETH Tracker' },
+  { kw: ['crypto','cryptocurrency'],                   url: '/rankings/crypto',                    label: 'Crypto Rankings' },
+  { kw: ['fear','greed','sentiment','vix'],            url: '/markets/fear-and-greed',             label: 'Fear & Greed' },
+];
+
+function detectInternalLink(title) {
+  const t = title.toLowerCase();
+  for (const entry of INTERNAL_LINK_MAP) {
+    if (entry.kw.some(k => t.includes(k))) return entry;
+  }
+  return null;
+}
+
+// Rule-based headline rewriting — title is NOT copied verbatim (copyright)
+function summarizeHeadline(title, source) {
+  const t = title.toLowerCase();
+
+  // ── Event type detection ──────────────────────────────────────────────────
+  // Returns { lead: "rewritten headline", implication: "market insight" }
+
+  // CPI / Inflation
+  if (/\b(cpi|consumer price|inflation|pce|price index)\b/.test(t)) {
+    const month = title.match(/\b(jan|feb|mar|apr|may|jun|jul|aug|sep|oct|nov|dec)[a-z]* \d{4}\b/i)?.[0] || 'Latest';
+    return {
+      lead: `${month} inflation data released`,
+      implication: 'CPI reading may shift Fed rate-cut expectations and bond market pricing',
+    };
+  }
+
+  // Fed / Interest rates
+  if (/\b(federal reserve|fed |powell|rate hike|rate cut|basis point|fomc|interest rate)\b/.test(t)) {
+    const signal = /cut|lower|pause|hold/.test(t) ? 'dovish' : /hike|raise|higher/.test(t) ? 'hawkish' : 'ambiguous';
+    return {
+      lead: `Fed policy signal registers as ${signal}`,
+      implication: 'Central bank messaging could move bond yields and rate-sensitive equities',
+    };
+  }
+
+  // Earnings — detect company name from title
+  if (/\b(earnings|beat|miss|eps|quarterly results?|guidance|revenue|profit)\b/.test(t)) {
+    const beat  = /beat|strong|top|surpass|exceed/.test(t);
+    const miss  = /miss|weak|disappoint|below|fall short/.test(t);
+    const result = beat ? 'above estimates' : miss ? 'below estimates' : 'in focus';
+    return {
+      lead: `Quarterly earnings results land ${result}`,
+      implication: 'Earnings outcome may drive near-term price movement in the stock',
+    };
+  }
+
+  // Tariff / Trade
+  if (/\b(tariff|trade war|import duty|export ban|sanction|trade deal|wto)\b/.test(t)) {
+    const escalate = /retaliat|escalat|new|higher|increase|impose/.test(t);
+    return {
+      lead: escalate ? 'Trade tensions escalate with new tariff action' : 'Trade policy development may shift supply chain outlook',
+      implication: 'Tariff moves create margin pressure for import-heavy sectors',
+    };
+  }
+
+  // Oil / Energy
+  if (/\b(oil|crude|wti|brent|opec|petroleum|energy prices?|gas price)\b/.test(t)) {
+    const dir = /surge|rally|rise|climb|spike|jump/.test(t) ? 'higher' : /drop|fall|slide|slip|plunge/.test(t) ? 'lower' : 'volatile';
+    return {
+      lead: `Crude oil prices move ${dir} on supply and demand signals`,
+      implication: 'Energy price shifts affect transport, consumer spending, and inflation outlook',
+    };
+  }
+
+  // Gold / Safe haven
+  if (/\b(gold|silver|safe.?haven|precious metal)\b/.test(t)) {
+    const dir = /surge|rally|rise|climb|hit record|high/.test(t) ? 'higher' : 'lower';
+    return {
+      lead: `Safe-haven assets move ${dir} as risk appetite shifts`,
+      implication: 'Gold movement often signals institutional positioning changes ahead of volatility',
+    };
+  }
+
+  // Bitcoin / Crypto
+  if (/\b(bitcoin|crypto|btc|ethereum|digital asset|defi|nft)\b/.test(t)) {
+    const dir = /surge|rally|rise|climb|gain|up/.test(t) ? 'higher' : /drop|fall|slide|crash|down/.test(t) ? 'lower' : 'volatile';
+    return {
+      lead: `Crypto markets move ${dir} on shifting risk sentiment`,
+      implication: 'Bitcoin often leads equity risk appetite — direction may preview next session',
+    };
+  }
+
+  // Jobs / Labor
+  if (/\b(jobs?|unemployment|payroll|labor market|jobless claims?|nonfarm)\b/.test(t)) {
+    const strong = /strong|low|fall|beat|robust|tight/.test(t);
+    return {
+      lead: strong ? 'Labor market remains resilient' : 'Labor market shows signs of softening',
+      implication: 'Jobs data influences Fed timing and consumer spending forecasts',
+    };
+  }
+
+  // GDP / Recession
+  if (/\b(gdp|recession|economic growth|contraction|expansion|economic output)\b/.test(t)) {
+    const neg = /recession|contract|shrink|slow|decline/.test(t);
+    return {
+      lead: neg ? 'Economic growth signals soften' : 'GDP data beats growth expectations',
+      implication: 'Macro growth trajectory shapes earnings estimates across sectors',
+    };
+  }
+
+  // Treasury / Bonds / Yields
+  if (/\b(treasury|yield|bond|10.year|t.bill|sovereign debt)\b/.test(t)) {
+    const dir = /rise|climb|surge|spike/.test(t) ? 'rising' : /fall|drop|slide/.test(t) ? 'falling' : 'shifting';
+    return {
+      lead: `Treasury yields ${dir} as rate expectations reprice`,
+      implication: 'Yield moves affect equity P/E multiples — especially growth and tech names',
+    };
+  }
+
+  // Geopolitical / War / Conflict
+  if (/\b(war|conflict|ceasefire|sanction|nato|russia|ukraine|iran|china|taiwan|middle east)\b/.test(t)) {
+    return {
+      lead: 'Geopolitical development adds uncertainty to risk asset pricing',
+      implication: 'Conflict-related news historically elevates volatility and safe-haven demand',
+    };
+  }
+
+  // Banks / Financial sector
+  if (/\b(bank|banking|jpmorgan|goldman|morgan stanley|wells fargo|credit|loan|deposit)\b/.test(t)) {
+    return {
+      lead: 'Banking sector development may signal credit conditions ahead',
+      implication: 'Financial sector health often leads broader market direction by 1-2 quarters',
+    };
+  }
+
+  // AI / Tech / Chips
+  if (/\b(ai|artificial intelligence|chip|semiconductor|gpu|data center|llm|openai)\b/.test(t)) {
+    return {
+      lead: 'AI and semiconductor sector development shifts tech valuations',
+      implication: 'AI narrative continues to drive outsized moves in tech multiples',
+    };
+  }
+
+  // Dollar / Currency
+  if (/\b(dollar|dxy|currency|forex|yen|euro|yuan|devaluation)\b/.test(t)) {
+    return {
+      lead: 'Dollar index and currency market development affects global capital flows',
+      implication: 'USD strength pressures commodities and multinational earnings',
+    };
+  }
+
+  // Analyst / Ratings / Target
+  if (/\b(upgrade|downgrade|price target|analyst|rating|buy|sell|hold|overweight|underweight)\b/.test(t)) {
+    return {
+      lead: 'Analyst action changes institutional expectations for the stock',
+      implication: 'Rating changes often precede institutional repositioning in the next 30 days',
+    };
+  }
+
+  // Short selling / Bearish positioning
+  if (/\b(short sell|short position|betting against|short interest|bearish|put option|inverse)\b/.test(t)) {
+    return {
+      lead: 'Institutional short position signals bearish conviction on the stock',
+      implication: 'Short interest data often precedes analyst downgrades by 1-2 weeks',
+    };
+  }
+
+  // Stock price performance
+  if (/\b(worst (week|day|month|year)|best (week|day|month|year)|52.week (high|low)|all.time (high|low)|record high|record low)\b/.test(t)) {
+    const dir = /worst|low|drop|fall/.test(t) ? 'sustained pressure' : 'strong momentum';
+    return {
+      lead: `Stock records notable ${dir} on recent trading sessions`,
+      implication: 'Significant weekly/monthly moves often trigger institutional rebalancing',
+    };
+  }
+
+  // IPO / M&A / Buyback
+  if (/\b(ipo|merger|acquisition|takeover|buyback|spinoff|delist|going private)\b/.test(t)) {
+    return {
+      lead: 'Corporate action event changes capital structure or market access',
+      implication: 'M&A and buyback activity often signals management confidence or sector consolidation',
+    };
+  }
+
+  // Sentiment / Market outlook
+  if (/\b(overconfident|complacent|frothy|stretched|euphoria|greed|fear)\b/.test(t) || /investor sentiment|market sentiment/.test(t)) {
+    return {
+      lead: 'Market sentiment indicator signals caution from strategists',
+      implication: 'Extreme sentiment readings often precede near-term volatility',
+    };
+  }
+
+  // Political / Policy (Trump, Biden, Congress, regulatory)
+  if (/\b(trump|president|congress|senate|regulatory|sec |fcc|antitrust|executive order)\b/.test(t)) {
+    return {
+      lead: 'Policy or regulatory development may affect market operations',
+      implication: 'Political catalysts can shift sector rotation without fundamental changes',
+    };
+  }
+
+  // Default: use the original title shortened, avoid pure fallback text
+  const shortened = title.replace(/['"]/g, '').replace(/\s—\s.*$/, '').replace(/\s\|.*$/, '').trim();
+  return {
+    lead: shortened.length > 75 ? shortened.slice(0, 72) + '...' : shortened,
+    implication: 'Monitoring for downstream effect on related sectors',
+  };
+}
+
+function buildHeadlinesSection(headlines) {
+  if (!headlines?.length) return '';
+
+  // Deduplicate by lead text (avoid same summary appearing twice)
+  const seenLeads = new Set();
+  const items = [];
+
+  for (const h of headlines) {
+    const { lead, implication } = summarizeHeadline(h.title, h.source);
+    const leadKey = lead.toLowerCase().slice(0, 40);
+    if (seenLeads.has(leadKey)) continue;
+    seenLeads.add(leadKey);
+
+    const linkEntry = detectInternalLink(h.title);
+    const linkSuffix = linkEntry ? ` · [${linkEntry.label} →](${linkEntry.url})` : '';
+    // Single line: renders as one <p> in the page (no extra via-source paragraph)
+    items.push(`▸ **${lead}** — ${implication}. _via ${h.source}_${linkSuffix}`);
+
+    if (items.length >= 5) break;
+  }
+
+  return `---\n\n## 📰 Today's Headlines\n\n${items.join('\n\n')}`;
+}
+
 // ── News Headlines (FMP stock_news + RSS fallback) ────────────────────────────
 async function fetchNewsHeadlines() {
   // Primary: FMP stock_news (JSON, reliable)
@@ -765,7 +1004,7 @@ ${cryptoTable}${altMoversSection}
 ## Market Overview
 
 ${marketOverview}
-${headlines?.length > 0 ? `\n---\n\n## 📰 Today's Headlines\n\n| Source | Headline |\n|---|---|\n${headlines.map(h => { const t = h.title.length > 90 ? h.title.slice(0, 87) + '...' : h.title; return `| ${h.source} | ${h.link ? `[${t}](${h.link})` : t} |`; }).join('\n')}` : ''}
+${buildHeadlinesSection(headlines)}
 
 ---
 
