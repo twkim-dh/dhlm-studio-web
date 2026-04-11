@@ -29,51 +29,56 @@ const CURRICULUM: Phase[] = [
     lessons: [
       {
         week: 1,
-        title: 'What is Blockchain? The Technology Behind Crypto',
+        title: 'What Is Blockchain? (And Why Most Explanations Are Useless)',
         slug: 'crypto-101-what-is-blockchain',
-        description: 'Distributed ledgers, nodes, consensus mechanisms — explained without the buzzword soup.',
+        description: 'Distributed ledgers, nodes, consensus mechanisms — explained without the buzzword soup. How a Bitcoin transaction actually works, step by step.',
       },
       {
         week: 2,
-        title: 'Bitcoin — The Original Digital Money',
-        description: 'Why Bitcoin was created, how mining works, and why the 21M supply cap matters.',
+        title: 'Bitcoin vs. Ethereum — The Only Differences That Actually Matter',
+        slug: 'crypto-101-bitcoin-vs-ethereum',
+        description: 'Bitcoin is designed to be money. Ethereum is designed to be a computer. Everything else flows from that distinction.',
       },
       {
         week: 3,
-        title: 'Ethereum & Smart Contracts',
-        description: 'From digital money to programmable money — what Ethereum unlocked.',
+        title: 'Crypto Wallets Explained — Hot, Cold, and Everything Between',
+        slug: 'crypto-101-wallets-explained',
+        description: 'In 2025, hackers stole $3.4B in crypto. Your wallet doesn\'t hold coins — it holds keys. Here\'s the difference that could save your portfolio.',
       },
       {
         week: 4,
-        title: 'Altcoins, Tokens & the Crypto Ecosystem',
-        description: "Layer 1s, Layer 2s, stablecoins, memecoins — what's signal and what's noise.",
+        title: 'How to Actually Buy Crypto Without Getting Scammed',
+        slug: 'crypto-101-how-to-buy-crypto',
+        description: 'Choosing a real exchange, understanding where the fees actually hide, and recognizing the red flags before they cost you anything.',
       },
     ],
   },
   {
     phase: 2,
-    title: 'Markets & Analysis',
+    title: 'Yields, DeFi & Markets',
     color: '#3B82F6',
     lessons: [
       {
         week: 5,
-        title: 'How Crypto Exchanges Work',
-        description: 'CEX vs DEX, order books, liquidity, and how not to get wrecked by fees.',
+        title: 'Staking Explained — Free Money or Hidden Risk?',
+        slug: 'crypto-101-staking-explained',
+        description: 'The real yields in 2026 (ETH pays 2.8–3.8%, not 15%), the inflation dilution nobody mentions, and a practical framework for beginners.',
       },
       {
         week: 6,
-        title: 'Reading Crypto Charts',
-        description: 'Candlesticks, volume, support/resistance — the basics every trader must know.',
+        title: 'DeFi for Normal People — What It Is and Why You Should Care',
+        slug: 'crypto-101-defi-explained',
+        description: 'Lending, borrowing, DEXs, yield farming — and the risks that DeFi marketing never puts in the headline.',
       },
       {
         week: 7,
-        title: 'On-Chain Analysis Basics',
-        description: "The blockchain is public. Here's how to read it like a detective.",
+        title: 'Reading Crypto Charts: The 5 Patterns That Actually Matter',
+        description: 'Candlesticks, volume, support/resistance, and how to read a chart without fooling yourself.',
       },
       {
         week: 8,
-        title: 'DeFi — Decentralized Finance',
-        description: 'Yield farming, liquidity pools, lending protocols — and the real risks involved.',
+        title: 'On-Chain Analysis Basics',
+        description: 'The blockchain is public. Active addresses, SOPR, whale wallet movements — how to read it like a detective.',
       },
     ],
   },
@@ -84,29 +89,29 @@ const CURRICULUM: Phase[] = [
     lessons: [
       {
         week: 9,
-        title: 'NFTs & Digital Ownership',
-        description: 'What NFTs actually are, what they solve, and why most of them are worthless.',
+        title: 'NFTs & Digital Ownership — What\'s Real, What\'s Hype',
+        description: 'What NFTs actually are, what they solve, and why the vast majority of them are worthless.',
       },
       {
         week: 10,
-        title: 'Crypto Security — Wallets, Keys & Scams',
-        description: "Not your keys, not your coins. How to actually secure your assets.",
+        title: 'Crypto Taxation — What the IRS Actually Wants',
+        description: 'Every swap is a taxable event. How to track, report, and not get surprised at tax time.',
       },
       {
         week: 11,
         title: 'Portfolio Strategy & Risk Management',
-        description: 'Position sizing, diversification, and when to take profit — without the guru nonsense.',
+        description: 'Position sizing, correlation, when to take profit — without the influencer guru nonsense.',
       },
       {
         week: 12,
-        title: 'The Future of Money',
-        description: 'CBDCs, institutional adoption, and what crypto actually changes about finance.',
+        title: 'The Future of Money — CBDCs, Tokenization & What\'s Next',
+        description: 'Central bank digital currencies, real-world asset tokenization, and what crypto actually changes about global finance.',
       },
     ],
   },
 ];
 
-const published = CURRICULUM.flatMap(p => p.lessons).filter(l => l.slug).length;
+const published = CURRICULUM.flatMap(p => p.lessons).filter((l: Lesson) => l.slug).length;
 const total = CURRICULUM.flatMap(p => p.lessons).length;
 
 export default function Crypto101Page() {
