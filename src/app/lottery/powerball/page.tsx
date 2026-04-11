@@ -31,7 +31,7 @@ export default function PowerballPage() {
             <div key={d.date} style={{ background: '#111827', borderRadius: 14, border: '1px solid #1E293B', padding: '16px 20px' }}>
               <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', marginBottom: 10 }}>
                 <span style={{ fontFamily: 'var(--mono)', fontSize: 12, fontWeight: 700, color: i === 0 ? '#EF4444' : '#94A3B8' }}>{d.date}{i === 0 ? ' (Latest)' : ''}</span>
-                <span style={{ fontFamily: 'var(--mono)', fontSize: 11, color: '#64748B' }}>Jackpot: ${Math.round(d.jackpot / 1e6)}M</span>
+                {d.jackpot > 0 && <span style={{ fontFamily: 'var(--mono)', fontSize: 11, color: '#64748B' }}>Jackpot: ${Math.round(d.jackpot / 1e6)}M</span>}
               </div>
               <div style={{ display: 'flex', gap: 5, alignItems: 'center' }}>
                 {d.numbers.map(n => (

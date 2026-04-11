@@ -155,9 +155,11 @@ export async function generateMetadata({ params }: { params: Promise<{ ticker: s
   const { ticker } = await params;
   const t = ticker.toUpperCase();
   const stock = getStockByTicker(ticker);
+  const isKnown = TOP_STOCKS.includes(t);
   return {
     title: stock ? `${stock.ticker} — ${stock.name} Stock Price & Analysis ${YEAR}` : `${t} Stock — Price, Profile & Analysis ${YEAR}`,
     description: stock ? `${stock.name} (${stock.ticker}) real-time price, key metrics, and Brutal Edge analysis. ${YEAR}.` : `${t} real-time stock price, market cap, financials, and Brutal Edge analysis. ${YEAR}.`,
+    ...(!isKnown ? { robots: { index: false, follow: false } } : {}),
   };
 }
 

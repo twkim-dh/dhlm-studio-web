@@ -1,42 +1,44 @@
+import pbHistory from '../../public/data/powerball-history.json';
+import mmHistory from '../../public/data/megamillions-history.json';
+
 export interface LotteryDraw {
   game: 'powerball' | 'megamillions';
   date: string;
   numbers: number[];
   specialBall: number;
   multiplier: number;
-  jackpot: number;
+  jackpot: number;      // 0 when not available from data source
   jackpotWon: boolean;
 }
 
-export const POWERBALL_DRAWS: LotteryDraw[] = [
-  { game: 'powerball', date: '2026-03-29', numbers: [7, 21, 55, 56, 64], specialBall: 26, multiplier: 4, jackpot: 427000000, jackpotWon: false },
-  { game: 'powerball', date: '2026-03-26', numbers: [3, 18, 33, 44, 62], specialBall: 11, multiplier: 2, jackpot: 395000000, jackpotWon: false },
-  { game: 'powerball', date: '2026-03-22', numbers: [12, 25, 38, 51, 69], specialBall: 8, multiplier: 3, jackpot: 368000000, jackpotWon: false },
-  { game: 'powerball', date: '2026-03-19', numbers: [5, 14, 29, 47, 63], specialBall: 19, multiplier: 5, jackpot: 342000000, jackpotWon: false },
-  { game: 'powerball', date: '2026-03-15', numbers: [9, 22, 41, 53, 67], specialBall: 3, multiplier: 2, jackpot: 315000000, jackpotWon: false },
-  { game: 'powerball', date: '2026-03-12', numbers: [1, 16, 35, 49, 58], specialBall: 22, multiplier: 3, jackpot: 290000000, jackpotWon: false },
-  { game: 'powerball', date: '2026-03-08', numbers: [11, 27, 36, 50, 66], specialBall: 15, multiplier: 4, jackpot: 265000000, jackpotWon: false },
-  { game: 'powerball', date: '2026-03-05', numbers: [4, 19, 32, 45, 61], specialBall: 7, multiplier: 2, jackpot: 240000000, jackpotWon: false },
-  { game: 'powerball', date: '2026-03-01', numbers: [8, 23, 39, 54, 68], specialBall: 12, multiplier: 3, jackpot: 215000000, jackpotWon: false },
-  { game: 'powerball', date: '2026-02-26', numbers: [6, 17, 30, 43, 59], specialBall: 20, multiplier: 2, jackpot: 190000000, jackpotWon: false },
-];
+type PBRaw = { date: string; numbers: number[]; pb: number; multiplier: number };
+type MMRaw = { date: string; numbers: number[]; mb: number; multiplier: number };
 
-export const MEGAMILLIONS_DRAWS: LotteryDraw[] = [
-  { game: 'megamillions', date: '2026-03-28', numbers: [4, 13, 52, 53, 69], specialBall: 10, multiplier: 3, jackpot: 312000000, jackpotWon: false },
-  { game: 'megamillions', date: '2026-03-25', numbers: [8, 22, 37, 48, 65], specialBall: 17, multiplier: 2, jackpot: 285000000, jackpotWon: false },
-  { game: 'megamillions', date: '2026-03-21', numbers: [15, 28, 41, 56, 70], specialBall: 5, multiplier: 4, jackpot: 260000000, jackpotWon: false },
-  { game: 'megamillions', date: '2026-03-18', numbers: [2, 19, 34, 47, 63], specialBall: 22, multiplier: 2, jackpot: 238000000, jackpotWon: false },
-  { game: 'megamillions', date: '2026-03-14', numbers: [11, 25, 39, 51, 67], specialBall: 8, multiplier: 3, jackpot: 215000000, jackpotWon: false },
-  { game: 'megamillions', date: '2026-03-11', numbers: [6, 20, 33, 45, 61], specialBall: 14, multiplier: 2, jackpot: 192000000, jackpotWon: false },
-  { game: 'megamillions', date: '2026-03-07', numbers: [3, 17, 30, 44, 58], specialBall: 21, multiplier: 5, jackpot: 170000000, jackpotWon: false },
-  { game: 'megamillions', date: '2026-03-04', numbers: [9, 24, 38, 55, 66], specialBall: 3, multiplier: 2, jackpot: 150000000, jackpotWon: false },
-  { game: 'megamillions', date: '2026-02-28', numbers: [14, 27, 42, 50, 64], specialBall: 19, multiplier: 3, jackpot: 132000000, jackpotWon: false },
-  { game: 'megamillions', date: '2026-02-25', numbers: [7, 21, 35, 49, 62], specialBall: 11, multiplier: 2, jackpot: 115000000, jackpotWon: false },
-];
+export const POWERBALL_DRAWS: LotteryDraw[] = (pbHistory as PBRaw[]).slice(0, 20).map(d => ({
+  game: 'powerball',
+  date: d.date,
+  numbers: d.numbers,
+  specialBall: d.pb,
+  multiplier: d.multiplier,
+  jackpot: 0,
+  jackpotWon: false,
+}));
 
+export const MEGAMILLIONS_DRAWS: LotteryDraw[] = (mmHistory as MMRaw[]).slice(0, 20).map(d => ({
+  game: 'megamillions',
+  date: d.date,
+  numbers: d.numbers,
+  specialBall: d.mb,
+  multiplier: d.multiplier,
+  jackpot: 0,
+  jackpotWon: false,
+}));
+
+// Update these manually when jackpot amounts are known.
+// Next draw dates auto-follow the draw schedule (Mon/Wed/Sat for PB, Tue/Fri for MM).
 export const JACKPOT_INFO = {
-  powerball: { current: 427000000, nextDraw: '2026-04-02', nextDay: 'Wednesday' },
-  megamillions: { current: 312000000, nextDraw: '2026-04-01', nextDay: 'Tuesday' },
+  powerball: { current: 455000000, nextDraw: '2026-04-13', nextDay: 'Monday' },
+  megamillions: { current: 331000000, nextDraw: '2026-04-14', nextDay: 'Tuesday' },
 };
 
 export function generatePowerball(): { numbers: number[]; powerball: number } {
