@@ -230,7 +230,7 @@ export default async function ResearchArticlePage({ params }: { params: Promise<
             <img
               src={unsplashEntry.src}
               alt={unsplashEntry.alt}
-              style={{ width: '100%', height: 200, objectFit: 'cover', display: 'block' }}
+              style={{ width: '100%', height: 'auto', objectFit: 'contain', display: 'block', background: '#0f172a', borderRadius: 12 }}
             />
             <div style={{ padding: '4px 10px', textAlign: 'right', background: '#0D1117' }}>
               <span style={{ fontSize: 9, color: '#334155' }}>

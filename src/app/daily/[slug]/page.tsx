@@ -122,7 +122,7 @@ function renderMarkdown(md: string): React.ReactNode[] {
       elements.push(
         // eslint-disable-next-line @next/next/no-img-element
         <img key={key++} src={imgMatch[2]} alt={imgMatch[1]}
-          style={{ width: '100%', borderRadius: 12, margin: '8px 0 20px', display: 'block', objectFit: 'cover', maxHeight: 320 }}
+          style={{ width: '100%', height: 'auto', borderRadius: 12, margin: '8px 0 20px', display: 'block', objectFit: 'contain', background: '#0f172a' }}
         />
       );
     } else if (line.startsWith('# ')) {

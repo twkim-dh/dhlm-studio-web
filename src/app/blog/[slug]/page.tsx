@@ -171,7 +171,7 @@ export default async function BlogPostPage({ params }: { params: Promise<{ slug:
               alt={unsplashEntry?.alt || post.title}
               width={720}
               height={380}
-              style={{ width: '100%', height: 200, objectFit: 'cover', display: 'block' }}
+              style={{ width: '100%', height: 'auto', objectFit: 'contain', display: 'block', background: '#0f172a' }}
               priority
               unoptimized={heroSrc.startsWith('https://images.unsplash.com')}
             />
