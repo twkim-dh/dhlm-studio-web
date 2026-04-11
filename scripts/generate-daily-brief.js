@@ -422,28 +422,76 @@ function summarizeHeadline(title, source) {
   };
 }
 
-function buildHeadlinesSection(headlines) {
+// ── News-Data Cross-Check ─────────────────────────────────────────────────────
+// Removes headlines whose generated lead contradicts actual market data direction.
+// e.g. "oil prices move lower" when WTI is +1.55% → remove.
+const UP_WORDS   = /\b(higher|rises?|rising|surge[sd]?|rallies|rally|gained?|gains?|climbs?|climbing)\b/i;
+const DOWN_WORDS = /\b(lower|falls?|falling|drop[ped]*|declin(?:ed?|es?|ing)|slides?|slid|selloff|sell-off)\b/i;
+
+function newsDataCrossCheck(items, data) {
+  if (!data) return items;
+  const oil  = data.macro?.find(x => x.symbol === 'CLUSD');
+  const gold = data.macro?.find(x => x.symbol === 'GCUSD');
+  const btc  = data.crypto?.find(x => x.id === 'bitcoin');
+  const sp   = data.indices?.find(x => x.symbol === '^GSPC');
+  const tnx  = data.macro?.find(x => x.symbol === '^TNX');
+
+  const checks = [
+    { kw: /\b(oil|crude|wti|brent|opec|petroleum|energy price)\b/i, pct: oil?.pct,       label: 'Oil' },
+    { kw: /\b(gold|safe.?haven|precious metal|silver)\b/i,           pct: gold?.pct,      label: 'Gold' },
+    { kw: /\b(bitcoin|btc|crypto|ethereum|digital asset)\b/i,        pct: btc?.change24h, label: 'Crypto' },
+    { kw: /\b(yield|bond|treasury|10.year)\b/i,                      pct: tnx?.pct,       label: 'Yield' },
+    { kw: /\b(s&p|stocks?|equities|market fell|market rose)\b/i,     pct: sp?.pct,        label: 'Equity' },
+  ];
+
+  return items.filter(item => {
+    const lead = item.lead;
+    for (const { kw, pct, label } of checks) {
+      if (pct == null || !kw.test(lead)) continue;
+      const statesUp   = UP_WORDS.test(lead);
+      const statesDown = DOWN_WORDS.test(lead);
+      if (!statesUp && !statesDown) continue;
+      if (pct > 0 && statesDown) {
+        console.warn(`⚠️  News/data conflict: "${lead}" says DOWN but ${label} is +${pct.toFixed(1)}% — item removed`);
+        return false;
+      }
+      if (pct < 0 && statesUp) {
+        console.warn(`⚠️  News/data conflict: "${lead}" says UP but ${label} is ${pct.toFixed(1)}% — item removed`);
+        return false;
+      }
+    }
+    return true;
+  });
+}
+
+function buildHeadlinesSection(headlines, data) {
   if (!headlines?.length) return '';
 
-  // Deduplicate by lead text (avoid same summary appearing twice)
+  // Generate leads and deduplicate
   const seenLeads = new Set();
-  const items = [];
+  let items = [];
 
   for (const h of headlines) {
     const { lead, implication } = summarizeHeadline(h.title, h.source);
     const leadKey = lead.toLowerCase().slice(0, 40);
     if (seenLeads.has(leadKey)) continue;
     seenLeads.add(leadKey);
-
-    const linkEntry = detectInternalLink(h.title);
-    const linkSuffix = linkEntry ? ` · [${linkEntry.label} →](${linkEntry.url})` : '';
-    // Single line: renders as one <p> in the page (no extra via-source paragraph)
-    items.push(`▸ **${lead}** — ${implication}. _via ${h.source}_${linkSuffix}`);
-
-    if (items.length >= 5) break;
+    items.push({ lead, implication, source: h.source, title: h.title });
   }
 
-  return `---\n\n## 📰 Today's Headlines\n\n${items.join('\n\n')}`;
+  // Cross-check news directions against actual market data — removes conflicting items
+  items = newsDataCrossCheck(items, data);
+
+  // Build output lines (limit to 5)
+  const lines = [];
+  for (const item of items.slice(0, 5)) {
+    const linkEntry = detectInternalLink(item.title);
+    const linkSuffix = linkEntry ? ` · [${linkEntry.label} →](${linkEntry.url})` : '';
+    lines.push(`▸ **${item.lead}** — ${item.implication}. _via ${item.source}_${linkSuffix}`);
+  }
+
+  if (lines.length === 0) return '';
+  return `---\n\n## 📰 Today's Headlines\n\n${lines.join('\n\n')}`;
 }
 
 // ── News Headlines (FMP stock_news + RSS fallback) ────────────────────────────
@@ -584,7 +632,8 @@ function generateMarketOverview(data) {
 
   if (!sp) return '_Market data unavailable._';
 
-  // ── S&P 500 + Nasdaq sentence ───────────────────────────────────────────────
+  // ── S&P 500 + Nasdaq + Dow sentence ────────────────────────────────────────
+  const dow = data.indices.find(x => x.symbol === '^DJI');
   const spDir    = sp.pct >= 0 ? 'rose' : 'fell';
   const spPctStr = fmt(Math.abs(sp.pct), 2);
   const spClose  = fmt(sp.price, 0);
@@ -592,9 +641,15 @@ function generateMarketOverview(data) {
   let nasClause = '';
   if (nas) {
     const aligned = (sp.pct >= 0) === (nas.pct >= 0);
+    const nasVerb = nas.pct >= 0 ? 'gained' : 'lost';
     nasClause = aligned
-      ? `, while the Nasdaq ${nas.pct >= 0 ? 'gained' : 'dropped'} ${fmt(Math.abs(nas.pct), 2)}%`
+      ? `, while the Nasdaq ${nasVerb} ${fmt(Math.abs(nas.pct), 2)}%`
       : `, while the Nasdaq diverged — ${nas.pct >= 0 ? 'rising' : 'falling'} ${fmt(Math.abs(nas.pct), 2)}%`;
+    // Append Dow when aligned with S&P direction
+    if (dow && (sp.pct >= 0) === (dow.pct >= 0)) {
+      const dowVerb = dow.pct >= 0 ? 'rose' : 'dropped';
+      nasClause += ` and the Dow ${dowVerb} ${fmt(Math.abs(dow.pct), 2)}%`;
+    }
   }
 
   // ── VIX sentence (toned by level) ──────────────────────────────────────────
@@ -604,8 +659,8 @@ function generateMarketOverview(data) {
     let vixTone;
     if      (vix.price > 30) vixTone = 'at crisis levels — fear is extreme';
     else if (vix.price > 25) vixTone = 'signaling significant market stress';
-    else if (vix.price > 20) vixTone = 'elevated but still below panic levels';
-    else if (vix.price >= 15) vixTone = 'within a normal range';
+    else if (vix.price > 20) vixTone = 'signaling elevated volatility without reaching crisis levels';
+    else if (vix.price >= 15) vixTone = 'holding within a normal range';
     else                      vixTone = 'reflecting calm conditions';
     vixSentence = `The VIX ${vixDir} to ${fmt(vix.price, 1)}, ${vixTone}.`;
   }
@@ -621,10 +676,9 @@ function generateMarketOverview(data) {
     btcSentence = `Bitcoin ${btcDir} ${fmt(Math.abs(btc.change24h), 1)}% to $${Math.round(btc.price).toLocaleString('en-US')}, ${btcTone}.`;
   }
 
-  // ── Fear & Greed add-on (only at extremes) ─────────────────────────────────
+  // ── Fear & Greed add-on (only at true extremes — value shown in Snapshot/Signals tables) ──
   const addOns = [];
-  if (fg.value <= 20)      addOns.push(`Fear & Greed at ${fg.value} — markets are pricing in disaster.`);
-  else if (fg.value <= 40) addOns.push(`Fear & Greed at ${fg.value} — sentiment remains cautious.`);
+  if      (fg.value <= 20) addOns.push(`Fear & Greed at ${fg.value} — markets are pricing in disaster.`);
   else if (fg.value > 75)  addOns.push(`Fear & Greed at ${fg.value} — complacency is building.`);
 
   return [
@@ -739,41 +793,46 @@ function generateMarketSignals(data) {
   const rows = [];
 
   if (vix) {
-    let interp = 'Normal range';
-    if (vix.price > 35)       interp = '⚠️ Panic territory — tail risk events priced in';
-    else if (vix.price > 30)  interp = '⚠️ Extreme fear — institutional hedging elevated';
-    else if (vix.price > 25)  interp = 'Elevated fear — above-normal hedging activity';
-    else if (vix.price < 12)  interp = '⚠️ Extreme complacency — historically precedes spikes';
-    else if (vix.price < 15)  interp = 'Low — calm conditions, limited hedging';
-    if (vix.pct > 10 && sp && sp.pct < 0)   interp += ' · VIX reinforcing the risk-off move';
-    else if (vix.pct < -10 && sp && sp.pct > 0) interp += ' · Falling VIX supports the rally';
+    // VIX level interpretation — covers all ranges including 20-25 gap
+    let interp;
+    if      (vix.price > 35) interp = '⚠️ Panic territory — tail risk events priced in';
+    else if (vix.price > 30) interp = '⚠️ Extreme fear — institutional hedging elevated';
+    else if (vix.price > 25) interp = 'Elevated fear — above-normal hedging activity';
+    else if (vix.price > 20) interp = 'Elevated';                   // 20-25: was "Normal range" (BUG FIX)
+    else if (vix.price >= 15) interp = 'Normal range';
+    else if (vix.price >= 12) interp = 'Low — calm conditions, limited hedging';
+    else                      interp = '⚠️ Extreme complacency — historically precedes spikes';
+    // Directional suffix (comma-separated for clean prose)
+    if      (vix.pct > 10  && sp && sp.pct < 0)  interp += ', reinforcing the selloff';
+    else if (vix.pct < -10 && sp && sp.pct > 0)  interp += ', supporting the rally';
     rows.push(`| VIX | ${fmt(vix.price, 1)} (${sign(vix.pct)}${fmt(vix.pct, 1)}%) | ${interp} |`);
   }
 
-  // F&G: full 5-band coverage (fixes 35-55 showing as "Neutral" bug)
+  // F&G: 5-band coverage — short, clean labels for the table
   let fgInterp;
-  if      (fg.value <= 20) fgInterp = '⚠️ Extreme fear — markets are pricing in disaster';
-  else if (fg.value <= 40) fgInterp = 'Fear remains elevated — cautious sentiment';
+  if      (fg.value <= 20) fgInterp = '⚠️ Extreme fear — markets pricing in disaster';
+  else if (fg.value <= 40) fgInterp = 'Risk-averse sentiment';
   else if (fg.value <= 55) fgInterp = 'Neutral — markets lack conviction';
-  else if (fg.value <= 75) fgInterp = 'Greed building — confidence is rising';
-  else                     fgInterp = '⚠️ Extreme greed — complacency is high';
+  else if (fg.value <= 75) fgInterp = 'Greed building — confidence rising';
+  else                     fgInterp = '⚠️ Extreme greed — complacency elevated';
   rows.push(`| Fear & Greed | ${fg.value} (${fg.label}) | ${fgInterp} |`);
 
   if (btc && sp) {
     let btcSpxInterp;
     if      (btc.change24h >= 0 && sp.pct >= 0) btcSpxInterp = 'Risk appetite aligned across asset classes';
     else if (btc.change24h <  0 && sp.pct <  0) btcSpxInterp = 'Risk-off confirmed across crypto and equities';
-    else if (btc.change24h >= 0 && sp.pct <  0) btcSpxInterp = '⚠️ Crypto bucking risk-off — divergence worth monitoring';
-    else                                          btcSpxInterp = '⚠️ Bitcoin lagging equity rally — watch for catch-up or reversal';
+    else if (btc.change24h >= 0 && sp.pct <  0) btcSpxInterp = 'Crypto diverging — watch for follow-through';
+    else                                          btcSpxInterp = 'Bitcoin lagging equity rally — watch for catch-up or reversal';
     rows.push(`| BTC vs SPX | BTC ${sign(btc.change24h)}${fmt(btc.change24h, 1)}% / SPX ${sign(sp.pct)}${fmt(sp.pct, 1)}% | ${btcSpxInterp} |`);
   }
 
   if (tnx) {
-    let yieldInterp = 'Neutral';
-    if (tnx.price > 4.8)       yieldInterp = '⚠️ Above 4.8% — significant P/E compression risk';
-    else if (tnx.price > 4.5)  yieldInterp = 'Elevated — equity risk premium narrowing';
-    else if (tnx.price > 4.0)  yieldInterp = 'Moderate — watch for continued rise';
-    else if (tnx.price < 3.5)  yieldInterp = 'Low — supportive for equity valuations';
+    let yieldInterp;
+    if      (tnx.price > 4.8) yieldInterp = '⚠️ Above 4.8% — significant P/E compression risk';
+    else if (tnx.price > 4.5) yieldInterp = 'Elevated — equity risk premium narrowing';
+    else if (tnx.price > 4.0) yieldInterp = tnx.pct > 0 ? 'Higher yields add pressure to valuations' : 'Yields easing — some relief for equity multiples';
+    else if (tnx.price < 3.5) yieldInterp = 'Low — supportive for equity valuations';
+    else                      yieldInterp = tnx.pct > 0 ? 'Yields drifting higher' : 'Yields pulling back';
     rows.push(`| 10Y Yield | ${fmt(tnx.price, 2)}% | ${yieldInterp} |`);
   }
 
@@ -812,7 +871,7 @@ function generateBrutalEdgeTake(data) {
     return { trigger: 'F&G<15', text: `Fear & Greed at ${fgVal} is the statistical profile of a panic. Every durable bottom in the past decade looked exactly like this and felt absolutely catastrophic. That is not a guarantee — it's historical precedent.` };
 
   if (spPct <= -2 && vixPct > 15)
-    return { trigger: 'SP≤-2%+VIX↑', text: `S&P down ${fmt(Math.abs(spPct), 1)}% with VIX confirming — this is a genuine risk-off session, not noise. Whether it's a single-day event or the start of a repricing cycle will be answered by the bond market's next move.` };
+    return { trigger: 'SP≤-2%+VIX↑', text: `With the S&P 500 down ${fmt(Math.abs(spPct), 1)}% and the VIX sharply higher, this looks like a genuine risk-off session rather than routine noise. Whether this proves to be a one-day shock or the start of a broader repricing cycle will depend heavily on the bond market's next move.` };
 
   if (spPct <= -2)
     return { trigger: 'SP≤-2%', text: `A ${fmt(Math.abs(spPct), 1)}% one-day drop in the S&P 500 is large enough to demand attention. With AI mega-caps still trading at roughly 45x forward earnings, the market is showing little tolerance for macro volatility.` };
@@ -956,10 +1015,13 @@ function buildMarkdown(params) {
   }
 
   // Rule-based narrative sections
-  const headline       = generateHeadline({ indices, macro, crypto, fearGreed: fg });
-  const marketOverview = generateMarketOverview({ indices, macro, crypto, fearGreed: fg });
-  const keyDrivers     = generateKeyDrivers({ indices, macro, crypto, fearGreed: fg });
-  const marketSignals  = generateMarketSignals({ indices, macro, crypto, fearGreed: fg });
+  const marketData     = { indices, macro, crypto, fearGreed: fg };
+  const headline       = generateHeadline(marketData);
+  const marketOverview = generateMarketOverview(marketData);
+  const keyDrivers     = generateKeyDrivers(marketData);
+  const marketSignals  = generateMarketSignals(marketData);
+  // Pre-compute with data for news-data cross-check (eliminates double-call + enables validation)
+  const headlinesBlock = buildHeadlinesSection(headlines, marketData);
 
   // Optional gated sections — accumulate into array, each self-contained with ---
   const gatedSections = [];
@@ -1060,7 +1122,7 @@ ${cryptoTable}${altMoversSection}
 ## Market Overview
 
 ${marketOverview}
-${buildHeadlinesSection(headlines) ? '\n' + buildHeadlinesSection(headlines) : '\n---'}
+${headlinesBlock ? '\n' + headlinesBlock : '\n---'}
 
 ## Key Drivers
 
