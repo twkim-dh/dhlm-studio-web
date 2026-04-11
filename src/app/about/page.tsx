@@ -3,7 +3,7 @@ import Link from "next/link";
 
 export const metadata: Metadata = {
   title: "About DHLM Studio — Dream · Horizon · Link · Media",
-  description: "DHLM Studio transforms complex financial data into clear, engaging insights. Learn about our mission, data sources, and charity commitment.",
+  description: "DHLM Studio transforms complex financial data into clear, engaging insights. Learn about our mission, data sources, and editorial standards.",
   alternates: { canonical: 'https://dhlm-studio.com/about' },
 };
 
@@ -153,21 +153,6 @@ export default function AboutPage() {
             </p>
           </div>
 
-          {/* Charity */}
-          <div style={{ ...card, padding: '24px 22px', borderColor: '#00D47430' }}>
-            <div style={{ fontFamily: 'var(--mono)', fontSize: 9, fontWeight: 700, color: '#00D474', letterSpacing: 2, marginBottom: 10 }}>CHARITY COMMITMENT</div>
-            <div style={{ display: 'flex', alignItems: 'center', gap: 12, marginBottom: 12 }}>
-              <span style={{ fontSize: 28 }}>❤️</span>
-              <div>
-                <p style={{ fontSize: 14, fontWeight: 700, color: '#E2E8F0', margin: 0 }}>Fortune Buddha — 100% to Charity</p>
-                <p style={{ fontSize: 12, color: '#64748B', margin: '2px 0 0' }}>DHLM Studio takes zero profit from donations</p>
-              </div>
-            </div>
-            <p style={{ fontSize: 13, color: '#94A3B8', lineHeight: 1.8, margin: 0 }}>
-              All donations made through our <Link href="/markets/bless" style={{ color: '#D4A843' }}>Bless My Stock</Link> feature go directly to <strong style={{ color: '#E2E8F0' }}>St. Jude Children&apos;s Research Hospital</strong> — where families never receive a bill for treatment, travel, housing, or food.
-            </p>
-          </div>
-
           {/* What We Build */}
           <div style={{ ...card, padding: '24px 22px' }}>
             <div style={{ fontFamily: 'var(--mono)', fontSize: 9, fontWeight: 700, color: '#A78BFA', letterSpacing: 2, marginBottom: 10 }}>WHAT WE BUILD</div>
@@ -178,7 +163,7 @@ export default function AboutPage() {
                 { icon: '🏆', title: 'World Rankings', desc: 'Billionaires, GDP, companies', href: '/rankings' },
                 { icon: '🪙', title: 'Crypto Rankings', desc: 'Live prices & analysis', href: '/rankings/crypto' },
                 { icon: '🎰', title: 'US Lottery', desc: 'Powerball & Mega Millions', href: '/lottery' },
-                { icon: '🪷', title: 'Bless My Stock', desc: 'Fortune Buddha charity', href: '/markets/bless' },
+                { icon: '📰', title: 'Research Lab', desc: 'Paper vs. Profit series', href: '/research' },
                 { icon: '💡', title: 'Wall Street Wisdom', desc: '100 investing quotes', href: '/blog/wisdom' },
                 { icon: '🧮', title: 'Free Tools', desc: 'QR & password generators', href: '/tools' },
               ].map(item => (

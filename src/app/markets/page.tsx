@@ -233,6 +233,8 @@ export default function MarketsPage() {
   const [isLive, setIsLive] = useState(false);
   const [loading, setLoading] = useState(true);
   const [showList, setShowList] = useState(false);
+  const [isWeekend, setIsWeekend] = useState(false);
+  const [lastCloseLabel, setLastCloseLabel] = useState('');
 
   useEffect(() => {
     fetch('/api/markets/indices')
@@ -248,9 +250,10 @@ export default function MarketsPage() {
     fetch('/api/markets')
       .then(r => r.json())
       .then(d => {
+        if (d.isWeekend) { setIsWeekend(true); setLastCloseLabel(d.lastCloseLabel || ''); }
         if (d.gainers?.length > 0) {
           setData({ gainers: d.gainers, losers: d.losers || [], actives: d.actives || [] });
-          setIsLive(true);
+          setIsLive(!d.isWeekend);
         }
       })
       .catch(() => {})
@@ -264,10 +267,14 @@ export default function MarketsPage() {
         {/* Page header */}
         <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', marginBottom: 20 }}>
           <div>
-            <h1 style={{ fontFamily: 'var(--serif)', fontSize: 'clamp(22px, 3.5vw, 30px)', fontWeight: 900, color: '#F1F5F9', margin: 0, lineHeight: 1.2 }}>Today's Markets</h1>
+            <h1 style={{ fontFamily: 'var(--serif)', fontSize: 'clamp(22px, 3.5vw, 30px)', fontWeight: 900, color: '#F1F5F9', margin: 0, lineHeight: 1.2 }}>
+              {isWeekend ? 'Market Snapshot' : "Today's Markets"}
+            </h1>
             <div style={{ fontSize: 11, color: '#475569', marginTop: 4 }}>
-              {new Date().toLocaleDateString('en-US', { weekday: 'long', month: 'long', day: 'numeric', year: 'numeric' })}
-              {isLive && <span style={{ marginLeft: 8, fontSize: 9, padding: '2px 7px', borderRadius: 4, background: '#00D47418', color: '#00D474', fontWeight: 700, fontFamily: 'var(--mono)' }}>● LIVE</span>}
+              {isWeekend
+                ? <><span style={{ color: '#D4A843' }}>Last close: {lastCloseLabel}</span><span style={{ marginLeft: 8, fontSize: 9, padding: '2px 7px', borderRadius: 4, background: '#D4A84318', color: '#D4A843', fontWeight: 700, fontFamily: 'var(--mono)' }}>MARKET CLOSED</span></>
+                : <>{new Date().toLocaleDateString('en-US', { weekday: 'long', month: 'long', day: 'numeric', year: 'numeric' })}{isLive && <span style={{ marginLeft: 8, fontSize: 9, padding: '2px 7px', borderRadius: 4, background: '#00D47418', color: '#00D474', fontWeight: 700, fontFamily: 'var(--mono)' }}>● LIVE</span>}</>
+              }
             </div>
           </div>
           <div style={{ display: 'flex', gap: 6 }}>
@@ -353,7 +360,7 @@ export default function MarketsPage() {
 
         {/* ③ Gainers / Losers / Most Active — 3 columns */}
         <div style={{ fontFamily: 'var(--mono)', fontSize: 9, color: '#475569', textAlign: 'center', marginBottom: 12 }}>
-          Market data delayed up to 15 min · Source: Alpha Vantage + FMP · Click any stock for full detail 🔥
+          S&P 500 quality ($10B+ market cap) · Source: Alpha Vantage + FMP · Click any stock for full detail
         </div>
 
         {loading && <p style={{ fontSize: 13, color: '#64748B', textAlign: 'center', padding: 20 }}>Loading live data...</p>}
@@ -395,19 +402,6 @@ export default function MarketsPage() {
             </div>
           </>
         )}
-
-        {/* Footer links */}
-        <div style={{ marginTop: 20, display: 'flex', gap: 6, flexWrap: 'wrap', justifyContent: 'center' }}>
-          {[
-            { href: '/markets/most-roasted', label: '🏆 Most Roasted' },
-            { href: '/markets/roast-portfolio', label: '🔥 Roast My Portfolio' },
-            { href: '/markets/bless', label: '🙏 Bless My Stock' },
-          ].map(l => (
-            <Link key={l.href} href={l.href} style={{ fontSize: 11, color: '#475569', padding: '6px 12px', borderRadius: 20, background: '#111827', border: '1px solid #1E293B', textDecoration: 'none' }}>
-              {l.label}
-            </Link>
-          ))}
-        </div>
 
         {/* Disclaimer */}
         <div style={{ marginTop: 16, padding: '12px 14px', borderRadius: 10, background: '#C73E3A08', border: '1px solid #C73E3A10' }}>

@@ -134,7 +134,7 @@ export default function EditorialPage() {
               AI assists with data collection and initial drafting. The editorial judgment — what to analyze, which angle to take, how to weigh competing narratives, and whether the final product meets our standards — is made by a human editor with business and manufacturing industry experience.
             </p>
             <p style={{ fontSize: 13, color: '#94A3B8', lineHeight: 1.8, margin: '0 0 10px' }}>
-              We also employ a <strong style={{ color: '#E2E8F0' }}>multi-AI cross-verification process</strong>: reports are reviewed by multiple AI models (Claude, GPT, Gemini) to identify blind spots, factual errors, and analytical gaps before human final review.
+              We also employ a <strong style={{ color: '#E2E8F0' }}>data cross-verification process</strong>: every report is cross-checked against multiple independent data sources to identify blind spots, factual errors, and analytical gaps before human final review.
             </p>
             <p style={{ fontSize: 13, color: '#D4A843', fontWeight: 700, lineHeight: 1.7, margin: 0 }}>
               This is not content published without oversight. Every report is reviewed and approved before publication.

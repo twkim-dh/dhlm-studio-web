@@ -381,7 +381,7 @@ function generateVerdict(d: Pick<TodayMarketPayload, 'indices' | 'macro' | 'cryp
   }
   if (sp500 && sp500.changesPercentage < -2) {
     return { trigger: 'SP500<-2%',
-      text: `S&P down ${Math.abs(sp500.changesPercentage).toFixed(1)} percent in a single session is a 1-in-30 trading day event — the AI mega-caps trading at 45x forward earnings have a precision intolerance for any macro volatility.` };
+      text: `S&P down ${Math.abs(sp500.changesPercentage).toFixed(1)} percent in a single session — mega-caps trading at elevated multiples absorb macro shocks first, and today's tape is proof.` };
   }
   if (sp500 && sp500.changesPercentage > 2) {
     return { trigger: 'SP500>+2%',
