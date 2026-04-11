@@ -63,9 +63,12 @@ function renderMarkdown(md: string): React.ReactNode[] {
   let key = 0;
 
   const inline = (text: string) => text
+    .replace(/`([^`]+)`/g, '<code style="background:#1E293B;padding:2px 5px;border-radius:3px;font-size:11px;color:#94A3B8;font-family:var(--mono)">$1</code>')
     .replace(/\*\*([^*]+)\*\*/g, '<strong>$1</strong>')
     .replace(/\*([^*]+)\*/g, '<em>$1</em>')
-    .replace(/\[([^\]]+)\]\(([^)]+)\)/g, '<a href="$2" style="color:#60A5FA">$1</a>');
+    .replace(/_([^_\n]+)_/g, '<em>$1</em>')
+    .replace(/!\[([^\]]*)\]\(([^)]+)\)/g, '') // strip inline images (handled at line level)
+    .replace(/\[([^\]]+)\]\(([^)]+)\)/g, '<a href="$2" target="_blank" rel="noopener" style="color:#60A5FA;text-decoration:underline">$1</a>');
 
   const flushTable = () => {
     if (tableRows.length < 2) { tableRows = []; return; }
@@ -79,7 +82,7 @@ function renderMarkdown(md: string): React.ReactNode[] {
           </thead>
           <tbody>
             {dataRows.map((row, ri) => (
-              <tr key={ri}>{row.map((cell, ci) => <td key={ci} style={{ padding: '6px 10px', borderBottom: '1px solid #1E293B40', color: '#E2E8F0', textAlign: ci === 0 ? 'left' : 'right' }}>{cell.trim()}</td>)}</tr>
+              <tr key={ri}>{row.map((cell, ci) => <td key={ci} style={{ padding: '6px 10px', borderBottom: '1px solid #1E293B40', color: '#E2E8F0', textAlign: ci === 0 ? 'left' : 'right' }} dangerouslySetInnerHTML={{ __html: inline(cell.trim()) }} />)}</tr>
             ))}
           </tbody>
         </table>
@@ -99,10 +102,24 @@ function renderMarkdown(md: string): React.ReactNode[] {
       flushTable();
     }
 
-    if (line.startsWith('## ')) {
-      elements.push(<h2 key={key++} style={{ fontFamily: 'var(--serif)', fontSize: 22, fontWeight: 800, color: '#E2E8F0', margin: '32px 0 12px' }}>{line.slice(3)}</h2>);
+    // Image: ![alt](src) on its own line
+    const imgMatch = line.match(/^!\[([^\]]*)\]\(([^)]+)\)/);
+    if (imgMatch) {
+      elements.push(
+        // eslint-disable-next-line @next/next/no-img-element
+        <img key={key++} src={imgMatch[2]} alt={imgMatch[1]}
+          style={{ width: '100%', borderRadius: 12, margin: '8px 0 20px', display: 'block', objectFit: 'cover', maxHeight: 320 }}
+        />
+      );
+    } else if (line.startsWith('# ')) {
+      // Market headline — render as visually large h2 (h1 already used for page title)
+      elements.push(<h2 key={key++} style={{ fontFamily: 'var(--serif)', fontSize: 'clamp(20px, 3.5vw, 28px)', fontWeight: 900, color: '#F1F5F9', margin: '4px 0 28px', lineHeight: 1.3, borderLeft: '4px solid #C73E3A', paddingLeft: 14 }} dangerouslySetInnerHTML={{ __html: inline(line.slice(2)) }} />);
+    } else if (line.startsWith('## ')) {
+      elements.push(<h2 key={key++} style={{ fontFamily: 'var(--serif)', fontSize: 22, fontWeight: 800, color: '#E2E8F0', margin: '32px 0 12px' }} dangerouslySetInnerHTML={{ __html: inline(line.slice(3)) }} />);
     } else if (line.startsWith('### ')) {
-      elements.push(<h3 key={key++} style={{ fontFamily: 'var(--serif)', fontSize: 17, fontWeight: 700, color: '#D4A843', margin: '24px 0 8px' }}>{line.slice(4)}</h3>);
+      elements.push(<h3 key={key++} style={{ fontFamily: 'var(--serif)', fontSize: 17, fontWeight: 700, color: '#D4A843', margin: '24px 0 8px' }} dangerouslySetInnerHTML={{ __html: inline(line.slice(4)) }} />);
+    } else if (line.startsWith('> ')) {
+      elements.push(<blockquote key={key++} style={{ borderLeft: '3px solid #C73E3A', paddingLeft: 16, margin: '16px 0', fontStyle: 'italic', color: '#E2E8F0', fontSize: 15, lineHeight: 1.8 }} dangerouslySetInnerHTML={{ __html: inline(line.slice(2)) }} />);
     } else if (line.trim() === '') {
       // skip
     } else if (line.startsWith('---')) {
@@ -159,7 +176,7 @@ export default async function DailyBriefPage({ params }: { params: Promise<{ slu
         {/* Editor Reviewed Badges */}
         <div style={{ display: 'flex', flexWrap: 'wrap', gap: 6, marginBottom: 24 }}>
           <span style={{ fontFamily: 'var(--mono)', fontSize: 10, fontWeight: 700, padding: '5px 10px', borderRadius: 6, background: '#00D47412', color: '#00D474', border: '1px solid #00D47425' }}>✓ Editor Reviewed</span>
-          <span style={{ fontFamily: 'var(--mono)', fontSize: 10, fontWeight: 700, padding: '5px 10px', borderRadius: 6, background: '#3B82F612', color: '#3B82F6', border: '1px solid #3B82F625' }}>✓ Multi-AI Verified</span>
+          <span style={{ fontFamily: 'var(--mono)', fontSize: 10, fontWeight: 700, padding: '5px 10px', borderRadius: 6, background: '#3B82F612', color: '#3B82F6', border: '1px solid #3B82F625' }}>✓ Data Verified</span>
         </div>
 
         {/* Title */}

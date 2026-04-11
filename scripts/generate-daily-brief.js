@@ -207,6 +207,81 @@ async function cnnFearGreed() {
   } catch (e) { console.warn('CNN F&G error:', e.message); return null; }
 }
 
+// ── News Headlines (FMP stock_news + RSS fallback) ────────────────────────────
+async function fetchNewsHeadlines() {
+  // Primary: FMP stock_news (JSON, reliable)
+  if (FMP_KEY) {
+    try {
+      const res = await fetch(
+        `https://financialmodelingprep.com/api/v3/stock_news?limit=50&apikey=${FMP_KEY}`,
+        { cache: 'no-store' }
+      );
+      if (res.ok) {
+        const data = await res.json();
+        if (Array.isArray(data) && data.length > 0) {
+          const decodeHtml = (s) => String(s)
+          .replace(/&amp;/g,'&').replace(/&lt;/g,'<').replace(/&gt;/g,'>').replace(/&quot;/g,'"').replace(/&#39;/g,"'").replace(/&apos;/g,"'").replace(/&nbsp;/g,' ');
+        const items = data.slice(0, 8).map(n => ({
+            source: String(n.site || 'FMP').slice(0, 20),
+            title:  decodeHtml(String(n.title || '')).replace(/\|/g, '—').replace(/\n/g, ' ').trim(),
+            link:   String(n.url  || ''),
+          })).filter(n => n.title.length > 15).slice(0, 5);
+          if (items.length >= 3) {
+            console.log(`FMP stock_news: ${items.length} headlines`);
+            return items;
+          }
+        }
+      }
+    } catch (e) { console.warn('FMP stock_news error:', e.message); }
+  }
+
+  // Fallback: RSS feeds
+  const rssFeeds = [
+    { name: 'CNBC',        url: 'https://www.cnbc.com/id/100003114/device/rss/rss.html' },
+    { name: 'MarketWatch', url: 'https://feeds.marketwatch.com/marketwatch/topstories' },
+    { name: 'AP Business', url: 'https://feeds.apnews.com/rss/apf-business' },
+  ];
+
+  const allItems = [];
+  for (const feed of rssFeeds) {
+    try {
+      const controller = new AbortController();
+      const t = setTimeout(() => controller.abort(), 7000);
+      const res = await fetch(feed.url, {
+        signal: controller.signal,
+        headers: { 'user-agent': 'Mozilla/5.0', 'accept': 'application/rss+xml, text/xml' },
+      });
+      clearTimeout(t);
+      if (!res.ok) continue;
+      const xml = await res.text();
+      const matches = [...xml.matchAll(/<item>([\s\S]*?)<\/item>/g)];
+      for (const m of matches.slice(0, 15)) {
+        const raw = m[1];
+        const title = raw.match(/<title>(?:<!\[CDATA\[)?([\s\S]*?)(?:\]\]>)?<\/title>/)?.[1]
+          ?.replace(/&amp;/g, '&').replace(/&lt;/g, '<').replace(/&gt;/g, '>').replace(/&quot;/g, '"').replace(/&#39;/g, "'").replace(/&apos;/g, "'").replace(/&nbsp;/g, ' ').replace(/\|/g, '—').replace(/\s+/g, ' ').trim();
+        const link = raw.match(/<link>([\s\S]*?)<\/link>/)?.[1]?.trim()
+          || raw.match(/<guid[^>]*>([\s\S]*?)<\/guid>/)?.[1]?.trim();
+        if (title && title.length > 15 && !title.includes('<') && !title.includes('{'))
+          allItems.push({ source: feed.name, title, link: link || '' });
+      }
+    } catch (e) { console.warn(`RSS ${feed.name} error:`, e.message); }
+  }
+
+  const keywords = ['market','stock','fed','rate','inflation','gdp','earnings','trade','tariff','oil','gold','bitcoin','crypto','bank','yield','bond','nasdaq','dow','recession','jobs','unemployment','china','dollar','treasury','rally','selloff','economy','interest'];
+  const filtered = allItems.filter(n => keywords.some(k => n.title.toLowerCase().includes(k)));
+
+  const seen = new Set();
+  const result = filtered.filter(n => {
+    const key = n.title.toLowerCase().replace(/\s+/g, ' ').slice(0, 50);
+    if (seen.has(key)) return false;
+    seen.add(key);
+    return true;
+  }).slice(0, 5);
+
+  console.log(`RSS headlines: ${result.length}`);
+  return result;
+}
+
 // ── Rule-Based Text Generators ─────────────────────────────────────────────────
 
 function detectTopSector(data) {
@@ -214,9 +289,9 @@ function detectTopSector(data) {
   const gold = data.macro.find(x => x.symbol === 'GCUSD');
   const vix  = data.macro.find(x => x.symbol === '^VIX');
   const btc  = data.crypto.find(x => x.id === 'bitcoin');
-  if (oil  && oil.pct   > 2)   return 'Energy';
-  if (gold && gold.pct  > 1.5) return 'Materials and defensives';
-  if (vix  && vix.pct   > 15)  return 'defensive names';
+  if (oil  && oil.pct   > 2)    return 'Energy';
+  if (gold && gold.pct  > 1.5)  return 'Materials and defensives';
+  if (vix  && vix.pct   > 10)   return 'defensive names';
   if (btc  && btc.change24h > 3) return 'tech and risk assets';
   return 'large-cap tech';
 }
@@ -230,11 +305,11 @@ function detectTopDriverText(data) {
   const sp   = data.indices.find(x => x.symbol === '^GSPC');
 
   const candidates = [];
-  if (vix  && Math.abs(vix.pct)        > 15) candidates.push({ score: Math.abs(vix.pct),        text: 'VIX volatility spike' });
-  if (oil  && Math.abs(oil.pct)        > 3)  candidates.push({ score: Math.abs(oil.pct),        text: `crude oil ${oil.pct > 0 ? 'rally' : 'drop'}` });
-  if (gold && Math.abs(gold.pct)       > 2)  candidates.push({ score: Math.abs(gold.pct),       text: 'safe-haven demand' });
-  if (tnx  && Math.abs(tnx.pct)        > 3)  candidates.push({ score: Math.abs(tnx.pct),        text: 'bond market repricing' });
-  if (btc  && Math.abs(btc.change24h)  > 5)  candidates.push({ score: Math.abs(btc.change24h),  text: `crypto ${btc.change24h > 0 ? 'momentum' : 'pressure'}` });
+  if (vix  && Math.abs(vix.pct)       > 10) candidates.push({ score: Math.abs(vix.pct),       text: 'VIX volatility spike' });
+  if (oil  && Math.abs(oil.pct)       > 2)  candidates.push({ score: Math.abs(oil.pct),       text: `crude oil ${oil.pct > 0 ? 'rally' : 'drop'}` });
+  if (gold && Math.abs(gold.pct)      > 1.5) candidates.push({ score: Math.abs(gold.pct),     text: 'safe-haven demand' });
+  if (tnx  && Math.abs(tnx.pct)       > 2)  candidates.push({ score: Math.abs(tnx.pct),       text: 'bond market repricing' });
+  if (btc  && Math.abs(btc.change24h) > 3)  candidates.push({ score: Math.abs(btc.change24h), text: `crypto ${btc.change24h > 0 ? 'momentum' : 'pressure'}` });
 
   if (candidates.length === 0)
     return sp && sp.pct > 0 ? 'mixed macro backdrop' : 'broad selling pressure';
@@ -319,29 +394,30 @@ function generateKeyDrivers(data) {
 
   const triggers = [];
 
-  if (vix && Math.abs(vix.pct) > 15) {
+  // ── Thresholds lowered for minimum 2 drivers ──────────────────────────────
+  if (vix && Math.abs(vix.pct) > 10) {
     const dir = vix.pct > 0 ? 'surged' : 'collapsed';
     triggers.push({
       score: Math.abs(vix.pct),
       title: `Volatility ${dir}`,
       body: `VIX ${dir} ${sign(vix.pct)}${fmt(vix.pct, 1)}% to ${fmt(vix.price, 1)}. ${vix.pct > 0
-        ? `A spike of this magnitude signals institutional hedging demand — markets are pricing in elevated uncertainty.`
+        ? 'A spike of this magnitude signals institutional hedging demand — markets are pricing in elevated uncertainty.'
         : 'The collapse in implied volatility signals option traders pricing in calmer conditions ahead.'}`,
     });
   }
 
-  if (oil && Math.abs(oil.pct) > 3) {
+  if (oil && Math.abs(oil.pct) > 2) {
     const dir = oil.pct > 0 ? 'rallied' : 'dropped';
     triggers.push({
       score: Math.abs(oil.pct),
       title: oil.pct > 0 ? 'Oil rally' : 'Oil selloff',
       body: `WTI crude ${dir} ${sign(oil.pct)}${fmt(oil.pct, 1)}% to $${fmt(oil.price, 2)}. ${oil.pct > 0
-        ? 'Energy stocks outperformed while consumer staples and transport sectors absorbed the cost pressure.'
-        : 'Lower crude eases input costs across industrials, but a drop of this magnitude signals demand concern.'}`,
+        ? 'Energy stocks outperformed while consumer staples and transport absorbed the cost pressure.'
+        : 'Lower crude eases input costs across industrials, but a move of this size signals demand concern.'}`,
     });
   }
 
-  if (gold && Math.abs(gold.pct) > 2) {
+  if (gold && Math.abs(gold.pct) > 1.5) {
     triggers.push({
       score: Math.abs(gold.pct),
       title: gold.pct > 0 ? 'Safe-haven bid' : 'Risk-on rotation',
@@ -351,17 +427,17 @@ function generateKeyDrivers(data) {
     });
   }
 
-  if (tnx && Math.abs(tnx.pct) > 3) {
+  if (tnx && Math.abs(tnx.pct) > 2) {
     triggers.push({
       score: Math.abs(tnx.pct),
       title: tnx.pct > 0 ? 'Bond selloff — rates rising' : 'Bond rally — rates falling',
-      body: `10-year Treasury yield ${tnx.pct > 0 ? 'climbed to' : 'fell to'} ${fmt(tnx.price, 2)}% (${sign(tnx.change)}${fmt(tnx.change, 3)} pp). ${tnx.price > 4.5
-        ? 'Yields above 4.5% historically compress equity P/E multiples — growth stocks face the most direct pressure.'
+      body: `10-year Treasury yield ${tnx.pct > 0 ? 'climbed to' : 'fell to'} ${fmt(tnx.price, 2)}% (${sign(tnx.change)}${fmt(tnx.change, 3)} pp). ${tnx.pct > 0
+        ? (tnx.price > 4.5 ? 'Yields above 4.5% compress equity P/E multiples — growth stocks face the most direct pressure.' : 'Rising yields increase the cost of capital — rate-sensitive equities like real estate and utilities absorb this first.')
         : 'Lower yields ease the discount rate burden on long-duration assets including high-multiple tech equities.'}`,
     });
   }
 
-  if (btc && Math.abs(btc.change24h) > 5) {
+  if (btc && Math.abs(btc.change24h) > 3) {
     triggers.push({
       score: Math.abs(btc.change24h),
       title: btc.change24h > 0 ? 'Crypto momentum' : 'Crypto selloff',
@@ -371,22 +447,33 @@ function generateKeyDrivers(data) {
     });
   }
 
-  // Fallback: broad equity move if no macro triggers
-  if (triggers.length === 0 && sp && Math.abs(sp.pct) > 1) {
-    triggers.push({
-      score: Math.abs(sp.pct),
-      title: sp.pct > 0 ? 'Broad equity rally' : 'Broad-based selling',
-      body: `The S&P 500 ${sp.pct > 0 ? 'advanced' : 'declined'} ${fmt(Math.abs(sp.pct), 2)}% with no single macro catalyst dominating. ${sp.pct > 0
-        ? 'The move reflects improving sentiment ahead of upcoming economic data releases.'
-        : 'The pullback aligns with seasonal patterns and position unwinding ahead of upcoming data.'}`,
-    });
+  // Sort by magnitude
+  triggers.sort((a, b) => b.score - a.score);
+
+  // Guarantee minimum 2 drivers by adding remaining macro signals regardless of threshold
+  if (triggers.length < 2) {
+    const all = [
+      vix  ? { score: Math.abs(vix.pct),       symbol: 'VIX',  title: `VIX at ${fmt(vix.price, 1)}`,   body: `VIX moved ${sign(vix.pct)}${fmt(vix.pct, 1)}% to ${fmt(vix.price, 1)}, ${vix.price > 20 ? 'reflecting above-average market uncertainty' : 'holding in the low-volatility range'}.` } : null,
+      oil  ? { score: Math.abs(oil.pct),        symbol: 'Oil',  title: `WTI Crude at $${fmt(oil.price, 2)}`, body: `Oil ${oil.pct >= 0 ? 'gained' : 'lost'} ${fmt(Math.abs(oil.pct), 1)}% to $${fmt(oil.price, 2)} — ${oil.pct >= 0 ? 'providing support for energy equities' : 'weighing on energy sector names'}.` } : null,
+      gold ? { score: Math.abs(gold.pct),       symbol: 'Gold', title: `Gold at $${fmt(gold.price, 0)}`,  body: `Gold ${gold.pct >= 0 ? 'added' : 'shed'} ${fmt(Math.abs(gold.pct), 1)}% to $${fmt(gold.price, 0)}, ${gold.pct > 0 ? 'indicating mild safe-haven preference' : 'suggesting improving risk appetite'}.` } : null,
+      tnx  ? { score: Math.abs(tnx.pct),        symbol: 'TNX',  title: `10Y Yield at ${fmt(tnx.price, 2)}%`, body: `The 10-year yield ${tnx.pct >= 0 ? 'rose' : 'fell'} to ${fmt(tnx.price, 2)}% — ${tnx.price > 4.3 ? 'maintaining pressure on rate-sensitive equity valuations' : 'offering some relief for long-duration equities'}.` } : null,
+      btc  ? { score: Math.abs(btc.change24h),  symbol: 'BTC',  title: `Bitcoin at $${Math.round(btc.price).toLocaleString('en-US')}`, body: `Bitcoin ${btc.change24h >= 0 ? 'gained' : 'lost'} ${fmt(Math.abs(btc.change24h), 1)}% over 24 hours, ${(btc.change24h >= 0) === (sp?.pct >= 0) ? 'tracking equity sentiment' : 'diverging from equity direction — a signal worth monitoring'}.` } : null,
+    ].filter(Boolean);
+
+    const alreadyIn = new Set(triggers.map(t => t.title));
+    for (const candidate of all.sort((a, b) => b.score - a.score)) {
+      if (!alreadyIn.has(candidate.title) && triggers.length < 2) {
+        triggers.push(candidate);
+        alreadyIn.add(candidate.title);
+      }
+    }
+    triggers.sort((a, b) => b.score - a.score);
   }
 
-  triggers.sort((a, b) => b.score - a.score);
   const top = triggers.slice(0, 3);
 
   if (top.length === 0)
-    return '_No standout macro drivers detected. Markets absorbed overnight futures with limited intraday volatility._';
+    return '_No macro drivers detected. Markets absorbed overnight futures with limited intraday volatility._';
 
   return top.map(t => `**${t.title}**\n${t.body}`).join('\n\n');
 }
@@ -556,7 +643,7 @@ function assignHeroImage(spPct) {
 
 // ── Markdown Builder ───────────────────────────────────────────────────────────
 function buildMarkdown(params) {
-  const { indices, macro, crypto, fearGreed: fg, verdict, movers, earningsEvents, altMovers, heroImage } = params;
+  const { indices, macro, crypto, fearGreed: fg, verdict, movers, earningsEvents, altMovers, heroImage, headlines } = params;
 
   function makeTable(headers, rows) {
     const head = `| ${headers.join(' | ')} |`;
@@ -678,6 +765,7 @@ ${cryptoTable}${altMoversSection}
 ## Market Overview
 
 ${marketOverview}
+${headlines?.length > 0 ? `\n---\n\n## 📰 Today's Headlines\n\n| Source | Headline |\n|---|---|\n${headlines.map(h => { const t = h.title.length > 90 ? h.title.slice(0, 87) + '...' : h.title; return `| ${h.source} | ${h.link ? `[${t}](${h.link})` : t} |`; }).join('\n')}` : ''}
 
 ---
 
@@ -710,7 +798,7 @@ _Trigger: \`${verdict.trigger}\`_
 async function main() {
   console.log(`Generating Daily Brief for ${date} (FMP Premium: ${FMP_PREMIUM})…`);
 
-  const [batchRaw, tnxRaw, oilRaw, moversRaw, earningsRaw, cryptoRaw, altMoversRaw, fgRaw] = await Promise.all([
+  const [batchRaw, tnxRaw, oilRaw, moversRaw, earningsRaw, cryptoRaw, altMoversRaw, fgRaw, headlinesRaw] = await Promise.all([
     fmpBatchQuote(['^GSPC', '^IXIC', '^DJI', '^VIX', 'GCUSD']),
     fmpTenYearYield(),
     alphaVantageWTI(),
@@ -719,6 +807,7 @@ async function main() {
     coinGeckoPrices(),
     coinGeckoAltMovers(),
     cnnFearGreed(),
+    fetchNewsHeadlines(),
   ]);
 
   // Indices
@@ -777,9 +866,10 @@ async function main() {
 
   const md = buildMarkdown({
     indices, macro, crypto, fearGreed, verdict,
-    movers:         moversRaw   || [],
-    earningsEvents: earningsRaw || [],
+    movers:         moversRaw    || [],
+    earningsEvents: earningsRaw  || [],
     altMovers:      altMoversRaw || [],
+    headlines:      headlinesRaw || [],
     heroImage,
   });
 
