@@ -3,8 +3,8 @@ import Link from 'next/link';
 import { TOP_CRYPTOS } from '@/data/top-cryptos';
 import LikeButton from '@/components/LikeButton';
 import BrutalCryptoRoast from '@/components/BrutalCryptoRoast';
-import CryptoChart from '@/components/CryptoChart';
-import { getCoinDetail, getCoinChart } from '@/lib/coingecko';
+import CandlestickChart from '@/components/CandlestickChart';
+import { getCoinDetail, getCoinOHLC } from '@/lib/coingecko';
 
 const YEAR = new Date().getFullYear();
 
@@ -56,8 +56,8 @@ export default async function CryptoDetailPage({ params }: { params: Promise<{ s
   const desc = coin.description?.en?.replace(/<[^>]+>/g, '').slice(0, 500) || '';
   const isUp = change24h >= 0;
 
-  // Fetch 30-day price chart — fail gracefully
-  const chartPoints = await getCoinChart(symbol, 30).catch(() => []);
+  // Fetch 30-day OHLC for candlestick chart — fail gracefully
+  const ohlcPoints = await getCoinOHLC(symbol, 30).catch(() => []);
 
   const fmtUsd = (n: number) => n >= 1e12 ? `$${(n/1e12).toFixed(2)}T` : n >= 1e9 ? `$${(n/1e9).toFixed(1)}B` : n >= 1e6 ? `$${(n/1e6).toFixed(0)}M` : `$${n.toLocaleString()}`;
   const fmtPrice = (n: number) => n >= 1000 ? `$${n.toLocaleString(undefined, {maximumFractionDigits:0})}` : n >= 1 ? `$${n.toFixed(2)}` : `$${n.toFixed(6)}`;
@@ -115,11 +115,11 @@ export default async function CryptoDetailPage({ params }: { params: Promise<{ s
           ))}
         </div>
 
-        {/* 30-day price chart */}
-        {chartPoints.length > 0 && (
+        {/* Candlestick chart */}
+        {ohlcPoints.length > 0 && (
           <div style={{ ...card, padding: '16px 12px 8px', marginBottom: 16 }}>
-            <div style={{ fontFamily: 'var(--mono)', fontSize: 9, fontWeight: 700, color: '#64748B', letterSpacing: 2, marginBottom: 12, paddingLeft: 4 }}>30-DAY PRICE CHART</div>
-            <CryptoChart points={chartPoints} isUp={isUp} days={30} />
+            <div style={{ fontFamily: 'var(--mono)', fontSize: 9, fontWeight: 700, color: '#64748B', letterSpacing: 2, marginBottom: 4, paddingLeft: 4 }}>CANDLESTICK CHART</div>
+            <CandlestickChart coinId={symbol} initialCandles={ohlcPoints} />
           </div>
         )}
 

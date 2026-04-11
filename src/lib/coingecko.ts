@@ -55,6 +55,14 @@ export interface CoinChartPoint {
   price: number;
 }
 
+export interface OHLCPoint {
+  ts: number;   // Unix ms
+  open: number;
+  high: number;
+  low: number;
+  close: number;
+}
+
 export interface GainersLosers {
   gainers: CoinMarket[];
   losers: CoinMarket[];
@@ -287,6 +295,41 @@ export async function getCryptoGainersLosers(): Promise<GainersLosers> {
   memSet(key, result, ttl);
   await redisPersist(key, staleKey, result, ttl);
   return result;
+}
+
+/**
+ * OHLC candlestick data for a single coin. Falls back to stale on 429.
+ * CoinGecko endpoint: /coins/{id}/ohlc?vs_currency=usd&days={days}
+ * Returns [[ts_ms, open, high, low, close], ...]
+ */
+export async function getCoinOHLC(id: string, days: number = 30): Promise<OHLCPoint[]> {
+  const key = `cg:ohlc:${id}:${days}`;
+  const staleKey = `cg:stale:ohlc:${id}:${days}`;
+  const ttl = days <= 7 ? 600 : 3600; // OHLC candles are daily, less volatile
+
+  const mem = memGet<OHLCPoint[]>(key);
+  if (mem) return mem;
+
+  const cached = await redisGet<OHLCPoint[]>(key);
+  if (cached) { memSet(key, cached, Math.min(ttl, 120)); return cached; }
+
+  const raw = await cgFetch<[number, number, number, number, number][]>(
+    `${CG_BASE}/coins/${id}/ohlc?vs_currency=usd&days=${days}`
+  );
+
+  if (!Array.isArray(raw)) {
+    const stale = await redisGet<OHLCPoint[]>(staleKey);
+    if (stale) { memSet(key, stale, 120); return stale; }
+    return [];
+  }
+
+  const points: OHLCPoint[] = raw
+    .filter(c => c.length === 5 && c[1] > 0)
+    .map(([ts, open, high, low, close]) => ({ ts, open, high, low, close }));
+
+  memSet(key, points, ttl);
+  await redisPersist(key, staleKey, points, ttl);
+  return points;
 }
 
 /**
