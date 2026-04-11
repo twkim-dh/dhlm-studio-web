@@ -80,6 +80,7 @@ function MoverCol({ title, color, bg, items }: {
 export default function MarketsPage() {
   const [indices,  setIndices]  = useState<IndexItem[]>(INDEX_FALLBACK);
   const [sectors,  setSectors]  = useState<SectorGroup[]>([]);
+  const [sectorsLoaded, setSectorsLoaded] = useState(false);
   const [movers,   setMovers]   = useState<{ gainers: Mover[]; losers: Mover[]; actives: Mover[] }>({ gainers: [], losers: [], actives: [] });
   const [isWeekend, setIsWeekend] = useState(false);
   const [lastCloseLabel, setLastCloseLabel] = useState('');
@@ -98,32 +99,36 @@ export default function MarketsPage() {
       .then(r => r.json())
       .then(d => {
         const stocks: TopStock[] = d.stocks || [];
-        if (stocks.length === 0) return;
-        const map = new Map<string, TopStock[]>();
-        for (const s of stocks) {
-          const sec = s.sector || 'Other';
-          if (!map.has(sec)) map.set(sec, []);
-          map.get(sec)!.push(s);
+        if (stocks.length > 0) {
+          const map = new Map<string, TopStock[]>();
+          for (const s of stocks) {
+            const sec = s.sector || 'Other';
+            if (!map.has(sec)) map.set(sec, []);
+            map.get(sec)!.push(s);
+          }
+          const list: SectorGroup[] = Array.from(map.entries()).map(([name, ss]) => {
+            const totalMC = ss.reduce((a, c) => a + c.marketCap, 0);
+            const weightedChange = totalMC > 0
+              ? ss.reduce((a, c) => a + c.change * c.marketCap, 0) / totalMC
+              : ss.reduce((a, c) => a + c.change, 0) / ss.length;
+            return { name, stocks: ss, change: weightedChange, totalMC };
+          }).sort((a, b) => b.totalMC - a.totalMC);
+          setSectors(list);
         }
-        const list: SectorGroup[] = Array.from(map.entries()).map(([name, ss]) => {
-          const totalMC = ss.reduce((a, c) => a + c.marketCap, 0);
-          const weightedChange = totalMC > 0
-            ? ss.reduce((a, c) => a + c.change * c.marketCap, 0) / totalMC
-            : ss.reduce((a, c) => a + c.change, 0) / ss.length;
-          return { name, stocks: ss, change: weightedChange, totalMC };
-        }).sort((a, b) => b.totalMC - a.totalMC);
-        setSectors(list);
       })
-      .catch(() => {});
+      .catch(() => {})
+      .finally(() => setSectorsLoaded(true));
 
     // ⑤⑥⑦ Gainers / Losers / Actives
     fetch('/api/markets')
       .then(r => r.json())
       .then(d => {
         if (d.isWeekend) { setIsWeekend(true); setLastCloseLabel(d.lastCloseLabel || ''); }
-        if (d.gainers?.length > 0) {
-          setMovers({ gainers: d.gainers, losers: d.losers || [], actives: d.actives || [] });
-          setIsLive(!d.isWeekend);
+        // Store whatever data arrived — even weekend-only actives
+        const hasAny = d.gainers?.length > 0 || d.actives?.length > 0;
+        if (hasAny) {
+          setMovers({ gainers: d.gainers || [], losers: d.losers || [], actives: d.actives || [] });
+          setIsLive(!d.isWeekend && d.gainers?.length > 0);
         }
       })
       .catch(() => {})
@@ -198,9 +203,13 @@ export default function MarketsPage() {
           </div>
 
           {/* Sector rows */}
-          {sectors.length === 0 ? (
+          {!sectorsLoaded ? (
             <div style={{ height: 80, display: 'flex', alignItems: 'center', justifyContent: 'center' }}>
               <span style={{ fontSize: 11, color: '#334155' }}>Loading sector data...</span>
+            </div>
+          ) : sectors.length === 0 ? (
+            <div style={{ height: 60, display: 'flex', alignItems: 'center', justifyContent: 'center' }}>
+              <span style={{ fontSize: 11, color: '#334155' }}>Sector data unavailable — updates during market hours</span>
             </div>
           ) : (
             <div style={{ display: 'flex', flexDirection: 'column', gap: 6 }}>
@@ -269,16 +278,28 @@ export default function MarketsPage() {
         {moversLoading && (
           <p style={{ fontSize: 13, color: '#64748B', textAlign: 'center', padding: '20px 0' }}>Loading S&P 500 movers...</p>
         )}
-        {!moversLoading && movers.gainers.length === 0 && (
+        {!moversLoading && movers.gainers.length === 0 && movers.actives.length === 0 && (
           <p style={{ fontSize: 13, color: '#475569', textAlign: 'center', padding: '40px 0' }}>
-            {isWeekend ? 'Markets closed. Last session data shown above.' : 'Mover data unavailable. Try again shortly.'}
+            {isWeekend ? 'Markets closed. Last session data unavailable.' : 'Mover data unavailable. Try again shortly.'}
           </p>
         )}
+        {/* Full 3-column grid when gainers available */}
         {movers.gainers.length > 0 && (
           <div style={{ display: 'grid', gridTemplateColumns: 'repeat(3, 1fr)', gap: 10, marginBottom: 16 }}>
             <MoverCol title="🟢 S&P 500 GAINERS"     color="#00D474" bg="#00D47410" items={movers.gainers.slice(0, 10)} />
             <MoverCol title="🔴 S&P 500 LOSERS"      color="#FF4545" bg="#FF454510" items={movers.losers.slice(0, 10)} />
             <MoverCol title="📊 S&P 500 MOST ACTIVE" color="#60A5FA" bg="#3B82F610" items={movers.actives.slice(0, 10)} />
+          </div>
+        )}
+        {/* Weekend/fallback: show only Most Active when gainers unavailable */}
+        {!moversLoading && movers.gainers.length === 0 && movers.actives.length > 0 && (
+          <div style={{ marginBottom: 16 }}>
+            <div style={{ fontFamily: 'var(--mono)', fontSize: 9, color: '#D4A843', textAlign: 'center', marginBottom: 8 }}>
+              Markets closed · Last session data · Gainers/Losers unavailable on weekends
+            </div>
+            <div style={{ maxWidth: 340, margin: '0 auto' }}>
+              <MoverCol title="📊 S&P 500 MOST ACTIVE" color="#60A5FA" bg="#3B82F610" items={movers.actives.slice(0, 10)} />
+            </div>
           </div>
         )}
 

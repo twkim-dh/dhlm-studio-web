@@ -1,7 +1,7 @@
 import type { Metadata } from "next";
 export const metadata: Metadata = {
   title: "US Stock Market — Top Gainers, Losers & Most Active | DHLM Studio",
-  description: "Live US stock market movers: top gainers, losers, most active. Brutal Edge™ analysis, sector heatmap, and portfolio roast.",
+  description: "Live US stock market movers: top gainers, losers, most active. Brutal Edge™ analysis and sector heatmap.",
   alternates: { canonical: 'https://dhlm-studio.com/markets' },
 };
 const jsonLd = { "@context": "https://schema.org", "@type": "FinancialService", name: "DHLM Studio Markets", url: "https://dhlm-studio.com/markets", description: "Real-time US stock market data with Brutal Edge™ analysis." };
