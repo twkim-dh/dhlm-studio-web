@@ -1,7 +1,7 @@
 # WEEKLY SELF-REVIEW — Week of 2026-04-02 to 2026-04-08
 
 > **Date:** 2026-04-08
-> **Author:** Brutal AI™ Editorial Research (under editorial oversight)
+> **Author:** Brutal Edge™ Editorial Research (under editorial oversight)
 > **Cadence:** Weekly, every Friday (per master directive PART 5)
 > **Purpose:** Honest self-assessment of the week's editorial output, infrastructure progress, and KPI movement. Identify what worked, what failed, and what changes the next week.
 
@@ -45,7 +45,7 @@ KPIs are tracked per the master directive PART 18 leading-indicator framework. T
 - **Title:** After the Spike: 5 Energy Stocks Still Built to Win if the Iran War Premium Lingers
 - **Words:** ~3,100
 - **Tactical top pick:** MPC
-- **BAAF self-score:** 87/100 (Grade A−)
+- **BEAF self-score:** 87/100 (Grade A−)
 - **Peer comparison:** [COMPETITOR_HOT_SECTOR_ENERGY_20260408.md](COMPETITOR_HOT_SECTOR_ENERGY_20260408.md)
 - **Verdict:** Format works. Source density and word count both need to come down for Hot Sector #2.
 
@@ -73,7 +73,7 @@ KPIs are tracked per the master directive PART 18 leading-indicator framework. T
 ## 4. What Shipped This Week (Infrastructure)
 
 ### 4.1 Site Foundation
-- TODAY'S MARKET section on home page with 9-trigger Brutal AI verdict
+- TODAY'S MARKET section on home page with 9-trigger Brutal Edge verdict
 - /daily index page and /daily/[slug] template
 - TTS Listen button (Web Speech API) on reports and daily briefs
 - Navigation restructured to editorial-first ordering
@@ -88,7 +88,7 @@ KPIs are tracked per the master directive PART 18 leading-indicator framework. T
 
 ### 4.3 Automation
 - daily-brief.yml workflow (cron 11:30 UTC Mon-Fri)
-- scripts/generate-daily-brief.js market data + Brutal AI verdict generator
+- scripts/generate-daily-brief.js market data + Brutal Edge verdict generator
 - scripts/notify-indexnow.js with site verification key
 - scripts/send-daily-email.js Resend integration with graceful skip
 - IndexNow site verification file deployed
@@ -146,8 +146,8 @@ KPIs are tracked per the master directive PART 18 leading-indicator framework. T
 ### 6.1 The 70:30 → 75:25 → 80:20 → 90:10 Tone Matrix
 The decision to define explicit tone ratios per content type (Deep Dive 70:30, Daily Brief 75:25, Weekly Deep 80:20, Hot Sector 90:10) gave every report a clear voice target before drafting started. The Energy Hot Sector report wrote noticeably faster because the personality budget was bounded to two specific lines.
 
-### 6.2 BAAF Score on the Hot Sector Itself
-Self-applying BAAF to the report's own structure (in the Competitor Analysis) produced an honest 87/100 with specific gaps. The exercise turned subjective "this report is good" into objective "8 sources is the floor, we hit the floor, next time hit 12+." This is a repeatable quality discipline.
+### 6.2 BEAF Score on the Hot Sector Itself
+Self-applying BEAF to the report's own structure (in the Competitor Analysis) produced an honest 87/100 with specific gaps. The exercise turned subjective "this report is good" into objective "8 sources is the floor, we hit the floor, next time hit 12+." This is a repeatable quality discipline.
 
 ### 6.3 Three-Tier Fallback in TodayMarket
 The live → cached → static fallback chain in /api/today-market means the home page hero NEVER shows "Loading..." or empty cells. First-paint visitors always see real numbers. Worth keeping as a pattern for any future market-data widgets.

@@ -4,7 +4,7 @@ import FearGreedDashboard from '@/components/FearGreedDashboard';
 
 export const metadata: Metadata = {
   title: 'Fear & Greed Index — Live CNN Market Sentiment | DHLM Studio',
-  description: 'Track the CNN Fear & Greed Index in real-time. 7 market indicators, historical chart, and Brutal AI commentary on what extreme fear and extreme greed mean for the next move.',
+  description: 'Track the CNN Fear & Greed Index in real-time. 7 market indicators, historical chart, and Brutal Edge commentary on what extreme fear and extreme greed mean for the next move.',
   alternates: { canonical: 'https://dhlm-studio.com/markets/fear-and-greed' },
   openGraph: {
     title: 'CNN Fear & Greed Index — Live Market Sentiment',

@@ -16,14 +16,14 @@ export default function BrutalCryptoRoast({ symbol }: { symbol: string }) {
     <div style={{ background: '#111827', borderRadius: 14, border: '1px solid #1E293B', marginBottom: 16, overflow: 'hidden' }}>
       <div style={{ padding: '14px 18px', borderBottom: revealed ? '1px solid #1E293B' : 'none' }}>
         <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center' }}>
-          <div style={{ fontFamily: 'var(--mono)', fontSize: 9, fontWeight: 700, color: '#C73E3A', letterSpacing: 2 }}>🔥 BRUTAL AI TAKE</div>
+          <div style={{ fontFamily: 'var(--mono)', fontSize: 9, fontWeight: 700, color: '#C73E3A', letterSpacing: 2 }}>🔥 BRUTAL EDGE TAKE</div>
           {!revealed && (
             <button onClick={generate} style={{
               padding: '6px 14px', borderRadius: 8, border: 'none', cursor: 'pointer',
               background: 'linear-gradient(135deg, #C73E3A, #EF4444)', color: '#fff',
               fontSize: 11, fontWeight: 700,
             }}>
-              Get the Brutal AI Take
+              Get the Brutal Edge Take
             </button>
           )}
           {revealed && roast && (

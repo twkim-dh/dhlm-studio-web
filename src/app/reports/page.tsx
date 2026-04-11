@@ -6,12 +6,12 @@ import RequestDeepDive from '@/components/RequestDeepDive';
 import TickerLogo from '@/components/TickerLogo';
 
 export const metadata: Metadata = {
-  title: 'Reports — Brutal AI™ Deep Dive Analysis | DHLM Studio',
-  description: 'In-depth stock and crypto analysis with BAAF scoring. 3,000+ word deep dives. Data-driven insights, not investment advice.',
+  title: 'Reports — Brutal Edge™ Deep Dive Analysis | DHLM Studio',
+  description: 'In-depth stock and crypto analysis with BEAF scoring. 3,000+ word deep dives. Data-driven insights, not investment advice.',
   alternates: { canonical: 'https://dhlm-studio.com/reports' },
   openGraph: {
-    title: 'Brutal AI™ Deep Dive Reports',
-    description: 'In-depth stock and crypto analysis with BAAF scoring. 3,000+ word deep dives.',
+    title: 'Brutal Edge™ Deep Dive Reports',
+    description: 'In-depth stock and crypto analysis with BEAF scoring. 3,000+ word deep dives.',
     type: 'website',
     url: 'https://dhlm-studio.com/reports',
   },
@@ -21,7 +21,7 @@ const REPORTS_DIR = path.join(process.cwd(), 'src/content/reports');
 
 interface ReportMeta {
   title: string; slug: string; ticker: string; date: string; readTime: string;
-  category: string; catColor: string; grade: string; baafScore: number; description: string;
+  category: string; catColor: string; grade: string; beafScore: number; description: string;
   type?: string; sector?: string; tickers?: string[];
 }
 
@@ -61,9 +61,9 @@ export default function ReportsPage() {
     <div style={{ background: '#0B0F19', minHeight: '100vh' }}>
       <div style={{ maxWidth: 800, margin: '0 auto', padding: '80px 24px' }}>
         <div style={{ marginBottom: 24 }}>
-          <div style={{ fontFamily: 'var(--mono)', fontSize: 10, fontWeight: 700, color: '#C73E3A', letterSpacing: 3, marginBottom: 8 }}>🔥 BRUTAL AI™ REPORTS</div>
+          <div style={{ fontFamily: 'var(--mono)', fontSize: 10, fontWeight: 700, color: '#C73E3A', letterSpacing: 3, marginBottom: 8 }}>🔥 BRUTAL EDGE™ REPORTS</div>
           <h1 style={{ fontFamily: 'var(--serif)', fontSize: 28, fontWeight: 900, color: '#F1F5F9', margin: 0 }}>Deep Dive Analysis</h1>
-          <p style={{ fontSize: 13, color: '#64748B', marginTop: 4 }}>In-depth stock analysis with BAAF scoring — {reports.length} Deep Dives{hotSector.length > 0 ? ` · ${hotSector.length} Hot Sector` : ''}</p>
+          <p style={{ fontSize: 13, color: '#64748B', marginTop: 4 }}>In-depth stock analysis with BEAF scoring — {reports.length} Deep Dives{hotSector.length > 0 ? ` · ${hotSector.length} Hot Sector` : ''}</p>
         </div>
 
         {hotSector.length > 0 && (
@@ -95,7 +95,7 @@ export default function ReportsPage() {
               <div style={{ flex: 1, minWidth: 0 }}>
                 <div style={{ display: 'flex', alignItems: 'center', gap: 8, marginBottom: 8, flexWrap: 'wrap' }}>
                   <span style={{ fontFamily: 'var(--mono)', fontSize: 18, fontWeight: 900, color: '#60A5FA' }}>{r.ticker}</span>
-                  <span style={{ fontFamily: 'var(--mono)', fontSize: 10, fontWeight: 700, padding: '3px 8px', borderRadius: 4, background: '#D4A84314', color: '#D4A843' }}>BAAF {r.baafScore}/100 ({r.grade})</span>
+                  <span style={{ fontFamily: 'var(--mono)', fontSize: 10, fontWeight: 700, padding: '3px 8px', borderRadius: 4, background: '#D4A84314', color: '#D4A843' }}>BEAF {r.beafScore}/100 ({r.grade})</span>
                   <span style={{ fontFamily: 'var(--mono)', fontSize: 10, fontWeight: 600, padding: '3px 8px', borderRadius: 4, background: `${r.catColor}14`, color: r.catColor }}>{r.category}</span>
                   <span style={{ fontSize: 11, color: '#475569' }}>{r.date} · {r.readTime}</span>
                 </div>

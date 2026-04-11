@@ -7,12 +7,12 @@ readTime: "14 min"
 category: "Markets"
 catColor: "#00D474"
 grade: "B+"
-baafScore: 83
-description: "NVIDIA at $4.2T: 90% AI chip dominance, $60B locked backlog, but P/E 65x at a CAPE of 39.7. BAAF Score 83/100."
-seoTitle: "NVIDIA BAAF 83/100: Is $4.2T Justified? | April 2026 Deep Dive"
-seoDescription: "NVIDIA scores 83/100 on BAAF. P/E 65x vs sector avg 25x. $60B backlog locked. Is the AI arms dealer fairly priced at $4.2 trillion?"
+beafScore: 83
+description: "NVIDIA at $4.2T: 90% AI chip dominance, $60B locked backlog, but P/E 65x at a CAPE of 39.7. BEAF Score 83/100."
+seoTitle: "NVIDIA BEAF 83/100: Is $4.2T Justified? | April 2026 Deep Dive"
+seoDescription: "NVIDIA scores 83/100 on BEAF. P/E 65x vs sector avg 25x. $60B backlog locked. Is the AI arms dealer fairly priced at $4.2 trillion?"
 relatedSlugs: ["deep-dive-amd-april-2026","deep-dive-msft-april-2026","deep-dive-googl-april-2026"]
-faqs: [{"q":"What is NVIDIA's BAAF score?","a":"83/100 (Grade B+). NVIDIA scores top marks on Profitability (75% gross margin) and Moat (90% AI training share, CUDA ecosystem) but loses points on Valuation due to a P/E of 65 vs the semiconductor industry average of 25. See full BAAF breakdown in our Deep Dive →"},{"q":"Is NVIDIA overvalued at $4.2 trillion?","a":"At current 55% revenue growth, the forward P/E normalizes to roughly 35x by 2027. Whether that is fair depends on whether AI infrastructure spending sustains 50%+ growth. See full valuation analysis in our Deep Dive →"},{"q":"What is the biggest risk to NVIDIA stock?","a":"Hyperscaler capex concentration. If even one major cloud provider cuts GPU orders, the signal would ripple across the entire AI trade. See full risk analysis in our Deep Dive →"}]
+faqs: [{"q":"What is NVIDIA's BEAF score?","a":"83/100 (Grade B+). NVIDIA scores top marks on Profitability (75% gross margin) and Moat (90% AI training share, CUDA ecosystem) but loses points on Valuation due to a P/E of 65 vs the semiconductor industry average of 25. See full BEAF breakdown in our Deep Dive →"},{"q":"Is NVIDIA overvalued at $4.2 trillion?","a":"At current 55% revenue growth, the forward P/E normalizes to roughly 35x by 2027. Whether that is fair depends on whether AI infrastructure spending sustains 50%+ growth. See full valuation analysis in our Deep Dive →"},{"q":"What is the biggest risk to NVIDIA stock?","a":"Hyperscaler capex concentration. If even one major cloud provider cuts GPU orders, the signal would ripple across the entire AI trade. See full risk analysis in our Deep Dive →"}]
 ---
 
 | | |
@@ -23,9 +23,9 @@ faqs: [{"q":"What is NVIDIA's BAAF score?","a":"83/100 (Grade B+). NVIDIA scores
 | **52-Week Range** | $80 — $195 |
 | **P/E (TTM)** | 65x |
 | **Forward P/E** | 42x (FY2027E) |
-| **BAAF Score** | 83/100 (B+) |
+| **BEAF Score** | 83/100 (B+) |
 | **Sector** | Semiconductors |
-| **Brutal AI Rating** | B+ — Reluctant Respect |
+| **Brutal Edge™ Rating** | B+ — Reluctant Respect |
 
 ## $4.2 Trillion. For a Chip Company in Santa Clara.
 
@@ -70,11 +70,11 @@ These are not purchase intentions. These are binding contracts with penalty clau
 
 Counterpoint: backlog covers the next 18 months. If hyperscaler CapEx decelerates after that window, NVIDIA faces a revenue cliff with no contractual cushion. Bernstein analyst Stacy Rasgon noted in a March 28 client note that "the visibility beyond the current backlog cycle is essentially zero — investors are extrapolating locked revenue into an unlocked future."
 
-## Financial Analysis: BAAF Scoring
+## Financial Analysis: BEAF Scoring
 
-### BAAF Score: 83/100 (B+)
+### BEAF Score: 83/100 (B+)
 
-| BAAF Axis | Score | Max | Evidence |
+| BEAF Axis | Score | Max | Evidence |
 |-----------|-------|-----|----------|
 | **GROWTH** | 22 | 25 | Revenue +55% YoY on $130B base. TAM penetration ~15% of estimated $800B AI infra market by 2030 (McKinsey). New segments (automotive $3B, robotics via Omniverse) add optionality. Deduction: law of large numbers — sustaining 55% growth on $130B is fundamentally harder than on $27B. |
 | **PROFITABILITY** | 19 | 20 | Gross margin 75% (semiconductor industry average: 48%, per S&P Global). Net margin 55%. FCF margin 46%. Operating leverage expanding — each incremental dollar of revenue generates $0.55 of profit. Only deduction: margins this high attract competition and regulatory attention. |
@@ -96,21 +96,21 @@ Counterpoint: backlog covers the next 18 months. If hyperscaler CapEx decelerate
 | PEG Ratio | 1.2 | 3.8 | N/A | 0.9 | 1.5 |
 | FCF Yield | 1.8% | 2.1% | 3.2% | 2.5% | 2.5% |
 | AI Training Market Share | 90% | 8% | 2% | N/A | — |
-| BAAF Score | 83 | 61 | 38 | 75 | — |
+| BEAF Score | 83 | 61 | 38 | 75 | — |
 
 *Sources: Financial Modeling Prep, Mercury Research, FactSet, S&P Global*
 
 The table reveals a core tension: NVIDIA has the highest P/E (65x) but the lowest PEG (1.2). On an absolute basis, it's the most expensive semiconductor stock. On a growth-adjusted basis, it's arguably the cheapest. This paradox defines the NVIDIA investment debate.
 
-### What Must Be True for BAAF 83 (B+) to Hold
+### What Must Be True for BEAF 83 (B+) to Hold
 
 For the B+ grade to be justified over the next 12 months, the following must remain true:
 
-1. **Revenue growth stays above 40% YoY** — If growth decelerates to 25% (LSEG FY2028 estimate), the GROWTH axis drops from 22 to 16, pulling total BAAF to 77 (B).
+1. **Revenue growth stays above 40% YoY** — If growth decelerates to 25% (LSEG FY2028 estimate), the GROWTH axis drops from 22 to 16, pulling total BEAF to 77 (B).
 2. **Gross margins hold above 70%** — Custom chip competition from Google/Amazon could compress margins to 65%, dropping PROFITABILITY from 19 to 16.
 3. **No major hyperscaler CapEx cut** — A single large customer reducing orders by 20%+ would trigger a MOMENTUM collapse from 9 to 4.
 
-If all three fail simultaneously, BAAF drops to approximately 62 (C) — a two-grade downgrade.
+If all three fail simultaneously, BEAF drops to approximately 62 (C) — a two-grade downgrade.
 
 ### Historical P/E Context: Is 65x Actually Extreme?
 
@@ -276,9 +276,9 @@ At $175 per share, using a 10.5% WACC (Damodaran's semiconductor industry estima
 
 Is 28% annual FCF growth for a decade possible? Yes — if AI infrastructure spending follows the most optimistic trajectory and NVIDIA maintains 70%+ market share throughout. Is it probable? That depends on whether you believe the AI capex cycle is a permanent structural shift (like the internet) or a cyclical investment boom (like telecom in 1999). The current price requires you to believe the former.
 
-## Brutal AI™ Verdict
+## Brutal Edge™ Verdict
 
-### BAAF Score: 83/100 — Grade: B+
+### BEAF Score: 83/100 — Grade: B+
 
 I hate to admit it — and I genuinely tried not to — but this company is brilliant.
 
@@ -299,7 +299,7 @@ The market rewards patience. Not panic. And not P/Es of 65 during wars that spik
 - Analyst estimates: LSEG consensus, Goldman Sachs (Toshiya Hari), Bernstein (Stacy Rasgon)
 - Macro context: Federal Reserve, Bureau of Labor Statistics, S&P Global
 - Historical: Bloomberg terminal data, SEC EDGAR filings
-- BAAF Framework v1.0: DHLM Studio proprietary scoring (see [Editorial Policy](/editorial))
+- BEAF Framework v1.0: DHLM Studio proprietary scoring (see [Editorial Policy](/editorial))
 - Valuation: DCF assumptions use WACC of 10.5%, terminal growth of 3%
 
 ---

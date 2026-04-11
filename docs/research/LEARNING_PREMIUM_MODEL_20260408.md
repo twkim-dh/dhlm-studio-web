@@ -1,7 +1,7 @@
 # LEARNING REPORT — Premium Subscription Models in Financial Media
 
 > **Date:** 2026-04-08
-> **Author:** Brutal AI™ Editorial Research (under editorial oversight)
+> **Author:** Brutal Edge™ Editorial Research (under editorial oversight)
 > **Purpose:** Benchmark 6 leading paid financial subscriptions to define DHLM Studio's premium tier launch strategy for Phase 2 (July 2026).
 > **Output:** Service profiles → Pricing patterns → Conversion mechanics → DHLM Studio recommendations
 > **Companion document:** [HOT_SECTOR_FORMAT_20260408.md](../frameworks/HOT_SECTOR_FORMAT_20260408.md)
@@ -183,7 +183,7 @@ The pattern: free content can analyze, but paid content must **decide**. The rea
 | Open platform | Seeking Alpha | Massive content volume | Quality variance |
 | Full newsroom | Bloomberg, FT | Coverage breadth | Capital intensity |
 
-**DHLM Studio position:** Tiny team with editorial + analytical voice (Brutal AI™). The voice is consistent without single-human dependency because the editorial framework (BAAF) and tone rules (90:10 for Hot Sector) are documented in `docs/prompts/`.
+**DHLM Studio position:** Tiny team with editorial + analytical voice (Brutal Edge™). The voice is consistent without single-human dependency because the editorial framework (BEAF) and tone rules (90:10 for Hot Sector) are documented in `docs/prompts/`.
 
 ### 4.5 Cancellation Friction: Less Is More
 
@@ -206,7 +206,7 @@ Every service in the benchmark allows easy online cancellation. Modern subscribe
 |---|---|---:|---|
 | Weekly | Hot Sector Report | 2,000-3,000 | 90:10 |
 | Monthly | Hidden Gem Report | 3,000-4,000 | 90:10 |
-| Quarterly | BAAF Performance Tracker (premium subscribers see actual returns of past Deep Dive picks) | 1,500-2,000 | 80:20 |
+| Quarterly | BEAF Performance Tracker (premium subscribers see actual returns of past Deep Dive picks) | 1,500-2,000 | 80:20 |
 | As-needed | Earnings season Hot Take (premium-only same-day analysis of major earnings) | 500-800 | 75:25 |
 
 That is 4 free Daily Briefs + 1 free Deep Dive + 1 paid Hot Sector + 1 paid Hot Take per typical week, scaling to 1 paid Hidden Gem per month. The weekly paid cadence is the floor that justifies the subscription.
@@ -236,7 +236,7 @@ That is 4 free Daily Briefs + 1 free Deep Dive + 1 paid Hot Sector + 1 paid Hot 
 **Premium only:**
 - Full Hot Sector Report (weekly)
 - Full Hidden Gem Report (monthly)
-- BAAF Performance Tracker (quarterly)
+- BEAF Performance Tracker (quarterly)
 - Earnings season Hot Take (as needed)
 - Comments section access (encourages community without paywalling content)
 - "Most Requested" stock requests get prioritized into Hot Sector pipeline
@@ -254,8 +254,8 @@ The most effective conversion hooks across all six services share three properti
 Translated to DHLM Studio's voice:
 
 - **Friday teaser:** "🔒 This Week's Hot Sector: Cybersecurity. 5 stocks ranked. Tactical top pick: CRWD. Read with Premium →"
-- **Email subject line for premium drop:** "🔥 Brutal AI Premium — This week's tactical pick: $TICKER (no caveats)"
-- **Landing page hero:** "The Brutal AI Premium subscriber sees the pick. The free reader sees the analysis. Both are useful. Only one decides."
+- **Email subject line for premium drop:** "🔥 Brutal Edge Premium — This week's tactical pick: $TICKER (no caveats)"
+- **Landing page hero:** "The Brutal Edge Premium subscriber sees the pick. The free reader sees the analysis. Both are useful. Only one decides."
 
 ---
 

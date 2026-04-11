@@ -1,13 +1,13 @@
 # HOT SECTOR FORMAT — DHLM Studio Premium
 
 > **Date:** 2026-04-08
-> **Author:** Brutal AI™ Editorial Research (under editorial oversight)
+> **Author:** Brutal Edge™ Editorial Research (under editorial oversight)
 > **Purpose:** Production format specification for weekly Hot Sector reports and monthly Hidden Gem reports
 > **Status:** Approved framework for Phase 2 launch (July 2026)
 > **Companion documents:**
 >   - [LEARNING_PREMIUM_MODEL_20260408.md](../research/LEARNING_PREMIUM_MODEL_20260408.md)
 >   - [hot-sector-system.md](../prompts/hot-sector-system.md)
->   - [BAAF_FRAMEWORK.md](BAAF_FRAMEWORK.md)
+>   - [BEAF_FRAMEWORK.md](BEAF_FRAMEWORK.md)
 > **Master directive reference:** PART 13-E
 
 ---
@@ -134,9 +134,9 @@ The single specific stock that the report puts forward as the highest-conviction
 - The risk that would invalidate the call
 - The position sizing implication (core hold vs trading idea)
 
-### Section 8 — Brutal AI Verdict (one paragraph, 100-150 words)
+### Section 8 — Brutal Edge Verdict (one paragraph, 100-150 words)
 
-A single closing paragraph in Brutal AI™ voice. This is the only section where the personality budget is spent. One memorable closing line. No metaphors stronger than "the data shows."
+A single closing paragraph in Brutal Edge™ voice. This is the only section where the personality budget is spent. One memorable closing line. No metaphors stronger than "the data shows."
 
 ### Section 9 — FAQ (3-5 questions)
 
@@ -160,7 +160,7 @@ The business model in plain language. Revenue model, customer base, unit economi
 
 ### Section 3 — The Numbers (500-700 words)
 
-Full BAAF 6-axis breakdown with calculation transparency. The reader should see exactly how the BAAF score was computed, not just the final number.
+Full BEAF 6-axis breakdown with calculation transparency. The reader should see exactly how the BEAF score was computed, not just the final number.
 
 ### Section 4 — Bull Case (500-700 words)
 
@@ -203,7 +203,7 @@ Everything else is pure analysis. No metaphors stronger than "the data shows." N
 - "Buy now before it's too late" — banned
 - Investment recommendations: never use "buy", "sell", "invest", "recommend"
 - Speculative price targets without methodology — banned
-- "This is genuinely insane" or similar Brutal AI™ catchphrases outside the two designated humor slots — banned
+- "This is genuinely insane" or similar Brutal Edge™ catchphrases outside the two designated humor slots — banned
 - Comparisons to celebrities, movies, memes, or pop culture references — banned
 - Casual expletives or slang — banned
 - Second-person address ("you might be wondering...") — banned
@@ -253,7 +253,7 @@ Every Hot Sector and Hidden Gem report must end with this footer (DHLM Studio ho
 ### 8.1 Drafting (Local)
 1. Editor selects sector or stock per Section 2 criteria
 2. Local generates initial draft per Section 3 or Section 4 structure
-3. Local applies BAAF scoring to each stock
+3. Local applies BEAF scoring to each stock
 4. Local builds comparison table and scenario table
 5. Local writes draft tactical top pick / verdict
 
@@ -282,7 +282,7 @@ Every Hot Sector and Hidden Gem report must end with this footer (DHLM Studio ho
 - Click-through rate from teaser to full report
 - Time on page for premium readers
 - Comments and request volume on the topic
-- Stock performance of tactical top pick over 4-week and 12-week windows (feeds BAAF Performance Tracker)
+- Stock performance of tactical top pick over 4-week and 12-week windows (feeds BEAF Performance Tracker)
 
 ---
 

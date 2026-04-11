@@ -6,8 +6,8 @@ import TodayMarket from '@/components/TodayMarket';
 import InlineSubscribe from '@/components/InlineSubscribe';
 
 export const metadata: Metadata = {
-  title: 'Daily Brief — Brutal AI Market Analysis | DHLM Studio',
-  description: 'Daily market briefing with index snapshots, sector pulse, movers and shakers, and a Brutal AI verdict. Published every weekday at 7:30 AM ET.',
+  title: 'Daily Brief — Brutal Edge Market Analysis | DHLM Studio',
+  description: 'Daily market briefing with index snapshots, sector pulse, movers and shakers, and a Brutal Edge verdict. Published every weekday at 7:30 AM ET.',
   alternates: { canonical: 'https://dhlm-studio.com/daily' },
 };
 
@@ -45,7 +45,7 @@ export default function DailyIndexPage() {
     <div style={{ background: '#0B0F19', minHeight: '100vh' }}>
       {/* Hero */}
       <section style={{ maxWidth: 1100, margin: '0 auto', padding: '60px 24px 24px' }}>
-        <div style={{ fontFamily: 'var(--mono)', fontSize: 10, fontWeight: 700, color: '#C73E3A', letterSpacing: 3, marginBottom: 8 }}>● BRUTAL AI&trade; DAILY</div>
+        <div style={{ fontFamily: 'var(--mono)', fontSize: 10, fontWeight: 700, color: '#C73E3A', letterSpacing: 3, marginBottom: 8 }}>● BRUTAL EDGE&trade; DAILY</div>
         <h1 style={{ fontFamily: 'var(--serif)', fontSize: 'clamp(32px, 5vw, 48px)', fontWeight: 900, color: '#F1F5F9', lineHeight: 1.1, margin: '0 0 16px' }}>
           Daily Brief
         </h1>

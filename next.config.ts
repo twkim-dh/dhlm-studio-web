@@ -8,6 +8,9 @@ const nextConfig: NextConfig = {
       { protocol: 'https', hostname: 'coin-images.coingecko.com' },
       { protocol: 'https', hostname: 'assets.coingecko.com' },
       { protocol: 'https', hostname: 'logo.clearbit.com' },
+      // Unsplash CDN — hero images served via fetch-unsplash-images.js manifest
+      { protocol: 'https', hostname: 'images.unsplash.com' },
+      { protocol: 'https', hostname: 'plus.unsplash.com' },
     ],
   },
   async redirects() {
@@ -44,6 +47,9 @@ const nextConfig: NextConfig = {
       { source: '/balance/:path*', destination: '/', permanent: true },
       { source: '/spin/:path*', destination: '/', permanent: true },
       { source: '/fortune/:path*', destination: '/lottery', permanent: true },
+      // /crypto shortcut → canonical /rankings/crypto
+      { source: '/crypto', destination: '/rankings/crypto', permanent: true },
+      { source: '/crypto/:path*', destination: '/rankings/crypto/:path*', permanent: true },
       // Korean Lotto → US Lottery redirect
       { source: '/lotto', destination: '/lottery', permanent: true },
       { source: '/lotto/:path*', destination: '/lottery', permanent: true },

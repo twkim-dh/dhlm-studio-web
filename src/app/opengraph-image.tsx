@@ -1,7 +1,7 @@
 import { ImageResponse } from 'next/og';
 
 export const runtime = 'edge';
-export const alt = 'DHLM Studio — Brutal AI Market Intelligence';
+export const alt = 'DHLM Studio — Brutal Edge Market Intelligence';
 export const size = { width: 1200, height: 630 };
 export const contentType = 'image/png';
 
@@ -25,14 +25,14 @@ export default async function Image() {
           }}>D</div>
           <div style={{ display: 'flex', flexDirection: 'column' }}>
             <span style={{ fontSize: 22, fontWeight: 900, color: '#F1F5F9', letterSpacing: 1 }}>DHLM STUDIO</span>
-            <span style={{ fontSize: 12, fontWeight: 700, color: '#C73E3A', letterSpacing: 3, marginTop: 2 }}>BRUTAL AI&trade;</span>
+            <span style={{ fontSize: 12, fontWeight: 700, color: '#C73E3A', letterSpacing: 3, marginTop: 2 }}>BRUTAL EDGE&trade;</span>
           </div>
         </div>
 
         {/* Headline */}
         <div style={{ display: 'flex', flexDirection: 'column' }}>
           <div style={{ fontSize: 60, fontWeight: 900, color: '#F1F5F9', lineHeight: 1.1 }}>
-            Brutal AI
+            Brutal Edge
           </div>
           <div style={{ fontSize: 60, fontWeight: 900, color: '#00D474', lineHeight: 1.1 }}>
             Market Intelligence

@@ -7,12 +7,12 @@ readTime: "13 min"
 category: "Markets"
 catColor: "#00D474"
 grade: "B"
-baafScore: 77
-description: "Apple at $3.8T: $100B annual FCF, 2.2B device ecosystem, but iPhone growth at 4%. The subscription empire nobody notices. BAAF 77/100."
-seoTitle: "Apple BAAF 77/100: Is the Subscription Pivot Enough? | April 2026"
-seoDescription: "Apple scores 77/100 on BAAF. iPhone growth at just 4%. Services revenue $96B at 70% margin. 2.2B device ecosystem. Is on-device AI enough?"
+beafScore: 77
+description: "Apple at $3.8T: $100B annual FCF, 2.2B device ecosystem, but iPhone growth at 4%. The subscription empire nobody notices. BEAF 77/100."
+seoTitle: "Apple BEAF 77/100: Is the Subscription Pivot Enough? | April 2026"
+seoDescription: "Apple scores 77/100 on BEAF. iPhone growth at just 4%. Services revenue $96B at 70% margin. 2.2B device ecosystem. Is on-device AI enough?"
 relatedSlugs: ["deep-dive-msft-april-2026","deep-dive-googl-april-2026","deep-dive-amzn-april-2026"]
-faqs: [{"q":"What is Apple's BAAF score?","a":"77/100 (Grade B). Apple scores top on Moat (2.2 billion device ecosystem) and Profitability ($100B FCF) but loses points on Growth as iPhone unit growth slows to 4%. See full BAAF breakdown in our Deep Dive →"},{"q":"Is Apple Services growth enough to offset iPhone slowdown?","a":"Services revenue grew to $96B at 70%+ gross margin, now 25% of total revenue. Whether it can keep pace as iPhone matures is the central question. See full Services analysis in our Deep Dive →"},{"q":"What is the biggest risk to Apple stock?","a":"China regulatory risk and the absence of a category-defining AI product. Vision Pro underwhelmed and on-device Apple Intelligence rollout has been gradual. See full risk analysis in our Deep Dive →"}]
+faqs: [{"q":"What is Apple's BEAF score?","a":"77/100 (Grade B). Apple scores top on Moat (2.2 billion device ecosystem) and Profitability ($100B FCF) but loses points on Growth as iPhone unit growth slows to 4%. See full BEAF breakdown in our Deep Dive →"},{"q":"Is Apple Services growth enough to offset iPhone slowdown?","a":"Services revenue grew to $96B at 70%+ gross margin, now 25% of total revenue. Whether it can keep pace as iPhone matures is the central question. See full Services analysis in our Deep Dive →"},{"q":"What is the biggest risk to Apple stock?","a":"China regulatory risk and the absence of a category-defining AI product. Vision Pro underwhelmed and on-device Apple Intelligence rollout has been gradual. See full risk analysis in our Deep Dive →"}]
 ---
 
 ## $274 Million Per Day. Every Day. While You Sleep.
@@ -54,11 +54,11 @@ Consumer Intelligence Research Partners (CIRP) estimates Apple's US customer ret
 
 The App Store's 30% commission on digital transactions has been challenged legally (Epic Games v. Apple, EU Digital Markets Act) but remains intact for the vast majority of transactions. Even if the commission drops to 20% — a plausible regulatory outcome over 3-5 years — the impact on Services revenue would be approximately $8-10B, or 8-10% of the segment.
 
-## Financial Analysis: BAAF Scoring
+## Financial Analysis: BEAF Scoring
 
-### BAAF Score: 77/100 (B)
+### BEAF Score: 77/100 (B)
 
-| BAAF Axis | Score | Max | Evidence |
+| BEAF Axis | Score | Max | Evidence |
 |-----------|-------|-----|----------|
 | **GROWTH** | 14 | 25 | Total revenue +8%, but iPhone (52% of total) growing only +4% — essentially the inflation rate. Services +16% is the growth engine but faces law-of-large-numbers deceleration. Mac and Wearables growth tepid. Missing catalyst: Apple Intelligence has not yet driven a measurable iPhone upgrade cycle (per carrier activation data, Counterpoint Research Q1 2026). |
 | **PROFITABILITY** | 19 | 20 | Gross margin 46%, net margin 30%, FCF margin 26%. $100B annual FCF — fewer than 10 companies on earth generate this. Share buyback program ($90B/year) compounds EPS growth even when revenue growth is modest. ROE of 160%+ (driven by negative book value from buybacks). Only deduction: hardware segment margins face pressure from component cost inflation. |
@@ -79,7 +79,7 @@ The App Store's 30% commission on digital transactions has been challenged legal
 | P/E Ratio | 34x | 14x | 36x | 25x | 22x |
 | FCF Annual | $100B | $25B | $72B | $75B | — |
 | Services/Recurring Rev | $98B (25%) | $18B (9%) | $125B (51%) | $238B (68%) | — |
-| BAAF Score | 77 | 62 | 81 | 78 | — |
+| BEAF Score | 77 | 62 | 81 | 78 | — |
 
 *Sources: Financial Modeling Prep, company filings, FactSet*
 
@@ -162,9 +162,9 @@ Applied multiple: 27x trough P/E. Market cap: $2.7T.
 
 25% × $290 + 40% × $235 + 20% × $175 + 15% × $150 (severe China scenario) = **$228** (vs current $228). The math says Apple is priced to perfection at current levels — minimal upside in the base case, meaningful downside in adverse scenarios.
 
-## Brutal AI™ Verdict
+## Brutal Edge™ Verdict
 
-### BAAF Score: 77/100 — Grade: B
+### BEAF Score: 77/100 — Grade: B
 
 $100 billion in annual free cash flow. $90 billion in annual buybacks. 2.2 billion devices. 93% customer retention. These are not metrics. These are fortifications. Apple's financials don't have weaknesses — they have areas that are merely excellent instead of extraordinary.
 
@@ -183,7 +183,7 @@ Warren Buffett owns $170 billion worth. The man who turned boring into a religio
 - Analyst estimates: LSEG consensus, UBS semiconductor team (March 2026)
 - Tariff analysis: UBS, Goldman Sachs Global Investment Research
 - Historical: Bloomberg terminal data, SEC EDGAR
-- BAAF Framework v1.0: DHLM Studio proprietary scoring (see [Editorial Policy](/editorial))
+- BEAF Framework v1.0: DHLM Studio proprietary scoring (see [Editorial Policy](/editorial))
 
 ---
 

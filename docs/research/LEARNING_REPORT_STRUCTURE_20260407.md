@@ -8,7 +8,7 @@
 
 ## A) Learning Topic
 
-How do Goldman Sachs, Morgan Stanley, JP Morgan, and other top-tier investment banks structure their equity research reports? What sections do they include, in what order, and how do they present valuation, risk, and recommendations? How does the DHLM Studio "Brutal AI Deep Dive" format compare, and what specific improvements can be adopted to bring our reports closer to institutional quality while preserving our distinctive editorial voice?
+How do Goldman Sachs, Morgan Stanley, JP Morgan, and other top-tier investment banks structure their equity research reports? What sections do they include, in what order, and how do they present valuation, risk, and recommendations? How does the DHLM Studio "Brutal Edge Deep Dive" format compare, and what specific improvements can be adopted to bring our reports closer to institutional quality while preserving our distinctive editorial voice?
 
 ---
 
@@ -232,18 +232,18 @@ Institutional reports use these attribution conventions:
 |---|----------------|-------------------|
 | 1 | Opening (provocative lede + key metrics) | 300 |
 | 2 | Company Deep Dive (revenue breakdown, moat, backlog) | 600 |
-| 3 | Financial Analysis / BAAF Scoring (6-axis score table + competitor comparison) | 500 |
+| 3 | Financial Analysis / BEAF Scoring (6-axis score table + competitor comparison) | 500 |
 | 4 | Competitive Landscape (2-3 major competitors analyzed) | 400 |
 | 5 | Risk Analysis (3 scenarios with probability and impact) | 400 |
 | 6 | Historical Context (relevant historical comparison) | 300 |
 | 7 | Valuation Scenarios (Bull/Base/Bear + probability-weighted target) | 300 |
-| 8 | Brutal AI Verdict (editorial opinion with data backing) | 300 |
+| 8 | Brutal Edge Verdict (editorial opinion with data backing) | 300 |
 | 9 | Sources & Methodology | 100 |
 | | **Total** | **~3,200** |
 
 ### D.2) Proposed Enhanced Structure (13 Sections)
 
-Based on the Wall Street benchmarking, here are the recommended additions and modifications, **preserving the Brutal AI editorial voice** while adding institutional depth:
+Based on the Wall Street benchmarking, here are the recommended additions and modifications, **preserving the Brutal Edge editorial voice** while adding institutional depth:
 
 | # | Proposed Section | Status | Rationale |
 |---|-----------------|--------|-----------|
@@ -251,14 +251,14 @@ Based on the Wall Street benchmarking, here are the recommended additions and mo
 | 2 | **Opening** (keep provocative lede) | KEEP | This is our differentiator -- no Wall Street report has this kind of editorial voice. Keep it. |
 | 3 | **Company Deep Dive** | ENHANCE | Add a Management Assessment subsection (CEO track record, capital allocation, insider ownership) |
 | 4 | **Industry Overview & Competitive Landscape** | MERGE+ENHANCE | Merge current "Competitive Landscape" here. Add TAM sizing, market growth rate, Porter's analysis where relevant |
-| 5 | **Financial Analysis / BAAF Scoring** | ENHANCE | Add forward earnings projections table (at minimum: Revenue, EBITDA, Net Income, EPS for 2 years forward) |
+| 5 | **Financial Analysis / BEAF Scoring** | ENHANCE | Add forward earnings projections table (at minimum: Revenue, EBITDA, Net Income, EPS for 2 years forward) |
 | 6 | **Valuation Deep Dive** | ENHANCE | Rename from "Valuation Scenarios". Add DCF sensitivity table. Add comps table with peer multiples. Keep bull/base/bear scenarios. |
 | 7 | **Catalysts & Key Events** | NEW | Upcoming earnings, product launches, regulatory dates, conference schedule |
 | 8 | **Risk Analysis** | ENHANCE | Add risk taxonomy labels (Operational, Regulatory, Financial, Macro). Keep probability/impact format. Add mitigants. |
 | 9 | **Historical Context** | KEEP | Unique to DHLM. No institutional report does this. Strong differentiator. |
 | 10 | **ESG & Governance Notes** | NEW | Brief section covering material ESG risks. Not a full ESG report, but acknowledging governance, environmental, and social factors relevant to the investment thesis. |
-| 11 | **Brutal AI Verdict** | KEEP | Our signature section. No change needed. |
-| 12 | **Sources & Methodology** | ENHANCE | Separate into: Data Sources, Analyst Estimates Referenced, BAAF Methodology link, Valuation Assumptions |
+| 11 | **Brutal Edge Verdict** | KEEP | Our signature section. No change needed. |
+| 12 | **Sources & Methodology** | ENHANCE | Separate into: Data Sources, Analyst Estimates Referenced, BEAF Methodology link, Valuation Assumptions |
 | 13 | **Disclaimer & Editorial Policy** | ENHANCE | More structured disclaimer language referencing editorial policy |
 
 ### D.3) Specific New Elements to Add
@@ -267,7 +267,7 @@ Based on the Wall Street benchmarking, here are the recommended additions and mo
 
 Add a structured data block at the very top (before the opening), containing:
 ```
-Rating: BAAF B+ (83/100)
+Rating: BEAF B+ (83/100)
 Current Price: $175.00
 Target Price: $166 (probability-weighted)
 Upside/Downside: -5.1%
@@ -334,7 +334,7 @@ Add inside Financial Analysis:
 | P/E (at current) | 103x | 60x | 48x | 42x |
 
 Sources: FY2025A = NVIDIA 10-K. FY2026-2028E = DHLM Studio estimates informed by
-LSEG consensus, company guidance, and BAAF framework assumptions.
+LSEG consensus, company guidance, and BEAF framework assumptions.
 ```
 
 **Why:** Institutional reports always project earnings forward. This table instantly communicates the growth trajectory and shows how the current P/E normalizes over time. Currently, DHLM reports discuss forward estimates narratively but don't present them in a scannable table.
@@ -358,7 +358,7 @@ Add as a new section:
 
 #### Element 6: Comparable Company Valuation Table (Enhanced)
 
-Currently, DHLM reports include a competitor comparison table in the BAAF section. Enhance it to match institutional standards:
+Currently, DHLM reports include a competitor comparison table in the BEAF section. Enhance it to match institutional standards:
 ```
 ### Comparable Company Analysis
 
@@ -383,9 +383,9 @@ These sections have **no institutional equivalent** and are competitive advantag
 
 2. **Historical Context** -- The NVIDIA vs. Cisco 2000 comparison is genuinely insightful analysis that most sell-side reports skip because it risks offending management relationships. We have no such constraint. Keep it.
 
-3. **Brutal AI Verdict** -- The editorial opinion section with personality is entirely unique. Institutional reports must remain neutral in tone due to regulatory and client relationship constraints. We don't. This is our competitive moat.
+3. **Brutal Edge Verdict** -- The editorial opinion section with personality is entirely unique. Institutional reports must remain neutral in tone due to regulatory and client relationship constraints. We don't. This is our competitive moat.
 
-4. **BAAF Scoring System** -- The 6-axis proprietary scoring (Growth, Profitability, Moat, Valuation, Risk, Momentum) is a genuine analytical framework that adds structure to the verdict. It's similar to how some boutique research shops use proprietary scoring, but the specific axes and weightings are uniquely ours.
+4. **BEAF Scoring System** -- The 6-axis proprietary scoring (Growth, Profitability, Moat, Valuation, Risk, Momentum) is a genuine analytical framework that adds structure to the verdict. It's similar to how some boutique research shops use proprietary scoring, but the specific axes and weightings are uniquely ours.
 
 ---
 
@@ -405,7 +405,7 @@ P/E: 65x. Gross margin: 75%.
 ```
 | NVDA | NVIDIA Corporation | NASDAQ |
 |------|-------------------|--------|
-| BAAF Rating | B+ (83/100) | |
+| BEAF Rating | B+ (83/100) | |
 | Current Price | $175.00 | |
 | 12-Month Target | $166 (prob-weighted) | |
 | Upside / Downside | -5.1% | |
@@ -466,7 +466,7 @@ Key assumptions: WACC 10.5%, terminal growth 3.0%, explicit FCF projections thro
 | 11.5% | $139 | $147 | $155 | $164 | $175 |
 
 *Base case: WACC 10.5%, terminal growth 3.0% = $184/share*
-*Source: DHLM Studio estimates. FCF projections based on BAAF framework.*
+*Source: DHLM Studio estimates. FCF projections based on BEAF framework.*
 
 ### Cross-Check: Relative Valuation
 
@@ -565,7 +565,7 @@ Enterprise AI adoption (non-hyperscaler) growing at 45% CAGR provides secondary 
 - Analyst estimates: LSEG consensus, Goldman Sachs (Toshiya Hari), Bernstein (Stacy Rasgon)
 - Macro context: Federal Reserve, Bureau of Labor Statistics, S&P Global
 - Historical: Bloomberg terminal data, SEC EDGAR filings
-- BAAF Framework v1.0: DHLM Studio proprietary scoring (see Editorial Policy)
+- BEAF Framework v1.0: DHLM Studio proprietary scoring (see Editorial Policy)
 - Valuation: DCF assumptions use WACC of 10.5%, terminal growth of 3%
 ```
 
@@ -591,13 +591,13 @@ Enterprise AI adoption (non-hyperscaler) growing at 45% CAGR provides secondary 
 ### DHLM Studio Estimates
 All forward-looking projections labeled "DHLM estimates" or "E" in tables are
 generated by DHLM Studio's analytical framework, informed by consensus data,
-company guidance, and BAAF scoring methodology.
+company guidance, and BEAF scoring methodology.
 
 ### Valuation Assumptions
 - DCF: WACC 10.5% (risk-free rate 4.3%, equity risk premium 5.5%, beta 1.15)
 - Terminal growth rate: 3.0%
 - Projection period: 5 years (FY2027-FY2031)
-- BAAF Framework v1.0: See [Editorial Policy](/editorial) for methodology
+- BEAF Framework v1.0: See [Editorial Policy](/editorial) for methodology
 
 ### Disclaimer
 This report is produced by DHLM Studio for informational and educational purposes
@@ -621,7 +621,7 @@ future results. Always do your own research.
 
 3. **SOTP Applicability:** For conglomerates like Amazon, Alphabet, and Meta, should DHLM reports include SOTP valuations? This would significantly differentiate our analysis but requires segment-level modeling.
 
-4. **ESG Integration Level:** How much ESG content is appropriate for the DHLM audience? Options range from (a) a one-line governance note, to (b) a full ESG sub-section with MSCI ratings, to (c) integrating ESG factors directly into the BAAF scoring axes.
+4. **ESG Integration Level:** How much ESG content is appropriate for the DHLM audience? Options range from (a) a one-line governance note, to (b) a full ESG sub-section with MSCI ratings, to (c) integrating ESG factors directly into the BEAF scoring axes.
 
 5. **Quarterly Update Format:** Should DHLM introduce a shorter "Company Update" format (1-2 pages) for post-earnings or post-event updates, separate from the full Deep Dive? This is standard practice at every sell-side bank and would increase publishing frequency.
 
@@ -633,11 +633,11 @@ future results. Always do your own research.
 
 3. **Interactive Report Elements:** Can the web-based format of DHLM reports leverage interactivity that PDF-based institutional reports cannot? For example: interactive DCF sliders, clickable peer comparison filters, real-time price updates in the header data block.
 
-4. **Rating System Formalization:** Should the BAAF scoring system be mapped to a formal 3-tier recommendation system (Buy/Hold/Sell or equivalent)? Currently, BAAF scores imply a recommendation (83 = B+ = generally positive) but don't make it explicit. Institutional convention demands an explicit recommendation.
+4. **Rating System Formalization:** Should the BEAF scoring system be mapped to a formal 3-tier recommendation system (Buy/Hold/Sell or equivalent)? Currently, BEAF scores imply a recommendation (83 = B+ = generally positive) but don't make it explicit. Institutional convention demands an explicit recommendation.
 
 5. **Regulatory Considerations:** As DHLM Studio grows, study whether any regulatory requirements (SEC, FINRA, MiFID II) would apply to research publications. Currently operating as editorial/educational content, but if the reports gain significant distribution, regulatory classification could change.
 
-6. **Backtesting BAAF Scores:** Study whether historical BAAF scores have predictive power. If BAAF 80+ stocks outperform BAAF 40- stocks over 12 months, that data would be extremely powerful for credibility. This requires 6-12 months of published scores to test.
+6. **Backtesting BEAF Scores:** Study whether historical BEAF scores have predictive power. If BEAF 80+ stocks outperform BEAF 40- stocks over 12 months, that data would be extremely powerful for credibility. This requires 6-12 months of published scores to test.
 
 ### F.3) Implementation Priority
 
@@ -658,7 +658,7 @@ future results. Always do your own research.
 
 ## Summary
 
-DHLM Studio's Deep Dive reports are already stronger than 90% of retail-facing stock analysis content. The provocative editorial voice, BAAF scoring system, historical context sections, and probability-weighted valuation scenarios are genuine differentiators that no institutional report replicates.
+DHLM Studio's Deep Dive reports are already stronger than 90% of retail-facing stock analysis content. The provocative editorial voice, BEAF scoring system, historical context sections, and probability-weighted valuation scenarios are genuine differentiators that no institutional report replicates.
 
 The gaps versus institutional standards are primarily in **quantitative exhibit density** (sensitivity tables, projection tables, comps tables with more metrics) and **structural completeness** (management assessment, catalysts, ESG, formal header data block). These are additive improvements -- they don't require changing what already works.
 

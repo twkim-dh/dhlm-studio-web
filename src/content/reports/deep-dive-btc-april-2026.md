@@ -7,12 +7,12 @@ readTime: "14 min"
 category: "Crypto"
 catColor: "#F59E0B"
 grade: "C+"
-baafScore: 68
-description: "Bitcoin at $66K: Post-halving, ETF billions, institutional adoption, and existential questions. BAAF Score 68/100 (modified for crypto)."
-seoTitle: "Bitcoin BAAF 68/100: Post-Halving, Post-ETF, Post-Doubt? | April 2026"
-seoDescription: "Bitcoin scores 68/100 on modified BAAF. ETF inflows topped $36B. Hashrate 650 EH/s. Lightning Network at 5K BTC capacity. Is digital gold validated?"
+beafScore: 68
+description: "Bitcoin at $66K: Post-halving, ETF billions, institutional adoption, and existential questions. BEAF Score 68/100 (modified for crypto)."
+seoTitle: "Bitcoin BEAF 68/100: Post-Halving, Post-ETF, Post-Doubt? | April 2026"
+seoDescription: "Bitcoin scores 68/100 on modified BEAF. ETF inflows topped $36B. Hashrate 650 EH/s. Lightning Network at 5K BTC capacity. Is digital gold validated?"
 relatedSlugs: ["deep-dive-nvda-april-2026","deep-dive-msft-april-2026","deep-dive-googl-april-2026"]
-faqs: [{"q":"What is Bitcoin's BAAF score?","a":"68/100 (Grade C+). Bitcoin uses a modified BAAF for crypto: high marks on Moat (Lindy effect plus institutional ETF adoption) but loses points on Valuation as no traditional cash-flow model applies. See full BAAF breakdown in our Deep Dive →"},{"q":"Did the 2024 halving actually move the price?","a":"Post-halving block rewards dropped to 3.125 BTC. Combined with $36B+ in spot ETF inflows, supply absorption pushed price beyond the prior cycle peak within 6 months. See full halving cycle analysis in our Deep Dive →"},{"q":"What is the biggest risk to Bitcoin?","a":"A liquidity shock cascading through leveraged positions on centralized exchanges, plus regulatory shifts in major jurisdictions. See full risk analysis in our Deep Dive →"}]
+faqs: [{"q":"What is Bitcoin's BEAF score?","a":"68/100 (Grade C+). Bitcoin uses a modified BEAF for crypto: high marks on Moat (Lindy effect plus institutional ETF adoption) but loses points on Valuation as no traditional cash-flow model applies. See full BEAF breakdown in our Deep Dive →"},{"q":"Did the 2024 halving actually move the price?","a":"Post-halving block rewards dropped to 3.125 BTC. Combined with $36B+ in spot ETF inflows, supply absorption pushed price beyond the prior cycle peak within 6 months. See full halving cycle analysis in our Deep Dive →"},{"q":"What is the biggest risk to Bitcoin?","a":"A liquidity shock cascading through leveraged positions on centralized exchanges, plus regulatory shifts in major jurisdictions. See full risk analysis in our Deep Dive →"}]
 ---
 
 ## An Asset Class Without Peers
@@ -98,13 +98,13 @@ Different investor cohorts hold Bitcoin for completely different reasons, and th
 
 The valuation problem: you first have to decide WHICH Bitcoin you are valuing. Each thesis implies a different framework, and none converge on the same price.
 
-## Financial Analysis: BAAF Scoring (Modified for Crypto)
+## Financial Analysis: BEAF Scoring (Modified for Crypto)
 
-### BAAF Score: 68/100 (C+)
+### BEAF Score: 68/100 (C+)
 
-The BAAF framework was designed for equities. Bitcoin has no earnings, margins, or competitive moats in the traditional sense. Axes are modified for crypto while maintaining the scoring philosophy.
+The BEAF framework was designed for equities. Bitcoin has no earnings, margins, or competitive moats in the traditional sense. Axes are modified for crypto while maintaining the scoring philosophy.
 
-| BAAF Axis (Modified) | Score | Max | Evidence |
+| BEAF Axis (Modified) | Score | Max | Evidence |
 |---------------------|-------|-----|----------|
 | **ADOPTION** (replaces Growth) | 17 | 25 | ETF AUM $113B represents fastest asset-class adoption in financial history (BlackRock IBIT surpassed GLD's 5-year AUM record in 2 years). But monthly ETF inflows decelerated from $5B+ to $1-2B (Bloomberg). Active addresses declining. Institutional adoption real but decelerating. Deduction: the transformative adoption phase (ETF launch) is complete; incremental adoption is slower. |
 | **NETWORK HEALTH** (replaces Profitability) | 16 | 20 | Hash rate at all-time high (750 EH/s) — miner investment is a confidence signal. 75% of supply in long-term holders (Glassnode) — conviction is high. Exchange balances declining — supply available for sale is shrinking. Deduction: network health metrics are strong, but declining active addresses suggest the user base is stagnating, not growing. |
@@ -228,9 +228,9 @@ Counterpoint: at $35,000, Bitcoin would trade at roughly 2x its long-term holder
 
 25% x $120K + 50% x $72K + 25% x $35K = **$74,750**. Current price: $66,000. The math suggests approximately 13% upside — a reasonable risk-adjusted return but not the "life-changing" upside that Bitcoin evangelists promise. At $66,000, Bitcoin is a reasonable portfolio diversifier, not a lottery ticket.
 
-## Brutal AI Verdict
+## Brutal Edge™ Verdict
 
-### BAAF Score: 68/100 — Grade: C+ (Modified for Crypto)
+### BEAF Score: 68/100 — Grade: C+ (Modified for Crypto)
 
 Bitcoin at $66,000 is neither exciting nor terrifying. The infrastructure improvements are real — $113B in ETF assets, institutional-grade custody, regulatory clarity. The scarcity thesis is real and mathematically guaranteed — 21 million, forever. The halving cycle is weakening — +3% vs historical returns of 285-8,233%. The correlation problem is real — 0.45 to equities makes the "digital gold" label aspirational rather than factual.
 
@@ -250,7 +250,7 @@ The honest answer: I cannot tell you what Bitcoin is worth. No one can. I can te
 - Research: Galaxy Digital (Alex Thorn), Fidelity Digital Assets (Chris Kuiper), CoinShares (James Butterfill), Bitwise (Matt Hougan), AQR Capital Management (Cliff Asness), Cerulli Associates, Bridgewater Associates
 - Regulatory: SEC commissioner statements, Congressional Research Service
 - Historical: Bloomberg terminal data, World Gold Council
-- BAAF Framework v1.0 (modified for crypto): DHLM Studio proprietary scoring (see [Editorial Policy](/editorial))
+- BEAF Framework v1.0 (modified for crypto): DHLM Studio proprietary scoring (see [Editorial Policy](/editorial))
 
 ---
 

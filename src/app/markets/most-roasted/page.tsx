@@ -2,8 +2,8 @@ import type { Metadata } from 'next';
 import Link from 'next/link';
 
 export const metadata: Metadata = {
-  title: 'Most Roasted Stocks This Week — Brutal AI Leaderboard | DHLM Studio',
-  description: 'Which stocks got destroyed the most by Brutal AI? Live leaderboard of the most roasted tickers on DHLM Studio.',
+  title: 'Most Roasted Stocks This Week — Brutal Edge Leaderboard | DHLM Studio',
+  description: 'Which stocks got destroyed the most by Brutal Edge? Live leaderboard of the most roasted tickers on DHLM Studio.',
 };
 
 // Simulated data — seed-based so it's consistent per day

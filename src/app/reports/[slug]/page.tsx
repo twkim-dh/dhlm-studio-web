@@ -21,7 +21,7 @@ interface ReportFrontmatter {
   category: string;
   catColor: string;
   grade: string;
-  baafScore: number;
+  beafScore: number;
   description: string;
   // Optional SEO + cross-link fields (added April 2026)
   seoTitle?: string;
@@ -220,7 +220,7 @@ export default async function ReportPage({ params }: { params: Promise<{ slug: s
   const related = (fm.relatedSlugs || [])
     .map(s => {
       const r = getReport(s);
-      return r ? { slug: s, ticker: r.frontmatter.ticker, title: r.frontmatter.title, grade: r.frontmatter.grade, score: r.frontmatter.baafScore } : null;
+      return r ? { slug: s, ticker: r.frontmatter.ticker, title: r.frontmatter.title, grade: r.frontmatter.grade, score: r.frontmatter.beafScore } : null;
     })
     .filter(Boolean) as { slug: string; ticker: string; title: string; grade: string; score: number }[];
 
@@ -231,12 +231,12 @@ export default async function ReportPage({ params }: { params: Promise<{ slug: s
       <article style={{ maxWidth: 760, margin: '0 auto', padding: '80px 24px' }}>
         <Link href="/reports" style={{ fontSize: 12, color: '#64748B' }}>← Reports</Link>
 
-        {/* Brutal AI Header — type-aware */}
+        {/* Brutal Edge Header — type-aware */}
         {(() => {
           const isHotSector = fm.type === 'hot-sector' || fm.type === 'hidden-gem';
           const headerLabel = isHotSector
-            ? (fm.type === 'hidden-gem' ? 'BRUTAL AI™ HIDDEN GEM' : 'BRUTAL AI™ HOT SECTOR')
-            : 'BRUTAL AI™ DEEP DIVE';
+            ? (fm.type === 'hidden-gem' ? 'BRUTAL EDGE™ HIDDEN GEM' : 'BRUTAL EDGE™ HOT SECTOR')
+            : 'BRUTAL EDGE™ DEEP DIVE';
           const headerColor = isHotSector ? '#D4A843' : '#C73E3A';
           return (
             <div style={{ marginTop: 20, padding: '20px 22px', borderRadius: 14, background: `linear-gradient(135deg, ${headerColor}10, ${headerColor}05)`, border: `1px solid ${headerColor}30`, marginBottom: 16 }}>
@@ -266,7 +266,7 @@ export default async function ReportPage({ params }: { params: Promise<{ slug: s
                   <TickerLogo ticker={fm.ticker} size={56} />
                   <div style={{ display: 'flex', flexDirection: 'column', gap: 2 }}>
                     <span style={{ fontFamily: 'var(--mono)', fontSize: 18, fontWeight: 900, color: '#60A5FA', letterSpacing: 0.5 }}>{fm.ticker}</span>
-                    <span style={{ fontSize: 11, color: '#64748B', fontFamily: 'var(--sans)' }}>Brutal AI™ analyzed</span>
+                    <span style={{ fontSize: 11, color: '#64748B', fontFamily: 'var(--sans)' }}>Brutal Edge™ analyzed</span>
                   </div>
                 </div>
               )}
@@ -278,16 +278,16 @@ export default async function ReportPage({ params }: { params: Promise<{ slug: s
         <div style={{ display: 'flex', flexWrap: 'wrap', gap: 6, marginBottom: 24 }}>
           <span style={{ fontFamily: 'var(--mono)', fontSize: 10, fontWeight: 700, padding: '5px 10px', borderRadius: 6, background: '#00D47412', color: '#00D474', border: '1px solid #00D47425' }}>✓ Editor Reviewed</span>
           <span style={{ fontFamily: 'var(--mono)', fontSize: 10, fontWeight: 700, padding: '5px 10px', borderRadius: 6, background: '#3B82F612', color: '#3B82F6', border: '1px solid #3B82F625' }}>✓ Multi-AI Verified</span>
-          <span style={{ fontFamily: 'var(--mono)', fontSize: 10, fontWeight: 700, padding: '5px 10px', borderRadius: 6, background: '#D4A84312', color: '#D4A843', border: '1px solid #D4A84325' }}>✓ BAAF Scored</span>
+          <span style={{ fontFamily: 'var(--mono)', fontSize: 10, fontWeight: 700, padding: '5px 10px', borderRadius: 6, background: '#D4A84312', color: '#D4A843', border: '1px solid #D4A84325' }}>✓ BEAF Scored</span>
         </div>
 
         {/* Title */}
         <div style={{ marginBottom: 32 }}>
           <div style={{ display: 'flex', alignItems: 'center', gap: 8, marginBottom: 10, flexWrap: 'wrap' }}>
             <span style={{ fontFamily: 'var(--mono)', fontSize: 10, fontWeight: 600, padding: '3px 8px', borderRadius: 4, background: `${fm.catColor}14`, color: fm.catColor }}>{fm.category}</span>
-            {/* BAAF badge only for single-stock Deep Dive reports — Hot Sector / Hidden Gem cover multiple tickers and have no aggregate score. */}
+            {/* BEAF badge only for single-stock Deep Dive reports — Hot Sector / Hidden Gem cover multiple tickers and have no aggregate score. */}
             {(!fm.type || fm.type === 'deep-dive') && (
-              <span style={{ fontFamily: 'var(--mono)', fontSize: 10, fontWeight: 700, padding: '3px 8px', borderRadius: 4, background: '#D4A84314', color: '#D4A843' }}>BAAF: {fm.baafScore}/100 ({fm.grade})</span>
+              <span style={{ fontFamily: 'var(--mono)', fontSize: 10, fontWeight: 700, padding: '3px 8px', borderRadius: 4, background: '#D4A84314', color: '#D4A843' }}>BEAF: {fm.beafScore}/100 ({fm.grade})</span>
             )}
             <span style={{ fontSize: 11, color: '#475569' }}>Published {fm.date} · {fm.readTime} read</span>
           </div>
@@ -327,7 +327,7 @@ export default async function ReportPage({ params }: { params: Promise<{ slug: s
                 <Link key={r.slug} href={`/reports/${r.slug}`} style={{ display: 'block', padding: '14px 16px', borderRadius: 10, background: '#111827', border: '1px solid #1E293B', textDecoration: 'none' }}>
                   <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'baseline', marginBottom: 4 }}>
                     <span style={{ fontFamily: 'var(--mono)', fontSize: 13, fontWeight: 800, color: '#60A5FA' }}>{r.ticker}</span>
-                    <span style={{ fontFamily: 'var(--mono)', fontSize: 10, color: '#D4A843', fontWeight: 700 }}>BAAF {r.score} · {r.grade}</span>
+                    <span style={{ fontFamily: 'var(--mono)', fontSize: 10, color: '#D4A843', fontWeight: 700 }}>BEAF {r.score} · {r.grade}</span>
                   </div>
                   <div style={{ fontSize: 12, color: '#94A3B8', lineHeight: 1.5 }}>{r.title.replace(/^Deep Dive:\s*/, '')}</div>
                 </Link>
@@ -338,15 +338,15 @@ export default async function ReportPage({ params }: { params: Promise<{ slug: s
 
         {/* Newsletter signup */}
         <div style={{ marginTop: 32 }}>
-          <InlineSubscribe source="report" headline="Never miss the next Deep Dive" description="One Brutal AI Daily Brief per weekday at 7:30 AM ET. Free." />
+          <InlineSubscribe source="report" headline="Never miss the next Deep Dive" description="One Brutal Edge Daily Brief per weekday at 7:30 AM ET. Free." />
         </div>
 
         {/* Comments — Giscus / GitHub Discussions */}
         <GiscusComments slug={`report:${slug}`} />
 
-        {/* Brutal AI Footer */}
+        {/* Brutal Edge Footer */}
         <div style={{ marginTop: 40, padding: '20px 22px', borderRadius: 14, background: '#111827', border: '1px solid #1E293B', textAlign: 'center' }}>
-          <div style={{ fontFamily: 'var(--mono)', fontSize: 10, fontWeight: 800, color: '#C73E3A', letterSpacing: 2, marginBottom: 6 }}>🔥 ANALYZED BY BRUTAL AI™</div>
+          <div style={{ fontFamily: 'var(--mono)', fontSize: 10, fontWeight: 800, color: '#C73E3A', letterSpacing: 2, marginBottom: 6 }}>🔥 ANALYZED BY BRUTAL EDGE™</div>
           <div style={{ fontSize: 11, color: '#64748B', marginBottom: 8 }}>DHLM Studio Analysis Engine</div>
           <div style={{ fontSize: 9, color: '#475569', lineHeight: 1.6 }}>
             Analysis under editorial oversight, for informational and educational purposes.<br />

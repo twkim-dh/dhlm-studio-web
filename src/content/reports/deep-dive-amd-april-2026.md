@@ -7,12 +7,12 @@ readTime: "14 min"
 category: "Markets"
 catColor: "#00D474"
 grade: "C"
-baafScore: 61
-description: "AMD at $280B: Lisa Su's genius, MI350 progress, but always one step behind NVIDIA. BAAF Score 61/100."
-seoTitle: "AMD BAAF 61/100: Always Second in the AI Chip Race? | April 2026"
-seoDescription: "AMD scores 61/100 on BAAF. MI350 captured 8% AI training share. Server CPU share 33%. Is Lisa Su's roadmap enough to catch NVIDIA's CUDA moat?"
+beafScore: 61
+description: "AMD at $280B: Lisa Su's genius, MI350 progress, but always one step behind NVIDIA. BEAF Score 61/100."
+seoTitle: "AMD BEAF 61/100: Always Second in the AI Chip Race? | April 2026"
+seoDescription: "AMD scores 61/100 on BEAF. MI350 captured 8% AI training share. Server CPU share 33%. Is Lisa Su's roadmap enough to catch NVIDIA's CUDA moat?"
 relatedSlugs: ["deep-dive-nvda-april-2026","deep-dive-msft-april-2026","deep-dive-googl-april-2026"]
-faqs: [{"q":"What is AMD's BAAF score?","a":"61/100 (Grade C). AMD scores high on Momentum and Server CPU share but loses points on Moat as the CUDA software ecosystem keeps NVIDIA structurally ahead in AI training. See full BAAF breakdown in our Deep Dive →"},{"q":"Can AMD MI350 actually compete with NVIDIA H200?","a":"AMD captured roughly 8% AI training share in Q1 2026. The hardware is competitive on raw FLOPs, but ROCm software maturity remains the real gap. See full MI350 analysis in our Deep Dive →"},{"q":"What is the biggest risk to AMD stock?","a":"Continued NVIDIA CUDA lock-in plus Intel server CPU resurgence with Granite Rapids. AMD needs to win both fronts simultaneously. See full risk analysis in our Deep Dive →"}]
+faqs: [{"q":"What is AMD's BEAF score?","a":"61/100 (Grade C). AMD scores high on Momentum and Server CPU share but loses points on Moat as the CUDA software ecosystem keeps NVIDIA structurally ahead in AI training. See full BEAF breakdown in our Deep Dive →"},{"q":"Can AMD MI350 actually compete with NVIDIA H200?","a":"AMD captured roughly 8% AI training share in Q1 2026. The hardware is competitive on raw FLOPs, but ROCm software maturity remains the real gap. See full MI350 analysis in our Deep Dive →"},{"q":"What is the biggest risk to AMD stock?","a":"Continued NVIDIA CUDA lock-in plus Intel server CPU resurgence with Granite Rapids. AMD needs to win both fronts simultaneously. See full risk analysis in our Deep Dive →"}]
 ---
 
 ## The Permanent Number Two
@@ -89,11 +89,11 @@ The reality: Embedded segment revenue dropped from $4.6B to $2B as post-pandemic
 
 Bull case: embedded is cyclical, and recovery will bring Xilinx revenue back to $4-5B+ with AI edge inference as a secular tailwind. Raymond James analyst Srini Pajjuri projected in a January 2026 report that "the embedded recovery should drive Xilinx-related revenue back to $4B+ by FY2028, implying a more reasonable 12x acquisition multiple." Bear case: AMD overpaid for a cyclical business at the peak, and the recovery will not justify the acquisition price.
 
-## Financial Analysis: BAAF Scoring
+## Financial Analysis: BEAF Scoring
 
-### BAAF Score: 61/100 (C)
+### BEAF Score: 61/100 (C)
 
-| BAAF Axis | Score | Max | Evidence |
+| BEAF Axis | Score | Max | Evidence |
 |-----------|-------|-----|----------|
 | **GROWTH** | 13 | 25 | Data Center +27% is excellent, driven by EPYC share gains and MI350 traction. But total revenue is flat (-0.4%) due to Gaming (-27%) and Embedded (-57%) declines. The headline growth rate does not justify a 45x P/E. Deduction: cyclical headwinds in 2 of 4 segments mask structural growth; PEG ratio is distorted by near-zero consolidated growth. |
 | **PROFITABILITY** | 12 | 20 | Gross margin 52% (vs NVIDIA's 75%, semiconductor average 48% per S&P Global). Net margin 22%. FCF margin 18%. Margins are respectable but well below NVIDIA's, reflecting AMD's less dominant pricing power. Deduction: 23-point gross margin gap vs NVIDIA reflects the CUDA software premium AMD cannot yet command. |
@@ -116,7 +116,7 @@ Bull case: embedded is cyclical, and recovery will bring Xilinx revenue back to 
 | AI GPU Share | 8% | 90% | 2% | N/A | N/A | — |
 | Server CPU Share | 25% | N/A | 70% | N/A | N/A | — |
 | R&D % of Revenue | 24% | 15% | 25% | 20% | 22% | 18% |
-| BAAF Score | 61 | 83 | 38 | 75 | 64 | — |
+| BEAF Score | 61 | 83 | 38 | 75 | 64 | — |
 
 *Sources: Financial Modeling Prep, Mercury Research, FactSet, S&P Global*
 
@@ -210,9 +210,9 @@ Counterpoint: the bear case values AMD at the semiconductor average multiple, wh
 
 25% x $240 + 50% x $155 + 25% x $95 = **$161**. Current price: $170. The math says AMD is slightly overvalued — the market has priced in the AI GPU opportunity but not the cyclical headwinds. You are paying a fair price for the EPYC success story and a slight premium for AI GPU optionality.
 
-## Brutal AI Verdict
+## Brutal Edge™ Verdict
 
-### BAAF Score: 61/100 — Grade: C
+### BEAF Score: 61/100 — Grade: C
 
 Lisa Su has done everything right. She fixed the balance sheet. She delivered competitive products. She stole 25% of the server CPU market from Intel through pure engineering excellence. She built an AI GPU that actually works and is gaining real market share — 8%, up from 3% a year ago. She maintained margins through a brutal cyclical downturn. By any objective CEO scorecard, she gets an A+.
 
@@ -232,7 +232,7 @@ The EPYC story alone justifies a $200B+ market cap. The AI GPU story adds option
 - Technical specifications: AMD and NVIDIA product documentation, Semianalysis
 - Developer ecosystems: Evans Data Corporation, AMD ROCm developer report
 - Macro context: S&P Global semiconductor indices
-- BAAF Framework v1.0: DHLM Studio proprietary scoring (see [Editorial Policy](/editorial))
+- BEAF Framework v1.0: DHLM Studio proprietary scoring (see [Editorial Policy](/editorial))
 - Valuation: DCF assumptions use WACC of 11%, terminal growth of 3%
 
 ---

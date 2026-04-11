@@ -30,7 +30,7 @@ export default function AboutPage() {
               We transform complex financial data into clear, engaging insights for everyone.
             </p>
             <p style={{ fontSize: 14, color: '#94A3B8', lineHeight: 1.8, margin: 0 }}>
-              DHLM Studio tracks 500+ stocks, 100+ cryptocurrencies, global rankings, and lottery data — updated in real-time. Our Brutal AI&trade; analytical voice makes complex financial data accessible while our tools help you explore the world in numbers.
+              DHLM Studio tracks 500+ stocks, 100+ cryptocurrencies, global rankings, and lottery data — updated in real-time. Our Brutal Edge&trade; analytical voice makes complex financial data accessible while our tools help you explore the world in numbers.
             </p>
           </div>
 
@@ -42,30 +42,30 @@ export default function AboutPage() {
               <ul style={{ margin: 0, paddingLeft: 18, fontSize: 13, color: '#94A3B8', lineHeight: 1.9 }}>
                 <li>Oversees all published content</li>
                 <li>15+ years in manufacturing and business operations</li>
-                <li>Directs AI analysis framework (BAAF)</li>
+                <li>Directs AI analysis framework (BEAF)</li>
                 <li>Final approval on all Deep Dive reports</li>
                 <li>Cross-verifies analysis using multiple AI models</li>
               </ul>
             </div>
             <div>
-              <div style={{ fontFamily: 'var(--serif)', fontSize: 17, fontWeight: 800, color: '#F1F5F9', marginBottom: 6 }}>Brutal AI&trade; Analytical Voice</div>
+              <div style={{ fontFamily: 'var(--serif)', fontSize: 17, fontWeight: 800, color: '#F1F5F9', marginBottom: 6 }}>Brutal Edge&trade; Analytical Voice</div>
               <ul style={{ margin: 0, paddingLeft: 18, fontSize: 13, color: '#94A3B8', lineHeight: 1.9 }}>
                 <li>Built on institutional equity research standards</li>
-                <li>Powered by the BAAF 6-axis scoring framework</li>
+                <li>Powered by the BEAF 6-axis scoring framework</li>
                 <li>Operates under editorial oversight</li>
                 <li>Never publishes without editor approval</li>
               </ul>
             </div>
           </div>
 
-          {/* BAAF Framework */}
+          {/* BEAF Framework */}
           <div style={{ ...card, padding: '24px 22px', borderColor: '#C73E3A30' }}>
             <div style={{ fontFamily: 'var(--mono)', fontSize: 9, fontWeight: 700, color: '#C73E3A', letterSpacing: 2, marginBottom: 10 }}>OUR FRAMEWORK</div>
             <p style={{ fontFamily: 'var(--serif)', fontSize: 18, fontWeight: 800, color: '#F1F5F9', lineHeight: 1.5, margin: '0 0 10px' }}>
-              BAAF — Brutal AI Analysis Framework
+              BEAF — Brutal Edge Analysis Framework
             </p>
             <p style={{ fontSize: 13, color: '#94A3B8', lineHeight: 1.8, margin: '0 0 14px' }}>
-              Every Brutal AI&trade; Deep Dive uses our proprietary <strong style={{ color: '#E2E8F0' }}>BAAF scoring system</strong> — a standardized 100-point methodology built to bring institutional-grade rigor to retail-friendly analysis. Stocks are scored across six axes, then assigned a letter grade (A through F) so readers can compare any two companies on the same scale.
+              Every Brutal Edge&trade; Deep Dive uses our proprietary <strong style={{ color: '#E2E8F0' }}>BEAF scoring system</strong> — a standardized 100-point methodology built to bring institutional-grade rigor to retail-friendly analysis. Stocks are scored across six axes, then assigned a letter grade (A through F) so readers can compare any two companies on the same scale.
             </p>
             <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(150px, 1fr))', gap: 8, marginBottom: 14 }}>
               {[
@@ -86,7 +86,7 @@ export default function AboutPage() {
               ))}
             </div>
             <p style={{ fontSize: 12, color: '#64748B', lineHeight: 1.7, margin: 0 }}>
-              <strong style={{ color: '#94A3B8' }}>Grade scale:</strong> 90+ = A (Brutal AI Approved) · 80–89 = B+/A− · 70–79 = B/B− · 60–69 = C/C+ · &lt; 60 = D/F. <Link href="/editorial" style={{ color: '#C73E3A' }}>Read full methodology →</Link>
+              <strong style={{ color: '#94A3B8' }}>Grade scale:</strong> 90+ = A (Brutal Edge Approved) · 80–89 = B+/A− · 70–79 = B/B− · 60–69 = C/C+ · &lt; 60 = D/F. <Link href="/editorial" style={{ color: '#C73E3A' }}>Read full methodology →</Link>
             </p>
           </div>
 
@@ -100,7 +100,7 @@ export default function AboutPage() {
               {[
                 { what: 'Stock Market Movers', when: 'Real-time (15-min delayed)', color: '#00D474' },
                 { what: 'Cryptocurrency Prices', when: 'Real-time via CoinGecko', color: '#F59E0B' },
-                { what: 'Brutal AI Deep Dive Reports', when: 'New report weekly', color: '#C73E3A' },
+                { what: 'Brutal Edge Deep Dive Reports', when: 'New report weekly', color: '#C73E3A' },
                 { what: 'Wall Street Wisdom Blog', when: 'Daily quote rotation', color: '#D4A843' },
                 { what: 'Global Rankings (GDP, billionaires)', when: 'Quarterly refresh', color: '#A78BFA' },
                 { what: 'US Lottery Results', when: 'Within hours of each draw', color: '#EF4444' },
@@ -146,7 +146,7 @@ export default function AboutPage() {
           <div style={{ ...card, padding: '24px 22px', borderColor: '#C73E3A30' }}>
             <div style={{ fontFamily: 'var(--mono)', fontSize: 9, fontWeight: 700, color: '#C73E3A', letterSpacing: 2, marginBottom: 10 }}>DISCLAIMER</div>
             <p style={{ fontSize: 14, color: '#E2E8F0', lineHeight: 1.8, margin: '0 0 8px' }}>
-              All <strong>Brutal AI&trade;</strong> analysis is informational and educational commentary based on publicly available financial data, published under editorial oversight.
+              All <strong>Brutal Edge&trade;</strong> analysis is informational and educational commentary based on publicly available financial data, published under editorial oversight.
             </p>
             <p style={{ fontSize: 13, color: '#94A3B8', lineHeight: 1.8, margin: 0 }}>
               It is <strong style={{ color: '#C73E3A' }}>NOT investment advice</strong>. Opinions expressed are analytical observations, not personalized recommendations. Always do your own research and consult a qualified financial advisor before making investment decisions.
@@ -174,7 +174,7 @@ export default function AboutPage() {
             <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(200px, 1fr))', gap: 10 }}>
               {[
                 { icon: '📈', title: 'Market Movers', desc: 'Daily gainers, losers & most active', href: '/markets' },
-                { icon: '🔥', title: 'Brutal AI', desc: 'Data-driven stock analysis', href: '/markets' },
+                { icon: '🔥', title: 'Brutal Edge', desc: 'Data-driven stock analysis', href: '/markets' },
                 { icon: '🏆', title: 'World Rankings', desc: 'Billionaires, GDP, companies', href: '/rankings' },
                 { icon: '🪙', title: 'Crypto Rankings', desc: 'Live prices & analysis', href: '/rankings/crypto' },
                 { icon: '🎰', title: 'US Lottery', desc: 'Powerball & Mega Millions', href: '/lottery' },
@@ -196,7 +196,7 @@ export default function AboutPage() {
             <div style={{ display: 'flex', alignItems: 'center', justifyContent: 'space-between' }}>
               <div>
                 <div style={{ fontSize: 14, fontWeight: 700, color: '#C73E3A' }}>Editorial Policy</div>
-                <div style={{ fontSize: 12, color: '#64748B', marginTop: 2 }}>How Brutal AI analyzes stocks — methodology, data sources, disclaimers</div>
+                <div style={{ fontSize: 12, color: '#64748B', marginTop: 2 }}>How Brutal Edge analyzes stocks — methodology, data sources, disclaimers</div>
               </div>
               <span style={{ color: '#475569', fontSize: 12 }}>→</span>
             </div>

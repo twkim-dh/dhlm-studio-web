@@ -7,12 +7,12 @@ readTime: "14 min"
 category: "Markets"
 catColor: "#00D474"
 grade: "B-"
-baafScore: 74
-description: "Meta at $1.6T: $36B metaverse losses, but AI-powered ads saving everything. BAAF Score 74/100."
-seoTitle: "Meta BAAF 74/100: Is the $36B Reality Labs Bet Paying Off? | April 2026"
-seoDescription: "Meta scores 74/100 on BAAF. Reality Labs lost $36B cumulative. Ad revenue +22% on AI targeting. 3.2B daily users. Is the AI ad engine enough?"
+beafScore: 74
+description: "Meta at $1.6T: $36B metaverse losses, but AI-powered ads saving everything. BEAF Score 74/100."
+seoTitle: "Meta BEAF 74/100: Is the $36B Reality Labs Bet Paying Off? | April 2026"
+seoDescription: "Meta scores 74/100 on BEAF. Reality Labs lost $36B cumulative. Ad revenue +22% on AI targeting. 3.2B daily users. Is the AI ad engine enough?"
 relatedSlugs: ["deep-dive-googl-april-2026","deep-dive-amzn-april-2026","deep-dive-msft-april-2026"]
-faqs: [{"q":"What is Meta's BAAF score?","a":"74/100 (Grade B-). Meta scores high on Profitability (40%+ operating margin in Family of Apps) but loses points on Risk due to ongoing $16B+ annual Reality Labs losses and concentrated insider control. See full BAAF breakdown in our Deep Dive →"},{"q":"Is Meta's AI ad targeting actually working?","a":"Family of Apps revenue grew 22% YoY with management attributing the lift to Andromeda and Lattice AI ranking models. Average revenue per user reached an all-time high. See full ads analysis in our Deep Dive →"},{"q":"What is the biggest risk to Meta stock?","a":"Reality Labs cash burn with no clear path to profitability, plus the discretionary nature of Mark Zuckerberg's voting control. See full risk analysis in our Deep Dive →"}]
+faqs: [{"q":"What is Meta's BEAF score?","a":"74/100 (Grade B-). Meta scores high on Profitability (40%+ operating margin in Family of Apps) but loses points on Risk due to ongoing $16B+ annual Reality Labs losses and concentrated insider control. See full BEAF breakdown in our Deep Dive →"},{"q":"Is Meta's AI ad targeting actually working?","a":"Family of Apps revenue grew 22% YoY with management attributing the lift to Andromeda and Lattice AI ranking models. Average revenue per user reached an all-time high. See full ads analysis in our Deep Dive →"},{"q":"What is the biggest risk to Meta stock?","a":"Reality Labs cash burn with no clear path to profitability, plus the discretionary nature of Mark Zuckerberg's voting control. See full risk analysis in our Deep Dive →"}]
 ---
 
 ## The $36 Billion Lesson
@@ -76,11 +76,11 @@ The metaverse as Zuckerberg originally described — a persistent, shared virtua
 
 The investor framework: Meta at $1.6 trillion is an advertising business at 26x earnings with a free option on the metaverse. If Reality Labs succeeds, the upside is enormous. If it fails, the losses are absorbed by advertising cash flow without materially impacting the investment thesis.
 
-## Financial Analysis: BAAF Scoring
+## Financial Analysis: BEAF Scoring
 
-### BAAF Score: 74/100 (B-)
+### BEAF Score: 74/100 (B-)
 
-| BAAF Axis | Score | Max | Evidence |
+| BEAF Axis | Score | Max | Evidence |
 |-----------|-------|-----|----------|
 | **GROWTH** | 16 | 25 | Revenue +13% driven by AI ad recovery. Instagram Reels contributing $30B+ in estimated ad revenue (JPMorgan equity research, January 2026). But user growth effectively maxed at 3.98B — future growth is entirely ARPU-dependent. Deduction: 13% growth on a mature user base with declining incremental user acquisition. |
 | **PROFITABILITY** | 17 | 20 | Operating margin 37%, or 48% excluding Reality Labs. FCF $52B. Net margin 32%. These are elite metrics — Meta's ad business is one of the most profitable in technology. Deduction: Reality Labs drags consolidated margins by 11 percentage points, and Zuckerberg's dual-class control means shareholders cannot limit this spending. |
@@ -102,7 +102,7 @@ The investor framework: Meta at $1.6 trillion is an advertising business at 26x 
 | P/E Ratio | 26x | 24x | 85x | 42x | 28x |
 | Revenue/User | $44.60 | $86.40 | $15.50 | $7.60 | — |
 | FCF Yield | 3.3% | 4.1% | 1.2% | 2.8% | 2.5% |
-| BAAF Score | 74 | 78 | 42 | 55 | — |
+| BEAF Score | 74 | 78 | 42 | 55 | — |
 
 *Sources: Financial Modeling Prep, FactSet, company 10-K/10-Q filings*
 
@@ -190,9 +190,9 @@ Counterpoint: even in the bear case, Meta retains 3.98B users and a 48% operatin
 
 25% x $780 + 50% x $620 + 25% x $420 = **$610**. Current price: $620. Slightly above the weighted target, suggesting the stock is approximately fairly valued. The AI ad engine has been priced in. Upside depends on WhatsApp monetization and the metaverse option.
 
-## Brutal AI Verdict
+## Brutal Edge™ Verdict
 
-### BAAF Score: 74/100 — Grade: B-
+### BEAF Score: 74/100 — Grade: B-
 
 I have to give Zuckerberg credit, and I resent it.
 
@@ -211,7 +211,7 @@ The dual-class share structure is the risk that deserves more attention than it 
 - Ad benchmarks: Varos January 2026 report, Tinuiti, Emarketer March 2026 forecast
 - Analyst estimates: LSEG consensus, Bernstein (Mark Shmulik), Bank of America (Justin Post), Barclays (Ross Sandler), JPMorgan equity research
 - VR/AR market: IDC Q4 2025 AR/VR Quarterly Tracker
-- BAAF Framework v1.0: DHLM Studio proprietary scoring (see [Editorial Policy](/editorial))
+- BEAF Framework v1.0: DHLM Studio proprietary scoring (see [Editorial Policy](/editorial))
 - Valuation: DCF assumptions use WACC of 10%, terminal growth of 3%
 
 ---

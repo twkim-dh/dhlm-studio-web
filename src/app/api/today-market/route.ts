@@ -1,5 +1,6 @@
 import { NextResponse } from 'next/server';
 import { getRedis } from '@/lib/redis';
+import { fmpCanCall, fmpTrackCall, fmpCallsToday } from '@/lib/fmp-tracker';
 
 export const runtime = 'nodejs';
 export const dynamic = 'force-dynamic';
@@ -67,7 +68,8 @@ const FALLBACK: Omit<TodayMarketPayload, 'asOf' | 'source' | 'verdict'> = {
 // Redis is the source of truth — every cold start checks Redis before
 // touching the live APIs. The in-memory layer is just a hot cache for
 // repeat reads on the same warm instance.
-const REDIS_KEY = 'today-market:cache:v2';
+// v3: bumped 2026-04-11 to flush cached data that had CL=F/GC=F symbols
+const REDIS_KEY = 'today-market:cache:v3';
 let memCache: { data: TodayMarketPayload; ts: number } | null = null;
 
 // Cache TTL in seconds. Three buckets driven by US market session:
@@ -128,6 +130,19 @@ async function writeSharedCache(data: TodayMarketPayload): Promise<void> {
 const FMP_KEY = process.env.FMP_API_KEY || '';
 const AV_KEY = process.env.ALPHA_VANTAGE_KEY || '';
 
+// FMP may return Yahoo-Finance-style symbols (GC=F, CL=F) even when we
+// request canonical names (GCUSD, CLUSD). Normalize at the source so
+// every downstream consumer always sees the canonical symbol.
+const FMP_SYMBOL_NORMALIZE: Record<string, string> = {
+  'GC=F':  'GCUSD',
+  'CL=F':  'CLUSD',
+  'GCQ25': 'GCUSD',  // front-month futures alias
+  'CLM25': 'CLUSD',  // front-month futures alias
+};
+function normFmpSymbol(sym: string): string {
+  return FMP_SYMBOL_NORMALIZE[sym] || sym;
+}
+
 // Circuit breaker — when FMP returns 429, set this Redis key with a TTL.
 // All FMP fetchers check the flag first and return null without calling
 // the API while it is set. This prevents debug requests, cron jobs, or
@@ -172,9 +187,11 @@ function dbg(source: string, ok: boolean, extra: { status?: number; err?: string
 async function fmpQuoteSingle(symbol: string): Promise<Quote | null> {
   if (!FMP_KEY) { dbg(`fmp:${symbol}`, false, { err: 'FMP_KEY missing' }); return null; }
   if (await isFmpRateLimited()) { dbg(`fmp:${symbol}`, false, { err: 'FMP rate-limited (circuit breaker)' }); return null; }
+  if (!(await fmpCanCall())) { dbg(`fmp:${symbol}`, false, { err: 'Daily budget exhausted' }); return null; }
   try {
     const url = `https://financialmodelingprep.com/stable/quote?symbol=${encodeURIComponent(symbol)}&apikey=${FMP_KEY}`;
     const res = await fetch(url, { cache: 'no-store' });
+    await fmpTrackCall();
     if (res.status === 429) { await markFmpRateLimited(); dbg(`fmp:${symbol}`, false, { status: 429, err: 'Rate limited — circuit breaker tripped' }); return null; }
     if (!res.ok) { dbg(`fmp:${symbol}`, false, { status: res.status, err: 'HTTP not ok' }); return null; }
     const text = await res.text();
@@ -186,9 +203,10 @@ async function fmpQuoteSingle(symbol: string): Promise<Quote | null> {
     const price = Number(d.price) || 0;
     if (price === 0) { dbg(`fmp:${symbol}`, false, { err: 'price=0', sample: d }); return null; }
     const pct = Number(d.changesPercentage ?? d.changePercentage ?? 0);
-    dbg(`fmp:${symbol}`, true, { sample: { price, pct } });
+    dbg(`fmp:${symbol}`, true, { sample: { price, pct, rawSymbol: d.symbol } });
+    // Normalize FMP symbol to canonical form (e.g. GC=F → GCUSD)
     return {
-      symbol: String(d.symbol || symbol),
+      symbol: normFmpSymbol(String(d.symbol || symbol)),
       price,
       change: Number(d.change) || 0,
       changesPercentage: pct,
@@ -212,6 +230,7 @@ async function fmpQuoteMany(symbols: string[]): Promise<Quote[] | null> {
 async function fmpBatchQuote(symbols: string[]): Promise<Quote[] | null> {
   if (!FMP_KEY) { dbg('fmp:batch', false, { err: 'FMP_KEY missing' }); return null; }
   if (await isFmpRateLimited()) { dbg('fmp:batch', false, { err: 'FMP rate-limited (circuit breaker)' }); return null; }
+  if (!(await fmpCanCall())) { dbg('fmp:batch', false, { err: 'Daily budget exhausted' }); return null; }
   const csv = symbols.map(encodeURIComponent).join(',');
   const candidates = [
     `https://financialmodelingprep.com/stable/quote?symbol=${csv}&apikey=${FMP_KEY}`,
@@ -220,6 +239,7 @@ async function fmpBatchQuote(symbols: string[]): Promise<Quote[] | null> {
   for (const url of candidates) {
     try {
       const res = await fetch(url, { cache: 'no-store' });
+      await fmpTrackCall();
       if (res.status === 429) { await markFmpRateLimited(); dbg('fmp:batch', false, { status: 429, err: 'Rate limited — circuit breaker tripped' }); return null; }
       if (!res.ok) { dbg('fmp:batch', false, { status: res.status }); continue; }
       const text = await res.text();
@@ -227,7 +247,8 @@ async function fmpBatchQuote(symbols: string[]): Promise<Quote[] | null> {
       if (!Array.isArray(data) || data.length === 0) continue;
       const out: Quote[] = [];
       for (const d of data as Array<Record<string, unknown>>) {
-        const sym = String(d.symbol || '');
+        const rawSym = String(d.symbol || '');
+        const sym = normFmpSymbol(rawSym); // normalize GC=F→GCUSD, CL=F→CLUSD
         const price = Number(d.price) || 0;
         if (!sym || price === 0) continue;
         const pct = Number(d.changesPercentage ?? d.changePercentage ?? 0);
@@ -252,8 +273,10 @@ async function fmpBatchQuote(symbols: string[]): Promise<Quote[] | null> {
 async function fmpTenYearYield(): Promise<Quote | null> {
   if (!FMP_KEY) { dbg('fmp:treasury', false, { err: 'FMP_KEY missing' }); return null; }
   if (await isFmpRateLimited()) { dbg('fmp:treasury', false, { err: 'FMP rate-limited (circuit breaker)' }); return null; }
+  if (!(await fmpCanCall())) { dbg('fmp:treasury', false, { err: 'Daily budget exhausted' }); return null; }
   try {
     const res = await fetch(`https://financialmodelingprep.com/stable/treasury-rates?apikey=${FMP_KEY}`, { cache: 'no-store' });
+    await fmpTrackCall();
     if (res.status === 429) { await markFmpRateLimited(); dbg('fmp:treasury', false, { status: 429, err: 'Rate limited — circuit breaker tripped' }); return null; }
     if (!res.ok) { dbg('fmp:treasury', false, { status: res.status }); return null; }
     const text = await res.text();
@@ -340,7 +363,7 @@ async function cnnFearGreed(): Promise<FearGreed | null> {
   } catch (e) { dbg('cnn:fng', false, { err: e instanceof Error ? e.message : String(e) }); return null; }
 }
 
-// Brutal AI verdict — auto-generated from market state.
+// Brutal Edge verdict — auto-generated from market state.
 function generateVerdict(d: Pick<TodayMarketPayload, 'indices' | 'macro' | 'crypto' | 'fearGreed'>): { text: string; trigger: string } {
   const sp500 = d.indices.find(x => x.symbol === '^GSPC');
   const vix = d.macro.find(x => x.symbol === '^VIX');
@@ -413,6 +436,7 @@ export async function GET(request: Request) {
       cachedAt: cachedRaw ? new Date(cachedRaw.ts).toISOString() : null,
       cachedPayload: cachedRaw?.data || null,
       circuitBreaker: { fmpRateLimited: rateLimited, key: FMP_RATE_LIMIT_KEY },
+      fmpBudget: await fmpCallsToday(),
       envCheck: {
         FMP_API_KEY_present: Boolean(process.env.FMP_API_KEY),
         FMP_API_KEY_length: (process.env.FMP_API_KEY || '').length,

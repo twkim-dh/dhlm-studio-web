@@ -7,7 +7,7 @@ readTime: "15 min"
 category: "Crypto"
 catColor: "#F59E0B"
 grade: "—"
-baafScore: 0
+beafScore: 0
 description: "Bitcoin trades near $71,605, roughly 43 percent below its October 2025 all-time high. ETF cumulative inflows have crossed $56 billion. The long-term direction is up, but April 2026 is a month of selection and patience, not breakout."
 type: "hot-sector"
 sector: "Crypto"
@@ -141,7 +141,7 @@ The second risk is ETF flow instability. March was a clear recovery, but April 6
 
 The third risk is market structure fragility. Glassnode framing is that volatility looks low on the surface but implied volatility runs above realized volatility, downside protection demand persists, and dealer negative gamma is concentrated below current levels. In this configuration, the chart can look quiet right up until the moment a real decline begins, and then the decline can be faster than the surface volatility suggested.
 
-## 11. Brutal AI Verdict
+## 11. Brutal Edge™ Verdict
 
 ### BTC Conviction Score (out of 60)
 

@@ -1,7 +1,7 @@
 # DAILY BRIEF FORMAT PROPOSAL — DHLM Studio
 
 > **Date:** 2026-04-08
-> **Author:** Brutal AI™ Editorial Research (under human editorial oversight)
+> **Author:** Brutal Edge™ Editorial Research (under human editorial oversight)
 > **Status:** Proposal for human editor approval before /daily implementation
 > **Companion document:** [LEARNING_DAILY_BRIEF_FORMAT_20260408.md](LEARNING_DAILY_BRIEF_FORMAT_20260408.md)
 
@@ -9,14 +9,14 @@
 
 ## 1. Executive Summary
 
-This document proposes the production format for DHLM Studio Daily Brief based on benchmark analysis of 14 leading daily financial publications. The format is designed to occupy a deliberately empty position in the market: **institutional-grade data density combined with retail-friendly explanation depth**, written in the BAAF voice that makes DHLM Studio recognizable across all content surfaces.
+This document proposes the production format for DHLM Studio Daily Brief based on benchmark analysis of 14 leading daily financial publications. The format is designed to occupy a deliberately empty position in the market: **institutional-grade data density combined with retail-friendly explanation depth**, written in the BEAF voice that makes DHLM Studio recognizable across all content surfaces.
 
 **Key design decisions:**
 
 - **Length:** 1,000-1,300 words per weekday issue
 - **Publish time:** 7:30 AM ET / 8:30 PM KST
 - **Frequency:** Mon-Fri daily, plus Sat Weekly Deep Analysis and Sun Week Ahead Preview
-- **Voice:** AI-assisted under human editorial oversight, BAAF tone, "informational and educational"
+- **Voice:** AI-assisted under human editorial oversight, BEAF tone, "informational and educational"
 - **Audience:** 25-40 year old English-speaking individual investor (Alex persona from Master Roadmap)
 - **Differentiation:** "The brief that explains *why* better than Bloomberg and *what* better than Morning Brew"
 
@@ -55,7 +55,7 @@ This document proposes the production format for DHLM Studio Daily Brief based o
 
 **Purpose:** Single narrative anchor that explains the most important market development of the previous 24 hours.
 **Word count target:** 500-800 words.
-**Voice:** BAAF — institutional-grade with personality.
+**Voice:** BEAF — institutional-grade with personality.
 
 **Required structure:**
 
@@ -64,7 +64,7 @@ This document proposes the production format for DHLM Studio Daily Brief based o
 3. **Bull and Bear interpretation (200-300 words)** — Two paragraphs presenting the optimistic and pessimistic readings of the same event. Equal length, equal force, no editorial preference.
 4. **Internal link** — At least one direct link to a relevant /reports/[slug] Deep Dive when applicable.
 
-**Tone rules (from BAAF 7 Principles):**
+**Tone rules (from BEAF 7 Principles):**
 - Every claim has a number
 - Every quoted source is named specifically (not "analysts said")
 - No "buy", "sell", "invest", "recommend" language
@@ -143,11 +143,11 @@ WEAKEST TODAY
 
 ---
 
-### Section 6 — BRUTAL AI VERDICT
+### Section 6 — BRUTAL EDGE VERDICT
 
 **Purpose:** Memorable closing line that gives the reader a reason to remember the brand.
 **Word count target:** 30-60 words. **Single sentence preferred.**
-**Voice:** Brutal AI voice — opinionated, number-backed, no investment recommendation.
+**Voice:** Brutal Edge voice — opinionated, number-backed, no investment recommendation.
 
 **Mandatory rules:**
 - At least one specific number
@@ -159,7 +159,7 @@ WEAKEST TODAY
 
 > One bad CPI print, one Fed governor with a hot mic, and 380 billion dollars of market cap evaporates in a single session — the AI mega-caps trading at 45x forward earnings have a precision intolerance for any macro volatility, and Bowman just reminded everyone the Fed is not their friend.
 
-> NVIDIA at $4.2 trillion is now larger than the entire German DAX index combined, which is either the most extraordinary capital allocation moment of the decade or the cleanest top signal in financial history — and the BAAF score of 83 says we genuinely do not know which.
+> NVIDIA at $4.2 trillion is now larger than the entire German DAX index combined, which is either the most extraordinary capital allocation moment of the decade or the cleanest top signal in financial history — and the BEAF score of 83 says we genuinely do not know which.
 
 ---
 
@@ -185,7 +185,7 @@ WEAKEST TODAY
 | 3. Movers & Shakers | 150 | 880 |
 | 4. Sector Pulse | 115 | 995 |
 | 5. Week Ahead | 100 | 1,095 |
-| 6. Brutal AI Verdict | 50 | 1,145 |
+| 6. Brutal Edge Verdict | 50 | 1,145 |
 | 7. Related Deep Dives | 40 | 1,185 |
 
 **Target total:** 1,000-1,300 words per issue.
@@ -212,16 +212,16 @@ WEAKEST TODAY
 
 ### 4.4 Email Version (Phase 2 — May)
 - Resend HTML template generated from same content source
-- Subject line format: `🔥 Brutal AI Daily — Apr 8: VIX 23.7, Oil $112`
+- Subject line format: `🔥 Brutal Edge Daily — Apr 8: VIX 23.7, Oil $112`
 - Preview text: First 90 characters of Today Story lead paragraph
 - All internal links use full https://dhlm-studio.com URLs
 - Single inline image per issue (the lead chart) for spam filter friendliness
 
 ---
 
-## 5. Brutal AI Voice Auto-Generation Rules
+## 5. Brutal Edge Voice Auto-Generation Rules
 
-The Verdict and certain Today's Story openings will use auto-generated BAAF commentary based on market state. The rules below define triggers and templates.
+The Verdict and certain Today's Story openings will use auto-generated BEAF commentary based on market state. The rules below define triggers and templates.
 
 ### 5.1 Trigger Conditions
 
@@ -237,7 +237,7 @@ The Verdict and certain Today's Story openings will use auto-generated BAAF comm
 | Fear & Greed > 75 | Extreme greed | Sentiment peak template |
 
 ### 5.2 Manual Override
-The human editor must be able to override any auto-generated verdict before publication via a manual edit step. The cron job produces a draft, not a final issue. Human review is required for the BAAF Bloomberg quotability test.
+The human editor must be able to override any auto-generated verdict before publication via a manual edit step. The cron job produces a draft, not a final issue. Human review is required for the BEAF Bloomberg quotability test.
 
 ---
 
@@ -250,7 +250,7 @@ The human editor must be able to override any auto-generated verdict before publ
 **Steps:**
 
 1. Pull market data (FMP, CoinGecko, alternative.me)
-2. Compute Brutal AI verdict trigger conditions
+2. Compute Brutal Edge verdict trigger conditions
 3. Generate draft Markdown file at `src/content/daily/YYYY-MM-DD.md`
 4. Run sanity checks (numbers present, no "buy/sell" language, links resolve)
 5. Commit draft to repo
@@ -325,7 +325,7 @@ The May 31, 2026 review threshold of 10 daily visits applies to the entire site,
 ## 10. Companion Documents
 
 - [LEARNING_DAILY_BRIEF_FORMAT_20260408.md](LEARNING_DAILY_BRIEF_FORMAT_20260408.md) — full benchmark study of 14 publications
-- [BAAF_FRAMEWORK.md](../frameworks/BAAF_FRAMEWORK.md) — scoring framework referenced in Today Story sections
+- [BEAF_FRAMEWORK.md](../frameworks/BEAF_FRAMEWORK.md) — scoring framework referenced in Today Story sections
 - Master Roadmap (in project memory) — defines target persona, KPI, premium model timeline
 
 ---

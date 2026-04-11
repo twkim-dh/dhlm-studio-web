@@ -33,28 +33,28 @@ const YEAR = new Date().getFullYear();
 export const metadata: Metadata = {
   metadataBase: new URL("https://dhlm-studio.com"),
   title: {
-    default: `DHLM Studio — Brutal AI Market Intelligence | ${YEAR}`,
+    default: `DHLM Studio — Brutal Edge Market Intelligence | ${YEAR}`,
     template: `%s | DHLM Studio`,
   },
-  description: `Real-time market data, CNN Fear & Greed Index, Brutal AI Deep Dive reports, and data-driven stock analysis under editorial oversight. ${YEAR}.`,
+  description: `Real-time market data, CNN Fear & Greed Index, Brutal Edge Deep Dive reports, and data-driven stock analysis under editorial oversight. ${YEAR}.`,
   keywords: [
-    "DHLM Studio", "Brutal AI", "stock market analysis", "Deep Dive reports",
-    "Fear and Greed Index", "BAAF framework", "crypto analysis", "Bitcoin analysis",
+    "DHLM Studio", "Brutal Edge", "stock market analysis", "Deep Dive reports",
+    "Fear and Greed Index", "BEAF framework", "crypto analysis", "Bitcoin analysis",
     "data-driven stock analysis", "Hot Sector reports", "market intelligence",
     "real-time market data", "TODAY'S MARKET", "S&P 500 live",
   ],
   openGraph: {
-    title: `DHLM Studio — Brutal AI Market Intelligence`,
+    title: `DHLM Studio — Brutal Edge Market Intelligence`,
     description: `Real-time market data, Fear & Greed Index, Deep Dive reports, and data-driven stock analysis under editorial oversight.`,
     url: "https://dhlm-studio.com",
     siteName: "DHLM Studio",
     locale: "en_US",
     type: "website",
-    images: [{ url: "/opengraph-image", width: 1200, height: 630, alt: "DHLM Studio — Brutal AI Market Intelligence" }],
+    images: [{ url: "/opengraph-image", width: 1200, height: 630, alt: "DHLM Studio — Brutal Edge Market Intelligence" }],
   },
   twitter: {
     card: "summary_large_image",
-    title: "DHLM Studio — Brutal AI Market Intelligence",
+    title: "DHLM Studio — Brutal Edge Market Intelligence",
     description: "Real-time market data, Fear & Greed Index, Deep Dive reports, and data-driven stock analysis.",
   },
   alternates: {
@@ -115,7 +115,7 @@ export default function RootLayout({
             "name": "DHLM Studio",
             "url": "https://dhlm-studio.com",
             "logo": "https://dhlm-studio.com/favicon.ico",
-            "description": "Brutal AI market intelligence: real-time market data, Fear & Greed Index, Deep Dive reports, and data-driven stock analysis under editorial oversight.",
+            "description": "Brutal Edge market intelligence: real-time market data, Fear & Greed Index, Deep Dive reports, and data-driven stock analysis under editorial oversight.",
             "sameAs": ["https://github.com/twkim-dh"],
             "contactPoint": { "@type": "ContactPoint", "email": "dhlmstudio2026@gmail.com" }
           })}}
@@ -128,7 +128,7 @@ export default function RootLayout({
             "@type": "WebSite",
             "name": "DHLM Studio",
             "url": "https://dhlm-studio.com",
-            "description": "Brutal AI Market Intelligence — real-time market data, Fear & Greed Index, Deep Dive reports, and data-driven stock analysis.",
+            "description": "Brutal Edge Market Intelligence — real-time market data, Fear & Greed Index, Deep Dive reports, and data-driven stock analysis.",
             "potentialAction": {
               "@type": "SearchAction",
               "target": "https://dhlm-studio.com/markets/search?q={search_term_string}",

@@ -27,7 +27,7 @@ export async function GET(req: NextRequest) {
         <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center' }}>
           <div style={{ display: 'flex', alignItems: 'center', gap: 12 }}>
             <span style={{ fontSize: 16, fontWeight: 800, color: '#94A3B8', letterSpacing: 2 }}>DHLM STUDIO</span>
-            <span style={{ fontSize: 12, color: '#C73E3A', fontWeight: 700 }}>BRUTAL AI</span>
+            <span style={{ fontSize: 12, color: '#C73E3A', fontWeight: 700 }}>BRUTAL EDGE</span>
           </div>
           <div style={{ fontSize: 12, color: '#475569' }}>dhlm-studio.com/markets</div>
         </div>

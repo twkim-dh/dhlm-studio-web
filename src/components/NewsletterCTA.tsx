@@ -63,7 +63,7 @@ export default function NewsletterCTA({ source = 'homepage' }: { source?: string
         <div style={{ fontSize: 24, marginBottom: 6 }}>📧</div>
         <div style={{ fontFamily: 'var(--serif)', fontSize: 18, fontWeight: 800, color: '#F1F5F9' }}>Get the Weekly Roast</div>
         <p style={{ fontSize: 12, color: '#64748B', margin: '6px 0 0', lineHeight: 1.6 }}>
-          Top movers, brutal AI takes, and Wall Street wisdom — every Monday.
+          Top movers, Brutal Edge takes, and Wall Street wisdom — every Monday.
         </p>
       </div>
       <div style={{ display: 'flex', gap: 8 }}>

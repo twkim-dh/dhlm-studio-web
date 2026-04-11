@@ -147,11 +147,11 @@ export default async function DailyBriefPage({ params }: { params: Promise<{ slu
       <article style={{ maxWidth: 760, margin: '0 auto', padding: '80px 24px' }}>
         <Link href="/daily" style={{ fontSize: 12, color: '#64748B' }}>← All Daily Briefs</Link>
 
-        {/* Brutal AI Header */}
+        {/* Brutal Edge Header */}
         <div style={{ marginTop: 20, padding: '20px 22px', borderRadius: 14, background: 'linear-gradient(135deg, #C73E3A08, #C73E3A03)', border: '1px solid #C73E3A20', marginBottom: 16 }}>
           <div style={{ display: 'flex', alignItems: 'center', gap: 8, marginBottom: 8 }}>
             <span style={{ fontSize: 18 }}>🔥</span>
-            <span style={{ fontFamily: 'var(--mono)', fontSize: 11, fontWeight: 800, color: '#C73E3A', letterSpacing: 2 }}>BRUTAL AI&trade; DAILY BRIEF</span>
+            <span style={{ fontFamily: 'var(--mono)', fontSize: 11, fontWeight: 800, color: '#C73E3A', letterSpacing: 2 }}>BRUTAL EDGE&trade; DAILY BRIEF</span>
           </div>
           <div style={{ fontSize: 11, color: '#64748B', fontStyle: 'italic' }}>Analysis under editorial oversight. Data-driven. Zero feelings.</div>
         </div>
@@ -175,7 +175,7 @@ export default async function DailyBriefPage({ params }: { params: Promise<{ slu
 
         {/* Newsletter signup */}
         <div style={{ marginTop: 32 }}>
-          <InlineSubscribe source="daily" headline="Never miss a brief" description="Tomorrow's Brutal AI Daily lands in your inbox at 7:30 AM ET. Free." />
+          <InlineSubscribe source="daily" headline="Never miss a brief" description="Tomorrow's Brutal Edge Daily lands in your inbox at 7:30 AM ET. Free." />
         </div>
 
         {/* Comments — Giscus / GitHub Discussions */}
@@ -183,7 +183,7 @@ export default async function DailyBriefPage({ params }: { params: Promise<{ slu
 
         {/* Footer disclaimer */}
         <div style={{ marginTop: 40, padding: '20px 22px', borderRadius: 14, background: '#111827', border: '1px solid #1E293B', textAlign: 'center' }}>
-          <div style={{ fontFamily: 'var(--mono)', fontSize: 10, fontWeight: 800, color: '#C73E3A', letterSpacing: 2, marginBottom: 6 }}>🔥 PUBLISHED BY BRUTAL AI&trade;</div>
+          <div style={{ fontFamily: 'var(--mono)', fontSize: 10, fontWeight: 800, color: '#C73E3A', letterSpacing: 2, marginBottom: 6 }}>🔥 PUBLISHED BY BRUTAL EDGE&trade;</div>
           <div style={{ fontSize: 9, color: '#475569', lineHeight: 1.6 }}>
             Analysis under editorial oversight, for informational and educational purposes.<br />
             Data: Financial Modeling Prep, Alpha Vantage, CoinGecko, alternative.me<br />

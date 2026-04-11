@@ -2,8 +2,8 @@ import type { Metadata } from 'next';
 import Link from 'next/link';
 
 export const metadata: Metadata = {
-  title: 'Editorial Policy — How Brutal AI Analyzes Stocks | DHLM Studio',
-  description: 'Our methodology: how Brutal AI generates stock analysis, data sources we use, quality standards, and important disclaimers.',
+  title: 'Editorial Policy — How Brutal Edge Analyzes Stocks | DHLM Studio',
+  description: 'Our methodology: how Brutal Edge generates stock analysis, data sources we use, quality standards, and important disclaimers.',
   alternates: { canonical: 'https://dhlm-studio.com/editorial' },
 };
 
@@ -17,7 +17,7 @@ export default function EditorialPage() {
 
         <div style={{ marginTop: 20, marginBottom: 32 }}>
           <div style={{ fontFamily: 'var(--mono)', fontSize: 10, fontWeight: 700, color: '#C73E3A', letterSpacing: 3, marginBottom: 8 }}>EDITORIAL POLICY</div>
-          <h1 style={{ fontFamily: 'var(--serif)', fontSize: 28, fontWeight: 900, color: '#F1F5F9', margin: 0 }}>How Brutal AI Analyzes Stocks</h1>
+          <h1 style={{ fontFamily: 'var(--serif)', fontSize: 28, fontWeight: 900, color: '#F1F5F9', margin: 0 }}>How Brutal Edge Analyzes Stocks</h1>
           <p style={{ fontSize: 14, color: '#64748B', marginTop: 6 }}>Our methodology, data sources, and commitment to accuracy</p>
         </div>
 
@@ -27,10 +27,10 @@ export default function EditorialPage() {
           <div style={{ ...card, padding: '24px 22px' }}>
             <h2 style={{ fontFamily: 'var(--serif)', fontSize: 20, fontWeight: 800, color: '#E2E8F0', margin: '0 0 12px' }}>Our Approach</h2>
             <p style={{ fontSize: 14, color: '#94A3B8', lineHeight: 1.8, margin: 0 }}>
-              DHLM Studio combines real-time financial data with structured analytical commentary to make market analysis accessible and engaging. Our analysis follows a defined methodology: we collect data from licensed APIs, apply quantitative analysis frameworks, and present findings in a conversational tone through our Brutal AI&trade; analytical voice — all under editorial oversight.
+              DHLM Studio combines real-time financial data with structured analytical commentary to make market analysis accessible and engaging. Our analysis follows a defined methodology: we collect data from licensed APIs, apply quantitative analysis frameworks, and present findings in a conversational tone through our Brutal Edge&trade; analytical voice — all under editorial oversight.
             </p>
             <p style={{ fontSize: 14, color: '#94A3B8', lineHeight: 1.8, marginTop: 12 }}>
-              Every Deep Dive report follows a consistent structure: company overview with key metrics, a unique analytical angle that goes beyond surface-level data, bull vs bear case presentation, and a Brutal AI verdict that synthesizes the analysis. We aim to present both sides of every argument, never recommending specific investment actions.
+              Every Deep Dive report follows a consistent structure: company overview with key metrics, a unique analytical angle that goes beyond surface-level data, bull vs bear case presentation, and a Brutal Edge verdict that synthesizes the analysis. We aim to present both sides of every argument, never recommending specific investment actions.
             </p>
           </div>
 
@@ -68,7 +68,7 @@ export default function EditorialPage() {
                 { step: '2', title: 'Quantitative Analysis', desc: 'Key metrics are compared against sector averages, historical trends, and peer companies. We analyze P/E ratios, revenue growth rates, profit margins, debt levels, and cash flow generation.' },
                 { step: '3', title: 'Qualitative Context', desc: 'We research recent news, earnings reports, product launches, regulatory actions, and competitive dynamics that affect the company\'s outlook.' },
                 { step: '4', title: 'Bull vs Bear Framework', desc: 'Every analysis presents both the optimistic and pessimistic case. We never present a one-sided view. Readers see the strongest arguments for and against.' },
-                { step: '5', title: 'Brutal AI&trade; Commentary', desc: 'Our analytical voice adds informational and educational commentary that makes complex analysis accessible. The conversational tone is designed to engage readers while the underlying analysis remains rigorously data-driven.' },
+                { step: '5', title: 'Brutal Edge&trade; Commentary', desc: 'Our analytical voice adds informational and educational commentary that makes complex analysis accessible. The conversational tone is designed to engage readers while the underlying analysis remains rigorously data-driven.' },
               ].map(s => (
                 <div key={s.step} style={{ display: 'flex', gap: 14 }}>
                   <div style={{ width: 28, height: 28, borderRadius: '50%', background: '#C73E3A15', display: 'flex', alignItems: 'center', justifyContent: 'center', fontSize: 12, fontWeight: 800, color: '#C73E3A', flexShrink: 0 }}>{s.step}</div>
@@ -95,7 +95,7 @@ export default function EditorialPage() {
                 'NOT investment advice disclaimers appear on every analysis page',
                 'We correct factual errors immediately upon discovery',
                 'Our content is original — we do not copy from other financial sites',
-                'Deep Dive reports are minimum 3,000 words of substantive analysis (BAAF Framework)',
+                'Deep Dive reports are minimum 3,000 words of substantive analysis (BEAF Framework)',
               ].map((item, i) => (
                 <div key={i} style={{ display: 'flex', alignItems: 'flex-start', gap: 8 }}>
                   <span style={{ color: '#00D474', fontSize: 12, flexShrink: 0, marginTop: 2 }}>✓</span>
@@ -112,7 +112,7 @@ export default function EditorialPage() {
               Every piece of content on DHLM Studio goes through a human editorial process before publication.
             </p>
             <p style={{ fontSize: 13, color: '#94A3B8', lineHeight: 1.8, margin: '0 0 12px' }}>
-              Our Editor-in-Chief reviews all Deep Dive reports, Daily Briefs, and BAAF scores for:
+              Our Editor-in-Chief reviews all Deep Dive reports, Daily Briefs, and BEAF scores for:
             </p>
             <div style={{ display: 'flex', flexDirection: 'column', gap: 8, marginBottom: 14 }}>
               {[
@@ -152,7 +152,7 @@ export default function EditorialPage() {
                 { step: '1', title: 'Primary Source Pull', desc: 'Financial figures (revenue, margins, EPS, debt) are pulled from Financial Modeling Prep, sourced directly from SEC filings (10-K, 10-Q, 8-K).' },
                 { step: '2', title: 'Cross-Reference', desc: 'Key metrics are cross-checked against a second source — typically the company\'s official Investor Relations page or Alpha Vantage.' },
                 { step: '3', title: 'Historical Sanity Check', desc: 'Growth rates and margins are compared to 3-year and 5-year trends. Outliers (>3 standard deviations) are flagged and re-verified manually.' },
-                { step: '4', title: 'Peer Validation', desc: 'Competitor metrics are pulled at the same timestamp to ensure apples-to-apples comparison in the BAAF comparison table.' },
+                { step: '4', title: 'Peer Validation', desc: 'Competitor metrics are pulled at the same timestamp to ensure apples-to-apples comparison in the BEAF comparison table.' },
                 { step: '5', title: 'Timestamp Disclosure', desc: 'Every report includes a "Data as of" date. Real-time prices on market pages disclose the 15-minute delay.' },
                 { step: '6', title: 'Correction Protocol', desc: 'If a verified error is found post-publication, the report is updated within 24 hours and a correction note is appended at the bottom.' },
               ].map(s => (
@@ -220,7 +220,7 @@ export default function EditorialPage() {
                 <strong style={{ color: '#E2E8F0' }}>Not Investment Advice:</strong> DHLM Studio provides data-driven analysis for educational and entertainment purposes only. Nothing on this website constitutes investment advice, a recommendation to buy or sell any security, or an offer to participate in any investment strategy. Always consult a qualified financial advisor before making investment decisions.
               </p>
               <p style={{ marginBottom: 12 }}>
-                <strong style={{ color: '#E2E8F0' }}>Brutal AI Character:</strong> &ldquo;Brutal AI&rdquo; is an informational and educational analytical voice that provides data-driven commentary on market data. Its observations are generated to make financial concepts accessible and do not represent personalized investment advice. The character&apos;s BAAF scores and grades are quantitative analytical outputs, NOT buy/sell signals.
+                <strong style={{ color: '#E2E8F0' }}>Brutal Edge Character:</strong> &ldquo;Brutal Edge&rdquo; is an informational and educational analytical voice that provides data-driven commentary on market data. Its observations are generated to make financial concepts accessible and do not represent personalized investment advice. The character&apos;s BEAF scores and grades are quantitative analytical outputs, NOT buy/sell signals.
               </p>
               <p style={{ marginBottom: 12 }}>
                 <strong style={{ color: '#E2E8F0' }}>Data Accuracy:</strong> While we strive for accuracy, financial data may be delayed, incomplete, or subject to revision. Market data on this site is delayed up to 15 minutes. Always verify critical data points with official sources before making decisions.

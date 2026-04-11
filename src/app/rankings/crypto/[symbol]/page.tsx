@@ -3,27 +3,22 @@ import Link from 'next/link';
 import { TOP_CRYPTOS } from '@/data/top-cryptos';
 import LikeButton from '@/components/LikeButton';
 import BrutalCryptoRoast from '@/components/BrutalCryptoRoast';
+import CryptoChart from '@/components/CryptoChart';
+import { getCoinDetail, getCoinChart } from '@/lib/coingecko';
 
 const YEAR = new Date().getFullYear();
 
+// Pre-render only top 20 at build time — the rest generate on first visit (ISR).
+// This limits build-time CoinGecko calls to 20 instead of 100+.
 export function generateStaticParams() {
-  return TOP_CRYPTOS.map(id => ({ symbol: id }));
+  return TOP_CRYPTOS.slice(0, 20).map(id => ({ symbol: id }));
 }
 
-async function fetchCoinData(id: string) {
-  try {
-    const res = await fetch(
-      `https://api.coingecko.com/api/v3/coins/${id}?localization=false&tickers=false&community_data=false&developer_data=false`,
-      { next: { revalidate: 300 } } // 5 min ISR
-    );
-    if (!res.ok) return null;
-    return await res.json();
-  } catch { return null; }
-}
+export const dynamicParams = true; // other coins rendered on-demand
 
 export async function generateMetadata({ params }: { params: Promise<{ symbol: string }> }): Promise<Metadata> {
   const { symbol } = await params;
-  const coin = await fetchCoinData(symbol);
+  const coin = await getCoinDetail(symbol);
   const name = coin?.name || symbol;
   const price = coin?.market_data?.current_price?.usd;
   return {
@@ -36,7 +31,7 @@ const card = { background: '#111827', borderRadius: 14, border: '1px solid #1E29
 
 export default async function CryptoDetailPage({ params }: { params: Promise<{ symbol: string }> }) {
   const { symbol } = await params;
-  const coin = await fetchCoinData(symbol);
+  const coin = await getCoinDetail(symbol);
 
   if (!coin) {
     return (
@@ -61,6 +56,9 @@ export default async function CryptoDetailPage({ params }: { params: Promise<{ s
   const desc = coin.description?.en?.replace(/<[^>]+>/g, '').slice(0, 500) || '';
   const isUp = change24h >= 0;
 
+  // Fetch 30-day price chart — fail gracefully
+  const chartPoints = await getCoinChart(symbol, 30).catch(() => []);
+
   const fmtUsd = (n: number) => n >= 1e12 ? `$${(n/1e12).toFixed(2)}T` : n >= 1e9 ? `$${(n/1e9).toFixed(1)}B` : n >= 1e6 ? `$${(n/1e6).toFixed(0)}M` : `$${n.toLocaleString()}`;
   const fmtPrice = (n: number) => n >= 1000 ? `$${n.toLocaleString(undefined, {maximumFractionDigits:0})}` : n >= 1 ? `$${n.toFixed(2)}` : `$${n.toFixed(6)}`;
 
@@ -78,7 +76,9 @@ export default async function CryptoDetailPage({ params }: { params: Promise<{ s
       <div style={{ maxWidth: 720, margin: '0 auto', padding: '80px 24px' }}>
         <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center' }}>
           <Link href="/rankings/crypto" style={{ fontSize: 12, color: '#64748B' }}>← Crypto Rankings</Link>
-          <span style={{ fontSize: 9, padding: '3px 8px', borderRadius: 4, background: '#00D47418', color: '#00D474', fontWeight: 700, fontFamily: 'var(--mono)' }}>● LIVE — CoinGecko</span>
+          <span style={{ fontSize: 9, padding: '3px 8px', borderRadius: 4, background: coin.stale ? '#47556918' : '#00D47418', color: coin.stale ? '#94A3B8' : '#00D474', fontWeight: 700, fontFamily: 'var(--mono)' }}>
+            {coin.stale ? '● Data may be delayed' : '● LIVE — CoinGecko'}
+          </span>
         </div>
 
         {/* Header */}
@@ -115,6 +115,14 @@ export default async function CryptoDetailPage({ params }: { params: Promise<{ s
           ))}
         </div>
 
+        {/* 30-day price chart */}
+        {chartPoints.length > 0 && (
+          <div style={{ ...card, padding: '16px 12px 8px', marginBottom: 16 }}>
+            <div style={{ fontFamily: 'var(--mono)', fontSize: 9, fontWeight: 700, color: '#64748B', letterSpacing: 2, marginBottom: 12, paddingLeft: 4 }}>30-DAY PRICE CHART</div>
+            <CryptoChart points={chartPoints} isUp={isUp} days={30} />
+          </div>
+        )}
+
         {/* Description */}
         {desc && (
           <div style={{ ...card, padding: '20px 22px', marginBottom: 16 }}>
@@ -123,7 +131,7 @@ export default async function CryptoDetailPage({ params }: { params: Promise<{ s
           </div>
         )}
 
-        {/* Brutal AI Roast */}
+        {/* Brutal Edge Roast */}
         <BrutalCryptoRoast symbol={symbol} />
 
         {/* Internal Links */}

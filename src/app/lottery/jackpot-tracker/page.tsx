@@ -1,6 +1,7 @@
 import type { Metadata } from 'next';
 import Link from 'next/link';
 import { JACKPOT_INFO, POWERBALL_DRAWS, MEGAMILLIONS_DRAWS } from '@/data/lottery';
+import LotteryChart from '@/components/LotteryChart';
 
 export const metadata: Metadata = {
   title: 'Lottery Jackpot Tracker — Powerball & Mega Millions | DHLM Studio',
@@ -42,7 +43,7 @@ export default function JackpotTracker() {
             <div style={{ fontSize: 12, color: '#64748B', marginTop: 4 }}>Est. Cash Value: {fmtJackpot(JACKPOT_INFO.powerball.current * 0.47)}</div>
             <div style={{ fontSize: 11, color: '#94A3B8', marginTop: 8 }}>Next: {JACKPOT_INFO.powerball.nextDay}, {JACKPOT_INFO.powerball.nextDraw}</div>
             <div style={{ marginTop: 8, padding: '8px 12px', borderRadius: 8, background: '#C73E3A08', border: '1px solid #C73E3A15' }}>
-              <div style={{ fontFamily: 'var(--mono)', fontSize: 8, color: '#C73E3A', letterSpacing: 1, marginBottom: 4 }}>🔥 BRUTAL AI TAKE</div>
+              <div style={{ fontFamily: 'var(--mono)', fontSize: 8, color: '#C73E3A', letterSpacing: 1, marginBottom: 4 }}>🔥 BRUTAL EDGE TAKE</div>
               <JackpotRoast amount={JACKPOT_INFO.powerball.current} />
             </div>
           </div>
@@ -55,14 +56,14 @@ export default function JackpotTracker() {
             <div style={{ fontSize: 12, color: '#64748B', marginTop: 4 }}>Est. Cash Value: {fmtJackpot(JACKPOT_INFO.megamillions.current * 0.47)}</div>
             <div style={{ fontSize: 11, color: '#94A3B8', marginTop: 8 }}>Next: {JACKPOT_INFO.megamillions.nextDay}, {JACKPOT_INFO.megamillions.nextDraw}</div>
             <div style={{ marginTop: 8, padding: '8px 12px', borderRadius: 8, background: '#C73E3A08', border: '1px solid #C73E3A15' }}>
-              <div style={{ fontFamily: 'var(--mono)', fontSize: 8, color: '#C73E3A', letterSpacing: 1, marginBottom: 4 }}>🔥 BRUTAL AI TAKE</div>
+              <div style={{ fontFamily: 'var(--mono)', fontSize: 8, color: '#C73E3A', letterSpacing: 1, marginBottom: 4 }}>🔥 BRUTAL EDGE TAKE</div>
               <JackpotRoast amount={JACKPOT_INFO.megamillions.current} />
             </div>
           </div>
         </div>
 
         {/* Recent Draws */}
-        <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(280px, 1fr))', gap: 12 }}>
+        <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(280px, 1fr))', gap: 12, marginBottom: 24 }}>
           <div style={{ ...card, padding: '16px 18px' }}>
             <div style={{ fontFamily: 'var(--mono)', fontSize: 9, fontWeight: 700, color: '#EF4444', letterSpacing: 2, marginBottom: 12 }}>RECENT POWERBALL</div>
             {pbHistory.map((d, i) => (
@@ -80,6 +81,16 @@ export default function JackpotTracker() {
                 <span style={{ fontSize: 11, color: '#E2E8F0', fontFamily: 'var(--mono)' }}>{d.numbers.join('-')} <span style={{ color: '#F59E0B', fontWeight: 700 }}>MB:{d.specialBall}</span></span>
               </div>
             ))}
+          </div>
+        </div>
+
+        {/* Jackpot Growth Charts */}
+        <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(280px, 1fr))', gap: 12 }}>
+          <div style={{ ...card, padding: '16px 18px' }}>
+            <LotteryChart draws={POWERBALL_DRAWS} game="powerball" showFrequency={false} showJackpot={true} />
+          </div>
+          <div style={{ ...card, padding: '16px 18px' }}>
+            <LotteryChart draws={MEGAMILLIONS_DRAWS} game="megamillions" showFrequency={false} showJackpot={true} />
           </div>
         </div>
       </div>

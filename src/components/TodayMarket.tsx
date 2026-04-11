@@ -14,6 +14,7 @@ interface TodayMarketPayload {
   verdict: { text: string; trigger: string };
   source: 'live' | 'cached' | 'fallback';
 }
+interface AltCoin { id: string; symbol: string; name: string; price: number; change24h: number; rank: number }
 
 // Static SSR fallback so the section is never empty on first paint.
 // Replaced with live data on mount via /api/today-market.
@@ -25,8 +26,8 @@ const SSR_FALLBACK: TodayMarketPayload = {
     { symbol: '^DJI',  price: 41250.80, change: -780.40, changesPercentage: -1.86 },
   ],
   macro: [
-    { symbol: 'CL=F', price:   78.40, change: 1.20, changesPercentage:  1.55 },
-    { symbol: 'GC=F', price: 2342.50, change: 18.30, changesPercentage:  0.79 },
+    { symbol: 'CLUSD', price:   78.40, change: 1.20, changesPercentage:  1.55 },
+    { symbol: 'GCUSD', price: 2342.50, change: 18.30, changesPercentage:  0.79 },
     { symbol: '^VIX', price:   23.70, change: 4.10, changesPercentage: 20.92 },
     { symbol: '^TNX', price:    4.42, change: 0.11, changesPercentage:  2.55 },
   ],
@@ -43,8 +44,10 @@ const LABELS: Record<string, string> = {
   '^GSPC': 'S&P 500',
   '^IXIC': 'Nasdaq',
   '^DJI':  'Dow',
-  'CL=F':  'WTI Oil',
-  'GC=F':  'Gold',
+  'CLUSD': 'WTI Oil',
+  'CL=F':  'WTI Oil',  // FMP may return either format
+  'GCUSD': 'Gold',
+  'GC=F':  'Gold',     // FMP may return either format
   '^VIX':  'VIX',
   '^TNX':  'US 10Y',
 };
@@ -75,12 +78,24 @@ const card = { background: '#111827', borderRadius: 14, border: '1px solid #1E29
 
 export default function TodayMarket() {
   const [data, setData] = useState<TodayMarketPayload>(SSR_FALLBACK);
+  const [alts, setAlts] = useState<AltCoin[]>([]);
 
   useEffect(() => {
     fetch('/api/today-market')
       .then(r => r.json())
       .then((d: TodayMarketPayload) => { if (d?.indices) setData(d); })
       .catch(() => { /* keep fallback */ });
+
+    // Top 5 altcoins (rank 3-7, excluding BTC/ETH)
+    fetch('/api/crypto')
+      .then(r => r.json())
+      .then((d: { coins?: AltCoin[] }) => {
+        if (d.coins) {
+          const filtered = d.coins.filter(c => !['bitcoin', 'ethereum'].includes(c.id)).slice(0, 5);
+          setAlts(filtered);
+        }
+      })
+      .catch(() => {});
   }, []);
 
   const renderQuoteRow = (q: Quote) => {
@@ -183,7 +198,26 @@ export default function TodayMarket() {
         </div>
       </div>
 
-      {/* Brutal AI Verdict */}
+      {/* Top 5 Altcoins row */}
+      {alts.length > 0 && (
+        <div style={{ marginBottom: 16 }}>
+          <div style={{ fontFamily: 'var(--mono)', fontSize: 9, fontWeight: 700, color: '#475569', letterSpacing: 2, marginBottom: 8 }}>TOP ALTCOINS</div>
+          <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(160px, 1fr))', gap: 8 }}>
+            {alts.map(c => (
+              <div key={c.id} style={{ background: '#111827', borderRadius: 10, border: '1px solid #1E293B', padding: '10px 12px', display: 'flex', flexDirection: 'column', gap: 4 }}>
+                <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center' }}>
+                  <span style={{ fontFamily: 'var(--mono)', fontSize: 11, fontWeight: 700, color: '#F59E0B' }}>{c.symbol?.toUpperCase()}</span>
+                  <span style={{ fontFamily: 'var(--mono)', fontSize: 10, fontWeight: 700, color: changeColor(c.change24h) }}>{c.change24h >= 0 ? '+' : ''}{fmtNum(c.change24h, 2)}%</span>
+                </div>
+                <span style={{ fontFamily: 'var(--mono)', fontSize: 12, fontWeight: 800, color: '#F1F5F9' }}>{c.price >= 1 ? `$${fmtNum(c.price, 2)}` : `$${fmtNum(c.price, 4)}`}</span>
+                <span style={{ fontFamily: 'var(--sans)', fontSize: 9, color: '#475569', overflow: 'hidden', textOverflow: 'ellipsis', whiteSpace: 'nowrap' }}>{c.name}</span>
+              </div>
+            ))}
+          </div>
+        </div>
+      )}
+
+      {/* Brutal Edge Verdict */}
       <div style={{
         padding: '16px 20px', borderRadius: 14,
         background: 'linear-gradient(135deg, #C73E3A0F, #C73E3A05)',
@@ -191,7 +225,7 @@ export default function TodayMarket() {
       }}>
         <div style={{ display: 'flex', alignItems: 'center', gap: 8, marginBottom: 8 }}>
           <span style={{ fontSize: 14 }}>🔥</span>
-          <span style={{ fontFamily: 'var(--mono)', fontSize: 9, fontWeight: 800, color: '#C73E3A', letterSpacing: 2 }}>BRUTAL AI&trade; VERDICT</span>
+          <span style={{ fontFamily: 'var(--mono)', fontSize: 9, fontWeight: 800, color: '#C73E3A', letterSpacing: 2 }}>BRUTAL EDGE&trade; VERDICT</span>
           <span style={{ fontFamily: 'var(--mono)', fontSize: 8, color: '#475569', marginLeft: 'auto' }}>trigger: {data.verdict.trigger}</span>
         </div>
         <p style={{ fontFamily: 'var(--serif)', fontSize: 14, color: '#E2E8F0', lineHeight: 1.7, margin: 0, fontStyle: 'italic' }}>

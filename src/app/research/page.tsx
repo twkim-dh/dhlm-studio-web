@@ -5,7 +5,7 @@ import path from 'path';
 
 export const metadata: Metadata = {
   title: 'Research — Paper vs. Profit | DHLM Studio',
-  description: 'We read academic finance papers, judge them, and tell you if they will make you money. Brutal AI dissects research with one question: would this work in practice?',
+  description: 'We read academic finance papers, judge them, and tell you if they will make you money. Brutal Edge dissects research with one question: would this work in practice?',
   alternates: { canonical: 'https://dhlm-studio.com/research' },
 };
 
@@ -71,7 +71,7 @@ export default function ResearchIndexPage() {
             Paper vs. Profit
           </h1>
           <p style={{ fontFamily: 'var(--sans)', fontSize: 15, color: '#94A3B8', lineHeight: 1.7, margin: 0, maxWidth: 680 }}>
-            We read the papers. We judge them. We tell you if they will make you money. Brutal AI dissects academic finance research with one question: would this actually work in practice?
+            We read the papers. We judge them. We tell you if they will make you money. Brutal Edge dissects academic finance research with one question: would this actually work in practice?
           </p>
         </div>
 

@@ -7,12 +7,12 @@ readTime: "14 min"
 category: "Markets"
 catColor: "#00D474"
 grade: "D+"
-baafScore: 52
-description: "Palantir at $185B: 165x earnings, government AI, and AIP bootcamps. Brilliant or insane? BAAF Score 52/100."
-seoTitle: "Palantir BAAF 52/100: 165x P/E for $3B Revenue? | April 2026"
-seoDescription: "Palantir scores 52/100 on BAAF. 165x earnings. Government 55% of revenue. AIP bootcamps fueling commercial growth. Brilliant or bubble?"
+beafScore: 52
+description: "Palantir at $185B: 165x earnings, government AI, and AIP bootcamps. Brilliant or insane? BEAF Score 52/100."
+seoTitle: "Palantir BEAF 52/100: 165x P/E for $3B Revenue? | April 2026"
+seoDescription: "Palantir scores 52/100 on BEAF. 165x earnings. Government 55% of revenue. AIP bootcamps fueling commercial growth. Brilliant or bubble?"
 relatedSlugs: ["deep-dive-msft-april-2026","deep-dive-googl-april-2026","deep-dive-tsla-april-2026"]
-faqs: [{"q":"What is Palantir's BAAF score?","a":"52/100 (Grade D+). Palantir scores high on Growth (commercial +54%) and Moat (government lock-in) but loses heavily on Valuation as the 165x trailing P/E gives almost no margin of safety. See full BAAF breakdown in our Deep Dive →"},{"q":"Is Palantir really worth 165x earnings?","a":"At 165x trailing P/E, Palantir would need to triple earnings just to reach NVIDIA's multiple. Whether AIP bootcamp commercial conversion justifies this is the central question. See full valuation analysis in our Deep Dive →"},{"q":"What is the biggest risk to Palantir stock?","a":"Multiple compression on any growth deceleration plus US government budget cycles affecting the 55% government revenue base. See full risk analysis in our Deep Dive →"}]
+faqs: [{"q":"What is Palantir's BEAF score?","a":"52/100 (Grade D+). Palantir scores high on Growth (commercial +54%) and Moat (government lock-in) but loses heavily on Valuation as the 165x trailing P/E gives almost no margin of safety. See full BEAF breakdown in our Deep Dive →"},{"q":"Is Palantir really worth 165x earnings?","a":"At 165x trailing P/E, Palantir would need to triple earnings just to reach NVIDIA's multiple. Whether AIP bootcamp commercial conversion justifies this is the central question. See full valuation analysis in our Deep Dive →"},{"q":"What is the biggest risk to Palantir stock?","a":"Multiple compression on any growth deceleration plus US government budget cycles affecting the 55% government revenue base. See full risk analysis in our Deep Dive →"}]
 ---
 
 ## 165x Earnings. One Hundred and Sixty-Five Times.
@@ -84,11 +84,11 @@ These contracts have 5-10 year durations with renewal options. The switching cos
 
 Counterpoint: government contract concentration is a double-edged sword. Top 10 government customers represent approximately 45% of total revenue (Palantir 10-K). A single contract loss or budget cut in the wrong program has outsized impact. RBC Capital analyst Rishi Jaluria noted in a February 2026 report that "Palantir's customer concentration risk is among the highest in enterprise software — comparable to early-stage defense contractors, not mature software platforms."
 
-## Financial Analysis: BAAF Scoring
+## Financial Analysis: BEAF Scoring
 
-### BAAF Score: 52/100 (D+)
+### BEAF Score: 52/100 (D+)
 
-| BAAF Axis | Score | Max | Evidence |
+| BEAF Axis | Score | Max | Evidence |
 |-----------|-------|-----|----------|
 | **GROWTH** | 18 | 25 | Revenue +34% YoY, accelerating from +17% in 2023. AIP bootcamp conversion rate (45%) is 2-3x industry average (Gartner). US Government growing 42%. Revenue acceleration from $2.38B to $3.2B is genuine. Deduction: growth from a $3.2B base makes the 165x P/E particularly difficult to justify — Palantir would need to maintain 30%+ growth for 8-10 years to grow into the current valuation. |
 | **PROFITABILITY** | 12 | 20 | Net margin 34% (GAAP), FCF margin 32%. Contribution margins of 55% are strong. But stock-based compensation runs at 25% of revenue ($800M annually). In the last four years, Palantir issued $3.5B in SBC while generating $3.8B in cumulative FCF — nearly all "free" cash flow goes to employees via dilution, not to shareholders. Deduction: dilution-adjusted profitability is far lower than headline numbers suggest. |
@@ -111,7 +111,7 @@ Counterpoint: government contract concentration is a double-edged sword. Top 10 
 | SBC % of Revenue | 25% | 10% | 45% | 2% | 3% | 8% |
 | Gov Revenue % | 67% | 15% | 10% | 95% | 97% | — |
 | NRR | 118% | 110% | 127% | 98% | 100% | 110% |
-| BAAF Score | 52 | 68 | 48 | 65 | 60 | — |
+| BEAF Score | 52 | 68 | 48 | 65 | 60 | — |
 
 *Sources: Financial Modeling Prep, FactSet, Gartner, company 10-K/proxy filings*
 
@@ -201,9 +201,9 @@ Counterpoint to bear case: Palantir's government backlog and multi-year contract
 
 20% x $95 + 50% x $55 + 25% x $25 + 5% x $120 (extreme bull) = **$57**. Current price: $78. The probability-weighted math says Palantir is approximately 27% overvalued even with generous growth assumptions.
 
-## Brutal AI Verdict
+## Brutal Edge™ Verdict
 
-### BAAF Score: 52/100 — Grade: D+
+### BEAF Score: 52/100 — Grade: D+
 
 Palantir might be the best company with the worst stock price in the S&P 500.
 
@@ -224,7 +224,7 @@ Fascinating company. Dangerous entry point. The plus in D+ is for the technology
 - Analyst estimates: LSEG consensus, William Blair (Kamil Mielczarek), RBC Capital (Rishi Jaluria), Citi (Tyler Radke)
 - Enterprise SaaS benchmarks: Gartner 2025 Enterprise Software Market Guide
 - Competitor data: Salesforce, Snowflake, Leidos, Booz Allen Hamilton 10-K filings
-- BAAF Framework v1.0: DHLM Studio proprietary scoring (see [Editorial Policy](/editorial))
+- BEAF Framework v1.0: DHLM Studio proprietary scoring (see [Editorial Policy](/editorial))
 - Valuation: DCF assumptions use WACC of 12%, terminal growth of 3.5%
 
 ---

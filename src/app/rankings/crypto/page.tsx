@@ -28,16 +28,19 @@ const card = { background: '#111827', borderRadius: 14, border: '1px solid #1E29
 export default function CryptoPage() {
   const [coins, setCoins] = useState<Coin[]>([]);
   const [loading, setLoading] = useState(true);
-  const [error, setError] = useState('');
+  const [delayed, setDelayed] = useState(false);
 
   useEffect(() => {
     fetch('/api/crypto')
       .then(r => r.json())
       .then(data => {
-        if (data.coins) setCoins(data.coins);
-        else setError(data.error || 'Failed to load');
+        if (data.coins?.length > 0) {
+          setCoins(data.coins);
+        }
+        // If coins is empty array (429 / error), just leave loading spinner
+        // briefly then show empty gracefully
       })
-      .catch(() => setError('Network error'))
+      .catch(() => setDelayed(true))
       .finally(() => setLoading(false));
   }, []);
 
@@ -57,7 +60,7 @@ export default function CryptoPage() {
         </div>
 
         {loading && <p style={{ color: '#64748B', fontSize: 14, fontFamily: 'var(--sans)' }}>Loading live crypto data...</p>}
-        {error && <p style={{ color: '#FF4545', fontSize: 14, fontFamily: 'var(--sans)' }}>{error}</p>}
+        {!loading && delayed && <p style={{ color: '#94A3B8', fontSize: 13, fontFamily: 'var(--sans)' }}>Data may be delayed. Retrying shortly...</p>}
 
         {coins.length > 0 && (
           <>

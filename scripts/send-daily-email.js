@@ -8,7 +8,7 @@
 //   - RESEND_API_KEY     (Resend account API key)
 // Optional env:
 //   - DAILY_BRIEF_DATE   (YYYY-MM-DD; defaults to today UTC)
-//   - RESEND_FROM        (default: 'Brutal AI <daily@dhlm-studio.com>')
+//   - RESEND_FROM        (default: 'Brutal Edge <daily@dhlm-studio.com>')
 //   - DRY_RUN=1          (logs but does not send)
 //
 // Resend API allows up to 100 recipients per single send. We chunk
@@ -60,7 +60,7 @@ function loadBrief() {
 
 function buildSubject(fm) {
   // Per format proposal §4.4 (subject line emoji approved): 🔥 prefix
-  return `🔥 Brutal AI Daily — ${fm.date}: ${(fm.title || '').replace(/^Daily Brief — \S+\s*/, '')}`.trim();
+  return `🔥 Brutal Edge Daily — ${fm.date}: ${(fm.title || '').replace(/^Daily Brief — \S+\s*/, '')}`.trim();
 }
 
 function buildHtml(fm, body) {
@@ -85,7 +85,7 @@ function buildHtml(fm, body) {
 <html><body style="margin:0;padding:24px;background:#0B0F19;font-family:-apple-system,BlinkMacSystemFont,'Segoe UI',sans-serif;color:#E2E8F0;">
   <table width="100%" cellpadding="0" cellspacing="0" style="max-width:600px;margin:0 auto;">
     <tr><td>
-      <div style="font-family:Georgia,serif;font-size:11px;font-weight:800;color:#C73E3A;letter-spacing:3px;margin-bottom:12px;">🔥 BRUTAL AI&trade; DAILY</div>
+      <div style="font-family:Georgia,serif;font-size:11px;font-weight:800;color:#C73E3A;letter-spacing:3px;margin-bottom:12px;">🔥 BRUTAL EDGE&trade; DAILY</div>
       <h1 style="font-family:Georgia,serif;font-size:24px;font-weight:900;color:#F1F5F9;margin:0 0 12px;line-height:1.3;">${fm.title || 'Daily Brief'}</h1>
       <div style="font-size:12px;color:#94A3B8;margin-bottom:20px;">${fm.date} · AI-assisted analysis under human editorial oversight</div>
 
@@ -143,7 +143,7 @@ async function main() {
   }
 
   const resend = new Resend(apiKey);
-  const from = process.env.RESEND_FROM || 'Brutal AI <daily@dhlm-studio.com>';
+  const from = process.env.RESEND_FROM || 'Brutal Edge <daily@dhlm-studio.com>';
 
   // Chunk into batches; send each batch with bcc to obscure recipient list.
   const chunks = [];

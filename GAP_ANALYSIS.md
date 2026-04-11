@@ -1671,7 +1671,7 @@ export function Change({ value }: { value: number }) {
 
 ### AS-IS
 
-**Brutal AI (Stock Roasts):**
+**Brutal Edge (Stock Roasts):**
 - `generateRoast` function in `markets/page.tsx` (lines 17-92): 75 lines of hardcoded Trump-style roasts for individual stocks.
 - 40+ unique roast templates with stock-specific references.
 - Roast is revealed with a click-to-expand animation (`transition: all 0.5s`).
@@ -1712,7 +1712,7 @@ Both features are genuinely unique differentiators in the financial data space. 
 export async function generateMetadata({ params }: { params: { ticker: string } }) {
   const roast = generateRoast(params.ticker);
   return {
-    title: `${params.ticker} Stock Roast - Brutal AI Analysis`,
+    title: `${params.ticker} Stock Roast - Brutal Edge Analysis`,
     description: roast.substring(0, 160),
     openGraph: {
       images: [`/api/og/roast?ticker=${params.ticker}`],
@@ -1755,7 +1755,7 @@ export async function GET(req: Request) {
           fontSize: 20, color: '#C73E3A', marginTop: 40,
           fontWeight: 600,
         }}>
-          DHLM Studio - Brutal AI Analysis
+          DHLM Studio - Brutal Edge Analysis
         </div>
       </div>
     ),

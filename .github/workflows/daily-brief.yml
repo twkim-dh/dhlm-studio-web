@@ -2,7 +2,10 @@ name: Daily Brief
 
 on:
   schedule:
-    - cron: '30 11 * * 1-5'
+    # Post-close: UTC 21:30 = ET 5:30 PM (after market close + data settling)
+    - cron: '30 21 * * 1-5'
+    # Fallback morning run: UTC 11:30 = ET 7:30 AM (publishes previous-day close data)
+    - cron: '30 11 * * 2-6'
   workflow_dispatch:
     inputs:
       date:
@@ -34,6 +37,8 @@ jobs:
         id: generate
         env:
           FMP_API_KEY: ${{ secrets.FMP_API_KEY }}
+          ALPHA_VANTAGE_KEY: ${{ secrets.ALPHA_VANTAGE_KEY }}
+          ANTHROPIC_API_KEY: ${{ secrets.ANTHROPIC_API_KEY }}
           DAILY_BRIEF_DATE: ${{ github.event.inputs.date }}
         run: node scripts/generate-daily-brief.js
 

@@ -12,7 +12,7 @@ paperYear: 2024
 paperInstitution: "Soongsil University, Graduate School of Information Science"
 paperAdvisor: "Prof. Jae Man Jung"
 seoTitle: "Fear & Greed Index Predict Stock Returns? | Paper vs. Profit #001"
-seoDescription: "Soongsil University paper tested whether CNN's Fear & Greed Index can predict S&P 500 returns. R-squared 0.05-0.26. Stock Price Strength dominated. Brutal AI verdict: MAYBE."
+seoDescription: "Soongsil University paper tested whether CNN's Fear & Greed Index can predict S&P 500 returns. R-squared 0.05-0.26. Stock Price Strength dominated. Brutal Edge verdict: MAYBE."
 relatedSlugs: []
 faqs: [{"q":"Can the Fear & Greed Index predict stock returns?","a":"Partially. The 2024 Soongsil University paper found R-squared values of 0.05 to 0.26 across quarters when using machine learning models on the 7 sub-indicators. That means 80 percent of daily returns remained unexplained. Direction prediction (up vs down) showed more promise than magnitude prediction. See full breakdown in the article →"},{"q":"Which Fear & Greed sub-indicator is most predictive?","a":"Stock Price Strength — the ratio of NYSE 52-week highs to lows. Across both linear and non-linear ML models, this single sub-indicator had a feature importance roughly 3x larger than any other variable. Market Volatility (VIX) and Put/Call options ranked second and third. See full breakdown in the article →"},{"q":"Can I use the Fear & Greed Index to make money?","a":"The paper does not prove this. R-squared of 0.10 to 0.20 means 80 to 90 percent of daily returns are unexplained, and the paper did not model transaction costs or slippage. The honest framing is that the index is a sentiment thermometer, not a trading signal — useful as a confirming filter, not as a buy/sell trigger. See full breakdown in the article →"}]
 ---
@@ -140,4 +140,4 @@ Choi, I.S. (2024). *Stock Return Prediction Model using Fear and Greed Index* (M
 
 ---
 
-*Paper vs. Profit is a weekly series where Brutal AI dissects academic finance research and asks the only question that matters: would this make you money? Published every Wednesday. Not financial advice.*
+*Paper vs. Profit is a weekly series where Brutal Edge dissects academic finance research and asks the only question that matters: would this make you money? Published every Wednesday. Not financial advice.*

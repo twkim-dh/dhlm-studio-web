@@ -7,12 +7,12 @@ readTime: "14 min"
 category: "Markets"
 catColor: "#00D474"
 grade: "C+"
-baafScore: 58
-description: "Tesla at $1.5T: 120x earnings for a company with 15% promise delivery rate. Energy storage is the hidden gem nobody prices. BAAF 58/100."
-seoTitle: "Tesla BAAF 58/100: 120x Earnings, 15% Promise Delivery | April 2026"
-seoDescription: "Tesla scores 58/100 on BAAF. 120x earnings. Auto margins compressing to 17%. Energy storage growing 60%. Is FSD optionality worth the multiple?"
+beafScore: 58
+description: "Tesla at $1.5T: 120x earnings for a company with 15% promise delivery rate. Energy storage is the hidden gem nobody prices. BEAF 58/100."
+seoTitle: "Tesla BEAF 58/100: 120x Earnings, 15% Promise Delivery | April 2026"
+seoDescription: "Tesla scores 58/100 on BEAF. 120x earnings. Auto margins compressing to 17%. Energy storage growing 60%. Is FSD optionality worth the multiple?"
 relatedSlugs: ["deep-dive-nvda-april-2026","deep-dive-amd-april-2026","deep-dive-pltr-april-2026"]
-faqs: [{"q":"What is Tesla's BAAF score?","a":"58/100 (Grade C+). Tesla scores high on Brand and Momentum but loses points on Valuation (120x P/E) and Risk due to slowing auto growth and concentrated key-person risk. See full BAAF breakdown in our Deep Dive →"},{"q":"Is Tesla's energy business actually material?","a":"Energy storage revenue grew 60%+ YoY to $10B annualized at 25% gross margin, now roughly 12% of revenue. It is the fastest-growing segment but still smaller than auto. See full energy analysis in our Deep Dive →"},{"q":"What is the biggest risk to Tesla stock?","a":"BYD and Chinese EV competition compressing auto margins, plus the optionality discount if FSD and Robotaxi timelines slip again. See full risk analysis in our Deep Dive →"}]
+faqs: [{"q":"What is Tesla's BEAF score?","a":"58/100 (Grade C+). Tesla scores high on Brand and Momentum but loses points on Valuation (120x P/E) and Risk due to slowing auto growth and concentrated key-person risk. See full BEAF breakdown in our Deep Dive →"},{"q":"Is Tesla's energy business actually material?","a":"Energy storage revenue grew 60%+ YoY to $10B annualized at 25% gross margin, now roughly 12% of revenue. It is the fastest-growing segment but still smaller than auto. See full energy analysis in our Deep Dive →"},{"q":"What is the biggest risk to Tesla stock?","a":"BYD and Chinese EV competition compressing auto margins, plus the optionality discount if FSD and Robotaxi timelines slip again. See full risk analysis in our Deep Dive →"}]
 ---
 
 ## A $1.5 Trillion Faith-Based Financial Instrument
@@ -73,11 +73,11 @@ If Tesla's energy business were a standalone company, it would be valued at $150
 
 Documented promise-to-delivery ratio: approximately 15%. This is relevant to valuation because an estimated $500-700 billion of Tesla's current market cap — based on sum-of-parts analysis by Morgan Stanley's Adam Jonas (January 2026 note) — is attributed to robotaxi and autonomous driving revenue that has generated $0 to date.
 
-## Financial Analysis: BAAF Scoring
+## Financial Analysis: BEAF Scoring
 
-### BAAF Score: 58/100 (C+)
+### BEAF Score: 58/100 (C+)
 
-| BAAF Axis | Score | Max | Evidence |
+| BEAF Axis | Score | Max | Evidence |
 |-----------|-------|-----|----------|
 | **GROWTH** | 14 | 25 | Revenue +15% blended, but core automotive only +8%. Energy +105% is exceptional but represents only 13% of total. Deliveries declining: Q1 2026 missed consensus by 3.5%. 2026 delivery guidance of 2.0M implies only +10% growth (Tesla IR, Q4 2025 call). |
 | **PROFITABILITY** | 10 | 20 | Blended gross margin 17.8%, declining for 3 consecutive years. Auto margins at 17.1% vs 28.5% in 2022. Net margin 11.2%. FCF margin 8%. Energy segment margins (25.2%) are bright spot but too small to offset auto compression. |
@@ -98,7 +98,7 @@ Documented promise-to-delivery ratio: approximately 15%. This is relevant to val
 | P/E Ratio | 120x | 22x | 12x | N/A | 15x |
 | P/S Ratio | 15x | 1.4x | 1.1x | 3.0x | 0.8x |
 | EV Market Share (Global) | 18% | 28% | 5% | <1% | — |
-| BAAF Score | 58 | 72 | 65 | 35 | — |
+| BEAF Score | 58 | 72 | 65 | 35 | — |
 
 *Sources: Financial Modeling Prep, company filings, LSEG, CleanTechnica delivery data*
 
@@ -167,9 +167,9 @@ Revenue: $105B. Net income: $10B. Applied multiple: 30x (premium auto/energy hyb
 
 15% × $380 + 50% × $240 + 35% × $120 = **$219** (vs current $262). The probability-weighted math suggests 16% downside from current levels — driven primarily by the outsized probability of the bear case materializing.
 
-## Brutal AI™ Verdict
+## Brutal Edge™ Verdict
 
-### BAAF Score: 58/100 — Grade: C+
+### BEAF Score: 58/100 — Grade: C+
 
 $1.5 trillion. For a company whose documented promise-to-delivery ratio is 15%.
 
@@ -190,7 +190,7 @@ At P/E 120x with auto margins declining, you need simultaneous success in robota
 - Analyst estimates: Morgan Stanley (Adam Jonas, January 2026), LSEG consensus
 - Competitor data: BYD annual report 2025, Toyota annual report 2025
 - Market share: CleanTechnica, EV-volumes.com
-- BAAF Framework v1.0: DHLM Studio proprietary scoring (see [Editorial Policy](/editorial))
+- BEAF Framework v1.0: DHLM Studio proprietary scoring (see [Editorial Policy](/editorial))
 
 ---
 

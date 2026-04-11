@@ -46,7 +46,7 @@ export default function Home() {
           Data-Driven<br /><span style={{ color: '#00D474' }}>Stock Analysis</span>
         </h1>
         <p style={{ fontFamily: 'var(--sans)', fontSize: 16, color: '#64748B', lineHeight: 1.7, maxWidth: 480, margin: '0 0 28px' }}>
-          3,000+ word Deep Dive reports on the world&apos;s biggest stocks, scored on the BAAF 6-axis framework. Real-time market intelligence under editorial oversight. Informational and educational, not investment advice.
+          3,000+ word Deep Dive reports on the world&apos;s biggest stocks, scored on the BEAF 6-axis framework. Real-time market intelligence under editorial oversight. Informational and educational, not investment advice.
         </p>
         <div style={{ display: 'flex', gap: 8, flexWrap: 'wrap' }}>
           {[
@@ -76,12 +76,12 @@ export default function Home() {
       {/* ── TODAY'S MARKET (first thing visitors see) ── */}
       <TodayMarket />
 
-      {/* ── Featured Analysis (Brutal AI Deep Dives) — TOP PRIORITY ── */}
+      {/* ── Featured Analysis (Brutal Edge Deep Dives) — TOP PRIORITY ── */}
       <FadeIn>
       <section style={section}>
         <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'baseline', marginBottom: 16 }}>
           <div>
-            <div style={sectionLabel('#C73E3A')}>🔥 BRUTAL AI™ · DEEP DIVE</div>
+            <div style={sectionLabel('#C73E3A')}>🔥 BRUTAL EDGE™ · DEEP DIVE</div>
             <h2 style={sectionTitle}>Featured Analysis</h2>
           </div>
           <Link href="/reports" style={{ fontSize: 12, color: '#C73E3A', fontWeight: 600, fontFamily: 'var(--sans)' }}>All Reports →</Link>
@@ -134,7 +134,7 @@ export default function Home() {
                 </div>
                 <div style={{ textAlign: 'right' }}>
                   <div style={{ fontFamily: 'var(--serif)', fontSize: 22, fontWeight: 900, color: '#F1F5F9', lineHeight: 1 }}>{r.grade}</div>
-                  <div style={{ fontFamily: 'var(--mono)', fontSize: 9, color: '#475569', marginTop: 2 }}>BAAF {r.score}/100</div>
+                  <div style={{ fontFamily: 'var(--mono)', fontSize: 9, color: '#475569', marginTop: 2 }}>BEAF {r.score}/100</div>
                 </div>
               </div>
               <div style={{ display: 'inline-block', fontSize: 9, fontWeight: 700, padding: '3px 8px', borderRadius: 4, background: `${r.color}18`, color: r.color, fontFamily: 'var(--mono)', marginBottom: 10 }}>{r.tag}</div>

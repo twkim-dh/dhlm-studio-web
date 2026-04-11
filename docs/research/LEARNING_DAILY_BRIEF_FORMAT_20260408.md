@@ -1,7 +1,7 @@
 # LEARNING REPORT — Daily Brief Format Benchmarking
 
 > **Date:** 2026-04-08
-> **Author:** Brutal AI™ Editorial Research (under human editorial oversight)
+> **Author:** Brutal Edge™ Editorial Research (under human editorial oversight)
 > **Purpose:** Benchmark 14 leading daily financial briefings to derive a best-in-class format proposal for DHLM Studio Daily Brief.
 > **Output:** Cross-publication analysis → Best Practices → DHLM Studio recommendations → Before/After examples
 > **Related:** [DAILY_BRIEF_FORMAT_PROPOSAL_20260408.md](DAILY_BRIEF_FORMAT_PROPOSAL_20260408.md)
@@ -136,7 +136,7 @@ Sources: publicly available newsletter archives, parent company press releases, 
 - **Publish time:** 7:00-7:30 AM KST
 - **Performance proxy:** 80만+ YouTube 구독자가 동일 콘텐츠 비디오 버전 시청
 
-**Key strengths:** "Why" explanation depth is the model we should emulate for the BAAF "every claim has a number, every number has a reason" rule. Trust through consistency over years.
+**Key strengths:** "Why" explanation depth is the model we should emulate for the BEAF "every claim has a number, every number has a reason" rule. Trust through consistency over years.
 
 **Key weakness:** Single-author dependency. Format does not scale beyond personal voice.
 
@@ -216,7 +216,7 @@ Sources: publicly available newsletter archives, parent company press releases, 
 - **Publish time:** 6:30 AM ET
 - **Performance proxy:** Free product within MarketWatch.com
 
-**Key strengths:** "Call of the Day" feature highlights one specific analyst note or trader idea. This is the closest format to a Brutal AI verdict.
+**Key strengths:** "Call of the Day" feature highlights one specific analyst note or trader idea. This is the closest format to a Brutal Edge verdict.
 
 **Key weakness:** "The Buzz" stock list often duplicates names from prior days. Editorial selection feels formulaic.
 
@@ -295,7 +295,7 @@ Three publications consistently outscore all others on context depth: Sherwood N
 
 The single biggest gap in institutional briefs (Bloomberg, Reuters, FT) is the assumption that the reader already understands the mechanism. The single biggest weakness of casual briefs (Morning Brew, The Hustle) is that they explain context for entertainment rather than to make readers smarter.
 
-DHLM Studio occupies an empty position: institutional-grade depth with retail-friendly explanation. This is the BAAF tone applied to daily content.
+DHLM Studio occupies an empty position: institutional-grade depth with retail-friendly explanation. This is the BEAF tone applied to daily content.
 
 ### 4.3 Numbers + Reasons (Not Numbers Alone)
 
@@ -321,7 +321,7 @@ The biggest visual win is **inline data tables**. Every successful brief uses at
 
 Every successful brief ends the same way: a memorable closing element that gives the reader a reason to remember the brand. Morning Brew has "Recs". Axios has "1 fun thing". FT FirstFT has "What Else We're Reading". Sherwood has the podcast tease.
 
-DHLM Studio should end with the **Brutal AI Verdict** — one sentence with at least one specific number, written in the BAAF voice. This is the equivalent of the Bloomberg "Charting It" or the Axios "1 fun thing" but uniquely on-brand.
+DHLM Studio should end with the **Brutal Edge Verdict** — one sentence with at least one specific number, written in the BEAF voice. This is the equivalent of the Bloomberg "Charting It" or the Axios "1 fun thing" but uniquely on-brand.
 
 ---
 
@@ -355,9 +355,9 @@ Based on this benchmark, the proposed 7-section format combines the strongest el
 - Next 5 trading days
 - Earnings, economic data releases, Fed events
 
-### Section 6: BRUTAL AI VERDICT (single sentence)
+### Section 6: BRUTAL EDGE VERDICT (single sentence)
 - One sentence with at least one specific number
-- BAAF voice: institutional-grade observation with Brutal AI personality
+- BEAF voice: institutional-grade observation with Brutal Edge personality
 
 ### Section 7: RELATED DEEP DIVES (link list, ~30 words)
 - 2-3 internal links to related /reports/ pages
@@ -382,23 +382,23 @@ Based on this benchmark, the proposed 7-section format combines the strongest el
 
 **Word count:** 132. **Specific numbers:** 12. **Context:** full causal chain.
 
-### 6.3 Brutal AI Verdict — Before (Morning Brew style)
+### 6.3 Brutal Edge Verdict — Before (Morning Brew style)
 
 > What a mess. Markets need a hug today.
 
-**Word count:** 8. **Specific numbers:** 0. **BAAF compliance:** fail.
+**Word count:** 8. **Specific numbers:** 0. **BEAF compliance:** fail.
 
-### 6.4 Brutal AI Verdict — After (DHLM Studio standard)
+### 6.4 Brutal Edge Verdict — After (DHLM Studio standard)
 
 > One bad CPI print, one Fed governor with a hot mic, and 380 billion dollars of market cap evaporates in a single session — the AI mega-caps trading at 45x forward earnings have a precision intolerance for any macro volatility, and Bowman just reminded everyone the Fed is not their friend.
 
-**Word count:** 48. **Specific numbers:** 3. **BAAF compliance:** pass (number-backed verdict, opinionated voice, no buy/sell language).
+**Word count:** 48. **Specific numbers:** 3. **BEAF compliance:** pass (number-backed verdict, opinionated voice, no buy/sell language).
 
 ---
 
 ## 7. Open Questions for Editorial Review
 
-1. **Single author vs rotating?** Stratechery and Matt Levine prove single-author authority builds loyalty but limits scale. DHLM Studio Brutal AI voice is technically AI-assisted, which actually solves this — the voice is consistent without single-human bottleneck.
+1. **Single author vs rotating?** Stratechery and Matt Levine prove single-author authority builds loyalty but limits scale. DHLM Studio Brutal Edge voice is technically AI-assisted, which actually solves this — the voice is consistent without single-human bottleneck.
 
 2. **Saturday Weekly Deep Analysis** (PART 8-C) should be a separate format closer to Stratechery, not the same template as the daily brief.
 

@@ -7,7 +7,7 @@ readTime: "12 min"
 category: "Markets"
 catColor: "#00D474"
 grade: "—"
-baafScore: 0
+beafScore: 0
 description: "The Iran war produced the biggest oil shock in years. After the April 8 ceasefire headline, the easy trade is over. The next winners are the energy companies whose cash flow holds whether crude stays at $110 or settles back to $85. Five names ranked: MPC, XOM, CVX, VLO, OXY."
 type: "hot-sector"
 sector: "Energy"
@@ -125,7 +125,7 @@ The risk that matters most is no longer that the war expands. It is that the war
 
 The opposite tail scenario also deserves explicit consideration. If the ceasefire breaks and Hormuz tension reignites, markets will rapidly reprice the 20 million barrel per day chokepoint risk back into crude curves. In that case, the integrated majors strengthen again and high-beta names like OXY can move dramatically more. But that scenario is a low-probability, high-impact tail. Investors are perpetually attracted to tail risks, and portfolios that overweight tail exposures consistently underperform across longer horizons. The right framing for the current environment is to favor optimal asymmetry rather than maximum elasticity.
 
-## Brutal AI Verdict
+## Brutal Edge™ Verdict
 
 The conclusion of this report is more sober than the headline suggests.
 

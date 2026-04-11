@@ -85,7 +85,7 @@ function generateWeeklyRecap(movers) {
       },
       {
         heading: 'Top Gainers (Large-Cap)',
-        body: `The biggest winners among large-cap stocks this week: ${gList}. These moves were driven by earnings beats, analyst upgrades, and sector momentum. Visit individual stock pages for Brutal AI commentary on each.`,
+        body: `The biggest winners among large-cap stocks this week: ${gList}. These moves were driven by earnings beats, analyst upgrades, and sector momentum. Visit individual stock pages for Brutal Edge commentary on each.`,
       },
       {
         heading: 'Top Losers (Large-Cap)',
@@ -120,7 +120,7 @@ function generateCryptoWeekly(coins) {
     sections: [
       {
         heading: 'Top 10 Cryptocurrencies',
-        body: `This week in crypto: ${list}. View live prices and Brutal AI commentary on our Crypto Rankings page.`,
+        body: `This week in crypto: ${list}. View live prices and Brutal Edge commentary on our Crypto Rankings page.`,
       },
       {
         heading: 'Winners and Losers',

@@ -1,8 +1,8 @@
-# BAAF — Brutal AI Analysis Framework
+# BEAF — Brutal Edge Analysis Framework
 
 > **Version:** 1.0  
 > **Date:** 2026-04-07  
-> **Purpose:** Standardized scoring system for all Brutal AI Deep Dive reports
+> **Purpose:** Standardized scoring system for all Brutal Edge Deep Dive reports
 
 ---
 
@@ -69,7 +69,7 @@
 
 | Score | Grade | Label |
 |-------|-------|-------|
-| 90-100 | A | Brutal AI Approved |
+| 90-100 | A | Brutal Edge Approved |
 | 85-89 | A- | Near Excellence |
 | 80-84 | B+ | Strong Pick |
 | 75-79 | B | Solid Performer |
@@ -110,6 +110,6 @@
 | PEG             |          |       |       |             |
 | FCF Yield       |          |       |       |             |
 | Debt/Equity     |          |       |       |             |
-| BAAF Score      |          |       |       |             |
+| BEAF Score      |          |       |       |             |
 | Brutal Grade    |          |       |       |             |
 ```

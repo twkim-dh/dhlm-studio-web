@@ -708,7 +708,7 @@ Your current reports include a solid scenario analysis (Bull/Base/Bear) with pro
 **Weaknesses vs professional standard:**
 1. No DCF model shown — just mentions "WACC of 10.5%, terminal growth 3%" in sources section
 2. No reverse DCF — doesn't tell readers what the market is implicitly pricing
-3. No comparable valuation table in the valuation section (exists in BAAF section but not applied to derive a price)
+3. No comparable valuation table in the valuation section (exists in BEAF section but not applied to derive a price)
 4. No sensitivity analysis — single-point WACC and terminal growth
 5. No SOTP — treats NVIDIA as a single business
 6. PEG ratio presented without limitations or multi-horizon view
@@ -742,9 +742,9 @@ Add approximately 800-1200 words to the valuation section, structured as:
 
 4. **Real options valuation for NVIDIA's emerging segments:** Automotive ($3B today, potentially $30B by 2030) and Omniverse/robotics are call options on future TAM. Traditional DCF undervalues optionality. How do professional analysts handle this? (Answer: most use SOTP with a premium multiple on early-stage segments.)
 
-5. **How to present valuation uncertainty honestly without appearing indecisive?** Goldman gives a single price target. Bernstein gives a range. Damodaran gives a distribution. Which approach best serves DHLM Studio's "Brutal AI" brand? Recommendation: the distribution/scenario approach aligns with intellectual honesty. A single price target conveys false precision.
+5. **How to present valuation uncertainty honestly without appearing indecisive?** Goldman gives a single price target. Bernstein gives a range. Damodaran gives a distribution. Which approach best serves DHLM Studio's "Brutal Edge" brand? Recommendation: the distribution/scenario approach aligns with intellectual honesty. A single price target conveys false precision.
 
-6. **BAAF Score integration:** How should the BAAF valuation sub-score (currently 8/15) map to the formal valuation methods above? Should the sub-score be derived FROM the methods (DCF gap, comps premium, scenario skew) rather than assessed subjectively?
+6. **BEAF Score integration:** How should the BEAF valuation sub-score (currently 8/15) map to the formal valuation methods above? Should the sub-score be derived FROM the methods (DCF gap, comps premium, scenario skew) rather than assessed subjectively?
 
 7. **Frequency of updating valuation models:** Sell-side updates after every earnings report. For DHLM Studio's monthly Deep Dives, should the valuation be fully rebuilt each month or updated incrementally? Recommendation: full rebuild quarterly, incremental updates monthly.
 

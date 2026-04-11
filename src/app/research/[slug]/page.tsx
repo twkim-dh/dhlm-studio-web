@@ -5,6 +5,7 @@ import path from 'path';
 import ListenButton from '@/components/ListenButton';
 import InlineSubscribe from '@/components/InlineSubscribe';
 import GiscusComments from '@/components/GiscusComments';
+import unsplashManifest from '@/data/unsplash-manifest.json';
 
 const CONTENT_DIR = path.join(process.cwd(), 'src/content/research');
 
@@ -157,6 +158,9 @@ export default async function ResearchArticlePage({ params }: { params: Promise<
   const fm = a.fm;
   const c = verdictColor(fm.verdict);
 
+  // Unsplash manifest hero image fallback
+  const unsplashEntry = (unsplashManifest as Record<string, { src: string; alt: string; credit: { author: string; authorUrl: string; unsplashUrl: string } }>)[slug];
+
   const articleLd = {
     '@context': 'https://schema.org', '@type': 'ScholarlyArticle',
     headline: fm.seoTitle || fm.title,
@@ -182,7 +186,7 @@ export default async function ResearchArticlePage({ params }: { params: Promise<
         <div style={{ marginTop: 20, padding: '20px 22px', borderRadius: 14, background: `linear-gradient(135deg, ${c.bg}, transparent)`, border: `1px solid ${c.border}`, marginBottom: 16 }}>
           <div style={{ display: 'flex', alignItems: 'center', gap: 8, marginBottom: 8 }}>
             <span style={{ fontSize: 18 }}>📚</span>
-            <span style={{ fontFamily: 'var(--mono)', fontSize: 11, fontWeight: 800, color: '#3B82F6', letterSpacing: 2 }}>BRUTAL AI™ RESEARCH LAB</span>
+            <span style={{ fontFamily: 'var(--mono)', fontSize: 11, fontWeight: 800, color: '#3B82F6', letterSpacing: 2 }}>BRUTAL EDGE™ RESEARCH LAB</span>
           </div>
           <div style={{ display: 'flex', alignItems: 'center', gap: 12 }}>
             <span style={{ fontFamily: 'var(--mono)', fontSize: 10, fontWeight: 800, padding: '5px 12px', borderRadius: 6, background: c.bg, color: c.fg, border: `1px solid ${c.border}`, letterSpacing: 1.5 }}>
@@ -219,6 +223,30 @@ export default async function ResearchArticlePage({ params }: { params: Promise<
           </div>
         )}
 
+        {/* Hero image from Unsplash manifest */}
+        {unsplashEntry?.src && (
+          <div style={{ borderRadius: 12, overflow: 'hidden', border: '1px solid #1E293B', marginBottom: 24 }}>
+            {/* eslint-disable-next-line @next/next/no-img-element */}
+            <img
+              src={unsplashEntry.src}
+              alt={unsplashEntry.alt}
+              style={{ width: '100%', height: 200, objectFit: 'cover', display: 'block' }}
+            />
+            <div style={{ padding: '4px 10px', textAlign: 'right', background: '#0D1117' }}>
+              <span style={{ fontSize: 9, color: '#334155' }}>
+                Photo by{' '}
+                <a href={unsplashEntry.credit.authorUrl} target="_blank" rel="noopener noreferrer" style={{ color: '#475569', textDecoration: 'none' }}>
+                  {unsplashEntry.credit.author}
+                </a>
+                {' '}on{' '}
+                <a href={unsplashEntry.credit.unsplashUrl} target="_blank" rel="noopener noreferrer" style={{ color: '#475569', textDecoration: 'none' }}>
+                  Unsplash
+                </a>
+              </span>
+            </div>
+          </div>
+        )}
+
         {/* Body */}
         <div>{renderMarkdown(a.body)}</div>
 
@@ -247,7 +275,7 @@ export default async function ResearchArticlePage({ params }: { params: Promise<
 
         {/* Footer */}
         <div style={{ marginTop: 40, padding: '20px 22px', borderRadius: 14, background: '#111827', border: '1px solid #1E293B', textAlign: 'center' }}>
-          <div style={{ fontFamily: 'var(--mono)', fontSize: 10, fontWeight: 800, color: '#3B82F6', letterSpacing: 2, marginBottom: 6 }}>📚 BRUTAL AI™ RESEARCH LAB</div>
+          <div style={{ fontFamily: 'var(--mono)', fontSize: 10, fontWeight: 800, color: '#3B82F6', letterSpacing: 2, marginBottom: 6 }}>📚 BRUTAL EDGE™ RESEARCH LAB</div>
           <div style={{ fontSize: 9, color: '#475569', lineHeight: 1.6 }}>
             Academic research interpretation only. Not financial advice.<br />
             Always verify findings against the original paper.

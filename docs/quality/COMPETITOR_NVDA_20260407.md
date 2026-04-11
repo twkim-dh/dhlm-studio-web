@@ -66,9 +66,9 @@
 
 ### vs. Beth Kindig / I/O Fund
 - **DHLM is more balanced.** Kindig is unambiguously bullish ($20T by 2030). She does not present a bear case or probability-weighted scenarios. DHLM presents bull/base/bear with explicit probabilities (25%/50%/25%) and a probability-weighted target of $166. This is intellectually more honest and more useful for decision-making.
-- **DHLM has a proprietary scoring framework.** BAAF Score (83/100, B+) with six transparent axes is a differentiated analytical product. No competitor has an equivalent structured scoring system. Kindig uses narrative conviction; TipRanks aggregates others; Motley Fool uses simple P/E comparison. BAAF is unique.
+- **DHLM has a proprietary scoring framework.** BEAF Score (83/100, B+) with six transparent axes is a differentiated analytical product. No competitor has an equivalent structured scoring system. Kindig uses narrative conviction; TipRanks aggregates others; Motley Fool uses simple P/E comparison. BEAF is unique.
 - **DHLM provides reverse DCF.** The reverse DCF showing that $175/share implies 28% annual FCF growth for a decade is a powerful reality check that none of the competitors provide. This is arguably the single most valuable analytical insight in any of the articles reviewed.
-- **DHLM addresses what must go wrong.** The "What Must Be True for BAAF 83 to Hold" section explicitly states the falsification conditions. This is rare in financial analysis and extremely valuable.
+- **DHLM addresses what must go wrong.** The "What Must Be True for BEAF 83 to Hold" section explicitly states the falsification conditions. This is rare in financial analysis and extremely valuable.
 
 ### vs. TipRanks
 - **DHLM has original analysis.** TipRanks is fundamentally an aggregator. It reports what other analysts say. DHLM produces original valuation work, original competitive analysis, and an original scoring framework.
@@ -83,7 +83,7 @@
 
 ### vs. Intellectia.ai
 - **DHLM has personality and editorial voice.** "That's not a business. That's a printing press with a stock ticker." -- DHLM's writing has a distinctive, opinionated voice. Intellectia reads like templated AI output. Voice is a competitive moat for content businesses.
-- **DHLM takes a position.** The BAAF verdict is not wishy-washy. "You're buying the most expensive stock in the most expensive market in modern history" is a clear editorial stance. Intellectia hedges everything.
+- **DHLM takes a position.** The BEAF verdict is not wishy-washy. "You're buying the most expensive stock in the most expensive market in modern history" is a clear editorial stance. Intellectia hedges everything.
 
 ---
 
@@ -99,7 +99,7 @@
 #### D2. Add analyst consensus distribution
 **Gap:** TipRanks shows 39 Buy / 1 Hold / 1 Sell. DHLM cites individual analysts but not the aggregate picture.
 **Fix:** Add a one-line summary: "Wall Street consensus: 39 Buy, 1 Hold, 1 Sell. Average PT $264 (+51% upside). Range: $200-$352." Source: LSEG or FactSet.
-**Location:** After the BAAF scoring table, before valuation scenarios.
+**Location:** After the BEAF scoring table, before valuation scenarios.
 
 #### D3. Add historical self-referential P/E comparison
 **Gap:** DHLM only compares NVDA P/E (65x) against sector average (25x). Motley Fool compares against NVDA's own 10-year average (61.6x).
@@ -109,7 +109,7 @@
 #### D4. Add analyst revision momentum
 **Gap:** Kindig highlights FY2028 consensus jumping from $294B to $480B. DHLM does not track estimate revisions.
 **Fix:** Add 2-3 sentences on how consensus estimates have evolved over the past 12 months. This is a leading indicator that sophisticated investors watch.
-**Location:** After the BAAF MOMENTUM axis explanation.
+**Location:** After the BEAF MOMENTUM axis explanation.
 
 ### MEDIUM PRIORITY (Impact: Medium, Effort: Medium)
 
@@ -142,7 +142,7 @@
 
 #### D10. Add a "Key Takeaway" summary box at the top
 **Gap:** Motley Fool and TipRanks both lead with a 2-3 bullet summary for skimmers. DHLM opens with the dramatic hook (excellent for engagement) but makes readers work to find the conclusion.
-**Fix:** Add a 3-bullet TL;DR after the opening section, before the Company Deep Dive. Example: "BAAF Score: 83/100 (B+) | Probability-weighted target: $166 vs. current $175 | Key risk: valuation premium compression if growth decelerates below 40%."
+**Fix:** Add a 3-bullet TL;DR after the opening section, before the Company Deep Dive. Example: "BEAF Score: 83/100 (B+) | Probability-weighted target: $166 vs. current $175 | Key risk: valuation premium compression if growth decelerates below 40%."
 **Location:** After the opening hook, before "Company Deep Dive."
 
 ---
@@ -153,7 +153,7 @@
 | # | Change | File Location | Est. Time |
 |---|--------|---------------|-----------|
 | 1 | D3: Add NVDA historical P/E comparison (1 sentence) | Valuation section | 10 min |
-| 2 | D2: Add analyst consensus distribution (1 paragraph) | After BAAF table | 15 min |
+| 2 | D2: Add analyst consensus distribution (1 paragraph) | After BEAF table | 15 min |
 | 3 | D8: Add buyback/capital return data (2 sentences) | Financial Analysis | 10 min |
 | 4 | D10: Add TL;DR summary box | After opening hook | 15 min |
 | 5 | D9: Optimize SEO description | Frontmatter | 5 min |
@@ -192,7 +192,7 @@
 
 ### Brutal Honest Assessment
 
-DHLM Studio's NVDA report is the best-balanced, most intellectually rigorous analysis in this competitive set. The BAAF framework, reverse DCF, Cisco comparison, and probability-weighted scenarios give it a structural edge that no single competitor matches.
+DHLM Studio's NVDA report is the best-balanced, most intellectually rigorous analysis in this competitive set. The BEAF framework, reverse DCF, Cisco comparison, and probability-weighted scenarios give it a structural edge that no single competitor matches.
 
 **However, DHLM has two significant blind spots:**
 

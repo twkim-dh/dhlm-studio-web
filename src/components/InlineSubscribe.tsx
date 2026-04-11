@@ -49,14 +49,14 @@ export default function InlineSubscribe({
     return (
       <div style={{ padding: '14px 18px', borderRadius: 12, background: '#00D47410', border: '1px solid #00D47425', textAlign: 'center' }}>
         <div style={{ fontSize: 13, fontWeight: 700, color: '#00D474' }}>✓ Subscribed</div>
-        <div style={{ fontSize: 11, color: '#64748B', marginTop: 2 }}>The next Brutal AI Daily lands in your inbox at 7:30 AM ET.</div>
+        <div style={{ fontSize: 11, color: '#64748B', marginTop: 2 }}>The next Brutal Edge Daily lands in your inbox at 7:30 AM ET.</div>
       </div>
     );
   }
 
   return (
     <div style={{ padding: '16px 18px', borderRadius: 12, background: '#0D1117', border: '1px solid #1E293B' }}>
-      <div style={{ fontFamily: 'var(--mono)', fontSize: 9, fontWeight: 800, color: '#C73E3A', letterSpacing: 2, marginBottom: 6 }}>📧 BRUTAL AI&trade; DAILY</div>
+      <div style={{ fontFamily: 'var(--mono)', fontSize: 9, fontWeight: 800, color: '#C73E3A', letterSpacing: 2, marginBottom: 6 }}>📧 BRUTAL EDGE&trade; DAILY</div>
       <div style={{ fontSize: 14, fontWeight: 700, color: '#E2E8F0', marginBottom: 4 }}>{headline}</div>
       <div style={{ fontSize: 11, color: '#64748B', marginBottom: 12 }}>{description}</div>
       <div style={{ display: 'flex', gap: 8 }}>

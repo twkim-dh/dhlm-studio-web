@@ -5,7 +5,7 @@
 https://dhlm-studio.com
 
 ## Main Sections
-- /markets — US stock market top gainers, losers, most active + Brutal AI commentary
+- /markets — US stock market top gainers, losers, most active + Brutal Edge commentary
 - /creators — Fastest growing YouTube, TikTok, Instagram, X creators
 - /rankings — Global rankings: billionaires, companies, GDP, population, sports
 - /rankings/crypto — Live cryptocurrency rankings (CoinGecko)

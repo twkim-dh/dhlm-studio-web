@@ -7,12 +7,12 @@ readTime: "14 min"
 category: "Markets"
 catColor: "#00D474"
 grade: "B"
-baafScore: 78
-description: "Google at $2.3T: ChatGPT eating search, YouTube holding strong, Cloud accelerating. BAAF Score 78/100."
-seoTitle: "Alphabet BAAF 78/100: Can Search Survive ChatGPT? | April 2026"
-seoDescription: "Alphabet scores 78/100 on BAAF. Search still 56% of revenue. YouTube ad growth +21%. Cloud accelerating to 31%. Is the search moat actually cracking?"
+beafScore: 78
+description: "Google at $2.3T: ChatGPT eating search, YouTube holding strong, Cloud accelerating. BEAF Score 78/100."
+seoTitle: "Alphabet BEAF 78/100: Can Search Survive ChatGPT? | April 2026"
+seoDescription: "Alphabet scores 78/100 on BEAF. Search still 56% of revenue. YouTube ad growth +21%. Cloud accelerating to 31%. Is the search moat actually cracking?"
 relatedSlugs: ["deep-dive-msft-april-2026","deep-dive-amzn-april-2026","deep-dive-meta-april-2026"]
-faqs: [{"q":"What is Alphabet's BAAF score?","a":"78/100 (Grade B). Alphabet scores high on Moat (search dominance plus YouTube) and Profitability but loses points on Growth uncertainty as generative AI threatens search query monetization. See full BAAF breakdown in our Deep Dive →"},{"q":"Is ChatGPT actually killing Google Search?","a":"Search query volume on Google.com remained roughly flat year over year, but the threat is monetization erosion as zero-click AI answers reduce ad inventory. See full search analysis in our Deep Dive →"},{"q":"What is the biggest risk to Alphabet stock?","a":"Antitrust remedies. The DOJ is seeking structural changes including a possible Chrome divestiture, which could materially alter Search distribution economics. See full regulatory analysis in our Deep Dive →"}]
+faqs: [{"q":"What is Alphabet's BEAF score?","a":"78/100 (Grade B). Alphabet scores high on Moat (search dominance plus YouTube) and Profitability but loses points on Growth uncertainty as generative AI threatens search query monetization. See full BEAF breakdown in our Deep Dive →"},{"q":"Is ChatGPT actually killing Google Search?","a":"Search query volume on Google.com remained roughly flat year over year, but the threat is monetization erosion as zero-click AI answers reduce ad inventory. See full search analysis in our Deep Dive →"},{"q":"What is the biggest risk to Alphabet stock?","a":"Antitrust remedies. The DOJ is seeking structural changes including a possible Chrome divestiture, which could materially alter Search distribution economics. See full regulatory analysis in our Deep Dive →"}]
 ---
 
 ## The Inventor Who Forgot to Ship
@@ -85,11 +85,11 @@ Waymo completes over 150,000 paid rides per week across San Francisco, Phoenix, 
 
 If Waymo captures even 5% of the US ride-hailing market ($50B TAM), it would be worth $100-200B as a standalone entity, per Morgan Stanley's autonomous vehicle team's November 2025 valuation framework.
 
-## Financial Analysis: BAAF Scoring
+## Financial Analysis: BEAF Scoring
 
-### BAAF Score: 78/100 (B)
+### BEAF Score: 78/100 (B)
 
-| BAAF Axis | Score | Max | Evidence |
+| BEAF Axis | Score | Max | Evidence |
 |-----------|-------|-----|----------|
 | **GROWTH** | 17 | 25 | Revenue +13%, YouTube +22%, Cloud +39% — strong segment growth. But Search (59% of revenue) is decelerating from 15% to 13%, and the trend is negative for the first time in Google's history. Deduction: consolidated growth dependent on Search, which faces structural AI headwinds. |
 | **PROFITABILITY** | 18 | 20 | Operating margin 32%, net margin 26%, FCF $88B — elite profitability. Search margins (45%) fund everything else. Cloud margins (14%) still below AWS (31%) and Azure (35%+), suggesting room for expansion. Deduction: Other Bets drag ($7B revenue on -85% operating margin). |
@@ -112,7 +112,7 @@ If Waymo captures even 5% of the US ride-hailing market ($50B TAM), it would be 
 | FCF Yield | 4.1% | 2.6% | 3.3% | 2.8% | 3.2% |
 | Cloud Revenue | $46B | $132B | N/A | $110B | — |
 | Cloud Margin | 14% | 35%+ | N/A | 31% | — |
-| BAAF Score | 78 | 81 | 74 | 76 | — |
+| BEAF Score | 78 | 81 | 74 | 76 | — |
 
 *Sources: Financial Modeling Prep, Synergy Research, FactSet, StatCounter*
 
@@ -203,9 +203,9 @@ Counterpoint: at $120/share, Google would trade at 18x earnings with $88B in ann
 
 25% x $220 + 50% x $175 + 25% x $120 = **$172**. Current price: $173. The market has priced in both the AI threat and the YouTube/Cloud upside with remarkable precision. Google is a "market return" stock from here — the probability distribution is narrow and centered on fair value.
 
-## Brutal AI Verdict
+## Brutal Edge™ Verdict
 
-### BAAF Score: 78/100 — Grade: B
+### BEAF Score: 78/100 — Grade: B
 
 Google literally invented the technology that is now disrupting its core business. The transformer architecture came from a paper written by Google employees called "Attention Is All You Need." And Google did not pay attention.
 
@@ -225,7 +225,7 @@ At 24x earnings with a 4.1% FCF yield, Google is the cheapest mega-cap in techno
 - YouTube data: Nielsen Gauge Report Q4 2025, Alphabet earnings disclosures
 - Cloud market: Synergy Research Group Q4 2025
 - Stanford HELM AI benchmark report, February 2026
-- BAAF Framework v1.0: DHLM Studio proprietary scoring (see [Editorial Policy](/editorial))
+- BEAF Framework v1.0: DHLM Studio proprietary scoring (see [Editorial Policy](/editorial))
 - Valuation: DCF assumptions use WACC of 9.5%, terminal growth of 3%
 
 ---

@@ -1,7 +1,7 @@
 // Expand the 16 remaining 500-799 word blog posts to 800+ words.
 // Each gets one targeted ~280-330 word section inserted before the FAQ.
 // Sections add specific numbers, named historical references, and follow
-// the BAAF 7 principles (no buy/sell, named sources, balanced framing).
+// the BEAF 7 principles (no buy/sell, named sources, balanced framing).
 // Run: node scripts/expand-remaining-blogs.js
 const fs = require('fs');
 const path = require('path');

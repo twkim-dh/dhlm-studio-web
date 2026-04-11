@@ -47,9 +47,7 @@ export default function Header() {
         <div style={{ maxWidth: 1100, margin: "0 auto", display: "flex", alignItems: "center", justifyContent: "space-between" }}>
           <Link href="/" style={{ display: "flex", alignItems: "center", gap: 8 }}>
             <DhlmMono size={30} />
-            <span style={{ fontFamily: "var(--serif)", fontSize: 17, fontWeight: 800, color: "#F1F5F9", letterSpacing: -0.3 }}>
-              DHLM<span style={{ color: "#C73E3A", fontFamily: "var(--sans)", fontSize: 10, fontWeight: 600, letterSpacing: 2, marginLeft: 4, verticalAlign: "super" }}>STUDIO</span>
-            </span>
+            <span style={{ fontFamily: "var(--sans)", fontSize: 11, fontWeight: 700, color: "#C73E3A", letterSpacing: 2, marginLeft: 2 }}>STUDIO</span>
           </Link>
           <div className="hidden md:flex" style={{ gap: 28, alignItems: "center" }}>
             {links.map(l => <Link key={l.label} href={l.href} style={{ fontSize: 13, fontWeight: 500, color: "#94A3B8", fontFamily: "var(--sans)" }}>{l.label}</Link>)}

@@ -1,7 +1,7 @@
 # COMPETITOR ANALYSIS — Energy Hot Sector Coverage
 
 > **Date:** 2026-04-08
-> **Author:** Brutal AI™ Editorial Research (under editorial oversight)
+> **Author:** Brutal Edge™ Editorial Research (under editorial oversight)
 > **Subject:** DHLM Studio Hot Sector #1 (Energy, MPC tactical pick) compared to peer coverage of the same Iran war energy thesis published in the same week
 > **Master directive reference:** PART 5 (weekly competitor analysis obligation)
 
@@ -139,15 +139,15 @@ The DHLM Studio report argued that refining margins can stay elevated even when 
 
 ## 6. Brutal Self-Assessment
 
-### 6.1 What Score Would the Report Get if BAAF Were Applied to It?
+### 6.1 What Score Would the Report Get if BEAF Were Applied to It?
 
-Applying BAAF to the report itself, not the stocks it covers:
+Applying BEAF to the report itself, not the stocks it covers:
 
 | Axis | Score | Notes |
 |---|---:|---|
 | Growth (analytical depth) | 22/25 | Strong stock-by-stock work, missing some refining cycle nuance |
 | Profitability (data density) | 18/20 | 100+ specific numbers, hit the 30 words per number target |
-| Moat (analytical framework) | 19/20 | BAAF + scenario table + historical parallel are differentiators |
+| Moat (analytical framework) | 19/20 | BEAF + scenario table + historical parallel are differentiators |
 | Valuation (writing efficiency) | 11/15 | 3,100 words is on the high end of target — could trim 200 words |
 | Risk (legal compliance) | 9/10 | All disclaimers in place, no buy/sell language |
 | Momentum (timeliness) | 8/10 | Same-day publication, same-week relevance |
@@ -155,7 +155,7 @@ Applying BAAF to the report itself, not the stocks it covers:
 
 ### 6.2 Honest Comparison to Peers
 
-| Publication | Estimated BAAF | Strength | Weakness |
+| Publication | Estimated BEAF | Strength | Weakness |
 |---|---:|---|---|
 | Bloomberg Intelligence Energy | 92 | Source density, speed | No conviction calls |
 | Goldman Sachs Equity Research | 95 | Proprietary data, depth | Inaccessible to retail |
@@ -185,7 +185,7 @@ DHLM Studio's first Hot Sector landed in the 87/100 range, ahead of Seeking Alph
 
 The most important pattern from this competitor analysis is that the highest-quality peer publications (Bloomberg, Goldman) win on **source density** and **proprietary data access**, while the lowest-quality peers (Seeking Alpha) win on **distribution**. DHLM Studio cannot win on source density (we are not Goldman) or distribution (we are not Seeking Alpha) in the short term.
 
-What we can win on is **the synthesis layer** — taking the same publicly available data that Bloomberg and Goldman have, organizing it into reader-friendly framing (scenario tables, BAAF scoring, historical parallels), and presenting balanced bull/bear cases that sell-side research is structurally unable to publish.
+What we can win on is **the synthesis layer** — taking the same publicly available data that Bloomberg and Goldman have, organizing it into reader-friendly framing (scenario tables, BEAF scoring, historical parallels), and presenting balanced bull/bear cases that sell-side research is structurally unable to publish.
 
 This is a defensible long-term position. It is also small. Acknowledge the size of the addressable market and price accordingly.
 
@@ -198,7 +198,7 @@ This is a defensible long-term position. It is also small. Acknowledge the size 
 - Goldman Sachs Equity Research summary content via FactSet StreetAccount (March-April 2026)
 - Doomberg public Substack feed (March 2026)
 - Seeking Alpha free tier energy editor picks (March-April 2026)
-- DHLM Studio internal BAAF framework documentation
+- DHLM Studio internal BEAF framework documentation
 - Master directive PART 5 (competitor analysis obligation)
 - Master directive PART 13-E (premium model learning)
 

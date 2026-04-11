@@ -1,7 +1,7 @@
 # HOT SECTOR CANDIDATE WATCHLIST
 
 > **Date:** 2026-04-08
-> **Maintainer:** Brutal AI™ Editorial Research (under editorial oversight)
+> **Maintainer:** Brutal Edge™ Editorial Research (under editorial oversight)
 > **Cadence:** Living document, refreshed weekly during the Friday review cycle
 > **Purpose:** A pre-screened, ranked queue of Hot Sector report candidates so weekly topic selection is fast and the "what should we cover this week" question is never blocking.
 > **Selection criteria:** [HOT_SECTOR_FORMAT_20260408.md §2.1](../frameworks/HOT_SECTOR_FORMAT_20260408.md)

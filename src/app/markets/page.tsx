@@ -152,14 +152,14 @@ function StockCard({ s }: { s: Mover }) {
           {!showRoast ? (
             <button onClick={() => { setShowRoast(true); setTimeout(() => setRevealed(true), 300); }}
               style={{ width: '100%', padding: '12px', borderRadius: 10, background: 'linear-gradient(135deg,#C73E3A,#E85D59)', color: '#fff', border: 'none', fontWeight: 800, fontSize: 13, cursor: 'pointer', display: 'flex', alignItems: 'center', justifyContent: 'center', gap: 6 }}>
-              🔥 Get the Brutal AI Take
+              🔥 Get the Brutal Edge Take
             </button>
           ) : (
             <div style={{ background: '#C73E3A08', borderRadius: 12, border: '1px solid #C73E3A20', overflow: 'hidden' }}>
               <div style={{ padding: '12px 14px', background: '#C73E3A10', borderBottom: '1px solid #C73E3A15', display: 'flex', justifyContent: 'space-between', alignItems: 'center' }}>
                 <div style={{ display: 'flex', alignItems: 'center', gap: 6 }}>
                   <span style={{ fontSize: 18 }}>{roast.emoji}</span>
-                  <span style={{ fontSize: 10, fontWeight: 800, color: '#C73E3A', letterSpacing: 2, fontFamily: 'var(--mono)' }}>BRUTAL AI TAKE</span>
+                  <span style={{ fontSize: 10, fontWeight: 800, color: '#C73E3A', letterSpacing: 2, fontFamily: 'var(--mono)' }}>BRUTAL EDGE TAKE</span>
                 </div>
                 <span style={{ fontSize: 10, fontWeight: 800, padding: '3px 8px', borderRadius: 5, background: `${roast.ratingColor}20`, color: roast.ratingColor, fontFamily: 'var(--mono)' }}>{roast.rating}</span>
               </div>
@@ -223,11 +223,11 @@ export default function MarketsPage() {
             <span style={{ fontSize: 24 }}>🔥</span>
             <div>
               <h1 style={{ fontFamily: 'var(--serif)', fontSize: 22, fontWeight: 900, color: '#F1F5F9', margin: 0 }}>Today's Markets</h1>
-              <div style={{ fontFamily: 'var(--mono)', fontSize: 9, color: '#C73E3A', letterSpacing: 2, marginTop: 1 }}>BRUTAL AI COMMENTARY</div>
+              <div style={{ fontFamily: 'var(--mono)', fontSize: 9, color: '#C73E3A', letterSpacing: 2, marginTop: 1 }}>BRUTAL EDGE COMMENTARY</div>
             </div>
           </div>
           <p style={{ fontSize: 12, color: '#94A3B8', lineHeight: 1.5, margin: 0 }}>
-            Click any stock → expand → hit <strong style={{ color: '#C73E3A' }}>"Brutal AI Take"</strong> for savage, unfiltered commentary.
+            Click any stock → expand → hit <strong style={{ color: '#C73E3A' }}>"Brutal Edge Take"</strong> for savage, unfiltered commentary.
           </p>
         </div>
 
@@ -290,7 +290,7 @@ export default function MarketsPage() {
         {/* Disclaimer */}
         <div style={{ marginTop: 20, padding: '12px 14px', borderRadius: 10, background: '#C73E3A08', border: '1px solid #C73E3A10' }}>
           <p style={{ fontSize: 9, color: '#6B7280', lineHeight: 1.7, textAlign: 'center', margin: 0 }}>
-            🤖 BRUTAL AI is informational and educational. <strong style={{ color: '#C73E3A' }}>NOT investment advice</strong>. Data: Alpha Vantage + FMP. Prices may be delayed.
+            🤖 BRUTAL EDGE is informational and educational. <strong style={{ color: '#C73E3A' }}>NOT investment advice</strong>. Data: Alpha Vantage + FMP. Prices may be delayed.
           </p>
         </div>
       </div>

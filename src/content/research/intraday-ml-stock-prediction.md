@@ -11,7 +11,7 @@ paperAuthors: "Chansu Kim, Sunwoong Kim, Heungsik Choi"
 paperYear: 2024
 paperInstitution: "Journal of Intelligence and Information Systems, Vol. 30, No. 2, pp. 85-106"
 seoTitle: "ML Intraday Stock Prediction Works? | Paper vs. Profit #002"
-seoDescription: "2024 Korean paper used dollar bars + triple barrier + meta-model on KOSPI/KOSDAQ. 57.4 percent accuracy, Sharpe 2.77, costs included. Brutal AI verdict: MAYBE."
+seoDescription: "2024 Korean paper used dollar bars + triple barrier + meta-model on KOSPI/KOSDAQ. 57.4 percent accuracy, Sharpe 2.77, costs included. Brutal Edge verdict: MAYBE."
 relatedSlugs: ["fear-greed-index-stock-prediction"]
 faqs: [{"q":"Can machine learning actually predict intraday stock moves?","a":"This 2024 paper achieved 57.4 percent accuracy on a 3-class problem (up, down, flat) with KOSPI and KOSDAQ stocks, well above the 33.3 percent random baseline. Sharpe ratio reached 2.77 over 7 years with 0.2 percent transaction costs included. The catch: it requires tick-level data, dollar bar construction, triple barrier labeling, and a meta-model. This is institutional-grade methodology, not something a retail trader can run on a laptop. See full breakdown in the article →"},{"q":"What is dollar bar sampling and why does it matter for ML?","a":"Dollar bars sample by dollar volume traded instead of by time. Each bar represents a fixed amount of money changing hands, which means more bars during active periods and fewer during dead zones. The result is a more statistically uniform dataset, which is exactly what machine learning models need. Time bars (1-min, 5-min candles) are inferior because they compress critical price action into single bars during volatile moments. See full breakdown in the article →"},{"q":"What is the triple barrier labeling method?","a":"Three barriers around each trade entry: an upper barrier (take profit), a lower barrier (stop loss), and a time barrier (maximum holding period). Whichever barrier gets hit first determines the label: up (+1), down (-1), or flat (0). The barriers are sized according to each stock individual volatility, so a volatile biotech gets wider barriers than a stable utility. This forces the model to learn volatility-adjusted patterns instead of absolute price moves. See full breakdown in the article →"}]
 ---
@@ -134,4 +134,4 @@ Kim, C., Kim, S., & Choi, H. (2024). Machine Learning-Driven Intraday Stock Pric
 
 ---
 
-*Paper vs. Profit is a weekly series where Brutal AI dissects academic finance research and asks the only question that matters: would this make you money? Published every Wednesday. Not financial advice.*
+*Paper vs. Profit is a weekly series where Brutal Edge dissects academic finance research and asks the only question that matters: would this make you money? Published every Wednesday. Not financial advice.*

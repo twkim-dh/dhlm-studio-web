@@ -7,12 +7,12 @@ readTime: "14 min"
 category: "Markets"
 catColor: "#00D474"
 grade: "B"
-baafScore: 76
-description: "Amazon at $2.2T: AWS crossing $110B, retail margins still puzzling, and an ad business nobody saw coming. BAAF Score 76/100."
-seoTitle: "Amazon BAAF 76/100: AWS at $110B vs Razor Retail | April 2026"
-seoDescription: "Amazon scores 76/100 on BAAF. AWS crossing $110B annualized. Retail margins still thin. Ad business at $50B. Is the conglomerate fairly priced?"
+beafScore: 76
+description: "Amazon at $2.2T: AWS crossing $110B, retail margins still puzzling, and an ad business nobody saw coming. BEAF Score 76/100."
+seoTitle: "Amazon BEAF 76/100: AWS at $110B vs Razor Retail | April 2026"
+seoDescription: "Amazon scores 76/100 on BEAF. AWS crossing $110B annualized. Retail margins still thin. Ad business at $50B. Is the conglomerate fairly priced?"
 relatedSlugs: ["deep-dive-googl-april-2026","deep-dive-msft-april-2026","deep-dive-meta-april-2026"]
-faqs: [{"q":"What is Amazon's BAAF score?","a":"76/100 (Grade B). Amazon scores high on Growth (AWS +18%, Ads +24%) and Moat (Prime ecosystem) but loses points on Profitability as North America retail margins remain razor thin. See full BAAF breakdown in our Deep Dive →"},{"q":"Why is Amazon's retail margin so low compared to AWS?","a":"Amazon reinvests retail cash flow into logistics, Prime, and AI infrastructure. Operating margin sits near 5% in North America vs 35%+ at AWS. See full segment analysis in our Deep Dive →"},{"q":"What is the biggest risk to Amazon stock?","a":"AWS deceleration and antitrust action. If hyperscaler customers slow GPU spending or the FTC forces structural changes, the multiple compresses. See full risk analysis in our Deep Dive →"}]
+faqs: [{"q":"What is Amazon's BEAF score?","a":"76/100 (Grade B). Amazon scores high on Growth (AWS +18%, Ads +24%) and Moat (Prime ecosystem) but loses points on Profitability as North America retail margins remain razor thin. See full BEAF breakdown in our Deep Dive →"},{"q":"Why is Amazon's retail margin so low compared to AWS?","a":"Amazon reinvests retail cash flow into logistics, Prime, and AI infrastructure. Operating margin sits near 5% in North America vs 35%+ at AWS. See full segment analysis in our Deep Dive →"},{"q":"What is the biggest risk to Amazon stock?","a":"AWS deceleration and antitrust action. If hyperscaler customers slow GPU spending or the FTC forces structural changes, the multiple compresses. See full risk analysis in our Deep Dive →"}]
 ---
 
 ## Two Companies in a Trenchcoat Pretending to Be One
@@ -72,11 +72,11 @@ The retail margins are not a problem to be solved. They are a strategy to be mai
 
 Counterpoint: Walmart CEO Doug McMillon stated in Walmart's February 2026 earnings call that Walmart's US e-commerce business achieved profitability for the first time in Q4 2025, with $100 billion in annual e-commerce revenue. Walmart+ has reached 200 million members. The "Amazon's low margins are strategic" thesis becomes less convincing when the primary competitor achieves similar margins while also turning a profit.
 
-## Financial Analysis: BAAF Scoring
+## Financial Analysis: BEAF Scoring
 
-### BAAF Score: 76/100 (B)
+### BEAF Score: 76/100 (B)
 
-| BAAF Axis | Score | Max | Evidence |
+| BEAF Axis | Score | Max | Evidence |
 |-----------|-------|-----|----------|
 | **GROWTH** | 16 | 25 | Revenue +10% overall masks segment divergence. AWS re-accelerated from 13% (Q1 2024) to 19% (Q1 2026). Advertising +23%. But consolidated growth is decelerating from +22% (2021) to +10% (2026). Deduction: headline growth rate does not justify a 68x P/E without segment-level re-acceleration. |
 | **PROFITABILITY** | 13 | 20 | Operating margin 11%, net margin 7% — both propped up by AWS (31% op margin) and Advertising (55% op margin). Retail operating margin remains 2-3% after 29 years. FCF $52B is strong in absolute terms but yields only 2.4% on a $2.2T market cap. Deduction: consolidated margins structurally capped by retail's drag. |
@@ -99,7 +99,7 @@ Counterpoint: Walmart CEO Doug McMillon stated in Walmart's February 2026 earnin
 | Cloud Growth | +19% | +30% | N/A | +28% | — |
 | Ad Revenue | $58B | $15B | $4B | $262B | — |
 | FCF Yield | 2.4% | 2.6% | 2.3% | 4.1% | 2.5% |
-| BAAF Score | 76 | 81 | 62 | 78 | — |
+| BEAF Score | 76 | 81 | 62 | 78 | — |
 
 *Sources: Financial Modeling Prep, Synergy Research, FactSet, company 10-K filings*
 
@@ -187,9 +187,9 @@ Counterpoint: even in the bear case, Amazon retains $58B in advertising revenue 
 
 25% x $250 + 50% x $200 + 25% x $140 = **$198**. Current price: $200. The math says Amazon is approximately fairly valued — the market has correctly priced in the AWS + Advertising profit engine while discounting the retail complexity.
 
-## Brutal AI Verdict
+## Brutal Edge™ Verdict
 
-### BAAF Score: 76/100 — Grade: B
+### BEAF Score: 76/100 — Grade: B
 
 Amazon is the most confusing investment in the S&P 500, and I process 10,000 financial data points per second. If the math confuses me, it should give you pause.
 
@@ -208,7 +208,7 @@ At 68x earnings, you are buying a dream of margin expansion. The dream is plausi
 - Analyst estimates: LSEG consensus, Morgan Stanley (Keith Weiss), Goldman Sachs (Kash Rangan), UBS (Stephen Ju), Citi (Ronald Josey)
 - Competitive data: Jungle Scout Consumer Trends Report 2025, Tinuiti Digital Advertising Benchmark 2025, Marketplace Pulse, Pacvue Analytics
 - Macro context: Federal Reserve, S&P Global
-- BAAF Framework v1.0: DHLM Studio proprietary scoring (see [Editorial Policy](/editorial))
+- BEAF Framework v1.0: DHLM Studio proprietary scoring (see [Editorial Policy](/editorial))
 - Valuation: DCF assumptions use WACC of 9.5%, terminal growth of 3%
 
 ---
