@@ -9,14 +9,14 @@ interface HeatmapCoin {
 }
 
 function pctStyle(pct: number): { background: string; color: string; border: string } {
-  if (pct >= 10) return { background: '#00D47430', color: '#00D474', border: '1px solid #00D47440' };
-  if (pct >= 5)  return { background: '#00D47422', color: '#00D474', border: '1px solid #00D47430' };
-  if (pct >= 2)  return { background: '#00D47416', color: '#4DB882', border: '1px solid #00D47420' };
-  if (pct >= 0)  return { background: '#00D4740C', color: '#4CAF85', border: '1px solid #00D47415' };
-  if (pct > -2)  return { background: '#FF45450C', color: '#E06060', border: '1px solid #FF454515' };
-  if (pct > -5)  return { background: '#FF454516', color: '#FF6060', border: '1px solid #FF454520' };
-  if (pct > -10) return { background: '#FF454522', color: '#FF4545', border: '1px solid #FF454530' };
-  return          { background: '#FF454530', color: '#FF4545', border: '1px solid #FF454540' };
+  if (pct >= 10) return { background: '#00C468', color: '#fff',     border: '1px solid #00D47460' };
+  if (pct >= 5)  return { background: '#008C4C', color: '#fff',     border: '1px solid #00B46040' };
+  if (pct >= 2)  return { background: '#006035', color: '#A7F3D0',  border: '1px solid #008C4C40' };
+  if (pct >= 0)  return { background: '#1A3D2B', color: '#6EE7B7',  border: '1px solid #2A5A3F' };
+  if (pct > -2)  return { background: '#3D1A1A', color: '#FCA5A5',  border: '1px solid #5A2A2A' };
+  if (pct > -5)  return { background: '#6B2020', color: '#FECACA',  border: '1px solid #8B3030' };
+  if (pct > -10) return { background: '#8B2020', color: '#fff',     border: '1px solid #B43030' };
+  return          { background: '#B43030',       color: '#fff',     border: '1px solid #FF454560' };
 }
 
 export default function CryptoHeatmap({ coins }: { coins: HeatmapCoin[] }) {

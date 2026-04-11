@@ -156,11 +156,11 @@ function StockCard({ s }: { s: Mover }) {
 }
 
 function pctColor(pct: number) {
-  if (pct >= 2)  return { bg: '#00D47422', color: '#00D474', border: '#00D47440' };
-  if (pct >= 0.5) return { bg: '#00D47412', color: '#4ADE80', border: '#00D47425' };
+  if (pct >= 2)   return { bg: '#00944D', color: '#fff',    border: '#00D47460' };
+  if (pct >= 0.5) return { bg: '#005C30', color: '#A7F3D0', border: '#00944D60' };
   if (pct > -0.5) return { bg: '#1E293B', color: '#94A3B8', border: '#334155' };
-  if (pct > -2)  return { bg: '#FF454512', color: '#F87171', border: '#FF454525' };
-  return { bg: '#FF454522', color: '#FF4545', border: '#FF454540' };
+  if (pct > -2)   return { bg: '#7A2020', color: '#FECACA', border: '#B4303060' };
+  return           { bg: '#B43030',       color: '#fff',    border: '#FF454560' };
 }
 
 function StockHeatmap({ stocks }: { stocks: TopStock[] }) {
@@ -173,13 +173,50 @@ function StockHeatmap({ stocks }: { stocks: TopStock[] }) {
         const c = pctColor(s.change);
         return (
           <Link key={s.ticker} href={`/markets/${s.ticker}`} style={{
-            flexBasis: pct, flexGrow: 1, minWidth: 48, padding: '8px 6px',
+            flexBasis: pct, flexGrow: 1, minWidth: 48, padding: '9px 6px',
             borderRadius: 6, background: c.bg, border: `1px solid ${c.border}`,
             textDecoration: 'none', display: 'flex', flexDirection: 'column', alignItems: 'center', justifyContent: 'center',
           }}>
-            <div style={{ fontSize: 10, fontWeight: 800, color: '#E2E8F0', fontFamily: 'var(--mono)', lineHeight: 1 }}>{s.ticker}</div>
-            <div style={{ fontSize: 9, fontWeight: 700, color: c.color, fontFamily: 'var(--mono)', marginTop: 2 }}>
+            <div style={{ fontSize: 10, fontWeight: 800, color: c.color, fontFamily: 'var(--mono)', lineHeight: 1 }}>{s.ticker}</div>
+            <div style={{ fontSize: 9, fontWeight: 700, color: c.color, fontFamily: 'var(--mono)', marginTop: 2, opacity: 0.85 }}>
               {s.change >= 0 ? '+' : ''}{s.change.toFixed(1)}%
+            </div>
+          </Link>
+        );
+      })}
+    </div>
+  );
+}
+
+function MoverColumn({ title, items, colorFn }: {
+  title: string;
+  items: Mover[];
+  colorFn: (change: number) => string;
+}) {
+  const isGainers = title.includes('GAINER');
+  const isLosers  = title.includes('LOSER');
+  const headerColor = isGainers ? '#00D474' : isLosers ? '#FF4545' : '#60A5FA';
+  const headerBg    = isGainers ? '#00D47410' : isLosers ? '#FF454510' : '#3B82F610';
+  return (
+    <div style={{ background: '#111827', borderRadius: 12, border: '1px solid #1E293B', overflow: 'hidden' }}>
+      <div style={{ padding: '10px 14px', background: headerBg, borderBottom: '1px solid #1E293B' }}>
+        <div style={{ fontFamily: 'var(--mono)', fontSize: 10, fontWeight: 800, color: headerColor, letterSpacing: 1.5 }}>{title}</div>
+      </div>
+      {items.map((s, i) => {
+        const col = colorFn(s.change);
+        return (
+          <Link key={s.ticker} href={`/markets/${s.ticker}`} style={{ textDecoration: 'none', display: 'flex', alignItems: 'center', gap: 8, padding: '8px 12px', borderBottom: i < items.length - 1 ? '1px solid #1E293B40' : 'none' }}>
+            <span style={{ fontSize: 9, color: '#475569', fontFamily: 'var(--mono)', width: 14, textAlign: 'right', flexShrink: 0 }}>{i + 1}</span>
+            <StockLogo src={s.image} ticker={s.ticker} size={20} />
+            <div style={{ flex: 1, minWidth: 0 }}>
+              <div style={{ fontSize: 11, fontWeight: 700, color: '#E2E8F0', fontFamily: 'var(--mono)' }}>{s.ticker}</div>
+              <div style={{ fontSize: 9, color: '#475569', overflow: 'hidden', whiteSpace: 'nowrap', textOverflow: 'ellipsis' }}>{s.name}</div>
+            </div>
+            <div style={{ textAlign: 'right', flexShrink: 0 }}>
+              <div style={{ fontSize: 11, fontWeight: 800, color: col, fontFamily: 'var(--mono)' }}>
+                {s.change >= 0 ? '+' : ''}{s.change.toFixed(1)}%
+              </div>
+              <div style={{ fontSize: 9, color: '#475569', fontFamily: 'var(--mono)' }}>${s.price.toFixed(2)}</div>
             </div>
           </Link>
         );
@@ -219,8 +256,6 @@ export default function MarketsPage() {
       .catch(() => {})
       .finally(() => setLoading(false));
   }, []);
-
-  const items = data[tab];
 
   return (
     <div style={{ background: '#0B0F19', minHeight: '100vh' }}>
@@ -316,33 +351,50 @@ export default function MarketsPage() {
           </div>
         </div>
 
-        {/* ③ Tabs: Gainers / Losers / Most Active */}
-        <div style={{ fontFamily: 'var(--mono)', fontSize: 9, color: '#475569', textAlign: 'center', marginBottom: 8 }}>
-          Market data delayed up to 15 min · Source: Alpha Vantage + FMP · Click any stock for Brutal Edge Take 🔥
-        </div>
-
-        <div style={{ display: 'flex', gap: 4, marginBottom: 14, background: '#111827', borderRadius: 10, padding: 3, border: '1px solid #1E293B' }}>
-          {([
-            { id: 'gainers' as TabId, label: '🟢 Gainers', count: data.gainers.length },
-            { id: 'losers' as TabId, label: '🔴 Losers', count: data.losers.length },
-            { id: 'actives' as TabId, label: '📊 Most Active', count: data.actives.length },
-          ]).map(t => (
-            <button key={t.id} onClick={() => setTab(t.id)} style={{
-              flex: 1, padding: '9px 0', borderRadius: 8, border: 'none',
-              background: tab === t.id ? '#1E293B' : 'transparent',
-              color: tab === t.id ? '#F1F5F9' : '#6B7280',
-              fontSize: 12, fontWeight: tab === t.id ? 700 : 500, cursor: 'pointer', fontFamily: 'var(--sans)',
-            }}>{t.label}{t.count > 0 ? ` (${t.count})` : ''}</button>
-          ))}
+        {/* ③ Gainers / Losers / Most Active — 3 columns */}
+        <div style={{ fontFamily: 'var(--mono)', fontSize: 9, color: '#475569', textAlign: 'center', marginBottom: 12 }}>
+          Market data delayed up to 15 min · Source: Alpha Vantage + FMP · Click any stock for full detail 🔥
         </div>
 
         {loading && <p style={{ fontSize: 13, color: '#64748B', textAlign: 'center', padding: 20 }}>Loading live data...</p>}
 
-        <div style={{ display: 'flex', flexDirection: 'column', gap: 8 }}>
-          {items.length > 0 ? items.map(s => <StockCard key={s.ticker} s={s} />) : (
-            !loading && <p style={{ fontSize: 13, color: '#475569', textAlign: 'center', padding: 40 }}>No data available. Try again later.</p>
-          )}
-        </div>
+        {!loading && data.gainers.length === 0 && (
+          <p style={{ fontSize: 13, color: '#475569', textAlign: 'center', padding: 40 }}>No data available. Try again later.</p>
+        )}
+
+        {data.gainers.length > 0 && (
+          <div style={{ display: 'grid', gridTemplateColumns: 'repeat(3, 1fr)', gap: 10, marginBottom: 16 }}>
+            {/* Gainers */}
+            <MoverColumn title="🟢 GAINERS" items={data.gainers.slice(0, 10)} colorFn={(c) => c >= 0 ? '#00D474' : '#FF4545'} />
+            {/* Losers */}
+            <MoverColumn title="🔴 LOSERS" items={data.losers.slice(0, 10)} colorFn={(c) => c >= 0 ? '#00D474' : '#FF4545'} />
+            {/* Most Active */}
+            <MoverColumn title="📊 MOST ACTIVE" items={data.actives.slice(0, 10)} colorFn={(c) => c >= 0 ? '#00D474' : '#FF4545'} />
+          </div>
+        )}
+
+        {/* Expandable detail cards — tab toggle */}
+        {data.gainers.length > 0 && (
+          <>
+            <div style={{ display: 'flex', gap: 4, marginBottom: 14, background: '#111827', borderRadius: 10, padding: 3, border: '1px solid #1E293B' }}>
+              {([
+                { id: 'gainers' as TabId, label: '🟢 Gainers' },
+                { id: 'losers' as TabId, label: '🔴 Losers' },
+                { id: 'actives' as TabId, label: '📊 Most Active' },
+              ]).map(t => (
+                <button key={t.id} onClick={() => setTab(t.id)} style={{
+                  flex: 1, padding: '9px 0', borderRadius: 8, border: 'none',
+                  background: tab === t.id ? '#1E293B' : 'transparent',
+                  color: tab === t.id ? '#F1F5F9' : '#6B7280',
+                  fontSize: 12, fontWeight: tab === t.id ? 700 : 500, cursor: 'pointer', fontFamily: 'var(--sans)',
+                }}>{t.label}</button>
+              ))}
+            </div>
+            <div style={{ display: 'flex', flexDirection: 'column', gap: 8 }}>
+              {data[tab].map(s => <StockCard key={s.ticker} s={s} />)}
+            </div>
+          </>
+        )}
 
         {/* Footer links */}
         <div style={{ marginTop: 20, display: 'flex', gap: 6, flexWrap: 'wrap', justifyContent: 'center' }}>

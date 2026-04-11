@@ -66,8 +66,75 @@ export default function CryptoPage() {
         {coins.length > 0 && (
           <>
             {/* Crypto Heatmap */}
-            <div style={{ background: '#111827', borderRadius: 14, border: '1px solid #1E293B', padding: '16px 16px 12px', marginBottom: 24 }}>
+            <div style={{ background: '#111827', borderRadius: 14, border: '1px solid #1E293B', padding: '16px 16px 12px', marginBottom: 20 }}>
               <CryptoHeatmap coins={coins} />
+            </div>
+
+            {/* Gainers / Losers / Most Active — 3 columns */}
+            <div style={{ display: 'grid', gridTemplateColumns: 'repeat(3, 1fr)', gap: 10, marginBottom: 20 }}>
+              {/* Gainers */}
+              <div style={{ background: '#111827', borderRadius: 12, border: '1px solid #1E293B', overflow: 'hidden' }}>
+                <div style={{ padding: '10px 14px', background: '#00D47410', borderBottom: '1px solid #1E293B' }}>
+                  <div style={{ fontFamily: 'var(--mono)', fontSize: 10, fontWeight: 800, color: '#00D474', letterSpacing: 1.5 }}>🟢 GAINERS</div>
+                </div>
+                {[...coins].sort((a, b) => b.change24h - a.change24h).slice(0, 10).map((c, i) => (
+                  <Link key={c.id} href={`/rankings/crypto/${c.id}`} style={{ textDecoration: 'none', display: 'flex', alignItems: 'center', gap: 8, padding: '8px 12px', borderBottom: i < 9 ? '1px solid #1E293B40' : 'none' }}>
+                    <span style={{ fontSize: 9, color: '#475569', fontFamily: 'var(--mono)', width: 14, textAlign: 'right', flexShrink: 0 }}>{i + 1}</span>
+                    {c.image && <Image src={c.image} alt={c.name} width={18} height={18} style={{ borderRadius: '50%' }} unoptimized />}
+                    <div style={{ flex: 1, minWidth: 0 }}>
+                      <div style={{ fontSize: 11, fontWeight: 700, color: '#E2E8F0', fontFamily: 'var(--mono)' }}>{c.symbol.toUpperCase()}</div>
+                      <div style={{ fontSize: 9, color: '#475569', overflow: 'hidden', whiteSpace: 'nowrap', textOverflow: 'ellipsis' }}>{c.name}</div>
+                    </div>
+                    <div style={{ textAlign: 'right', flexShrink: 0 }}>
+                      <div style={{ fontSize: 11, fontWeight: 800, color: '#00D474', fontFamily: 'var(--mono)' }}>+{c.change24h.toFixed(1)}%</div>
+                      <div style={{ fontSize: 9, color: '#475569', fontFamily: 'var(--mono)' }}>{fmtPrice(c.price)}</div>
+                    </div>
+                  </Link>
+                ))}
+              </div>
+              {/* Losers */}
+              <div style={{ background: '#111827', borderRadius: 12, border: '1px solid #1E293B', overflow: 'hidden' }}>
+                <div style={{ padding: '10px 14px', background: '#FF454510', borderBottom: '1px solid #1E293B' }}>
+                  <div style={{ fontFamily: 'var(--mono)', fontSize: 10, fontWeight: 800, color: '#FF4545', letterSpacing: 1.5 }}>🔴 LOSERS</div>
+                </div>
+                {[...coins].sort((a, b) => a.change24h - b.change24h).slice(0, 10).map((c, i) => (
+                  <Link key={c.id} href={`/rankings/crypto/${c.id}`} style={{ textDecoration: 'none', display: 'flex', alignItems: 'center', gap: 8, padding: '8px 12px', borderBottom: i < 9 ? '1px solid #1E293B40' : 'none' }}>
+                    <span style={{ fontSize: 9, color: '#475569', fontFamily: 'var(--mono)', width: 14, textAlign: 'right', flexShrink: 0 }}>{i + 1}</span>
+                    {c.image && <Image src={c.image} alt={c.name} width={18} height={18} style={{ borderRadius: '50%' }} unoptimized />}
+                    <div style={{ flex: 1, minWidth: 0 }}>
+                      <div style={{ fontSize: 11, fontWeight: 700, color: '#E2E8F0', fontFamily: 'var(--mono)' }}>{c.symbol.toUpperCase()}</div>
+                      <div style={{ fontSize: 9, color: '#475569', overflow: 'hidden', whiteSpace: 'nowrap', textOverflow: 'ellipsis' }}>{c.name}</div>
+                    </div>
+                    <div style={{ textAlign: 'right', flexShrink: 0 }}>
+                      <div style={{ fontSize: 11, fontWeight: 800, color: '#FF4545', fontFamily: 'var(--mono)' }}>{c.change24h.toFixed(1)}%</div>
+                      <div style={{ fontSize: 9, color: '#475569', fontFamily: 'var(--mono)' }}>{fmtPrice(c.price)}</div>
+                    </div>
+                  </Link>
+                ))}
+              </div>
+              {/* Most Active */}
+              <div style={{ background: '#111827', borderRadius: 12, border: '1px solid #1E293B', overflow: 'hidden' }}>
+                <div style={{ padding: '10px 14px', background: '#3B82F610', borderBottom: '1px solid #1E293B' }}>
+                  <div style={{ fontFamily: 'var(--mono)', fontSize: 10, fontWeight: 800, color: '#60A5FA', letterSpacing: 1.5 }}>📊 MOST ACTIVE</div>
+                </div>
+                {[...coins].sort((a, b) => b.volume24h - a.volume24h).slice(0, 10).map((c, i) => {
+                  const col = c.change24h >= 0 ? '#00D474' : '#FF4545';
+                  return (
+                    <Link key={c.id} href={`/rankings/crypto/${c.id}`} style={{ textDecoration: 'none', display: 'flex', alignItems: 'center', gap: 8, padding: '8px 12px', borderBottom: i < 9 ? '1px solid #1E293B40' : 'none' }}>
+                      <span style={{ fontSize: 9, color: '#475569', fontFamily: 'var(--mono)', width: 14, textAlign: 'right', flexShrink: 0 }}>{i + 1}</span>
+                      {c.image && <Image src={c.image} alt={c.name} width={18} height={18} style={{ borderRadius: '50%' }} unoptimized />}
+                      <div style={{ flex: 1, minWidth: 0 }}>
+                        <div style={{ fontSize: 11, fontWeight: 700, color: '#E2E8F0', fontFamily: 'var(--mono)' }}>{c.symbol.toUpperCase()}</div>
+                        <div style={{ fontSize: 9, color: '#475569', fontFamily: 'var(--mono)' }}>{fmt(c.volume24h)} vol</div>
+                      </div>
+                      <div style={{ textAlign: 'right', flexShrink: 0 }}>
+                        <div style={{ fontSize: 11, fontWeight: 800, color: col, fontFamily: 'var(--mono)' }}>{c.change24h >= 0 ? '+' : ''}{c.change24h.toFixed(1)}%</div>
+                        <div style={{ fontSize: 9, color: '#475569', fontFamily: 'var(--mono)' }}>{fmtPrice(c.price)}</div>
+                      </div>
+                    </Link>
+                  );
+                })}
+              </div>
             </div>
 
             <p style={{ fontFamily: 'var(--mono)', fontSize: 10, color: '#00D474', marginBottom: 16 }}>● LIVE DATA — CoinGecko API</p>
