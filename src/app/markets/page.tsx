@@ -12,6 +12,9 @@ interface Mover {
   revenue?: string; netIncome?: string; eps?: string | number;
 }
 
+interface IndexItem { symbol: string; label: string; price: number; pct: number; }
+interface TopStock { ticker: string; name: string; price: number; change: number; marketCap: number; marketCapFmt: string; sector?: string; image?: string; }
+
 type TabId = 'gainers' | 'losers' | 'actives';
 
 function pickRandom<T>(arr: T[]): T { return arr[Math.floor(Math.random() * arr.length)]; }
@@ -27,71 +30,45 @@ function generateRoast(s: Mover): { roast: string; rating: string; ratingColor: 
     `${abs}% down? Listen, I've bankrupted casinos and even I wouldn't touch ${name} right now. This isn't a stock — it's a CRIME SCENE. Somebody call the SEC because shareholders just got ROBBED in broad daylight.`,
     `${name} dropping ${abs}% is like watching a plane crash in slow motion — everyone sees it, nobody can stop it. The INSIDERS sold last week. You're not buying the dip, you're buying the GRAVE. I've seen better investments in LOTTERY TICKETS.`,
     `MINUS ${abs} PERCENT. That's not a pullback, that's a FUNERAL. ${name} is DONE. The board is panicking, the shorts are FEASTING, and retail investors are holding bags heavier than my gold-plated toilet. PATHETIC.`,
-    `I've fired people for losing less money than ${name} lost today. ${abs}% gone — POOF — like it never existed. This stock has more red flags than a Chinese military parade. GET OUT while you still have SOMETHING left.`,
   ]) };
 
   if (s.change < -15) return { rating: 'RUN', ratingColor: '#FF4545', emoji: '🏃', roast: pickRandom([
     `${name} dropped ${abs}% and people are PANICKING. But is it justified? ABSOLUTELY. When a stock drops this much, it's not "on sale" — it's BROKEN. Something is VERY wrong and the insiders already knew. RUN.`,
     `${name} down ${abs}%. You know who's NOT panicking? The executives who sold their shares LAST MONTH. They knew. They ALWAYS know. Meanwhile you're sitting there thinking "maybe it'll bounce back." It WON'T.`,
     `NEGATIVE ${abs}%? ${name} is bleeding like a stuck pig and the analysts are STILL saying "hold." These are the same geniuses who rated Enron a BUY. When the ship is sinking, you don't rearrange the deck chairs — you SWIM.`,
-    `${name} just lost ${abs}% of its value and somewhere a hedge fund manager is buying his THIRD yacht with your money. Wall Street LOVES investors like you — loyal, hopeful, and WRONG. This stock needs a MIRACLE.`,
-    `Down ${abs}%. Let me tell you something — I built a REAL ESTATE EMPIRE and never once did a building lose ${abs}% in a day. ${name} is proof that some companies should've stayed PRIVATE. The market is PUNISHING them and it's NOT done yet.`,
-    `${name} lost ${abs}% today. That's not a correction, that's a CONFESSION. The market is telling you something very clearly: THIS COMPANY HAS PROBLEMS. The smartest thing you can do? Listen to the market, not Reddit.`,
   ]) };
 
   if (s.change > 100) return { rating: 'CASINO', ratingColor: '#FF4545', emoji: '🎲', roast: pickRandom([
     `Up ${s.change.toFixed(0)}%? I've made better deals buying BUILDINGS. ${name} just went VERTICAL and everyone's rushing in like Black Friday at Walmart. This is a CASINO, not investing. MASSIVELY DANGEROUS.`,
     `${name} gained ${s.change.toFixed(0)}% and Wall Street Bets is having a PARTY. But you know what happens after every party? THE HANGOVER. This stock went from "nobody cares" to "everybody's a genius" in one day. That's not investing — that's GAMBLING with extra steps.`,
-    `PLUS ${s.change.toFixed(0)} PERCENT? Are you KIDDING me? ${name} moved like it found the cure for cancer, solved world hunger, AND discovered cold fusion — all before lunch. This isn't sustainable. This is PURE MANIA. The crash will be SPECTACULAR.`,
-    `${name} up ${s.change.toFixed(0)}%. I've built skyscrapers that didn't go up this fast. Every cab driver and their grandmother is buying this stock right now. When the shoeshine boy gives you stock tips, it's time to SELL. Warren Buffett taught me that. Actually, I taught HIM that.`,
-    `${s.change.toFixed(0)}% gain in a single day. That's not a stock, that's a MEME with a ticker symbol. ${name} has officially entered clown territory. The only people making money here are the ones who got in YESTERDAY and are selling to YOU right now.`,
   ]) };
 
   if (s.change > 30) return { rating: 'OVERHYPED', ratingColor: '#FF4545', emoji: '🔥', roast: pickRandom([
     `${name} surged ${abs}%. TREMENDOUS move. But when EVERYONE is buying, the smart people SELL. Pure MOMENTUM, not fundamentals. Hot things COOL DOWN. Every single time.`,
     `${abs}% up? ${name} is HOTTER than my Mar-a-Lago steak right now. But here's what they don't tell you on CNBC — for every person celebrating gains, there's a short seller planning the COUNTERATTACK. Gravity is UNDEFEATED.`,
     `${name} just popped ${abs}%. Beautiful. Magnificent. And completely UNSUSTAINABLE. I've seen this movie a THOUSAND times. Act one: euphoria. Act two: "it's different this time." Act three: "I should've sold at the top." You're in act ONE.`,
-    `Up ${abs}%! ${name} is on FIRE and everyone's running TOWARD it instead of away. You know what else was hot? Pets.com. WeWork. FTX. Being hot doesn't mean being SMART. This stock needs to PROVE itself, not just PERFORM.`,
-    `${name} gained ${abs}% today.${cap} Sounds great, right? WRONG. This kind of move attracts the WORST kind of investor — the ones who buy high and pray. The institutions are already setting their SELL orders. You're bringing a spoon to a KNIFE fight.`,
-    `BOOM! ${name} explodes ${abs}%. I love it. TREMENDOUS energy. But you know what? Energy without fundamentals is just a FIREWORK — bright, loud, and gone in 30 seconds. Show me the EARNINGS. Show me the MOAT. Otherwise this is just NOISE.`,
-    `${name} surges ${abs}%. Only in AMERICA can a stock go up this much in ONE DAY. 🇺🇸 God bless American capitalism. But remember — what goes up MUST come down. Unless you're the DOLLAR. The dollar NEVER loses. Well, almost never.`,
   ]) };
 
   if (s.change > 15) return { rating: 'RISKY', ratingColor: '#F59E0B', emoji: '⚠️', roast: pickRandom([
     `${name} up ${abs}%. Nice. But ${abs}% in one day means SOMEBODY knows something you don't. Institutional money moves FIRST.${cap} You're not investing, you're HOPING.`,
     `${name} climbed ${abs}%. Not bad. But when I see a stock jump this much, my FIRST question is: what do the insiders know that I DON'T? Because in this market, information is POWER, and retail investors are always LAST to the party.`,
-    `Plus ${abs}% for ${name}. The talking heads on TV are probably calling this a "breakout." I call it SUSPICIOUS. Stocks don't move ${abs}% on vibes alone. Somebody KNOWS something. The question is: are YOU that somebody? Didn't think so.`,
-    `${name} pops ${abs}%.${cap} Look, I respect a good rally. But I've been in business LONGER than most of these companies have EXISTED. A ${abs}% day usually means tomorrow is a 5% DOWN day. The market GIVETH and the market TAKETH away.`,
-    `Up ${abs}%? ${name} is having a MOMENT. But moments are just that — MOMENTS. I didn't build a billion-dollar brand on moments. I built it on CONSISTENCY. Can ${name} be consistent? The chart says MAYBE. My gut says PROBABLY NOT.`,
-    `${name} surged ${abs}% and your buddy who bought it last week won't shut up about it. But being early and being LUCKY are very different things. Ask yourself: would you buy it NOW at this price? If you hesitate, you have your ANSWER.`,
   ]) };
 
   if (s.change > 5) return { rating: 'DECENT', ratingColor: '#00D474', emoji: '👍', roast: pickRandom([
     `${name} gained ${abs}%. Solid, not spectacular. The real question: can they SUSTAIN this? History says probably not. DECENT play for the brave.`,
     `${name} up ${abs}%. That's what I call a RESPECTABLE day. Not gonna make you rich, not gonna make you poor. It's the stock market equivalent of a SOLID handshake — firm, confident, and forgettable by tomorrow.`,
     `Plus ${abs}% for ${name}. Decent. Not "quit your job" money, not "cry into your pillow" money. Just a nice, clean, modest gain. In THIS market? I'll take it. Sometimes boring is BEAUTIFUL.`,
-    `${name} climbs ${abs}%.${cap} Look, this isn't gonna get you on the news. Nobody's writing Reddit posts about a ${abs}% gain. But you know what? The BEST investors are BORING investors. Slow and steady. Like a TURTLE with a Bloomberg terminal.`,
-    `${abs}% up for ${name}. That's the kind of gain that makes you feel SMART but not smart enough to do anything STUPID. Keep it. Don't get greedy. I've seen more fortunes lost to GREED than to bad picks.`,
-    `${name} adds ${abs}% today. That's what we call "walking money" — nothing to run about, nothing to cry about. If all your stocks moved like this every day, you'd be a BILLIONAIRE in... well, a very long time. But you'd GET there.`,
-    `${name} up ${abs}%. 🇺🇸 MADE IN AMERICA, WINNING IN AMERICA. This is what happens when you invest in the GREATEST economy on earth. The rest of the world wishes they had a stock market like OURS.`,
   ]) };
 
   if (s.change < -5) return { rating: 'WATCH', ratingColor: '#F59E0B', emoji: '👀', roast: pickRandom([
     `${name} down ${Math.abs(s.change).toFixed(1)}%. Not GREAT, not TERRIBLE. Could be a buying opportunity, could be the START of something worse. Nobody knows. That's the honest truth.`,
     `${name} drops ${Math.abs(s.change).toFixed(1)}%. Is it a DIPPING sauce or is it actually ROTTING? Hard to tell. The optimists say "sale!" The realists say "there's a REASON." I say: wait for the EARNINGS call before you make any brave decisions.`,
-    `Minus ${Math.abs(s.change).toFixed(1)}% for ${name}. Not catastrophic, but not great either. It's like getting a C+ on a test — your parents aren't angry, but they're DISAPPOINTED. And in the stock market, disappointment usually means MORE pain ahead.`,
-    `${name} lost ${Math.abs(s.change).toFixed(1)}%.${cap} This is the stock market's way of saying "we're NOT angry, we're just CONFUSED." Something spooked investors and until we know WHAT, I'd keep this on the WATCHLIST, not the BUY list.`,
-    `Down ${Math.abs(s.change).toFixed(1)}%. ${name} had a BAD day. Not a TERRIBLE day — bad. Like spilling coffee on your shirt before a meeting. You'll survive, but it's not a great LOOK. Watch the next few days CAREFULLY.`,
-    `${name} slides ${Math.abs(s.change).toFixed(1)}%. This is the danger zone — not enough to panic, not enough to ignore. It's the stock market's way of WHISPERING that something might be wrong. And whispers in this business become SCREAMS real fast.`,
   ]) };
 
   return { rating: 'BORING', ratingColor: '#6B7280', emoji: '😴', roast: pickRandom([
     `${name} moved ${s.change > 0 ? '+' : ''}${s.change.toFixed(1)}%. BORING. Your portfolio went from $10,000 to $10,${Math.abs(Math.round(s.change * 10))}. CONGRATULATIONS on your extra coffee.`,
-    `${name}: ${s.change > 0 ? '+' : ''}${s.change.toFixed(1)}%. I've had ELEVATORS move more than this stock. If you're watching this ticker for excitement, might I suggest PAINT DRYING? It's faster. Your time is worth more than this.`,
-    `${s.change > 0 ? '+' : ''}${s.change.toFixed(1)}% for ${name}. That's not a stock movement, that's a ROUNDING ERROR. My accountants wouldn't even bother LOGGING this. Go outside. Touch grass. This stock is as exciting as OATMEAL.`,
-    `${name} changed ${s.change > 0 ? '+' : ''}${s.change.toFixed(1)}%. WOW. INCREDIBLE. I'm on the EDGE of my seat. Said NOBODY. This stock is moving like a SLOTH on sedatives. If this is your portfolio's star performer, we need to TALK.`,
-    `${name}: ${s.change > 0 ? '+' : ''}${s.change.toFixed(1)}%. That's not investing, that's a SAVINGS ACCOUNT with extra anxiety. You could've made more money finding change in your COUCH CUSHIONS. At least THAT doesn't require a brokerage account.`,
-    `Plus ${s.change.toFixed(1)}% for ${name}. Thrilling. Absolutely THRILLING. I've seen more action at a LIBRARY on a Tuesday afternoon. This stock is the human-resources-meeting of the financial world — technically important, practically ASLEEP.`,
+    `${name}: ${s.change > 0 ? '+' : ''}${s.change.toFixed(1)}%. I've had ELEVATORS move more than this stock. If you're watching this ticker for excitement, might I suggest PAINT DRYING? It's faster.`,
+    `${s.change > 0 ? '+' : ''}${s.change.toFixed(1)}% for ${name}. That's not a stock movement, that's a ROUNDING ERROR. My accountants wouldn't even bother LOGGING this. Go outside. Touch grass.`,
   ]) };
 }
 
@@ -116,7 +93,7 @@ function StockCard({ s }: { s: Mover }) {
   return (
     <div style={cardStyle}>
       <div onClick={() => setExpanded(!expanded)} style={{ padding: '16px 18px', cursor: 'pointer', display: 'flex', alignItems: 'center', gap: 12 }}>
-        <div style={{ width: 40, height: 40, borderRadius: 10, background: '#0D1117', border: '1px solid #1F2937', display: 'flex', alignItems: 'center', justifyContent: 'center', fontSize: 11, fontWeight: 800, color: '#60A5FA', fontFamily: 'var(--mono)' }}>
+        <div style={{ width: 40, height: 40, borderRadius: 10, background: '#0D1117', border: '1px solid #1F2937', display: 'flex', alignItems: 'center', justifyContent: 'center' }}>
           <StockLogo src={s.image} ticker={s.ticker} size={26} />
         </div>
         <div style={{ flex: 1, minWidth: 0 }}>
@@ -178,13 +155,59 @@ function StockCard({ s }: { s: Mover }) {
   );
 }
 
+function pctColor(pct: number) {
+  if (pct >= 2)  return { bg: '#00D47422', color: '#00D474', border: '#00D47440' };
+  if (pct >= 0.5) return { bg: '#00D47412', color: '#4ADE80', border: '#00D47425' };
+  if (pct > -0.5) return { bg: '#1E293B', color: '#94A3B8', border: '#334155' };
+  if (pct > -2)  return { bg: '#FF454512', color: '#F87171', border: '#FF454525' };
+  return { bg: '#FF454522', color: '#FF4545', border: '#FF454540' };
+}
+
+function StockHeatmap({ stocks }: { stocks: TopStock[] }) {
+  if (stocks.length === 0) return null;
+  const totalSqrt = stocks.reduce((s, c) => s + Math.sqrt(Math.max(c.marketCap, 1)), 0);
+  return (
+    <div style={{ display: 'flex', flexWrap: 'wrap', gap: 3, margin: '0 0 4px' }}>
+      {stocks.map(s => {
+        const pct = `${Math.max(3.5, Math.min(s.marketCap > 0 ? (Math.sqrt(s.marketCap) / totalSqrt) * 100 : 3.5, 22))}%`;
+        const c = pctColor(s.change);
+        return (
+          <Link key={s.ticker} href={`/markets/${s.ticker}`} style={{
+            flexBasis: pct, flexGrow: 1, minWidth: 48, padding: '8px 6px',
+            borderRadius: 6, background: c.bg, border: `1px solid ${c.border}`,
+            textDecoration: 'none', display: 'flex', flexDirection: 'column', alignItems: 'center', justifyContent: 'center',
+          }}>
+            <div style={{ fontSize: 10, fontWeight: 800, color: '#E2E8F0', fontFamily: 'var(--mono)', lineHeight: 1 }}>{s.ticker}</div>
+            <div style={{ fontSize: 9, fontWeight: 700, color: c.color, fontFamily: 'var(--mono)', marginTop: 2 }}>
+              {s.change >= 0 ? '+' : ''}{s.change.toFixed(1)}%
+            </div>
+          </Link>
+        );
+      })}
+    </div>
+  );
+}
+
 export default function MarketsPage() {
+  const [indices, setIndices] = useState<IndexItem[]>([]);
+  const [top20, setTop20] = useState<TopStock[]>([]);
   const [data, setData] = useState<{ gainers: Mover[]; losers: Mover[]; actives: Mover[] }>({ gainers: [], losers: [], actives: [] });
   const [tab, setTab] = useState<TabId>('gainers');
   const [isLive, setIsLive] = useState(false);
   const [loading, setLoading] = useState(true);
+  const [showList, setShowList] = useState(false);
 
   useEffect(() => {
+    fetch('/api/markets/indices')
+      .then(r => r.json())
+      .then(d => { if (d.indices?.length > 0) setIndices(d.indices); })
+      .catch(() => {});
+
+    fetch('/api/markets/top20')
+      .then(r => r.json())
+      .then(d => { if (d.stocks?.length > 0) setTop20(d.stocks); })
+      .catch(() => {});
+
     fetch('/api/markets')
       .then(r => r.json())
       .then(d => {
@@ -201,69 +224,104 @@ export default function MarketsPage() {
 
   return (
     <div style={{ background: '#0B0F19', minHeight: '100vh' }}>
-      <div style={{ maxWidth: 720, margin: '0 auto', padding: '80px 16px' }}>
-        {/* Header */}
-        <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', marginBottom: 16 }}>
-          <Link href="/" style={{ display: 'flex', alignItems: 'baseline', gap: 6 }}>
-            <span style={{ fontFamily: 'var(--serif)', fontSize: 18, fontWeight: 800, color: '#F1F5F9' }}>DHLM</span>
-            <span style={{ fontSize: 10, fontWeight: 600, color: '#C73E3A', letterSpacing: 2 }}>STUDIO</span>
-          </Link>
-          <div style={{ display: 'flex', alignItems: 'center', gap: 8 }}>
-            <span style={{ fontSize: 11, color: '#6B7280', fontFamily: 'var(--mono)' }}>{new Date().toLocaleDateString('en-US', { month: 'short', day: 'numeric', year: 'numeric' })}</span>
-            {isLive && <span style={{ fontSize: 9, padding: '3px 8px', borderRadius: 4, background: '#00D47418', color: '#00D474', fontWeight: 700, fontFamily: 'var(--mono)' }}>● LIVE</span>}
-          </div>
-        </div>
+      <div style={{ maxWidth: 860, margin: '0 auto', padding: '80px 16px' }}>
 
-        {/* Data delay notice */}
-        <div style={{ fontFamily: 'var(--mono)', fontSize: 9, color: '#475569', textAlign: 'center', marginBottom: 10 }}>📊 Market data is delayed up to 15 minutes · Source: Alpha Vantage + FMP</div>
-
-        {/* Banner */}
-        <div style={{ padding: '16px 18px', borderRadius: 14, background: 'linear-gradient(135deg,#C73E3A10,#C73E3A05)', border: '1px solid #C73E3A15', marginBottom: 16 }}>
-          <div style={{ display: 'flex', alignItems: 'center', gap: 10, marginBottom: 6 }}>
-            <span style={{ fontSize: 24 }}>🔥</span>
-            <div>
-              <h1 style={{ fontFamily: 'var(--serif)', fontSize: 22, fontWeight: 900, color: '#F1F5F9', margin: 0 }}>Today's Markets</h1>
-              <div style={{ fontFamily: 'var(--mono)', fontSize: 9, color: '#C73E3A', letterSpacing: 2, marginTop: 1 }}>BRUTAL EDGE COMMENTARY</div>
+        {/* Page header */}
+        <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', marginBottom: 20 }}>
+          <div>
+            <h1 style={{ fontFamily: 'var(--serif)', fontSize: 'clamp(22px, 3.5vw, 30px)', fontWeight: 900, color: '#F1F5F9', margin: 0, lineHeight: 1.2 }}>Today's Markets</h1>
+            <div style={{ fontSize: 11, color: '#475569', marginTop: 4 }}>
+              {new Date().toLocaleDateString('en-US', { weekday: 'long', month: 'long', day: 'numeric', year: 'numeric' })}
+              {isLive && <span style={{ marginLeft: 8, fontSize: 9, padding: '2px 7px', borderRadius: 4, background: '#00D47418', color: '#00D474', fontWeight: 700, fontFamily: 'var(--mono)' }}>● LIVE</span>}
             </div>
           </div>
-          <p style={{ fontSize: 12, color: '#94A3B8', lineHeight: 1.5, margin: 0 }}>
-            Click any stock → expand → hit <strong style={{ color: '#C73E3A' }}>"Brutal Edge Take"</strong> for savage, unfiltered commentary.
-          </p>
+          <div style={{ display: 'flex', gap: 6 }}>
+            <Link href="/markets/search" style={{ fontSize: 11, padding: '7px 13px', borderRadius: 8, background: '#111827', border: '1px solid #1E293B', color: '#94A3B8', textDecoration: 'none' }}>🔍 Search</Link>
+            <Link href="/markets/sectors" style={{ fontSize: 11, padding: '7px 13px', borderRadius: 8, background: '#111827', border: '1px solid #1E293B', color: '#94A3B8', textDecoration: 'none' }}>🗺️ Sectors</Link>
+          </div>
         </div>
 
-        {/* Bless My Stock Link */}
-        <Link href="/markets/bless" style={{ display: 'block', padding: '14px 18px', borderRadius: 14, background: 'linear-gradient(135deg, #D4A84310, #D4A84305)', border: '1px solid #D4A84320', marginBottom: 16, textDecoration: 'none' }}>
-          <div style={{ display: 'flex', alignItems: 'center', justifyContent: 'space-between' }}>
-            <div style={{ display: 'flex', alignItems: 'center', gap: 10 }}>
-              <span style={{ fontSize: 22 }}>🙏</span>
-              <div>
-                <div style={{ fontSize: 14, fontWeight: 700, color: '#D4A843' }}>Bless My Stock</div>
-                <div style={{ fontSize: 11, color: '#6B7280', marginTop: 1 }}>Light incense for your portfolio. 100% to charity.</div>
+        {/* ① Index Bar */}
+        {indices.length > 0 && (
+          <div style={{ display: 'grid', gridTemplateColumns: 'repeat(4, 1fr)', gap: 6, marginBottom: 20 }}>
+            {indices.map(idx => {
+              const up = idx.pct >= 0;
+              return (
+                <div key={idx.symbol} style={{ background: '#111827', borderRadius: 10, border: `1px solid ${up ? '#00D47420' : '#FF454520'}`, padding: '12px 14px' }}>
+                  <div style={{ fontSize: 10, color: '#64748B', fontFamily: 'var(--mono)', fontWeight: 700, marginBottom: 4 }}>{idx.label}</div>
+                  <div style={{ fontSize: 16, fontWeight: 800, color: '#F1F5F9', fontFamily: 'var(--mono)' }}>{idx.price.toLocaleString('en-US', { minimumFractionDigits: 0, maximumFractionDigits: 0 })}</div>
+                  <div style={{ fontSize: 11, fontWeight: 700, color: up ? '#00D474' : '#FF4545', fontFamily: 'var(--mono)', marginTop: 2 }}>
+                    {up ? '+' : ''}{idx.pct.toFixed(2)}%
+                  </div>
+                </div>
+              );
+            })}
+          </div>
+        )}
+        {indices.length === 0 && (
+          <div style={{ display: 'grid', gridTemplateColumns: 'repeat(4, 1fr)', gap: 6, marginBottom: 20 }}>
+            {['S&P 500', 'Nasdaq', 'Dow', 'Russell 2000'].map(label => (
+              <div key={label} style={{ background: '#111827', borderRadius: 10, border: '1px solid #1E293B', padding: '12px 14px', opacity: 0.5 }}>
+                <div style={{ fontSize: 10, color: '#64748B', fontFamily: 'var(--mono)', fontWeight: 700, marginBottom: 4 }}>{label}</div>
+                <div style={{ fontSize: 14, fontWeight: 700, color: '#334155', fontFamily: 'var(--mono)' }}>—</div>
               </div>
-            </div>
-            <span style={{ fontSize: 12, color: '#D4A843', fontFamily: 'var(--mono)' }}>→</span>
+            ))}
           </div>
-        </Link>
+        )}
 
-        {/* Quick Links */}
-        <div style={{ display: 'flex', gap: 6, marginBottom: 12, flexWrap: 'wrap' }}>
-          {[
-            { href: '/markets/gainers', label: '🟢 All Gainers' },
-            { href: '/markets/losers', label: '🔴 All Losers' },
-            { href: '/markets/most-active', label: '📊 Most Active' },
-            { href: '/markets/search', label: '🔍 Search' },
-            { href: '/markets/sectors', label: '🗺️ Sector Heatmap' },
-            { href: '/markets/roast-portfolio', label: '🔥 Roast My Portfolio' },
-            { href: '/markets/most-roasted', label: '🏆 Most Roasted' },
-          ].map(l => (
-            <Link key={l.href} href={l.href} style={{ fontSize: 11, color: '#475569', padding: '5px 12px', borderRadius: 20, background: '#111827', border: '1px solid #1E293B', fontFamily: 'var(--sans)' }}>
-              {l.label}
-            </Link>
-          ))}
+        {/* ② Market Cap Heatmap */}
+        <div style={{ background: '#111827', borderRadius: 12, border: '1px solid #1E293B', padding: '14px 16px', marginBottom: 20 }}>
+          <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', marginBottom: 10 }}>
+            <div style={{ fontFamily: 'var(--mono)', fontSize: 10, fontWeight: 700, color: '#94A3B8', letterSpacing: 1 }}>TOP 20 BY MARKET CAP</div>
+            <div style={{ display: 'flex', gap: 6, alignItems: 'center' }}>
+              <button onClick={() => setShowList(!showList)} style={{ fontSize: 10, padding: '4px 10px', borderRadius: 6, background: '#1E293B', border: '1px solid #334155', color: '#94A3B8', cursor: 'pointer', fontFamily: 'var(--mono)' }}>
+                {showList ? 'Heatmap' : 'List'}
+              </button>
+            </div>
+          </div>
+
+          {top20.length > 0 ? (
+            showList ? (
+              <div>
+                {top20.map((s, i) => {
+                  const up = s.change >= 0;
+                  return (
+                    <Link key={s.ticker} href={`/markets/${s.ticker}`} style={{ display: 'flex', alignItems: 'center', gap: 10, padding: '8px 0', borderBottom: i < top20.length - 1 ? '1px solid #1E293B40' : 'none', textDecoration: 'none' }}>
+                      <div style={{ fontSize: 10, color: '#475569', fontFamily: 'var(--mono)', width: 18, textAlign: 'right', flexShrink: 0 }}>{i + 1}</div>
+                      <StockLogo src={s.image} ticker={s.ticker} size={22} />
+                      <div style={{ flex: 1, minWidth: 0 }}>
+                        <div style={{ fontSize: 12, fontWeight: 700, color: '#E2E8F0' }}>{s.ticker}</div>
+                        <div style={{ fontSize: 10, color: '#475569', overflow: 'hidden', whiteSpace: 'nowrap', textOverflow: 'ellipsis' }}>{s.name}</div>
+                      </div>
+                      <div style={{ textAlign: 'right', flexShrink: 0 }}>
+                        <div style={{ fontSize: 12, fontWeight: 700, color: '#F1F5F9', fontFamily: 'var(--mono)' }}>${s.price.toFixed(2)}</div>
+                        <div style={{ fontSize: 10, fontWeight: 700, color: up ? '#00D474' : '#FF4545', fontFamily: 'var(--mono)' }}>{up ? '+' : ''}{s.change.toFixed(1)}%</div>
+                      </div>
+                      <div style={{ fontSize: 10, color: '#64748B', fontFamily: 'var(--mono)', width: 52, textAlign: 'right', flexShrink: 0 }}>{s.marketCapFmt}</div>
+                    </Link>
+                  );
+                })}
+              </div>
+            ) : (
+              <StockHeatmap stocks={top20} />
+            )
+          ) : (
+            <div style={{ height: 60, display: 'flex', alignItems: 'center', justifyContent: 'center' }}>
+              <span style={{ fontSize: 11, color: '#334155' }}>Loading market data...</span>
+            </div>
+          )}
+
+          <div style={{ marginTop: 8, fontSize: 9, color: '#334155', fontFamily: 'var(--mono)' }}>
+            Tile size ∝ market cap · Color = daily change · Source: FMP · 5-min delay
+          </div>
         </div>
 
-        {/* Tabs: Gainers / Losers / Most Active */}
-        <div style={{ display: 'flex', gap: 4, marginBottom: 16, background: '#111827', borderRadius: 10, padding: 3, border: '1px solid #1E293B' }}>
+        {/* ③ Tabs: Gainers / Losers / Most Active */}
+        <div style={{ fontFamily: 'var(--mono)', fontSize: 9, color: '#475569', textAlign: 'center', marginBottom: 8 }}>
+          Market data delayed up to 15 min · Source: Alpha Vantage + FMP · Click any stock for Brutal Edge Take 🔥
+        </div>
+
+        <div style={{ display: 'flex', gap: 4, marginBottom: 14, background: '#111827', borderRadius: 10, padding: 3, border: '1px solid #1E293B' }}>
           {([
             { id: 'gainers' as TabId, label: '🟢 Gainers', count: data.gainers.length },
             { id: 'losers' as TabId, label: '🔴 Losers', count: data.losers.length },
@@ -278,17 +336,29 @@ export default function MarketsPage() {
           ))}
         </div>
 
-        {loading && <p style={{ fontSize: 13, color: '#64748B' }}>Loading live data...</p>}
+        {loading && <p style={{ fontSize: 13, color: '#64748B', textAlign: 'center', padding: 20 }}>Loading live data...</p>}
 
-        {/* Stock list */}
         <div style={{ display: 'flex', flexDirection: 'column', gap: 8 }}>
           {items.length > 0 ? items.map(s => <StockCard key={s.ticker} s={s} />) : (
             !loading && <p style={{ fontSize: 13, color: '#475569', textAlign: 'center', padding: 40 }}>No data available. Try again later.</p>
           )}
         </div>
 
+        {/* Footer links */}
+        <div style={{ marginTop: 20, display: 'flex', gap: 6, flexWrap: 'wrap', justifyContent: 'center' }}>
+          {[
+            { href: '/markets/most-roasted', label: '🏆 Most Roasted' },
+            { href: '/markets/roast-portfolio', label: '🔥 Roast My Portfolio' },
+            { href: '/markets/bless', label: '🙏 Bless My Stock' },
+          ].map(l => (
+            <Link key={l.href} href={l.href} style={{ fontSize: 11, color: '#475569', padding: '6px 12px', borderRadius: 20, background: '#111827', border: '1px solid #1E293B', textDecoration: 'none' }}>
+              {l.label}
+            </Link>
+          ))}
+        </div>
+
         {/* Disclaimer */}
-        <div style={{ marginTop: 20, padding: '12px 14px', borderRadius: 10, background: '#C73E3A08', border: '1px solid #C73E3A10' }}>
+        <div style={{ marginTop: 16, padding: '12px 14px', borderRadius: 10, background: '#C73E3A08', border: '1px solid #C73E3A10' }}>
           <p style={{ fontSize: 9, color: '#6B7280', lineHeight: 1.7, textAlign: 'center', margin: 0 }}>
             🤖 BRUTAL EDGE is informational and educational. <strong style={{ color: '#C73E3A' }}>NOT investment advice</strong>. Data: Alpha Vantage + FMP. Prices may be delayed.
           </p>
