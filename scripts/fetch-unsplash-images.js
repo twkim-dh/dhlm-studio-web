@@ -123,7 +123,7 @@ const SLUG_KEYWORDS = {
   'deep-dive-amd-april-2026':     'amd semiconductor chip processor',
   'deep-dive-amzn-april-2026':    'amazon warehouse ecommerce delivery',
   'deep-dive-btc-april-2026':     'bitcoin cryptocurrency digital gold coin',
-  'deep-dive-googl-april-2026':   'google technology search data center',
+  'deep-dive-googl-april-2026':   'internet technology data server cloud',
   'deep-dive-meta-april-2026':    'meta social media virtual reality',
   'deep-dive-msft-april-2026':    'microsoft cloud technology office software',
   'deep-dive-pltr-april-2026':    'data analytics surveillance intelligence',
@@ -216,7 +216,9 @@ async function main() {
   } catch { console.log('\nStarting fresh manifest'); }
 
   const items = collectSlugs();
-  const todo  = items.filter(i => !i.hasHeroImage && !manifest[i.slug]);
+  // For blog: skip if heroImage already set in blog-posts.ts (static image, not a placeholder)
+  // For reports/research: always fetch — frontmatter heroImage is a static fallback, not topic-specific
+  const todo  = items.filter(i => !manifest[i.slug] && (i.type === 'blog' ? !i.hasHeroImage : true));
 
   console.log(`Total content: ${items.length} | Already have image: ${items.length - todo.length} | Need to fetch: ${todo.length}\n`);
 

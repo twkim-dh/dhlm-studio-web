@@ -8,6 +8,7 @@ import InlineSubscribe from '@/components/InlineSubscribe';
 import GiscusComments from '@/components/GiscusComments';
 import TickerLogo from '@/components/TickerLogo';
 import BeafRadarChart, { type BeafAxisScore } from '@/components/BeafRadarChart';
+import unsplashManifest from '@/data/unsplash-manifest.json';
 
 const REPORTS_DIR = path.join(process.cwd(), 'src/content/reports');
 
@@ -217,6 +218,11 @@ export default async function ReportPage({ params }: { params: Promise<{ slug: s
   const { frontmatter: fm, body } = report;
   const beafScores = parseBeafScores(body);
 
+  // Manifest-first hero image — Unsplash CDN overwrites generic static fallback
+  const unsplashEntry = (unsplashManifest as Record<string, { src: string; alt: string; credit: { author: string; authorUrl: string; unsplashUrl: string } }>)[slug];
+  const heroSrc = unsplashEntry?.src || fm.heroImage;
+  const heroAlt = unsplashEntry?.alt || fm.title;
+
   // Article schema
   const articleLd = {
     '@context': 'https://schema.org', '@type': 'Article',
@@ -252,14 +258,30 @@ export default async function ReportPage({ params }: { params: Promise<{ slug: s
       <article style={{ maxWidth: 760, margin: '0 auto', padding: '80px 24px' }}>
         <Link href="/reports" style={{ fontSize: 12, color: '#64748B' }}>← Reports</Link>
 
-        {/* Hero Image */}
-        {fm.heroImage && (
-          // eslint-disable-next-line @next/next/no-img-element
-          <img
-            src={fm.heroImage}
-            alt={fm.title}
-            style={{ width: '100%', borderRadius: 14, margin: '16px 0', display: 'block', objectFit: 'cover', maxHeight: 280 }}
-          />
+        {/* Hero Image — Unsplash CDN if available, else frontmatter static fallback */}
+        {heroSrc && (
+          <div style={{ borderRadius: 14, overflow: 'hidden', border: '1px solid #1E293B', margin: '16px 0' }}>
+            {/* eslint-disable-next-line @next/next/no-img-element */}
+            <img
+              src={heroSrc}
+              alt={heroAlt}
+              style={{ width: '100%', height: 240, objectFit: 'cover', display: 'block' }}
+            />
+            {unsplashEntry && (
+              <div style={{ padding: '4px 10px', textAlign: 'right', background: '#0D1117' }}>
+                <span style={{ fontSize: 9, color: '#334155' }}>
+                  Photo by{' '}
+                  <a href={unsplashEntry.credit.authorUrl} target="_blank" rel="noopener noreferrer" style={{ color: '#475569', textDecoration: 'none' }}>
+                    {unsplashEntry.credit.author}
+                  </a>
+                  {' '}on{' '}
+                  <a href={unsplashEntry.credit.unsplashUrl} target="_blank" rel="noopener noreferrer" style={{ color: '#475569', textDecoration: 'none' }}>
+                    Unsplash
+                  </a>
+                </span>
+              </div>
+            )}
+          </div>
         )}
 
         {/* Brutal Edge Header — type-aware */}

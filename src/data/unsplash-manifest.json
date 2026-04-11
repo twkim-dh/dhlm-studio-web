@@ -286,5 +286,131 @@
       "authorUrl": "",
       "unsplashUrl": ""
     }
+  },
+  "fear-greed-index-stock-prediction": {
+    "src": "https://images.unsplash.com/photo-1617696795782-cedb140e2f0b?ixid=M3w5MjE0MDh8MHwxfHNlYXJjaHwxfHxmZWFyJTIwZ3JlZWQlMjBtYXJrZXQlMjBzZW50aW1lbnQlMjBkaWFsfGVufDF8MHx8fDE3NzU4ODQ4Nzd8MA&ixlib=rb-4.1.0&w=720&h=380&fit=crop&q=80&fm=jpg&auto=format",
+    "alt": "a black sign with a price tag on it",
+    "credit": {
+      "author": "Markus Spiske",
+      "authorUrl": "https://unsplash.com/@markusspiske?utm_source=dhlm_studio&utm_medium=referral",
+      "unsplashUrl": "https://unsplash.com/photos/C0wrkGoyY-A?utm_source=dhlm_studio&utm_medium=referral"
+    }
+  },
+  "intraday-ml-stock-prediction": {
+    "src": "https://images.unsplash.com/photo-1616261167032-b16d2df8333b?ixid=M3w5MjE0MDh8MHwxfHNlYXJjaHwxfHxtYWNoaW5lJTIwbGVhcm5pbmclMjBhbGdvcml0aG0lMjBzdG9jayUyMGNoYXJ0JTIwcHJlZGljdGlvbnxlbnwxfDB8fHwxNzc1ODg0ODc5fDA&ixlib=rb-4.1.0&w=720&h=380&fit=crop&q=80&fm=jpg&auto=format",
+    "alt": "white paper with green line",
+    "credit": {
+      "author": "Markus Spiske",
+      "authorUrl": "https://unsplash.com/@markusspiske?utm_source=dhlm_studio&utm_medium=referral",
+      "unsplashUrl": "https://unsplash.com/photos/jgOkEjVw-KM?utm_source=dhlm_studio&utm_medium=referral"
+    }
+  },
+  "btc-crossroads-april-2026": {
+    "src": "https://images.unsplash.com/photo-1639825752750-5061ded5503b?ixid=M3w5MjE0MDh8MHwxfHNlYXJjaHwxfHxiaXRjb2luJTIwcHJpY2UlMjBjaGFydCUyMGNyb3Nzcm9hZHMlMjBhbmFseXNpc3xlbnwxfDB8fHwxNzc1ODg0ODgxfDA&ixlib=rb-4.1.0&w=720&h=380&fit=crop&q=80&fm=jpg&auto=format",
+    "alt": "a screen shot of a stock chart on a computer",
+    "credit": {
+      "author": "Behnam Norouzi",
+      "authorUrl": "https://unsplash.com/@behy_studio?utm_source=dhlm_studio&utm_medium=referral",
+      "unsplashUrl": "https://unsplash.com/photos/TQHgxyX1d04?utm_source=dhlm_studio&utm_medium=referral"
+    }
+  },
+  "deep-dive-aapl-april-2026": {
+    "src": "https://images.unsplash.com/photo-1572538194597-42aeefa26482?ixid=M3w5MjE0MDh8MHwxfHNlYXJjaHwxfHxhcHBsZSUyMGlwaG9uZSUyMGRlc2lnbiUyMHRlY2hub2xvZ3klMjBwcm9kdWN0fGVufDF8MHx8fDE3NzU4ODQ4ODN8MA&ixlib=rb-4.1.0&w=720&h=380&fit=crop&q=80&fm=jpg&auto=format",
+    "alt": "silver iPhone XI",
+    "credit": {
+      "author": "Vinoth Ragunathan",
+      "authorUrl": "https://unsplash.com/@helvetiica?utm_source=dhlm_studio&utm_medium=referral",
+      "unsplashUrl": "https://unsplash.com/photos/zSXMNCf4szU?utm_source=dhlm_studio&utm_medium=referral"
+    }
+  },
+  "deep-dive-amd-april-2026": {
+    "src": "https://images.unsplash.com/photo-1760539165868-cddc91a8a952?ixid=M3w5MjE0MDh8MHwxfHNlYXJjaHwxfHxhbWQlMjBzZW1pY29uZHVjdG9yJTIwY2hpcCUyMHByb2Nlc3NvcnxlbnwxfDB8fHwxNzc1ODg0ODg1fDA&ixlib=rb-4.1.0&w=720&h=380&fit=crop&q=80&fm=jpg&auto=format",
+    "alt": "Amd ryzen 6000 series processor on circuit board background",
+    "credit": {
+      "author": "BoliviaInteligente",
+      "authorUrl": "https://unsplash.com/@boliviainteligente?utm_source=dhlm_studio&utm_medium=referral",
+      "unsplashUrl": "https://unsplash.com/photos/6BQruFsO5as?utm_source=dhlm_studio&utm_medium=referral"
+    }
+  },
+  "deep-dive-amzn-april-2026": {
+    "src": "https://images.unsplash.com/photo-1633174524827-db00a6b7bc74?ixid=M3w5MjE0MDh8MHwxfHNlYXJjaHwxfHxhbWF6b24lMjB3YXJlaG91c2UlMjBlY29tbWVyY2UlMjBkZWxpdmVyeXxlbnwxfDB8fHwxNzc1ODg0ODg4fDA&ixlib=rb-4.1.0&w=720&h=380&fit=crop&q=80&fm=jpg&auto=format",
+    "alt": "two boxes of amazon are stacked on top of each other",
+    "credit": {
+      "author": "Anirudh",
+      "authorUrl": "https://unsplash.com/@lanirudhreddy?utm_source=dhlm_studio&utm_medium=referral",
+      "unsplashUrl": "https://unsplash.com/photos/wKeZstqxKTQ?utm_source=dhlm_studio&utm_medium=referral"
+    }
+  },
+  "deep-dive-btc-april-2026": {
+    "src": "https://images.unsplash.com/photo-1632113988284-31334b398e10?ixid=M3w5MjE0MDh8MHwxfHNlYXJjaHwxfHxiaXRjb2luJTIwY3J5cHRvY3VycmVuY3klMjBkaWdpdGFsJTIwZ29sZCUyMGNvaW58ZW58MXwwfHx8MTc3NTg4NDg5MHww&ixlib=rb-4.1.0&w=720&h=380&fit=crop&q=80&fm=jpg&auto=format",
+    "alt": "a pile of gold bars sitting on top of a pile of money",
+    "credit": {
+      "author": "Dash Cryptocurrency",
+      "authorUrl": "https://unsplash.com/@dashpay?utm_source=dhlm_studio&utm_medium=referral",
+      "unsplashUrl": "https://unsplash.com/photos/-3xhXkOcKvE?utm_source=dhlm_studio&utm_medium=referral"
+    }
+  },
+  "deep-dive-meta-april-2026": {
+    "src": "https://images.unsplash.com/photo-1728571195318-f35263636baa?ixid=M3w5MjE0MDh8MHwxfHNlYXJjaHwxfHxtZXRhJTIwc29jaWFsJTIwbWVkaWElMjB2aXJ0dWFsJTIwcmVhbGl0eXxlbnwxfDB8fHwxNzc1ODg0ODkzfDA&ixlib=rb-4.1.0&w=720&h=380&fit=crop&q=80&fm=jpg&auto=format",
+    "alt": "A man wearing a robot headpiece in front of a TV",
+    "credit": {
+      "author": "Paul Einerhand",
+      "authorUrl": "https://unsplash.com/@pauleinerhand?utm_source=dhlm_studio&utm_medium=referral",
+      "unsplashUrl": "https://unsplash.com/photos/1TYLJw5DBfk?utm_source=dhlm_studio&utm_medium=referral"
+    }
+  },
+  "deep-dive-msft-april-2026": {
+    "src": "https://images.unsplash.com/photo-1632239776255-0a7f24814df2?ixid=M3w5MjE0MDh8MHwxfHNlYXJjaHwxfHxtaWNyb3NvZnQlMjBjbG91ZCUyMHRlY2hub2xvZ3klMjBvZmZpY2UlMjBzb2Z0d2FyZXxlbnwxfDB8fHwxNzc1ODg0ODk1fDA&ixlib=rb-4.1.0&w=720&h=380&fit=crop&q=80&fm=jpg&auto=format",
+    "alt": "a close up of a cell phone with icons on it",
+    "credit": {
+      "author": "Ed Hardie",
+      "authorUrl": "https://unsplash.com/@edhardie?utm_source=dhlm_studio&utm_medium=referral",
+      "unsplashUrl": "https://unsplash.com/photos/xG02JzIBf7o?utm_source=dhlm_studio&utm_medium=referral"
+    }
+  },
+  "deep-dive-nvda-april-2026": {
+    "src": "https://images.unsplash.com/photo-1716967318503-05b7064afa41?ixid=M3w5MjE0MDh8MHwxfHNlYXJjaHwxfHxudmlkaWElMjBncHUlMjBzZW1pY29uZHVjdG9yJTIwdGVjaG5vbG9neXxlbnwxfDB8fHwxNzc1ODg0ODk3fDA&ixlib=rb-4.1.0&w=720&h=380&fit=crop&q=80&fm=jpg&auto=format",
+    "alt": "the nvidia logo is displayed on a table",
+    "credit": {
+      "author": "Mariia Shalabaieva",
+      "authorUrl": "https://unsplash.com/@maria_shalabaieva?utm_source=dhlm_studio&utm_medium=referral",
+      "unsplashUrl": "https://unsplash.com/photos/0SqsTxWhgNU?utm_source=dhlm_studio&utm_medium=referral"
+    }
+  },
+  "deep-dive-pltr-april-2026": {
+    "src": "https://images.unsplash.com/photo-1584931423312-5d53d862446a?ixid=M3w5MjE0MDh8MHwxfHNlYXJjaHwxfHxkYXRhJTIwYW5hbHl0aWNzJTIwc3VydmVpbGxhbmNlJTIwaW50ZWxsaWdlbmNlfGVufDF8MHx8fDE3NzU4ODQ4OTl8MA&ixlib=rb-4.1.0&w=720&h=380&fit=crop&q=80&fm=jpg&auto=format",
+    "alt": "black flat screen tv showing game",
+    "credit": {
+      "author": "Martin Sanchez",
+      "authorUrl": "https://unsplash.com/@martinsanchez?utm_source=dhlm_studio&utm_medium=referral",
+      "unsplashUrl": "https://unsplash.com/photos/5KxA53UU6Yo?utm_source=dhlm_studio&utm_medium=referral"
+    }
+  },
+  "deep-dive-tsla-april-2026": {
+    "src": "https://images.unsplash.com/photo-1667123057116-40cbf20e5a9d?ixid=M3w5MjE0MDh8MHwxfHNlYXJjaHwxfHx0ZXNsYSUyMGVsZWN0cmljJTIwdmVoaWNsZSUyMGNhciUyMGZ1dHVyZXxlbnwxfDB8fHwxNzc1ODg0OTAyfDA&ixlib=rb-4.1.0&w=720&h=380&fit=crop&q=80&fm=jpg&auto=format",
+    "alt": "a white car with its front facing the camera",
+    "credit": {
+      "author": "Eyosias G",
+      "authorUrl": "https://unsplash.com/@yozz_t?utm_source=dhlm_studio&utm_medium=referral",
+      "unsplashUrl": "https://unsplash.com/photos/Ppl7kJSPTYU?utm_source=dhlm_studio&utm_medium=referral"
+    }
+  },
+  "hot-sector-energy-april-2026": {
+    "src": "https://images.unsplash.com/photo-1768128834332-7d3479c8d634?ixid=M3w5MjE0MDh8MHwxfHNlYXJjaHwxfHxvaWwlMjByZWZpbmVyeSUyMGVuZXJneSUyMGluZHVzdHJpYWwlMjBwb3dlcnxlbnwxfDB8fHwxNzc1ODg0OTA0fDA&ixlib=rb-4.1.0&w=720&h=380&fit=crop&q=80&fm=jpg&auto=format",
+    "alt": "Industrial complex illuminated at night against dark sky",
+    "credit": {
+      "author": "waa towaw",
+      "authorUrl": "https://unsplash.com/@toowaaw?utm_source=dhlm_studio&utm_medium=referral",
+      "unsplashUrl": "https://unsplash.com/photos/M2PPBz3p5a8?utm_source=dhlm_studio&utm_medium=referral"
+    }
+  },
+  "deep-dive-googl-april-2026": {
+    "src": "https://images.unsplash.com/photo-1667372283545-1261fb5c427a?ixid=M3w5MjE0MDh8MHwxfHNlYXJjaHwxfHxpbnRlcm5ldCUyMHRlY2hub2xvZ3klMjBkYXRhJTIwc2VydmVyJTIwY2xvdWR8ZW58MXwwfHx8MTc3NTg4NDkxMnww&ixlib=rb-4.1.0&w=720&h=380&fit=crop&q=80&fm=jpg&auto=format",
+    "alt": "a close-up of a device",
+    "credit": {
+      "author": "Growtika",
+      "authorUrl": "https://unsplash.com/@growtika?utm_source=dhlm_studio&utm_medium=referral",
+      "unsplashUrl": "https://unsplash.com/photos/KPZNNKQbTMw?utm_source=dhlm_studio&utm_medium=referral"
+    }
   }
 }
