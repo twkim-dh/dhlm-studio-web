@@ -1,15 +1,13 @@
 'use client';
 
-// StockLogo — renders a stock logo from an external src URL.
-// Chains: src prop → FMP image-stock CDN → letter fallback.
+// StockLogo — renders a stock logo, chaining:
+//   src prop (from API) → FMP image-stock CDN → letter fallback
 //
-// After onLoad, uses canvas to detect white-on-transparent logos that would
-// be invisible on the white container background, triggering the fallback.
-// FMP CDN sends Access-Control-Allow-Origin: * so getImageData works.
+// Same white/dark canvas detection as TickerLogo. Logos with white content
+// (e.g. PLTR) are shown on a dark background; dark logos on white.
 
 import { useState, useCallback } from 'react';
 
-/** Deterministic hue from ticker → dark-mode-friendly HSL background */
 function tickerBgColor(ticker: string): string {
   let hash = 0;
   for (const c of ticker) hash = (hash * 31 + c.charCodeAt(0)) & 0xffff;
@@ -20,46 +18,65 @@ function fmpCdnUrl(ticker: string): string {
   return `https://financialmodelingprep.com/image-stock/${ticker.toUpperCase()}.png`;
 }
 
-/** Returns true if the image is invisible when composited on white */
-function isInvisibleOnWhite(img: HTMLImageElement): boolean {
+function visibleRatio(img: HTMLImageElement, fillHex: string): number {
   try {
     const sz = 20;
     const canvas = document.createElement('canvas');
-    canvas.width = sz;
-    canvas.height = sz;
+    canvas.width = sz; canvas.height = sz;
     const ctx = canvas.getContext('2d');
-    if (!ctx) return false;
-    ctx.fillStyle = '#ffffff';
+    if (!ctx) return 0;
+    ctx.fillStyle = fillHex;
     ctx.fillRect(0, 0, sz, sz);
     ctx.drawImage(img, 0, 0, sz, sz);
-    const pixels = ctx.getImageData(0, 0, sz, sz).data;
-    let nonWhite = 0;
-    for (let i = 0; i < pixels.length; i += 4) {
-      // sum < 600: only count pixels visibly darker than light gray.
-      // Filters alpha=36 ghosts (~219/219/219 = 657) that look white to human eyes.
-      if (pixels[i] + pixels[i + 1] + pixels[i + 2] < 600) nonWhite++;
+    const d = ctx.getImageData(0, 0, sz, sz).data;
+    const isWhiteBg = fillHex === '#ffffff';
+    let count = 0;
+    for (let i = 0; i < d.length; i += 4) {
+      const b = (d[i] + d[i + 1] + d[i + 2]) / 3;
+      if (isWhiteBg ? b < 200 : b > 55) count++;
     }
-    return nonWhite < sz * sz * 0.05;
-  } catch {
-    return false;
-  }
+    return count / (sz * sz);
+  } catch { return 0; }
 }
 
+type BgMode = 'loading' | 'white' | 'dark' | 'fallback';
+
 export default function StockLogo({ src, ticker, size = 26 }: { src?: string; ticker: string; size?: number }) {
-  // stage 0 = try src prop, stage 1 = try FMP CDN, stage 2 = letter badge
-  const [stage, setStage] = useState<0 | 1 | 2>(src ? 0 : 1);
+  const [srcStage, setSrcStage] = useState<0 | 1>(src ? 0 : 1); // 0=API src, 1=FMP CDN
+  const [bg, setBg] = useState<BgMode>('loading');
   const radius = size > 30 ? 8 : 5;
   const pad = Math.max(2, Math.round(size * 0.1));
 
+  const activeSrc = srcStage === 0 ? (src ?? '') : fmpCdnUrl(ticker);
+
   const handleLoad = useCallback((e: React.SyntheticEvent<HTMLImageElement>) => {
-    if (isInvisibleOnWhite(e.currentTarget)) {
-      setStage(prev => (prev < 2 ? (prev + 1) as 1 | 2 : 2));
+    const img = e.currentTarget;
+    const THRESHOLD = 0.05;
+    if (visibleRatio(img, '#ffffff') >= THRESHOLD) {
+      setBg('white');
+    } else if (visibleRatio(img, '#111827') >= THRESHOLD) {
+      setBg('dark');
+    } else {
+      // Not visible on either bg — try FMP CDN if not already tried
+      if (srcStage === 0) {
+        setSrcStage(1);
+        setBg('loading');
+      } else {
+        setBg('fallback');
+      }
     }
-  }, []);
+  }, [srcStage]);
 
-  const activeSrc = stage === 0 ? (src ?? '') : fmpCdnUrl(ticker);
+  const handleError = useCallback(() => {
+    if (srcStage === 0) {
+      setSrcStage(1);
+      setBg('loading');
+    } else {
+      setBg('fallback');
+    }
+  }, [srcStage]);
 
-  if (stage === 2) {
+  if (bg === 'fallback') {
     return (
       <div style={{
         width: size, height: size, borderRadius: radius,
@@ -74,10 +91,12 @@ export default function StockLogo({ src, ticker, size = 26 }: { src?: string; ti
     );
   }
 
+  const containerBg = bg === 'white' ? '#ffffff' : '#111827';
+
   return (
     <div style={{
       width: size, height: size, borderRadius: radius,
-      background: '#fff', padding: pad,
+      background: containerBg, padding: pad,
       boxSizing: 'border-box', flexShrink: 0,
       display: 'inline-flex', alignItems: 'center', justifyContent: 'center',
       overflow: 'hidden',
@@ -87,8 +106,12 @@ export default function StockLogo({ src, ticker, size = 26 }: { src?: string; ti
         src={activeSrc}
         alt={ticker}
         crossOrigin="anonymous"
-        style={{ width: '100%', height: '100%', objectFit: 'contain', display: 'block' }}
-        onError={() => setStage(prev => (prev === 0 ? 1 : 2))}
+        style={{
+          width: '100%', height: '100%', objectFit: 'contain', display: 'block',
+          opacity: bg === 'loading' ? 0 : 1,
+          transition: 'opacity 0.1s',
+        }}
+        onError={handleError}
         onLoad={handleLoad}
       />
     </div>

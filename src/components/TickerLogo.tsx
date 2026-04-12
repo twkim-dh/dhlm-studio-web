@@ -1,27 +1,56 @@
 'use client';
 
 // TickerLogo — renders a company logo for the given ticker via FMP's
-// image-stock CDN. The image-stock URL is open (no API key required) and
-// does not count toward the FMP API quota.
+// image-stock CDN (open URL, no API key, does not count toward FMP quota).
 //
-// FMP logos are RGBA PNGs with transparent backgrounds. Some are dark-on-
-// transparent (visible on white bg), others are white-on-transparent
-// (invisible on white bg). We use a canvas check after onLoad to detect
-// invisible logos and automatically switch to the letter fallback.
+// FMP logos are RGBA PNGs with transparent backgrounds — two types:
+//   • Dark logo on transparent  (e.g. TSLA, NVDA) → visible on white bg
+//   • White logo on transparent (e.g. PLTR, AAPL) → visible on dark bg only
 //
-// FMP CDN sends Access-Control-Allow-Origin: * so canvas.getImageData works.
+// Strategy: after onLoad, composite the image onto a 20×20 white canvas and
+// count "meaningfully dark" pixels. If < 5%, try a dark canvas instead.
+// If < 5% there too → show letter fallback. FMP CDN sends
+// Access-Control-Allow-Origin: * so canvas.getImageData() works.
 //
 // Trademark notice: All company logos remain the property of their respective
 // owners. The site footer carries a global identification-only disclaimer.
 
 import { useState, useCallback } from 'react';
 
-/** Deterministic hue from ticker → dark-mode-friendly HSL background */
 function tickerBgColor(ticker: string): string {
   let hash = 0;
   for (const c of ticker) hash = (hash * 31 + c.charCodeAt(0)) & 0xffff;
   return `hsl(${hash % 360}, 50%, 28%)`;
 }
+
+/** Count visible pixels when composited on a given fill color. Returns 0–1 ratio. */
+function visibleRatio(img: HTMLImageElement, fillHex: string): number {
+  try {
+    const sz = 20;
+    const canvas = document.createElement('canvas');
+    canvas.width = sz;
+    canvas.height = sz;
+    const ctx = canvas.getContext('2d');
+    if (!ctx) return 0;
+    ctx.fillStyle = fillHex;
+    ctx.fillRect(0, 0, sz, sz);
+    ctx.drawImage(img, 0, 0, sz, sz);
+    const d = ctx.getImageData(0, 0, sz, sz).data;
+    const isWhiteBg = fillHex === '#ffffff';
+    let count = 0;
+    for (let i = 0; i < d.length; i += 4) {
+      const brightness = (d[i] + d[i + 1] + d[i + 2]) / 3;
+      // On white bg: look for pixels noticeably darker than white (< 200)
+      // On dark bg:  look for pixels noticeably lighter than dark  (> 55)
+      if (isWhiteBg ? brightness < 200 : brightness > 55) count++;
+    }
+    return count / (sz * sz);
+  } catch {
+    return 0;
+  }
+}
+
+type BgMode = 'loading' | 'white' | 'dark' | 'fallback';
 
 interface Props {
   ticker: string;
@@ -30,42 +59,24 @@ interface Props {
 }
 
 export default function TickerLogo({ ticker, size = 24, rounded = true }: Props) {
-  const [error, setError] = useState(false);
+  const [bg, setBg] = useState<BgMode>('loading');
   const radius = rounded ? Math.max(4, Math.round(size * 0.2)) : 0;
   const url = `https://financialmodelingprep.com/image-stock/${ticker.toUpperCase()}.png`;
   const pad = Math.max(2, Math.round(size * 0.1));
 
-  // After load: composite the logo on a white canvas and check if any non-white
-  // pixels remain. White-on-transparent logos (e.g. AAPL) produce 0 dark pixels
-  // → show the letter fallback instead of an invisible white square.
   const handleLoad = useCallback((e: React.SyntheticEvent<HTMLImageElement>) => {
-    try {
-      const img = e.currentTarget;
-      const sz = 20; // small sample, fast
-      const canvas = document.createElement('canvas');
-      canvas.width = sz;
-      canvas.height = sz;
-      const ctx = canvas.getContext('2d');
-      if (!ctx) return;
-      ctx.fillStyle = '#ffffff';
-      ctx.fillRect(0, 0, sz, sz);
-      ctx.drawImage(img, 0, 0, sz, sz);
-      const pixels = ctx.getImageData(0, 0, sz, sz).data;
-      let nonWhite = 0;
-      for (let i = 0; i < pixels.length; i += 4) {
-        // Sum < 600 = avg channel < 200: filters out faint alpha=36 ghost pixels
-        // (composited to ~219/219/219 = sum 657) that look white to human eyes.
-        // Only pixels visibly darker than light gray are counted.
-        if (pixels[i] + pixels[i + 1] + pixels[i + 2] < 600) nonWhite++;
-      }
-      // < 5% of pixels are meaningfully visible → logo is invisible → show fallback
-      if (nonWhite < sz * sz * 0.05) setError(true);
-    } catch {
-      // Canvas blocked (e.g. CORS unexpected error) — keep logo as-is
+    const img = e.currentTarget;
+    const THRESHOLD = 0.05; // 5% of pixels must be meaningfully visible
+    if (visibleRatio(img, '#ffffff') >= THRESHOLD) {
+      setBg('white');
+    } else if (visibleRatio(img, '#111827') >= THRESHOLD) {
+      setBg('dark');   // white-on-transparent logos (PLTR, AAPL)
+    } else {
+      setBg('fallback');
     }
   }, []);
 
-  if (error) {
+  if (bg === 'fallback') {
     return (
       <div
         aria-label={ticker}
@@ -83,11 +94,16 @@ export default function TickerLogo({ ticker, size = 24, rounded = true }: Props)
     );
   }
 
+  const containerBg =
+    bg === 'white' ? '#ffffff' :
+    bg === 'dark'  ? '#111827' :
+    '#111827'; // 'loading' → dark so image is invisible during check
+
   return (
     <div
       style={{
         width: size, height: size, borderRadius: radius,
-        background: '#fff', padding: pad,
+        background: containerBg, padding: pad,
         boxSizing: 'border-box', flexShrink: 0,
         display: 'inline-flex', alignItems: 'center', justifyContent: 'center',
         overflow: 'hidden',
@@ -98,8 +114,13 @@ export default function TickerLogo({ ticker, size = 24, rounded = true }: Props)
         src={url}
         alt={`${ticker} logo`}
         crossOrigin="anonymous"
-        style={{ width: '100%', height: '100%', objectFit: 'contain', display: 'block' }}
-        onError={() => setError(true)}
+        style={{
+          width: '100%', height: '100%', objectFit: 'contain', display: 'block',
+          // Hide during canvas check to avoid flash of wrong-background logo
+          opacity: bg === 'loading' ? 0 : 1,
+          transition: 'opacity 0.1s',
+        }}
+        onError={() => setBg('fallback')}
         onLoad={handleLoad}
       />
     </div>
