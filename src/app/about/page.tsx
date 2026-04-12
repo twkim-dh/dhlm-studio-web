@@ -2,8 +2,8 @@ import type { Metadata } from "next";
 import Link from "next/link";
 
 export const metadata: Metadata = {
-  title: "About DHLM Studio — Dream · Horizon · Link · Media",
-  description: "DHLM Studio transforms complex financial data into clear, engaging insights. Learn about our mission, data sources, and editorial standards.",
+  title: "About DHLM Studio — Data-Driven Financial Analysis for Serious Investors",
+  description: "DHLM Studio: the tools and data serious investors check before making a move. Market analysis, Deep Dive reports, free calculators, and crypto education. Not financial advice.",
   alternates: { canonical: 'https://dhlm-studio.com/about' },
 };
 
@@ -23,14 +23,35 @@ export default function AboutPage() {
 
         <div style={{ display: 'flex', flexDirection: 'column', gap: 24 }}>
 
-          {/* Mission */}
+          {/* Mission — new positioning copy */}
           <div style={{ ...card, padding: '24px 22px' }}>
-            <div style={{ fontFamily: 'var(--mono)', fontSize: 9, fontWeight: 700, color: '#00D474', letterSpacing: 2, marginBottom: 10 }}>OUR MISSION</div>
-            <p style={{ fontFamily: 'var(--serif)', fontSize: 20, fontWeight: 800, color: '#F1F5F9', lineHeight: 1.5, margin: '0 0 12px' }}>
-              We transform complex financial data into clear, engaging insights for everyone.
+            <div style={{ fontFamily: 'var(--mono)', fontSize: 9, fontWeight: 700, color: '#00D474', letterSpacing: 2, marginBottom: 10 }}>WHAT WE ARE</div>
+            <p style={{ fontFamily: 'var(--serif)', fontSize: 18, fontWeight: 800, color: '#D4A843', lineHeight: 1.5, margin: '0 0 16px' }}>
+              &ldquo;The tools and data serious investors check before making a move.&rdquo;
             </p>
-            <p style={{ fontSize: 14, color: '#94A3B8', lineHeight: 1.8, margin: 0 }}>
-              DHLM Studio tracks 500+ stocks, 100+ cryptocurrencies, global rankings, and lottery data — updated in real-time. Our Brutal Edge&trade; analytical voice makes complex financial data accessible while our tools help you explore the world in numbers.
+            <p style={{ fontSize: 14, color: '#94A3B8', lineHeight: 1.9, margin: '0 0 14px' }}>
+              DHLM Studio is a data-driven financial analysis platform for North American investors.
+            </p>
+            <p style={{ fontSize: 14, color: '#94A3B8', lineHeight: 1.9, margin: '0 0 14px' }}>
+              We do not tell you what to buy. We show you what the data says.
+            </p>
+            <p style={{ fontSize: 14, color: '#94A3B8', lineHeight: 1.9, margin: '0 0 16px' }}>
+              Every morning, we publish a market brief so you can start your day informed. Every week, we break down stocks and crypto with the depth of institutional research — without the paywall or the agenda. And we build the tools that let you run your own numbers before risking your own money.
+            </p>
+            <div style={{ display: 'flex', flexDirection: 'column', gap: 6, padding: '14px 16px', background: '#0D1117', borderRadius: 10, border: '1px solid #1E293B' }}>
+              {[
+                { icon: '📊', text: 'Data before opinions' },
+                { icon: '🔧', text: 'Tools before tips' },
+                { icon: '🎯', text: 'Honesty before hype' },
+              ].map(p => (
+                <div key={p.text} style={{ display: 'flex', alignItems: 'center', gap: 10 }}>
+                  <span style={{ fontSize: 14 }}>{p.icon}</span>
+                  <span style={{ fontSize: 14, fontWeight: 600, color: '#E2E8F0' }}>{p.text}</span>
+                </div>
+              ))}
+            </div>
+            <p style={{ fontSize: 13, color: '#64748B', lineHeight: 1.8, margin: '14px 0 0' }}>
+              Brutal Edge is our editorial voice. Sharp, direct, and allergic to hype. If the data says a stock is overvalued, we say so. If we do not know, we say that too. Built by DHLM Studio. Powered by data. <strong style={{ color: '#C73E3A' }}>Not financial advice.</strong>
             </p>
           </div>
 
@@ -159,18 +180,50 @@ export default function AboutPage() {
             <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(200px, 1fr))', gap: 10 }}>
               {[
                 { icon: '📈', title: 'Market Movers', desc: 'Daily gainers, losers & most active', href: '/markets' },
-                { icon: '🔥', title: 'Brutal Edge', desc: 'Data-driven stock analysis', href: '/markets' },
+                { icon: '🔥', title: 'Deep Dive Reports', desc: 'Institutional-grade stock analysis (BEAF)', href: '/reports' },
                 { icon: '🏆', title: 'World Rankings', desc: 'Billionaires, GDP, companies', href: '/rankings' },
                 { icon: '🪙', title: 'Crypto Rankings', desc: 'Live prices & analysis', href: '/rankings/crypto' },
                 { icon: '🎰', title: 'US Lottery', desc: 'Powerball & Mega Millions', href: '/lottery' },
                 { icon: '📰', title: 'Research Lab', desc: 'Paper vs. Profit series', href: '/research' },
+                { icon: '📚', title: 'Crypto 101', desc: '12-week beginner curriculum', href: '/crypto-101' },
                 { icon: '💡', title: 'Wall Street Wisdom', desc: '100 investing quotes', href: '/blog/wisdom' },
-                { icon: '🧮', title: 'Free Tools', desc: 'QR & password generators', href: '/tools' },
               ].map(item => (
                 <Link key={item.title} href={item.href} style={{ padding: '12px 14px', borderRadius: 10, background: '#0D1117', border: '1px solid #1E293B', textDecoration: 'none' }}>
                   <span style={{ fontSize: 18 }}>{item.icon}</span>
                   <div style={{ fontSize: 13, fontWeight: 600, color: '#E2E8F0', marginTop: 6 }}>{item.title}</div>
                   <div style={{ fontSize: 11, color: '#64748B', marginTop: 2 }}>{item.desc}</div>
+                </Link>
+              ))}
+            </div>
+          </div>
+
+          {/* Our Tools (Calculators) */}
+          <div style={{ ...card, padding: '24px 22px', borderColor: '#F59E0B20' }}>
+            <div style={{ fontFamily: 'var(--mono)', fontSize: 9, fontWeight: 700, color: '#F59E0B', letterSpacing: 2, marginBottom: 10 }}>OUR TOOLS — FREE CALCULATORS</div>
+            <p style={{ fontSize: 13, color: '#64748B', lineHeight: 1.7, margin: '0 0 14px' }}>
+              Run the numbers yourself. No account, no paywall, no email required.
+            </p>
+            <div style={{ display: 'flex', flexDirection: 'column', gap: 8 }}>
+              {[
+                { icon: '📈', title: 'Compound Interest Calculator', desc: 'See how your money grows over time with monthly contributions and a year-by-year breakdown.', href: '/calculators/compound-interest', badge: 'LIVE' },
+                { icon: '📊', title: 'DCA Calculator', desc: 'Simulate dollar cost averaging into BTC, ETH, S&P 500, or any asset. Compare against lump sum.', href: '/calculators/dca', badge: 'LIVE' },
+                { icon: '🎯', title: 'Position Size Calculator', desc: 'How much should you invest per trade? Calculate based on your risk tolerance and stop loss.', href: '/calculators/position-size', badge: 'LIVE' },
+                { icon: '🪙', title: 'Crypto Profit Calculator', desc: 'Calculate profit/loss on any crypto trade with entry, exit, and fees.', href: '/calculators/crypto-profit', badge: 'COMING SOON' },
+                { icon: '📉', title: 'Stock Return Calculator', desc: 'Backtest any stock with real historical price data. Coming after FMP integration.', href: '#', badge: 'PHASE 3' },
+              ].map(item => (
+                <Link key={item.title} href={item.href === '#' ? '/calculators/compound-interest' : item.href} style={{ display: 'flex', alignItems: 'center', justifyContent: 'space-between', padding: '12px 14px', borderRadius: 10, background: '#0D1117', border: '1px solid #1E293B', textDecoration: 'none', opacity: item.badge === 'PHASE 3' ? 0.5 : 1 }}>
+                  <div style={{ display: 'flex', alignItems: 'center', gap: 10 }}>
+                    <span style={{ fontSize: 18 }}>{item.icon}</span>
+                    <div>
+                      <div style={{ fontSize: 13, fontWeight: 600, color: '#E2E8F0' }}>{item.title}</div>
+                      <div style={{ fontSize: 11, color: '#64748B', marginTop: 1 }}>{item.desc}</div>
+                    </div>
+                  </div>
+                  <span style={{
+                    fontSize: 8, fontWeight: 700, padding: '2px 7px', borderRadius: 4, fontFamily: 'var(--mono)', flexShrink: 0, marginLeft: 8,
+                    background: item.badge === 'LIVE' ? '#00D47418' : '#475569',
+                    color: item.badge === 'LIVE' ? '#00D474' : '#94A3B8',
+                  }}>{item.badge}</span>
                 </Link>
               ))}
             </div>

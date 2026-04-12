@@ -68,6 +68,11 @@ export default function sitemap(): MetadataRoute.Sitemap {
     // Wisdom list page only (individual pages are noindex)
     { url: `${BASE}/blog/wisdom`,         lastModified: now, changeFrequency: "daily",   priority: 0.6 },
 
+    // Calculators (search-driven, no nav)
+    { url: `${BASE}/calculators/compound-interest`, lastModified: now, changeFrequency: "monthly", priority: 0.7 },
+    { url: `${BASE}/calculators/dca`,              lastModified: now, changeFrequency: "monthly", priority: 0.7 },
+    { url: `${BASE}/calculators/position-size`,    lastModified: now, changeFrequency: "monthly", priority: 0.7 },
+
     // Tools
     { url: `${BASE}/tools`,               lastModified: now, changeFrequency: "monthly", priority: 0.6 },
     { url: `${BASE}/tools/qr-generator`,  lastModified: now, changeFrequency: "monthly", priority: 0.6 },
