@@ -58,6 +58,7 @@ const card = { background: '#111827', borderRadius: 14, border: '1px solid #1E29
 export default function ReportsPage() {
   const all = getAllReports();
   const hotSector = all.filter(r => r.type === 'hot-sector' || r.type === 'hidden-gem');
+  const specials = all.filter(r => r.type === 'special-report');
   const reports = all.filter(r => !r.type || r.type === 'deep-dive');
 
   return (
@@ -66,8 +67,26 @@ export default function ReportsPage() {
         <div style={{ marginBottom: 24 }}>
           <div style={{ fontFamily: 'var(--mono)', fontSize: 10, fontWeight: 700, color: '#C73E3A', letterSpacing: 3, marginBottom: 8 }}>🔥 BRUTAL EDGE™ REPORTS</div>
           <h1 style={{ fontFamily: 'var(--serif)', fontSize: 28, fontWeight: 900, color: '#F1F5F9', margin: 0 }}>Deep Dive Analysis</h1>
-          <p style={{ fontSize: 13, color: '#64748B', marginTop: 4 }}>In-depth stock analysis with BEAF scoring — {reports.length} Deep Dives{hotSector.length > 0 ? ` · ${hotSector.length} Hot Sector` : ''}</p>
+          <p style={{ fontSize: 13, color: '#64748B', marginTop: 4 }}>In-depth stock analysis with BEAF scoring — {reports.length} Deep Dives{hotSector.length > 0 ? ` · ${hotSector.length} Hot Sector` : ''}{specials.length > 0 ? ` · ${specials.length} Special Report` : ''}</p>
         </div>
+
+        {specials.length > 0 && (
+          <div style={{ marginBottom: 28 }}>
+            <div style={{ fontFamily: 'var(--mono)', fontSize: 10, fontWeight: 800, color: '#C73E3A', letterSpacing: 2, marginBottom: 10 }}>⚡ SPECIAL REPORT</div>
+            <div style={{ display: 'flex', flexDirection: 'column', gap: 10 }}>
+              {specials.map(r => (
+                <Link key={r.slug} href={`/reports/${r.slug}`} style={{ ...card, padding: '20px 22px', textDecoration: 'none', display: 'block', borderColor: '#C73E3A40', background: 'linear-gradient(135deg, #C73E3A08, #111827)' }}>
+                  <div style={{ display: 'flex', alignItems: 'center', gap: 8, marginBottom: 8, flexWrap: 'wrap' }}>
+                    <span style={{ fontFamily: 'var(--mono)', fontSize: 10, fontWeight: 800, padding: '3px 8px', borderRadius: 4, background: '#C73E3A20', color: '#C73E3A', letterSpacing: 1 }}>SPECIAL REPORT</span>
+                    <span style={{ fontSize: 11, color: '#475569', marginLeft: 'auto' }}>{fmtDateShort(r.date)} · {r.readTime}</span>
+                  </div>
+                  <div style={{ fontFamily: 'var(--serif)', fontSize: 20, fontWeight: 800, color: '#F1F5F9', lineHeight: 1.4 }}>{r.title}</div>
+                  <p style={{ fontSize: 12, color: '#64748B', margin: '6px 0 0', lineHeight: 1.5 }}>{r.description}</p>
+                </Link>
+              ))}
+            </div>
+          </div>
+        )}
 
         {hotSector.length > 0 && (
           <div style={{ marginBottom: 28 }}>
