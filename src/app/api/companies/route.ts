@@ -5,7 +5,7 @@ const FMP_KEY = process.env.FMP_API_KEY || '';
 const BASE = 'https://financialmodelingprep.com/api/v3';
 
 let cacheData: { data: unknown; ts: number } | null = null;
-const CACHE_TTL = 600000; // 10 min
+const CACHE_TTL = 3_600_000; // 60 min (was 10 min — companies data doesn't change often)
 
 export async function GET() {
   if (cacheData && Date.now() - cacheData.ts < CACHE_TTL) {
