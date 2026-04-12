@@ -3,10 +3,40 @@ import Link from 'next/link';
 import Image from 'next/image';
 import { stocks, getStockByTicker } from '@/data/markets';
 import { TOP_STOCKS } from '@/data/top-stocks';
+import { fmpCanCall, fmpTrackCall } from '@/lib/fmp-tracker';
+import { getRedis } from '@/lib/redis';
 
 const FMP_KEY = process.env.FMP_API_KEY || '';
 const FMP_BASE = 'https://financialmodelingprep.com/stable';
 const YEAR = new Date().getFullYear();
+
+// Per-day cap: max 50 individual ticker fetches (2 FMP calls each = 100 calls)
+const TICKER_DAILY_CAP = 50;
+
+function tickerCapKey(): string {
+  return `fmp:ticker-calls:${new Date().toISOString().slice(0, 10)}`;
+}
+
+async function canFetchTicker(): Promise<boolean> {
+  try {
+    const redis = getRedis();
+    const count = await redis.get(tickerCapKey());
+    return count === null || Number(count) < TICKER_DAILY_CAP;
+  } catch {
+    return true; // fail-open
+  }
+}
+
+async function trackTickerFetch(): Promise<void> {
+  try {
+    const redis = getRedis();
+    const key = tickerCapKey();
+    const pipeline = redis.pipeline();
+    pipeline.incr(key);
+    pipeline.expire(key, 25 * 60 * 60);
+    await pipeline.exec();
+  } catch { /* silent */ }
+}
 
 export function generateStaticParams() {
   return stocks.map(s => ({ ticker: s.ticker.toLowerCase() }));
@@ -77,10 +107,19 @@ async function fetchLiveData(ticker: string) {
 
   if (FMP_KEY) {
     try {
+      // Check global budget AND per-day ticker cap before calling FMP
+      const [budgetOk, capOk] = await Promise.all([fmpCanCall(), canFetchTicker()]);
+      if (!budgetOk || !capOk) {
+        console.log(`[ticker/${sym}] FMP skipped — budget:${budgetOk} cap:${capOk}`);
+        return null; // fallback to static data
+      }
+
       const [profileRes, finRes] = await Promise.all([
         fetch(`${FMP_BASE}/profile?symbol=${sym}&apikey=${FMP_KEY}`, { next: { revalidate: 3600 } }),
         fetch(`${FMP_BASE}/income-statement?symbol=${sym}&period=annual&limit=1&apikey=${FMP_KEY}`, { next: { revalidate: 86400 } }),
       ]);
+      // Track immediately after fetches fire (2 FMP calls per ticker page)
+      await Promise.all([fmpTrackCall(2), trackTickerFetch()]);
       if (!profileRes.ok) { console.warn(`FMP profile ${profileRes.status} for ${sym}`); throw new Error(`FMP ${profileRes.status}`); }
       const profileData = await profileRes.json();
       if (profileData?.['Error Message'] || profileData?.['message']) return null;

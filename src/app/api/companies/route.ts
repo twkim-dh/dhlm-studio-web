@@ -1,19 +1,31 @@
 import { NextResponse } from 'next/server';
+import { fmpCanCall, fmpTrackCall } from '@/lib/fmp-tracker';
 
 // Financial Modeling Prep — commercial use allowed, 250 req/day free
 const FMP_KEY = process.env.FMP_API_KEY || '';
 const BASE = 'https://financialmodelingprep.com/api/v3';
 
 let cacheData: { data: unknown; ts: number } | null = null;
-const CACHE_TTL = 3_600_000; // 60 min (was 10 min — companies data doesn't change often)
+
+// Weekend: 6h, weekday: 1h — companies data barely changes
+function cacheTtl(): number {
+  const day = new Date().getUTCDay();
+  return (day === 0 || day === 6) ? 6 * 3_600_000 : 3_600_000;
+}
 
 export async function GET() {
-  if (cacheData && Date.now() - cacheData.ts < CACHE_TTL) {
+  if (cacheData && Date.now() - cacheData.ts < cacheTtl()) {
     return NextResponse.json(cacheData.data);
   }
 
   if (!FMP_KEY) {
     return NextResponse.json({ error: 'FMP_API_KEY not configured' }, /* graceful */);
+  }
+
+  // Budget guard — return stale cache rather than burn quota
+  if (!(await fmpCanCall())) {
+    if (cacheData) return NextResponse.json(cacheData.data);
+    return NextResponse.json({ companies: [], error: 'FMP budget exhausted' });
   }
 
   try {
@@ -22,6 +34,7 @@ export async function GET() {
       `${BASE}/stock-screener?marketCapMoreThan=100000000000&limit=20&apikey=${FMP_KEY}`,
       { cache: 'no-store' }
     );
+    await fmpTrackCall();
     const raw = await res.json();
 
     if (!Array.isArray(raw) || raw.length === 0) {
