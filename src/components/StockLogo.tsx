@@ -35,9 +35,11 @@ function isInvisibleOnWhite(img: HTMLImageElement): boolean {
     const pixels = ctx.getImageData(0, 0, sz, sz).data;
     let nonWhite = 0;
     for (let i = 0; i < pixels.length; i += 4) {
-      if (pixels[i] + pixels[i + 1] + pixels[i + 2] < 700) nonWhite++;
+      // sum < 600: only count pixels visibly darker than light gray.
+      // Filters alpha=36 ghosts (~219/219/219 = 657) that look white to human eyes.
+      if (pixels[i] + pixels[i + 1] + pixels[i + 2] < 600) nonWhite++;
     }
-    return nonWhite < sz * sz * 0.04;
+    return nonWhite < sz * sz * 0.05;
   } catch {
     return false;
   }

@@ -53,11 +53,13 @@ export default function TickerLogo({ ticker, size = 24, rounded = true }: Props)
       const pixels = ctx.getImageData(0, 0, sz, sz).data;
       let nonWhite = 0;
       for (let i = 0; i < pixels.length; i += 4) {
-        // Sum of R+G+B < 700 means noticeably darker than white (255+255+255=765)
-        if (pixels[i] + pixels[i + 1] + pixels[i + 2] < 700) nonWhite++;
+        // Sum < 600 = avg channel < 200: filters out faint alpha=36 ghost pixels
+        // (composited to ~219/219/219 = sum 657) that look white to human eyes.
+        // Only pixels visibly darker than light gray are counted.
+        if (pixels[i] + pixels[i + 1] + pixels[i + 2] < 600) nonWhite++;
       }
-      // < 4% of pixels are visible → logo is invisible on white bg → show fallback
-      if (nonWhite < sz * sz * 0.04) setError(true);
+      // < 5% of pixels are meaningfully visible → logo is invisible → show fallback
+      if (nonWhite < sz * sz * 0.05) setError(true);
     } catch {
       // Canvas blocked (e.g. CORS unexpected error) — keep logo as-is
     }
