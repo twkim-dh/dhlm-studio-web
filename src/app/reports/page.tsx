@@ -5,6 +5,7 @@ import path from 'path';
 import RequestDeepDive from '@/components/RequestDeepDive';
 import { fmtDateShort } from '@/lib/fmt-date';
 import TickerLogo from '@/components/TickerLogo';
+import unsplashManifest from '@/data/unsplash-manifest.json';
 
 export const metadata: Metadata = {
   title: 'Reports — Brutal Edge™ Deep Dive Analysis | DHLM Studio',
@@ -74,16 +75,26 @@ export default function ReportsPage() {
           <div style={{ marginBottom: 28 }}>
             <div style={{ fontFamily: 'var(--mono)', fontSize: 10, fontWeight: 800, color: '#C73E3A', letterSpacing: 2, marginBottom: 10 }}>⚡ SPECIAL REPORT</div>
             <div style={{ display: 'flex', flexDirection: 'column', gap: 10 }}>
-              {specials.map(r => (
-                <Link key={r.slug} href={`/reports/${r.slug}`} style={{ ...card, padding: '20px 22px', textDecoration: 'none', display: 'block', borderColor: '#C73E3A40', background: 'linear-gradient(135deg, #C73E3A08, #111827)' }}>
-                  <div style={{ display: 'flex', alignItems: 'center', gap: 8, marginBottom: 8, flexWrap: 'wrap' }}>
-                    <span style={{ fontFamily: 'var(--mono)', fontSize: 10, fontWeight: 800, padding: '3px 8px', borderRadius: 4, background: '#C73E3A20', color: '#C73E3A', letterSpacing: 1 }}>SPECIAL REPORT</span>
-                    <span style={{ fontSize: 11, color: '#475569', marginLeft: 'auto' }}>{fmtDateShort(r.date)} · {r.readTime}</span>
-                  </div>
-                  <div style={{ fontFamily: 'var(--serif)', fontSize: 20, fontWeight: 800, color: '#F1F5F9', lineHeight: 1.4 }}>{r.title}</div>
-                  <p style={{ fontSize: 12, color: '#64748B', margin: '6px 0 0', lineHeight: 1.5 }}>{r.description}</p>
-                </Link>
-              ))}
+              {specials.map(r => {
+                const manifest = unsplashManifest as Record<string, { src: string; alt: string }>;
+                const thumb = manifest[r.slug];
+                return (
+                  <Link key={r.slug} href={`/reports/${r.slug}`} style={{ ...card, padding: 0, textDecoration: 'none', display: 'block', borderColor: '#C73E3A40', background: 'linear-gradient(135deg, #C73E3A08, #111827)', overflow: 'hidden' }}>
+                    {thumb && (
+                      // eslint-disable-next-line @next/next/no-img-element
+                      <img src={thumb.src} alt={thumb.alt} style={{ width: '100%', height: 160, objectFit: 'cover', display: 'block' }} />
+                    )}
+                    <div style={{ padding: '16px 22px 20px' }}>
+                      <div style={{ display: 'flex', alignItems: 'center', gap: 8, marginBottom: 8, flexWrap: 'wrap' }}>
+                        <span style={{ fontFamily: 'var(--mono)', fontSize: 10, fontWeight: 800, padding: '3px 8px', borderRadius: 4, background: '#C73E3A20', color: '#C73E3A', letterSpacing: 1 }}>SPECIAL REPORT</span>
+                        <span style={{ fontSize: 11, color: '#475569', marginLeft: 'auto' }}>{fmtDateShort(r.date)} · {r.readTime}</span>
+                      </div>
+                      <div style={{ fontFamily: 'var(--serif)', fontSize: 20, fontWeight: 800, color: '#F1F5F9', lineHeight: 1.4 }}>{r.title}</div>
+                      <p style={{ fontSize: 12, color: '#64748B', margin: '6px 0 0', lineHeight: 1.5 }}>{r.description}</p>
+                    </div>
+                  </Link>
+                );
+              })}
             </div>
           </div>
         )}
