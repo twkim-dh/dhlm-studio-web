@@ -155,7 +155,7 @@ export default function MarketsPage() {
                 </>
               ) : (
                 <>
-                  <span>{new Date().toLocaleDateString('en-US', { weekday: 'long', month: 'long', day: 'numeric', year: 'numeric' })}</span>
+                  <span>{new Date().toLocaleDateString('en-US', { weekday: 'long', month: 'long', day: 'numeric', year: 'numeric', timeZone: 'America/New_York' })}</span>
                   {isLive && <span style={{ fontSize: 9, padding: '2px 7px', borderRadius: 4, background: '#00D47418', color: '#00D474', fontWeight: 700, fontFamily: 'var(--mono)' }}>● LIVE</span>}
                 </>
               )}
