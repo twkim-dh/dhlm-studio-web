@@ -12,15 +12,20 @@ export async function GET() {
   const { used, budget, remaining } = await fmpCallsToday();
 
   let rateLimited = false;
+  let rateLimitExpiresAt: string | null = null;
   let largeCapCachedAt: string | null = null;
 
   try {
     const redis = getRedis();
-    const [flagRaw, largeCapRaw] = await Promise.all([
+    const [flagRaw, ttl, largeCapRaw] = await Promise.all([
       redis.get(FMP_RATE_LIMIT_KEY),
+      redis.ttl(FMP_RATE_LIMIT_KEY),
       redis.get(LARGECAP_REDIS_KEY),
     ]);
     rateLimited = Boolean(flagRaw);
+    if (rateLimited && ttl > 0) {
+      rateLimitExpiresAt = new Date(Date.now() + ttl * 1000).toISOString();
+    }
     if (largeCapRaw) {
       const parsed = JSON.parse(largeCapRaw) as { ts: number };
       largeCapCachedAt = new Date(parsed.ts).toISOString();
@@ -37,6 +42,7 @@ export async function GET() {
     remaining,
     usedPct: `${pct}%`,
     rateLimited,
+    rateLimitExpiresAt,
     largeCapScreenerCachedAt: largeCapCachedAt,
     note: status === 'RATE_LIMITED'
       ? '⛔ FMP circuit breaker active — all calls blocked until TTL expires'

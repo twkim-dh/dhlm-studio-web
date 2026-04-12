@@ -1,6 +1,7 @@
 import type { Metadata } from 'next';
 import Link from 'next/link';
 import { MEGAMILLIONS_DRAWS, JACKPOT_INFO } from '@/data/lottery';
+import { fmtDateShort } from '@/lib/fmt-date';
 
 export const metadata: Metadata = {
   title: `Mega Millions Results & Winning Numbers ${new Date().getFullYear()} | DHLM Studio`,
@@ -30,7 +31,7 @@ export default function MegaMillionsPage() {
           {MEGAMILLIONS_DRAWS.map((d, i) => (
             <div key={d.date} style={{ background: '#111827', borderRadius: 14, border: '1px solid #1E293B', padding: '16px 20px' }}>
               <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', marginBottom: 10 }}>
-                <span style={{ fontFamily: 'var(--mono)', fontSize: 12, fontWeight: 700, color: i === 0 ? '#F59E0B' : '#94A3B8' }}>{d.date}{i === 0 ? ' (Latest)' : ''}</span>
+                <span style={{ fontFamily: 'var(--mono)', fontSize: 12, fontWeight: 700, color: i === 0 ? '#F59E0B' : '#94A3B8' }}>{fmtDateShort(d.date)}{i === 0 ? ' (Latest)' : ''}</span>
                 {d.jackpot > 0 && <span style={{ fontFamily: 'var(--mono)', fontSize: 11, color: '#64748B' }}>Jackpot: ${Math.round(d.jackpot / 1e6)}M</span>}
               </div>
               <div style={{ display: 'flex', gap: 5, alignItems: 'center' }}>

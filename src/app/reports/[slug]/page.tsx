@@ -3,6 +3,7 @@ import Link from 'next/link';
 import fs from 'fs';
 import path from 'path';
 import LikeButton from '@/components/LikeButton';
+import { fmtDateLong } from '@/lib/fmt-date';
 import ListenButton from '@/components/ListenButton';
 import InlineSubscribe from '@/components/InlineSubscribe';
 import GiscusComments from '@/components/GiscusComments';
@@ -316,7 +317,7 @@ export default async function ReportPage({ params }: { params: Promise<{ slug: s
             {(!fm.type || fm.type === 'deep-dive') && (
               <span style={{ fontFamily: 'var(--mono)', fontSize: 10, fontWeight: 700, padding: '3px 8px', borderRadius: 4, background: '#D4A84314', color: '#D4A843' }}>BEAF: {fm.beafScore}/100 ({fm.grade})</span>
             )}
-            <span style={{ fontSize: 11, color: '#475569' }}>Published {fm.date} · {fm.readTime} read</span>
+            <span style={{ fontSize: 11, color: '#475569' }}>Published {fmtDateLong(fm.date)} · {fm.readTime} read</span>
           </div>
           <h1 style={{ fontFamily: 'var(--serif)', fontSize: 'clamp(24px, 4vw, 34px)', fontWeight: 900, color: '#F1F5F9', lineHeight: 1.3, margin: 0 }}>{fm.title}</h1>
           <p style={{ fontSize: 15, color: '#64748B', lineHeight: 1.7, marginTop: 12 }}>{fm.description}</p>

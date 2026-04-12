@@ -149,7 +149,17 @@ function normFmpSymbol(sym: string): string {
 // stale cache requests from continuing to hammer FMP after the daily
 // quota is exhausted.
 const FMP_RATE_LIMIT_KEY = 'fmp:rate-limited';
-const FMP_RATE_LIMIT_TTL = 6 * 60 * 60; // 6 hours — covers a typical FMP rolling reset
+
+// TTL until UTC midnight — aligns circuit breaker reset with FMP's daily quota reset.
+// Minimum 1 hour so a rate-limit event near midnight still gives meaningful protection.
+function fmpRateLimitTtl(): number {
+  const now = new Date();
+  const midnight = new Date(Date.UTC(
+    now.getUTCFullYear(), now.getUTCMonth(), now.getUTCDate() + 1
+  ));
+  const secsRemaining = Math.floor((midnight.getTime() - now.getTime()) / 1000);
+  return Math.max(3600, secsRemaining);
+}
 
 let fmpRateLimitedMem = false;
 
@@ -170,7 +180,7 @@ async function markFmpRateLimited(): Promise<void> {
   fmpRateLimitedMem = true;
   try {
     const redis = getRedis();
-    await redis.set(FMP_RATE_LIMIT_KEY, '1', 'EX', FMP_RATE_LIMIT_TTL);
+    await redis.set(FMP_RATE_LIMIT_KEY, '1', 'EX', fmpRateLimitTtl());
   } catch { /* ignore */ }
 }
 

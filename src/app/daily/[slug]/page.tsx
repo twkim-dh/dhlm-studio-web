@@ -3,6 +3,7 @@ import Link from 'next/link';
 import fs from 'fs';
 import path from 'path';
 import ListenButton from '@/components/ListenButton';
+import { fmtDateLong } from '@/lib/fmt-date';
 import InlineSubscribe from '@/components/InlineSubscribe';
 import GiscusComments from '@/components/GiscusComments';
 import DailyCharts from '@/components/DailyCharts';
@@ -200,7 +201,7 @@ export default async function DailyBriefPage({ params }: { params: Promise<{ slu
 
         {/* Title */}
         <div style={{ marginBottom: 32 }}>
-          <div style={{ fontFamily: 'var(--mono)', fontSize: 11, fontWeight: 700, color: '#C73E3A', marginBottom: 8 }}>{fm.date}</div>
+          <div style={{ fontFamily: 'var(--mono)', fontSize: 11, fontWeight: 700, color: '#C73E3A', marginBottom: 8 }}>{fmtDateLong(fm.date)}</div>
           <h1 style={{ fontFamily: 'var(--serif)', fontSize: 'clamp(24px, 4vw, 34px)', fontWeight: 900, color: '#F1F5F9', lineHeight: 1.3, margin: 0 }}>{fm.title}</h1>
           {fm.description && <p style={{ fontSize: 15, color: '#64748B', lineHeight: 1.7, marginTop: 12 }}>{fm.description}</p>}
           <div style={{ marginTop: 14 }}><ListenButton text={brief.body} /></div>

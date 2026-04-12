@@ -4,6 +4,7 @@ import { useState, useEffect } from 'react';
 import Link from 'next/link';
 import { analyzeNumbers, analyzeSpecialBall, getFullFrequency, analyzeCombo, type DrawRecord, type NumberStat } from '@/lib/lottery-stats';
 import { POWERBALL_DRAWS } from '@/data/lottery';
+import { fmtDateCompact } from '@/lib/fmt-date';
 
 type Period = 'all' | '1y' | '6m' | '100' | '50';
 
@@ -231,7 +232,7 @@ export default function PowerballStats() {
                 <div style={{ maxHeight: 500, overflowY: 'auto' }}>
                   {draws.slice(0, Math.min(limit, 50)).map((d, i) => (
                     <div key={i} style={{ display: 'flex', alignItems: 'center', gap: 8, padding: '8px 20px', borderBottom: '1px solid #1E293B15', fontSize: 11 }}>
-                      <span style={{ fontFamily: 'var(--mono)', color: '#64748B', width: 80, flexShrink: 0 }}>{d.date}</span>
+                      <span style={{ fontFamily: 'var(--mono)', color: '#64748B', width: 80, flexShrink: 0 }}>{fmtDateCompact(d.date)}</span>
                       <div style={{ display: 'flex', gap: 3 }}>
                         {d.numbers.map(n => (
                           <span key={n} style={{ width: 24, height: 24, borderRadius: '50%', background: '#1E293B', display: 'inline-flex', alignItems: 'center', justifyContent: 'center', fontWeight: 700, fontSize: 10, color: '#E2E8F0', fontFamily: 'var(--mono)' }}>{n}</span>

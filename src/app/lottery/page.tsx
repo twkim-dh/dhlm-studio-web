@@ -1,6 +1,7 @@
 import type { Metadata } from 'next';
 import Link from 'next/link';
 import { JACKPOT_INFO, POWERBALL_DRAWS, MEGAMILLIONS_DRAWS } from '@/data/lottery';
+import { fmtDateShort } from '@/lib/fmt-date';
 
 export const metadata: Metadata = {
   title: 'US Lottery — Powerball & Mega Millions Results | DHLM Studio',
@@ -66,7 +67,7 @@ export default function LotteryHub() {
               <span style={{ color: '#374151', margin: '0 2px', alignSelf: 'center', fontSize: 10 }}>+</span>
               <BallPB num={pb.specialBall} special />
             </div>
-            <div style={{ fontSize: 10, color: '#475569', marginTop: 6 }}>{pb.date} · Power Play {pb.multiplier}x</div>
+            <div style={{ fontSize: 10, color: '#475569', marginTop: 6 }}>{fmtDateShort(pb.date)} · Power Play {pb.multiplier}x</div>
           </Link>
 
           {/* Mega Millions */}
@@ -83,7 +84,7 @@ export default function LotteryHub() {
               <span style={{ color: '#374151', margin: '0 2px', alignSelf: 'center', fontSize: 10 }}>+</span>
               <BallMM num={mm.specialBall} special />
             </div>
-            <div style={{ fontSize: 10, color: '#475569', marginTop: 6 }}>{mm.date} · Megaplier {mm.multiplier}x</div>
+            <div style={{ fontSize: 10, color: '#475569', marginTop: 6 }}>{fmtDateShort(mm.date)} · Megaplier {mm.multiplier}x</div>
           </Link>
         </div>
 

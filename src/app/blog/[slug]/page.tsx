@@ -2,6 +2,7 @@ import type { Metadata } from 'next';
 import Link from 'next/link';
 import Image from 'next/image';
 import { blogPosts, getBlogPostBySlug } from '@/data/blog-posts';
+import { fmtDateLong, fmtDateShort } from '@/lib/fmt-date';
 import AdUnit from '@/components/AdUnit';
 import LikeButton from '@/components/LikeButton';
 import GiscusComments from '@/components/GiscusComments';
@@ -79,7 +80,7 @@ export default async function BlogPostPage({ params }: { params: Promise<{ slug:
             {similar.map(p => (
               <Link key={p.slug} href={`/blog/${p.slug}`} style={{ display: 'block', padding: '12px 16px', borderRadius: 10, background: '#111827', border: '1px solid #1E293B', textDecoration: 'none' }}>
                 <div style={{ fontSize: 14, fontWeight: 600, color: '#E2E8F0' }}>{p.title}</div>
-                <div style={{ fontSize: 11, color: '#475569', marginTop: 2 }}>{p.category} · {p.date}</div>
+                <div style={{ fontSize: 11, color: '#475569', marginTop: 2 }}>{p.category} · {fmtDateShort(p.date)}</div>
               </Link>
             ))}
           </div>
@@ -167,7 +168,7 @@ export default async function BlogPostPage({ params }: { params: Promise<{ slug:
         <div style={{ marginTop: isDeepDive ? 0 : 24, marginBottom: 24 }}>
           <div style={{ display: 'flex', alignItems: 'center', gap: 8, marginBottom: 12 }}>
             <span style={{ fontFamily: 'var(--mono)', fontSize: 10, fontWeight: 600, padding: '3px 8px', borderRadius: 4, background: `${post.catColor}14`, color: post.catColor }}>{post.category}</span>
-            <span style={{ fontFamily: 'var(--sans)', fontSize: 11, color: '#475569' }}>Published {post.date} · {post.readTime} read</span>
+            <span style={{ fontFamily: 'var(--sans)', fontSize: 11, color: '#475569' }}>Published {fmtDateLong(post.date)} · {post.readTime} read</span>
             {post.lastUpdated && (
               <span style={{ fontFamily: 'var(--sans)', fontSize: 11, color: '#475569' }}>· Updated {post.lastUpdated}</span>
             )}

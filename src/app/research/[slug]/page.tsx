@@ -3,6 +3,7 @@ import { notFound } from 'next/navigation';
 import Link from 'next/link';
 import fs from 'fs';
 import path from 'path';
+import { fmtDateShort } from '@/lib/fmt-date';
 import ListenButton from '@/components/ListenButton';
 import InlineSubscribe from '@/components/InlineSubscribe';
 import GiscusComments from '@/components/GiscusComments';
@@ -223,7 +224,7 @@ export default async function ResearchArticlePage({ params }: { params: Promise<
         <div style={{ marginBottom: 20 }}>
           <div style={{ display: 'flex', alignItems: 'center', gap: 8, marginBottom: 10, flexWrap: 'wrap' }}>
             <span style={{ fontFamily: 'var(--mono)', fontSize: 10, fontWeight: 700, padding: '3px 8px', borderRadius: 4, background: '#3B82F614', color: '#3B82F6' }}>{fm.category}</span>
-            <span style={{ fontSize: 11, color: '#475569' }}>{fm.date} · {fm.readTime}</span>
+            <span style={{ fontSize: 11, color: '#475569' }}>{fmtDateShort(fm.date)} · {fm.readTime}</span>
           </div>
           <h1 style={{ fontFamily: 'var(--serif)', fontSize: 'clamp(24px, 4vw, 32px)', fontWeight: 900, color: '#F1F5F9', lineHeight: 1.3, margin: 0 }}>{fm.title}</h1>
           <p style={{ fontSize: 15, color: '#64748B', lineHeight: 1.7, marginTop: 12 }}>{fm.description}</p>

@@ -2,6 +2,7 @@ import type { Metadata } from 'next';
 import Link from 'next/link';
 import { JACKPOT_INFO, POWERBALL_DRAWS, MEGAMILLIONS_DRAWS } from '@/data/lottery';
 import LotteryChart from '@/components/LotteryChart';
+import { fmtDateShort } from '@/lib/fmt-date';
 
 export const metadata: Metadata = {
   title: 'Lottery Jackpot Tracker — Powerball & Mega Millions | DHLM Studio',
@@ -68,7 +69,7 @@ export default function JackpotTracker() {
             <div style={{ fontFamily: 'var(--mono)', fontSize: 9, fontWeight: 700, color: '#EF4444', letterSpacing: 2, marginBottom: 12 }}>RECENT POWERBALL</div>
             {pbHistory.map((d, i) => (
               <div key={i} style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', padding: '8px 0', borderBottom: i < pbHistory.length - 1 ? '1px solid #1E293B' : 'none' }}>
-                <span style={{ fontSize: 11, color: '#64748B', fontFamily: 'var(--mono)', width: 80 }}>{d.date}</span>
+                <span style={{ fontSize: 11, color: '#64748B', fontFamily: 'var(--mono)', width: 80 }}>{fmtDateShort(d.date)}</span>
                 <span style={{ fontSize: 11, color: '#E2E8F0', fontFamily: 'var(--mono)' }}>{d.numbers.join('-')} <span style={{ color: '#EF4444', fontWeight: 700 }}>PB:{d.specialBall}</span></span>
               </div>
             ))}
@@ -77,7 +78,7 @@ export default function JackpotTracker() {
             <div style={{ fontFamily: 'var(--mono)', fontSize: 9, fontWeight: 700, color: '#F59E0B', letterSpacing: 2, marginBottom: 12 }}>RECENT MEGA MILLIONS</div>
             {mmHistory.map((d, i) => (
               <div key={i} style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', padding: '8px 0', borderBottom: i < mmHistory.length - 1 ? '1px solid #1E293B' : 'none' }}>
-                <span style={{ fontSize: 11, color: '#64748B', fontFamily: 'var(--mono)', width: 80 }}>{d.date}</span>
+                <span style={{ fontSize: 11, color: '#64748B', fontFamily: 'var(--mono)', width: 80 }}>{fmtDateShort(d.date)}</span>
                 <span style={{ fontSize: 11, color: '#E2E8F0', fontFamily: 'var(--mono)' }}>{d.numbers.join('-')} <span style={{ color: '#F59E0B', fontWeight: 700 }}>MB:{d.specialBall}</span></span>
               </div>
             ))}

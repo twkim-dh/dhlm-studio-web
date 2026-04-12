@@ -3,6 +3,7 @@ import Link from 'next/link';
 import fs from 'fs';
 import path from 'path';
 import TodayMarket from '@/components/TodayMarket';
+import { fmtDateShort } from '@/lib/fmt-date';
 import InlineSubscribe from '@/components/InlineSubscribe';
 
 export const metadata: Metadata = {
@@ -79,7 +80,7 @@ export default function DailyIndexPage() {
             {briefs.map(b => (
               <Link key={b.slug} href={`/daily/${b.slug}`} style={{ ...card, display: 'block', padding: '18px 22px', textDecoration: 'none' }}>
                 <div style={{ display: 'flex', alignItems: 'baseline', justifyContent: 'space-between', marginBottom: 6 }}>
-                  <span style={{ fontFamily: 'var(--mono)', fontSize: 10, fontWeight: 700, color: '#C73E3A', letterSpacing: 2 }}>{b.date}</span>
+                  <span style={{ fontFamily: 'var(--mono)', fontSize: 10, fontWeight: 700, color: '#C73E3A', letterSpacing: 2 }}>{fmtDateShort(b.date)}</span>
                   <span style={{ fontSize: 11, color: '#475569' }}>Read →</span>
                 </div>
                 <h3 style={{ fontFamily: 'var(--serif)', fontSize: 17, fontWeight: 800, color: '#F1F5F9', margin: '0 0 4px' }}>{b.title}</h3>

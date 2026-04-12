@@ -3,6 +3,7 @@ import Link from 'next/link';
 import fs from 'fs';
 import path from 'path';
 import RequestDeepDive from '@/components/RequestDeepDive';
+import { fmtDateShort } from '@/lib/fmt-date';
 import TickerLogo from '@/components/TickerLogo';
 
 export const metadata: Metadata = {
@@ -78,7 +79,7 @@ export default function ReportsPage() {
                     {Array.isArray(r.tickers) && r.tickers.slice(0, 6).map(t => (
                       <span key={t} style={{ fontFamily: 'var(--mono)', fontSize: 10, fontWeight: 700, color: '#60A5FA' }}>{t}</span>
                     ))}
-                    <span style={{ fontSize: 11, color: '#475569', marginLeft: 'auto' }}>{r.date} · {r.readTime}</span>
+                    <span style={{ fontSize: 11, color: '#475569', marginLeft: 'auto' }}>{fmtDateShort(r.date)} · {r.readTime}</span>
                   </div>
                   <div style={{ fontFamily: 'var(--serif)', fontSize: 18, fontWeight: 800, color: '#F1F5F9', lineHeight: 1.4 }}>{r.title}</div>
                   <p style={{ fontSize: 12, color: '#64748B', margin: '6px 0 0', lineHeight: 1.5 }}>{r.description}</p>
@@ -97,7 +98,7 @@ export default function ReportsPage() {
                   <span style={{ fontFamily: 'var(--mono)', fontSize: 18, fontWeight: 900, color: '#60A5FA' }}>{r.ticker}</span>
                   <span style={{ fontFamily: 'var(--mono)', fontSize: 10, fontWeight: 700, padding: '3px 8px', borderRadius: 4, background: '#D4A84314', color: '#D4A843' }}>BEAF {r.beafScore}/100 ({r.grade})</span>
                   <span style={{ fontFamily: 'var(--mono)', fontSize: 10, fontWeight: 600, padding: '3px 8px', borderRadius: 4, background: `${r.catColor}14`, color: r.catColor }}>{r.category}</span>
-                  <span style={{ fontSize: 11, color: '#475569' }}>{r.date} · {r.readTime}</span>
+                  <span style={{ fontSize: 11, color: '#475569' }}>{fmtDateShort(r.date)} · {r.readTime}</span>
                 </div>
                 <div style={{ fontFamily: 'var(--serif)', fontSize: 17, fontWeight: 700, color: '#E2E8F0', lineHeight: 1.4 }}>{r.title}</div>
                 <p style={{ fontSize: 12, color: '#64748B', margin: '6px 0 0', lineHeight: 1.5 }}>{r.description}</p>

@@ -2,6 +2,7 @@ import type { Metadata } from 'next';
 import Link from 'next/link';
 import fs from 'fs';
 import path from 'path';
+import { fmtDateShort } from '@/lib/fmt-date';
 
 export const metadata: Metadata = {
   title: 'Research — Paper vs. Profit | DHLM Studio',
@@ -95,7 +96,7 @@ export default function ResearchIndexPage() {
                       VERDICT: {a.verdict}
                     </span>
                     <span style={{ fontFamily: 'var(--mono)', fontSize: 10, fontWeight: 700, padding: '3px 8px', borderRadius: 4, background: '#3B82F614', color: '#3B82F6' }}>{a.category}</span>
-                    <span style={{ fontSize: 11, color: '#475569' }}>{a.date} · {a.readTime}</span>
+                    <span style={{ fontSize: 11, color: '#475569' }}>{fmtDateShort(a.date)} · {a.readTime}</span>
                   </div>
                   <div style={{ fontFamily: 'var(--serif)', fontSize: 19, fontWeight: 800, color: '#F1F5F9', lineHeight: 1.4, marginBottom: 6 }}>{a.title}</div>
                   <p style={{ fontSize: 13, color: '#94A3B8', margin: '0 0 10px', lineHeight: 1.6 }}>{a.description}</p>
