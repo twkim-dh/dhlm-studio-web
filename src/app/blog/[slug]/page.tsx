@@ -240,6 +240,21 @@ export default async function BlogPostPage({ params }: { params: Promise<{ slug:
           </div>
         ))}
 
+        {/* Calculator CTA block */}
+        {post.calculatorLinks && post.calculatorLinks.length > 0 && (
+          <div style={{ margin: '32px 0', padding: '20px 22px', borderRadius: 12, background: '#111827', border: '1px solid #1E293B' }}>
+            <div style={{ fontFamily: 'var(--mono)', fontSize: 10, fontWeight: 700, color: '#475569', letterSpacing: 2, marginBottom: 14 }}>FREE TOOLS</div>
+            <div style={{ display: 'flex', flexDirection: 'column', gap: 10 }}>
+              {post.calculatorLinks.map(c => (
+                <Link key={c.href} href={c.href} style={{ display: 'flex', alignItems: 'center', justifyContent: 'space-between', gap: 12, padding: '12px 16px', borderRadius: 8, background: '#0D1117', border: '1px solid #1E293B', textDecoration: 'none' }}>
+                  <span style={{ fontFamily: 'var(--sans)', fontSize: 13, color: '#94A3B8', lineHeight: 1.5 }}>{c.text}</span>
+                  <span style={{ fontFamily: 'var(--mono)', fontSize: 10, fontWeight: 700, color: '#C73E3A', whiteSpace: 'nowrap', flexShrink: 0 }}>{c.ctaText} →</span>
+                </Link>
+              ))}
+            </div>
+          </div>
+        )}
+
         {/* FAQ section */}
         {faqPairs.length > 0 && (
           <div id="faq" style={{ marginBottom: 32 }}>
