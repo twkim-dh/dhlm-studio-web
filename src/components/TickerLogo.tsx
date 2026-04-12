@@ -4,18 +4,17 @@
 // image-stock CDN. The image-stock URL is open (no API key required) and
 // does not count toward the FMP API quota.
 //
-// Format: https://financialmodelingprep.com/image-stock/{TICKER}.png
+// FMP logos are RGBA PNGs with transparent backgrounds. Some are dark-on-
+// transparent (visible on white bg), others are white-on-transparent
+// (invisible on white bg). We use a canvas check after onLoad to detect
+// invisible logos and automatically switch to the letter fallback.
 //
-// Falls back to a color badge (auto-generated per ticker) with the first
-// letter of the ticker when the logo cannot be loaded.
-//
-// Uses a plain <img> tag (not next/image) so onError fires reliably even
-// when the CDN returns HTTP 200 with a broken/empty image.
+// FMP CDN sends Access-Control-Allow-Origin: * so canvas.getImageData works.
 //
 // Trademark notice: All company logos remain the property of their respective
 // owners. The site footer carries a global identification-only disclaimer.
 
-import { useState } from 'react';
+import { useState, useCallback } from 'react';
 
 /** Deterministic hue from ticker → dark-mode-friendly HSL background */
 function tickerBgColor(ticker: string): string {
@@ -35,6 +34,34 @@ export default function TickerLogo({ ticker, size = 24, rounded = true }: Props)
   const radius = rounded ? Math.max(4, Math.round(size * 0.2)) : 0;
   const url = `https://financialmodelingprep.com/image-stock/${ticker.toUpperCase()}.png`;
   const pad = Math.max(2, Math.round(size * 0.1));
+
+  // After load: composite the logo on a white canvas and check if any non-white
+  // pixels remain. White-on-transparent logos (e.g. AAPL) produce 0 dark pixels
+  // → show the letter fallback instead of an invisible white square.
+  const handleLoad = useCallback((e: React.SyntheticEvent<HTMLImageElement>) => {
+    try {
+      const img = e.currentTarget;
+      const sz = 20; // small sample, fast
+      const canvas = document.createElement('canvas');
+      canvas.width = sz;
+      canvas.height = sz;
+      const ctx = canvas.getContext('2d');
+      if (!ctx) return;
+      ctx.fillStyle = '#ffffff';
+      ctx.fillRect(0, 0, sz, sz);
+      ctx.drawImage(img, 0, 0, sz, sz);
+      const pixels = ctx.getImageData(0, 0, sz, sz).data;
+      let nonWhite = 0;
+      for (let i = 0; i < pixels.length; i += 4) {
+        // Sum of R+G+B < 700 means noticeably darker than white (255+255+255=765)
+        if (pixels[i] + pixels[i + 1] + pixels[i + 2] < 700) nonWhite++;
+      }
+      // < 4% of pixels are visible → logo is invisible on white bg → show fallback
+      if (nonWhite < sz * sz * 0.04) setError(true);
+    } catch {
+      // Canvas blocked (e.g. CORS unexpected error) — keep logo as-is
+    }
+  }, []);
 
   if (error) {
     return (
@@ -68,8 +95,10 @@ export default function TickerLogo({ ticker, size = 24, rounded = true }: Props)
       <img
         src={url}
         alt={`${ticker} logo`}
+        crossOrigin="anonymous"
         style={{ width: '100%', height: '100%', objectFit: 'contain', display: 'block' }}
         onError={() => setError(true)}
+        onLoad={handleLoad}
       />
     </div>
   );

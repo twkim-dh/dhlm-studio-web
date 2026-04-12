@@ -3,9 +3,11 @@
 // StockLogo — renders a stock logo from an external src URL.
 // Chains: src prop → FMP image-stock CDN → letter fallback.
 //
-// Uses plain <img> so onError fires reliably regardless of HTTP status.
+// After onLoad, uses canvas to detect white-on-transparent logos that would
+// be invisible on the white container background, triggering the fallback.
+// FMP CDN sends Access-Control-Allow-Origin: * so getImageData works.
 
-import { useState } from 'react';
+import { useState, useCallback } from 'react';
 
 /** Deterministic hue from ticker → dark-mode-friendly HSL background */
 function tickerBgColor(ticker: string): string {
@@ -18,11 +20,40 @@ function fmpCdnUrl(ticker: string): string {
   return `https://financialmodelingprep.com/image-stock/${ticker.toUpperCase()}.png`;
 }
 
+/** Returns true if the image is invisible when composited on white */
+function isInvisibleOnWhite(img: HTMLImageElement): boolean {
+  try {
+    const sz = 20;
+    const canvas = document.createElement('canvas');
+    canvas.width = sz;
+    canvas.height = sz;
+    const ctx = canvas.getContext('2d');
+    if (!ctx) return false;
+    ctx.fillStyle = '#ffffff';
+    ctx.fillRect(0, 0, sz, sz);
+    ctx.drawImage(img, 0, 0, sz, sz);
+    const pixels = ctx.getImageData(0, 0, sz, sz).data;
+    let nonWhite = 0;
+    for (let i = 0; i < pixels.length; i += 4) {
+      if (pixels[i] + pixels[i + 1] + pixels[i + 2] < 700) nonWhite++;
+    }
+    return nonWhite < sz * sz * 0.04;
+  } catch {
+    return false;
+  }
+}
+
 export default function StockLogo({ src, ticker, size = 26 }: { src?: string; ticker: string; size?: number }) {
-  // Stage 0: show src prop; stage 1: show FMP CDN; stage 2: show letter badge
+  // stage 0 = try src prop, stage 1 = try FMP CDN, stage 2 = letter badge
   const [stage, setStage] = useState<0 | 1 | 2>(src ? 0 : 1);
   const radius = size > 30 ? 8 : 5;
   const pad = Math.max(2, Math.round(size * 0.1));
+
+  const handleLoad = useCallback((e: React.SyntheticEvent<HTMLImageElement>) => {
+    if (isInvisibleOnWhite(e.currentTarget)) {
+      setStage(prev => (prev < 2 ? (prev + 1) as 1 | 2 : 2));
+    }
+  }, []);
 
   const activeSrc = stage === 0 ? (src ?? '') : fmpCdnUrl(ticker);
 
@@ -53,8 +84,10 @@ export default function StockLogo({ src, ticker, size = 26 }: { src?: string; ti
       <img
         src={activeSrc}
         alt={ticker}
+        crossOrigin="anonymous"
         style={{ width: '100%', height: '100%', objectFit: 'contain', display: 'block' }}
         onError={() => setStage(prev => (prev === 0 ? 1 : 2))}
+        onLoad={handleLoad}
       />
     </div>
   );
