@@ -1,26 +1,37 @@
 'use client';
 
-import { useState } from 'react';
-import Image from 'next/image';
+// StockLogo — renders a stock logo from an external src URL.
+// Chains: src prop → FMP image-stock CDN → letter fallback.
+//
+// Uses plain <img> so onError fires reliably regardless of HTTP status.
 
-/** Deterministic hue from ticker string → dark-mode-friendly HSL color */
+import { useState } from 'react';
+
+/** Deterministic hue from ticker → dark-mode-friendly HSL background */
 function tickerBgColor(ticker: string): string {
   let hash = 0;
   for (const c of ticker) hash = (hash * 31 + c.charCodeAt(0)) & 0xffff;
-  const hue = hash % 360;
-  return `hsl(${hue}, 50%, 28%)`;
+  return `hsl(${hash % 360}, 50%, 28%)`;
+}
+
+function fmpCdnUrl(ticker: string): string {
+  return `https://financialmodelingprep.com/image-stock/${ticker.toUpperCase()}.png`;
 }
 
 export default function StockLogo({ src, ticker, size = 26 }: { src?: string; ticker: string; size?: number }) {
-  const [error, setError] = useState(false);
+  // Stage 0: show src prop; stage 1: show FMP CDN; stage 2: show letter badge
+  const [stage, setStage] = useState<0 | 1 | 2>(src ? 0 : 1);
   const radius = size > 30 ? 8 : 5;
+  const pad = Math.max(2, Math.round(size * 0.1));
 
-  if (!src || error) {
+  const activeSrc = stage === 0 ? (src ?? '') : fmpCdnUrl(ticker);
+
+  if (stage === 2) {
     return (
       <div style={{
         width: size, height: size, borderRadius: radius,
         background: tickerBgColor(ticker),
-        display: 'flex', alignItems: 'center', justifyContent: 'center',
+        display: 'inline-flex', alignItems: 'center', justifyContent: 'center',
         fontSize: Math.max(9, Math.round(size * 0.44)), fontWeight: 800,
         color: '#F1F5F9', fontFamily: 'var(--mono)',
         flexShrink: 0, letterSpacing: -0.5,
@@ -32,18 +43,18 @@ export default function StockLogo({ src, ticker, size = 26 }: { src?: string; ti
 
   return (
     <div style={{
-      position: 'relative', width: size, height: size, borderRadius: radius,
-      background: '#fff', boxSizing: 'border-box',
-      flexShrink: 0, display: 'inline-block', overflow: 'hidden',
+      width: size, height: size, borderRadius: radius,
+      background: '#fff', padding: pad,
+      boxSizing: 'border-box', flexShrink: 0,
+      display: 'inline-flex', alignItems: 'center', justifyContent: 'center',
+      overflow: 'hidden',
     }}>
-      <Image
-        src={src}
+      {/* eslint-disable-next-line @next/next/no-img-element */}
+      <img
+        src={activeSrc}
         alt={ticker}
-        fill
-        sizes={`${size}px`}
-        style={{ objectFit: 'contain' }}
-        unoptimized
-        onError={() => setError(true)}
+        style={{ width: '100%', height: '100%', objectFit: 'contain', display: 'block' }}
+        onError={() => setStage(prev => (prev === 0 ? 1 : 2))}
       />
     </div>
   );
