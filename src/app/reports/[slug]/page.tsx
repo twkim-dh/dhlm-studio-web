@@ -70,6 +70,8 @@ function parseMarkdown(content: string): { frontmatter: ReportFrontmatter; body:
   return { frontmatter: fm as unknown as ReportFrontmatter, body: fmMatch[2] };
 }
 
+export const revalidate = 3600; // Revalidate slug pages at most once per hour
+
 function getReportSlugs(): string[] {
   try {
     return fs.readdirSync(REPORTS_DIR)

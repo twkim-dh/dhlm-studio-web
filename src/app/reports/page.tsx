@@ -18,6 +18,8 @@ export const metadata: Metadata = {
   },
 };
 
+export const revalidate = 3600; // Revalidate at most once per hour on new deployments
+
 const REPORTS_DIR = path.join(process.cwd(), 'src/content/reports');
 
 interface ReportMeta {
