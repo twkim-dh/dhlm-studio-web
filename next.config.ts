@@ -47,6 +47,9 @@ const nextConfig: NextConfig = {
       { source: '/balance/:path*', destination: '/', permanent: true },
       { source: '/spin/:path*', destination: '/', permanent: true },
       { source: '/fortune/:path*', destination: '/lottery', permanent: true },
+      // Sectors page removed — redirect to markets
+      { source: '/markets/sectors', destination: '/markets', permanent: true },
+      { source: '/markets/sectors/:path*', destination: '/markets', permanent: true },
       // /crypto shortcut → canonical /rankings/crypto
       { source: '/crypto', destination: '/rankings/crypto', permanent: true },
       { source: '/crypto/:path*', destination: '/rankings/crypto/:path*', permanent: true },

@@ -163,7 +163,6 @@ export default function MarketsPage() {
           </div>
           <div style={{ display: 'flex', gap: 6, marginTop: 4, flexShrink: 0 }}>
             <Link href="/markets/search" style={{ fontSize: 11, padding: '7px 13px', borderRadius: 8, background: '#111827', border: '1px solid #1E293B', color: '#94A3B8', textDecoration: 'none' }}>🔍 Search</Link>
-            <Link href="/markets/sectors" style={{ fontSize: 11, padding: '7px 13px', borderRadius: 8, background: '#111827', border: '1px solid #1E293B', color: '#94A3B8', textDecoration: 'none' }}>🗺️ Sectors</Link>
           </div>
         </div>
 
