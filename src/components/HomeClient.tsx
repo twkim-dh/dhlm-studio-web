@@ -21,37 +21,67 @@ export function Counter({ to, suffix = '' }: { to: number; suffix?: string }) {
 }
 
 /* ═══ Market Leaders (Top 10 by market cap) ═══ */
+// Fallback data — updated 2026-04-12. Live data overrides via /api/markets/top20.
 const MARKET_LEADERS = [
-  { ticker: 'AAPL',  name: 'Apple',             cap: '$3.42T', price: 228.40, change: -0.8 },
-  { ticker: 'MSFT',  name: 'Microsoft',         cap: '$3.13T', price: 420.72, change:  1.2 },
-  { ticker: 'NVDA',  name: 'NVIDIA',            cap: '$3.27T', price: 132.65, change:  2.4 },
-  { ticker: 'GOOGL', name: 'Alphabet',          cap: '$2.18T', price: 178.30, change:  0.6 },
-  { ticker: 'AMZN',  name: 'Amazon',            cap: '$2.07T', price: 198.65, change: -1.5 },
-  { ticker: 'META',  name: 'Meta Platforms',    cap: '$1.47T', price: 582.10, change:  1.8 },
-  { ticker: 'TSLA',  name: 'Tesla',             cap: '$839B',  price: 262.50, change:  3.2 },
-  { ticker: 'BRK-B', name: 'Berkshire Hathaway',cap: '$985B',  price: 456.20, change:  0.3 },
-  { ticker: 'AVGO',  name: 'Broadcom',          cap: '$782B',  price: 168.40, change:  1.1 },
-  { ticker: 'JPM',   name: 'JPMorgan Chase',    cap: '$614B',  price: 218.90, change: -0.2 },
+  { ticker: 'NVDA',  name: 'NVIDIA',             cap: '$4.50T', price: 185.00, change:  2.4 },
+  { ticker: 'AAPL',  name: 'Apple',              cap: '$3.40T', price: 228.40, change: -0.8 },
+  { ticker: 'MSFT',  name: 'Microsoft',          cap: '$3.10T', price: 420.72, change:  1.2 },
+  { ticker: 'GOOGL', name: 'Alphabet',           cap: '$2.10T', price: 178.30, change:  0.6 },
+  { ticker: 'AMZN',  name: 'Amazon',             cap: '$2.00T', price: 198.65, change: -1.5 },
+  { ticker: 'META',  name: 'Meta Platforms',     cap: '$1.50T', price: 582.10, change:  1.8 },
+  { ticker: 'TSLA',  name: 'Tesla',              cap: '$840B',  price: 262.50, change:  3.2 },
+  { ticker: 'BRK-B', name: 'Berkshire Hathaway', cap: '$980B',  price: 456.20, change:  0.3 },
+  { ticker: 'AVGO',  name: 'Broadcom',           cap: '$780B',  price: 168.40, change:  1.1 },
+  { ticker: 'JPM',   name: 'JPMorgan Chase',     cap: '$610B',  price: 218.90, change: -0.2 },
 ];
 
 export function LiveMarketsPreview() {
   const [leaders, setLeaders] = useState(MARKET_LEADERS);
 
   useEffect(() => {
-    // Best-effort live price update from /api/markets (gainers/losers/actives).
-    // If a leader's ticker appears in the live feed, refresh its price/change.
-    fetch('/api/markets')
+    // Primary: fetch live top20 from /api/markets/top20 which returns marketCapFmt.
+    // Fallback: /api/markets (gainers/losers/actives) for price+change only.
+    fetch('/api/markets/top20')
       .then(r => r.json())
       .then(data => {
-        const live: Record<string, { price: number; change: number }> = {};
-        for (const g of [...(data.gainers || []), ...(data.losers || []), ...(data.actives || [])]) {
-          if (g?.ticker) live[g.ticker] = { price: g.price, change: g.change };
+        if (!data.stocks || !data.stocks.length) return;
+        // Build a map by ticker from the live top-20 response
+        const liveMap: Record<string, { price: number; change: number; cap: string }> = {};
+        for (const s of data.stocks) {
+          if (s?.ticker) liveMap[s.ticker] = { price: s.price, change: s.change, cap: s.marketCapFmt };
         }
-        if (Object.keys(live).length > 0) {
-          setLeaders(prev => prev.map(l => live[l.ticker] ? { ...l, ...live[l.ticker] } : l));
-        }
+        if (Object.keys(liveMap).length === 0) return;
+        // Re-sort leaders by live market cap order if possible, then update values
+        setLeaders(prev => {
+          const updated = prev.map(l =>
+            liveMap[l.ticker] ? { ...l, price: liveMap[l.ticker].price, change: liveMap[l.ticker].change, cap: liveMap[l.ticker].cap } : l
+          );
+          return updated.sort((a, b) => {
+            const toNum = (s: string) => {
+              const n = parseFloat(s.replace(/[^0-9.]/g, ''));
+              if (s.includes('T')) return n * 1e12;
+              if (s.includes('B')) return n * 1e9;
+              return n * 1e6;
+            };
+            return toNum(b.cap) - toNum(a.cap);
+          });
+        });
       })
-      .catch(() => {});
+      .catch(() => {
+        // Fallback: try /api/markets for price+change only
+        fetch('/api/markets')
+          .then(r => r.json())
+          .then(data => {
+            const live: Record<string, { price: number; change: number }> = {};
+            for (const g of [...(data.gainers || []), ...(data.losers || []), ...(data.actives || [])]) {
+              if (g?.ticker) live[g.ticker] = { price: g.price, change: g.change };
+            }
+            if (Object.keys(live).length > 0) {
+              setLeaders(prev => prev.map(l => live[l.ticker] ? { ...l, ...live[l.ticker] } : l));
+            }
+          })
+          .catch(() => {});
+      });
   }, []);
 
   return (

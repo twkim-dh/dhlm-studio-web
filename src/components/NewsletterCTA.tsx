@@ -49,7 +49,7 @@ export default function NewsletterCTA({ source = 'homepage' }: { source?: string
       }}>
         <div style={{ fontSize: 20, marginBottom: 6 }}>✅</div>
         <div style={{ fontSize: 14, fontWeight: 700, color: '#00D474' }}>You&apos;re subscribed!</div>
-        <div style={{ fontSize: 11, color: '#64748B', marginTop: 4 }}>The Weekly Roast drops every Monday.</div>
+        <div style={{ fontSize: 11, color: '#64748B', marginTop: 4 }}>The Weekly Edge drops every Monday.</div>
       </div>
     );
   }
@@ -61,9 +61,9 @@ export default function NewsletterCTA({ source = 'homepage' }: { source?: string
     }}>
       <div style={{ textAlign: 'center', marginBottom: 14 }}>
         <div style={{ fontSize: 24, marginBottom: 6 }}>📧</div>
-        <div style={{ fontFamily: 'var(--serif)', fontSize: 18, fontWeight: 800, color: '#F1F5F9' }}>Get the Weekly Roast</div>
+        <div style={{ fontFamily: 'var(--serif)', fontSize: 18, fontWeight: 800, color: '#F1F5F9' }}>Get the Weekly Edge</div>
         <p style={{ fontSize: 12, color: '#64748B', margin: '6px 0 0', lineHeight: 1.6 }}>
-          Top movers, Brutal Edge takes, and Wall Street wisdom — every Monday.
+          Top movers, Brutal Edge analysis, and market intelligence — every Monday.
         </p>
       </div>
       <div style={{ display: 'flex', gap: 8 }}>
