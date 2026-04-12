@@ -23,6 +23,12 @@ function tickerBgColor(ticker: string): string {
   return `hsl(${hash % 360}, 50%, 28%)`;
 }
 
+// Tickers whose FMP CDN logo is too faint/broken — use local SVG from /logos/
+// The local SVG is black on transparent, so we show it on a white background.
+const LOCAL_LOGO_OVERRIDES: Record<string, string> = {
+  PLTR: '/logos/PLTR.svg',
+};
+
 /** Count visible pixels when composited on a given fill color. Returns 0–1 ratio. */
 function visibleRatio(img: HTMLImageElement, fillHex: string): number {
   try {
@@ -59,22 +65,25 @@ interface Props {
 }
 
 export default function TickerLogo({ ticker, size = 24, rounded = true }: Props) {
-  const [bg, setBg] = useState<BgMode>('loading');
+  const localOverride = LOCAL_LOGO_OVERRIDES[ticker.toUpperCase()];
+  // Local overrides are black-on-transparent SVGs → always use white bg, skip canvas check
+  const [bg, setBg] = useState<BgMode>(localOverride ? 'white' : 'loading');
   const radius = rounded ? Math.max(4, Math.round(size * 0.2)) : 0;
-  const url = `https://financialmodelingprep.com/image-stock/${ticker.toUpperCase()}.png`;
+  const url = localOverride ?? `https://financialmodelingprep.com/image-stock/${ticker.toUpperCase()}.png`;
   const pad = Math.max(2, Math.round(size * 0.1));
 
   const handleLoad = useCallback((e: React.SyntheticEvent<HTMLImageElement>) => {
+    if (localOverride) return; // local SVGs: bg already set to 'white', skip check
     const img = e.currentTarget;
-    const THRESHOLD = 0.05; // 5% of pixels must be meaningfully visible
+    const THRESHOLD = 0.05;
     if (visibleRatio(img, '#ffffff') >= THRESHOLD) {
       setBg('white');
     } else if (visibleRatio(img, '#111827') >= THRESHOLD) {
-      setBg('dark');   // white-on-transparent logos (PLTR, AAPL)
+      setBg('dark');
     } else {
       setBg('fallback');
     }
-  }, []);
+  }, [localOverride]);
 
   if (bg === 'fallback') {
     return (
