@@ -19,6 +19,28 @@ export interface BlogPost {
 
 export const blogPosts: BlogPost[] = [
   {
+    slug: 'wall-street-weekly-2026-04-13', title: 'This Week on Wall Street — April 13, 2026',
+    category: 'Markets', catColor: '#00D474', date: '2026-04-13', readTime: '5 min',
+    description: 'Weekly market recap: top gainers, biggest losers, and what moved Wall Street. April 13, 2026.',
+    sections: [
+      { heading: 'Market Summary', body: 'Here is your weekly Wall Street recap for the week ending April 13, 2026. Markets continued to react to earnings season, macro data, and global trade developments. Check our Markets page for real-time data throughout the week.' },
+      { heading: 'Top Gainers (Large-Cap)', body: 'The biggest winners among large-cap stocks this week: 1. SKYQ — $12.59 (72.7023%). 2. ZNTL — $6.61 (49.5475%). These moves were driven by earnings beats, analyst upgrades, and sector momentum. Visit individual stock pages for Brutal Edge commentary on each.' },
+      { heading: 'Top Losers (Large-Cap)', body: 'The biggest decliners this week: 1. YDDL — $5.16 (-62.9044%). 2. LUD — $5.71 (-32.6651%). Earnings misses, guidance cuts, and macro headwinds drove these losses. Check our Sector Heatmap to see which sectors were hit hardest.' },
+      { heading: 'Week Ahead', body: 'Key events to watch next week include Federal Reserve commentary, major earnings reports, and economic data releases. Stay updated with our daily market movers at dhlm-studio.com/markets.' },
+      { heading: 'FAQ', body: 'Q: Where does this data come from?\\nA: Market data is sourced from Alpha Vantage API. Large-cap stocks only ($5+ price, no warrants or penny stocks).\\n\\nQ: Is this investment advice?\\nA: No. This is informational content only. Always do your own research before making investment decisions.' }
+    ],
+  },
+  {
+    slug: 'crypto-weekly-2026-04-13', title: 'Crypto Market Weekly — April 13, 2026',
+    category: 'Crypto', catColor: '#F59E0B', date: '2026-04-13', readTime: '4 min',
+    description: 'Weekly crypto recap: Bitcoin, Ethereum, and top altcoins performance. April 13, 2026.',
+    sections: [
+      { heading: 'Top 10 Cryptocurrencies', body: 'This week in crypto: 1. Bitcoin (BTC) at $70807.00, 7d: +0.0%. 2. Ethereum (ETH) at $2188.82, 7d: +0.0%. 3. Tether (USDT) at $1.0000, 7d: +0.0%. 4. BNB (BNB) at $597.81, 7d: +0.0%. 5. XRP (XRP) at $1.33, 7d: +0.0%. 6. USDC (USDC) at $0.9997, 7d: +0.0%. 7. Solana (SOL) at $82.16, 7d: +0.0%. 8. TRON (TRX) at $0.3218, 7d: +0.0%. 9. Figure Heloc (FIGR_HELOC) at $1.04, 7d: +0.0%. 10. Dogecoin (DOGE) at $0.0911, 7d: +0.0%. View live prices and Brutal Edge commentary on our Crypto Rankings page.' },
+      { heading: 'Winners and Losers', body: 'Weekly winners: N/A. Weekly losers: BTC (0.0%), ETH (0.0%), USDT (0.0%). For detailed analysis on any coin, visit our individual crypto pages.' },
+      { heading: 'FAQ', body: 'Q: Where does crypto data come from?\\nA: All data is from CoinGecko API, updated in real-time.\\n\\nQ: Is this financial advice?\\nA: No. Crypto is highly volatile. This is informational content only.' }
+    ],
+  },
+  {
     slug: 'wall-street-weekly-2026-04-06', title: 'This Week on Wall Street — April 6, 2026',
     category: 'Markets', catColor: '#00D474', date: '2026-04-06', readTime: '5 min',
     description: 'Weekly market recap: top gainers, biggest losers, and what moved Wall Street. April 6, 2026.',
