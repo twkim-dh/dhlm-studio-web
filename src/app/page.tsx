@@ -46,7 +46,7 @@ export default function Home() {
           Data-Driven<br /><span style={{ color: '#00D474' }}>Stock Analysis</span>
         </h1>
         <p style={{ fontFamily: 'var(--sans)', fontSize: 16, color: '#64748B', lineHeight: 1.7, maxWidth: 480, margin: '0 0 28px' }}>
-          3,000+ word Deep Dive reports on the world&apos;s biggest stocks, scored on the BEAF 6-axis framework. Real-time market intelligence under editorial oversight. Informational and educational, not investment advice.
+          Stock analysis for investors who read before they buy. 3,000+ word Deep Dive reports with BEAF scoring. Real-time market intelligence. Not investment advice.
         </p>
         <div style={{ display: 'flex', gap: 8, flexWrap: 'wrap' }}>
           {[

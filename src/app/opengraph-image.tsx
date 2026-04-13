@@ -68,7 +68,7 @@ export default async function Image() {
           fontSize: 12, color: '#475569', display: 'flex', alignItems: 'center', gap: 6,
         }}>
           <span style={{ color: '#00D474' }}>✓</span>
-          <span>Under editorial oversight · Not investment advice</span>
+          <span>Data-driven analysis · Not investment advice</span>
         </div>
       </div>
     ),

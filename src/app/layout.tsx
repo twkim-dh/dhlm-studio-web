@@ -36,7 +36,7 @@ export const metadata: Metadata = {
     default: `DHLM Studio — Brutal Edge Market Intelligence | ${YEAR}`,
     template: `%s | DHLM Studio`,
   },
-  description: `Real-time market data, CNN Fear & Greed Index, Brutal Edge Deep Dive reports, and data-driven stock analysis under editorial oversight. ${YEAR}.`,
+  description: `Real-time market data, CNN Fear & Greed Index, Brutal Edge Deep Dive reports, and data-driven stock analysis. ${YEAR}.`,
   keywords: [
     "DHLM Studio", "Brutal Edge", "stock market analysis", "Deep Dive reports",
     "Fear and Greed Index", "BEAF framework", "crypto analysis", "Bitcoin analysis",
@@ -45,7 +45,7 @@ export const metadata: Metadata = {
   ],
   openGraph: {
     title: `DHLM Studio — Brutal Edge Market Intelligence`,
-    description: `Real-time market data, Fear & Greed Index, Deep Dive reports, and data-driven stock analysis under editorial oversight.`,
+    description: `Real-time market data, Fear & Greed Index, Deep Dive reports, and data-driven stock analysis.`,
     url: "https://dhlm-studio.com",
     siteName: "DHLM Studio",
     locale: "en_US",
@@ -115,7 +115,7 @@ export default function RootLayout({
             "name": "DHLM Studio",
             "url": "https://dhlm-studio.com",
             "logo": "https://dhlm-studio.com/favicon.ico",
-            "description": "Brutal Edge market intelligence: real-time market data, Fear & Greed Index, Deep Dive reports, and data-driven stock analysis under editorial oversight.",
+            "description": "Brutal Edge market intelligence: real-time market data, Fear & Greed Index, Deep Dive reports, and data-driven stock analysis.",
             "sameAs": ["https://github.com/twkim-dh"],
             "contactPoint": { "@type": "ContactPoint", "email": "dhlmstudio2026@gmail.com" }
           })}}

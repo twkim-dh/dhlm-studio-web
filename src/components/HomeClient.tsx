@@ -21,18 +21,18 @@ export function Counter({ to, suffix = '' }: { to: number; suffix?: string }) {
 }
 
 /* ═══ Market Leaders (Top 10 by market cap) ═══ */
-// Fallback data — updated 2026-04-12. Live data overrides via /api/markets/top20.
+// Fallback data — updated 2026-04-13 (post-tariff values). Live data overrides via /api/markets/top20.
 const MARKET_LEADERS = [
-  { ticker: 'NVDA',  name: 'NVIDIA',             cap: '$4.50T', price: 185.00, change:  2.4 },
-  { ticker: 'AAPL',  name: 'Apple',              cap: '$3.40T', price: 228.40, change: -0.8 },
-  { ticker: 'MSFT',  name: 'Microsoft',          cap: '$3.10T', price: 420.72, change:  1.2 },
-  { ticker: 'GOOGL', name: 'Alphabet',           cap: '$2.10T', price: 178.30, change:  0.6 },
-  { ticker: 'AMZN',  name: 'Amazon',             cap: '$2.00T', price: 198.65, change: -1.5 },
-  { ticker: 'META',  name: 'Meta Platforms',     cap: '$1.50T', price: 582.10, change:  1.8 },
-  { ticker: 'TSLA',  name: 'Tesla',              cap: '$840B',  price: 262.50, change:  3.2 },
-  { ticker: 'BRK-B', name: 'Berkshire Hathaway', cap: '$980B',  price: 456.20, change:  0.3 },
-  { ticker: 'AVGO',  name: 'Broadcom',           cap: '$780B',  price: 168.40, change:  1.1 },
-  { ticker: 'JPM',   name: 'JPMorgan Chase',     cap: '$610B',  price: 218.90, change: -0.2 },
+  { ticker: 'AAPL',  name: 'Apple',              cap: '$3.20T', price: 198.50, change: -0.8 },
+  { ticker: 'MSFT',  name: 'Microsoft',          cap: '$2.90T', price: 392.10, change:  0.6 },
+  { ticker: 'NVDA',  name: 'NVIDIA',             cap: '$2.80T', price: 114.50, change:  1.8 },
+  { ticker: 'GOOGL', name: 'Alphabet',           cap: '$1.80T', price: 151.80, change: -0.4 },
+  { ticker: 'AMZN',  name: 'Amazon',             cap: '$1.80T', price: 179.20, change: -1.2 },
+  { ticker: 'META',  name: 'Meta Platforms',     cap: '$1.40T', price: 535.40, change:  0.9 },
+  { ticker: 'BRK-B', name: 'Berkshire Hathaway', cap: '$960B',  price: 460.10, change:  0.3 },
+  { ticker: 'TSLA',  name: 'Tesla',              cap: '$780B',  price: 248.20, change:  2.1 },
+  { ticker: 'AVGO',  name: 'Broadcom',           cap: '$730B',  price: 162.30, change:  0.7 },
+  { ticker: 'JPM',   name: 'JPMorgan Chase',     cap: '$590B',  price: 207.40, change: -0.5 },
 ];
 
 export function LiveMarketsPreview() {

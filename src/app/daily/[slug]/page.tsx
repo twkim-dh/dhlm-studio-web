@@ -190,7 +190,7 @@ export default async function DailyBriefPage({ params }: { params: Promise<{ slu
             <span style={{ fontSize: 18 }}>🔥</span>
             <span style={{ fontFamily: 'var(--mono)', fontSize: 11, fontWeight: 800, color: '#C73E3A', letterSpacing: 2 }}>BRUTAL EDGE&trade; DAILY BRIEF</span>
           </div>
-          <div style={{ fontSize: 11, color: '#64748B', fontStyle: 'italic' }}>Analysis under editorial oversight. Data-driven. Zero feelings.</div>
+          <div style={{ fontSize: 11, color: '#64748B', fontStyle: 'italic' }}>Data-driven. Zero feelings. No BS.</div>
         </div>
 
         {/* Editor Reviewed Badges */}
@@ -252,7 +252,7 @@ export default async function DailyBriefPage({ params }: { params: Promise<{ slu
         <div style={{ marginTop: 40, padding: '20px 22px', borderRadius: 14, background: '#111827', border: '1px solid #1E293B', textAlign: 'center' }}>
           <div style={{ fontFamily: 'var(--mono)', fontSize: 10, fontWeight: 800, color: '#C73E3A', letterSpacing: 2, marginBottom: 6 }}>🔥 PUBLISHED BY BRUTAL EDGE&trade;</div>
           <div style={{ fontSize: 9, color: '#475569', lineHeight: 1.6 }}>
-            Analysis under editorial oversight, for informational and educational purposes.<br />
+            Informational and educational content based on public market data.<br />
             Data: Financial Modeling Prep, Alpha Vantage, CoinGecko, alternative.me<br />
             NOT investment advice. Always do your own research.
           </div>
