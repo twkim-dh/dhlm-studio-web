@@ -5,6 +5,7 @@ import { stocks, getStockByTicker } from '@/data/markets';
 import { TOP_STOCKS } from '@/data/top-stocks';
 import { fmpCanCall, fmpTrackCall } from '@/lib/fmp-tracker';
 import { getRedis } from '@/lib/redis';
+import TradingViewChart from '@/components/TradingViewChart';
 
 const FMP_KEY = process.env.FMP_API_KEY || '';
 const FMP_BASE = 'https://financialmodelingprep.com/stable';
@@ -301,13 +302,10 @@ export default async function StockPage({ params }: { params: Promise<{ ticker: 
           {!hasPrice && <span style={{ fontSize: 11, color: '#64748B', marginTop: 6, display: 'block' }}>Data delayed. Refresh to update.</span>}
         </div>
 
-        {/* ② Chart placeholder (available Apr 20) */}
-        <div style={{ ...card, padding: '20px 22px', marginBottom: 16 }}>
+        {/* ② TradingView Chart */}
+        <div style={{ ...card, padding: '16px 18px', marginBottom: 16 }}>
           <div style={{ fontFamily: 'var(--mono)', fontSize: 10, fontWeight: 700, color: '#64748B', letterSpacing: 2, marginBottom: 10 }}>PRICE CHART</div>
-          <div style={{ height: 120, display: 'flex', flexDirection: 'column', alignItems: 'center', justifyContent: 'center', borderRadius: 8, background: '#0D1117', border: '1px solid #1F2937', gap: 6 }}>
-            <div style={{ fontSize: 11, color: '#334155', fontFamily: 'var(--mono)' }}>Chart available April 20</div>
-            <div style={{ fontSize: 9, color: '#1E293B', fontFamily: 'var(--mono)' }}>1D · 5D · 1M · 6M · YTD · 1Y · 5Y</div>
-          </div>
+          <TradingViewChart ticker={stock.ticker} exchange={'exchange' in stock ? (stock.exchange as string) : undefined} />
         </div>
 
         {/* ③ Key Metrics table */}
