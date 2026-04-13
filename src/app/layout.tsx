@@ -5,6 +5,7 @@ import Footer from "@/components/Footer";
 import MobileNav from "@/components/MobileNav";
 import TickerMarquee from "@/components/TickerMarquee";
 import CookieConsent from "@/components/CookieConsent";
+import NoRightClick from "@/components/NoRightClick";
 import "./globals.css";
 
 const playfair = Playfair_Display({
@@ -138,6 +139,7 @@ export default function RootLayout({
         />
       </head>
       <body style={{ background: '#0B0F19', color: '#F1F5F9', fontFamily: "'DM Sans', -apple-system, sans-serif" }} className="min-h-screen flex flex-col">
+        <NoRightClick />
         <a href="#main-content" className="skip-to-content">Skip to content</a>
         <TickerMarquee />
         <div style={{ height: 28 }} /> {/* Marquee spacer */}
