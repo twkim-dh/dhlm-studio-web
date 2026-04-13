@@ -6,7 +6,7 @@
     },
     {
       "path": "/api/today-market",
-      "schedule": "*/15 13-21 * * 1-5"
+      "schedule": "30 21 * * 1-5"
     }
   ]
 }

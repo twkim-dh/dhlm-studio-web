@@ -64,52 +64,37 @@ const FALLBACK: Omit<TodayMarketPayload, 'asOf' | 'source' | 'verdict'> = {
   fearGreed: { value: 50, label: 'Neutral', source: 'CNN' },
 };
 
-/** Crypto is a 24/7 market — separate TTL that ignores weekends.
- *  15 min during US market hours (stays in sync with stock data),
- *  30 min at all other times including weekends. */
+/** Crypto is a 24/7 market — three-tier TTL independent of stock schedule.
+ *  5 min during US market hours (most volatile, crypto correlates with equities),
+ *  15 min other weekday hours, 30 min weekends. */
 function cryptoCacheTtlSeconds(): number {
   const now = new Date();
-  const minutesIntoDay = now.getUTCHours() * 60 + now.getUTCMinutes();
-  return (minutesIntoDay >= 13 * 60 + 30 && minutesIntoDay < 20 * 60) ? 15 * 60 : 30 * 60;
+  const day = now.getUTCDay();
+  if (day === 0 || day === 6) return 30 * 60;
+  const min = now.getUTCHours() * 60 + now.getUTCMinutes();
+  if (min >= 13 * 60 + 30 && min < 20 * 60) return 5 * 60;
+  return 15 * 60;
 }
 
 // Two-layer cache: in-memory per serverless instance + Redis shared.
 // Redis is the source of truth — every cold start checks Redis before
 // touching the live APIs. The in-memory layer is just a hot cache for
 // repeat reads on the same warm instance.
-// v3: bumped 2026-04-11 to flush cached data that had CL=F/GC=F symbols
-const REDIS_KEY = 'today-market:cache:v3';
-// Separate crypto cache key — uses cryptoCacheTtlSeconds() so BTC/ETH
-// refresh every 30 min on weekends instead of the 120-min stock TTL.
-const REDIS_CRYPTO_KEY = 'today-market:crypto:v3';
+// v4: bumped 2026-04-14 — switched to EOD close model (24h TTL)
+const REDIS_KEY = 'today-market:cache:v4';
+// Separate crypto cache key — refreshes independently at 5/15/30 min tiers.
+const REDIS_CRYPTO_KEY = 'today-market:crypto:v4';
 let memCache: { data: TodayMarketPayload; ts: number } | null = null;
 let memCryptoCache: { data: CryptoPrice[]; ts: number } | null = null;
 
-// Cache TTL in seconds. Three buckets driven by US market session:
-//   - Weekend (Sat/Sun UTC): 120 minutes — almost no real movement
-//   - After US close (~21:00 UTC) through pre-open (~13:00 UTC): 60 minutes
-//   - During US market hours (13:30-21:00 UTC): 15 minutes — fresh enough
-//
-// At worst: market hours (6.5 hours / 15 min = 26 windows) +
-//           non-market (17.5 hours / 60 min = 17.5 windows) ≈ 44 cache windows.
-// With FMP batched call (1 request) + treasury (1 request) per window,
-// daily upper bound is ~88 FMP requests, well under the 250 daily limit.
-function cacheTtlSeconds(): number {
-  const now = new Date();
-  const day = now.getUTCDay(); // 0=Sun, 6=Sat
-  if (day === 0 || day === 6) return 120 * 60;
-  const utcHour = now.getUTCHours();
-  const utcMin = now.getUTCMinutes();
-  const minutesIntoDay = utcHour * 60 + utcMin;
-  // US market open 13:30 UTC, close 20:00 UTC (rough — slightly conservative
-  // so the 15-min bucket only fires during actual session hours)
-  const marketOpen = 13 * 60 + 30;
-  const marketClose = 20 * 60;
-  if (minutesIntoDay >= marketOpen && minutesIntoDay < marketClose) {
-    return 15 * 60;
-  }
-  return 60 * 60;
-}
+// Stock/macro cache TTL — 24 hours (86400 seconds).
+// FMP is only called ONCE per day by the 21:30 UTC cron to capture the
+// confirmed closing price. The cached result serves all requests until
+// the next day's close fetch. This uses ~3-5 FMP calls/day instead of
+// the previous ~88, eliminating 429 errors entirely.
+// On weekends: Friday's close is served until Monday's cron runs.
+const STOCK_CACHE_TTL = 86400;
+function cacheTtlSeconds(): number { return STOCK_CACHE_TTL; }
 
 async function readSharedCache(): Promise<TodayMarketPayload | null> {
   // Try memory first (no network)
@@ -135,8 +120,8 @@ async function writeSharedCache(data: TodayMarketPayload): Promise<void> {
   memCache = entry;
   try {
     const redis = getRedis();
-    // EX seconds — Redis evicts automatically
-    await redis.set(REDIS_KEY, JSON.stringify(entry), 'EX', cacheTtlSeconds());
+    // 24-hour TTL — stock data is EOD close, valid until tomorrow's close cron.
+    await redis.set(REDIS_KEY, JSON.stringify(entry), 'EX', STOCK_CACHE_TTL);
   } catch { /* Redis unavailable — memory cache still works for warm instance */ }
 }
 
@@ -516,7 +501,7 @@ export async function GET(request: Request) {
         return NextResponse.json({
           ...payload,
           _debug: {
-            note: 'Returned cached payload (no API calls were made). Pass ?debug=fresh to force a live re-fetch (costs FMP quota).',
+            note: 'Returned cached close payload. FMP is only called by the 21:30 UTC cron. Pass ?debug=fresh to force a live re-fetch (costs FMP quota).',
             cacheAgeSeconds: memCache ? Math.floor((Date.now() - memCache.ts) / 1000) : null,
             envCheck: {
               FMP_API_KEY_present: Boolean(process.env.FMP_API_KEY),

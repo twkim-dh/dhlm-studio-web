@@ -145,25 +145,22 @@ export default function TodayMarket() {
 
   const fgColor = fearGreedColor(data.fearGreed.value);
 
-  // Format the asOf timestamp into a short relative-friendly label
-  // e.g. "as of 14:32 UTC" so users always see when the data was captured.
-  const asOfLabel = (() => {
+  // Format the asOf timestamp as a close date label: "Close · Apr 14, 2026"
+  // Stocks show EOD closing data fetched once per day at 21:30 UTC.
+  // Crypto refreshes independently every 5–30 min.
+  const closeDateLabel = (() => {
     try {
       const d = new Date(data.asOf);
-      const hh = String(d.getUTCHours()).padStart(2, '0');
-      const mm = String(d.getUTCMinutes()).padStart(2, '0');
-      return `as of ${hh}:${mm} UTC`;
+      return d.toLocaleDateString('en-US', { month: 'short', day: 'numeric', year: 'numeric' });
     } catch { return ''; }
   })();
 
-  // Status label per data source. NEVER show "DEMO" — the user has been
-  // explicit that an honest "delayed" disclosure is required regardless
-  // of whether the data path is live, cached, or static fallback.
-  const statusLabel = data.source === 'live'
-    ? '● LIVE · 15-min delayed'
-    : `● Delayed · ${asOfLabel}`;
+  const statusLabel = data.source === 'fallback'
+    ? '● Snapshot data'
+    : `● Close · ${closeDateLabel}`;
 
-  const statusColor = data.source === 'live' ? '#00D474' : '#94A3B8';
+  // Stocks are EOD data — never show green "live" indicator.
+  const statusColor = '#94A3B8';
 
   // SOL from alts for the Crypto column (show alongside BTC/ETH)
   const sol = alts.find(c => c.id === 'solana');
