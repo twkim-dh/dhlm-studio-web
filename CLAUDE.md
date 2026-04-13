@@ -2,6 +2,24 @@
 
 ---
 
+## ⛔ NON-NEGOTIABLE: Every Task Must End With Git Push
+
+```
+git add [changed files]
+git status
+git commit -m "description"
+git pull --rebase origin main   ← sync remote changes first
+git push origin main
+```
+
+Then wait 2-3 minutes for Vercel to deploy.
+Then verify on the PRODUCTION URL (dhlm-studio.com).
+
+**If you did not `git push`, NOTHING you did exists.**
+**Never report "done" without confirming `git push` succeeded.**
+
+---
+
 ## Token Optimization Rules (Auto-apply every session)
 > DHLM Claude Code Token Optimization Guide v1.0 — 2026.04.13
 
