@@ -5,6 +5,7 @@ import fs from 'fs';
 import path from 'path';
 import { fmtDateShort } from '@/lib/fmt-date';
 import ListenButton from '@/components/ListenButton';
+import ReportPDF from '@/components/ReportPDF';
 import InlineSubscribe from '@/components/InlineSubscribe';
 import GiscusComments from '@/components/GiscusComments';
 import unsplashManifest from '@/data/unsplash-manifest.json';
@@ -228,7 +229,16 @@ export default async function ResearchArticlePage({ params }: { params: Promise<
           </div>
           <h1 style={{ fontFamily: 'var(--serif)', fontSize: 'clamp(24px, 4vw, 32px)', fontWeight: 900, color: '#F1F5F9', lineHeight: 1.3, margin: 0 }}>{fm.title}</h1>
           <p style={{ fontSize: 15, color: '#64748B', lineHeight: 1.7, marginTop: 12 }}>{fm.description}</p>
-          <div style={{ marginTop: 14 }}><ListenButton text={a.body} /></div>
+          <div style={{ marginTop: 14, display: 'flex', flexWrap: 'wrap', gap: 8, alignItems: 'center' }}>
+            <ListenButton text={a.body} />
+            <ReportPDF
+              title={fm.title}
+              date={fm.date}
+              description={fm.description}
+              category={fm.category}
+              body={a.body}
+            />
+          </div>
         </div>
 
         {/* Hero image */}

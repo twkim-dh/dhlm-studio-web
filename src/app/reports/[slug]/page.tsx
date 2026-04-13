@@ -5,7 +5,7 @@ import path from 'path';
 import LikeButton from '@/components/LikeButton';
 import { fmtDateLong } from '@/lib/fmt-date';
 import ListenButton from '@/components/ListenButton';
-import PrintButton from '@/components/PrintButton';
+import ReportPDF from '@/components/ReportPDF';
 import InlineSubscribe from '@/components/InlineSubscribe';
 import GiscusComments from '@/components/GiscusComments';
 import TickerLogo from '@/components/TickerLogo';
@@ -330,7 +330,17 @@ export default async function ReportPage({ params }: { params: Promise<{ slug: s
           <p style={{ fontSize: 15, color: '#64748B', lineHeight: 1.7, marginTop: 12 }}>{fm.description}</p>
           <div style={{ marginTop: 12, display: 'flex', flexWrap: 'wrap', alignItems: 'center', gap: 10 }}>
             <ListenButton text={body} />
-            <PrintButton />
+            <ReportPDF
+              title={fm.title}
+              date={fm.date}
+              description={fm.description}
+              category={fm.category}
+              ticker={fm.ticker}
+              beafScore={fm.beafScore}
+              grade={fm.grade}
+              type={fm.type}
+              body={body}
+            />
             <LikeButton pageId={`report-${slug}`} />
           </div>
         </div>
