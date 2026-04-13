@@ -89,6 +89,7 @@ export default function Home() {
       </section>
 
       {/* ── SECTION 2: TODAY'S MARKET ── */}
+      <div style={{ height: 16 }} />
       <TodayMarket />
 
       {/* ── SECTION 3: FEATURED (max 2 active-badge reports) ── */}

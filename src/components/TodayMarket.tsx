@@ -86,12 +86,15 @@ export default function TodayMarket() {
       .then((d: TodayMarketPayload) => { if (d?.indices) setData(d); })
       .catch(() => { /* keep fallback */ });
 
-    // Top 5 altcoins (rank 3-7, excluding BTC/ETH)
+    // Top altcoins — exclude BTC/ETH and stablecoins (they don't move)
+    const STABLECOINS = new Set(['tether','usd-coin','binance-usd','dai','true-usd','usdd','first-digital-usd','frax','liquity-usd','paxos-standard']);
     fetch('/api/crypto')
       .then(r => r.json())
       .then((d: { coins?: AltCoin[] }) => {
         if (d.coins) {
-          const filtered = d.coins.filter(c => !['bitcoin', 'ethereum'].includes(c.id)).slice(0, 5);
+          const filtered = d.coins
+            .filter(c => !['bitcoin', 'ethereum'].includes(c.id) && !STABLECOINS.has(c.id))
+            .slice(0, 5);
           setAlts(filtered);
         }
       })
@@ -115,8 +118,12 @@ export default function TodayMarket() {
     );
   };
 
+  const CRYPTO_LABELS: Record<string, string> = {
+    bitcoin: 'BTC', ethereum: 'ETH', solana: 'SOL', ripple: 'XRP',
+    'binancecoin': 'BNB', cardano: 'ADA', dogecoin: 'DOGE', polkadot: 'DOT',
+  };
   const renderCryptoRow = (c: CryptoPrice) => {
-    const label = c.id === 'bitcoin' ? 'BTC' : c.id === 'ethereum' ? 'ETH' : c.id.toUpperCase();
+    const label = CRYPTO_LABELS[c.id] ?? c.id.toUpperCase().slice(0, 5);
     return (
       <div key={c.id} style={{ display: 'grid', gridTemplateColumns: '1fr auto auto', alignItems: 'center', gap: 12, padding: '9px 12px', borderBottom: '1px solid #1E293B40' }}>
         <span style={{ fontSize: 11, fontWeight: 700, color: '#94A3B8', fontFamily: 'var(--mono)', letterSpacing: 0.5 }}>{label}</span>
@@ -150,79 +157,82 @@ export default function TodayMarket() {
 
   const statusColor = data.source === 'live' ? '#00D474' : '#94A3B8';
 
+  // SOL from alts for the Crypto column (show alongside BTC/ETH)
+  const sol = alts.find(c => c.id === 'solana');
+  // Altcoins for Row 2: exclude stablecoins (already filtered) and SOL (shown in crypto col)
+  const altcoinsRow = alts.filter(c => c.id !== 'solana').slice(0, 4);
+
   return (
-    <section style={{ padding: '0 24px 32px', maxWidth: 1100, margin: '0 auto' }}>
+    <section style={{ padding: '0 24px 48px', maxWidth: 800, margin: '0 auto' }}>
       {/* Section header */}
-      <div style={{ display: 'flex', alignItems: 'baseline', justifyContent: 'space-between', marginBottom: 14 }}>
+      <div style={{ display: 'flex', alignItems: 'baseline', justifyContent: 'space-between', marginBottom: 16 }}>
         <div>
           <div style={{ fontFamily: 'var(--mono)', fontSize: 10, fontWeight: 700, color: '#C73E3A', letterSpacing: 3, marginBottom: 4 }}>● TODAY&apos;S MARKET</div>
-          <h2 style={{ fontFamily: 'var(--serif)', fontSize: 26, fontWeight: 800, color: '#F1F5F9', margin: 0 }}>Market Snapshot</h2>
+          <h2 style={{ fontFamily: 'var(--serif)', fontSize: 22, fontWeight: 800, color: '#F1F5F9', margin: 0 }}>Market Snapshot</h2>
         </div>
-        <span style={{ fontFamily: 'var(--mono)', fontSize: 9, color: statusColor }}>
-          {statusLabel}
-        </span>
+        <span style={{ fontFamily: 'var(--mono)', fontSize: 9, color: statusColor }}>{statusLabel}</span>
       </div>
 
-      {/* 4-card grid: Indices, Macro, Crypto, Fear & Greed */}
-      <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(220px, 1fr))', gap: 12, marginBottom: 16 }}>
-        {/* US Indices */}
-        <div style={card}>
-          <div style={{ padding: '10px 12px', borderBottom: '1px solid #1E293B', fontSize: 9, fontWeight: 800, color: '#3B82F6', fontFamily: 'var(--mono)', letterSpacing: 2 }}>US INDICES</div>
+      {/* ── ROW 1: 3 equal columns ── */}
+      <div style={{ display: 'grid', gridTemplateColumns: 'repeat(3, 1fr)', gap: 10, marginBottom: 10 }}>
+        {/* US INDICES */}
+        <div style={{ ...card, borderTop: '2px solid #3B82F6' }}>
+          <div style={{ padding: '9px 12px', borderBottom: '1px solid #1E293B40', fontSize: 9, fontWeight: 800, color: '#3B82F6', fontFamily: 'var(--mono)', letterSpacing: 2 }}>US INDICES</div>
           {data.indices.map(renderQuoteRow)}
         </div>
 
-        {/* Macro */}
-        <div style={card}>
-          <div style={{ padding: '10px 12px', borderBottom: '1px solid #1E293B', fontSize: 9, fontWeight: 800, color: '#D4A843', fontFamily: 'var(--mono)', letterSpacing: 2 }}>MACRO</div>
+        {/* MACRO */}
+        <div style={{ ...card, borderTop: '2px solid #D4A843' }}>
+          <div style={{ padding: '9px 12px', borderBottom: '1px solid #1E293B40', fontSize: 9, fontWeight: 800, color: '#D4A843', fontFamily: 'var(--mono)', letterSpacing: 2 }}>MACRO</div>
           {data.macro.map(renderQuoteRow)}
         </div>
 
-        {/* Crypto */}
-        <div style={card}>
-          <div style={{ padding: '10px 12px', borderBottom: '1px solid #1E293B', fontSize: 9, fontWeight: 800, color: '#F59E0B', fontFamily: 'var(--mono)', letterSpacing: 2 }}>CRYPTO</div>
+        {/* CRYPTO (BTC + ETH + SOL) */}
+        <div style={{ ...card, borderTop: '2px solid #F59E0B' }}>
+          <div style={{ padding: '9px 12px', borderBottom: '1px solid #1E293B40', fontSize: 9, fontWeight: 800, color: '#F59E0B', fontFamily: 'var(--mono)', letterSpacing: 2 }}>CRYPTO</div>
           {data.crypto.map(renderCryptoRow)}
-        </div>
-
-        {/* Fear & Greed */}
-        <div style={card}>
-          <div style={{ padding: '10px 12px', borderBottom: '1px solid #1E293B', fontSize: 9, fontWeight: 800, color: '#A78BFA', fontFamily: 'var(--mono)', letterSpacing: 2 }}>SENTIMENT</div>
-          <div style={{ padding: '14px 12px', textAlign: 'center' }}>
-            <div style={{ fontFamily: 'var(--serif)', fontSize: 36, fontWeight: 900, color: fgColor, lineHeight: 1 }}>{data.fearGreed.value}</div>
-            <div style={{ fontFamily: 'var(--mono)', fontSize: 10, fontWeight: 700, color: fgColor, marginTop: 4, textTransform: 'uppercase', letterSpacing: 1 }}>{data.fearGreed.label}</div>
-            <div style={{ fontFamily: 'var(--sans)', fontSize: 9, color: '#475569', marginTop: 6 }}>{data.fearGreed.source || 'CNN'} Fear &amp; Greed</div>
-            {/* Simple gauge */}
-            <div style={{ marginTop: 10, height: 6, background: '#1E293B', borderRadius: 3, overflow: 'hidden' }}>
-              <div style={{ width: `${data.fearGreed.value}%`, height: '100%', background: fgColor }} />
-            </div>
-          </div>
+          {sol && renderCryptoRow({ id: sol.id, price: sol.price, change24h: sol.change24h })}
         </div>
       </div>
 
-      {/* Top 5 Altcoins row */}
-      {alts.length > 0 && (
-        <div style={{ marginBottom: 16 }}>
-          <div style={{ fontFamily: 'var(--mono)', fontSize: 9, fontWeight: 700, color: '#475569', letterSpacing: 2, marginBottom: 8 }}>TOP ALTCOINS</div>
-          <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(160px, 1fr))', gap: 8 }}>
-            {alts.map(c => (
-              <div key={c.id} style={{ background: '#111827', borderRadius: 10, border: '1px solid #1E293B', padding: '10px 12px', display: 'flex', flexDirection: 'column', gap: 4 }}>
-                <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center' }}>
-                  <span style={{ fontFamily: 'var(--mono)', fontSize: 11, fontWeight: 700, color: '#F59E0B' }}>{c.symbol?.toUpperCase()}</span>
-                  <span style={{ fontFamily: 'var(--mono)', fontSize: 10, fontWeight: 700, color: changeColor(c.change24h) }}>{c.change24h >= 0 ? '+' : ''}{fmtNum(c.change24h, 2)}%</span>
-                </div>
-                <span style={{ fontFamily: 'var(--mono)', fontSize: 12, fontWeight: 800, color: '#F1F5F9' }}>{c.price >= 1 ? `$${fmtNum(c.price, 2)}` : `$${fmtNum(c.price, 4)}`}</span>
-                <span style={{ fontFamily: 'var(--sans)', fontSize: 9, color: '#475569', overflow: 'hidden', textOverflow: 'ellipsis', whiteSpace: 'nowrap' }}>{c.name}</span>
-              </div>
-            ))}
+      {/* ── ROW 2: Sentiment + Altcoins ── */}
+      <div style={{ display: 'grid', gridTemplateColumns: '1fr 1fr', gap: 10, marginBottom: 14 }}>
+        {/* SENTIMENT */}
+        <div style={{ ...card, borderTop: '2px solid #A78BFA' }}>
+          <div style={{ padding: '9px 12px', borderBottom: '1px solid #1E293B40', fontSize: 9, fontWeight: 800, color: '#A78BFA', fontFamily: 'var(--mono)', letterSpacing: 2 }}>SENTIMENT</div>
+          <div style={{ padding: '16px 12px', display: 'flex', flexDirection: 'column', alignItems: 'center', gap: 6 }}>
+            <div style={{ fontFamily: 'var(--serif)', fontSize: 40, fontWeight: 900, color: fgColor, lineHeight: 1 }}>{data.fearGreed.value}</div>
+            <div style={{ fontFamily: 'var(--mono)', fontSize: 11, fontWeight: 800, color: fgColor, textTransform: 'uppercase', letterSpacing: 1 }}>{data.fearGreed.label}</div>
+            <div style={{ fontFamily: 'var(--sans)', fontSize: 9, color: '#475569' }}>{data.fearGreed.source || 'CNN'} Fear &amp; Greed</div>
+            <div style={{ width: '100%', maxWidth: 140, height: 6, background: '#1E293B', borderRadius: 3, overflow: 'hidden', marginTop: 4 }}>
+              <div style={{ width: `${data.fearGreed.value}%`, height: '100%', background: `linear-gradient(90deg, #FF4545, #F59E0B, #00D474)` }} />
+            </div>
           </div>
         </div>
-      )}
+
+        {/* TOP ALTCOINS */}
+        <div style={{ ...card, borderTop: '2px solid #F59E0B' }}>
+          <div style={{ padding: '9px 12px', borderBottom: '1px solid #1E293B40', fontSize: 9, fontWeight: 800, color: '#F59E0B', fontFamily: 'var(--mono)', letterSpacing: 2 }}>TOP ALTCOINS</div>
+          {altcoinsRow.length > 0 ? altcoinsRow.map(c => (
+            <div key={c.id} style={{ display: 'grid', gridTemplateColumns: '1fr auto auto', alignItems: 'center', gap: 10, padding: '8px 12px', borderBottom: '1px solid #1E293B40' }}>
+              <div>
+                <span style={{ fontSize: 11, fontWeight: 700, color: '#F59E0B', fontFamily: 'var(--mono)' }}>{c.symbol?.toUpperCase()}</span>
+              </div>
+              <span style={{ fontSize: 11, fontWeight: 800, color: '#F1F5F9', fontFamily: 'var(--mono)' }}>
+                {c.price >= 1000 ? `$${Math.round(c.price).toLocaleString()}` : c.price >= 1 ? `$${fmtNum(c.price, 2)}` : `$${fmtNum(c.price, 4)}`}
+              </span>
+              <span style={{ fontSize: 11, fontWeight: 700, color: changeColor(c.change24h), fontFamily: 'var(--mono)', minWidth: 56, textAlign: 'right' }}>
+                {c.change24h >= 0 ? '+' : ''}{fmtNum(c.change24h, 2)}%
+              </span>
+            </div>
+          )) : (
+            <div style={{ padding: '20px 12px', textAlign: 'center', fontSize: 10, color: '#475569', fontFamily: 'var(--mono)' }}>Loading...</div>
+          )}
+        </div>
+      </div>
 
       {/* Brutal Edge Verdict */}
-      <div style={{
-        padding: '16px 20px', borderRadius: 14,
-        background: 'linear-gradient(135deg, #C73E3A0F, #C73E3A05)',
-        border: '1px solid #C73E3A30',
-      }}>
+      <div style={{ padding: '16px 20px', borderRadius: 14, background: 'linear-gradient(135deg, #C73E3A0F, #C73E3A05)', border: '1px solid #C73E3A30' }}>
         <div style={{ display: 'flex', alignItems: 'center', gap: 8, marginBottom: 8 }}>
           <span style={{ fontSize: 14 }}>🔥</span>
           <span style={{ fontFamily: 'var(--mono)', fontSize: 9, fontWeight: 800, color: '#C73E3A', letterSpacing: 2 }}>BRUTAL EDGE&trade; VERDICT</span>
