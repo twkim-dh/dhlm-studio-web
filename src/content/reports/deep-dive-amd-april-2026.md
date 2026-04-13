@@ -2,7 +2,7 @@
 title: "Deep Dive: AMD — April 2026 Analysis"
 slug: "deep-dive-amd-april-2026"
 ticker: "AMD"
-date: "2026-04-07"
+date: "2026-04-05"
 readTime: "14 min"
 category: "Markets"
 catColor: "#00D474"

@@ -2,7 +2,7 @@
 title: "Deep Dive: Microsoft — April 2026 Analysis"
 slug: "deep-dive-msft-april-2026"
 ticker: "MSFT"
-date: "2026-04-07"
+date: "2026-04-02"
 readTime: "14 min"
 category: "Markets"
 catColor: "#00D474"

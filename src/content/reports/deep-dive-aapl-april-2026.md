@@ -2,7 +2,7 @@
 title: "Deep Dive: Apple — April 2026 Analysis"
 slug: "deep-dive-aapl-april-2026"
 ticker: "AAPL"
-date: "2026-04-07"
+date: "2026-04-03"
 readTime: "13 min"
 category: "Markets"
 catColor: "#00D474"

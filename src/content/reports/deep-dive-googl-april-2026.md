@@ -2,7 +2,7 @@
 title: "Deep Dive: Alphabet/Google — April 2026 Analysis"
 slug: "deep-dive-googl-april-2026"
 ticker: "GOOGL"
-date: "2026-04-07"
+date: "2026-04-03"
 readTime: "14 min"
 category: "Markets"
 catColor: "#00D474"

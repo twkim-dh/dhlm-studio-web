@@ -2,7 +2,7 @@
 title: "Deep Dive: Tesla — April 2026 Analysis"
 slug: "deep-dive-tsla-april-2026"
 ticker: "TSLA"
-date: "2026-04-07"
+date: "2026-04-05"
 readTime: "14 min"
 category: "Markets"
 catColor: "#00D474"

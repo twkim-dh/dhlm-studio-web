@@ -2,7 +2,7 @@
 title: "Deep Dive: Amazon — April 2026 Analysis"
 slug: "deep-dive-amzn-april-2026"
 ticker: "AMZN"
-date: "2026-04-07"
+date: "2026-04-04"
 readTime: "14 min"
 category: "Markets"
 catColor: "#00D474"
