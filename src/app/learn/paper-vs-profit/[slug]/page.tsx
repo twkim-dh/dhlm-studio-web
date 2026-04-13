@@ -1,0 +1,302 @@
+import type { Metadata } from 'next';
+import { notFound } from 'next/navigation';
+import Link from 'next/link';
+import fs from 'fs';
+import path from 'path';
+import { fmtDateShort } from '@/lib/fmt-date';
+import ListenButton from '@/components/ListenButton';
+import ReportPDF from '@/components/ReportPDF';
+import InlineSubscribe from '@/components/InlineSubscribe';
+import GiscusComments from '@/components/GiscusComments';
+import unsplashManifest from '@/data/unsplash-manifest.json';
+
+const CONTENT_DIR = path.join(process.cwd(), 'src/content/research');
+
+interface FaqItem { q: string; a: string }
+
+interface ResearchFrontmatter {
+  slug: string;
+  title: string;
+  category: string;
+  date: string;
+  readTime: string;
+  verdict: string;
+  description: string;
+  paperTitle: string;
+  paperAuthors: string;
+  paperYear: number;
+  paperInstitution?: string;
+  paperAdvisor?: string;
+  seoTitle?: string;
+  seoDescription?: string;
+  faqs?: FaqItem[];
+  relatedSlugs?: string[];
+}
+
+function parseMd(content: string): { fm: ResearchFrontmatter; body: string } | null {
+  const m = content.match(/^---\n([\s\S]*?)\n---\n([\s\S]*)$/);
+  if (!m) return null;
+  const fm: Record<string, unknown> = {};
+  for (const line of m[1].split('\n')) {
+    const lm = line.match(/^(\w+):\s*(.+)$/);
+    if (!lm) continue;
+    let raw = lm[2].trim();
+    if (raw.startsWith('[') || raw.startsWith('{')) {
+      try { fm[lm[1]] = JSON.parse(raw); continue; } catch { /* ignore */ }
+    }
+    if ((raw.startsWith('"') && raw.endsWith('"'))) raw = raw.slice(1, -1);
+    fm[lm[1]] = raw !== '' && !isNaN(Number(raw)) ? Number(raw) : raw;
+  }
+  return { fm: fm as unknown as ResearchFrontmatter, body: m[2] };
+}
+
+function getArticle(slug: string) {
+  try {
+    const fp = path.join(CONTENT_DIR, `${slug}.md`);
+    if (!fs.existsSync(fp)) return null;
+    return parseMd(fs.readFileSync(fp, 'utf8'));
+  } catch { return null; }
+}
+
+export function generateStaticParams() {
+  try {
+    if (!fs.existsSync(CONTENT_DIR)) return [];
+    const today = new Date().toISOString().slice(0, 10);
+    return fs.readdirSync(CONTENT_DIR)
+      .filter(f => f.endsWith('.md'))
+      .map(f => f.replace(/\.md$/, ''))
+      .filter(slug => {
+        const a = getArticle(slug);
+        if (!a) return true;
+        const pubDate = (a.fm as unknown as Record<string, string>)['publishDate'] || a.fm.date;
+        return pubDate <= today;
+      })
+      .map(slug => ({ slug }));
+  } catch { return []; }
+}
+
+export async function generateMetadata({ params }: { params: Promise<{ slug: string }> }): Promise<Metadata> {
+  const { slug } = await params;
+  const a = getArticle(slug);
+  if (!a) return { title: 'Research Not Found', robots: { index: false, follow: false } };
+  const title = a.fm.seoTitle || `${a.fm.title} | DHLM Studio Research`;
+  const description = a.fm.seoDescription || a.fm.description;
+  return {
+    title: title.includes('DHLM Studio') ? title : `${title} | DHLM Studio`,
+    description,
+    alternates: { canonical: `https://dhlm-studio.com/learn/paper-vs-profit/${slug}` },
+    openGraph: { title, description, type: 'article', publishedTime: a.fm.date },
+    twitter: { card: 'summary_large_image', title, description },
+  };
+}
+
+function verdictColor(v: string) {
+  if (v === 'YES') return { fg: '#00D474', bg: '#00D47418', border: '#00D47440' };
+  if (v === 'NO')  return { fg: '#FF4545', bg: '#FF454518', border: '#FF454540' };
+  return { fg: '#D4A843', bg: '#D4A84318', border: '#D4A84340' };
+}
+
+function renderMarkdown(md: string): React.ReactNode[] {
+  const lines = md.split('\n');
+  const elements: React.ReactNode[] = [];
+  let inTable = false;
+  let tableRows: string[][] = [];
+  let key = 0;
+
+  const inline = (text: string) => text
+    .replace(/\*\*([^*]+)\*\*/g, '<strong>$1</strong>')
+    .replace(/\*([^*]+)\*/g, '<em>$1</em>')
+    .replace(/\[([^\]]+)\]\(([^)]+)\)/g, '<a href="$2" style="color:#60A5FA">$1</a>');
+
+  const flushTable = () => {
+    if (tableRows.length < 2) { tableRows = []; return; }
+    const headers = tableRows[0];
+    const dataRows = tableRows.slice(2);
+    elements.push(
+      <div key={key++} style={{ overflowX: 'auto', margin: '16px 0' }}>
+        <table style={{ width: '100%', borderCollapse: 'collapse', fontSize: 12, fontFamily: 'var(--mono)' }}>
+          <thead>
+            <tr>{headers.map((h, i) => <th key={i} style={{ padding: '8px 10px', borderBottom: '2px solid #1E293B', color: '#94A3B8', textAlign: i === 0 ? 'left' : 'right', fontWeight: 700 }}>{h.trim()}</th>)}</tr>
+          </thead>
+          <tbody>
+            {dataRows.map((row, ri) => (
+              <tr key={ri}>{row.map((cell, ci) => <td key={ci} style={{ padding: '6px 10px', borderBottom: '1px solid #1E293B40', color: '#E2E8F0', textAlign: ci === 0 ? 'left' : 'right' }}>{cell.trim()}</td>)}</tr>
+            ))}
+          </tbody>
+        </table>
+      </div>
+    );
+    tableRows = [];
+  };
+
+  for (const line of lines) {
+    if (line.trim().startsWith('|') && line.trim().endsWith('|')) {
+      inTable = true;
+      tableRows.push(line.split('|').filter(c => c.trim() !== ''));
+      continue;
+    } else if (inTable) {
+      inTable = false;
+      flushTable();
+    }
+    if (line.startsWith('## ')) {
+      elements.push(<h2 key={key++} style={{ fontFamily: 'var(--serif)', fontSize: 22, fontWeight: 800, color: '#E2E8F0', margin: '32px 0 12px' }}>{line.slice(3)}</h2>);
+    } else if (line.startsWith('### ')) {
+      elements.push(<h3 key={key++} style={{ fontFamily: 'var(--serif)', fontSize: 17, fontWeight: 700, color: '#D4A843', margin: '24px 0 8px' }}>{line.slice(4)}</h3>);
+    } else if (line.trim() === '') {
+      // skip
+    } else if (line.startsWith('---')) {
+      elements.push(<hr key={key++} style={{ border: 'none', borderTop: '1px solid #1E293B', margin: '24px 0' }} />);
+    } else {
+      elements.push(<p key={key++} style={{ fontSize: 15, color: '#94A3B8', lineHeight: 1.9, margin: '0 0 12px' }} dangerouslySetInnerHTML={{ __html: inline(line) }} />);
+    }
+  }
+  if (inTable) flushTable();
+  return elements;
+}
+
+export default async function PaperVsProfitArticlePage({ params }: { params: Promise<{ slug: string }> }) {
+  const { slug } = await params;
+  const a = getArticle(slug);
+
+  if (!a) {
+    return (
+      <div style={{ background: '#0B0F19', minHeight: '100vh', padding: '120px 24px', textAlign: 'center' }}>
+        <h1 style={{ color: '#F1F5F9', fontFamily: 'var(--serif)', fontSize: 28 }}>Research Not Found</h1>
+        <Link href="/learn/paper-vs-profit" style={{ color: '#3B82F6', fontSize: 14, marginTop: 16, display: 'inline-block' }}>← Paper vs. Profit</Link>
+      </div>
+    );
+  }
+
+  const today = new Date().toISOString().slice(0, 10);
+  const publishDate = (a.fm as unknown as Record<string, string>)['publishDate'] || a.fm.date;
+  if (publishDate > today) notFound();
+
+  const fm = a.fm;
+  const c = verdictColor(fm.verdict);
+
+  const unsplashEntry = (unsplashManifest as Record<string, { src: string; alt: string; credit: { author: string; authorUrl: string; unsplashUrl: string } }>)[slug];
+
+  const articleLd = {
+    '@context': 'https://schema.org', '@type': 'ScholarlyArticle',
+    headline: fm.seoTitle || fm.title,
+    description: fm.seoDescription || fm.description,
+    datePublished: fm.date,
+    author: { '@type': 'Organization', name: 'DHLM Studio' },
+    publisher: { '@type': 'Organization', name: 'DHLM Studio' },
+    citation: fm.paperTitle ? `${fm.paperAuthors} (${fm.paperYear}). ${fm.paperTitle}. ${fm.paperInstitution || ''}` : undefined,
+  };
+  const faqLd = fm.faqs && fm.faqs.length > 0 ? {
+    '@context': 'https://schema.org', '@type': 'FAQPage',
+    mainEntity: fm.faqs.map(f => ({ '@type': 'Question', name: f.q, acceptedAnswer: { '@type': 'Answer', text: f.a } })),
+  } : null;
+
+  return (
+    <div style={{ background: '#0B0F19', minHeight: '100vh' }}>
+      <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(articleLd) }} />
+      {faqLd && <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(faqLd) }} />}
+      <article style={{ maxWidth: 760, margin: '0 auto', padding: '80px 24px' }}>
+        <Link href="/learn/paper-vs-profit" style={{ fontSize: 12, color: '#64748B' }}>← Paper vs. Profit</Link>
+
+        {/* Verdict header */}
+        <div style={{ marginTop: 20, padding: '20px 22px', borderRadius: 14, background: `linear-gradient(135deg, ${c.bg}, transparent)`, border: `1px solid ${c.border}`, marginBottom: 16 }}>
+          <div style={{ display: 'flex', alignItems: 'center', gap: 8, marginBottom: 8 }}>
+            <span style={{ fontSize: 18 }}>📚</span>
+            <span style={{ fontFamily: 'var(--mono)', fontSize: 11, fontWeight: 800, color: '#3B82F6', letterSpacing: 2 }}>BRUTAL EDGE™ RESEARCH LAB</span>
+          </div>
+          <div style={{ display: 'flex', alignItems: 'center', gap: 12 }}>
+            <span style={{ fontFamily: 'var(--mono)', fontSize: 10, fontWeight: 800, padding: '5px 12px', borderRadius: 6, background: c.bg, color: c.fg, border: `1px solid ${c.border}`, letterSpacing: 1.5 }}>
+              VERDICT: {fm.verdict}
+            </span>
+            <span style={{ fontSize: 11, color: '#64748B', fontStyle: 'italic' }}>Academic research interpretation only. Not financial advice.</span>
+          </div>
+        </div>
+
+        {/* Editor Reviewed Badges */}
+        <div style={{ display: 'flex', flexWrap: 'wrap', gap: 6, marginBottom: 24 }}>
+          <span style={{ fontFamily: 'var(--mono)', fontSize: 10, fontWeight: 700, padding: '5px 10px', borderRadius: 6, background: '#00D47412', color: '#00D474', border: '1px solid #00D47425' }}>✓ Editor Reviewed</span>
+          <span style={{ fontFamily: 'var(--mono)', fontSize: 10, fontWeight: 700, padding: '5px 10px', borderRadius: 6, background: '#3B82F612', color: '#3B82F6', border: '1px solid #3B82F625' }}>✓ Source-Cited</span>
+        </div>
+
+        {/* Title */}
+        <div style={{ marginBottom: 20 }}>
+          <div style={{ display: 'flex', alignItems: 'center', gap: 8, marginBottom: 10, flexWrap: 'wrap' }}>
+            <span style={{ fontFamily: 'var(--mono)', fontSize: 10, fontWeight: 700, padding: '3px 8px', borderRadius: 4, background: '#3B82F614', color: '#3B82F6' }}>{fm.category}</span>
+            <span style={{ fontSize: 11, color: '#475569' }}>{fmtDateShort(fm.date)} · {fm.readTime}</span>
+          </div>
+          <h1 style={{ fontFamily: 'var(--serif)', fontSize: 'clamp(24px, 4vw, 32px)', fontWeight: 900, color: '#F1F5F9', lineHeight: 1.3, margin: 0 }}>{fm.title}</h1>
+          <p style={{ fontSize: 15, color: '#64748B', lineHeight: 1.7, marginTop: 12 }}>{fm.description}</p>
+          <div style={{ marginTop: 14, display: 'flex', flexWrap: 'wrap', gap: 8, alignItems: 'center' }}>
+            <ListenButton text={a.body} />
+            <ReportPDF
+              title={fm.title}
+              date={fm.date}
+              description={fm.description}
+              category={fm.category}
+              body={a.body}
+            />
+          </div>
+        </div>
+
+        {/* Hero image */}
+        {unsplashEntry?.src && (
+          <div style={{ margin: '24px 0' }}>
+            <div style={{ width: '100%', maxHeight: 300, display: 'flex', alignItems: 'center', justifyContent: 'center', background: '#0f172a', borderRadius: 12, overflow: 'hidden', border: '1px solid #1E293B' }}>
+              {/* eslint-disable-next-line @next/next/no-img-element */}
+              <img src={unsplashEntry.src} alt={unsplashEntry.alt} style={{ maxWidth: '100%', maxHeight: 300, objectFit: 'contain', height: 'auto', display: 'block' }} />
+            </div>
+            <div style={{ padding: '3px 8px', textAlign: 'right' }}>
+              <span style={{ fontSize: 9, color: '#334155' }}>
+                Photo by <a href={unsplashEntry.credit.authorUrl} target="_blank" rel="noopener noreferrer" style={{ color: '#475569', textDecoration: 'none' }}>{unsplashEntry.credit.author}</a> on <a href={unsplashEntry.credit.unsplashUrl} target="_blank" rel="noopener noreferrer" style={{ color: '#475569', textDecoration: 'none' }}>Unsplash</a>
+              </span>
+            </div>
+          </div>
+        )}
+
+        {/* Paper info card */}
+        {fm.paperTitle && (
+          <div style={{ padding: '14px 18px', borderRadius: 12, background: '#0D1117', border: '1px solid #1E293B', marginBottom: 24 }}>
+            <div style={{ fontFamily: 'var(--mono)', fontSize: 9, fontWeight: 800, color: '#94A3B8', letterSpacing: 1.5, marginBottom: 6 }}>📄 SOURCE PAPER</div>
+            <div style={{ fontSize: 14, fontWeight: 700, color: '#E2E8F0', lineHeight: 1.4, marginBottom: 4 }}>{fm.paperTitle}</div>
+            <div style={{ fontSize: 12, color: '#94A3B8' }}>{fm.paperAuthors} ({fm.paperYear}){fm.paperInstitution && ` · ${fm.paperInstitution}`}</div>
+            {fm.paperAdvisor && <div style={{ fontSize: 11, color: '#64748B', marginTop: 2 }}>Advisor: {fm.paperAdvisor}</div>}
+          </div>
+        )}
+
+        {/* Body */}
+        <div>{renderMarkdown(a.body)}</div>
+
+        {/* FAQ */}
+        {fm.faqs && fm.faqs.length > 0 && (
+          <section style={{ marginTop: 40, padding: '24px 22px', borderRadius: 14, background: '#0D1117', border: '1px solid #1E293B' }}>
+            <div style={{ fontFamily: 'var(--mono)', fontSize: 10, fontWeight: 800, color: '#3B82F6', letterSpacing: 2, marginBottom: 14 }}>📋 FREQUENTLY ASKED QUESTIONS</div>
+            <div style={{ display: 'flex', flexDirection: 'column', gap: 16 }}>
+              {fm.faqs.map((f, i) => (
+                <div key={i}>
+                  <div style={{ fontSize: 14, fontWeight: 700, color: '#F1F5F9', lineHeight: 1.5, marginBottom: 6 }}>Q. {f.q}</div>
+                  <div style={{ fontSize: 13, color: '#94A3B8', lineHeight: 1.7 }}>{f.a}</div>
+                </div>
+              ))}
+            </div>
+          </section>
+        )}
+
+        {/* Newsletter signup */}
+        <div style={{ marginTop: 32 }}>
+          <InlineSubscribe source="report" headline="Get every Paper vs. Profit issue" description="New academic finance research dissection every Wednesday. Free." />
+        </div>
+
+        {/* Comments */}
+        <GiscusComments slug={`research:${slug}`} />
+
+        {/* Footer */}
+        <div style={{ marginTop: 40, padding: '20px 22px', borderRadius: 14, background: '#111827', border: '1px solid #1E293B', textAlign: 'center' }}>
+          <div style={{ fontFamily: 'var(--mono)', fontSize: 10, fontWeight: 800, color: '#3B82F6', letterSpacing: 2, marginBottom: 6 }}>📚 BRUTAL EDGE™ RESEARCH LAB</div>
+          <div style={{ fontSize: 9, color: '#475569', lineHeight: 1.6 }}>
+            Academic research interpretation only. Not financial advice.<br />
+            Always verify findings against the original paper.
+          </div>
+        </div>
+      </article>
+    </div>
+  );
+}

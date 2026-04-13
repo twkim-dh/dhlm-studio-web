@@ -86,6 +86,9 @@ const nextConfig: NextConfig = {
       { source: '/blog/ethereum-special-report-april-2026',   destination: '/reports/ethereum-special-report-april-2026', permanent: true },
       // /crypto-101 → /learn/crypto-101 (content moved to Brutal Edge Academy)
       { source: '/crypto-101', destination: '/learn/crypto-101', permanent: true },
+      // /research → /learn/paper-vs-profit (Research Lab moved to Brutal Edge Academy)
+      { source: '/research', destination: '/learn/paper-vs-profit', permanent: true },
+      { source: '/research/:slug', destination: '/learn/paper-vs-profit/:slug', permanent: true },
     ];
   },
 };

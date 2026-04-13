@@ -52,6 +52,9 @@ export default function LearnPage() {
           </p>
         </div>
 
+        {/* Section header: Courses */}
+        <div style={{ fontFamily: 'var(--mono)', fontSize: 10, fontWeight: 700, color: '#475569', letterSpacing: 3, marginBottom: 14 }}>COURSES</div>
+
         {/* Course Cards */}
         <div style={{ display: 'flex', flexDirection: 'column', gap: 16, marginBottom: 48 }}>
           {COURSES.map(course => (
@@ -127,6 +130,55 @@ export default function LearnPage() {
               </div>
             </Link>
           ))}
+        </div>
+
+        {/* Section header: Research */}
+        <div style={{ fontFamily: 'var(--mono)', fontSize: 10, fontWeight: 700, color: '#475569', letterSpacing: 3, marginBottom: 14 }}>RESEARCH</div>
+
+        {/* Research Cards */}
+        <div style={{ display: 'flex', flexDirection: 'column', gap: 12, marginBottom: 48 }}>
+          <Link
+            href="/learn/paper-vs-profit"
+            style={{
+              ...card,
+              padding: '28px 28px',
+              textDecoration: 'none',
+              display: 'block',
+              position: 'relative',
+              overflow: 'hidden',
+              borderColor: '#3B82F630',
+              background: 'linear-gradient(135deg, #3B82F608, #111827)',
+            }}
+          >
+            <div style={{ position: 'absolute', top: 0, left: 0, right: 0, height: 2, background: '#3B82F6' }} />
+            <div style={{ display: 'flex', gap: 20, alignItems: 'flex-start' }}>
+              <div style={{
+                width: 52, height: 52, borderRadius: 14, flexShrink: 0,
+                background: '#3B82F618', border: '1px solid #3B82F630',
+                display: 'flex', alignItems: 'center', justifyContent: 'center',
+                fontSize: 24,
+              }}>📚</div>
+              <div style={{ flex: 1, minWidth: 0 }}>
+                <div style={{ display: 'flex', gap: 8, alignItems: 'center', marginBottom: 6, flexWrap: 'wrap' }}>
+                  <span style={{ fontFamily: 'var(--mono)', fontSize: 9, fontWeight: 800, padding: '3px 8px', borderRadius: 4, background: '#3B82F618', color: '#3B82F6', letterSpacing: 1 }}>
+                    PAPER VS. PROFIT
+                  </span>
+                  <span style={{ fontFamily: 'var(--mono)', fontSize: 9, fontWeight: 700, padding: '3px 8px', borderRadius: 4, background: '#00D47414', color: '#00D474' }}>
+                    ● LIVE · WEEKLY
+                  </span>
+                </div>
+                <h2 style={{ fontFamily: 'var(--serif)', fontSize: 22, fontWeight: 800, color: '#F1F5F9', margin: '0 0 8px', lineHeight: 1.2 }}>
+                  Academic Papers Meet Real Markets
+                </h2>
+                <p style={{ fontSize: 13, color: '#64748B', margin: '0 0 12px', lineHeight: 1.6 }}>
+                  We read the papers. We judge them. We tell you if they will make you money. Every issue dissects one academic finance paper with a single question: would this actually work in practice?
+                </p>
+                <span style={{ fontFamily: 'var(--mono)', fontSize: 10, color: '#3B82F6', fontWeight: 700 }}>
+                  Read Research →
+                </span>
+              </div>
+            </div>
+          </Link>
         </div>
 
         {/* Philosophy */}
