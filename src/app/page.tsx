@@ -1,217 +1,184 @@
 import type { Metadata } from 'next';
 import Link from 'next/link';
-import { Counter, LiveMarketsPreview, CryptoPreview } from '@/components/HomeClient';
+import fs from 'fs';
+import path from 'path';
 import FadeIn from '@/components/FadeIn';
-import FortuneCookie from '@/components/FortuneCookie';
 import NewsletterCTA from '@/components/NewsletterCTA';
 import TodayMarket from '@/components/TodayMarket';
+import { blogPosts } from '@/data/blog-posts';
+import TickerLogo from '@/components/TickerLogo';
 
 const YEAR = new Date().getFullYear();
 
 export const metadata: Metadata = {
-  title: `DHLM Studio — The World in Numbers | Real-Time Data ${YEAR}`,
-  description: `Real-time stock market movers, trending creators, billionaire rankings, crypto prices, and global data. Updated daily. ${YEAR}.`,
+  title: `DHLM Studio — Stock Analysis & Market Data | ${YEAR}`,
+  description: `Market data and analysis serious investors check before making a move. 3,000+ word Deep Dive reports with BEAF scoring. Real-time market intelligence. ${YEAR}.`,
   alternates: { canonical: 'https://dhlm-studio.com' },
 };
 
-/* ═══ Data ═══ */
-const CATEGORIES = [
-  { icon: '📈', title: 'Market Movers', desc: 'Daily US stock top gainers', color: '#00D474', count: '365+', unit: 'daily reports', href: '/markets' },
-  { icon: '🔥', title: 'Trending Creators', desc: 'Fastest growing across platforms', color: '#A78BFA', count: '4', unit: 'platforms', href: '/creators' },
-  { icon: '🏆', title: 'Global Rankings', desc: 'Billionaires, companies, GDP', color: '#D4A843', count: '30+', unit: 'ranking types', href: '/rankings' },
-  { icon: '🪙', title: 'Crypto Rankings', desc: 'Live crypto prices & market cap', color: '#F59E0B', count: '100+', unit: 'coins tracked', href: '/rankings/crypto' },
-  { icon: '🎰', title: 'US Lottery', desc: 'Powerball & Mega Millions jackpots', color: '#C73E3A', count: '$427M', unit: 'Powerball jackpot', href: '/lottery' },
-  { icon: '🧮', title: 'Tools', desc: 'QR generator & password tool', color: '#64748B', count: '2', unit: 'free tools', href: '/tools' },
-];
+const card = { background: '#111827', borderRadius: 14, border: '1px solid #1E293B' };
 
-/* ═══ Helpers ═══ */
-function Tag({ children, color = '#6B7280' }: { children: React.ReactNode; color?: string }) {
-  return <span style={{ fontSize: 10, fontWeight: 600, padding: '3px 8px', borderRadius: 4, background: `${color}14`, color, fontFamily: 'var(--mono)' }}>{children}</span>;
+/* ═══ Data helpers ═══ */
+interface ReportMeta {
+  title: string; slug: string; ticker: string; date: string; readTime: string;
+  category: string; catColor: string; grade: string; beafScore: number;
+  description: string; type?: string; tickers?: string[];
 }
 
-/* ═══ Styles ═══ */
-const card = { background: '#111827', borderRadius: 14, border: '1px solid #1E293B' };
-const section = { padding: '0 24px 48px', maxWidth: 1100, margin: '0 auto' } as const;
-const sectionLabel = (color: string) => ({ fontFamily: 'var(--mono)', fontSize: 10, fontWeight: 700, color, letterSpacing: 3, marginBottom: 4 } as const);
-const sectionTitle = { fontFamily: 'var(--serif)', fontSize: 26, fontWeight: 800, color: '#F1F5F9', margin: 0 } as const;
+/** Days since a date string (negative = future) */
+function daysAgo(d: string) { return Math.floor((Date.now() - new Date(d).getTime()) / 86_400_000); }
 
-/* ═══ Page (Server Component) ═══ */
+function getAllReports(): ReportMeta[] {
+  try {
+    const dir = path.join(process.cwd(), 'src/content/reports');
+    return fs.readdirSync(dir).filter(f => f.endsWith('.md')).map(f => {
+      const content = fs.readFileSync(path.join(dir, f), 'utf8');
+      const fmMatch = content.match(/^---\n([\s\S]*?)\n---/);
+      if (!fmMatch) return null;
+      const fm: Record<string, unknown> = {};
+      fmMatch[1].split('\n').forEach(line => {
+        const m = line.match(/^(\w+):\s*(.+)$/);
+        if (!m) return;
+        let raw = m[2].trim();
+        if (raw.startsWith('[') || raw.startsWith('{')) { try { fm[m[1]] = JSON.parse(raw); return; } catch { /* fall through */ } }
+        if ((raw.startsWith('"') && raw.endsWith('"')) || (raw.startsWith("'") && raw.endsWith("'"))) raw = raw.slice(1, -1);
+        fm[m[1]] = raw !== '' && !isNaN(Number(raw)) ? Number(raw) : raw;
+      });
+      return fm as unknown as ReportMeta;
+    }).filter(Boolean).sort((a, b) => (b!.date > a!.date ? 1 : -1)) as ReportMeta[];
+  } catch { return []; }
+}
+
+/** Max 2 featured reports with active badge (≤14 days old) */
+function getFeatured(all: ReportMeta[]): ReportMeta[] {
+  return all.filter(r =>
+    (r.type === 'hot-sector' || r.type === 'hidden-gem' || r.type === 'special-report') &&
+    daysAgo(r.date) <= 14
+  ).slice(0, 2);
+}
+
+/** Combined 4-item latest feed: reports + blog posts, sorted by date desc */
+function getLatest(all: ReportMeta[]) {
+  const reports = all.map(r => ({ kind: 'report' as const, slug: r.slug, title: r.title, date: r.date, readTime: r.readTime, description: r.description, category: r.category, catColor: r.catColor, ticker: r.ticker, grade: r.grade, beafScore: r.beafScore, type: r.type }));
+  const posts = blogPosts.filter(p => !p.noindex).map(p => ({ kind: 'blog' as const, slug: p.slug, title: p.title, date: p.date, readTime: p.readTime, description: p.description, category: p.category, catColor: p.catColor, ticker: '', grade: '', beafScore: 0, type: undefined }));
+  return [...reports, ...posts].sort((a, b) => b.date > a.date ? 1 : -1).slice(0, 4);
+}
+
 export default function Home() {
+  const all = getAllReports();
+  const featured = getFeatured(all);
+  const latest = getLatest(all);
+
   return (
     <div style={{ background: '#0B0F19', color: '#F1F5F9', minHeight: '100vh' }}>
-      {/* ── Hero ── */}
-      <section style={{ padding: '60px 24px 32px', maxWidth: 1100, margin: '0 auto' }}>
-        <Tag color="#C73E3A">REAL-TIME DATA · {YEAR}</Tag>
-        <h1 style={{ fontFamily: 'var(--serif)', fontSize: 'clamp(36px, 5.5vw, 58px)', fontWeight: 900, color: '#F1F5F9', lineHeight: 1.1, letterSpacing: -1.5, margin: '16px 0' }}>
-          Data-Driven<br /><span style={{ color: '#00D474' }}>Stock Analysis</span>
+
+      {/* ── SECTION 1: HERO ── */}
+      <section style={{ padding: '72px 24px 48px', maxWidth: 800, margin: '0 auto' }}>
+        <div style={{ fontFamily: 'var(--mono)', fontSize: 10, fontWeight: 700, color: '#C73E3A', letterSpacing: 3, marginBottom: 16 }}>DHLM STUDIO · BRUTAL EDGE™</div>
+        <h1 style={{ fontFamily: 'var(--serif)', fontSize: 'clamp(30px, 5vw, 48px)', fontWeight: 900, color: '#F1F5F9', lineHeight: 1.15, letterSpacing: -1, margin: '0 0 20px' }}>
+          Market data and analysis<br />serious investors check<br /><span style={{ color: '#00D474' }}>before making a move.</span>
         </h1>
-        <p style={{ fontFamily: 'var(--sans)', fontSize: 16, color: '#64748B', lineHeight: 1.7, maxWidth: 480, margin: '0 0 28px' }}>
-          Stock analysis for investors who read before they buy. 3,000+ word Deep Dive reports with BEAF scoring. Real-time market intelligence. Not investment advice.
-        </p>
-        <div style={{ display: 'flex', gap: 8, flexWrap: 'wrap' }}>
-          {[
-            { label: 'Top Stock Movers', href: '/markets' },
-            { label: 'Trending Creators', href: '/creators' },
-            { label: `${YEAR} Billionaire Rankings`, href: '/rankings' },
-            { label: 'Crypto Rankings (Live)', href: '/rankings/crypto' },
-            { label: 'US Lottery', href: '/lottery' },
-          ].map(t => (
-            <Link key={t.label} href={t.href} style={{ fontSize: 11, color: '#475569', padding: '5px 12px', borderRadius: 20, background: '#111827', border: '1px solid #1E293B', fontFamily: 'var(--sans)' }}>
-              {t.label}
-            </Link>
-          ))}
+        <div style={{ display: 'flex', gap: 10, flexWrap: 'wrap' }}>
+          <Link href="/reports" style={{ display: 'inline-block', padding: '11px 22px', borderRadius: 8, background: '#C73E3A', color: '#fff', fontFamily: 'var(--sans)', fontSize: 13, fontWeight: 700, textDecoration: 'none' }}>
+            Explore Reports
+          </Link>
+          <Link href="/daily" style={{ display: 'inline-block', padding: '11px 22px', borderRadius: 8, background: '#111827', border: '1px solid #1E293B', color: '#94A3B8', fontFamily: 'var(--sans)', fontSize: 13, fontWeight: 600, textDecoration: 'none' }}>
+            Daily Brief
+          </Link>
         </div>
       </section>
 
-      {/* ── Stats (Counter is client) ── */}
-      <div style={{ padding: '0 24px 24px', maxWidth: 1100, margin: '0 auto', display: 'flex', gap: 32, flexWrap: 'wrap', justifyContent: 'center' }}>
-        {[{ v: 500, s: '+', l: 'Stocks', c: '#3B82F6' }, { v: 195, s: '', l: 'Countries', c: '#D4A843' }, { v: 100, s: '+', l: 'Crypto', c: '#F59E0B' }, { v: 830, s: '+', l: 'Pages', c: '#A78BFA' }].map((d, i) => (
-          <div key={i} style={{ textAlign: 'center', minWidth: 80 }}>
-            <div style={{ fontFamily: 'var(--serif)', fontSize: 32, fontWeight: 900, color: d.c }}><Counter to={d.v} suffix={d.s} /></div>
-            <div style={{ fontFamily: 'var(--sans)', fontSize: 11, color: '#64748B', marginTop: 2 }}>{d.l}</div>
-          </div>
-        ))}
-      </div>
-
-      {/* ── TODAY'S MARKET (first thing visitors see) ── */}
+      {/* ── SECTION 2: TODAY'S MARKET ── */}
       <TodayMarket />
 
-      {/* ── Featured Analysis (Brutal Edge Deep Dives) — TOP PRIORITY ── */}
-      <FadeIn>
-      <section style={section}>
-        <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'baseline', marginBottom: 16 }}>
-          <div>
-            <div style={sectionLabel('#C73E3A')}>🔥 BRUTAL EDGE™ · DEEP DIVE</div>
-            <h2 style={sectionTitle}>Featured Analysis</h2>
-          </div>
-          <Link href="/reports" style={{ fontSize: 12, color: '#C73E3A', fontWeight: 600, fontFamily: 'var(--sans)' }}>All Reports →</Link>
-        </div>
-        <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(260px, 1fr))', gap: 12 }}>
-          {/* Hot Sector cards (THIS WEEK label) — newest first */}
-          <Link href="/reports/btc-crossroads-april-2026" style={{ ...card, padding: '20px 20px 18px', textDecoration: 'none', position: 'relative', overflow: 'hidden', display: 'block', borderColor: '#F59E0B40', background: 'linear-gradient(135deg, #F59E0B12, #111827)' }}>
-            <div style={{ position: 'absolute', top: 0, left: 0, right: 0, height: 2, background: '#F59E0B' }} />
-            <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'flex-start', marginBottom: 10 }}>
-              <div style={{ fontFamily: 'var(--mono)', fontSize: 9, fontWeight: 800, color: '#F59E0B', letterSpacing: 2 }}>🔥 THIS WEEK</div>
-              <div style={{ fontFamily: 'var(--mono)', fontSize: 9, fontWeight: 700, color: '#475569' }}>HOT SECTOR</div>
-            </div>
-            <div style={{ fontFamily: 'var(--serif)', fontSize: 16, fontWeight: 800, color: '#F1F5F9', lineHeight: 1.3, marginBottom: 8 }}>Bitcoin&apos;s April 2026 Crossroads</div>
-            <div style={{ display: 'flex', flexWrap: 'wrap', gap: 4, marginBottom: 10 }}>
-              {['BTC','ETF','HALVING'].map(t => (
-                <span key={t} style={{ fontFamily: 'var(--mono)', fontSize: 9, fontWeight: 800, padding: '2px 6px', borderRadius: 4, background: '#0D1117', border: '1px solid #1E293B', color: '#F59E0B' }}>{t}</span>
-              ))}
-            </div>
-            <p style={{ fontFamily: 'var(--sans)', fontSize: 12, color: '#94A3B8', lineHeight: 1.6, margin: '0 0 12px' }}>BTC at $71K, 43 percent below ATH. ETF cumulative $56B. Conviction 44/60. Repricing, not euphoria.</p>
-            <div style={{ fontSize: 11, color: '#F59E0B', fontWeight: 700 }}>Read Hot Sector →</div>
-          </Link>
-
-          <Link href="/reports/hot-sector-energy-april-2026" style={{ ...card, padding: '20px 20px 18px', textDecoration: 'none', position: 'relative', overflow: 'hidden', display: 'block', borderColor: '#D4A84340', background: 'linear-gradient(135deg, #D4A84312, #111827)' }}>
-            <div style={{ position: 'absolute', top: 0, left: 0, right: 0, height: 2, background: '#D4A843' }} />
-            <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'flex-start', marginBottom: 10 }}>
-              <div style={{ fontFamily: 'var(--mono)', fontSize: 9, fontWeight: 800, color: '#D4A843', letterSpacing: 2 }}>🔥 THIS WEEK</div>
-              <div style={{ fontFamily: 'var(--mono)', fontSize: 9, fontWeight: 700, color: '#475569' }}>HOT SECTOR</div>
-            </div>
-            <div style={{ fontFamily: 'var(--serif)', fontSize: 16, fontWeight: 800, color: '#F1F5F9', lineHeight: 1.3, marginBottom: 8 }}>After the Spike: 5 Energy Stocks</div>
-            <div style={{ display: 'flex', flexWrap: 'wrap', gap: 4, marginBottom: 10 }}>
-              {['XOM','CVX','MPC','VLO','OXY'].map(t => (
-                <span key={t} style={{ fontFamily: 'var(--mono)', fontSize: 9, fontWeight: 800, padding: '2px 6px', borderRadius: 4, background: '#0D1117', border: '1px solid #1E293B', color: '#60A5FA' }}>{t}</span>
-              ))}
-            </div>
-            <p style={{ fontFamily: 'var(--sans)', fontSize: 12, color: '#94A3B8', lineHeight: 1.6, margin: '0 0 12px' }}>WTI hit $116. Then the ceasefire dropped. The easy trade is over — refining margins and integrated cash flow now decide who wins.</p>
-            <div style={{ fontSize: 11, color: '#D4A843', fontWeight: 700 }}>Read Hot Sector →</div>
-          </Link>
-
-          {[
-            { ticker: 'NVDA', name: 'NVIDIA Corporation', slug: 'deep-dive-nvda-april-2026', grade: 'B+', score: 83, color: '#76B900', tag: 'AI Infrastructure', hook: '90% AI training share. P/E 65 vs industry 25. The CUDA moat is real — but so is the price.' },
-            { ticker: 'MSFT', name: 'Microsoft', slug: 'deep-dive-msft-april-2026', grade: 'A-', score: 86, color: '#00A4EF', tag: 'Cloud + AI', hook: 'Azure growing 30%+ on OpenAI tailwind. Most boring monopoly money in the S&P 500.' },
-            { ticker: 'TSLA', name: 'Tesla, Inc.', slug: 'deep-dive-tsla-april-2026', grade: 'B-', score: 71, color: '#E31937', tag: 'EV + Robotaxi', hook: 'Auto margins compressing. Energy + FSD optionality. Priced like a software company, sells like a carmaker.' },
-          ].map(r => (
-            <Link key={r.ticker} href={`/reports/${r.slug}`} style={{ ...card, padding: '20px 20px 18px', textDecoration: 'none', position: 'relative', overflow: 'hidden', display: 'block' }}>
-              <div style={{ position: 'absolute', top: 0, left: 0, right: 0, height: 2, background: r.color }} />
-              <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'flex-start', marginBottom: 10 }}>
-                <div>
-                  <div style={{ fontFamily: 'var(--mono)', fontSize: 16, fontWeight: 800, color: r.color }}>{r.ticker}</div>
-                  <div style={{ fontFamily: 'var(--sans)', fontSize: 11, color: '#64748B', marginTop: 2 }}>{r.name}</div>
-                </div>
-                <div style={{ textAlign: 'right' }}>
-                  <div style={{ fontFamily: 'var(--serif)', fontSize: 22, fontWeight: 900, color: '#F1F5F9', lineHeight: 1 }}>{r.grade}</div>
-                  <div style={{ fontFamily: 'var(--mono)', fontSize: 9, color: '#475569', marginTop: 2 }}>BEAF {r.score}/100</div>
-                </div>
+      {/* ── SECTION 3: FEATURED (max 2 active-badge reports) ── */}
+      {featured.length > 0 && (
+        <FadeIn>
+          <section style={{ padding: '0 24px 48px', maxWidth: 800, margin: '0 auto' }}>
+            <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'baseline', marginBottom: 16 }}>
+              <div>
+                <div style={{ fontFamily: 'var(--mono)', fontSize: 10, fontWeight: 700, color: '#C73E3A', letterSpacing: 3, marginBottom: 4 }}>🔥 BRUTAL EDGE™</div>
+                <h2 style={{ fontFamily: 'var(--serif)', fontSize: 22, fontWeight: 800, color: '#F1F5F9', margin: 0 }}>Featured Analysis</h2>
               </div>
-              <div style={{ display: 'inline-block', fontSize: 9, fontWeight: 700, padding: '3px 8px', borderRadius: 4, background: `${r.color}18`, color: r.color, fontFamily: 'var(--mono)', marginBottom: 10 }}>{r.tag}</div>
-              <p style={{ fontFamily: 'var(--sans)', fontSize: 12, color: '#94A3B8', lineHeight: 1.6, margin: '0 0 12px' }}>{r.hook}</p>
-              <div style={{ fontSize: 11, color: '#C73E3A', fontWeight: 700 }}>Read Deep Dive →</div>
-            </Link>
-          ))}
-        </div>
-      </section>
-      </FadeIn>
+              <Link href="/reports" style={{ fontSize: 12, color: '#C73E3A', fontWeight: 600, fontFamily: 'var(--sans)' }}>All Reports →</Link>
+            </div>
+            <div style={{ display: 'flex', flexDirection: 'column', gap: 10 }}>
+              {featured.map(r => {
+                const typeLabel = r.type === 'hot-sector' ? '🔥 HOT SECTOR' : r.type === 'hidden-gem' ? '💎 HIDDEN GEM' : '⚡ SPECIAL REPORT';
+                const tickers = Array.isArray(r.tickers) ? r.tickers : (r.ticker ? [r.ticker] : []);
+                return (
+                  <Link key={r.slug} href={`/reports/${r.slug}`} style={{ ...card, padding: '20px 22px', textDecoration: 'none', display: 'block', borderColor: `${r.catColor}40`, background: `linear-gradient(135deg, ${r.catColor}0A, #111827)`, position: 'relative', overflow: 'hidden' }}>
+                    <div style={{ position: 'absolute', top: 0, left: 0, right: 0, height: 2, background: r.catColor }} />
+                    <div style={{ display: 'flex', gap: 8, alignItems: 'center', marginBottom: 8, flexWrap: 'wrap' }}>
+                      <span style={{ fontFamily: 'var(--mono)', fontSize: 9, fontWeight: 800, padding: '3px 8px', borderRadius: 4, background: `${r.catColor}20`, color: r.catColor, letterSpacing: 1 }}>{typeLabel}</span>
+                      {tickers.slice(0, 5).map(t => (
+                        <span key={t} style={{ fontFamily: 'var(--mono)', fontSize: 9, fontWeight: 800, color: r.catColor }}>{t}</span>
+                      ))}
+                    </div>
+                    <div style={{ fontFamily: 'var(--serif)', fontSize: 18, fontWeight: 800, color: '#F1F5F9', lineHeight: 1.3, marginBottom: 6 }}>{r.title}</div>
+                    <p style={{ fontSize: 12, color: '#64748B', margin: '0 0 10px', lineHeight: 1.5 }}>{r.description?.length > 130 ? r.description.slice(0, 130) + '...' : r.description}</p>
+                    <span style={{ fontSize: 11, color: r.catColor, fontWeight: 700 }}>Read Report →</span>
+                  </Link>
+                );
+              })}
+            </div>
+          </section>
+        </FadeIn>
+      )}
 
-      {/* ── Market Leaders (Top 10 by Market Cap) ── */}
+      {/* ── SECTION 4: LATEST (4 combined reports + blog) ── */}
       <FadeIn delay={0.05}>
-      <section id="markets" style={section}>
-        <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'baseline', marginBottom: 16 }}>
-          <div>
-            <div style={sectionLabel('#3B82F6')}>US MARKET · LARGE CAP</div>
-            <h2 style={sectionTitle}>Market Leaders</h2>
+        <section style={{ padding: '0 24px 48px', maxWidth: 800, margin: '0 auto' }}>
+          <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'baseline', marginBottom: 16 }}>
+            <div>
+              <div style={{ fontFamily: 'var(--mono)', fontSize: 10, fontWeight: 700, color: '#475569', letterSpacing: 3, marginBottom: 4 }}>LATEST</div>
+              <h2 style={{ fontFamily: 'var(--serif)', fontSize: 22, fontWeight: 800, color: '#F1F5F9', margin: 0 }}>Reports &amp; Insights</h2>
+            </div>
+            <Link href="/reports" style={{ fontSize: 12, color: '#60A5FA', fontWeight: 600, fontFamily: 'var(--sans)' }}>View All →</Link>
           </div>
-          <Link href="/markets" style={{ fontSize: 12, color: '#3B82F6', fontWeight: 600, fontFamily: 'var(--sans)' }}>View All →</Link>
-        </div>
-        <LiveMarketsPreview />
-      </section>
-      </FadeIn>
-
-      {/* ── Fortune Cookie (post-Market Leaders) ── */}
-      <section style={{ padding: '0 24px 32px', maxWidth: 1100, margin: '0 auto' }}>
-        <div style={{ padding: '24px', borderRadius: 16, background: '#111827', border: '1px solid #1E293B' }}>
-          <div style={{ fontFamily: 'var(--mono)', fontSize: 9, fontWeight: 700, color: '#D4A843', letterSpacing: 3, textAlign: 'center', marginBottom: 12 }}>🥠 DAILY FORTUNE COOKIE</div>
-          <FortuneCookie />
-        </div>
-      </section>
-
-      {/* ── Crypto Preview (client) ── */}
-      <FadeIn>
-      <section style={section}>
-        <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'baseline', marginBottom: 16 }}>
-          <div>
-            <div style={sectionLabel('#F59E0B')}>CRYPTO · LIVE</div>
-            <h2 style={sectionTitle}>Crypto Rankings</h2>
+          <div style={{ display: 'flex', flexDirection: 'column', gap: 8 }}>
+            {latest.map(item => (
+              <Link
+                key={`${item.kind}-${item.slug}`}
+                href={item.kind === 'report' ? `/reports/${item.slug}` : `/blog/${item.slug}`}
+                style={{ ...card, padding: '16px 20px', textDecoration: 'none', display: 'flex', gap: 14, alignItems: 'flex-start' }}
+              >
+                {item.kind === 'report' && item.ticker && <TickerLogo ticker={item.ticker} size={40} />}
+                {item.kind === 'blog' && (
+                  <div style={{ width: 40, height: 40, borderRadius: 10, background: `${item.catColor}18`, border: `1px solid ${item.catColor}30`, display: 'flex', alignItems: 'center', justifyContent: 'center', flexShrink: 0 }}>
+                    <span style={{ fontSize: 18 }}>📝</span>
+                  </div>
+                )}
+                <div style={{ flex: 1, minWidth: 0 }}>
+                  <div style={{ display: 'flex', gap: 8, alignItems: 'center', marginBottom: 4, flexWrap: 'wrap' }}>
+                    {item.kind === 'report' && item.ticker && (
+                      <span style={{ fontFamily: 'var(--mono)', fontSize: 13, fontWeight: 800, color: '#60A5FA' }}>{item.ticker}</span>
+                    )}
+                    <span style={{ fontFamily: 'var(--mono)', fontSize: 9, fontWeight: 700, padding: '2px 7px', borderRadius: 4, background: `${item.catColor}14`, color: item.catColor }}>{item.category}</span>
+                    {item.kind === 'report' && item.beafScore > 0 && (
+                      <span style={{ fontFamily: 'var(--mono)', fontSize: 9, fontWeight: 700, padding: '2px 7px', borderRadius: 4, background: '#D4A84314', color: '#D4A843' }}>BEAF {item.beafScore}/100 ({item.grade})</span>
+                    )}
+                    <span style={{ fontSize: 10, color: '#475569', marginLeft: 'auto' }}>{item.date} · {item.readTime}</span>
+                  </div>
+                  <div style={{ fontFamily: 'var(--serif)', fontSize: 15, fontWeight: 700, color: '#E2E8F0', lineHeight: 1.35 }}>{item.title}</div>
+                  <p style={{ fontSize: 11, color: '#64748B', margin: '4px 0 0', lineHeight: 1.4 }}>{item.description?.length > 100 ? item.description.slice(0, 100) + '...' : item.description}</p>
+                </div>
+              </Link>
+            ))}
           </div>
-          <Link href="/rankings/crypto" style={{ fontSize: 12, color: '#F59E0B', fontWeight: 600, fontFamily: 'var(--sans)' }}>View All →</Link>
-        </div>
-        <CryptoPreview />
-      </section>
+        </section>
       </FadeIn>
 
-      {/* ── Categories (static — server rendered) ── */}
-      <FadeIn delay={0.1}>
-      <section style={section}>
-        <div style={sectionLabel('#64748B')}>EXPLORE</div>
-        <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(240px, 1fr))', gap: 12, marginTop: 16 }}>
-          {CATEGORIES.map(c => (
-            <Link key={c.title} href={c.href} style={{ ...card, padding: '22px 20px', position: 'relative', overflow: 'hidden' }}>
-              <div style={{ position: 'absolute', top: 0, left: 0, right: 0, height: 2, background: c.color }} />
-              <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'flex-start' }}>
-                <div>
-                  <span style={{ fontSize: 24 }}>{c.icon}</span>
-                  <h3 style={{ fontFamily: 'var(--sans)', fontSize: 16, fontWeight: 700, color: '#F1F5F9', margin: '8px 0 4px' }}>{c.title}</h3>
-                  <p style={{ fontFamily: 'var(--sans)', fontSize: 12, color: '#64748B', margin: 0, lineHeight: 1.5 }}>{c.desc}</p>
-                </div>
-                <div style={{ textAlign: 'right' as const, flexShrink: 0 }}>
-                  <div style={{ fontFamily: 'var(--serif)', fontSize: 20, fontWeight: 800, color: c.color }}>{c.count}</div>
-                  <div style={{ fontFamily: 'var(--sans)', fontSize: 9, color: '#475569', marginTop: 2 }}>{c.unit}</div>
-                </div>
-              </div>
-            </Link>
-          ))}
+      {/* ── SECTION 5: NEWSLETTER CTA ── */}
+      <section style={{ padding: '0 24px 64px', maxWidth: 800, margin: '0 auto' }}>
+        <div style={{ ...card, padding: '32px 28px', textAlign: 'center' }}>
+          <div style={{ fontFamily: 'var(--mono)', fontSize: 10, fontWeight: 700, color: '#475569', letterSpacing: 3, marginBottom: 8 }}>NEWSLETTER</div>
+          <h2 style={{ fontFamily: 'var(--serif)', fontSize: 22, fontWeight: 800, color: '#F1F5F9', margin: '0 0 6px' }}>Free market analysis.</h2>
+          <p style={{ fontFamily: 'var(--sans)', fontSize: 14, color: '#64748B', margin: '0 0 20px' }}>Every morning.</p>
+          <NewsletterCTA source="homepage" />
         </div>
       </section>
-      </FadeIn>
 
-      {/* ── Newsletter CTA ── */}
-      <section style={{ padding: '0 24px 48px', maxWidth: 1100, margin: '0 auto' }}>
-        <NewsletterCTA />
-      </section>
     </div>
   );
 }
-

@@ -3,19 +3,12 @@
 import { useState, useEffect } from "react";
 import Link from "next/link";
 
-// Primary nav: editorial-first ordering per directive update.
-// Daily/Markets/Reports/Blog (the four content pillars) lead the nav,
-// with Crypto/Lottery in the secondary slots. Creators and Rankings
-// moved to footer "More" per master directive PART 7-D.
 const links = [
-  { label: "Daily", href: "/daily" },
   { label: "Markets", href: "/markets" },
   { label: "Reports", href: "/reports" },
-  { label: "Research", href: "/research" },
   { label: "Blog", href: "/blog" },
-  { label: "Crypto", href: "/rankings/crypto" },
   { label: "Crypto 101", href: "/crypto-101" },
-  { label: "Lottery", href: "/lottery" },
+  { label: "Tools", href: "/tools" },
 ];
 
 function DhlmMono({ size = 28 }: { size?: number }) {
