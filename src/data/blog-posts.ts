@@ -317,6 +317,7 @@ export const blogPosts: BlogPost[] = [
     slug: 'worlds-richest-people-2026-billionaire-rankings',
     title: 'World\'s Richest People 2026: Complete Billionaire Rankings',
     category: 'Rankings', catColor: '#D4A843', date: '2026-03-30', readTime: '8 min',
+    lastUpdated: '2026-04-12',
     description: 'The definitive 2026 billionaire rankings with net worth data, wealth sources, and year-over-year changes for the world\'s richest people.',
     sections: [
       { heading: 'Top 20 Billionaires 2026', body: 'The world\'s wealthiest individuals in 2026 are overwhelmingly technology titans, reflecting the AI-driven wealth creation of the past three years. Elon Musk leads at $285B, driven by Tesla\'s autonomous driving breakthrough and SpaceX\'s $250B valuation. Jensen Huang surged to $128B, up 52% year-over-year, as NVIDIA\'s dominance of AI chips continued. Bernard Arnault holds at $195B despite luxury market headwinds in China. Jeff Bezos sits at $210B, boosted by Amazon\'s AI cloud services. Mark Zuckerberg reached $185B as Meta\'s AI advertising revolution drove record revenue. The top 20 collectively hold $2.8 trillion, equivalent to the GDP of the United Kingdom. Larry Ellison ($165B), Bill Gates ($140B), Warren Buffett ($138B), Larry Page ($155B), and Sergey Brin ($148B) round out the top 10. Notably, 8 of the top 10 derive their wealth primarily from technology companies, up from 6 in 2020. See our Billionaire Rankings for complete real-time net worth tracking of all 2,781 billionaires worldwide.' },
@@ -387,7 +388,8 @@ export const blogPosts: BlogPost[] = [
   {
     slug: 'highest-paid-athletes-2026-sports-salary-rankings',
     title: 'Highest Paid Athletes 2026: Complete Sports Salary Rankings',
-    category: 'Rankings', catColor: '#D4A843', date: '2026-03-26', readTime: '6 min',
+    category: 'Rankings', catColor: '#D4A843', date: '2026-03-26', readTime: '7 min',
+    lastUpdated: '2026-04-12',
     description: 'The definitive ranking of highest paid athletes in 2026 including salary, endorsements, and total earnings across all major sports.',
     sections: [
       { heading: 'Top 10 Highest Paid Athletes 2026', body: 'The highest-paid athletes in 2026 reflect the globalization of sports and the explosion of endorsement deals in the social media era. 1) Cristiano Ronaldo — $260M (salary: $200M from Al Nassr, endorsements: $60M). The Saudi Pro League contract remains the most lucrative in sports history. 2) Lionel Messi — $195M (salary: $65M Inter Miami + MLS revenue share, endorsements: $130M). Post-World Cup Messi is the most marketable athlete ever. 3) LeBron James — $180M (salary: $48M Lakers, endorsements: $80M, business ventures: $52M). At age 41, his business empire surpasses his playing earnings. 4) Jon Rahm — $175M (salary: $150M LIV Golf guaranteed, endorsements: $25M). LIV Golf reshaped golf economics permanently. 5) Giannis Antetokounmpo — $120M (salary: $50M Bucks, endorsements: $70M). 6) Karim Benzema — $115M (salary: $100M Al Ittihad, endorsements: $15M). 7) Patrick Mahomes — $108M (salary: $53M annual, endorsements: $55M). 8) Lamar Jackson — $100M. 9) Neymar Jr — $95M. 10) Canelo Alvarez — $90M. Visit our Billionaire Rankings to see which athletes have crossed the billionaire threshold.' },
@@ -400,7 +402,8 @@ export const blogPosts: BlogPost[] = [
   {
     slug: 'most-valuable-brands-2026-global-brand-power',
     title: 'Most Valuable Brands 2026: Global Brand Power Rankings',
-    category: 'Rankings', catColor: '#D4A843', date: '2026-04-01', readTime: '6 min',
+    category: 'Rankings', catColor: '#D4A843', date: '2026-04-01', readTime: '7 min',
+    lastUpdated: '2026-04-12',
     description: 'The complete ranking of the world\'s most valuable brands in 2026 by brand value. From Apple to Nike, which brands dominate global consumer mindshare.',
     sections: [
       { heading: 'Top 20 Most Valuable Brands', body: 'Brand value measures the financial contribution of a brand name to a company\'s revenue — the premium consumers pay simply because of the brand. The 2026 rankings by brand value: 1) Apple ($520B) — Ecosystem lock-in creates the world\'s strongest brand moat. 2) Microsoft ($400B) — Enterprise dominance and AI leadership. 3) Google ($350B) — Search monopoly and cloud growth. 4) Amazon ($320B) — E-commerce and convenience synonymous. 5) NVIDIA ($280B) — New entrant, fastest brand value growth ever. 6) Samsung ($100B) — Global electronics and semiconductor brand. 7) Toyota ($85B) — Reliability and hybrid leadership. 8) Mercedes-Benz ($80B) — Luxury automotive heritage. 9) Coca-Cola ($78B) — 140 years of brand building. 10) Nike ($72B). 11) Louis Vuitton ($68B), 12) McDonald\'s ($65B), 13) Tesla ($63B), 14) Disney ($60B), 15) BMW ($58B), 16) Visa ($55B), 17) Oracle ($52B), 18) Hermès ($50B), 19) Starbucks ($48B), 20) Adobe ($45B). Technology brands claim 7 of the top 10 spots, reflecting the digital economy\'s dominance. Visit our Markets page for real-time stock prices of all ranked brands\' parent companies.' },
@@ -413,7 +416,8 @@ export const blogPosts: BlogPost[] = [
   {
     slug: 'most-subscribed-youtube-channels-2026-rankings',
     title: 'Most Subscribed YouTube Channels 2026: Complete Rankings',
-    category: 'Creators', catColor: '#A78BFA', date: '2026-03-29', readTime: '6 min',
+    category: 'Creators', catColor: '#A78BFA', date: '2026-03-29', readTime: '7 min',
+    lastUpdated: '2026-04-12',
     description: 'Complete rankings of the most subscribed YouTube channels in 2026. From MrBeast to T-Series, track the platform\'s biggest creators.',
     sections: [
       { heading: 'Top 20 Most Subscribed Channels', body: 'YouTube\'s subscriber landscape continues to evolve in 2026 as individual creators challenge corporate channels for dominance. The complete top 20: 1) MrBeast — 382M subscribers. The undisputed king of YouTube, gaining 2-3M subs weekly with increasingly ambitious content. 2) T-Series — 285M. India\'s music powerhouse maintains its position through sheer volume of Bollywood content. 3) Cocomelon — 185M. Children\'s content remains the most consistent growth category. 4) SET India — 178M. Indian entertainment conglomerate. 5) PewDiePie (inactive) — 112M. Despite retirement, his subscriber count remains a milestone. 6) MrBeast 2 (Spanish) — 108M. MrBeast\'s dubbed channels collectively add another 200M+ subscribers. 7) Kids Diana Show — 125M. Children\'s content from Ukraine. 8) Like Nastya — 120M. Another children\'s channel dominating globally. 9) Vlad and Niki — 115M. Kids\' content trio. 10) IShowSpeed — 95M. The fastest-growing individual creator in 2025-2026. 11-20 include Dude Perfect (82M), Mark Rober (68M), Stokes Twins (66M), and several regional music channels. Check our Markets page for creator economy stock data and platform revenue comparisons.' },
@@ -427,6 +431,7 @@ export const blogPosts: BlogPost[] = [
     slug: 'tiktok-vs-youtube-vs-instagram-creator-earnings-2026',
     title: 'TikTok vs YouTube vs Instagram: Creator Earnings Compared 2026',
     category: 'Creators', catColor: '#A78BFA', date: '2026-03-28', readTime: '7 min',
+    lastUpdated: '2026-04-12',
     description: 'A data-driven comparison of creator earnings across TikTok, YouTube, and Instagram in 2026. Which platform pays creators the most?',
     sections: [
       { heading: 'Platform Revenue Per 1M Views', body: 'The creator economy in 2026 is worth $250 billion globally, but earnings vary dramatically by platform. Here is what creators actually earn per 1 million views on each platform in 2026: YouTube Long-Form: $3,000-8,000 (via AdSense). YouTube remains the gold standard for per-view revenue because it runs multiple mid-roll ads on videos over 8 minutes, and advertisers pay premium CPMs ($7-15 average) to reach YouTube\'s engaged audience. YouTube Shorts: $100-300 per million views. YouTube\'s short-form monetization has improved but still trails long-form by 10-20x. The revenue share model gives creators 45% of Shorts ad revenue. TikTok: $200-500 per million views via the Creator Fund, though TikTok\'s new Creativity Program pays $500-1,500 for qualifying content over 1 minute. TikTok\'s per-view payout has improved but remains 5-10x lower than YouTube long-form. Instagram Reels: $100-400 per million views through Reels bonuses. Instagram has the weakest direct monetization but the strongest brand deal potential per follower. The conclusion is clear: YouTube long-form content generates the most platform revenue by a significant margin.' },
