@@ -138,7 +138,7 @@ const SLUG_KEYWORDS = {
   'deep-dive-pltr-april-2026':    'data analytics surveillance intelligence',
   'deep-dive-tsla-april-2026':    'tesla supercharger station electric',
   'btc-crossroads-april-2026':    'bitcoin price chart crossroads analysis',
-  'eth-special-report-april-2026': 'ethereum blockchain digital currency network glow',
+  'ethereum-special-report-april-2026': 'ethereum blockchain digital currency network glow',
   'hot-sector-energy-april-2026': 'oil refinery energy industrial power',
 
   // ── Research

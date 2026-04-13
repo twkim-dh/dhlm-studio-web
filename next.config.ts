@@ -82,7 +82,8 @@ const nextConfig: NextConfig = {
       { source: '/blog/btc-crossroads-april-2026',         destination: '/reports/btc-crossroads-april-2026',         permanent: true },
       { source: '/blog/hot-sector-energy-april-2026',      destination: '/reports/hot-sector-energy-april-2026',      permanent: true },
       { source: '/blog/spacex-ipo-special-report-2026',    destination: '/reports/spacex-ipo-special-report-2026',    permanent: true },
-      { source: '/blog/eth-special-report-april-2026',     destination: '/reports/eth-special-report-april-2026',     permanent: true },
+      { source: '/blog/eth-special-report-april-2026',         destination: '/reports/ethereum-special-report-april-2026', permanent: true },
+      { source: '/blog/ethereum-special-report-april-2026',   destination: '/reports/ethereum-special-report-april-2026', permanent: true },
     ];
   },
 };
