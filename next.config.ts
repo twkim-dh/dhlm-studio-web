@@ -67,6 +67,22 @@ const nextConfig: NextConfig = {
       { source: '/blog/salary-calculator', destination: '/blog', permanent: true },
       { source: '/blog/bmi-guide', destination: '/blog', permanent: true },
       { source: '/blog/typing-speed-test', destination: '/blog', permanent: true },
+      // ── Deep Dive / Special Reports: /blog/ → /reports/ (301 SEO rescue)
+      // Google indexed these at /blog/. Redirect preserves all link equity.
+      { source: '/blog/deep-dive-aapl-april-2026',         destination: '/reports/deep-dive-aapl-april-2026',         permanent: true },
+      { source: '/blog/deep-dive-amd-april-2026',          destination: '/reports/deep-dive-amd-april-2026',          permanent: true },
+      { source: '/blog/deep-dive-amzn-april-2026',         destination: '/reports/deep-dive-amzn-april-2026',         permanent: true },
+      { source: '/blog/deep-dive-btc-april-2026',          destination: '/reports/deep-dive-btc-april-2026',          permanent: true },
+      { source: '/blog/deep-dive-googl-april-2026',        destination: '/reports/deep-dive-googl-april-2026',        permanent: true },
+      { source: '/blog/deep-dive-meta-april-2026',         destination: '/reports/deep-dive-meta-april-2026',         permanent: true },
+      { source: '/blog/deep-dive-msft-april-2026',         destination: '/reports/deep-dive-msft-april-2026',         permanent: true },
+      { source: '/blog/deep-dive-nvda-april-2026',         destination: '/reports/deep-dive-nvda-april-2026',         permanent: true },
+      { source: '/blog/deep-dive-pltr-april-2026',         destination: '/reports/deep-dive-pltr-april-2026',         permanent: true },
+      { source: '/blog/deep-dive-tsla-april-2026',         destination: '/reports/deep-dive-tsla-april-2026',         permanent: true },
+      { source: '/blog/btc-crossroads-april-2026',         destination: '/reports/btc-crossroads-april-2026',         permanent: true },
+      { source: '/blog/hot-sector-energy-april-2026',      destination: '/reports/hot-sector-energy-april-2026',      permanent: true },
+      { source: '/blog/spacex-ipo-special-report-2026',    destination: '/reports/spacex-ipo-special-report-2026',    permanent: true },
+      { source: '/blog/eth-special-report-april-2026',     destination: '/reports/eth-special-report-april-2026',     permanent: true },
     ];
   },
 };
