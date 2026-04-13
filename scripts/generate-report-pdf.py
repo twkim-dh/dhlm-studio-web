@@ -396,7 +396,7 @@ def build_story(fm, blocks):
     story.append(Paragraph(
         "<b>DHLM STUDIO</b>",
         ParagraphStyle('Logo', fontName='Helvetica-Bold', fontSize=22,
-                       textColor=DARK_TEXT, alignment=TA_LEFT, spaceAfter=2 * mm)
+                       textColor=DARK_TEXT, alignment=TA_LEFT, spaceAfter=8 * mm)
     ))
     story.append(Paragraph(
         "Brutal Edge\u2122 Analysis",
