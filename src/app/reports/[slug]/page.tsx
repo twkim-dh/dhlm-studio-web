@@ -5,6 +5,7 @@ import path from 'path';
 import LikeButton from '@/components/LikeButton';
 import { fmtDateLong } from '@/lib/fmt-date';
 import ListenButton from '@/components/ListenButton';
+import PrintButton from '@/components/PrintButton';
 import InlineSubscribe from '@/components/InlineSubscribe';
 import GiscusComments from '@/components/GiscusComments';
 import TickerLogo from '@/components/TickerLogo';
@@ -279,7 +280,7 @@ export default async function ReportPage({ params }: { params: Promise<{ slug: s
                 <span style={{ fontFamily: 'var(--mono)', fontSize: 11, fontWeight: 800, color: headerColor, letterSpacing: 2 }}>{headerLabel}</span>
                 {isHotSector && fm.sector && <span style={{ fontFamily: 'var(--mono)', fontSize: 10, fontWeight: 700, padding: '2px 8px', borderRadius: 4, background: '#0D1117', color: '#94A3B8', marginLeft: 'auto' }}>{fm.sector}</span>}
               </div>
-              <div style={{ fontSize: 11, color: '#64748B', fontStyle: 'italic' }}>Analysis under editorial oversight. Data-driven. Zero feelings.</div>
+              <div style={{ fontSize: 11, color: '#64748B', fontStyle: 'italic' }}>Data-driven. Zero feelings. No BS.</div>
               {isHotSector && Array.isArray(fm.tickers) && fm.tickers.length > 0 && (
                 <div style={{ marginTop: 14, display: 'flex', flexWrap: 'wrap', gap: 12, alignItems: 'center' }}>
                   {fm.tickers.map(t => (
@@ -329,6 +330,7 @@ export default async function ReportPage({ params }: { params: Promise<{ slug: s
           <p style={{ fontSize: 15, color: '#64748B', lineHeight: 1.7, marginTop: 12 }}>{fm.description}</p>
           <div style={{ marginTop: 12, display: 'flex', flexWrap: 'wrap', alignItems: 'center', gap: 10 }}>
             <ListenButton text={body} />
+            <PrintButton />
             <LikeButton pageId={`report-${slug}`} />
           </div>
         </div>
