@@ -906,7 +906,6 @@ export const blogPosts: BlogPost[] = [
     catColor: '#8B5CF6',
     date: '2026-02-14',
     readTime: '12 min',
-    heroImage: '/images/content/crypto-101.png',
     lastUpdated: '2026-02-14',
     description: 'You\'ve heard "blockchain" in every tech headline since 2017. Nine years later most explanations are still terrible — either drowning you in jargon or oversimplifying into meaninglessness. Here\'s what blockchain actually does, how a transaction works step-by-step, and why it matters for crypto investors.',
     sections: [
@@ -947,7 +946,6 @@ export const blogPosts: BlogPost[] = [
     catColor: '#8B5CF6',
     date: '2026-02-21',
     readTime: '13 min',
-    heroImage: '/images/content/crypto-101.png',
     lastUpdated: '2026-02-21',
     description: 'Bitcoin and Ethereum are constantly mentioned in the same sentence, as if they\'re two flavors of the same thing. They\'re not. Comparing Bitcoin to Ethereum is like comparing gold to the internet — both are valuable, but they exist for completely different reasons. Here\'s what actually matters for investors.',
     sections: [
@@ -1629,7 +1627,6 @@ export const blogPosts: BlogPost[] = [
     date: '2026-04-11',
     readTime: '14 min',
     description: 'Bitcoin is trading at $72,000 in April 2026 — 43% below its October ATH of $126,000. This deep dive examines what actually happened since the peak, the structural thesis for Bitcoin, the real risks, cycle analysis, and what to watch from here.',
-    heroImage: '/images/content/spotlight-crypto.png',
     lastUpdated: '2026-04-11',
     sections: [
       { heading: 'The Numbers That Matter Right Now', body: 'Bitcoin key metrics as of April 2026: price approximately $72,000, market cap approximately $1.43 trillion, all-time high $126,000 reached in October 2025, current drawdown from ATH -43%, Bitcoin dominance 56.6%, Fear and Greed Index 16 (Extreme Fear), 24-hour trading volume approximately $38 billion, circulating supply approximately 19.85 million out of a hard cap of 21 million, next halving estimated April 2028, and spot ETF cumulative inflows of $56 billion or more since January 2024.\n\nThese numbers tell a specific story. Bitcoin is not in a crisis of fundamentals. It is in a crisis of sentiment. The difference between those two things is where the analysis has to start.' },
@@ -1652,7 +1649,6 @@ export const blogPosts: BlogPost[] = [
     date: '2026-04-11',
     readTime: '14 min',
     description: 'Ethereum is at $2,200 — 56% below its August 2025 ATH. This deep dive examines the L2 value capture problem, staking yield thesis, Harvard buying ETH for the first time, the Fusaka upgrade, and the bull/base/bear cases.',
-    heroImage: '/images/content/spotlight-crypto.png',
     lastUpdated: '2026-04-11',
     sections: [
       { heading: 'The Numbers Right Now', body: 'Ethereum key metrics as of April 2026: price approximately $2,200, market cap approximately $265 billion, all-time high $5,000 reached in August 2025, drawdown from ATH -56%, ETH/BTC ratio 0.031 (a multi-year low), staking yield approximately 3.8 percent annually, total ETH staked approximately 34 million (28 percent of supply), Fear and Greed Index 16 (Extreme Fear), spot ETH ETF cumulative inflows approximately $4.2 billion since May 2024 launch.\n\nEthereum has underperformed Bitcoin dramatically in this cycle. While Bitcoin is down 43 percent from its ATH, Ethereum is down 56 percent. The ETH/BTC ratio is at its lowest level since 2020. Understanding why requires examining something more complex than price action.' },
@@ -1674,7 +1670,6 @@ export const blogPosts: BlogPost[] = [
     date: '2026-04-09',
     readTime: '10 min',
     description: 'The Fear and Greed Index is at 16. Bitcoin is down 43%. What has actually worked during past crypto crashes — and what has gone to zero? A data-driven look at COVID crash, Terra/LUNA, and FTX collapse to find the pattern.',
-    heroImage: '/images/content/spotlight-crypto.png',
     lastUpdated: '2026-04-09',
     sections: [
       { heading: 'The Starting Point: Fear and Greed at 16', body: 'The Crypto Fear and Greed Index is at 16 as of April 2026. Bitcoin is down 43 percent from its all-time high. Ethereum is down 56 percent. Most altcoins are down 60 to 80 percent or more. This is the environment where retail investors ask the question: what should I buy?\n\nThe wrong answer is to search for "best crypto to buy in 2026" and pick whatever the top result recommends. The right answer requires examining what has actually worked during past crashes — and more importantly, what has gone to zero — and building a framework from the evidence rather than from hope.\n\nThis analysis covers three major crash events: the COVID crash of March 2020, the Terra/LUNA collapse of May 2022, and the FTX collapse of November 2022. Each was different in nature, duration, and recovery profile. Together they form the closest thing to a historical dataset that crypto investors have.' },
@@ -1695,7 +1690,6 @@ export const blogPosts: BlogPost[] = [
     date: '2026-04-10',
     readTime: '10 min',
     description: 'The Crypto Fear and Greed Index is at 16 — deep Extreme Fear territory. Here is what the index actually measures, its 6 components, when it works as a trading signal, when it fails, and how professional investors actually use it.',
-    heroImage: '/images/content/crypto-101.png',
     lastUpdated: '2026-04-10',
     sections: [
       { heading: 'What the Index Actually Measures', body: 'The Crypto Fear and Greed Index is a single composite number from 0 to 100. Zero represents maximum fear — the market is in panic. One hundred represents maximum greed — the market is in euphoria. It was created by Alternative.me and has been published daily since 2018.\n\nIn April 2026, the index reads 16 — Extreme Fear. Bitcoin is down 43 percent from its all-time high. The US-Iran conflict has triggered a global risk-off rotation. Headlines are uniformly negative. The index is doing exactly what it is designed to do: measuring the aggregate emotional state of the market.\n\nWhat it does not measure: fundamental value, long-term outlook, or the likelihood of recovery. It is a sentiment gauge, not a valuation tool. Understanding the difference between what it measures and what people assume it measures is the foundation for using it correctly.' },
@@ -1715,7 +1709,6 @@ export const blogPosts: BlogPost[] = [
     date: '2026-04-11',
     readTime: '11 min',
     description: 'Everyone wants AI crypto exposure. Most people are buying the wrong thing. This article covers Render (RENDER) and Bittensor (TAO) — the two credible AI infrastructure tokens — explains what makes them different, and provides a framework to separate real AI crypto from noise.',
-    heroImage: '/images/content/spotlight-crypto.png',
     lastUpdated: '2026-04-11',
     sections: [
       { heading: 'Why Most AI Crypto Is Noise', body: 'Every crypto bull market produces a category of tokens that capture a theme without capturing value. In 2017, it was ICOs promising to blockchain everything. In 2020-2021, it was metaverse tokens promising virtual real estate. In 2024-2025, it was AI tokens promising everything from decentralized superintelligence to blockchain-powered chatbots.\n\nThe vast majority of AI crypto tokens in 2024-2025 shared a common structure: a white paper claiming AI integration, a token with no clear mechanism connecting the token price to the AI service being provided, and a marketing team significantly larger than the engineering team. These are the noise.\n\nThe signal — the tokens actually worth analyzing — are the ones where the AI workload cannot be performed without the token. Where the token is not a governance artifact or a fundraising vehicle but a functional unit of the system. As of April 2026, two tokens meet this standard at meaningful scale: Render (RENDER) and Bittensor (TAO). This analysis explains why, how they work, and what separates them from the rest of the AI crypto market.' },

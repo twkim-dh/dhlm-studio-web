@@ -71,6 +71,15 @@ const SLUG_KEYWORDS = {
   'pre-market-movers-why-stocks-gap-up-down-before-open': 'pre-market trading early morning',
   'top-stock-movers-explained':                           'stock market movers screen',
 
+  // ── Kim Siljang crypto posts (April 2026)
+  'bitcoin-deep-dive-april-2026':     'bitcoin cryptocurrency coin gold digital',
+  'ethereum-deep-dive-april-2026':    'ethereum blockchain network smart contract',
+  'best-crypto-during-crash':         'stock market crash red decline bear',
+  'crypto-fear-greed-explained':      'fear greed emotion trading sentiment',
+  'ai-crypto-tokens-2026':            'artificial intelligence gpu server chip',
+  'crypto-101-what-is-blockchain':    'blockchain network nodes technology distributed',
+  'crypto-101-bitcoin-vs-ethereum':   'bitcoin ethereum comparison cryptocurrency',
+
   // ── Crypto
   'bitcoin-price-prediction-2026-expert-analysis':        'bitcoin gold digital currency bull',
   'top-10-cryptocurrencies-market-cap-2026-guide':         'cryptocurrency trading portfolio',
