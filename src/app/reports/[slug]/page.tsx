@@ -264,7 +264,16 @@ export default async function ReportPage({ params }: { params: Promise<{ slug: s
       <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(articleLd) }} />
       {faqLd && <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(faqLd) }} />}
       <article style={{ maxWidth: 760, margin: '0 auto', padding: '80px 24px' }}>
-        <Link href="/reports" style={{ fontSize: 12, color: '#64748B' }}>← Reports</Link>
+        {/* DHLM masthead — only visible in print */}
+        <div className="print-masthead" style={{ display: 'none' }}>
+          <div>
+            <div className="print-masthead-brand">DHLM STUDIO</div>
+            <div className="print-masthead-sub">Brutal Edge™ Analysis</div>
+          </div>
+          <div className="print-masthead-url">dhlm-studio.com<br />Market Intelligence</div>
+        </div>
+
+        <Link href="/reports" className="print-hide" style={{ fontSize: 12, color: '#64748B' }}>← Reports</Link>
 
         {/* Brutal Edge Header — type-aware */}
         {(() => {
@@ -274,7 +283,7 @@ export default async function ReportPage({ params }: { params: Promise<{ slug: s
             : 'BRUTAL EDGE™ DEEP DIVE';
           const headerColor = isHotSector ? '#D4A843' : '#C73E3A';
           return (
-            <div style={{ marginTop: 20, padding: '20px 22px', borderRadius: 14, background: `linear-gradient(135deg, ${headerColor}10, ${headerColor}05)`, border: `1px solid ${headerColor}30`, marginBottom: 16 }}>
+            <div className="print-hide" style={{ marginTop: 20, padding: '20px 22px', borderRadius: 14, background: `linear-gradient(135deg, ${headerColor}10, ${headerColor}05)`, border: `1px solid ${headerColor}30`, marginBottom: 16 }}>
               <div style={{ display: 'flex', alignItems: 'center', gap: 8, marginBottom: 8 }}>
                 <span style={{ fontSize: 18 }}>🔥</span>
                 <span style={{ fontFamily: 'var(--mono)', fontSize: 11, fontWeight: 800, color: headerColor, letterSpacing: 2 }}>{headerLabel}</span>
@@ -310,7 +319,7 @@ export default async function ReportPage({ params }: { params: Promise<{ slug: s
         })()}
 
         {/* Editor Reviewed Badge */}
-        <div style={{ display: 'flex', flexWrap: 'wrap', gap: 6, marginBottom: 24 }}>
+        <div className="print-hide" style={{ display: 'flex', flexWrap: 'wrap', gap: 6, marginBottom: 24 }}>
           <span style={{ fontFamily: 'var(--mono)', fontSize: 10, fontWeight: 700, padding: '5px 10px', borderRadius: 6, background: '#00D47412', color: '#00D474', border: '1px solid #00D47425' }}>✓ Editor Reviewed</span>
           <span style={{ fontFamily: 'var(--mono)', fontSize: 10, fontWeight: 700, padding: '5px 10px', borderRadius: 6, background: '#3B82F612', color: '#3B82F6', border: '1px solid #3B82F625' }}>✓ Data Verified</span>
           <span style={{ fontFamily: 'var(--mono)', fontSize: 10, fontWeight: 700, padding: '5px 10px', borderRadius: 6, background: '#D4A84312', color: '#D4A843', border: '1px solid #D4A84325' }}>✓ BEAF Scored</span>
@@ -328,9 +337,10 @@ export default async function ReportPage({ params }: { params: Promise<{ slug: s
           </div>
           <h1 style={{ fontFamily: 'var(--serif)', fontSize: 'clamp(24px, 4vw, 34px)', fontWeight: 900, color: '#F1F5F9', lineHeight: 1.3, margin: 0 }}>{fm.title}</h1>
           <p style={{ fontSize: 15, color: '#64748B', lineHeight: 1.7, marginTop: 12 }}>{fm.description}</p>
-          <div style={{ marginTop: 12, display: 'flex', flexWrap: 'wrap', alignItems: 'center', gap: 10 }}>
+          <div className="print-hide" style={{ marginTop: 12, display: 'flex', flexWrap: 'wrap', alignItems: 'center', gap: 10 }}>
             <ListenButton text={body} />
             <ReportPDF
+              slug={slug}
               title={fm.title}
               date={fm.date}
               description={fm.description}
@@ -386,9 +396,15 @@ export default async function ReportPage({ params }: { params: Promise<{ slug: s
           </section>
         )}
 
+        {/* Print-only footer */}
+        <div className="print-footer" style={{ display: 'none', marginTop: 48, paddingTop: 12, borderTop: '1px solid #d1d5db', fontFamily: 'Arial, sans-serif', fontSize: 8, color: '#888', textAlign: 'center', lineHeight: 1.8 }}>
+          dhlm-studio.com &nbsp;·&nbsp; For informational and educational purposes only &nbsp;·&nbsp; NOT investment advice<br />
+          © DHLM Studio {new Date(fm.date).getFullYear()} &nbsp;·&nbsp; Brutal Edge™ Analysis &nbsp;·&nbsp; All rights reserved
+        </div>
+
         {/* Related Reports */}
         {related.length > 0 && (
-          <section style={{ marginTop: 32 }}>
+          <section className="print-hide" style={{ marginTop: 32 }}>
             <div style={{ fontFamily: 'var(--mono)', fontSize: 10, fontWeight: 800, color: '#C73E3A', letterSpacing: 2, marginBottom: 12 }}>🔗 RELATED DEEP DIVES</div>
             <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(220px, 1fr))', gap: 10 }}>
               {related.map(r => (
@@ -405,15 +421,17 @@ export default async function ReportPage({ params }: { params: Promise<{ slug: s
         )}
 
         {/* Newsletter signup */}
-        <div style={{ marginTop: 32 }}>
+        <div className="print-hide" style={{ marginTop: 32 }}>
           <InlineSubscribe source="report" headline="Never miss the next Deep Dive" description="One Brutal Edge Daily Brief per weekday at 7:30 AM ET. Free." />
         </div>
 
         {/* Comments — Giscus / GitHub Discussions */}
-        <GiscusComments slug={`report:${slug}`} />
+        <div className="print-hide">
+          <GiscusComments slug={`report:${slug}`} />
+        </div>
 
         {/* Brutal Edge Footer */}
-        <div style={{ marginTop: 40, padding: '20px 22px', borderRadius: 14, background: '#111827', border: '1px solid #1E293B', textAlign: 'center' }}>
+        <div className="print-hide" style={{ marginTop: 40, padding: '20px 22px', borderRadius: 14, background: '#111827', border: '1px solid #1E293B', textAlign: 'center' }}>
           <div style={{ fontFamily: 'var(--mono)', fontSize: 10, fontWeight: 800, color: '#C73E3A', letterSpacing: 2, marginBottom: 6 }}>🔥 ANALYZED BY BRUTAL EDGE™</div>
           <div style={{ fontSize: 11, color: '#64748B', marginBottom: 8 }}>DHLM Studio Analysis Engine</div>
           <div style={{ fontSize: 9, color: '#475569', lineHeight: 1.6 }}>
