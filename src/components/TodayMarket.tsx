@@ -86,14 +86,22 @@ export default function TodayMarket() {
       .then((d: TodayMarketPayload) => { if (d?.indices) setData(d); })
       .catch(() => { /* keep fallback */ });
 
-    // Top altcoins — exclude BTC/ETH and stablecoins (they don't move)
-    const STABLECOINS = new Set(['tether','usd-coin','binance-usd','dai','true-usd','usdd','first-digital-usd','frax','liquity-usd','paxos-standard']);
+    // Top altcoins — whitelist of recognized, volatile altcoins only.
+    // Blocks stablecoins (USDT/USDC etc.) AND unknown tokens (FIGR_HELOC, TRX-like junk).
+    // Priority order matches CEO directive: XRP, BNB, SOL, ADA, DOGE, AVAX first.
+    const ALTCOIN_WHITELIST = [
+      'ripple','binancecoin','solana','cardano','dogecoin','avalanche-2',
+      'toncoin','chainlink','polkadot','shiba-inu','litecoin','uniswap',
+      'near','stellar','bitcoin-cash','cosmos','aptos','hedera','monero',
+    ];
     fetch('/api/crypto')
       .then(r => r.json())
       .then((d: { coins?: AltCoin[] }) => {
         if (d.coins) {
-          const filtered = d.coins
-            .filter(c => !['bitcoin', 'ethereum'].includes(c.id) && !STABLECOINS.has(c.id))
+          // Sort by ALTCOIN_WHITELIST priority order, then take top 5
+          const filtered = ALTCOIN_WHITELIST
+            .map(id => d.coins!.find(c => c.id === id))
+            .filter((c): c is AltCoin => Boolean(c))
             .slice(0, 5);
           setAlts(filtered);
         }
