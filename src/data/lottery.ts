@@ -37,7 +37,7 @@ export const MEGAMILLIONS_DRAWS: LotteryDraw[] = (mmHistory as MMRaw[]).slice(0,
 // Update these manually when jackpot amounts are known.
 // Next draw dates auto-follow the draw schedule (Mon/Wed/Sat for PB, Tue/Fri for MM).
 export const JACKPOT_INFO = {
-  powerball: { current: 455000000, nextDraw: '2026-04-13', nextDay: 'Monday' },
+  powerball: { current: 455000000, nextDraw: '2026-04-15', nextDay: 'Wednesday' },
   megamillions: { current: 331000000, nextDraw: '2026-04-14', nextDay: 'Tuesday' },
 };
 
