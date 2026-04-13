@@ -685,7 +685,7 @@
   },
   "ethereum-deep-dive-april-2026": {
     "src": "https://images.unsplash.com/photo-1622102686103-dd4ea18f1d0e?ixid=M3w5MjE0MDh8MHwxfHNlYXJjaHwxfHxldGhlcmV1bSUyMGJsb2NrY2hhaW4lMjBuZXR3b3JrJTIwc21hcnQlMjBjb250cmFjdHxlbnwxfDB8fHwxNzc2MDU0MjI5fDA&ixlib=rb-4.1.0&w=720&h=380&fit=crop&q=80&fm=jpg&auto=format",
-    "alt": "happy birthday to you greeting card",
+    "alt": "Ethereum cryptocurrency coin close-up",
     "credit": {
       "author": "Kanchanara",
       "authorUrl": "https://unsplash.com/@kanchanara?utm_source=dhlm_studio&utm_medium=referral",
@@ -726,6 +726,33 @@
       "author": "Kanchanara",
       "authorUrl": "https://unsplash.com/@kanchanara?utm_source=dhlm_studio&utm_medium=referral",
       "unsplashUrl": "https://unsplash.com/photos/GWH3CnQPJjY?utm_source=dhlm_studio&utm_medium=referral"
+    }
+  },
+  "wall-street-weekly-2026-04-13": {
+    "src": "https://images.unsplash.com/photo-1648275913341-7973ae7bc9b3?ixid=M3w5MjE0MDh8MHwxfHNlYXJjaHwxfHxzdG9jayUyMG1hcmtldCUyMHRyYWRpbmclMjB3YWxsJTIwc3RyZWV0JTIwZmluYW5jZXxlbnwxfDB8fHwxNzc2MDc0MjU2fDA&ixlib=rb-4.1.0&w=720&h=380&fit=crop&q=80&fm=jpg&auto=format",
+    "alt": "a close up of a clock with different colored numbers",
+    "credit": {
+      "author": "Tyler Prahm",
+      "authorUrl": "https://unsplash.com/@tprahm?utm_source=dhlm_studio&utm_medium=referral",
+      "unsplashUrl": "https://unsplash.com/photos/lmV3gJSAgbo?utm_source=dhlm_studio&utm_medium=referral"
+    }
+  },
+  "crypto-weekly-2026-04-13": {
+    "src": "https://images.unsplash.com/photo-1694219782948-afcab5c095d3?ixid=M3w5MjE0MDh8MHwxfHNlYXJjaHwxfHxjcnlwdG9jdXJyZW5jeSUyMGJpdGNvaW4lMjBibG9ja2NoYWluJTIwZGlnaXRhbHxlbnwxfDB8fHwxNzc2MDc0MjU4fDA&ixlib=rb-4.1.0&w=720&h=380&fit=crop&q=80&fm=jpg&auto=format",
+    "alt": "a bitcoin sitting on top of a pile of gold coins",
+    "credit": {
+      "author": "Norman Wozny",
+      "authorUrl": "https://unsplash.com/@thewozzvisions?utm_source=dhlm_studio&utm_medium=referral",
+      "unsplashUrl": "https://unsplash.com/photos/piiqiVnhJkM?utm_source=dhlm_studio&utm_medium=referral"
+    }
+  },
+  "quantum-sector-special-report-april-2026": {
+    "src": "https://images.unsplash.com/photo-1771189958197-06850d4828af?ixid=M3w5MjE0MDh8MHwxfHNlYXJjaHwzfHxjaXJjdWl0JTIwYm9hcmQlMjB0ZWNobm9sb2d5JTIwY2hpcHxlbnwwfDB8fHwxNzc2MDY1MDAwfDA&ixlib=rb-4.1.0&w=720&h=380&fit=crop&q=80&fm=jpg&auto=format",
+    "alt": "Close-up of a complex electronic circuit board with many components",
+    "credit": {
+      "author": "Jakub Pabis",
+      "authorUrl": "https://unsplash.com/@jakubpabis?utm_source=dhlm_studio&utm_medium=referral",
+      "unsplashUrl": "https://unsplash.com/photos/close-up-of-a-complex-electronic-circuit-board-with-many-components-v4aoojn7Ptg?utm_source=dhlm_studio&utm_medium=referral"
     }
   }
 }

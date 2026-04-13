@@ -137,9 +137,11 @@ const SLUG_KEYWORDS = {
   'deep-dive-msft-april-2026':    'microsoft cloud technology office software',
   'deep-dive-pltr-april-2026':    'data analytics surveillance intelligence',
   'deep-dive-tsla-april-2026':    'tesla supercharger station electric',
-  'btc-crossroads-april-2026':    'bitcoin price chart crossroads analysis',
-  'ethereum-special-report-april-2026': 'ethereum blockchain digital currency network glow',
-  'hot-sector-energy-april-2026': 'oil refinery energy industrial power',
+  'btc-crossroads-april-2026':                     'bitcoin price chart crossroads analysis',
+  'ethereum-special-report-april-2026':            'ethereum blockchain digital currency network glow',
+  'hot-sector-energy-april-2026':                  'oil refinery energy industrial power',
+  'quantum-sector-special-report-april-2026':      'quantum computing chip processor laboratory technology',
+  'spacex-ipo-special-report-2026':                'rocket launch night space technology',
 
   // ── Research
   'fear-greed-index-stock-prediction': 'fear greed market sentiment dial',
