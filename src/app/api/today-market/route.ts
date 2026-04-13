@@ -64,13 +64,26 @@ const FALLBACK: Omit<TodayMarketPayload, 'asOf' | 'source' | 'verdict'> = {
   fearGreed: { value: 50, label: 'Neutral', source: 'CNN' },
 };
 
+/** Crypto is a 24/7 market — separate TTL that ignores weekends.
+ *  15 min during US market hours (stays in sync with stock data),
+ *  30 min at all other times including weekends. */
+function cryptoCacheTtlSeconds(): number {
+  const now = new Date();
+  const minutesIntoDay = now.getUTCHours() * 60 + now.getUTCMinutes();
+  return (minutesIntoDay >= 13 * 60 + 30 && minutesIntoDay < 20 * 60) ? 15 * 60 : 30 * 60;
+}
+
 // Two-layer cache: in-memory per serverless instance + Redis shared.
 // Redis is the source of truth — every cold start checks Redis before
 // touching the live APIs. The in-memory layer is just a hot cache for
 // repeat reads on the same warm instance.
 // v3: bumped 2026-04-11 to flush cached data that had CL=F/GC=F symbols
 const REDIS_KEY = 'today-market:cache:v3';
+// Separate crypto cache key — uses cryptoCacheTtlSeconds() so BTC/ETH
+// refresh every 30 min on weekends instead of the 120-min stock TTL.
+const REDIS_CRYPTO_KEY = 'today-market:crypto:v3';
 let memCache: { data: TodayMarketPayload; ts: number } | null = null;
+let memCryptoCache: { data: CryptoPrice[]; ts: number } | null = null;
 
 // Cache TTL in seconds. Three buckets driven by US market session:
 //   - Weekend (Sat/Sun UTC): 120 minutes — almost no real movement
@@ -125,6 +138,32 @@ async function writeSharedCache(data: TodayMarketPayload): Promise<void> {
     // EX seconds — Redis evicts automatically
     await redis.set(REDIS_KEY, JSON.stringify(entry), 'EX', cacheTtlSeconds());
   } catch { /* Redis unavailable — memory cache still works for warm instance */ }
+}
+
+async function readCryptoCache(): Promise<CryptoPrice[] | null> {
+  if (memCryptoCache && Date.now() - memCryptoCache.ts < cryptoCacheTtlSeconds() * 1000) {
+    return memCryptoCache.data;
+  }
+  try {
+    const redis = getRedis();
+    const raw = await redis.get(REDIS_CRYPTO_KEY);
+    if (!raw) return null;
+    const parsed = JSON.parse(raw) as { data: CryptoPrice[]; ts: number };
+    if (Date.now() - parsed.ts < cryptoCacheTtlSeconds() * 1000) {
+      memCryptoCache = parsed;
+      return parsed.data;
+    }
+  } catch { /* Redis unavailable */ }
+  return null;
+}
+
+async function writeCryptoCache(data: CryptoPrice[]): Promise<void> {
+  const entry = { data, ts: Date.now() };
+  memCryptoCache = entry;
+  try {
+    const redis = getRedis();
+    await redis.set(REDIS_CRYPTO_KEY, JSON.stringify(entry), 'EX', cryptoCacheTtlSeconds());
+  } catch { /* Redis unavailable — memory cache still works */ }
 }
 
 const FMP_KEY = process.env.FMP_API_KEY || '';
@@ -465,7 +504,14 @@ export async function GET(request: Request) {
   if (!debugFresh) {
     const cached = await readSharedCache();
     if (cached) {
-      const payload = { ...cached, source: 'cached' as const };
+      // Stock cache is valid. Independently check if crypto sub-cache is stale
+      // (crypto trades 24/7 — refresh every 30 min even on weekends/evenings).
+      let freshCrypto = await readCryptoCache();
+      if (!freshCrypto) {
+        freshCrypto = await coinGeckoPrices();
+        if (freshCrypto) await writeCryptoCache(freshCrypto);
+      }
+      const payload = { ...cached, ...(freshCrypto ? { crypto: freshCrypto } : {}), source: 'cached' as const };
       if (debugLive) {
         return NextResponse.json({
           ...payload,
@@ -557,6 +603,7 @@ export async function GET(request: Request) {
   // always represents real live data, never partial fallback.
   if (allLive) {
     await writeSharedCache(payload);
+    if (crypto) await writeCryptoCache(crypto);
   }
 
   if (debugLive || debugFresh) {

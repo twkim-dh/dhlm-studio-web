@@ -3,6 +3,10 @@
     {
       "path": "/api/cron/lotto",
       "schedule": "0 13 * * 6"
+    },
+    {
+      "path": "/api/today-market",
+      "schedule": "*/15 13-21 * * 1-5"
     }
   ]
 }
