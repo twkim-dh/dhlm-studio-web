@@ -84,6 +84,8 @@ const nextConfig: NextConfig = {
       { source: '/blog/spacex-ipo-special-report-2026',    destination: '/reports/spacex-ipo-special-report-2026',    permanent: true },
       { source: '/blog/eth-special-report-april-2026',         destination: '/reports/ethereum-special-report-april-2026', permanent: true },
       { source: '/blog/ethereum-special-report-april-2026',   destination: '/reports/ethereum-special-report-april-2026', permanent: true },
+      // /crypto-101 → /learn/crypto-101 (content moved to Brutal Edge Academy)
+      { source: '/crypto-101', destination: '/learn/crypto-101', permanent: true },
     ];
   },
 };

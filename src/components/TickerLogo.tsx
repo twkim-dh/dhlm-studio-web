@@ -23,10 +23,14 @@ function tickerBgColor(ticker: string): string {
   return `hsl(${hash % 360}, 50%, 28%)`;
 }
 
-// Tickers whose FMP CDN logo is too faint/broken — use local SVG from /logos/
-// The local SVG is black on transparent, so we show it on a white background.
+// Tickers whose FMP CDN logo is missing/wrong — use local SVG from /logos/.
+// SVGs may be: (a) black-on-transparent → white bg, or (b) self-contained
+// with their own colored circle → white bg acts as a thin border ring.
 const LOCAL_LOGO_OVERRIDES: Record<string, string> = {
-  PLTR: '/logos/PLTR.svg',
+  PLTR:   '/logos/PLTR.svg',
+  ETH:    '/logos/ETH.svg',
+  BTC:    '/logos/BTC.svg',
+  SPACEX: '/logos/SPACEX.svg',
 };
 
 /** Count visible pixels when composited on a given fill color. Returns 0–1 ratio. */

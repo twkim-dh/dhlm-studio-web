@@ -7,7 +7,7 @@ const links = [
   { label: "Markets", href: "/markets" },
   { label: "Reports", href: "/reports" },
   { label: "Blog", href: "/blog" },
-  { label: "Crypto 101", href: "/crypto-101" },
+  { label: "Learn", href: "/learn" },
   { label: "Tools", href: "/tools" },
 ];
 
