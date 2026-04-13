@@ -138,7 +138,8 @@ export const blogPosts: BlogPost[] = [
   {
     slug: 'top-10-countries-gdp-world-economy-2026',
     title: 'Top 10 Countries by GDP — World Economy 2026',
-    category: 'Rankings', catColor: '#D4A843', date: '2026-04-01', readTime: '5 min',
+    category: 'Rankings', catColor: '#D4A843', date: '2026-04-01', readTime: '6 min',
+    lastUpdated: '2026-04-12',
     description: 'The top 10 largest economies by GDP in 2026. See how the US, China, Germany, and India rank in the global economic landscape.',
     sections: [
       { heading: 'The Global GDP Leaderboard 2026', body: 'The world economy in 2026 is dominated by familiar names, but the rankings are shifting. The United States maintains its position as the world\'s largest economy with a GDP of approximately $28.8 trillion, driven by AI-led productivity gains, strong consumer spending, and robust tech sector growth. China holds second place at $19.5 trillion, though its growth has slowed to approximately 4.5% as the property sector continues to weigh on the economy. Germany ($4.6T), Japan ($4.4T), and India ($4.3T) round out the top five. India has nearly overtaken Japan and is projected to pass it within the next 12 months, making it the fourth-largest economy in the world. The United Kingdom ($3.5T), France ($3.2T), Brazil ($2.3T), Canada ($2.2T), and Italy ($2.1T) complete the top ten. View our Rankings page for detailed economic indicators and GDP comparisons with interactive charts and historical data trends.' },
@@ -188,7 +189,8 @@ export const blogPosts: BlogPost[] = [
   {
     slug: 'powerball-vs-mega-millions-better-odds',
     title: 'Powerball vs Mega Millions: Which Has Better Odds? (2026 Data)',
-    category: 'Rankings', catColor: '#D4A843', date: '2026-04-01', readTime: '4 min',
+    category: 'Rankings', catColor: '#D4A843', date: '2026-04-01', readTime: '6 min',
+    lastUpdated: '2026-04-12',
     description: 'Powerball: 1 in 292M jackpot odds. Mega Millions: 1 in 302M. Which lottery actually gives you a better chance — and at what jackpot size does the math turn positive?',
     sections: [
       { heading: 'How Each Lottery Works', body: 'Powerball and Mega Millions are America\'s two biggest lottery games, available in 45 states plus Washington D.C. Both cost $2 per ticket, but the rules differ in important ways. Powerball requires you to pick 5 numbers from 1-69 plus a Powerball number from 1-26. Mega Millions requires 5 numbers from 1-70 plus a Mega Ball from 1-25. Drawings occur twice per week — Powerball on Monday, Wednesday, and Saturday; Mega Millions on Tuesday and Friday. Both games also offer a Megaplier or Power Play option for an extra $1 that can multiply non-jackpot prizes by 2-5x. The starting jackpot for both games is $20 million, but jackpots can roll over for months without a winner, occasionally reaching over $1 billion. Both games offer nine prize tiers, from matching just the bonus ball (winning $4 or $2) up to hitting all six numbers for the jackpot. See our Rankings page for a comparison of the largest lottery jackpots ever won.' },
@@ -344,6 +346,7 @@ export const blogPosts: BlogPost[] = [
     slug: 'gdp-per-capita-rankings-2026-richest-countries',
     title: 'GDP Per Capita Rankings 2026: Richest Countries in the World',
     category: 'Rankings', catColor: '#D4A843', date: '2026-03-29', readTime: '6 min',
+    lastUpdated: '2026-04-12',
     description: 'Complete GDP per capita rankings for 2026 revealing the richest countries in the world. Nominal and PPP-adjusted data with analysis.',
     sections: [
       { heading: 'Top 20 Countries by GDP Per Capita', body: 'GDP per capita measures economic output per person, revealing which countries provide the highest average living standards. The 2026 rankings (nominal USD): 1) Luxembourg ($136,000), 2) Ireland ($112,000), 3) Singapore ($88,000), 4) Qatar ($83,000), 5) Switzerland ($82,000), 6) Norway ($78,000), 7) United States ($76,000), 8) Iceland ($74,000), 9) Denmark ($71,000), 10) Australia ($68,000). The list continues: 11) Netherlands ($65,000), 12) Austria ($63,000), 13) Sweden ($62,000), 14) Finland ($59,000), 15) Belgium ($58,000), 16) Germany ($57,000), 17) Canada ($55,000), 18) Israel ($54,000), 19) United Kingdom ($52,000), 20) France ($50,000). Small, specialized economies dominate the top: Luxembourg\'s financial sector, Ireland\'s multinational tax advantages, Singapore\'s trade hub status, and Qatar\'s natural gas wealth. The US ranks 7th but is by far the largest economy with high per-capita output, a remarkable achievement for a nation of 340 million people.' },
@@ -357,6 +360,7 @@ export const blogPosts: BlogPost[] = [
     slug: 'fastest-growing-economies-2026-emerging-markets',
     title: 'Fastest Growing Economies 2026: Emerging Markets to Watch',
     category: 'Rankings', catColor: '#D4A843', date: '2026-03-28', readTime: '6 min',
+    lastUpdated: '2026-04-12',
     description: 'Discover the fastest growing economies in 2026. Emerging market analysis with GDP growth rates, investment opportunities, and risk assessment.',
     sections: [
       { heading: 'Top 10 Fastest Growing Economies', body: 'The fastest growing economies in 2026 are predominantly in South Asia and Sub-Saharan Africa, reflecting their young populations, urbanization trends, and increasing integration into global supply chains. 1) India (6.5%) — Manufacturing expansion and digital infrastructure drive growth. 2) Vietnam (6.3%) — The top beneficiary of China+1 supply chain diversification. 3) Philippines (6.1%) — BPO sector and domestic consumption growth. 4) Bangladesh (5.9%) — Garment industry expansion and remittances. 5) Indonesia (5.4%) — Nickel processing and digital economy boom. 6) Ethiopia (5.2%) — Infrastructure investment despite political challenges. 7) Rwanda (5.0%) — Africa\'s tech hub with strong governance. 8) Saudi Arabia (4.8%) — Vision 2030 diversification bearing fruit. 9) Egypt (4.5%) — Suez Canal revenues and reform implementation. 10) Poland (4.2%) — EU funds and nearshoring from Western Europe. These growth rates compare favorably to developed world averages of 1.5-2.5%. However, headline GDP growth must be adjusted for population growth to measure per-capita improvement.' },
@@ -370,6 +374,7 @@ export const blogPosts: BlogPost[] = [
     slug: 'best-countries-to-live-in-2026-quality-of-life',
     title: 'Best Countries to Live In 2026: Quality of Life Rankings',
     category: 'Rankings', catColor: '#D4A843', date: '2026-03-27', readTime: '7 min',
+    lastUpdated: '2026-04-12',
     description: 'Comprehensive quality of life rankings for 2026. Compare countries by healthcare, safety, education, environment, and economic opportunity.',
     sections: [
       { heading: 'Overall Quality of Life Top 20', body: 'Quality of life rankings combine multiple factors including healthcare access, safety, education, economic opportunity, environmental quality, and personal freedom. The 2026 rankings: 1) Denmark — exceptional work-life balance, universal healthcare, low corruption. 2) Switzerland — highest salaries, pristine environment, excellent infrastructure. 3) Finland — best education system, highest happiness scores, strong social safety net. 4) Norway — sovereign wealth fund benefits citizens, stunning nature, high salaries. 5) Netherlands — bike-friendly cities, progressive policies, strong economy. 6) Sweden — generous parental leave, innovation hub, beautiful landscapes. 7) Australia — outdoor lifestyle, strong job market, multicultural. 8) New Zealand — safety, natural beauty, quality healthcare. 9) Canada — immigration-friendly, universal healthcare, diverse cities. 10) Germany — industrial strength, efficient public services, cultural richness. Continued: 11) Austria, 12) Japan, 13) Singapore, 14) Ireland, 15) United Kingdom, 16) Belgium, 17) Luxembourg, 18) Iceland, 19) South Korea, 20) United States. Nordic countries dominate because they consistently score highly across all dimensions rather than excelling in just one area.' },
