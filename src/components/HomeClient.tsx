@@ -37,6 +37,9 @@ const MARKET_LEADERS = [
 
 export function LiveMarketsPreview() {
   const [leaders, setLeaders] = useState(MARKET_LEADERS);
+  // isLive: true only when real-time API data is loaded. Prevents "● LIVE" from
+  // showing while displaying the fallback snapshot (CEO rule: no fake live data).
+  const [isLive, setIsLive] = useState(false);
 
   useEffect(() => {
     // Primary: fetch live top20 from /api/markets/top20 which returns marketCapFmt.
@@ -66,6 +69,7 @@ export function LiveMarketsPreview() {
             return toNum(b.cap) - toNum(a.cap);
           });
         });
+        setIsLive(true);
       })
       .catch(() => {
         // Fallback: try /api/markets for price+change only
@@ -78,6 +82,8 @@ export function LiveMarketsPreview() {
             }
             if (Object.keys(live).length > 0) {
               setLeaders(prev => prev.map(l => live[l.ticker] ? { ...l, ...live[l.ticker] } : l));
+              // Prices are live but market caps are still from the snapshot
+              // → not fully live, keep isLive false
             }
           })
           .catch(() => {});
@@ -86,7 +92,10 @@ export function LiveMarketsPreview() {
 
   return (
     <div>
-      <p style={{ fontFamily: 'var(--mono)', fontSize: 10, color: '#00D474', marginBottom: 8 }}>● LIVE — Top 10 by Market Cap</p>
+      {isLive
+        ? <p style={{ fontFamily: 'var(--mono)', fontSize: 10, color: '#00D474', marginBottom: 8 }}>● LIVE — Top 10 by Market Cap</p>
+        : <p style={{ fontFamily: 'var(--mono)', fontSize: 10, color: '#475569', marginBottom: 8 }}>◉ SNAPSHOT · Apr 2026 — Top 10 by Market Cap</p>
+      }
       <div style={{ display: 'flex', flexDirection: 'column', gap: 8 }}>
         {leaders.map((s, i) => (
           <Link key={s.ticker} href={`/markets/${s.ticker}`} style={{ ...card, display: 'grid', gridTemplateColumns: '28px 28px 1fr auto auto', gap: 12, padding: '14px 18px', alignItems: 'center', textDecoration: 'none' }}>

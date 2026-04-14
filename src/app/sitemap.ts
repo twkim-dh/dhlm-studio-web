@@ -24,8 +24,10 @@ export default function sitemap(): MetadataRoute.Sitemap {
     { url: `${BASE}/daily`,              lastModified: now, changeFrequency: "daily",   priority: 0.9 },
     { url: `${BASE}/reports`,            lastModified: now, changeFrequency: "weekly",  priority: 0.9 },
     { url: `${BASE}/blog`,               lastModified: now, changeFrequency: "weekly",  priority: 0.8 },
-    { url: `${BASE}/research`,           lastModified: now, changeFrequency: "weekly",  priority: 0.8 },
-    { url: `${BASE}/crypto-101`,         lastModified: now, changeFrequency: "monthly", priority: 0.8 },
+    { url: `${BASE}/learn`,              lastModified: now, changeFrequency: "weekly",  priority: 0.8 },
+    { url: `${BASE}/learn/crypto-101`,   lastModified: now, changeFrequency: "weekly",  priority: 0.8 },
+    { url: `${BASE}/learn/investing-101`,lastModified: now, changeFrequency: "monthly", priority: 0.7 },
+    { url: `${BASE}/learn/paper-vs-profit`, lastModified: now, changeFrequency: "weekly", priority: 0.8 },
     { url: `${BASE}/rankings/crypto`,    lastModified: now, changeFrequency: "daily",   priority: 0.8 },
     { url: `${BASE}/lottery`,            lastModified: now, changeFrequency: "daily",   priority: 0.8 },
 
@@ -42,7 +44,7 @@ export default function sitemap(): MetadataRoute.Sitemap {
     { url: `${BASE}/markets/gainers`,    lastModified: now, changeFrequency: "daily",   priority: 0.7 },
     { url: `${BASE}/markets/losers`,     lastModified: now, changeFrequency: "daily",   priority: 0.7 },
     { url: `${BASE}/markets/most-active`,lastModified: now, changeFrequency: "daily",   priority: 0.7 },
-    { url: `${BASE}/markets/sectors`,    lastModified: now, changeFrequency: "daily",   priority: 0.7 },
+    { url: `${BASE}/markets/crypto`,      lastModified: now, changeFrequency: "daily",   priority: 0.7 },
     { url: `${BASE}/markets/search`,     lastModified: now, changeFrequency: "weekly",  priority: 0.6 },
 
     // Top 50 stock pages (all have live FMP data)
