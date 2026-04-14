@@ -1,6 +1,6 @@
 "use client";
 
-import { useState, useEffect } from "react";
+import { useState, useEffect, useRef } from "react";
 import Link from "next/link";
 
 const links = [
@@ -8,8 +8,12 @@ const links = [
   { label: "Reports", href: "/reports" },
   { label: "Blog", href: "/blog" },
   { label: "Learn", href: "/learn" },
+];
+
+const toolsDropdown = [
+  { label: "Calculators", href: "/calculators/compound-interest" },
   { label: "Lottery", href: "/lottery" },
-  { label: "Tools", href: "/tools" },
+  { label: "Dev Tools", href: "/tools" },
 ];
 
 function DhlmMono({ size = 28 }: { size?: number }) {
@@ -33,8 +37,16 @@ export { DhlmMono };
 export default function Header() {
   const [scrolled, setScrolled] = useState(false);
   const [menuOpen, setMenuOpen] = useState(false);
+  const [toolsOpen, setToolsOpen] = useState(false);
+  const toolsRef = useRef<HTMLDivElement>(null);
+
   useEffect(() => { const h = () => setScrolled(window.scrollY > 30); window.addEventListener("scroll", h, { passive: true }); return () => window.removeEventListener("scroll", h); }, []);
   useEffect(() => { document.body.style.overflow = menuOpen ? "hidden" : ""; return () => { document.body.style.overflow = ""; }; }, [menuOpen]);
+  useEffect(() => {
+    const h = (e: MouseEvent) => { if (toolsRef.current && !toolsRef.current.contains(e.target as Node)) setToolsOpen(false); };
+    document.addEventListener("mousedown", h);
+    return () => document.removeEventListener("mousedown", h);
+  }, []);
 
   return (
     <>
@@ -46,6 +58,31 @@ export default function Header() {
           </Link>
           <div className="hidden md:flex" style={{ gap: 28, alignItems: "center" }}>
             {links.map(l => <Link key={l.label} href={l.href} style={{ fontSize: 13, fontWeight: 500, color: "#94A3B8", fontFamily: "var(--sans)" }}>{l.label}</Link>)}
+            {/* Tools dropdown */}
+            <div ref={toolsRef} style={{ position: "relative" }}>
+              <button
+                onClick={() => setToolsOpen(o => !o)}
+                style={{ fontSize: 13, fontWeight: 500, color: "#94A3B8", fontFamily: "var(--sans)", background: "none", border: "none", cursor: "pointer", padding: 0, display: "flex", alignItems: "center", gap: 4 }}
+              >
+                Tools
+                <svg width="10" height="10" viewBox="0 0 10 10" fill="none" style={{ transform: toolsOpen ? "rotate(180deg)" : "none", transition: "transform 0.15s" }}>
+                  <path d="M2 3.5L5 6.5L8 3.5" stroke="#64748B" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round"/>
+                </svg>
+              </button>
+              {toolsOpen && (
+                <div style={{ position: "absolute", top: "calc(100% + 12px)", right: 0, background: "#111827", border: "1px solid #1E293B", borderRadius: 10, padding: "6px 0", minWidth: 148, boxShadow: "0 8px 24px rgba(0,0,0,0.4)", zIndex: 200 }}>
+                  {toolsDropdown.map(item => (
+                    <Link key={item.href} href={item.href} onClick={() => setToolsOpen(false)}
+                      style={{ display: "block", padding: "9px 16px", fontSize: 13, fontWeight: 500, color: "#94A3B8", textDecoration: "none", fontFamily: "var(--sans)" }}
+                      onMouseEnter={e => (e.currentTarget.style.color = "#F1F5F9")}
+                      onMouseLeave={e => (e.currentTarget.style.color = "#94A3B8")}
+                    >
+                      {item.label}
+                    </Link>
+                  ))}
+                </div>
+              )}
+            </div>
           </div>
           <button className="md:hidden" onClick={() => setMenuOpen(true)} aria-label="Open menu" style={{ background: "none", border: "none", padding: 8, cursor: "pointer" }}>
             <div style={{ width: 20, height: 1.5, background: "#94A3B8", marginBottom: 5 }} /><div style={{ width: 20, height: 1.5, background: "#94A3B8" }} />
@@ -58,6 +95,7 @@ export default function Header() {
         <div style={{ display: "flex", justifyContent: "flex-end", padding: 16 }}><button onClick={() => setMenuOpen(false)} aria-label="Close menu" style={{ background: "none", border: "none", color: "#94A3B8", fontSize: 24, cursor: "pointer" }}>&times;</button></div>
         <div style={{ display: "flex", flexDirection: "column", padding: "0 24px" }}>
           {links.map(l => <Link key={l.label} href={l.href} onClick={() => setMenuOpen(false)} style={{ padding: "14px 0", fontSize: 15, fontWeight: 500, color: "#94A3B8", borderBottom: "1px solid #1E293B", fontFamily: "var(--sans)" }}>{l.label}</Link>)}
+          {toolsDropdown.map(l => <Link key={l.href} href={l.href} onClick={() => setMenuOpen(false)} style={{ padding: "14px 0", fontSize: 15, fontWeight: 500, color: "#94A3B8", borderBottom: "1px solid #1E293B", fontFamily: "var(--sans)", paddingLeft: 12 }}>{l.label}</Link>)}
         </div>
       </div>
     </>
