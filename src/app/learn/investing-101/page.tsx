@@ -15,6 +15,7 @@ interface Lesson {
   week: number;
   title: string;
   description: string;
+  slug?: string;
 }
 
 interface Phase {
@@ -33,6 +34,7 @@ const CURRICULUM: Phase[] = [
       {
         week: 1,
         title: 'How the Stock Market Actually Works',
+        slug: 'investing-101-week1-what-is-a-stock',
         description: 'What you\'re actually buying when you buy a stock. How exchanges, brokers, and market makers fit together. Why prices move.',
       },
       {
@@ -160,28 +162,46 @@ export default function Investing101Page() {
             </div>
 
             <div style={{ display: 'flex', flexDirection: 'column', gap: 6 }}>
-              {phase.lessons.map(lesson => (
-                <div key={lesson.week} style={{
-                  background: '#111827', borderRadius: 12, border: '1px solid #1E293B',
-                  padding: '16px 18px', display: 'flex', alignItems: 'flex-start', gap: 14, opacity: 0.65,
-                }}>
-                  <div style={{
-                    width: 36, height: 36, borderRadius: 8, flexShrink: 0,
-                    background: '#1E293B', border: '1px solid #334155',
-                    display: 'flex', alignItems: 'center', justifyContent: 'center',
-                    fontFamily: 'var(--mono)', fontSize: 10, fontWeight: 800, color: '#475569',
+              {phase.lessons.map(lesson => {
+                const isPublished = !!lesson.slug;
+                const card = (
+                  <div key={lesson.week} style={{
+                    background: '#111827', borderRadius: 12,
+                    border: `1px solid ${isPublished ? `${phase.color}25` : '#1E293B'}`,
+                    padding: '16px 18px', display: 'flex', alignItems: 'flex-start', gap: 14,
+                    opacity: isPublished ? 1 : 0.65,
+                    cursor: isPublished ? 'pointer' : 'default',
+                    textDecoration: 'none',
                   }}>
-                    W{lesson.week}
-                  </div>
-                  <div style={{ flex: 1, minWidth: 0 }}>
-                    <div style={{ display: 'flex', alignItems: 'center', gap: 8, marginBottom: 4, flexWrap: 'wrap' }}>
-                      <span style={{ fontSize: 14, fontWeight: 700, color: '#64748B', lineHeight: 1.3 }}>{lesson.title}</span>
-                      <span style={{ fontSize: 9, fontWeight: 700, padding: '2px 7px', borderRadius: 4, background: '#1E293B', color: '#475569', fontFamily: 'var(--mono)', flexShrink: 0 }}>COMING SOON</span>
+                    <div style={{
+                      width: 36, height: 36, borderRadius: 8, flexShrink: 0,
+                      background: isPublished ? `${phase.color}20` : '#1E293B',
+                      border: `1px solid ${isPublished ? `${phase.color}40` : '#334155'}`,
+                      display: 'flex', alignItems: 'center', justifyContent: 'center',
+                      fontFamily: 'var(--mono)', fontSize: 10, fontWeight: 800,
+                      color: isPublished ? phase.color : '#475569',
+                    }}>
+                      W{lesson.week}
                     </div>
-                    <p style={{ fontSize: 12, color: '#475569', margin: 0, lineHeight: 1.5 }}>{lesson.description}</p>
+                    <div style={{ flex: 1, minWidth: 0 }}>
+                      <div style={{ display: 'flex', alignItems: 'center', gap: 8, marginBottom: 4, flexWrap: 'wrap' }}>
+                        <span style={{ fontSize: 14, fontWeight: 700, color: isPublished ? '#F1F5F9' : '#64748B', lineHeight: 1.3 }}>{lesson.title}</span>
+                        {isPublished ? (
+                          <span style={{ fontSize: 9, fontWeight: 800, padding: '2px 7px', borderRadius: 4, background: `${phase.color}18`, color: phase.color, fontFamily: 'var(--mono)', flexShrink: 0 }}>READ →</span>
+                        ) : (
+                          <span style={{ fontSize: 9, fontWeight: 700, padding: '2px 7px', borderRadius: 4, background: '#1E293B', color: '#475569', fontFamily: 'var(--mono)', flexShrink: 0 }}>COMING SOON</span>
+                        )}
+                      </div>
+                      <p style={{ fontSize: 12, color: isPublished ? '#64748B' : '#475569', margin: 0, lineHeight: 1.5 }}>{lesson.description}</p>
+                    </div>
                   </div>
-                </div>
-              ))}
+                );
+                return isPublished ? (
+                  <Link key={lesson.week} href={`/blog/${lesson.slug}`} style={{ textDecoration: 'none' }}>{card}</Link>
+                ) : (
+                  <div key={lesson.week}>{card}</div>
+                );
+              })}
             </div>
           </div>
         ))}

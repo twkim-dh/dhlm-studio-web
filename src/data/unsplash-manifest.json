@@ -907,5 +907,41 @@
       "authorUrl": "https://unsplash.com/@theshubhamdhage?utm_source=dhlm_studio&utm_medium=referral",
       "unsplashUrl": "https://unsplash.com/photos/xgBKsfcTkcU?utm_source=dhlm_studio&utm_medium=referral"
     }
+  },
+  "learn-leveraged-etf-report": {
+    "src": "https://images.unsplash.com/photo-1611974789855-9c2a0a7236a3?ixid=M3w5MjE0MDh8MHwxfHNlYXJjaHwyfHxzdG9jayUyMG1hcmtldCUyMGxldmVyYWdlJTIwdHJhZGluZyUyMGNoYXJ0JTIwZmluYW5jZXxlbnwxfDB8fHwxNzc2MTI4OTc5fDA&ixlib=rb-4.1.0&w=720&h=380&fit=crop&q=80&fm=jpg&auto=format",
+    "alt": "red and blue light streaks",
+    "credit": {
+      "author": "Maxim Hopman",
+      "authorUrl": "https://unsplash.com/@nampoh?utm_source=dhlm_studio&utm_medium=referral",
+      "unsplashUrl": "https://unsplash.com/photos/fiXLQXAhCfk?utm_source=dhlm_studio&utm_medium=referral"
+    }
+  },
+  "learn-w1-investing-what-is-stock": {
+    "src": "https://images.unsplash.com/photo-1605512929726-8c542ede9c6e?ixid=M3w5MjE0MDh8MHwxfHNlYXJjaHwyfHxzdG9jayUyMG1hcmtldCUyMHNoYXJlcyUyMG93bmVyc2hpcCUyMGludmVzdG1lbnR8ZW58MXwwfHx8MTc3NjEyODk4Mnww&ixlib=rb-4.1.0&w=720&h=380&fit=crop&q=80&fm=jpg&auto=format",
+    "alt": "a close up of a cell phone screen",
+    "credit": {
+      "author": "Infrarate.com",
+      "authorUrl": "https://unsplash.com/@infrarate?utm_source=dhlm_studio&utm_medium=referral",
+      "unsplashUrl": "https://unsplash.com/photos/nradY1EGJqs?utm_source=dhlm_studio&utm_medium=referral"
+    }
+  },
+  "leveraged-etf-report-april-2026": {
+    "src": "https://images.unsplash.com/photo-1611974789855-9c2a0a7236a3?ixid=M3w5MjE0MDh8MHwxfHNlYXJjaHwyfHxzdG9jayUyMG1hcmtldCUyMGxldmVyYWdlJTIwdHJhZGluZyUyMGNoYXJ0JTIwZmluYW5jZXxlbnwxfDB8fHwxNzc2MTI4OTc5fDA&ixlib=rb-4.1.0&w=720&h=380&fit=crop&q=80&fm=jpg&auto=format",
+    "alt": "red and blue light streaks",
+    "credit": {
+      "author": "Maxim Hopman",
+      "authorUrl": "https://unsplash.com/@nampoh?utm_source=dhlm_studio&utm_medium=referral",
+      "unsplashUrl": "https://unsplash.com/photos/fiXLQXAhCfk?utm_source=dhlm_studio&utm_medium=referral"
+    }
+  },
+  "investing-101-week1-what-is-a-stock": {
+    "src": "https://images.unsplash.com/photo-1605512929726-8c542ede9c6e?ixid=M3w5MjE0MDh8MHwxfHNlYXJjaHwyfHxzdG9jayUyMG1hcmtldCUyMHNoYXJlcyUyMG93bmVyc2hpcCUyMGludmVzdG1lbnR8ZW58MXwwfHx8MTc3NjEyODk4Mnww&ixlib=rb-4.1.0&w=720&h=380&fit=crop&q=80&fm=jpg&auto=format",
+    "alt": "a close up of a cell phone screen",
+    "credit": {
+      "author": "Infrarate.com",
+      "authorUrl": "https://unsplash.com/@infrarate?utm_source=dhlm_studio&utm_medium=referral",
+      "unsplashUrl": "https://unsplash.com/photos/nradY1EGJqs?utm_source=dhlm_studio&utm_medium=referral"
+    }
   }
 }
