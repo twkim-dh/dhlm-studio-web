@@ -1,5 +1,9 @@
 import type { Metadata } from 'next';
 import Link from 'next/link';
+import unsplashManifest from '@/data/unsplash-manifest.json';
+
+type ManifestEntry = { src: string; alt: string; credit: { author: string; authorUrl: string; unsplashUrl: string } };
+const manifest = unsplashManifest as Record<string, ManifestEntry>;
 
 export const metadata: Metadata = {
   title: 'Brutal Edge Academy — Learn Investing | DHLM Studio',
@@ -21,6 +25,7 @@ const COURSES = [
     published: 8,
     status: 'live' as const,
     detail: 'Phase 1–3 · Foundations → DeFi → Strategy',
+    imageKey: 'learn-card-crypto',
   },
   {
     href: '/learn/investing-101',
@@ -33,6 +38,7 @@ const COURSES = [
     published: 0,
     status: 'coming' as const,
     detail: 'Coming April 21, 2026',
+    imageKey: 'learn-card-investing',
   },
 ];
 
@@ -63,20 +69,33 @@ export default function LearnPage() {
               href={course.href}
               style={{
                 ...card,
-                padding: '28px 28px',
+                padding: '0',
                 textDecoration: 'none',
                 display: 'block',
                 position: 'relative',
                 overflow: 'hidden',
                 borderColor: course.status === 'live' ? `${course.color}30` : '#1E293B',
                 background: course.status === 'live' ? `linear-gradient(135deg, ${course.color}08, #111827)` : '#111827',
-                opacity: course.status === 'coming' ? 0.7 : 1,
+                opacity: course.status === 'coming' ? 0.75 : 1,
                 pointerEvents: course.status === 'coming' ? 'none' : 'auto',
               }}
             >
               {course.status === 'live' && (
-                <div style={{ position: 'absolute', top: 0, left: 0, right: 0, height: 2, background: course.color }} />
+                <div style={{ position: 'absolute', top: 0, left: 0, right: 0, height: 2, background: course.color, zIndex: 2 }} />
               )}
+              {/* Hero thumbnail */}
+              {manifest[course.imageKey]?.src && (
+                <div style={{ width: '100%', height: 120, overflow: 'hidden', position: 'relative' }}>
+                  {/* eslint-disable-next-line @next/next/no-img-element */}
+                  <img
+                    src={manifest[course.imageKey].src}
+                    alt={manifest[course.imageKey].alt}
+                    style={{ width: '100%', height: '100%', objectFit: 'cover', display: 'block', opacity: 0.55 }}
+                  />
+                  <div style={{ position: 'absolute', inset: 0, background: `linear-gradient(to bottom, transparent 30%, #111827 100%)` }} />
+                </div>
+              )}
+              <div style={{ padding: '20px 28px 24px' }}>
               <div style={{ display: 'flex', gap: 20, alignItems: 'flex-start' }}>
                 {/* Icon */}
                 <div style={{
@@ -128,6 +147,7 @@ export default function LearnPage() {
                   )}
                 </div>
               </div>
+              </div>{/* end padding wrapper */}
             </Link>
           ))}
         </div>
@@ -141,7 +161,7 @@ export default function LearnPage() {
             href="/learn/paper-vs-profit"
             style={{
               ...card,
-              padding: '28px 28px',
+              padding: '0',
               textDecoration: 'none',
               display: 'block',
               position: 'relative',
@@ -150,7 +170,19 @@ export default function LearnPage() {
               background: 'linear-gradient(135deg, #3B82F608, #111827)',
             }}
           >
-            <div style={{ position: 'absolute', top: 0, left: 0, right: 0, height: 2, background: '#3B82F6' }} />
+            <div style={{ position: 'absolute', top: 0, left: 0, right: 0, height: 2, background: '#3B82F6', zIndex: 2 }} />
+            {manifest['learn-card-research']?.src && (
+              <div style={{ width: '100%', height: 100, overflow: 'hidden', position: 'relative' }}>
+                {/* eslint-disable-next-line @next/next/no-img-element */}
+                <img
+                  src={manifest['learn-card-research'].src}
+                  alt={manifest['learn-card-research'].alt}
+                  style={{ width: '100%', height: '100%', objectFit: 'cover', display: 'block', opacity: 0.45 }}
+                />
+                <div style={{ position: 'absolute', inset: 0, background: 'linear-gradient(to bottom, transparent 20%, #111827 100%)' }} />
+              </div>
+            )}
+            <div style={{ padding: '20px 28px 24px' }}>
             <div style={{ display: 'flex', gap: 20, alignItems: 'flex-start' }}>
               <div style={{
                 width: 52, height: 52, borderRadius: 14, flexShrink: 0,
@@ -178,6 +210,7 @@ export default function LearnPage() {
                 </span>
               </div>
             </div>
+            </div>{/* end padding wrapper */}
           </Link>
         </div>
 

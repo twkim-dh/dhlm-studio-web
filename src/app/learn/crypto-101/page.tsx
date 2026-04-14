@@ -1,5 +1,9 @@
 import type { Metadata } from 'next';
 import Link from 'next/link';
+import unsplashManifest from '@/data/unsplash-manifest.json';
+
+type ManifestEntry = { src: string; alt: string; credit: { author: string; authorUrl: string; unsplashUrl: string } };
+const manifest = unsplashManifest as Record<string, ManifestEntry>;
 
 export const metadata: Metadata = {
   title: 'Crypto 101 — Learn Crypto From Scratch | DHLM Studio',
@@ -12,6 +16,7 @@ interface Lesson {
   title: string;
   slug?: string;        // if published → /blog/${slug}
   description: string;
+  imageKey: string;
 }
 
 interface Phase {
@@ -32,24 +37,28 @@ const CURRICULUM: Phase[] = [
         title: 'What Is Blockchain? (And Why Most Explanations Are Useless)',
         slug: 'crypto-101-what-is-blockchain',
         description: 'Distributed ledgers, nodes, consensus mechanisms — explained without the buzzword soup. How a Bitcoin transaction actually works, step by step.',
+        imageKey: 'learn-w1-blockchain',
       },
       {
         week: 2,
         title: 'Bitcoin vs. Ethereum — The Only Differences That Actually Matter',
         slug: 'crypto-101-bitcoin-vs-ethereum',
         description: 'Bitcoin is designed to be money. Ethereum is designed to be a computer. Everything else flows from that distinction.',
+        imageKey: 'learn-w2-btc-eth',
       },
       {
         week: 3,
         title: 'Crypto Wallets Explained — Hot, Cold, and Everything Between',
         slug: 'crypto-101-wallets-explained',
         description: 'In 2025, hackers stole $3.4B in crypto. Your wallet doesn\'t hold coins — it holds keys. Here\'s the difference that could save your portfolio.',
+        imageKey: 'learn-w3-wallets',
       },
       {
         week: 4,
         title: 'How to Actually Buy Crypto Without Getting Scammed',
         slug: 'crypto-101-how-to-buy-crypto',
         description: 'Choosing a real exchange, understanding where the fees actually hide, and recognizing the red flags before they cost you anything.',
+        imageKey: 'learn-w4-buy-crypto',
       },
     ],
   },
@@ -63,24 +72,28 @@ const CURRICULUM: Phase[] = [
         title: 'Staking Explained — Free Money or Hidden Risk?',
         slug: 'crypto-101-staking-explained',
         description: 'The real yields in 2026 (ETH pays 2.8–3.8%, not 15%), the inflation dilution nobody mentions, and a practical framework for beginners.',
+        imageKey: 'learn-w5-staking',
       },
       {
         week: 6,
         title: 'DeFi for Normal People — What It Is and Why You Should Care',
         slug: 'crypto-101-defi-explained',
         description: 'Lending, borrowing, DEXs, yield farming — and the risks that DeFi marketing never puts in the headline.',
+        imageKey: 'learn-w6-defi',
       },
       {
         week: 7,
         title: 'Reading Crypto Charts: The 5 Patterns That Actually Matter',
         slug: 'crypto-101-chart-patterns',
         description: 'Candlesticks, volume, support/resistance, and how to read a chart without fooling yourself.',
+        imageKey: 'learn-w7-charts',
       },
       {
         week: 8,
         title: 'Portfolio Basics: How Much Crypto Should You Actually Own?',
         slug: 'crypto-101-portfolio-basics',
         description: 'Total allocation, core-satellite strategy, three model portfolios, DCA, and rebalancing.',
+        imageKey: 'learn-w8-portfolio',
       },
     ],
   },
@@ -94,24 +107,28 @@ const CURRICULUM: Phase[] = [
         title: 'Layer 1 vs. Layer 2: Solana, Arbitrum, and the Scaling Wars',
         slug: 'crypto-101-layer1-vs-layer2',
         description: 'The blockchain trilemma, why Ethereum needs rollups, and what L2 fragmentation means for your portfolio.',
+        imageKey: 'learn-w9-layer2',
       },
       {
         week: 10,
         title: 'NFTs in 2026: Dead or Evolving?',
         slug: 'crypto-101-nfts-2026',
         description: 'What died, what survived, Bitcoin Ordinals, soulbound tokens, and the honest verdict on what remains valuable.',
+        imageKey: 'learn-w10-nfts',
       },
       {
         week: 11,
         title: 'Crypto Taxes: What the IRS Actually Wants From You',
         slug: 'crypto-101-crypto-taxes',
         description: 'Every swap is a taxable event. Cost basis methods, Form 1099-DA, staking/DeFi treatment, and tax-loss harvesting.',
+        imageKey: 'learn-w11-taxes',
       },
       {
         week: 12,
         title: 'Advanced Strategies: Yield Farming, Liquidity Pools, and When to Walk Away',
         slug: 'crypto-101-advanced-strategies',
         description: 'DeFi yield strategies, impermanent loss explained, risk management framework, and a complete decision checklist.',
+        imageKey: 'learn-w12-advanced',
       },
     ],
   },
@@ -131,6 +148,15 @@ export default function Crypto101Page() {
             ← Brutal Edge Academy
           </Link>
         </div>
+
+        {/* Hero image */}
+        {manifest['learn-crypto-101']?.src && (
+          <div style={{ width: '100%', height: 180, borderRadius: 14, overflow: 'hidden', marginBottom: 28, position: 'relative', border: '1px solid #1E293B' }}>
+            {/* eslint-disable-next-line @next/next/no-img-element */}
+            <img src={manifest['learn-crypto-101'].src} alt={manifest['learn-crypto-101'].alt} style={{ width: '100%', height: '100%', objectFit: 'cover', display: 'block', opacity: 0.6 }} />
+            <div style={{ position: 'absolute', inset: 0, background: 'linear-gradient(135deg, #8B5CF640 0%, transparent 60%)' }} />
+          </div>
+        )}
 
         {/* Header */}
         <div style={{ marginBottom: 32 }}>
@@ -172,19 +198,29 @@ export default function Crypto101Page() {
                 const isPublished = !!lesson.slug;
                 const href = isPublished ? `/blog/${lesson.slug}` : undefined;
 
+                const img = manifest[lesson.imageKey];
                 const card = (
                   <div style={{
                     background: '#111827',
                     borderRadius: 12,
                     border: `1px solid ${isPublished ? `${phase.color}25` : '#1E293B'}`,
-                    padding: '16px 18px',
+                    padding: '0',
                     display: 'flex',
-                    alignItems: 'flex-start',
-                    gap: 14,
+                    alignItems: 'stretch',
                     opacity: isPublished ? 1 : 0.6,
                     cursor: isPublished ? 'pointer' : 'default',
                     textDecoration: 'none',
+                    overflow: 'hidden',
                   }}>
+                    {/* Week image thumbnail */}
+                    {img?.src && (
+                      <div style={{ width: 80, flexShrink: 0, position: 'relative', overflow: 'hidden' }}>
+                        {/* eslint-disable-next-line @next/next/no-img-element */}
+                        <img src={img.src} alt={img.alt} style={{ width: '100%', height: '100%', objectFit: 'cover', display: 'block', opacity: isPublished ? 0.75 : 0.35 }} />
+                        <div style={{ position: 'absolute', inset: 0, background: `linear-gradient(to right, transparent 40%, #111827 100%)` }} />
+                      </div>
+                    )}
+                    <div style={{ flex: 1, minWidth: 0, padding: '14px 16px', display: 'flex', alignItems: 'flex-start', gap: 12 }}>
                     <div style={{
                       width: 36, height: 36, borderRadius: 8, flexShrink: 0,
                       background: isPublished ? `${phase.color}20` : '#1E293B',
@@ -207,6 +243,7 @@ export default function Crypto101Page() {
                         )}
                       </div>
                       <p style={{ fontSize: 12, color: '#64748B', margin: 0, lineHeight: 1.5 }}>{lesson.description}</p>
+                    </div>
                     </div>
                   </div>
                 );

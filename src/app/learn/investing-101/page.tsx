@@ -1,5 +1,9 @@
 import type { Metadata } from 'next';
 import Link from 'next/link';
+import unsplashManifest from '@/data/unsplash-manifest.json';
+
+type ManifestEntry = { src: string; alt: string; credit: { author: string; authorUrl: string; unsplashUrl: string } };
+const manifest = unsplashManifest as Record<string, ManifestEntry>;
 
 export const metadata: Metadata = {
   title: 'Investing 101 — Stock Market Fundamentals | DHLM Studio',
@@ -115,6 +119,15 @@ export default function Investing101Page() {
             ← Brutal Edge Academy
           </Link>
         </div>
+
+        {/* Hero image */}
+        {manifest['learn-investing-101']?.src && (
+          <div style={{ width: '100%', height: 180, borderRadius: 14, overflow: 'hidden', marginBottom: 28, position: 'relative', border: '1px solid #1E293B' }}>
+            {/* eslint-disable-next-line @next/next/no-img-element */}
+            <img src={manifest['learn-investing-101'].src} alt={manifest['learn-investing-101'].alt} style={{ width: '100%', height: '100%', objectFit: 'cover', display: 'block', opacity: 0.6 }} />
+            <div style={{ position: 'absolute', inset: 0, background: 'linear-gradient(135deg, #00D47430 0%, transparent 60%)' }} />
+          </div>
+        )}
 
         {/* Header */}
         <div style={{ marginBottom: 32 }}>

@@ -747,12 +747,165 @@
     }
   },
   "quantum-sector-special-report-april-2026": {
-    "src": "https://images.unsplash.com/photo-1771189958197-06850d4828af?ixid=M3w5MjE0MDh8MHwxfHNlYXJjaHwzfHxjaXJjdWl0JTIwYm9hcmQlMjB0ZWNobm9sb2d5JTIwY2hpcHxlbnwwfDB8fHwxNzc2MDY1MDAwfDA&ixlib=rb-4.1.0&w=720&h=380&fit=crop&q=80&fm=jpg&auto=format",
-    "alt": "Close-up of a complex electronic circuit board with many components",
+    "src": "https://images.unsplash.com/photo-1728042153273-8f9eefe78590?ixid=M3w5MjE0MDh8MHwxfGFsbHx8fHx8fHx8fDE3NzYxMjU4Mzh8&ixlib=rb-4.1.0&w=720&h=380&fit=crop&q=80&fm=jpg&auto=format",
+    "alt": "A close up of a computer chip in a dark room",
     "credit": {
-      "author": "Jakub Pabis",
-      "authorUrl": "https://unsplash.com/@jakubpabis?utm_source=dhlm_studio&utm_medium=referral",
-      "unsplashUrl": "https://unsplash.com/photos/close-up-of-a-complex-electronic-circuit-board-with-many-components-v4aoojn7Ptg?utm_source=dhlm_studio&utm_medium=referral"
+      "author": "Steve A Johnson",
+      "authorUrl": "https://unsplash.com/@steve_j?utm_source=dhlm_studio&utm_medium=referral",
+      "unsplashUrl": "https://unsplash.com/photos/hHg_oVpuVpo?utm_source=dhlm_studio&utm_medium=referral"
+    }
+  },
+  "learn-card-crypto": {
+    "src": "https://images.unsplash.com/photo-1761171720667-b9ac0586c047?ixid=M3w5MjE0MDh8MHwxfHNlYXJjaHwyfHxjcnlwdG9jdXJyZW5jeSUyMGJpdGNvaW4lMjBkaWdpdGFsJTIwZ29sZCUyMGNvaW58ZW58MXwwfHx8MTc3NjEyNTE5OXww&ixlib=rb-4.1.0&w=720&h=380&fit=crop&q=80&fm=jpg&auto=format",
+    "alt": "Golden bitcoin coin with other coins and card.",
+    "credit": {
+      "author": "Jen Titus",
+      "authorUrl": "https://unsplash.com/@jetstreameight?utm_source=dhlm_studio&utm_medium=referral",
+      "unsplashUrl": "https://unsplash.com/photos/L1uDh3ZUfBw?utm_source=dhlm_studio&utm_medium=referral"
+    }
+  },
+  "learn-card-investing": {
+    "src": "https://images.unsplash.com/photo-1745509267945-b25cbb4d50ef?ixid=M3w5MjE0MDh8MHwxfHNlYXJjaHwyfHxzdG9jayUyMG1hcmtldCUyMHRyYWRpbmclMjBjaGFydCUyMGJ1bGxpc2glMjBmaW5hbmNlfGVufDF8MHx8fDE3NzYxMjUyMDF8MA&ixlib=rb-4.1.0&w=720&h=380&fit=crop&q=80&fm=jpg&auto=format",
+    "alt": "Stock market chart shows a downward trend.",
+    "credit": {
+      "author": "Arturo Añez",
+      "authorUrl": "https://unsplash.com/@americanaez225?utm_source=dhlm_studio&utm_medium=referral",
+      "unsplashUrl": "https://unsplash.com/photos/MA1Xobltz5o?utm_source=dhlm_studio&utm_medium=referral"
+    }
+  },
+  "learn-card-research": {
+    "src": "https://images.unsplash.com/photo-1761319115143-025ed7fcf6f5?ixid=M3w5MjE0MDh8MHwxfHNlYXJjaHwyfHxhY2FkZW1pYyUyMGxpYnJhcnklMjBib29rcyUyMHJlc2VhcmNoJTIwc3R1ZHl8ZW58MXwwfHx8MTc3NjEyNTIwNHww&ixlib=rb-4.1.0&w=720&h=380&fit=crop&q=80&fm=jpg&auto=format",
+    "alt": "Row of books on a shelf, close-up view.",
+    "credit": {
+      "author": "Brett Jordan",
+      "authorUrl": "https://unsplash.com/@brett_jordan?utm_source=dhlm_studio&utm_medium=referral",
+      "unsplashUrl": "https://unsplash.com/photos/c3-4LeHlg-4?utm_source=dhlm_studio&utm_medium=referral"
+    }
+  },
+  "learn-crypto-101": {
+    "src": "https://images.unsplash.com/photo-1628498643650-39d6de5fb2e2?ixid=M3w5MjE0MDh8MHwxfHNlYXJjaHwyfHxjcnlwdG9jdXJyZW5jeSUyMGJsb2NrY2hhaW4lMjBuZXR3b3JrJTIwcHVycGxlfGVufDF8MHx8fDE3NzYxMjUyMDZ8MA&ixlib=rb-4.1.0&w=720&h=380&fit=crop&q=80&fm=jpg&auto=format",
+    "alt": "round gold coin on purple and black stones",
+    "credit": {
+      "author": "Kanchanara",
+      "authorUrl": "https://unsplash.com/@kanchanara?utm_source=dhlm_studio&utm_medium=referral",
+      "unsplashUrl": "https://unsplash.com/photos/_gtjOC0ok1k?utm_source=dhlm_studio&utm_medium=referral"
+    }
+  },
+  "learn-investing-101": {
+    "src": "https://images.unsplash.com/photo-1770461846516-b7e5993a8e4f?ixid=M3w5MjE0MDh8MHwxfHNlYXJjaHwyfHxzdG9jayUyMGV4Y2hhbmdlJTIwdHJhZGluZyUyMGZsb29yJTIwbmV3JTIweW9ya3xlbnwxfDB8fHwxNzc2MTI1MjA5fDA&ixlib=rb-4.1.0&w=720&h=380&fit=crop&q=80&fm=jpg&auto=format",
+    "alt": "New york stock exchange building with american flags",
+    "credit": {
+      "author": "David Vives",
+      "authorUrl": "https://unsplash.com/@davidvives?utm_source=dhlm_studio&utm_medium=referral",
+      "unsplashUrl": "https://unsplash.com/photos/xnzSgqyP8Hs?utm_source=dhlm_studio&utm_medium=referral"
+    }
+  },
+  "learn-w1-blockchain": {
+    "src": "https://images.unsplash.com/photo-1765816589173-d87bf0c38e71?ixid=M3w5MjE0MDh8MHwxfHNlYXJjaHwyfHxibG9ja2NoYWluJTIwZGlzdHJpYnV0ZWQlMjBuZXR3b3JrJTIwbm9kZXMlMjB0ZWNobm9sb2d5fGVufDF8MHx8fDE3NzYxMjUyMTF8MA&ixlib=rb-4.1.0&w=720&h=380&fit=crop&q=80&fm=jpg&auto=format",
+    "alt": "Abstract geometric pattern of illuminated lights.",
+    "credit": {
+      "author": "Julia Taubitz",
+      "authorUrl": "https://unsplash.com/@justmejuliee?utm_source=dhlm_studio&utm_medium=referral",
+      "unsplashUrl": "https://unsplash.com/photos/fYOCiHbHLQ8?utm_source=dhlm_studio&utm_medium=referral"
+    }
+  },
+  "learn-w2-btc-eth": {
+    "src": "https://images.unsplash.com/photo-1624438347907-58acda8a75b5?ixid=M3w5MjE0MDh8MHwxfHNlYXJjaHwyfHxiaXRjb2luJTIwZXRoZXJldW0lMjBnb2xkJTIwY29pbiUyMGNsb3NlJTIwdXB8ZW58MXwwfHx8MTc3NjEyNTIxNHww&ixlib=rb-4.1.0&w=720&h=380&fit=crop&q=80&fm=jpg&auto=format",
+    "alt": "gold star print round ornament",
+    "credit": {
+      "author": "Kanchanara",
+      "authorUrl": "https://unsplash.com/@kanchanara?utm_source=dhlm_studio&utm_medium=referral",
+      "unsplashUrl": "https://unsplash.com/photos/ePRG7pZMQ8k?utm_source=dhlm_studio&utm_medium=referral"
+    }
+  },
+  "learn-w3-wallets": {
+    "src": "https://images.unsplash.com/photo-1599770643145-3d8045e732e7?ixid=M3w5MjE0MDh8MHwxfHNlYXJjaHwyfHxoYXJkd2FyZSUyMHdhbGxldCUyMHNlY3VyaXR5JTIwdmF1bHQlMjB0ZWNobm9sb2d5fGVufDF8MHx8fDE3NzYxMjUyMTZ8MA&ixlib=rb-4.1.0&w=720&h=380&fit=crop&q=80&fm=jpg&auto=format",
+    "alt": "black and white remote control",
+    "credit": {
+      "author": "Maksym Diachenko",
+      "authorUrl": "https://unsplash.com/@photofixation?utm_source=dhlm_studio&utm_medium=referral",
+      "unsplashUrl": "https://unsplash.com/photos/RaikAQ36jDw?utm_source=dhlm_studio&utm_medium=referral"
+    }
+  },
+  "learn-w4-buy-crypto": {
+    "src": "https://images.unsplash.com/photo-1640694514279-090bb1b09ee9?ixid=M3w5MjE0MDh8MHwxfHNlYXJjaHwyfHxjcnlwdG8lMjBleGNoYW5nZSUyMHBob25lJTIwdHJhZGluZyUyMGFwcHxlbnwxfDB8fHwxNzc2MTI1MjE5fDA&ixlib=rb-4.1.0&w=720&h=380&fit=crop&q=80&fm=jpg&auto=format",
+    "alt": "a cell phone displaying a chart on a stand",
+    "credit": {
+      "author": "Muhammad Salim",
+      "authorUrl": "https://unsplash.com/@hi_muhammad_salim?utm_source=dhlm_studio&utm_medium=referral",
+      "unsplashUrl": "https://unsplash.com/photos/JNyiwlWktr4?utm_source=dhlm_studio&utm_medium=referral"
+    }
+  },
+  "learn-w5-staking": {
+    "src": "https://images.unsplash.com/photo-1646725432541-689c5661f8f5?ixid=M3w5MjE0MDh8MHwxfHNlYXJjaHwyfHxldGhlcmV1bSUyMHN0YWtpbmclMjBjb2luJTIwcmV3YXJkJTIwZWFybnxlbnwxfDB8fHwxNzc2MTI1MjIxfDA&ixlib=rb-4.1.0&w=720&h=380&fit=crop&q=80&fm=jpg&auto=format",
+    "alt": "three different colored diamonds next to a gold coin",
+    "credit": {
+      "author": "Traxer",
+      "authorUrl": "https://unsplash.com/@traxer?utm_source=dhlm_studio&utm_medium=referral",
+      "unsplashUrl": "https://unsplash.com/photos/m60jbaWKKd0?utm_source=dhlm_studio&utm_medium=referral"
+    }
+  },
+  "learn-w6-defi": {
+    "src": "https://images.unsplash.com/photo-1642239817349-3e1cf98817a5?ixid=M3w5MjE0MDh8MHwxfHNlYXJjaHwyfHxkZWNlbnRyYWxpemVkJTIwZmluYW5jZSUyMHByb3RvY29sJTIwc21hcnQlMjBjb250cmFjdCUyMGNvZGV8ZW58MXwwfHx8MTc3NjEyNTIyNHww&ixlib=rb-4.1.0&w=720&h=380&fit=crop&q=80&fm=jpg&auto=format",
+    "alt": "a black and white photo of a bitcoin symbol",
+    "credit": {
+      "author": "Shubham Dhage",
+      "authorUrl": "https://unsplash.com/@theshubhamdhage?utm_source=dhlm_studio&utm_medium=referral",
+      "unsplashUrl": "https://unsplash.com/photos/xgBKsfcTkcU?utm_source=dhlm_studio&utm_medium=referral"
+    }
+  },
+  "learn-w7-charts": {
+    "src": "https://images.unsplash.com/photo-1768242079046-c9c633187db1?ixid=M3w5MjE0MDh8MHwxfHNlYXJjaHwyfHxjYW5kbGVzdGljayUyMGNoYXJ0JTIwdHJhZGluZyUyMHNjcmVlbiUyMGZpbmFuY2V8ZW58MXwwfHx8MTc3NjEyNTIyNnww&ixlib=rb-4.1.0&w=720&h=380&fit=crop&q=80&fm=jpg&auto=format",
+    "alt": "Fingers interacting with a stock market graph on a tablet.",
+    "credit": {
+      "author": "Jakub Żerdzicki",
+      "authorUrl": "https://unsplash.com/@jakubzerdzicki?utm_source=dhlm_studio&utm_medium=referral",
+      "unsplashUrl": "https://unsplash.com/photos/lnuOh9vs8v0?utm_source=dhlm_studio&utm_medium=referral"
+    }
+  },
+  "learn-w8-portfolio": {
+    "src": "https://images.unsplash.com/photo-1653997500354-c9711cbc0136?ixid=M3w5MjE0MDh8MHwxfHNlYXJjaHwyfHxpbnZlc3RtZW50JTIwcG9ydGZvbGlvJTIwZGl2ZXJzaXR5JTIwYWxsb2NhdGlvbiUyMHBpZXxlbnwxfDB8fHwxNzc2MTI1MjI5fDA&ixlib=rb-4.1.0&w=720&h=380&fit=crop&q=80&fm=jpg&auto=format",
+    "alt": "a blue, pink, and white ball with a diagonal design",
+    "credit": {
+      "author": "Sufyan",
+      "authorUrl": "https://unsplash.com/@blenderdesigner?utm_source=dhlm_studio&utm_medium=referral",
+      "unsplashUrl": "https://unsplash.com/photos/kNdVHckIQIo?utm_source=dhlm_studio&utm_medium=referral"
+    }
+  },
+  "learn-w9-layer2": {
+    "src": "https://images.unsplash.com/photo-1639322537228-f710d846310a?ixid=M3w5MjE0MDh8MHwxfHNlYXJjaHwyfHxibG9ja2NoYWluJTIwc2NhbGluZyUyMG5ldHdvcmslMjBzcGVlZCUyMHRlY2hub2xvZ3l8ZW58MXwwfHx8MTc3NjEyNTIzMXww&ixlib=rb-4.1.0&w=720&h=380&fit=crop&q=80&fm=jpg&auto=format",
+    "alt": "a group of cubes that are on a black surface",
+    "credit": {
+      "author": "Shubham Dhage",
+      "authorUrl": "https://unsplash.com/@theshubhamdhage?utm_source=dhlm_studio&utm_medium=referral",
+      "unsplashUrl": "https://unsplash.com/photos/T9rKvI3N0NM?utm_source=dhlm_studio&utm_medium=referral"
+    }
+  },
+  "learn-w10-nfts": {
+    "src": "https://images.unsplash.com/photo-1654183818269-22495f928eb1?ixid=M3w5MjE0MDh8MHwxfHNlYXJjaHwyfHxuZnQlMjBkaWdpdGFsJTIwYXJ0JTIwY29sb3JmdWwlMjBhYnN0cmFjdCUyMHRva2VufGVufDF8MHx8fDE3NzYxMjUyMzN8MA&ixlib=rb-4.1.0&w=720&h=380&fit=crop&q=80&fm=jpg&auto=format",
+    "alt": "a close up of a person with a ring around his neck",
+    "credit": {
+      "author": "Barbora Dostálová",
+      "authorUrl": "https://unsplash.com/@bydostalova?utm_source=dhlm_studio&utm_medium=referral",
+      "unsplashUrl": "https://unsplash.com/photos/yYuW_7uTOzY?utm_source=dhlm_studio&utm_medium=referral"
+    }
+  },
+  "learn-w11-taxes": {
+    "src": "https://images.unsplash.com/photo-1772588627527-db42040f3a8b?ixid=M3w5MjE0MDh8MHwxfHNlYXJjaHwyfHx0YXglMjBkb2N1bWVudCUyMGNhbGN1bGF0b3IlMjBmaW5hbmNlJTIwZ292ZXJubWVudHxlbnwxfDB8fHwxNzc2MTI1MjM2fDA&ixlib=rb-4.1.0&w=720&h=380&fit=crop&q=80&fm=jpg&auto=format",
+    "alt": "Calculator and tax forms on a dark surface.",
+    "credit": {
+      "author": "Kelly Sikkema",
+      "authorUrl": "https://unsplash.com/@kellysikkema?utm_source=dhlm_studio&utm_medium=referral",
+      "unsplashUrl": "https://unsplash.com/photos/X2soeHdvkLY?utm_source=dhlm_studio&utm_medium=referral"
+    }
+  },
+  "learn-w12-advanced": {
+    "src": "https://images.unsplash.com/photo-1642239817349-3e1cf98817a5?ixid=M3w5MjE0MDh8MHwxfHNlYXJjaHwyfHxkZWZpJTIweWllbGQlMjBmYXJtaW5nJTIwbGlxdWlkaXR5JTIwcG9vbCUyMGFkdmFuY2VkfGVufDF8MHx8fDE3NzYxMjUyMzl8MA&ixlib=rb-4.1.0&w=720&h=380&fit=crop&q=80&fm=jpg&auto=format",
+    "alt": "a black and white photo of a bitcoin symbol",
+    "credit": {
+      "author": "Shubham Dhage",
+      "authorUrl": "https://unsplash.com/@theshubhamdhage?utm_source=dhlm_studio&utm_medium=referral",
+      "unsplashUrl": "https://unsplash.com/photos/xgBKsfcTkcU?utm_source=dhlm_studio&utm_medium=referral"
     }
   }
 }
