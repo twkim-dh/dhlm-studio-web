@@ -57,9 +57,10 @@ function getFeatured(all: ReportMeta[]): ReportMeta[] {
   ).slice(0, 2);
 }
 
-/** Combined 4-item latest feed: reports + blog posts, sorted by date desc */
-function getLatest(all: ReportMeta[]) {
-  const reports = all.map(r => ({ kind: 'report' as const, slug: r.slug, title: r.title, date: r.date, readTime: r.readTime, description: r.description, category: r.category, catColor: r.catColor, ticker: r.ticker, grade: r.grade, beafScore: r.beafScore, type: r.type }));
+/** Combined 4-item latest feed: reports + blog posts, sorted by date desc.
+ *  featuredSlugs: slugs already shown in Featured Analysis — excluded to avoid duplicates. */
+function getLatest(all: ReportMeta[], featuredSlugs: string[]) {
+  const reports = all.filter(r => !featuredSlugs.includes(r.slug)).map(r => ({ kind: 'report' as const, slug: r.slug, title: r.title, date: r.date, readTime: r.readTime, description: r.description, category: r.category, catColor: r.catColor, ticker: r.ticker, grade: r.grade, beafScore: r.beafScore, type: r.type }));
   const posts = blogPosts.filter(p => !p.noindex).map(p => ({ kind: 'blog' as const, slug: p.slug, title: p.title, date: p.date, readTime: p.readTime, description: p.description, category: p.category, catColor: p.catColor, ticker: '', grade: '', beafScore: 0, type: undefined }));
   return [...reports, ...posts].sort((a, b) => b.date > a.date ? 1 : -1).slice(0, 4);
 }
@@ -67,7 +68,7 @@ function getLatest(all: ReportMeta[]) {
 export default function Home() {
   const all = getAllReports();
   const featured = getFeatured(all);
-  const latest = getLatest(all);
+  const latest = getLatest(all, featured.map(r => r.slug));
 
   return (
     <div style={{ background: '#0B0F19', color: '#F1F5F9', minHeight: '100vh' }}>
