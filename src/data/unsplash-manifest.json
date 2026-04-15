@@ -311,13 +311,9 @@
     "credit": null
   },
   "deep-dive-aapl-april-2026": {
-    "src": "https://images.unsplash.com/photo-1572538194597-42aeefa26482?ixid=M3w5MjE0MDh8MHwxfHNlYXJjaHwxfHxhcHBsZSUyMGlwaG9uZSUyMGRlc2lnbiUyMHRlY2hub2xvZ3klMjBwcm9kdWN0fGVufDF8MHx8fDE3NzU4ODQ4ODN8MA&ixlib=rb-4.1.0&w=720&h=380&fit=crop&q=80&fm=jpg&auto=format",
-    "alt": "silver iPhone XI",
-    "credit": {
-      "author": "Vinoth Ragunathan",
-      "authorUrl": "https://unsplash.com/@helvetiica?utm_source=dhlm_studio&utm_medium=referral",
-      "unsplashUrl": "https://unsplash.com/photos/zSXMNCf4szU?utm_source=dhlm_studio&utm_medium=referral"
-    }
+    "src": "/images/content/aapl-hero.jpg",
+    "alt": "Deep Dive: Apple — April 2026 Analysis",
+    "credit": null
   },
   "deep-dive-amd-april-2026": {
     "src": "/images/content/amd-hero.jpg",
