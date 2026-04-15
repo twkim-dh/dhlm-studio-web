@@ -362,7 +362,7 @@ export default async function ReportPage({ params }: { params: Promise<{ slug: s
               {/* eslint-disable-next-line @next/next/no-img-element */}
               <img src={heroSrc} alt={heroAlt} style={{ maxWidth: '100%', maxHeight: 300, objectFit: 'contain', height: 'auto', display: 'block' }} />
             </div>
-            {unsplashEntry && (
+            {unsplashEntry?.credit && (
               <div style={{ padding: '3px 8px', textAlign: 'right' }}>
                 <span style={{ fontSize: 9, color: '#334155' }}>
                   Photo by <a href={unsplashEntry.credit.authorUrl} target="_blank" rel="noopener noreferrer" style={{ color: '#475569', textDecoration: 'none' }}>{unsplashEntry.credit.author}</a> on <a href={unsplashEntry.credit.unsplashUrl} target="_blank" rel="noopener noreferrer" style={{ color: '#475569', textDecoration: 'none' }}>Unsplash</a>
