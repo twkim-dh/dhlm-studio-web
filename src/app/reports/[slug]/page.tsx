@@ -363,9 +363,9 @@ export default async function ReportPage({ params }: { params: Promise<{ slug: s
         {/* Hero Image */}
         {heroSrc && (
           <div style={{ margin: '24px 0' }}>
-            <div style={{ width: '100%', maxHeight: 300, display: 'flex', alignItems: 'center', justifyContent: 'center', background: '#0f172a', borderRadius: 12, overflow: 'hidden', border: '1px solid #1E293B' }}>
+            <div style={{ width: '100%', aspectRatio: '16/9', background: '#0f172a', borderRadius: 12, overflow: 'hidden', border: '1px solid #1E293B' }}>
               {/* eslint-disable-next-line @next/next/no-img-element */}
-              <img src={heroSrc} alt={heroAlt} style={{ maxWidth: '100%', maxHeight: 300, objectFit: 'contain', height: 'auto', display: 'block' }} />
+              <img src={heroSrc} alt={heroAlt} style={{ width: '100%', height: '100%', objectFit: 'cover', display: 'block' }} />
             </div>
             {unsplashEntry?.credit && (
               <div style={{ padding: '3px 8px', textAlign: 'right' }}>
