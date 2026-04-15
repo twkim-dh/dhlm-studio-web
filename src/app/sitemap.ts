@@ -1,7 +1,18 @@
 import type { MetadataRoute } from "next";
 import { blogPosts } from "@/data/blog-posts";
+import fs from "fs";
+import path from "path";
 
 const BASE = "https://dhlm-studio.com";
+
+function getReportSlugs(): string[] {
+  try {
+    const dir = path.join(process.cwd(), 'src/content/reports');
+    return fs.readdirSync(dir)
+      .filter(f => f.endsWith('.md'))
+      .map(f => f.replace(/\.md$/, ''));
+  } catch { return []; }
+}
 
 export default function sitemap(): MetadataRoute.Sitemap {
   const now = new Date();
@@ -60,6 +71,12 @@ export default function sitemap(): MetadataRoute.Sitemap {
     { url: `${BASE}/lottery/number-generator`,  lastModified: now, changeFrequency: "weekly", priority: 0.7 },
     { url: `${BASE}/lottery/powerball/stats`,   lastModified: now, changeFrequency: "daily",  priority: 0.7 },
     { url: `${BASE}/lottery/mega-millions/stats`, lastModified: now, changeFrequency: "daily", priority: 0.7 },
+
+    // Reports (all slugs from content/reports/)
+    ...getReportSlugs().map(slug => ({
+      url: `${BASE}/reports/${slug}`,
+      lastModified: now, changeFrequency: "monthly" as const, priority: 0.8,
+    })),
 
     // Blog posts (quality filter: no noindex flag)
     ...qualityBlogs.map(p => ({
