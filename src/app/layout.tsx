@@ -57,6 +57,7 @@ export const metadata: Metadata = {
     card: "summary_large_image",
     title: "DHLM Studio — Brutal Edge Market Intelligence",
     description: "Real-time market data, Fear & Greed Index, Deep Dive reports, and data-driven stock analysis.",
+    images: [{ url: "https://dhlm-studio.com/twitter-image", width: 1200, height: 630, alt: "DHLM Studio — Brutal Edge Market Intelligence" }],
   },
   alternates: {
     canonical: "https://dhlm-studio.com",
