@@ -45,23 +45,24 @@ interface TodayMarketPayload {
   source: 'live' | 'cached' | 'fallback';
 }
 
+// Fallback updated 2026-04-15 to reflect confirmed Apr-15 closing data.
 const FALLBACK: Omit<TodayMarketPayload, 'asOf' | 'source' | 'verdict'> = {
   indices: [
-    { symbol: '^GSPC', price: 5612.40, change: -135.20, changesPercentage: -2.36 },
-    { symbol: '^IXIC', price: 17834.50, change: -485.30, changesPercentage: -2.65 },
-    { symbol: '^DJI',  price: 41250.80, change: -780.40, changesPercentage: -1.86 },
+    { symbol: '^GSPC', price: 6966.78, change:  80.54, changesPercentage:  1.17 },
+    { symbol: '^IXIC', price: 23639.08, change: 453.27, changesPercentage:  1.96 },
+    { symbol: '^DJI',  price: 48536.00, change: 319.70, changesPercentage:  0.66 },
   ],
   macro: [
-    { symbol: 'CLUSD', price:  78.40, change: 1.20, changesPercentage:  1.55 },
-    { symbol: 'GCUSD', price: 2342.50, change: 18.30, changesPercentage:  0.79 },
-    { symbol: '^VIX',  price:  23.70, change: 4.10, changesPercentage: 20.92 },
-    { symbol: '^TNX',  price:   4.42, change: 0.11, changesPercentage:  2.55 },
+    { symbol: 'CLUSD', price:   62.47, change: -0.36, changesPercentage: -0.57 },
+    { symbol: 'GCUSD', price: 3238.50, change: 12.10, changesPercentage:  0.37 },
+    { symbol: '^VIX',  price:   30.89, change: -2.40, changesPercentage: -7.21 },
+    { symbol: '^TNX',  price:    4.26, change:  0.05, changesPercentage:  1.19 },
   ],
   crypto: [
-    { id: 'bitcoin',  price: 66850, change24h:  1.4 },
-    { id: 'ethereum', price:  2030, change24h:  2.1 },
+    { id: 'bitcoin',  price: 74659, change24h:  0.36 },
+    { id: 'ethereum', price:  2336, change24h: -1.42 },
   ],
-  fearGreed: { value: 50, label: 'Neutral', source: 'CNN' },
+  fearGreed: { value: 47, label: 'Neutral', source: 'CNN' },
 };
 
 /** Crypto is a 24/7 market — three-tier TTL independent of stock schedule.
@@ -80,10 +81,10 @@ function cryptoCacheTtlSeconds(): number {
 // Redis is the source of truth — every cold start checks Redis before
 // touching the live APIs. The in-memory layer is just a hot cache for
 // repeat reads on the same warm instance.
-// v4: bumped 2026-04-14 — switched to EOD close model (24h TTL)
-const REDIS_KEY = 'today-market:cache:v4';
+// v5: bumped 2026-04-15 — cleared stale Redis cache with outdated fallback values
+const REDIS_KEY = 'today-market:cache:v5';
 // Separate crypto cache key — refreshes independently at 5/15/30 min tiers.
-const REDIS_CRYPTO_KEY = 'today-market:crypto:v4';
+const REDIS_CRYPTO_KEY = 'today-market:crypto:v5';
 let memCache: { data: TodayMarketPayload; ts: number } | null = null;
 let memCryptoCache: { data: CryptoPrice[]; ts: number } | null = null;
 

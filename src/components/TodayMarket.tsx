@@ -18,24 +18,25 @@ interface AltCoin { id: string; symbol: string; name: string; price: number; cha
 
 // Static SSR fallback so the section is never empty on first paint.
 // Replaced with live data on mount via /api/today-market.
+// Fallback updated 2026-04-15 to reflect confirmed Apr-15 closing data.
 const SSR_FALLBACK: TodayMarketPayload = {
   asOf: new Date().toISOString(),
   indices: [
-    { symbol: '^GSPC', price: 5612.40, change: -135.20, changesPercentage: -2.36 },
-    { symbol: '^IXIC', price: 17834.50, change: -485.30, changesPercentage: -2.65 },
-    { symbol: '^DJI',  price: 41250.80, change: -780.40, changesPercentage: -1.86 },
+    { symbol: '^GSPC', price: 6966.78, change:  80.54, changesPercentage:  1.17 },
+    { symbol: '^IXIC', price: 23639.08, change: 453.27, changesPercentage:  1.96 },
+    { symbol: '^DJI',  price: 48536.00, change: 319.70, changesPercentage:  0.66 },
   ],
   macro: [
-    { symbol: 'CLUSD', price:   78.40, change: 1.20, changesPercentage:  1.55 },
-    { symbol: 'GCUSD', price: 2342.50, change: 18.30, changesPercentage:  0.79 },
-    { symbol: '^VIX', price:   23.70, change: 4.10, changesPercentage: 20.92 },
-    { symbol: '^TNX', price:    4.42, change: 0.11, changesPercentage:  2.55 },
+    { symbol: 'CLUSD', price:   62.47, change: -0.36, changesPercentage: -0.57 },
+    { symbol: 'GCUSD', price: 3238.50, change: 12.10, changesPercentage:  0.37 },
+    { symbol: '^VIX',  price:   30.89, change: -2.40, changesPercentage: -7.21 },
+    { symbol: '^TNX',  price:    4.26, change:  0.05, changesPercentage:  1.19 },
   ],
   crypto: [
-    { id: 'bitcoin',  price: 66850, change24h: 1.4 },
-    { id: 'ethereum', price:  2030, change24h: 2.1 },
+    { id: 'bitcoin',  price: 74659, change24h:  0.36 },
+    { id: 'ethereum', price:  2336, change24h: -1.42 },
   ],
-  fearGreed: { value: 50, label: 'Neutral', source: 'CNN' },
+  fearGreed: { value: 47, label: 'Neutral', source: 'CNN' },
   verdict: { text: 'Loading the latest market snapshot.', trigger: 'neutral' },
   source: 'fallback',
 };

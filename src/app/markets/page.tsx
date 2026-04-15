@@ -13,11 +13,12 @@ interface SectorGroup { name: string; change: number; totalMC: number; stocks: T
 
 // ─── Static fallback indices (shown when FMP unavailable) ─────────────────────
 
+// Fallback updated 2026-04-15 to reflect confirmed Apr-15 closing data.
 const INDEX_FALLBACK: IndexItem[] = [
-  { symbol: '^GSPC', label: 'S&P 500',     price: 5074,  pct: 0 },
-  { symbol: '^IXIC', label: 'Nasdaq',       price: 15896, pct: 0 },
-  { symbol: '^DJI',  label: 'Dow',          price: 38503, pct: 0 },
-  { symbol: '^RUT',  label: 'Russell 2000', price: 2001,  pct: 0 },
+  { symbol: '^GSPC', label: 'S&P 500',     price: 6967, pct: 0 },
+  { symbol: '^IXIC', label: 'Nasdaq',       price: 23639, pct: 0 },
+  { symbol: '^DJI',  label: 'Dow',          price: 48536, pct: 0 },
+  { symbol: '^RUT',  label: 'Russell 2000', price: 2120,  pct: 0 },
 ];
 
 // ─── Color helpers ────────────────────────────────────────────────────────────

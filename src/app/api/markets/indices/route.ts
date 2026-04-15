@@ -26,6 +26,29 @@ let memCache: { data: unknown; ts: number } | null = null;
 
 export const dynamic = 'force-dynamic';
 
+// Fetch a single index quote via ?symbol= (free-tier compatible).
+// batch-quote-short is restricted on free tier.
+async function fetchSingle(sym: string): Promise<{ symbol: string; label: string; price: number; pct: number } | null> {
+  try {
+    const res = await fetch(
+      `${FMP_BASE}/quote?symbol=${encodeURIComponent(sym)}&apikey=${FMP_KEY}`,
+      { cache: 'no-store' }
+    );
+    await fmpTrackCall();
+    if (!res.ok) return null;
+    const data = await res.json();
+    if (!Array.isArray(data) || !data[0]) return null;
+    const d = data[0] as Record<string, unknown>;
+    const price = Number(d.price) || 0;
+    if (price === 0) return null;
+    // FMP returns changePercentage (not changesPercentage) for index quotes
+    const pct = Number(d.changePercentage ?? d.changesPercentage ?? 0);
+    return { symbol: sym, label: LABELS[sym], price, pct };
+  } catch {
+    return null;
+  }
+}
+
 export async function GET() {
   const ttl = cacheTtlMs();
   if (memCache && Date.now() - memCache.ts < ttl) {
@@ -36,31 +59,17 @@ export async function GET() {
     return NextResponse.json({ indices: [], stale: true });
   }
   if (!(await fmpCanCall())) {
-    // Budget exhausted — return stale cache or empty
     return NextResponse.json(memCache ? memCache.data : { indices: [], stale: true });
   }
 
   try {
-    const csv = SYMBOLS.map(encodeURIComponent).join(',');
-    const res = await fetch(
-      `${FMP_BASE}/batch-quote-short?symbols=${csv}&apikey=${FMP_KEY}`,
-      { cache: 'no-store' }
-    );
-    await fmpTrackCall();
-    if (!res.ok) return NextResponse.json({ indices: [], stale: true });
-    const data = await res.json();
-    if (!Array.isArray(data)) return NextResponse.json({ indices: [], stale: true });
+    // Fetch all 4 in parallel — 1 FMP call each, all free-tier compatible
+    const results = await Promise.all(SYMBOLS.map(fetchSingle));
+    const indices = results.filter(Boolean);
 
-    const indices = SYMBOLS.map(sym => {
-      const q = data.find((d: Record<string, unknown>) => d.symbol === sym);
-      if (!q) return null;
-      return {
-        symbol: sym,
-        label: LABELS[sym],
-        price: Number(q.price) || 0,
-        pct: Number(q.changesPercentage) || 0,
-      };
-    }).filter(Boolean);
+    if (indices.length === 0) {
+      return NextResponse.json({ indices: [], stale: true });
+    }
 
     const result = { indices };
     memCache = { data: result, ts: Date.now() };

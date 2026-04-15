@@ -4,11 +4,31 @@ import { fmpCanCall, fmpTrackCall } from '@/lib/fmp-tracker';
 const FMP_KEY  = process.env.FMP_API_KEY || '';
 const FMP_BASE = 'https://financialmodelingprep.com/stable';
 
-function fmtCap(v: number) {
-  return v >= 1e12 ? `$${(v / 1e12).toFixed(2)}T`
-       : v >= 1e9  ? `$${(v / 1e9).toFixed(0)}B`
-       : `$${(v / 1e6).toFixed(0)}M`;
-}
+// Top 20 US stocks by market cap with sector assignments.
+// stock-screener returns [] on free tier — hardcode the list, fetch only
+// daily change% via individual ?symbol= queries (free-tier compatible).
+const TOP20_STOCKS: { ticker: string; name: string; sector: string; marketCap: number }[] = [
+  { ticker: 'NVDA',  name: 'NVIDIA',          sector: 'Technology',        marketCap: 4_200_000_000_000 },
+  { ticker: 'AAPL',  name: 'Apple',            sector: 'Technology',        marketCap: 3_800_000_000_000 },
+  { ticker: 'MSFT',  name: 'Microsoft',        sector: 'Technology',        marketCap: 3_000_000_000_000 },
+  { ticker: 'GOOGL', name: 'Alphabet',         sector: 'Communication',     marketCap: 3_600_000_000_000 },
+  { ticker: 'AMZN',  name: 'Amazon',           sector: 'Consumer Cyclical', marketCap: 2_300_000_000_000 },
+  { ticker: 'META',  name: 'Meta',             sector: 'Communication',     marketCap: 1_700_000_000_000 },
+  { ticker: 'TSLA',  name: 'Tesla',            sector: 'Consumer Cyclical', marketCap: 1_500_000_000_000 },
+  { ticker: 'AVGO',  name: 'Broadcom',         sector: 'Technology',        marketCap: 1_700_000_000_000 },
+  { ticker: 'LLY',   name: 'Eli Lilly',        sector: 'Healthcare',        marketCap:   780_000_000_000 },
+  { ticker: 'JPM',   name: 'JPMorgan',         sector: 'Financial',         marketCap:   850_000_000_000 },
+  { ticker: 'V',     name: 'Visa',             sector: 'Financial',         marketCap:   620_000_000_000 },
+  { ticker: 'MA',    name: 'Mastercard',       sector: 'Financial',         marketCap:   450_000_000_000 },
+  { ticker: 'WMT',   name: 'Walmart',          sector: 'Consumer Defensive',marketCap:   680_000_000_000 },
+  { ticker: 'XOM',   name: 'ExxonMobil',       sector: 'Energy',            marketCap:   510_000_000_000 },
+  { ticker: 'UNH',   name: 'UnitedHealth',     sector: 'Healthcare',        marketCap:   450_000_000_000 },
+  { ticker: 'JNJ',   name: 'Johnson & J.',     sector: 'Healthcare',        marketCap:   380_000_000_000 },
+  { ticker: 'ORCL',  name: 'Oracle',           sector: 'Technology',        marketCap:   480_000_000_000 },
+  { ticker: 'BAC',   name: 'Bank of America',  sector: 'Financial',         marketCap:   330_000_000_000 },
+  { ticker: 'GE',    name: 'GE Aerospace',     sector: 'Industrials',       marketCap:   220_000_000_000 },
+  { ticker: 'CVX',   name: 'Chevron',          sector: 'Energy',            marketCap:   280_000_000_000 },
+];
 
 // Smart TTL: weekend=6h, after-hours=30min, market-hours=5min
 function cacheTtlMs(): number {
@@ -24,6 +44,23 @@ let memCache: { data: unknown; ts: number } | null = null;
 
 export const dynamic = 'force-dynamic';
 
+async function fetchChange(ticker: string): Promise<number | null> {
+  try {
+    const res = await fetch(
+      `${FMP_BASE}/quote?symbol=${encodeURIComponent(ticker)}&apikey=${FMP_KEY}`,
+      { cache: 'no-store' }
+    );
+    await fmpTrackCall();
+    if (!res.ok) return null;
+    const data = await res.json();
+    if (!Array.isArray(data) || !data[0]) return null;
+    const d = data[0] as Record<string, unknown>;
+    return Number(d.changePercentage ?? d.changesPercentage ?? 0);
+  } catch {
+    return null;
+  }
+}
+
 export async function GET() {
   const ttl = cacheTtlMs();
   if (memCache && Date.now() - memCache.ts < ttl) {
@@ -36,29 +73,19 @@ export async function GET() {
   }
 
   try {
-    const res = await fetch(
-      `${FMP_BASE}/stock-screener?marketCapMoreThan=50000000000&limit=30&country=US&apikey=${FMP_KEY}`,
-      { cache: 'no-store' }
-    );
-    await fmpTrackCall();
-    if (!res.ok) return NextResponse.json({ stocks: [] });
-    const data = await res.json();
-    if (!Array.isArray(data)) return NextResponse.json({ stocks: [] });
+    // Fetch changes in parallel (20 calls — within free tier budget at 30-min TTL)
+    const changes = await Promise.all(TOP20_STOCKS.map(s => fetchChange(s.ticker)));
 
-    const stocks = data
-      .filter((s: Record<string, unknown>) => s.marketCap)
-      .sort((a: Record<string, unknown>, b: Record<string, unknown>) => (Number(b.marketCap) || 0) - (Number(a.marketCap) || 0))
-      .slice(0, 20)
-      .map((s: Record<string, unknown>) => ({
-        ticker: s.symbol as string,
-        name: (s.companyName as string) || (s.symbol as string),
-        price: Number(s.price) || 0,
-        change: Number(s.changesPercentage) || 0,
-        marketCap: Number(s.marketCap) || 0,
-        marketCapFmt: fmtCap(Number(s.marketCap) || 0),
-        sector: (s.sector as string) || '',
-        image: (s.image as string) || '',
-      }));
+    const stocks = TOP20_STOCKS.map((s, i) => ({
+      ticker: s.ticker,
+      name: s.name,
+      price: 0,  // price not needed for heatmap color logic
+      change: changes[i] ?? 0,
+      marketCap: s.marketCap,
+      marketCapFmt: '',
+      sector: s.sector,
+      image: `https://financialmodelingprep.com/image-stock/${s.ticker}.png`,
+    }));
 
     const result = { stocks };
     memCache = { data: result, ts: Date.now() };
