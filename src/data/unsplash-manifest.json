@@ -349,13 +349,9 @@
     }
   },
   "deep-dive-nvda-april-2026": {
-    "src": "https://images.unsplash.com/photo-1716967318503-05b7064afa41?ixid=M3w5MjE0MDh8MHwxfHNlYXJjaHwxfHxudmlkaWElMjBncHUlMjBzZW1pY29uZHVjdG9yJTIwdGVjaG5vbG9neXxlbnwxfDB8fHwxNzc1ODg0ODk3fDA&ixlib=rb-4.1.0&w=720&h=380&fit=crop&q=80&fm=jpg&auto=format",
-    "alt": "the nvidia logo is displayed on a table",
-    "credit": {
-      "author": "Mariia Shalabaieva",
-      "authorUrl": "https://unsplash.com/@maria_shalabaieva?utm_source=dhlm_studio&utm_medium=referral",
-      "unsplashUrl": "https://unsplash.com/photos/0SqsTxWhgNU?utm_source=dhlm_studio&utm_medium=referral"
-    }
+    "src": "/images/content/nvda-hero.jpg",
+    "alt": "Deep Dive: NVIDIA — April 2026 Analysis",
+    "credit": null
   },
   "deep-dive-pltr-april-2026": {
     "src": "/images/content/pltr-hero.jpg",
