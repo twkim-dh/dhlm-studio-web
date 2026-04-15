@@ -340,13 +340,9 @@
     "credit": null
   },
   "deep-dive-msft-april-2026": {
-    "src": "https://images.unsplash.com/photo-1632239776255-0a7f24814df2?ixid=M3w5MjE0MDh8MHwxfHNlYXJjaHwxfHxtaWNyb3NvZnQlMjBjbG91ZCUyMHRlY2hub2xvZ3klMjBvZmZpY2UlMjBzb2Z0d2FyZXxlbnwxfDB8fHwxNzc1ODg0ODk1fDA&ixlib=rb-4.1.0&w=720&h=380&fit=crop&q=80&fm=jpg&auto=format",
-    "alt": "a close up of a cell phone with icons on it",
-    "credit": {
-      "author": "Ed Hardie",
-      "authorUrl": "https://unsplash.com/@edhardie?utm_source=dhlm_studio&utm_medium=referral",
-      "unsplashUrl": "https://unsplash.com/photos/xG02JzIBf7o?utm_source=dhlm_studio&utm_medium=referral"
-    }
+    "src": "/images/content/msft-hero.jpg",
+    "alt": "Deep Dive: Microsoft — April 2026 Analysis",
+    "credit": null
   },
   "deep-dive-nvda-april-2026": {
     "src": "/images/content/nvda-hero.jpg",
