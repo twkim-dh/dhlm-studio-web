@@ -11,6 +11,7 @@ beafScore: 71
 heroImage: "/images/content/deep-dive-report.png"
 description: "Six quantum stocks now trade on US markets. IonQ, Rigetti, D-Wave, Infleqtion, Xanadu, Horizon Quantum — multiples from 64x to 1,277x EV/Revenue. The sector is not a bubble, but most stocks price it like one. Our verdict: one name, one thesis, one sector call."
 type: "special-report"
+homeRank: 1
 sector: "Technology"
 tickers: ["IONQ", "RGTI", "QBTS", "INFQ", "XNDU", "HQ"]
 seoTitle: "Quantum Stocks 2026: IonQ, Rigetti, D-Wave — Special Sector Report | DHLM Studio"

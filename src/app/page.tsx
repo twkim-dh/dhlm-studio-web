@@ -22,7 +22,7 @@ const card = { background: '#111827', borderRadius: 14, border: '1px solid #1E29
 interface ReportMeta {
   title: string; slug: string; ticker: string; date: string; readTime: string;
   category: string; catColor: string; grade: string; beafScore: number;
-  description: string; type?: string; tickers?: string[];
+  description: string; type?: string; tickers?: string[]; homeRank?: number;
 }
 
 /** Days since a date string (negative = future) */
@@ -49,12 +49,18 @@ function getAllReports(): ReportMeta[] {
   } catch { return []; }
 }
 
-/** Max 2 featured reports with active badge (≤14 days old) */
+/** Max 2 featured reports with active badge (≤14 days old).
+ *  Reports with homeRank are pinned first (lower number = higher priority);
+ *  unranked reports fall back to date-desc ordering. */
 function getFeatured(all: ReportMeta[]): ReportMeta[] {
   return all.filter(r =>
     (r.type === 'hot-sector' || r.type === 'hidden-gem' || r.type === 'special-report') &&
     daysAgo(r.date) <= 14
-  ).slice(0, 2);
+  ).sort((a, b) => {
+    const ra = a.homeRank ?? 99, rb = b.homeRank ?? 99;
+    if (ra !== rb) return ra - rb;
+    return b.date > a.date ? 1 : -1;
+  }).slice(0, 2);
 }
 
 /** Combined 4-item latest feed: reports + blog posts, sorted by date desc.
