@@ -227,7 +227,7 @@ export default async function ReportPage({ params }: { params: Promise<{ slug: s
   const beafScores = parseBeafScores(body);
 
   // Manifest-first hero image — Unsplash CDN overwrites generic static fallback
-  const unsplashEntry = (unsplashManifest as Record<string, { src: string; alt: string; credit: { author: string; authorUrl: string; unsplashUrl: string } }>)[slug];
+  const unsplashEntry = (unsplashManifest as Record<string, { src: string; alt: string; credit: { author: string; authorUrl: string; unsplashUrl: string } | null }>)[slug];
   const heroSrc = unsplashEntry?.src || fm.heroImage;
   const heroAlt = unsplashEntry?.alt || fm.title;
 
