@@ -2,7 +2,7 @@ import type { Metadata } from 'next';
 import Link from 'next/link';
 import unsplashManifest from '@/data/unsplash-manifest.json';
 
-type ManifestEntry = { src: string; alt: string; credit: { author: string; authorUrl: string; unsplashUrl: string } };
+type ManifestEntry = { src: string; alt: string; credit: { author: string; authorUrl: string; unsplashUrl: string } | null };
 const manifest = unsplashManifest as Record<string, ManifestEntry>;
 
 export const metadata: Metadata = {

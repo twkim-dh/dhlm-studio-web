@@ -174,7 +174,7 @@ export default async function PaperVsProfitArticlePage({ params }: { params: Pro
   const fm = a.fm;
   const c = verdictColor(fm.verdict);
 
-  const unsplashEntry = (unsplashManifest as Record<string, { src: string; alt: string; credit: { author: string; authorUrl: string; unsplashUrl: string } }>)[slug];
+  const unsplashEntry = (unsplashManifest as Record<string, { src: string; alt: string; credit: { author: string; authorUrl: string; unsplashUrl: string } | null }>)[slug];
 
   const articleLd = {
     '@context': 'https://schema.org', '@type': 'ScholarlyArticle',
@@ -244,11 +244,13 @@ export default async function PaperVsProfitArticlePage({ params }: { params: Pro
               {/* eslint-disable-next-line @next/next/no-img-element */}
               <img src={unsplashEntry.src} alt={unsplashEntry.alt} style={{ maxWidth: '100%', maxHeight: 300, objectFit: 'contain', height: 'auto', display: 'block' }} />
             </div>
+            {unsplashEntry.credit && (
             <div style={{ padding: '3px 8px', textAlign: 'right' }}>
               <span style={{ fontSize: 9, color: '#334155' }}>
                 Photo by <a href={unsplashEntry.credit.authorUrl} target="_blank" rel="noopener noreferrer" style={{ color: '#475569', textDecoration: 'none' }}>{unsplashEntry.credit.author}</a> on <a href={unsplashEntry.credit.unsplashUrl} target="_blank" rel="noopener noreferrer" style={{ color: '#475569', textDecoration: 'none' }}>Unsplash</a>
               </span>
             </div>
+            )}
           </div>
         )}
 

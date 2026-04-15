@@ -96,7 +96,7 @@ export default async function BlogPostPage({ params }: { params: Promise<{ slug:
   const related = blogPosts.filter(p => p.category === post.category && p.slug !== post.slug).slice(0, 3);
 
   // Resolve hero image: explicit heroImage > Unsplash manifest
-  const unsplashEntry = (unsplashManifest as Record<string, { src: string; alt: string; credit: { author: string; authorUrl: string; unsplashUrl: string } }>)[slug];
+  const unsplashEntry = (unsplashManifest as Record<string, { src: string; alt: string; credit: { author: string; authorUrl: string; unsplashUrl: string } | null }>)[slug];
   const heroSrc    = post.heroImage || unsplashEntry?.src || null;
   const heroCredit = !post.heroImage ? unsplashEntry?.credit : null;
 
