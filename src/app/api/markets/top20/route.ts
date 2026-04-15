@@ -1,12 +1,15 @@
 import { NextResponse } from 'next/server';
 import { fmpCanCall, fmpTrackCall } from '@/lib/fmp-tracker';
+import { getRedis } from '@/lib/redis';
 
 const FMP_KEY  = process.env.FMP_API_KEY || '';
 const FMP_BASE = 'https://financialmodelingprep.com/stable';
 
-// Top 20 US stocks by market cap with sector assignments.
-// stock-screener returns [] on free tier — hardcode the list, fetch only
-// daily change% via individual ?symbol= queries (free-tier compatible).
+// Redis key — bump suffix to invalidate stale cache
+const REDIS_KEY = 'markets:top20:v1';
+// 24h TTL — data is EOD, same as today-market. Prevents 20 FMP calls per cold start.
+const CACHE_TTL = 86400;
+
 const TOP20_STOCKS: { ticker: string; name: string; sector: string; marketCap: number }[] = [
   { ticker: 'NVDA',  name: 'NVIDIA',          sector: 'Technology',        marketCap: 4_200_000_000_000 },
   { ticker: 'AAPL',  name: 'Apple',            sector: 'Technology',        marketCap: 3_800_000_000_000 },
@@ -30,16 +33,6 @@ const TOP20_STOCKS: { ticker: string; name: string; sector: string; marketCap: n
   { ticker: 'CVX',   name: 'Chevron',          sector: 'Energy',            marketCap:   280_000_000_000 },
 ];
 
-// Smart TTL: weekend=6h, after-hours=30min, market-hours=5min
-function cacheTtlMs(): number {
-  const now = new Date();
-  const dow = now.getUTCDay();
-  if (dow === 0 || dow === 6) return 6 * 60 * 60 * 1000;
-  const min = now.getUTCHours() * 60 + now.getUTCMinutes();
-  if (min >= 13 * 60 + 30 && min < 20 * 60) return 5 * 60 * 1000;
-  return 30 * 60 * 1000;
-}
-
 let memCache: { data: unknown; ts: number } | null = null;
 
 export const dynamic = 'force-dynamic';
@@ -62,10 +55,23 @@ async function fetchChange(ticker: string): Promise<number | null> {
 }
 
 export async function GET() {
-  const ttl = cacheTtlMs();
-  if (memCache && Date.now() - memCache.ts < ttl) {
+  // 1. In-memory cache (warm instance)
+  if (memCache && Date.now() - memCache.ts < CACHE_TTL * 1000) {
     return NextResponse.json(memCache.data);
   }
+
+  // 2. Redis cache (shared across all Vercel instances)
+  try {
+    const redis = getRedis();
+    const cached = await redis.get(REDIS_KEY);
+    if (cached) {
+      const parsed = JSON.parse(cached) as { stocks: unknown[]; ts: number };
+      if (Date.now() - parsed.ts < CACHE_TTL * 1000) {
+        memCache = { data: parsed, ts: parsed.ts };
+        return NextResponse.json(parsed);
+      }
+    }
+  } catch { /* Redis unavailable — continue to FMP */ }
 
   if (!FMP_KEY) return NextResponse.json({ stocks: [] });
   if (!(await fmpCanCall())) {
@@ -73,13 +79,12 @@ export async function GET() {
   }
 
   try {
-    // Fetch changes in parallel (20 calls — within free tier budget at 30-min TTL)
     const changes = await Promise.all(TOP20_STOCKS.map(s => fetchChange(s.ticker)));
 
     const stocks = TOP20_STOCKS.map((s, i) => ({
       ticker: s.ticker,
       name: s.name,
-      price: 0,  // price not needed for heatmap color logic
+      price: 0,
       change: changes[i] ?? 0,
       marketCap: s.marketCap,
       marketCapFmt: '',
@@ -87,8 +92,15 @@ export async function GET() {
       image: `https://financialmodelingprep.com/image-stock/${s.ticker}.png`,
     }));
 
-    const result = { stocks };
+    const result = { stocks, ts: Date.now() };
     memCache = { data: result, ts: Date.now() };
+
+    // Write to Redis — 24h TTL, survives Vercel cold starts
+    try {
+      const redis = getRedis();
+      await redis.set(REDIS_KEY, JSON.stringify(result), 'EX', CACHE_TTL);
+    } catch { /* Redis write failure is non-fatal */ }
+
     return NextResponse.json(result);
   } catch {
     return NextResponse.json({ stocks: [] });

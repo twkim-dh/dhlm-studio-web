@@ -24,22 +24,22 @@ const date = process.env.DAILY_BRIEF_DATE || new Date().toISOString().slice(0, 1
 // ── Fallback data ──────────────────────────────────────────────────────────────
 const FALLBACK = {
   indices: [
-    { symbol: '^GSPC', label: 'S&P 500',     price: 5612.40,  change: -135.20, pct: -2.36 },
-    { symbol: '^IXIC', label: 'Nasdaq',      price: 17834.50, change: -485.30, pct: -2.65 },
-    { symbol: '^DJI',  label: 'Dow',         price: 41250.80, change: -780.40, pct: -1.86 },
-    { symbol: '^RUT',  label: 'Russell 2000', price: 2010.50, change:  -52.30, pct: -2.54 },
+    { symbol: '^GSPC', label: 'S&P 500',      price: 5282.70,  change:  -9.96, pct: -0.19 },
+    { symbol: '^IXIC', label: 'Nasdaq',       price: 16286.45, change:  15.97, pct:  0.10 },
+    { symbol: '^DJI',  label: 'Dow',          price: 39142.23, change: -699.57, pct: -1.76 },
+    { symbol: '^RUT',  label: 'Russell 2000',  price:  1830.12, change:  -27.44, pct: -1.48 },
   ],
   macro: [
-    { symbol: 'CLUSD', label: 'WTI Oil', price: 78.40,   change:  1.20, pct:  1.55 },
-    { symbol: 'GCUSD', label: 'Gold',    price: 2342.50, change: 18.30, pct:  0.79 },
-    { symbol: '^VIX',  label: 'VIX',     price: 23.70,   change:  4.10, pct: 20.92 },
-    { symbol: '^TNX',  label: 'US 10Y',  price:  4.42,   change:  0.11, pct:  2.55 },
+    { symbol: 'CLUSD', label: 'WTI Oil', price:  61.53,   change:  -0.50, pct: -0.81 },
+    { symbol: 'GCUSD', label: 'Gold',    price: 3234.60,  change:  45.20, pct:  1.42 },
+    { symbol: '^VIX',  label: 'VIX',     price:  32.64,   change:  -2.10, pct: -6.05 },
+    { symbol: '^TNX',  label: 'US 10Y',  price:   4.37,   change:   0.04, pct:  0.92 },
   ],
   crypto: [
-    { id: 'bitcoin',  label: 'BTC', price: 66850, change24h: 1.4 },
-    { id: 'ethereum', label: 'ETH', price:  2030, change24h: 2.1 },
+    { id: 'bitcoin',  label: 'BTC', price: 84200, change24h:  0.8 },
+    { id: 'ethereum', label: 'ETH', price:  1590, change24h: -1.2 },
   ],
-  fearGreed: { value: 38, label: 'Fear', source: 'CNN' },
+  fearGreed: { value: 25, label: 'Extreme Fear', source: 'CNN' },
 };
 
 const LABELS = {
