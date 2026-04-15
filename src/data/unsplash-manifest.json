@@ -948,5 +948,23 @@
     "src": "/images/content/anthropic-hero.jpg",
     "alt": "Anthropic logo",
     "credit": null
+  },
+  "crypto-treasury-sector-report-april-2026": {
+    "src": "https://images.unsplash.com/photo-1621761191319-c6fb62004040?ixlib=rb-4.1.0&w=720&h=380&fit=crop&q=80&fm=jpg&auto=format",
+    "alt": "Bitcoin and cryptocurrency coins on a circuit board",
+    "credit": {
+      "author": "Kanchanara",
+      "authorUrl": "https://unsplash.com/@kanchanara?utm_source=dhlm_studio&utm_medium=referral",
+      "unsplashUrl": "https://unsplash.com/photos/FsSGgHXq9CA?utm_source=dhlm_studio&utm_medium=referral"
+    }
+  },
+  "deep-dive-crcl-circle-april-2026": {
+    "src": "https://images.unsplash.com/photo-1559526324-4b87b5e36e44?ixlib=rb-4.1.0&w=720&h=380&fit=crop&q=80&fm=jpg&auto=format",
+    "alt": "Digital payment and fintech abstract background",
+    "credit": {
+      "author": "Clay Banks",
+      "authorUrl": "https://unsplash.com/@claybanks?utm_source=dhlm_studio&utm_medium=referral",
+      "unsplashUrl": "https://unsplash.com/photos/LjqARJaJotc?utm_source=dhlm_studio&utm_medium=referral"
+    }
   }
 }
