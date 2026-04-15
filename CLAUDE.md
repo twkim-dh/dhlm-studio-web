@@ -2,6 +2,16 @@
 
 ---
 
+## ⛔ 언어 규칙 (Language Rules)
+
+- **모든 응답은 한국어로 작성한다.**
+- 대표님(tw.kim@dhlm.co.kr)과의 대화: 반드시 한국어
+- 코드 주석 / 커밋 메시지: 영어 허용
+- 일본어, 중국어, 기타 언어 사용 절대 금지
+- 영어 기술 용어(API, TypeScript 등)는 그대로 사용 가능
+
+---
+
 ## ⛔ NON-NEGOTIABLE: Every Task Must End With Git Push
 
 ```
