@@ -747,13 +747,9 @@
     }
   },
   "quantum-sector-special-report-april-2026": {
-    "src": "https://images.unsplash.com/photo-1728042153273-8f9eefe78590?ixid=M3w5MjE0MDh8MHwxfGFsbHx8fHx8fHx8fDE3NzYxMjU4Mzh8&ixlib=rb-4.1.0&w=720&h=380&fit=crop&q=80&fm=jpg&auto=format",
-    "alt": "A close up of a computer chip in a dark room",
-    "credit": {
-      "author": "Steve A Johnson",
-      "authorUrl": "https://unsplash.com/@steve_j?utm_source=dhlm_studio&utm_medium=referral",
-      "unsplashUrl": "https://unsplash.com/photos/hHg_oVpuVpo?utm_source=dhlm_studio&utm_medium=referral"
-    }
+    "src": "/images/content/quantum-hero.jpg",
+    "alt": "Quantum Sector Special Report: Not Commercialization Complete — An Investable Early-Stage Industry",
+    "credit": null
   },
   "learn-card-crypto": {
     "src": "https://images.unsplash.com/photo-1761171720667-b9ac0586c047?ixid=M3w5MjE0MDh8MHwxfHNlYXJjaHwyfHxjcnlwdG9jdXJyZW5jeSUyMGJpdGNvaW4lMjBkaWdpdGFsJTIwZ29sZCUyMGNvaW58ZW58MXwwfHx8MTc3NjEyNTE5OXww&ixlib=rb-4.1.0&w=720&h=380&fit=crop&q=80&fm=jpg&auto=format",
@@ -950,21 +946,13 @@
     "credit": null
   },
   "crypto-treasury-sector-report-april-2026": {
-    "src": "https://images.unsplash.com/photo-1621761191319-c6fb62004040?ixlib=rb-4.1.0&w=720&h=380&fit=crop&q=80&fm=jpg&auto=format",
-    "alt": "Bitcoin and cryptocurrency coins on a circuit board",
-    "credit": {
-      "author": "Kanchanara",
-      "authorUrl": "https://unsplash.com/@kanchanara?utm_source=dhlm_studio&utm_medium=referral",
-      "unsplashUrl": "https://unsplash.com/photos/FsSGgHXq9CA?utm_source=dhlm_studio&utm_medium=referral"
-    }
+    "src": "/images/content/crypto-treasury-hero.jpg",
+    "alt": "Crypto Treasury Stocks: Leveraged Genius or Financial Engineering Gone Too Far?",
+    "credit": null
   },
   "deep-dive-crcl-circle-april-2026": {
-    "src": "https://images.unsplash.com/photo-1559526324-4b87b5e36e44?ixlib=rb-4.1.0&w=720&h=380&fit=crop&q=80&fm=jpg&auto=format",
-    "alt": "Digital payment and fintech abstract background",
-    "credit": {
-      "author": "Clay Banks",
-      "authorUrl": "https://unsplash.com/@claybanks?utm_source=dhlm_studio&utm_medium=referral",
-      "unsplashUrl": "https://unsplash.com/photos/LjqARJaJotc?utm_source=dhlm_studio&utm_medium=referral"
-    }
+    "src": "/images/content/crcl-hero.jpg",
+    "alt": "Circle Internet Group (CRCL): The Stablecoin Leader That Fell Hard — and May Still Matter",
+    "credit": null
   }
 }
