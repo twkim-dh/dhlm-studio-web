@@ -104,8 +104,13 @@ export async function generateMetadata({ params }: { params: Promise<{ slug: str
   const url = `https://dhlm-studio.com/reports/${slug}`;
   // Use Unsplash hero image as og:image if present in manifest
   const manifest = unsplashManifest as Record<string, { src: string }>;
-  const ogImage = manifest[slug]?.src || fm.heroImage;
-  const images = ogImage ? [{ url: ogImage, width: 720, height: 380 }] : undefined;
+  const BASE = 'https://dhlm-studio.com';
+  const rawImage = manifest[slug]?.src || fm.heroImage;
+  // Ensure absolute URL — relative paths (e.g. /images/...) won't work for Twitter cards
+  const ogImage = rawImage
+    ? rawImage.startsWith('http') ? rawImage : `${BASE}${rawImage}`
+    : `${BASE}/opengraph-image`; // fallback: branded "Brutal Edge" OG image
+  const images = [{ url: ogImage, width: 1200, height: 630 }];
   return {
     title: title.includes('DHLM Studio') ? title : `${title} | DHLM Studio`,
     description,
@@ -113,8 +118,8 @@ export async function generateMetadata({ params }: { params: Promise<{ slug: str
     // Without this, Google inherits the layout.tsx root canonical and
     // judges every report as a near-duplicate of the home page (Soft 404).
     alternates: { canonical: url },
-    openGraph: { title, description, type: 'article', publishedTime: fm.date, url, ...(images && { images }) },
-    twitter: { card: 'summary_large_image', title, description, ...(images && { images: images.map(i => i.url) }) },
+    openGraph: { title, description, type: 'article', publishedTime: fm.date, url, images },
+    twitter: { card: 'summary_large_image', title, description, images: [ogImage] },
   };
 }
 
