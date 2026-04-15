@@ -343,13 +343,9 @@
     }
   },
   "deep-dive-meta-april-2026": {
-    "src": "https://images.unsplash.com/photo-1728571195318-f35263636baa?ixid=M3w5MjE0MDh8MHwxfHNlYXJjaHwxfHxtZXRhJTIwc29jaWFsJTIwbWVkaWElMjB2aXJ0dWFsJTIwcmVhbGl0eXxlbnwxfDB8fHwxNzc1ODg0ODkzfDA&ixlib=rb-4.1.0&w=720&h=380&fit=crop&q=80&fm=jpg&auto=format",
-    "alt": "A man wearing a robot headpiece in front of a TV",
-    "credit": {
-      "author": "Paul Einerhand",
-      "authorUrl": "https://unsplash.com/@pauleinerhand?utm_source=dhlm_studio&utm_medium=referral",
-      "unsplashUrl": "https://unsplash.com/photos/1TYLJw5DBfk?utm_source=dhlm_studio&utm_medium=referral"
-    }
+    "src": "/images/content/meta-hero.jpg",
+    "alt": "Deep Dive: Meta Platforms — April 2026 Analysis",
+    "credit": null
   },
   "deep-dive-msft-april-2026": {
     "src": "https://images.unsplash.com/photo-1632239776255-0a7f24814df2?ixid=M3w5MjE0MDh8MHwxfHNlYXJjaHwxfHxtaWNyb3NvZnQlMjBjbG91ZCUyMHRlY2hub2xvZ3klMjBvZmZpY2UlMjBzb2Z0d2FyZXxlbnwxfDB8fHwxNzc1ODg0ODk1fDA&ixlib=rb-4.1.0&w=720&h=380&fit=crop&q=80&fm=jpg&auto=format",
