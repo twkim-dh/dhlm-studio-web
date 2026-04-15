@@ -31,6 +31,7 @@ const LOCAL_LOGO_OVERRIDES: Record<string, string> = {
   ETH:    '/logos/ETH.svg',
   BTC:    '/logos/BTC.svg',
   SPACEX: '/logos/SPACEX.svg',
+  CRCL:   '/logos/CRCL.svg',
 };
 
 /** Count visible pixels when composited on a given fill color. Returns 0–1 ratio. */
