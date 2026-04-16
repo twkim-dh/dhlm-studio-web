@@ -49,6 +49,13 @@ export default function LearnPage() {
 
         {/* Header */}
         <div style={{ marginBottom: 40 }}>
+          {/* Hero banner */}
+          {manifest['learn-card-crypto']?.src && (
+            <div style={{ width: '100%', borderRadius: 14, overflow: 'hidden', marginBottom: 28, border: '1px solid #1E293B' }}>
+              {/* eslint-disable-next-line @next/next/no-img-element */}
+              <img src={manifest['learn-card-crypto'].src} alt={manifest['learn-card-crypto'].alt} style={{ width: '100%', height: 'auto', display: 'block' }} />
+            </div>
+          )}
           <div style={{ fontFamily: 'var(--mono)', fontSize: 10, fontWeight: 700, color: '#C73E3A', letterSpacing: 3, marginBottom: 10 }}>🎓 BRUTAL EDGE ACADEMY</div>
           <h1 style={{ fontFamily: 'var(--serif)', fontSize: 'clamp(28px, 5vw, 44px)', fontWeight: 900, color: '#F1F5F9', margin: '0 0 12px', lineHeight: 1.15 }}>
             Learn investing the way<br />it actually works.
