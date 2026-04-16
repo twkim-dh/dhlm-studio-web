@@ -309,6 +309,7 @@ export const blogPosts: BlogPost[] = [
     title: 'GDP Per Capita Rankings 2026: Richest Countries in the World',
     category: 'Rankings', catColor: '#D4A843', date: '2026-03-29', readTime: '6 min',
     lastUpdated: '2026-04-12',
+    heroImage: '/images/content/gdp-per-capita-rankings-2026-hero.png',
     description: 'Complete GDP per capita rankings for 2026 revealing the richest countries in the world. Nominal and PPP-adjusted data with analysis.',
     sections: [
       { heading: 'Top 20 Countries by GDP Per Capita', body: 'GDP per capita measures economic output per person, revealing which countries provide the highest average living standards. The 2026 rankings (nominal USD): 1) Luxembourg ($136,000), 2) Ireland ($112,000), 3) Singapore ($88,000), 4) Qatar ($83,000), 5) Switzerland ($82,000), 6) Norway ($78,000), 7) United States ($76,000), 8) Iceland ($74,000), 9) Denmark ($71,000), 10) Australia ($68,000). The list continues: 11) Netherlands ($65,000), 12) Austria ($63,000), 13) Sweden ($62,000), 14) Finland ($59,000), 15) Belgium ($58,000), 16) Germany ($57,000), 17) Canada ($55,000), 18) Israel ($54,000), 19) United Kingdom ($52,000), 20) France ($50,000). Small, specialized economies dominate the top: Luxembourg\'s financial sector, Ireland\'s multinational tax advantages, Singapore\'s trade hub status, and Qatar\'s natural gas wealth. The US ranks 7th but is by far the largest economy with high per-capita output, a remarkable achievement for a nation of 340 million people.' },
