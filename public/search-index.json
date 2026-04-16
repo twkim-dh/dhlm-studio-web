@@ -58,6 +58,18 @@
     "url": "/reports/new-space-sector-report-april-2026"
   },
   {
+    "title": "NVIDIA Ising: Why the Quantum Control Plane Matters More Than the Qubits",
+    "slug": "nvidia-ising-quantum-control-plane-april-2026",
+    "category": "Reports",
+    "subCategory": "Special Report",
+    "tags": [
+      "NVDA"
+    ],
+    "excerpt": "NVIDIA Just Launched the Operating System for Quantum Computers. Ising attacks the hardest practical problem in quantum — calibration and error correction. This is CUDA for quantum, launched before th",
+    "publishDate": "2026-04-16",
+    "url": "/reports/nvidia-ising-quantum-control-plane-april-2026"
+  },
+  {
     "title": "Paper vs. Profit #002: Can Machine Learning Predict Intraday Stock Moves Using High-Frequency Data?",
     "slug": "intraday-ml-stock-prediction",
     "category": "Learn",
