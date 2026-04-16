@@ -81,7 +81,10 @@ const nextConfig: NextConfig = {
       { source: '/blog/deep-dive-tsla-april-2026',         destination: '/reports/deep-dive-tsla-april-2026',         permanent: true },
       { source: '/blog/btc-crossroads-april-2026',         destination: '/reports/btc-crossroads-april-2026',         permanent: true },
       { source: '/blog/hot-sector-energy-april-2026',      destination: '/reports/hot-sector-energy-april-2026',      permanent: true },
-      { source: '/blog/spacex-ipo-special-report-2026',    destination: '/reports/spacex-ipo-special-report-2026',    permanent: true },
+      // SpaceX: blog/ → reports/ + old -2026 suffix → clean canonical URL
+      { source: '/blog/spacex-ipo-special-report-2026',    destination: '/reports/spacex-ipo-special-report',         permanent: true },
+      { source: '/blog/spacex-ipo-special-report',         destination: '/reports/spacex-ipo-special-report',         permanent: true },
+      { source: '/reports/spacex-ipo-special-report-2026', destination: '/reports/spacex-ipo-special-report',         permanent: true },
       { source: '/blog/eth-special-report-april-2026',         destination: '/reports/ethereum-special-report-april-2026', permanent: true },
       { source: '/blog/ethereum-special-report-april-2026',   destination: '/reports/ethereum-special-report-april-2026', permanent: true },
       // /crypto-101 → /learn/crypto-101 (content moved to Brutal Edge Academy)

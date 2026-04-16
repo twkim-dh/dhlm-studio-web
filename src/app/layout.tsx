@@ -59,9 +59,10 @@ export const metadata: Metadata = {
     description: "Real-time market data, Fear & Greed Index, Deep Dive reports, and data-driven stock analysis.",
     images: [{ url: "https://dhlm-studio.com/twitter-image", width: 1200, height: 630, alt: "DHLM Studio — Brutal Edge Market Intelligence" }],
   },
-  alternates: {
-    canonical: "https://dhlm-studio.com",
-  },
+  // No root-level canonical — each page sets its own via alternates.canonical.
+  // A root canonical pointing to "/" would be inherited by any page that
+  // forgets to declare its own, making Google treat all those pages as
+  // duplicates of the home page.
   robots: {
     index: true,
     follow: true,

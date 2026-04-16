@@ -1,5 +1,5 @@
 ---
-slug: "spacex-ipo-special-report-2026"
+slug: "spacex-ipo-special-report"
 title: "SpaceX IPO Special Report: The $1.75 Trillion Question"
 ticker: "SPACEX"
 date: "2026-04-12"
