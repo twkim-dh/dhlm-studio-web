@@ -124,8 +124,10 @@ export default function MarketsPage() {
   const [moversLoading, setMoversLoading] = useState(true);
   const [isLive, setIsLive] = useState(false);
   const [cryptos, setCryptos] = useState<CryptoItem[]>([]);
+  const [mounted, setMounted] = useState(false);
 
   useEffect(() => {
+    setMounted(true);
     // ① Indices
     fetch('/api/markets/indices')
       .then(r => r.json())
@@ -257,8 +259,8 @@ export default function MarketsPage() {
             ))}
           </div>
 
-          {/* Treemap */}
-          {!sectorsLoaded ? (
+          {/* Treemap — mounted guard prevents SSR/hydration crash from ResponsiveContainer */}
+          {!mounted || !sectorsLoaded ? (
             <div style={{ height: 260, display: 'flex', alignItems: 'center', justifyContent: 'center' }}>
               <span style={{ fontSize: 11, color: '#334155' }}>Loading sector data...</span>
             </div>
