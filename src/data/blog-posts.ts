@@ -118,6 +118,7 @@ export const blogPosts: BlogPost[] = [
     slug: 'bitcoin-vs-ethereum-differences-explained',
     title: 'Bitcoin vs Ethereum — Key Differences Explained',
     category: 'Crypto', catColor: '#F59E0B', date: '2026-04-02', readTime: '6 min',
+    heroImage: '/images/content/bitcoin-vs-ethereum-hero.png',
     lastUpdated: '2026-04-12',
     description: 'Bitcoin vs Ethereum: understand the key differences in purpose, technology, supply, speed, and use cases for the two largest cryptocurrencies.',
     calculatorLinks: [
