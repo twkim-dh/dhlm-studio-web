@@ -1169,6 +1169,7 @@ export const blogPosts: BlogPost[] = [
     date: '2026-04-12',
     lastUpdated: '2026-04-11',
     readTime: '12 min',
+    heroImage: '/images/content/how-to-spot-next-crypto-winner-hero.png',
     description: 'Not tips, not guesses, not Twitter alpha. Seven on-chain and market signals that historically precede crypto outperformance — plus the red flags that indicate a project headed to zero.',
     sections: [
       {
