@@ -159,6 +159,8 @@ export default function LearnPage() {
             }}
           >
             <div style={{ position: 'absolute', top: 0, left: 0, right: 0, height: 2, background: '#3B82F6', zIndex: 2 }} />
+            {/* eslint-disable-next-line @next/next/no-img-element */}
+            <img src="/images/content/paper-vs-profit-hero.png" alt="Paper vs. Profit — Brutal Edge Research" style={{ width: '100%', height: 'auto', display: 'block', borderRadius: '14px 14px 0 0' }} />
             <div style={{ padding: '20px 28px 24px' }}>
             <div style={{ display: 'flex', gap: 20, alignItems: 'flex-start' }}>
               <div style={{
