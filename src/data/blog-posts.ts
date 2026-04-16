@@ -227,6 +227,7 @@ export const blogPosts: BlogPost[] = [
     slug: 'dividend-aristocrats-2026-consecutive-increases',
     title: 'Dividend Aristocrats 2026: 25+ Years of Consecutive Increases',
     category: 'Markets', catColor: '#00D474', date: '2026-03-28', readTime: '6 min',
+    heroImage: '/images/content/dividend-aristocrats-2026-hero.png',
     description: 'The complete list of Dividend Aristocrats in 2026 with 25+ consecutive years of dividend increases. Reliable income stocks for long-term investors.',
     calculatorLinks: [
       { text: 'Dividend Aristocrats + reinvestment is the classic compound growth engine. Model exactly how much it builds over 30 years.', href: '/calculators/compound-interest', ctaText: 'Compound Interest Calculator' },
