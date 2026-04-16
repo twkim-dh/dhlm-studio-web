@@ -25,7 +25,7 @@ const REPORTS_DIR = path.join(process.cwd(), 'src/content/reports');
 interface ReportMeta {
   title: string; slug: string; ticker: string; date: string; readTime: string;
   category: string; catColor: string; grade: string; beafScore: number; description: string;
-  type?: string; sector?: string; tickers?: string[];
+  type?: string; sector?: string; tickers?: string[]; tags?: string[];
   thumb?: string; thumbAlt?: string;
 }
 
