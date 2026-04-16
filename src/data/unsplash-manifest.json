@@ -393,13 +393,9 @@
     "credit": null
   },
   "crypto-101-portfolio-basics": {
-    "src": "https://images.unsplash.com/photo-1559526324-4b87b5e36e44?w=720&h=380&fit=crop&q=80&fm=jpg&auto=format",
-    "alt": "investment portfolio diversification strategy concept with charts",
-    "credit": {
-      "author": "Chris Liverani",
-      "authorUrl": "https://unsplash.com/@chrisliverani?utm_source=dhlm_studio&utm_medium=referral",
-      "unsplashUrl": "https://unsplash.com/photos/dBI_My696Rk?utm_source=dhlm_studio&utm_medium=referral"
-    }
+    "src": "/images/content/crypto101-week8-hero.png",
+    "alt": "Crypto 101 Week 8: Portfolio Basics — How to Build & Diversify",
+    "credit": null
   },
   "crypto-101-layer1-vs-layer2": {
     "src": "/images/content/crypto101-week9-hero.png",
@@ -712,13 +708,9 @@
     "credit": null
   },
   "learn-w8-portfolio": {
-    "src": "https://images.unsplash.com/photo-1653997500354-c9711cbc0136?ixid=M3w5MjE0MDh8MHwxfHNlYXJjaHwyfHxpbnZlc3RtZW50JTIwcG9ydGZvbGlvJTIwZGl2ZXJzaXR5JTIwYWxsb2NhdGlvbiUyMHBpZXxlbnwxfDB8fHwxNzc2MTI1MjI5fDA&ixlib=rb-4.1.0&w=720&h=380&fit=crop&q=80&fm=jpg&auto=format",
-    "alt": "a blue, pink, and white ball with a diagonal design",
-    "credit": {
-      "author": "Sufyan",
-      "authorUrl": "https://unsplash.com/@blenderdesigner?utm_source=dhlm_studio&utm_medium=referral",
-      "unsplashUrl": "https://unsplash.com/photos/kNdVHckIQIo?utm_source=dhlm_studio&utm_medium=referral"
-    }
+    "src": "/images/content/crypto101-week8-hero.png",
+    "alt": "Crypto 101 Week 8: Portfolio Basics — How to Build & Diversify",
+    "credit": null
   },
   "learn-w9-layer2": {
     "src": "/images/content/crypto101-week9-hero.png",
