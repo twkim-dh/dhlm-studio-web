@@ -208,6 +208,7 @@ export const blogPosts: BlogPost[] = [
     slug: 'most-shorted-stocks-2026-short-squeeze-candidates',
     title: 'Most Shorted Stocks 2026: Short Squeeze Candidates to Watch',
     category: 'Markets', catColor: '#00D474', date: '2026-03-29', readTime: '7 min',
+    heroImage: '/images/content/most-shorted-stocks-2026-hero.png',
     description: 'Discover the most heavily shorted stocks in 2026 and which ones have the highest short squeeze potential based on data analysis.',
     calculatorLinks: [
       { text: 'Short squeeze plays move fast. Know your exact max loss and position size before entering a volatile trade.', href: '/calculators/position-size', ctaText: 'Position Size Calculator' },
