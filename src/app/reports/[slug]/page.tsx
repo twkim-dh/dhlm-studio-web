@@ -43,8 +43,10 @@ interface ReportFrontmatter {
 }
 
 function parseMarkdown(content: string): { frontmatter: ReportFrontmatter; body: string } {
-  const fmMatch = content.match(/^---\n([\s\S]*?)\n---\n([\s\S]*)$/);
-  if (!fmMatch) return { frontmatter: {} as ReportFrontmatter, body: content };
+  // Normalize CRLF → LF so Windows-saved files parse correctly
+  const normalised = content.replace(/\r\n/g, '\n');
+  const fmMatch = normalised.match(/^---\n([\s\S]*?)\n---\n([\s\S]*)$/);
+  if (!fmMatch) return { frontmatter: {} as ReportFrontmatter, body: normalised };
 
   const fmLines = fmMatch[1].split('\n');
   const fm: Record<string, unknown> = {};
