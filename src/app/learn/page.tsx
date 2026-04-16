@@ -49,13 +49,6 @@ export default function LearnPage() {
 
         {/* Header */}
         <div style={{ marginBottom: 40 }}>
-          {/* Hero banner */}
-          {manifest['learn-card-crypto']?.src && (
-            <div style={{ width: '100%', borderRadius: 14, overflow: 'hidden', marginBottom: 28, border: '1px solid #1E293B' }}>
-              {/* eslint-disable-next-line @next/next/no-img-element */}
-              <img src={manifest['learn-card-crypto'].src} alt={manifest['learn-card-crypto'].alt} style={{ width: '100%', height: 'auto', display: 'block' }} />
-            </div>
-          )}
           <div style={{ fontFamily: 'var(--mono)', fontSize: 10, fontWeight: 700, color: '#C73E3A', letterSpacing: 3, marginBottom: 10 }}>🎓 BRUTAL EDGE ACADEMY</div>
           <h1 style={{ fontFamily: 'var(--serif)', fontSize: 'clamp(28px, 5vw, 44px)', fontWeight: 900, color: '#F1F5F9', margin: '0 0 12px', lineHeight: 1.15 }}>
             Learn investing the way<br />it actually works.
@@ -89,17 +82,6 @@ export default function LearnPage() {
             >
               {course.status === 'live' && (
                 <div style={{ position: 'absolute', top: 0, left: 0, right: 0, height: 2, background: course.color, zIndex: 2 }} />
-              )}
-              {/* Hero thumbnail */}
-              {manifest[course.imageKey]?.src && (
-                <div style={{ width: '100%', overflow: 'hidden', borderRadius: '14px 14px 0 0' }}>
-                  {/* eslint-disable-next-line @next/next/no-img-element */}
-                  <img
-                    src={manifest[course.imageKey].src}
-                    alt={manifest[course.imageKey].alt}
-                    style={{ width: '100%', height: 'auto', display: 'block' }}
-                  />
-                </div>
               )}
               <div style={{ padding: '20px 28px 24px' }}>
               <div style={{ display: 'flex', gap: 20, alignItems: 'flex-start' }}>
@@ -177,17 +159,6 @@ export default function LearnPage() {
             }}
           >
             <div style={{ position: 'absolute', top: 0, left: 0, right: 0, height: 2, background: '#3B82F6', zIndex: 2 }} />
-            {manifest['learn-card-research']?.src && (
-              <div style={{ width: '100%', height: 100, overflow: 'hidden', position: 'relative' }}>
-                {/* eslint-disable-next-line @next/next/no-img-element */}
-                <img
-                  src={manifest['learn-card-research'].src}
-                  alt={manifest['learn-card-research'].alt}
-                  style={{ width: '100%', height: '100%', objectFit: 'cover', display: 'block', opacity: 0.45 }}
-                />
-                <div style={{ position: 'absolute', inset: 0, background: 'linear-gradient(to bottom, transparent 20%, #111827 100%)' }} />
-              </div>
-            )}
             <div style={{ padding: '20px 28px 24px' }}>
             <div style={{ display: 'flex', gap: 20, alignItems: 'flex-start' }}>
               <div style={{
