@@ -1248,6 +1248,7 @@ export const blogPosts: BlogPost[] = [
     catColor: '#8B5CF6',
     date: '2026-04-11',
     readTime: '14 min',
+    heroImage: '/images/content/ethereum-deep-dive-april-2026-hero.png',
     description: 'Ethereum is at $2,200 — 56% below its August 2025 ATH. This deep dive examines the L2 value capture problem, staking yield thesis, Harvard buying ETH for the first time, the Fusaka upgrade, and the bull/base/bear cases.',
     lastUpdated: '2026-04-11',
     sections: [
