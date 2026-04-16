@@ -22,7 +22,7 @@ export const blogPosts: BlogPost[] = [
     slug: 'nvidia-worlds-most-valuable-company-2026',
     title: 'NVIDIA at $4.2 Trillion: The 3 Catalysts That Decide the Next 12 Months',
     category: 'Markets', catColor: '#00D474', date: '2026-04-02', readTime: '6 min',
-    heroImage: '/images/content/deep-dive-report.png',
+    heroImage: '/images/content/nvidia-3-catalysts-hero.png',
     description: 'Data center +90% YoY, 77% gross margin, $60B backlog. Three make-or-break events for NVIDIA in 2026 — plus bull ($220), base ($165), and bear ($120) price scenarios.',
     calculatorLinks: [
       { text: 'Before sizing a position in NVIDIA, run the numbers — how much of your portfolio is actually at risk?', href: '/calculators/position-size', ctaText: 'Position Size Calculator' },
