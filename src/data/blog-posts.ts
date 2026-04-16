@@ -136,7 +136,7 @@ export const blogPosts: BlogPost[] = [
     slug: 'top-crypto-gainers-this-month-april-2026',
     title: 'Top Crypto Gainers April 2026: Render +35%, Sui +28% — Real Rally or Hype?',
     category: 'Crypto', catColor: '#F59E0B', date: '2026-04-01', readTime: '7 min',
-    heroImage: '/images/content/spotlight-crypto.png',
+    heroImage: '/images/content/top-crypto-gainers-april-2026-hero.png',
     description: '3 specific catalysts, 3 risk signals (funding rate, USDT supply, ETF flows), and how April 2026 compares to the 2017, 2021, and 2024 cycles. Data-only breakdown.',
     calculatorLinks: [
       { text: 'Crypto rallies reverse fast. Know exactly how much you\'re risking before entering any position.', href: '/calculators/position-size', ctaText: 'Position Size Calculator' },
