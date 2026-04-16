@@ -11,7 +11,7 @@ import TickerLogo from '@/components/TickerLogo';
 const YEAR = new Date().getFullYear();
 
 export const metadata: Metadata = {
-  title: `DHLM Studio — Stock Analysis & Market Data | ${YEAR}`,
+  title: 'DHLM Studio — Brutal Edge™ Market Intelligence',
   description: `Market data and analysis serious investors check before making a move. 3,000+ word Deep Dive reports with BEAF scoring. Real-time market intelligence. ${YEAR}.`,
   alternates: { canonical: 'https://dhlm-studio.com' },
 };
