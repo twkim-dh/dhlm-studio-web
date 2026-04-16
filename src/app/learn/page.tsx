@@ -85,14 +85,13 @@ export default function LearnPage() {
               )}
               {/* Hero thumbnail */}
               {manifest[course.imageKey]?.src && (
-                <div style={{ width: '100%', height: 120, overflow: 'hidden', position: 'relative' }}>
+                <div style={{ width: '100%', overflow: 'hidden', borderRadius: '14px 14px 0 0' }}>
                   {/* eslint-disable-next-line @next/next/no-img-element */}
                   <img
                     src={manifest[course.imageKey].src}
                     alt={manifest[course.imageKey].alt}
-                    style={{ width: '100%', height: '100%', objectFit: 'cover', display: 'block', opacity: 0.55 }}
+                    style={{ width: '100%', height: 'auto', display: 'block' }}
                   />
-                  <div style={{ position: 'absolute', inset: 0, background: `linear-gradient(to bottom, transparent 30%, #111827 100%)` }} />
                 </div>
               )}
               <div style={{ padding: '20px 28px 24px' }}>

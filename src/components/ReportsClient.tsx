@@ -110,7 +110,7 @@ export default function ReportsClient({ reports }: { reports: ReportMeta[] }) {
               <Link key={r.slug} href={`/reports/${r.slug}`} style={{ ...card, padding: 0, textDecoration: 'none', display: 'block', borderColor: '#C73E3A40', background: 'linear-gradient(135deg, #C73E3A08, #111827)', overflow: 'hidden' }}>
                 {r.thumb && (
                   // eslint-disable-next-line @next/next/no-img-element
-                  <img src={r.thumb} alt={r.thumbAlt || r.title} style={{ width: '100%', aspectRatio: '16/9', objectFit: 'cover', display: 'block' }} />
+                  <img src={r.thumb} alt={r.thumbAlt || r.title} style={{ width: '100%', aspectRatio: r.thumb.endsWith('.png') ? '3/2' : '16/9', objectFit: r.thumb.endsWith('.png') ? 'contain' : 'cover', display: 'block', background: '#0f172a' }} />
                 )}
                 <div style={{ padding: '16px 22px 20px' }}>
                   <div style={{ display: 'flex', alignItems: 'center', gap: 8, marginBottom: 8, flexWrap: 'wrap' }}>
@@ -171,7 +171,7 @@ export default function ReportsClient({ reports }: { reports: ReportMeta[] }) {
                 <Link key={r.slug} href={`/reports/${r.slug}`} style={{ ...card, padding: 0, textDecoration: 'none', display: 'block', borderColor: `${r.catColor}40`, background: `linear-gradient(135deg, ${r.catColor}08, #111827)`, overflow: 'hidden' }}>
                   {r.thumb && (
                     // eslint-disable-next-line @next/next/no-img-element
-                    <img src={r.thumb} alt={r.thumbAlt || r.title} style={{ width: '100%', aspectRatio: '16/9', objectFit: 'cover', display: 'block' }} />
+                    <img src={r.thumb} alt={r.thumbAlt || r.title} style={{ width: '100%', aspectRatio: r.thumb.endsWith('.png') ? '3/2' : '16/9', objectFit: r.thumb.endsWith('.png') ? 'contain' : 'cover', display: 'block', background: '#0f172a' }} />
                   )}
                   <div style={{ padding: '16px 22px 20px' }}>
                     <div style={{ display: 'flex', alignItems: 'center', gap: 8, marginBottom: 8, flexWrap: 'wrap' }}>

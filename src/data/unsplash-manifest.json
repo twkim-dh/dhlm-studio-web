@@ -624,13 +624,9 @@
     "credit": null
   },
   "learn-card-crypto": {
-    "src": "https://images.unsplash.com/photo-1761171720667-b9ac0586c047?ixid=M3w5MjE0MDh8MHwxfHNlYXJjaHwyfHxjcnlwdG9jdXJyZW5jeSUyMGJpdGNvaW4lMjBkaWdpdGFsJTIwZ29sZCUyMGNvaW58ZW58MXwwfHx8MTc3NjEyNTE5OXww&ixlib=rb-4.1.0&w=720&h=380&fit=crop&q=80&fm=jpg&auto=format",
-    "alt": "Golden bitcoin coin with other coins and card.",
-    "credit": {
-      "author": "Jen Titus",
-      "authorUrl": "https://unsplash.com/@jetstreameight?utm_source=dhlm_studio&utm_medium=referral",
-      "unsplashUrl": "https://unsplash.com/photos/L1uDh3ZUfBw?utm_source=dhlm_studio&utm_medium=referral"
-    }
+    "src": "/images/content/crypto101-main-hero.png",
+    "alt": "Learn Crypto From Scratch — A 12-Week Curriculum by Brutal Edge",
+    "credit": null
   },
   "learn-card-investing": {
     "src": "https://images.unsplash.com/photo-1745509267945-b25cbb4d50ef?ixid=M3w5MjE0MDh8MHwxfHNlYXJjaHwyfHxzdG9jayUyMG1hcmtldCUyMHRyYWRpbmclMjBjaGFydCUyMGJ1bGxpc2glMjBmaW5hbmNlfGVufDF8MHx8fDE3NzYxMjUyMDF8MA&ixlib=rb-4.1.0&w=720&h=380&fit=crop&q=80&fm=jpg&auto=format",
