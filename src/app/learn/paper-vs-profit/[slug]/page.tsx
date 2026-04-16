@@ -240,9 +240,9 @@ export default async function PaperVsProfitArticlePage({ params }: { params: Pro
         {/* Hero image */}
         {unsplashEntry?.src && (
           <div style={{ margin: '24px 0' }}>
-            <div style={{ width: '100%', maxHeight: 300, display: 'flex', alignItems: 'center', justifyContent: 'center', background: '#0f172a', borderRadius: 12, overflow: 'hidden', border: '1px solid #1E293B' }}>
+            <div style={{ width: '100%', background: '#0f172a', borderRadius: 12, overflow: 'hidden', border: '1px solid #1E293B' }}>
               {/* eslint-disable-next-line @next/next/no-img-element */}
-              <img src={unsplashEntry.src} alt={unsplashEntry.alt} style={{ maxWidth: '100%', maxHeight: 300, objectFit: 'contain', height: 'auto', display: 'block' }} />
+              <img src={unsplashEntry.src} alt={unsplashEntry.alt} style={{ width: '100%', height: 'auto', display: 'block' }} />
             </div>
             {unsplashEntry.credit && (
             <div style={{ padding: '3px 8px', textAlign: 'right' }}>
