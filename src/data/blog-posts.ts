@@ -1269,6 +1269,7 @@ export const blogPosts: BlogPost[] = [
     category: 'Crypto Analysis',
     catColor: '#00D474',
     date: '2026-04-09',
+    heroImage: '/images/content/best-crypto-during-crash-hero.png',
     readTime: '10 min',
     description: 'The Fear and Greed Index is at 16. Bitcoin is down 43%. What has actually worked during past crypto crashes — and what has gone to zero? A data-driven look at COVID crash, Terra/LUNA, and FTX collapse to find the pattern.',
     lastUpdated: '2026-04-09',
