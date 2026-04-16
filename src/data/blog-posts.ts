@@ -1225,6 +1225,7 @@ export const blogPosts: BlogPost[] = [
     catColor: '#F59E0B',
     date: '2026-04-11',
     readTime: '14 min',
+    heroImage: '/images/content/bitcoin-deep-dive-april-2026-hero.png',
     description: 'Bitcoin is trading at $72,000 in April 2026 — 43% below its October ATH of $126,000. This deep dive examines what actually happened since the peak, the structural thesis for Bitcoin, the real risks, cycle analysis, and what to watch from here.',
     lastUpdated: '2026-04-11',
     sections: [
