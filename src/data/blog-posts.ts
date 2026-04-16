@@ -292,6 +292,7 @@ export const blogPosts: BlogPost[] = [
     slug: 'largest-companies-by-market-cap-2026-trillion-dollar-club',
     title: 'Largest Companies by Market Cap 2026: Inside the Trillion Dollar Club',
     category: 'Rankings', catColor: '#D4A843', date: '2026-04-16', readTime: '8 min',
+    heroImage: '/images/content/largest-companies-market-cap-2026-hero.png',
     description: 'BRUTAL EDGE™ VERDICT: Reaching $1 trillion in market cap is no longer a ceiling. Four companies crossed $4 trillion this year. The real question has shifted from "who gets in" to "who gets squeezed out" — and the answer will reshape S&P 500 weightings for the next decade.',
     sections: [
       { heading: 'The Number', body: 'As of April 2026, eleven companies hold a market capitalization above $1 trillion. The top ten alone account for roughly $20 trillion in market value — nearly 18% of the global equity market capitalization of $115 trillion.\n\nFour of those have crossed the $4 trillion threshold: NVIDIA, Alphabet, Apple, and Microsoft. A milestone that didn\'t exist five years ago is now held by four companies simultaneously.\n\nThis is not a story about expansion. It is a story about concentration.' },
