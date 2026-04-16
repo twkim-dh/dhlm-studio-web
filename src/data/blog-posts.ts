@@ -55,6 +55,7 @@ export const blogPosts: BlogPost[] = [
     slug: 'what-is-pe-ratio-beginners-guide',
     title: 'What is P/E Ratio? A Simple Guide for Beginners',
     category: 'Markets', catColor: '#00D474', date: '2026-04-01', readTime: '4 min',
+    heroImage: '/images/content/pe-ratio-beginners-guide-hero.png',
     description: 'Learn what the P/E ratio means, how to calculate it, and what counts as a good or bad P/E ratio with real stock examples.',
     calculatorLinks: [
       { text: 'P/E tells you the price. Compound interest shows what that price does over time. Model it free.', href: '/calculators/compound-interest', ctaText: 'Compound Interest Calculator' },
