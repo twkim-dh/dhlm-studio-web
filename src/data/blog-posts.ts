@@ -1290,6 +1290,7 @@ export const blogPosts: BlogPost[] = [
     category: 'Market Analysis',
     catColor: '#60A5FA',
     date: '2026-04-10',
+    heroImage: '/images/content/crypto-fear-greed-explained-hero.png',
     readTime: '10 min',
     description: 'The Crypto Fear and Greed Index is at 16 — deep Extreme Fear territory. Here is what the index actually measures, its 6 components, when it works as a trading signal, when it fails, and how professional investors actually use it.',
     lastUpdated: '2026-04-10',
