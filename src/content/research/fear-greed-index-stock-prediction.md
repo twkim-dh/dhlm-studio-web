@@ -1,5 +1,5 @@
 ---
-heroImage: "/images/content/paper-vs-profit.png"
+heroImage: "/images/content/paper-vs-profit-001-hero.png"
 slug: "fear-greed-index-stock-prediction"
 title: "Paper vs. Profit #001: Does the Fear & Greed Index Actually Predict Stock Returns?"
 category: "Sentiment"
