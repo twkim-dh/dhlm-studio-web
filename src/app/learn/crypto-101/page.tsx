@@ -151,10 +151,9 @@ export default function Crypto101Page() {
 
         {/* Hero image */}
         {manifest['learn-crypto-101']?.src && (
-          <div style={{ width: '100%', height: 180, borderRadius: 14, overflow: 'hidden', marginBottom: 28, position: 'relative', border: '1px solid #1E293B' }}>
+          <div style={{ width: '100%', borderRadius: 14, overflow: 'hidden', marginBottom: 28, border: '1px solid #1E293B' }}>
             {/* eslint-disable-next-line @next/next/no-img-element */}
-            <img src={manifest['learn-crypto-101'].src} alt={manifest['learn-crypto-101'].alt} style={{ width: '100%', height: '100%', objectFit: 'cover', display: 'block', opacity: 0.6 }} />
-            <div style={{ position: 'absolute', inset: 0, background: 'linear-gradient(135deg, #8B5CF640 0%, transparent 60%)' }} />
+            <img src={manifest['learn-crypto-101'].src} alt={manifest['learn-crypto-101'].alt} style={{ width: '100%', height: 'auto', display: 'block' }} />
           </div>
         )}
 

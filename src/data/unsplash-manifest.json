@@ -651,13 +651,9 @@
     }
   },
   "learn-crypto-101": {
-    "src": "https://images.unsplash.com/photo-1628498643650-39d6de5fb2e2?ixid=M3w5MjE0MDh8MHwxfHNlYXJjaHwyfHxjcnlwdG9jdXJyZW5jeSUyMGJsb2NrY2hhaW4lMjBuZXR3b3JrJTIwcHVycGxlfGVufDF8MHx8fDE3NzYxMjUyMDZ8MA&ixlib=rb-4.1.0&w=720&h=380&fit=crop&q=80&fm=jpg&auto=format",
-    "alt": "round gold coin on purple and black stones",
-    "credit": {
-      "author": "Kanchanara",
-      "authorUrl": "https://unsplash.com/@kanchanara?utm_source=dhlm_studio&utm_medium=referral",
-      "unsplashUrl": "https://unsplash.com/photos/_gtjOC0ok1k?utm_source=dhlm_studio&utm_medium=referral"
-    }
+    "src": "/images/content/crypto101-main-hero.png",
+    "alt": "Learn Crypto From Scratch — A 12-Week Curriculum by Brutal Edge",
+    "credit": null
   },
   "learn-investing-101": {
     "src": "https://images.unsplash.com/photo-1770461846516-b7e5993a8e4f?ixid=M3w5MjE0MDh8MHwxfHNlYXJjaHwyfHxzdG9jayUyMGV4Y2hhbmdlJTIwdHJhZGluZyUyMGZsb29yJTIwbmV3JTIweW9ya3xlbnwxfDB8fHwxNzc2MTI1MjA5fDA&ixlib=rb-4.1.0&w=720&h=380&fit=crop&q=80&fm=jpg&auto=format",
