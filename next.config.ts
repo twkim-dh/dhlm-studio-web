@@ -92,6 +92,48 @@ const nextConfig: NextConfig = {
       // /research → /learn/paper-vs-profit (Research Lab moved to Brutal Edge Academy)
       { source: '/research', destination: '/learn/paper-vs-profit', permanent: true },
       { source: '/research/:slug', destination: '/learn/paper-vs-profit/:slug', permanent: true },
+      // ── Brutal Edge cleanup: 36 off-brand posts removed 2026-04-16 ──────────
+      // Group A: Cost of Living → home
+      { source: '/blog/nyc-vs-la-cost-of-living',           destination: '/', permanent: true },
+      { source: '/blog/cheapest-cities-digital-nomads',     destination: '/', permanent: true },
+      { source: '/blog/tokyo-vs-seoul-cost',                destination: '/', permanent: true },
+      { source: '/blog/best-cities-tech-workers',           destination: '/', permanent: true },
+      // Group B: Creators → home
+      { source: '/blog/most-subscribed-youtube-channels-2026-rankings',       destination: '/', permanent: true },
+      { source: '/blog/tiktok-vs-youtube-vs-instagram-creator-earnings-2026', destination: '/', permanent: true },
+      { source: '/blog/how-mrbeast-makes-money-business-behind-382m-subscribers', destination: '/', permanent: true },
+      { source: '/blog/youtube-vs-tiktok-creator-economy',  destination: '/', permanent: true },
+      { source: '/blog/fastest-growing-creators-march',     destination: '/', permanent: true },
+      { source: '/blog/mrbeast-growth-analysis',            destination: '/', permanent: true },
+      { source: '/blog/tiktok-vs-youtube-creators',         destination: '/', permanent: true },
+      { source: '/blog/youtube-subscriber-milestones',      destination: '/', permanent: true },
+      // Group C: Sports/Lifestyle Rankings → home
+      { source: '/blog/highest-paid-nba-players-2025-26',           destination: '/', permanent: true },
+      { source: '/blog/best-countries-to-live-in-2026-quality-of-life', destination: '/', permanent: true },
+      { source: '/blog/highest-paid-athletes-2026-sports-salary-rankings', destination: '/', permanent: true },
+      { source: '/blog/world-population-8-billion',         destination: '/', permanent: true },
+      { source: '/blog/global-happiness-index',             destination: '/', permanent: true },
+      { source: '/blog/richest-self-made-women',            destination: '/', permanent: true },
+      { source: '/blog/powerball-vs-mega-millions-better-odds', destination: '/', permanent: true },
+      // Group D: Weekly Recaps → /blog
+      { source: '/blog/wall-street-weekly-2026-04-13',      destination: '/blog', permanent: true },
+      { source: '/blog/wall-street-weekly-2026-04-06',      destination: '/blog', permanent: true },
+      { source: '/blog/crypto-weekly-2026-04-13',           destination: '/blog', permanent: true },
+      { source: '/blog/crypto-weekly-2026-04-06',           destination: '/blog', permanent: true },
+      // Group E: Old noindex duplicates → canonical versions
+      { source: '/blog/tariff-impact-markets-2026',         destination: '/blog/how-tariffs-affect-stock-prices-data-driven-analysis', permanent: true },
+      { source: '/blog/crypto-market-recovery-2026',        destination: '/blog/best-performing-crypto-2026', permanent: true },
+      { source: '/blog/ai-stocks-bubble-or-boom',           destination: '/blog/top-5-ai-stocks-to-watch-2026', permanent: true },
+      { source: '/blog/top-stock-movers-explained',         destination: '/blog/top-stock-gainers-today-how-to-spot-winners-2026', permanent: true },
+      { source: '/blog/quantum-computing-stocks',           destination: '/reports/quantum-sector-special-report-april-2026', permanent: true },
+      { source: '/blog/ai-stocks-to-watch',                 destination: '/blog/top-5-ai-stocks-to-watch-2026', permanent: true },
+      { source: '/blog/data-visualization-trends',          destination: '/', permanent: true },
+      { source: '/blog/nvidia-3-trillion',                  destination: '/reports/deep-dive-nvda-april-2026', permanent: true },
+      { source: '/blog/sp500-vs-bitcoin',                   destination: '/blog/bitcoin-deep-dive-april-2026', permanent: true },
+      { source: '/blog/crypto-regulation-2026',             destination: '/reports/crypto-treasury-sector-report-april-2026', permanent: true },
+      { source: '/blog/global-gdp-rankings-shift-2026',     destination: '/blog/top-10-countries-gdp-world-economy-2026', permanent: true },
+      { source: '/blog/billionaire-rankings-2026',          destination: '/blog/worlds-richest-people-2026-billionaire-rankings', permanent: true },
+      { source: '/blog/gdp-rankings-2026',                  destination: '/blog/top-10-countries-gdp-world-economy-2026', permanent: true },
     ];
   },
 };
