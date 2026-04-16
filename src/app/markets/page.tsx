@@ -224,6 +224,43 @@ export default function MarketsPage() {
           </div>
         </div>
 
+        {/* ① CRYPTO — 최상단 배치 (crypto 유입 사용자 즉시 노출) */}
+        <div style={{ background: '#111827', borderRadius: 12, border: '1px solid #1E293B', overflow: 'hidden', marginBottom: 20 }}>
+          <div style={{ padding: '10px 16px', borderBottom: '1px solid #1E293B', display: 'flex', justifyContent: 'space-between', alignItems: 'center' }}>
+            <div style={{ fontFamily: 'var(--mono)', fontSize: 10, fontWeight: 700, color: '#F59E0B', letterSpacing: 1.5 }}>🪙 CRYPTO — BTC · ETH · SOL + TOP ALTCOINS</div>
+            <Link href="/rankings/crypto" style={{ fontSize: 10, color: '#F59E0B', fontFamily: 'var(--mono)', textDecoration: 'none' }}>Full Rankings →</Link>
+          </div>
+          {cryptos.length === 0 ? (
+            <div style={{ padding: '20px', textAlign: 'center', fontSize: 11, color: '#334155', fontFamily: 'var(--mono)' }}>Loading crypto data...</div>
+          ) : (
+            <div style={{ display: 'grid', gridTemplateColumns: 'repeat(4, 1fr)', gap: 0 }}>
+              {cryptos.map((c, i) => {
+                const up = c.change24h >= 0;
+                const sym = c.symbol?.toUpperCase() || c.id.slice(0, 5).toUpperCase();
+                return (
+                  <Link key={c.id} href={`/rankings/crypto/${c.id}`} style={{
+                    textDecoration: 'none', padding: '12px 14px',
+                    borderRight: i % 4 !== 3 ? '1px solid #1E293B40' : 'none',
+                    borderBottom: i < 4 ? '1px solid #1E293B40' : 'none',
+                    display: 'flex', flexDirection: 'column', gap: 3,
+                  }}>
+                    <div style={{ fontFamily: 'var(--mono)', fontSize: 12, fontWeight: 800, color: '#F59E0B' }}>{sym}</div>
+                    <div style={{ fontFamily: 'var(--mono)', fontSize: 13, fontWeight: 700, color: '#F1F5F9' }}>
+                      {c.price >= 1000 ? `$${Math.round(c.price).toLocaleString()}` : c.price >= 1 ? `$${c.price.toFixed(2)}` : `$${c.price.toFixed(4)}`}
+                    </div>
+                    <div style={{ fontFamily: 'var(--mono)', fontSize: 11, fontWeight: 700, color: up ? '#00D474' : '#FF4545' }}>
+                      {up ? '+' : ''}{c.change24h?.toFixed(2)}%
+                    </div>
+                  </Link>
+                );
+              })}
+            </div>
+          )}
+          <div style={{ padding: '6px 16px', fontSize: 9, color: '#334155', fontFamily: 'var(--mono)', borderTop: '1px solid #1E293B40' }}>
+            Source: CoinGecko · 24h change
+          </div>
+        </div>
+
         {/* ② INDEX BAR */}
         <div style={{ display: 'grid', gridTemplateColumns: 'repeat(4, 1fr)', gap: 6, marginBottom: 20 }}>
           {indices.map(idx => {
@@ -306,43 +343,6 @@ export default function MarketsPage() {
             })}
           </div>
         )}
-
-        {/* ④ CRYPTO */}
-        <div style={{ background: '#111827', borderRadius: 12, border: '1px solid #1E293B', overflow: 'hidden', marginBottom: 20 }}>
-          <div style={{ padding: '10px 16px', borderBottom: '1px solid #1E293B', display: 'flex', justifyContent: 'space-between', alignItems: 'center' }}>
-            <div style={{ fontFamily: 'var(--mono)', fontSize: 10, fontWeight: 700, color: '#F59E0B', letterSpacing: 1.5 }}>🪙 CRYPTO — BTC · ETH · SOL + TOP ALTCOINS</div>
-            <Link href="/rankings/crypto" style={{ fontSize: 10, color: '#F59E0B', fontFamily: 'var(--mono)', textDecoration: 'none' }}>Full Rankings →</Link>
-          </div>
-          {cryptos.length === 0 ? (
-            <div style={{ padding: '20px', textAlign: 'center', fontSize: 11, color: '#334155', fontFamily: 'var(--mono)' }}>Loading crypto data...</div>
-          ) : (
-            <div style={{ display: 'grid', gridTemplateColumns: 'repeat(4, 1fr)', gap: 0 }}>
-              {cryptos.map((c, i) => {
-                const up = c.change24h >= 0;
-                const sym = c.symbol?.toUpperCase() || c.id.slice(0, 5).toUpperCase();
-                return (
-                  <Link key={c.id} href={`/rankings/crypto/${c.id}`} style={{
-                    textDecoration: 'none', padding: '12px 14px',
-                    borderRight: i % 4 !== 3 ? '1px solid #1E293B40' : 'none',
-                    borderBottom: i < 4 ? '1px solid #1E293B40' : 'none',
-                    display: 'flex', flexDirection: 'column', gap: 3,
-                  }}>
-                    <div style={{ fontFamily: 'var(--mono)', fontSize: 12, fontWeight: 800, color: '#F59E0B' }}>{sym}</div>
-                    <div style={{ fontFamily: 'var(--mono)', fontSize: 13, fontWeight: 700, color: '#F1F5F9' }}>
-                      {c.price >= 1000 ? `$${Math.round(c.price).toLocaleString()}` : c.price >= 1 ? `$${c.price.toFixed(2)}` : `$${c.price.toFixed(4)}`}
-                    </div>
-                    <div style={{ fontFamily: 'var(--mono)', fontSize: 11, fontWeight: 700, color: up ? '#00D474' : '#FF4545' }}>
-                      {up ? '+' : ''}{c.change24h?.toFixed(2)}%
-                    </div>
-                  </Link>
-                );
-              })}
-            </div>
-          )}
-          <div style={{ padding: '6px 16px', fontSize: 9, color: '#334155', fontFamily: 'var(--mono)', borderTop: '1px solid #1E293B40' }}>
-            Source: CoinGecko · 24h change
-          </div>
-        </div>
 
         {/* ⑤⑥⑦ GAINERS · LOSERS · MOST ACTIVE */}
         {moversLoading && (
