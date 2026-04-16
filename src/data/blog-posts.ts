@@ -476,6 +476,7 @@ export const blogPosts: BlogPost[] = [
     catColor: '#00D474',
     date: '2026-04-21',
     readTime: '10 min',
+    heroImage: '/images/content/investing-101-week1-what-is-a-stock-hero.png',
     description: 'A stock is ownership in a real business. Not a ticker. Not a gambling token. Here is what you are actually buying — and why that distinction changes everything about how you invest.',
     sections: [
       { heading: 'What Is a Stock?', body: 'You hear it everywhere. "Buy stocks." "The stock market is up." "I lost money in stocks." But most people who say these things cannot answer a simple question: what is a stock, exactly?\n\nHere is the one-sentence version: a stock is a small piece of ownership in a real business. When you buy one share of Apple, you own a fraction of a company that designs phones, runs services, and generates over $90 billion a year in profit. You are not betting on a number going up. You are buying a piece of a machine that makes money.\n\nThat distinction matters more than any chart pattern or analyst rating you will ever read. Because once you understand what a stock actually is, every other investing concept — valuation, dividends, risk, portfolio construction — starts to make sense.' },
