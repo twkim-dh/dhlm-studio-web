@@ -3,11 +3,13 @@
 import { useState, useEffect } from 'react';
 import Link from 'next/link';
 import StockLogo from '@/components/StockLogo';
+import { Treemap, ResponsiveContainer } from 'recharts';
 
 // ─── Types ────────────────────────────────────────────────────────────────────
 
 interface IndexItem  { symbol: string; label: string; price: number; pct: number; }
 interface TopStock   { ticker: string; name: string; price: number; change: number; marketCap: number; sector: string; image?: string; }
+interface CryptoItem { id: string; symbol: string; name: string; price: number; change24h: number; }
 interface Mover      { rank: number; ticker: string; name: string; price: number; change: number; volume: number; image?: string; }
 interface SectorGroup { name: string; change: number; totalMC: number; stocks: TopStock[]; }
 
@@ -31,6 +33,40 @@ function pctColor(pct: number): { bg: string; text: string; border: string } {
   if (pct > -1)   return { bg: '#2D0F0F', text: '#FCA5A5', border: '#7A202060' };
   if (pct > -3)   return { bg: '#7A2020', text: '#FCA5A5', border: '#B4303060' };
   return            { bg: '#B43030', text: '#fff',     border: '#FF454560' };
+}
+
+// ─── Treemap tile renderer ────────────────────────────────────────────────────
+
+function TreemapTile(props: Record<string, unknown>) {
+  const { x, y, width, height, name, change } = props as {
+    x: number; y: number; width: number; height: number; name: string; change: number;
+  };
+  const c = pctColor(change || 0);
+  const w = width as number;
+  const h = height as number;
+  const showTicker = w > 28 && h > 18;
+  const showPct    = w > 34 && h > 32;
+  const fs = Math.min(Math.max(Math.floor(w / 5), 8), 13);
+  const fp = Math.min(Math.max(Math.floor(w / 6), 7), 10);
+  return (
+    <g>
+      <rect x={x} y={y} width={w} height={h} fill={c.bg} stroke="#0B0F19" strokeWidth={2} rx={2} />
+      {showTicker && (
+        <text x={x + w / 2} y={y + h / 2 - (showPct ? 7 : 0)}
+          textAnchor="middle" dominantBaseline="middle"
+          fill={c.text} fontSize={fs} fontWeight={700} fontFamily="monospace">
+          {name}
+        </text>
+      )}
+      {showPct && (
+        <text x={x + w / 2} y={y + h / 2 + fp + 2}
+          textAnchor="middle" dominantBaseline="middle"
+          fill={c.text} fontSize={fp} fontFamily="monospace" opacity={0.85}>
+          {(change as number) >= 0 ? '+' : ''}{(change as number)?.toFixed(1)}%
+        </text>
+      )}
+    </g>
+  );
 }
 
 const LEGEND = [
@@ -87,6 +123,7 @@ export default function MarketsPage() {
   const [lastCloseLabel, setLastCloseLabel] = useState('');
   const [moversLoading, setMoversLoading] = useState(true);
   const [isLive, setIsLive] = useState(false);
+  const [cryptos, setCryptos] = useState<CryptoItem[]>([]);
 
   useEffect(() => {
     // ① Indices
@@ -120,6 +157,20 @@ export default function MarketsPage() {
       .catch(() => {})
       .finally(() => setSectorsLoaded(true));
 
+    // ④ Crypto (CoinGecko)
+    const CRYPTO_WHITELIST = ['bitcoin','ethereum','solana','ripple','binancecoin','cardano','dogecoin','avalanche-2','chainlink','polkadot'];
+    fetch('/api/crypto')
+      .then(r => r.json())
+      .then(d => {
+        if (d.coins?.length > 0) {
+          const ordered = CRYPTO_WHITELIST
+            .map((id: string) => d.coins.find((c: CryptoItem) => c.id === id))
+            .filter(Boolean) as CryptoItem[];
+          setCryptos(ordered.slice(0, 8));
+        }
+      })
+      .catch(() => {});
+
     // ⑤⑥⑦ Gainers / Losers / Actives
     fetch('/api/markets')
       .then(r => r.json())
@@ -137,6 +188,10 @@ export default function MarketsPage() {
   }, []);
 
   const topSectors = [...sectors].sort((a, b) => b.change - a.change).slice(0, 3);
+  // Flat treemap data: each stock is one tile, sized by market cap
+  const treemapData = sectors.flatMap(sec =>
+    sec.stocks.map(s => ({ name: s.ticker, size: Math.max(s.marketCap, 1), change: s.change }))
+  );
 
   return (
     <div style={{ background: '#0B0F19', minHeight: '100vh' }}>
@@ -202,49 +257,25 @@ export default function MarketsPage() {
             ))}
           </div>
 
-          {/* Sector rows */}
+          {/* Treemap */}
           {!sectorsLoaded ? (
-            <div style={{ height: 80, display: 'flex', alignItems: 'center', justifyContent: 'center' }}>
+            <div style={{ height: 260, display: 'flex', alignItems: 'center', justifyContent: 'center' }}>
               <span style={{ fontSize: 11, color: '#334155' }}>Loading sector data...</span>
             </div>
-          ) : sectors.length === 0 ? (
-            <div style={{ height: 60, display: 'flex', alignItems: 'center', justifyContent: 'center' }}>
+          ) : treemapData.length === 0 ? (
+            <div style={{ height: 80, display: 'flex', alignItems: 'center', justifyContent: 'center' }}>
               <span style={{ fontSize: 11, color: '#334155' }}>Sector data unavailable — updates during market hours</span>
             </div>
           ) : (
-            <div style={{ display: 'flex', flexDirection: 'column', gap: 6 }}>
-              {sectors.map(sec => {
-                const sc = pctColor(sec.change);
-                return (
-                  <div key={sec.name} style={{ background: sc.bg, borderRadius: 8, padding: '10px 12px', border: `1px solid ${sc.border}` }}>
-                    {/* Sector header */}
-                    <div style={{ display: 'flex', alignItems: 'baseline', gap: 6, marginBottom: 6 }}>
-                      <span style={{ fontSize: 11, fontWeight: 800, color: sc.text, fontFamily: 'var(--mono)' }}>{sec.name}</span>
-                      <span style={{ fontSize: 11, fontWeight: 700, color: sc.text, fontFamily: 'var(--mono)', opacity: 0.9 }}>
-                        {sec.change >= 0 ? '+' : ''}{sec.change.toFixed(1)}%
-                      </span>
-                    </div>
-                    {/* Constituent stocks */}
-                    <div style={{ display: 'flex', flexWrap: 'wrap', gap: 4 }}>
-                      {sec.stocks.map(s => {
-                        const tc = pctColor(s.change);
-                        return (
-                          <Link key={s.ticker} href={`/markets/${s.ticker}`} style={{
-                            textDecoration: 'none', padding: '3px 8px', borderRadius: 5,
-                            background: `${tc.bg}CC`, border: `1px solid ${tc.border}`,
-                            display: 'inline-flex', alignItems: 'center', gap: 4,
-                          }}>
-                            <span style={{ fontSize: 10, fontWeight: 700, color: tc.text, fontFamily: 'var(--mono)' }}>{s.ticker}</span>
-                            <span style={{ fontSize: 9, color: tc.text, fontFamily: 'var(--mono)', opacity: 0.85 }}>
-                              {s.change >= 0 ? '+' : ''}{s.change.toFixed(1)}%
-                            </span>
-                          </Link>
-                        );
-                      })}
-                    </div>
-                  </div>
-                );
-              })}
+            <div style={{ height: 280 }}>
+              <ResponsiveContainer width="100%" height="100%">
+                <Treemap
+                  data={treemapData}
+                  dataKey="size"
+                  aspectRatio={16 / 9}
+                  content={<TreemapTile />}
+                />
+              </ResponsiveContainer>
             </div>
           )}
 
@@ -273,6 +304,43 @@ export default function MarketsPage() {
             })}
           </div>
         )}
+
+        {/* ④ CRYPTO */}
+        <div style={{ background: '#111827', borderRadius: 12, border: '1px solid #1E293B', overflow: 'hidden', marginBottom: 20 }}>
+          <div style={{ padding: '10px 16px', borderBottom: '1px solid #1E293B', display: 'flex', justifyContent: 'space-between', alignItems: 'center' }}>
+            <div style={{ fontFamily: 'var(--mono)', fontSize: 10, fontWeight: 700, color: '#F59E0B', letterSpacing: 1.5 }}>🪙 CRYPTO — BTC · ETH · SOL + TOP ALTCOINS</div>
+            <Link href="/rankings/crypto" style={{ fontSize: 10, color: '#F59E0B', fontFamily: 'var(--mono)', textDecoration: 'none' }}>Full Rankings →</Link>
+          </div>
+          {cryptos.length === 0 ? (
+            <div style={{ padding: '20px', textAlign: 'center', fontSize: 11, color: '#334155', fontFamily: 'var(--mono)' }}>Loading crypto data...</div>
+          ) : (
+            <div style={{ display: 'grid', gridTemplateColumns: 'repeat(4, 1fr)', gap: 0 }}>
+              {cryptos.map((c, i) => {
+                const up = c.change24h >= 0;
+                const sym = c.symbol?.toUpperCase() || c.id.slice(0, 5).toUpperCase();
+                return (
+                  <Link key={c.id} href={`/rankings/crypto/${c.id}`} style={{
+                    textDecoration: 'none', padding: '12px 14px',
+                    borderRight: i % 4 !== 3 ? '1px solid #1E293B40' : 'none',
+                    borderBottom: i < 4 ? '1px solid #1E293B40' : 'none',
+                    display: 'flex', flexDirection: 'column', gap: 3,
+                  }}>
+                    <div style={{ fontFamily: 'var(--mono)', fontSize: 12, fontWeight: 800, color: '#F59E0B' }}>{sym}</div>
+                    <div style={{ fontFamily: 'var(--mono)', fontSize: 13, fontWeight: 700, color: '#F1F5F9' }}>
+                      {c.price >= 1000 ? `$${Math.round(c.price).toLocaleString()}` : c.price >= 1 ? `$${c.price.toFixed(2)}` : `$${c.price.toFixed(4)}`}
+                    </div>
+                    <div style={{ fontFamily: 'var(--mono)', fontSize: 11, fontWeight: 700, color: up ? '#00D474' : '#FF4545' }}>
+                      {up ? '+' : ''}{c.change24h?.toFixed(2)}%
+                    </div>
+                  </Link>
+                );
+              })}
+            </div>
+          )}
+          <div style={{ padding: '6px 16px', fontSize: 9, color: '#334155', fontFamily: 'var(--mono)', borderTop: '1px solid #1E293B40' }}>
+            Source: CoinGecko · 24h change
+          </div>
+        </div>
 
         {/* ⑤⑥⑦ GAINERS · LOSERS · MOST ACTIVE */}
         {moversLoading && (
