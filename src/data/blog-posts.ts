@@ -1310,6 +1310,7 @@ export const blogPosts: BlogPost[] = [
     category: 'Crypto Analysis',
     catColor: '#A78BFA',
     date: '2026-04-11',
+    heroImage: '/images/content/ai-crypto-tokens-2026-hero.png',
     readTime: '11 min',
     description: 'Everyone wants AI crypto exposure. Most people are buying the wrong thing. This article covers Render (RENDER) and Bittensor (TAO) — the two credible AI infrastructure tokens — explains what makes them different, and provides a framework to separate real AI crypto from noise.',
     lastUpdated: '2026-04-11',
