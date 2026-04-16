@@ -90,6 +90,7 @@ export const blogPosts: BlogPost[] = [
     slug: 'us-dominates-global-wealth-billionaires-2026',
     title: 'US Dominates Global Wealth — 7 of Top 10 Billionaires',
     category: 'Rankings', catColor: '#D4A843', date: '2026-04-02', readTime: '7 min',
+    heroImage: '/images/content/us-dominates-global-wealth-hero.png',
     lastUpdated: '2026-04-12',
     description: 'The United States claims 7 of the world\'s 10 richest people in 2026. Explore how tech wealth and AI are reshaping the global billionaire map.',
     sections: [
