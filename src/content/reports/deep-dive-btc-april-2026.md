@@ -7,7 +7,7 @@ readTime: "14 min"
 category: "Crypto"
 catColor: "#F59E0B"
 grade: "C+"
-heroImage: "/images/content/deep-dive-report.png"
+heroImage: "/images/content/deep-dive-btc-april-2026-hero.png"
 beafScore: 68
 description: "Bitcoin at $66K: Post-halving, ETF billions, institutional adoption, and existential questions. BEAF Score 68/100 (modified for crypto)."
 seoTitle: "Bitcoin BEAF 68/100: Post-Halving, Post-ETF, Post-Doubt? | April 2026"
