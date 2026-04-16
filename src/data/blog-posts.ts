@@ -175,6 +175,7 @@ export const blogPosts: BlogPost[] = [
     slug: 'sp500-sector-performance-2026-which-sectors-leading',
     title: 'S&P 500 Sector Performance 2026: Which Sectors Are Leading?',
     category: 'Markets', catColor: '#00D474', date: '2026-03-31', readTime: '6 min',
+    heroImage: '/images/content/sp500-sector-performance-2026-hero.png',
     description: 'A comprehensive breakdown of S&P 500 sector performance in 2026. Discover which sectors are outperforming and where smart money is flowing.',
     calculatorLinks: [
       { text: 'Rather than rotating between sectors, DCA into the broad S&P 500 and capture the whole market systematically.', href: '/calculators/dca', ctaText: 'DCA Calculator' },
