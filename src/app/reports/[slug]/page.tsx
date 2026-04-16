@@ -110,7 +110,9 @@ export async function generateMetadata({ params }: { params: Promise<{ slug: str
   const ogImage = rawImage
     ? rawImage.startsWith('http') ? rawImage : `${BASE}${rawImage}`
     : `${BASE}/opengraph-image`; // fallback: branded "Brutal Edge" OG image
-  const images = [{ url: ogImage, width: 1200, height: 630 }];
+  const isLocalPng = rawImage && !rawImage.startsWith('http') && rawImage.endsWith('.png');
+  const [ogW, ogH] = isLocalPng ? [1536, 1024] : [1200, 630];
+  const images = [{ url: ogImage, width: ogW, height: ogH }];
   return {
     title: title.includes('DHLM Studio') ? title : `${title} | DHLM Studio`,
     description,

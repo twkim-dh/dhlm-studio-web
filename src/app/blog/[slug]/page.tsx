@@ -31,7 +31,8 @@ export async function generateMetadata({ params }: { params: Promise<{ slug: str
         const src = post.heroImage || manifest[slug]?.src;
         if (!src) return {};
         const url = src.startsWith('/') ? `https://dhlm-studio.com${src}` : src;
-        return { images: [{ url, width: 720, height: 380 }] };
+        const [w, h] = src.endsWith('.png') ? [1792, 1024] : [1200, 630];
+        return { images: [{ url, width: w, height: h }] };
       })(),
     },
     twitter: { card: 'summary_large_image', title: post.title, description: post.description },
@@ -185,13 +186,13 @@ export default async function BlogPostPage({ params }: { params: Promise<{ slug:
         {/* Hero image */}
         {heroSrc && (
           <div style={{ margin: '24px 0' }}>
-            <div style={{ width: '100%', maxHeight: 300, display: 'flex', alignItems: 'center', justifyContent: 'center', background: '#0f172a', borderRadius: 12, overflow: 'hidden', border: '1px solid #1E293B' }}>
+            <div style={{ width: '100%', background: '#0f172a', borderRadius: 12, overflow: 'hidden', border: '1px solid #1E293B' }}>
               <Image
                 src={heroSrc}
                 alt={unsplashEntry?.alt || post.title}
-                width={720}
-                height={380}
-                style={{ maxWidth: '100%', maxHeight: 300, objectFit: 'contain', height: 'auto', display: 'block' }}
+                width={1792}
+                height={1024}
+                style={{ width: '100%', height: 'auto', display: 'block' }}
                 priority
                 unoptimized={heroSrc.startsWith('https://images.unsplash.com')}
               />
