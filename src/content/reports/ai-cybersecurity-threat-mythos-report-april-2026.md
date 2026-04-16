@@ -1,7 +1,7 @@
 ---
 slug: "ai-cybersecurity-threat-mythos-report-april-2026"
 title: "AI as a Financial-System Threat: Anthropic's Mythos Moment and What It Means for Your Portfolio"
-ticker: "CRWD"
+ticker: "ANTHROPIC"
 date: "2026-04-16"
 readTime: "18 min"
 category: "Special Report"
@@ -11,7 +11,7 @@ beafScore: 0
 heroImage: "/images/content/ai-cybersecurity-mythos-hero.png"
 description: "Treasury and the Fed called an emergency meeting. Claude Mythos can autonomously exploit zero-day vulnerabilities. The investment case: follow the forced spending into cybersecurity, compute, and sovereign AI infrastructure."
 type: "special-report"
-tickers: ["CRWD", "PANW", "NVDA", "MSFT", "GOOGL", "AVGO"]
+tickers: ["ANTHROPIC", "CRWD", "PANW", "NVDA", "MSFT", "AVGO"]
 sector: "Technology"
 seoTitle: "AI Cybersecurity Threat: Anthropic Mythos & Investment Implications April 2026 | DHLM Studio"
 seoDescription: "Treasury Secretary and the Fed met bank CEOs over Anthropic's Claude Mythos — AI that exploits zero-day vulnerabilities. Where the money flows: CRWD, PANW, NVDA, AVGO. Brutal Edge Research."

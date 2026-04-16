@@ -27,11 +27,12 @@ function tickerBgColor(ticker: string): string {
 // SVGs may be: (a) black-on-transparent → white bg, or (b) self-contained
 // with their own colored circle → white bg acts as a thin border ring.
 const LOCAL_LOGO_OVERRIDES: Record<string, string> = {
-  PLTR:   '/logos/PLTR.svg',
-  ETH:    '/logos/ETH.svg',
-  BTC:    '/logos/BTC.svg',
-  SPACEX: '/logos/SPACEX.svg',
-  CRCL:   '/logos/CRCL.svg',
+  PLTR:      '/logos/PLTR.svg',
+  ETH:       '/logos/ETH.svg',
+  BTC:       '/logos/BTC.svg',
+  SPACEX:    '/logos/SPACEX.svg',
+  CRCL:      '/logos/CRCL.svg',
+  ANTHROPIC: '/logos/ANTHROPIC.svg',
 };
 
 /** Count visible pixels when composited on a given fill color. Returns 0–1 ratio. */
