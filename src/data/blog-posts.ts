@@ -156,6 +156,7 @@ export const blogPosts: BlogPost[] = [
     slug: 'top-stock-gainers-today-how-to-spot-winners-2026',
     title: 'Top Stock Gainers Today: How to Spot Winners Before They Surge (2026)',
     category: 'Markets', catColor: '#00D474', date: '2026-03-31', readTime: '7 min',
+    heroImage: '/images/content/top-stock-gainers-today-hero.png',
     description: 'Learn proven strategies for identifying top stock gainers before they make their biggest moves. Data-driven methods for finding winning stocks in 2026.',
     calculatorLinks: [
       { text: 'Spotted a potential winner? Calculate exactly how many shares to buy based on your portfolio and max risk.', href: '/calculators/position-size', ctaText: 'Position Size Calculator' },
