@@ -8,7 +8,7 @@ category: "Deep Dive"
 catColor: "#3B82F6"
 grade: "—"
 beafScore: 0
-heroImage: "/images/content/rdw-redwire-hero.jpg"
+heroImage: "/images/content/rdw-redwire-hero.png"
 description: "Redwire at $9.91: $411.2M record backlog, Edge Autonomy UAS acquisition, ESA quantum-secure contract, $450-500M 2026 guidance. Real backlog. Real execution risk."
 type: "deep-dive"
 tickers: ["RDW"]

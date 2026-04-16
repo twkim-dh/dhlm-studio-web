@@ -8,7 +8,7 @@ category: "Deep Dive"
 catColor: "#3B82F6"
 grade: "B+"
 beafScore: 83
-heroImage: "/images/content/nvda-ai-factory-hero.jpg"
+heroImage: "/images/content/nvda-ai-factory-hero.png"
 description: "NVIDIA at $4.53T: FY2026 revenue $215.9B (+65% YoY), 75% Q4 gross margin, $62.3B data center quarter. The AI factory thesis, CUDA moat, and the valuation question that matters."
 type: "deep-dive"
 tickers: ["NVDA"]

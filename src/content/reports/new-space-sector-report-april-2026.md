@@ -8,7 +8,7 @@ category: "Special Report"
 catColor: "#C73E3A"
 grade: "—"
 beafScore: 0
-heroImage: "/images/content/new-space-hero.jpg"
+heroImage: "/images/content/new-space-hero.png"
 description: "SpaceX, Rocket Lab, AST SpaceMobile, Intuitive Machines — where the money actually goes when launch gets cheap. Full New Space sector breakdown April 2026."
 type: "special-report"
 tickers: ["RKLB", "ASTS", "LUNR", "SPACEX"]

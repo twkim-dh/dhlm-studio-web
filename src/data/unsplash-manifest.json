@@ -45,13 +45,9 @@
     }
   },
   "powerball-vs-mega-millions-better-odds": {
-    "src": "https://images.unsplash.com/photo-1593453918093-8f308edb9e45?ixid=M3w5MjE0MDh8MHwxfHNlYXJjaHwxfHxsb3R0ZXJ5JTIwdGlja2V0JTIwamFja3BvdCUyMG51bWJlcnN8ZW58MXwwfHx8MTc3NTg3NDI4NHww&ixlib=rb-4.1.0&w=720&h=380&fit=crop&q=80&fm=jpg&auto=format",
-    "alt": "white and red calendar on white wall",
-    "credit": {
-      "author": "Waldemar Brandt",
-      "authorUrl": "https://unsplash.com/@waldemarbrandt67w?utm_source=dhlm_studio&utm_medium=referral",
-      "unsplashUrl": "https://unsplash.com/photos/MVxXlwspmcI?utm_source=dhlm_studio&utm_medium=referral"
-    }
+    "src": "/images/content/powerball-vs-megamillions-hero.png",
+    "alt": "Powerball vs Mega Millions: Which Has Better Odds?",
+    "credit": null
   },
   "top-stock-gainers-today-how-to-spot-winners-2026": {
     "src": "https://images.unsplash.com/photo-1727883384683-231453ce29a7?ixid=M3w5MjE0MDh8MHwxfHNlYXJjaHwxfHxzdG9jayUyMG1hcmtldCUyMGJ1bGwlMjB0cmFkaW5nJTIwY2hhcnR8ZW58MXwwfHx8MTc3NTg3NDI4Nnww&ixlib=rb-4.1.0&w=720&h=380&fit=crop&q=80&fm=jpg&auto=format",
@@ -189,13 +185,9 @@
     }
   },
   "tiktok-vs-youtube-vs-instagram-creator-earnings-2026": {
-    "src": "https://images.unsplash.com/photo-1768406091211-10bc0676759d?ixid=M3w5MjE0MDh8MHwxfHNlYXJjaHwxfHxzb2NpYWwlMjBtZWRpYSUyMGluZmx1ZW5jZXIlMjBzbWFydHBob25lJTIwZmlsbWluZ3xlbnwxfDB8fHwxNzc1ODc0MzIwfDA&ixlib=rb-4.1.0&w=720&h=380&fit=crop&q=80&fm=jpg&auto=format",
-    "alt": "Young woman posing with a smartphone on a gimbal.",
-    "credit": {
-      "author": "SERGEI BEZZUBOV",
-      "authorUrl": "https://unsplash.com/@sergskur?utm_source=dhlm_studio&utm_medium=referral",
-      "unsplashUrl": "https://unsplash.com/photos/l_249M_aRIU?utm_source=dhlm_studio&utm_medium=referral"
-    }
+    "src": "/images/content/tiktok-vs-youtube-hero.png",
+    "alt": "TikTok vs YouTube vs Instagram: Creator Earnings 2026 Comparison",
+    "credit": null
   },
   "how-mrbeast-makes-money-business-behind-382m-subscribers": {
     "src": "https://images.unsplash.com/photo-1664355049229-746d2de57547?ixid=M3w5MjE0MDh8MHwxfHNlYXJjaHwxfHx5b3V0dWJlJTIwc3R1ZGlvJTIwZmlsbWluZyUyMHByb2R1Y3Rpb258ZW58MXwwfHx8MTc3NTg3NDMyMnww&ixlib=rb-4.1.0&w=720&h=380&fit=crop&q=80&fm=jpg&auto=format",
@@ -279,13 +271,9 @@
     }
   },
   "top-10-countries-gdp-world-economy-2026": {
-    "src": "https://images.unsplash.com/photo-1628271368791-fb45b3d2d797?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w5MjE0MDh8MHwxfHNlYXJjaHwxfHxnbG9iYWwlMjBlY29ub215JTIwZ2RwJTIwY291bnRyaWVzJTIwZmxhZ3xlbnwxfDB8fHwxNzc1ODgxNDc1fDA&ixlib=rb-4.1.0&q=80&w=1080",
-    "alt": "flags on poles near green trees during daytime",
-    "credit": {
-      "author": "Jerry Harrow",
-      "authorUrl": "",
-      "unsplashUrl": ""
-    }
+    "src": "/images/content/gdp-top10-countries-hero.png",
+    "alt": "Top 10 Countries by GDP: World Economy Rankings 2026",
+    "credit": null
   },
   "fear-greed-index-stock-prediction": {
     "src": "https://images.unsplash.com/photo-1617696795782-cedb140e2f0b?ixid=M3w5MjE0MDh8MHwxfHNlYXJjaHwxfHxmZWFyJTIwZ3JlZWQlMjBtYXJrZXQlMjBzZW50aW1lbnQlMjBkaWFsfGVufDF8MHx8fDE3NzU4ODQ4Nzd8MA&ixlib=rb-4.1.0&w=720&h=380&fit=crop&q=80&fm=jpg&auto=format",
@@ -345,7 +333,7 @@
     "credit": null
   },
   "deep-dive-nvda-april-2026": {
-    "src": "/images/content/nvda-ai-factory-hero.jpg",
+    "src": "/images/content/nvda-ai-factory-hero.png",
     "alt": "NVIDIA (NVDA): Building the AI Factory for the Age of Intelligence — $4.53T, FY2026 $215.9B Revenue",
     "credit": null
   },
@@ -532,13 +520,9 @@
     "credit": null
   },
   "top-5-ai-stocks-to-watch-2026": {
-    "src": "https://images.unsplash.com/photo-1773558057689-847e19466840?ixid=M3w5MjE0MDh8MHwxfHNlYXJjaHwxfHxhcnRpZmljaWFsJTIwaW50ZWxsaWdlbmNlJTIwcm9ib3QlMjB0ZWNobm9sb2d5JTIwZnV0dXJlfGVufDF8MHx8fDE3NzYwNTQyMDJ8MA&ixlib=rb-4.1.0&w=720&h=380&fit=crop&q=80&fm=jpg&auto=format",
-    "alt": "A robotic torso with exposed internal components and arms.",
-    "credit": {
-      "author": "Declan Sun",
-      "authorUrl": "https://unsplash.com/@declansun?utm_source=dhlm_studio&utm_medium=referral",
-      "unsplashUrl": "https://unsplash.com/photos/A9egCDR2Wtc?utm_source=dhlm_studio&utm_medium=referral"
-    }
+    "src": "/images/content/top5-ai-stocks-hero.png",
+    "alt": "Top 5 AI Stocks to Watch in 2026",
+    "credit": null
   },
   "tariff-impact-markets-2026": {
     "src": "https://images.unsplash.com/photo-1773126379692-342ff516ea53?ixid=M3w5MjE0MDh8MHwxfHNlYXJjaHwxfHxnbG9iYWwlMjB0cmFkZSUyMHNoaXBwaW5nJTIwZnJlaWdodHxlbnwxfDB8fHwxNzc2MDU0MjA0fDA&ixlib=rb-4.1.0&w=720&h=380&fit=crop&q=80&fm=jpg&auto=format",
@@ -550,13 +534,9 @@
     }
   },
   "youtube-vs-tiktok-creator-economy": {
-    "src": "https://images.unsplash.com/photo-1664277497086-e21115efbbf4?ixid=M3w5MjE0MDh8MHwxfHNlYXJjaHwxfHxjb250ZW50JTIwY3JlYXRvciUyMHZpZGVvJTIwcHJvZHVjdGlvbiUyMGNhbWVyYXxlbnwxfDB8fHwxNzc2MDU0MjA3fDA&ixlib=rb-4.1.0&w=720&h=380&fit=crop&q=80&fm=jpg&auto=format",
-    "alt": "a person working on a laptop",
-    "credit": {
-      "author": "Videodeck .co",
-      "authorUrl": "https://unsplash.com/@videodeck?utm_source=dhlm_studio&utm_medium=referral",
-      "unsplashUrl": "https://unsplash.com/photos/OO_deaXF4CU?utm_source=dhlm_studio&utm_medium=referral"
-    }
+    "src": "/images/content/tiktok-vs-youtube-hero.png",
+    "alt": "YouTube vs TikTok: Where Creators Make Real Money in 2026",
+    "credit": null
   },
   "top-stock-movers-explained": {
     "src": "https://images.unsplash.com/photo-1649003515353-c58a239cf662?ixid=M3w5MjE0MDh8MHwxfHNlYXJjaHwxfHxzdG9jayUyMG1hcmtldCUyMG1vdmVycyUyMHNjcmVlbnxlbnwxfDB8fHwxNzc2MDU0MjA5fDA&ixlib=rb-4.1.0&w=720&h=380&fit=crop&q=80&fm=jpg&auto=format",
@@ -613,13 +593,9 @@
     }
   },
   "tiktok-vs-youtube-creators": {
-    "src": "https://images.unsplash.com/photo-1747572939295-209569c4eec6?ixid=M3w5MjE0MDh8MHwxfHNlYXJjaHwxfHxjb250ZW50JTIwY3JlYXRvciUyMHlvdXR1YmUlMjBzb2NpYWwlMjBtZWRpYSUyMHN0dWRpb3xlbnwxfDB8fHwxNzc2MDU0MjIzfDA&ixlib=rb-4.1.0&w=720&h=380&fit=crop&q=80&fm=jpg&auto=format",
-    "alt": "The image shows a youtube channel page.",
-    "credit": {
-      "author": "Szabo Viktor",
-      "authorUrl": "https://unsplash.com/@vmxhu?utm_source=dhlm_studio&utm_medium=referral",
-      "unsplashUrl": "https://unsplash.com/photos/xGj8NgRwNOU?utm_source=dhlm_studio&utm_medium=referral"
-    }
+    "src": "/images/content/tiktok-vs-youtube-hero.png",
+    "alt": "TikTok vs YouTube: Where Creators Make More Money",
+    "credit": null
   },
   "global-happiness-index": {
     "src": "https://images.unsplash.com/photo-1587401048047-6014f28435f8?ixid=M3w5MjE0MDh8MHwxfHNlYXJjaHwxfHxnbG9iYWwlMjBkYXRhJTIwcmFua2luZ3MlMjBudW1iZXJzJTIwY2hhcnR8ZW58MXwwfHx8MTc3NjA1NDIyNXww&ixlib=rb-4.1.0&w=720&h=380&fit=crop&q=80&fm=jpg&auto=format",
@@ -749,67 +725,39 @@
     }
   },
   "learn-w1-blockchain": {
-    "src": "https://images.unsplash.com/photo-1765816589173-d87bf0c38e71?ixid=M3w5MjE0MDh8MHwxfHNlYXJjaHwyfHxibG9ja2NoYWluJTIwZGlzdHJpYnV0ZWQlMjBuZXR3b3JrJTIwbm9kZXMlMjB0ZWNobm9sb2d5fGVufDF8MHx8fDE3NzYxMjUyMTF8MA&ixlib=rb-4.1.0&w=720&h=380&fit=crop&q=80&fm=jpg&auto=format",
-    "alt": "Abstract geometric pattern of illuminated lights.",
-    "credit": {
-      "author": "Julia Taubitz",
-      "authorUrl": "https://unsplash.com/@justmejuliee?utm_source=dhlm_studio&utm_medium=referral",
-      "unsplashUrl": "https://unsplash.com/photos/fYOCiHbHLQ8?utm_source=dhlm_studio&utm_medium=referral"
-    }
+    "src": "/images/content/crypto101-week1-hero.png",
+    "alt": "Crypto 101 Week 1: What is Blockchain? — Illustrated Guide",
+    "credit": null
   },
   "learn-w2-btc-eth": {
-    "src": "https://images.unsplash.com/photo-1624438347907-58acda8a75b5?ixid=M3w5MjE0MDh8MHwxfHNlYXJjaHwyfHxiaXRjb2luJTIwZXRoZXJldW0lMjBnb2xkJTIwY29pbiUyMGNsb3NlJTIwdXB8ZW58MXwwfHx8MTc3NjEyNTIxNHww&ixlib=rb-4.1.0&w=720&h=380&fit=crop&q=80&fm=jpg&auto=format",
-    "alt": "gold star print round ornament",
-    "credit": {
-      "author": "Kanchanara",
-      "authorUrl": "https://unsplash.com/@kanchanara?utm_source=dhlm_studio&utm_medium=referral",
-      "unsplashUrl": "https://unsplash.com/photos/ePRG7pZMQ8k?utm_source=dhlm_studio&utm_medium=referral"
-    }
+    "src": "/images/content/crypto101-week2-hero.png",
+    "alt": "Crypto 101 Week 2: Bitcoin vs Ethereum — Key Differences",
+    "credit": null
   },
   "learn-w3-wallets": {
-    "src": "https://images.unsplash.com/photo-1599770643145-3d8045e732e7?ixid=M3w5MjE0MDh8MHwxfHNlYXJjaHwyfHxoYXJkd2FyZSUyMHdhbGxldCUyMHNlY3VyaXR5JTIwdmF1bHQlMjB0ZWNobm9sb2d5fGVufDF8MHx8fDE3NzYxMjUyMTZ8MA&ixlib=rb-4.1.0&w=720&h=380&fit=crop&q=80&fm=jpg&auto=format",
-    "alt": "black and white remote control",
-    "credit": {
-      "author": "Maksym Diachenko",
-      "authorUrl": "https://unsplash.com/@photofixation?utm_source=dhlm_studio&utm_medium=referral",
-      "unsplashUrl": "https://unsplash.com/photos/RaikAQ36jDw?utm_source=dhlm_studio&utm_medium=referral"
-    }
+    "src": "/images/content/crypto101-week3-hero.png",
+    "alt": "Crypto 101 Week 3: Crypto Wallets — Hot vs Cold Storage",
+    "credit": null
   },
   "learn-w4-buy-crypto": {
-    "src": "https://images.unsplash.com/photo-1640694514279-090bb1b09ee9?ixid=M3w5MjE0MDh8MHwxfHNlYXJjaHwyfHxjcnlwdG8lMjBleGNoYW5nZSUyMHBob25lJTIwdHJhZGluZyUyMGFwcHxlbnwxfDB8fHwxNzc2MTI1MjE5fDA&ixlib=rb-4.1.0&w=720&h=380&fit=crop&q=80&fm=jpg&auto=format",
-    "alt": "a cell phone displaying a chart on a stand",
-    "credit": {
-      "author": "Muhammad Salim",
-      "authorUrl": "https://unsplash.com/@hi_muhammad_salim?utm_source=dhlm_studio&utm_medium=referral",
-      "unsplashUrl": "https://unsplash.com/photos/JNyiwlWktr4?utm_source=dhlm_studio&utm_medium=referral"
-    }
+    "src": "/images/content/crypto101-week4-hero.png",
+    "alt": "Crypto 101 Week 4: How to Buy Crypto — Step by Step",
+    "credit": null
   },
   "learn-w5-staking": {
-    "src": "https://images.unsplash.com/photo-1646725432541-689c5661f8f5?ixid=M3w5MjE0MDh8MHwxfHNlYXJjaHwyfHxldGhlcmV1bSUyMHN0YWtpbmclMjBjb2luJTIwcmV3YXJkJTIwZWFybnxlbnwxfDB8fHwxNzc2MTI1MjIxfDA&ixlib=rb-4.1.0&w=720&h=380&fit=crop&q=80&fm=jpg&auto=format",
-    "alt": "three different colored diamonds next to a gold coin",
-    "credit": {
-      "author": "Traxer",
-      "authorUrl": "https://unsplash.com/@traxer?utm_source=dhlm_studio&utm_medium=referral",
-      "unsplashUrl": "https://unsplash.com/photos/m60jbaWKKd0?utm_source=dhlm_studio&utm_medium=referral"
-    }
+    "src": "/images/content/crypto101-week5-hero.png",
+    "alt": "Crypto 101 Week 5: Staking & Yield — Earn While You Hold",
+    "credit": null
   },
   "learn-w6-defi": {
-    "src": "https://images.unsplash.com/photo-1642239817349-3e1cf98817a5?ixid=M3w5MjE0MDh8MHwxfHNlYXJjaHwyfHxkZWNlbnRyYWxpemVkJTIwZmluYW5jZSUyMHByb3RvY29sJTIwc21hcnQlMjBjb250cmFjdCUyMGNvZGV8ZW58MXwwfHx8MTc3NjEyNTIyNHww&ixlib=rb-4.1.0&w=720&h=380&fit=crop&q=80&fm=jpg&auto=format",
-    "alt": "a black and white photo of a bitcoin symbol",
-    "credit": {
-      "author": "Shubham Dhage",
-      "authorUrl": "https://unsplash.com/@theshubhamdhage?utm_source=dhlm_studio&utm_medium=referral",
-      "unsplashUrl": "https://unsplash.com/photos/xgBKsfcTkcU?utm_source=dhlm_studio&utm_medium=referral"
-    }
+    "src": "/images/content/crypto101-week6-hero.png",
+    "alt": "Crypto 101 Week 6: DeFi — Decentralized Finance Explained",
+    "credit": null
   },
   "learn-w7-charts": {
-    "src": "https://images.unsplash.com/photo-1768242079046-c9c633187db1?ixid=M3w5MjE0MDh8MHwxfHNlYXJjaHwyfHxjYW5kbGVzdGljayUyMGNoYXJ0JTIwdHJhZGluZyUyMHNjcmVlbiUyMGZpbmFuY2V8ZW58MXwwfHx8MTc3NjEyNTIyNnww&ixlib=rb-4.1.0&w=720&h=380&fit=crop&q=80&fm=jpg&auto=format",
-    "alt": "Fingers interacting with a stock market graph on a tablet.",
-    "credit": {
-      "author": "Jakub Żerdzicki",
-      "authorUrl": "https://unsplash.com/@jakubzerdzicki?utm_source=dhlm_studio&utm_medium=referral",
-      "unsplashUrl": "https://unsplash.com/photos/lnuOh9vs8v0?utm_source=dhlm_studio&utm_medium=referral"
-    }
+    "src": "/images/content/crypto101-week7-hero.png",
+    "alt": "Crypto 101 Week 7: Reading Crypto Charts — Technical Analysis Basics",
+    "credit": null
   },
   "learn-w8-portfolio": {
     "src": "https://images.unsplash.com/photo-1653997500354-c9711cbc0136?ixid=M3w5MjE0MDh8MHwxfHNlYXJjaHwyfHxpbnZlc3RtZW50JTIwcG9ydGZvbGlvJTIwZGl2ZXJzaXR5JTIwYWxsb2NhdGlvbiUyMHBpZXxlbnwxfDB8fHwxNzc2MTI1MjI5fDA&ixlib=rb-4.1.0&w=720&h=380&fit=crop&q=80&fm=jpg&auto=format",
@@ -821,40 +769,24 @@
     }
   },
   "learn-w9-layer2": {
-    "src": "https://images.unsplash.com/photo-1639322537228-f710d846310a?ixid=M3w5MjE0MDh8MHwxfHNlYXJjaHwyfHxibG9ja2NoYWluJTIwc2NhbGluZyUyMG5ldHdvcmslMjBzcGVlZCUyMHRlY2hub2xvZ3l8ZW58MXwwfHx8MTc3NjEyNTIzMXww&ixlib=rb-4.1.0&w=720&h=380&fit=crop&q=80&fm=jpg&auto=format",
-    "alt": "a group of cubes that are on a black surface",
-    "credit": {
-      "author": "Shubham Dhage",
-      "authorUrl": "https://unsplash.com/@theshubhamdhage?utm_source=dhlm_studio&utm_medium=referral",
-      "unsplashUrl": "https://unsplash.com/photos/T9rKvI3N0NM?utm_source=dhlm_studio&utm_medium=referral"
-    }
+    "src": "/images/content/crypto101-week9-hero.png",
+    "alt": "Crypto 101 Week 9: Layer 1 vs Layer 2 — Blockchain Scaling",
+    "credit": null
   },
   "learn-w10-nfts": {
-    "src": "https://images.unsplash.com/photo-1654183818269-22495f928eb1?ixid=M3w5MjE0MDh8MHwxfHNlYXJjaHwyfHxuZnQlMjBkaWdpdGFsJTIwYXJ0JTIwY29sb3JmdWwlMjBhYnN0cmFjdCUyMHRva2VufGVufDF8MHx8fDE3NzYxMjUyMzN8MA&ixlib=rb-4.1.0&w=720&h=380&fit=crop&q=80&fm=jpg&auto=format",
-    "alt": "a close up of a person with a ring around his neck",
-    "credit": {
-      "author": "Barbora Dostálová",
-      "authorUrl": "https://unsplash.com/@bydostalova?utm_source=dhlm_studio&utm_medium=referral",
-      "unsplashUrl": "https://unsplash.com/photos/yYuW_7uTOzY?utm_source=dhlm_studio&utm_medium=referral"
-    }
+    "src": "/images/content/crypto101-week10-hero.png",
+    "alt": "Crypto 101 Week 10: NFTs — Digital Ownership Explained",
+    "credit": null
   },
   "learn-w11-taxes": {
-    "src": "https://images.unsplash.com/photo-1772588627527-db42040f3a8b?ixid=M3w5MjE0MDh8MHwxfHNlYXJjaHwyfHx0YXglMjBkb2N1bWVudCUyMGNhbGN1bGF0b3IlMjBmaW5hbmNlJTIwZ292ZXJubWVudHxlbnwxfDB8fHwxNzc2MTI1MjM2fDA&ixlib=rb-4.1.0&w=720&h=380&fit=crop&q=80&fm=jpg&auto=format",
-    "alt": "Calculator and tax forms on a dark surface.",
-    "credit": {
-      "author": "Kelly Sikkema",
-      "authorUrl": "https://unsplash.com/@kellysikkema?utm_source=dhlm_studio&utm_medium=referral",
-      "unsplashUrl": "https://unsplash.com/photos/X2soeHdvkLY?utm_source=dhlm_studio&utm_medium=referral"
-    }
+    "src": "/images/content/crypto101-week11-hero.png",
+    "alt": "Crypto 101 Week 11: Crypto Taxes — What You Need to Know",
+    "credit": null
   },
   "learn-w12-advanced": {
-    "src": "https://images.unsplash.com/photo-1642239817349-3e1cf98817a5?ixid=M3w5MjE0MDh8MHwxfHNlYXJjaHwyfHxkZWZpJTIweWllbGQlMjBmYXJtaW5nJTIwbGlxdWlkaXR5JTIwcG9vbCUyMGFkdmFuY2VkfGVufDF8MHx8fDE3NzYxMjUyMzl8MA&ixlib=rb-4.1.0&w=720&h=380&fit=crop&q=80&fm=jpg&auto=format",
-    "alt": "a black and white photo of a bitcoin symbol",
-    "credit": {
-      "author": "Shubham Dhage",
-      "authorUrl": "https://unsplash.com/@theshubhamdhage?utm_source=dhlm_studio&utm_medium=referral",
-      "unsplashUrl": "https://unsplash.com/photos/xgBKsfcTkcU?utm_source=dhlm_studio&utm_medium=referral"
-    }
+    "src": "/images/content/crypto101-week12-hero.png",
+    "alt": "Crypto 101 Week 12: Advanced DeFi — Yield Farming & Liquidity",
+    "credit": null
   },
   "learn-leveraged-etf-report": {
     "src": "https://images.unsplash.com/photo-1611974789855-9c2a0a7236a3?ixid=M3w5MjE0MDh8MHwxfHNlYXJjaHwyfHxzdG9jayUyMG1hcmtldCUyMGxldmVyYWdlJTIwdHJhZGluZyUyMGNoYXJ0JTIwZmluYW5jZXxlbnwxfDB8fHwxNzc2MTI4OTc5fDA&ixlib=rb-4.1.0&w=720&h=380&fit=crop&q=80&fm=jpg&auto=format",
@@ -904,18 +836,33 @@
     "credit": null
   },
   "new-space-sector-report-april-2026": {
-    "src": "/images/content/new-space-hero.jpg",
+    "src": "/images/content/new-space-hero.png",
     "alt": "New Space: Global Space Power Race and the Future of New Space — Investing in the Next Frontier",
     "credit": null
   },
   "ai-cybersecurity-threat-mythos-report-april-2026": {
-    "src": "/images/content/ai-cybersecurity-mythos-hero.jpg",
-    "alt": "AI as a Financial-System Threat: Anthropic's Mythos Moment — Zero-Day Exploits and the Investment Implications",
+    "src": "/images/content/ai-cybersecurity-mythos-hero.png",
+    "alt": "AI as a Financial-System Threat: Anthropic's Mythos Moment — Zero-Day Exploits and Investment Implications",
     "credit": null
   },
   "deep-dive-rdw-redwire-april-2026": {
-    "src": "/images/content/rdw-redwire-hero.jpg",
+    "src": "/images/content/rdw-redwire-hero.png",
     "alt": "Redwire (RDW): From Space Infrastructure to Defense Autonomy — $411.2M Record Backlog, April 2026",
+    "credit": null
+  },
+  "sp500-vs-bitcoin": {
+    "src": "/images/content/sp500-vs-bitcoin-hero.png",
+    "alt": "S&P 500 vs Bitcoin: 10-Year Performance Comparison",
+    "credit": null
+  },
+  "nvidia-worlds-most-valuable-company-2026": {
+    "src": "/images/content/nvidia-3-catalysts-hero.png",
+    "alt": "NVIDIA at $4.2 Trillion: The 3 Catalysts That Decide the Next 12 Months",
+    "credit": null
+  },
+  "paper-vs-profit-001": {
+    "src": "/images/content/paper-vs-profit-001-hero.png",
+    "alt": "Paper vs. Profit #001 — The Investing Newsletter",
     "credit": null
   }
 }
