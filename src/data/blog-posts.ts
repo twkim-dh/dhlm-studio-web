@@ -1124,6 +1124,7 @@ export const blogPosts: BlogPost[] = [
     date: '2026-04-09',
     lastUpdated: '2026-04-11',
     readTime: '9 min',
+    heroImage: '/images/content/why-render-rndr-up-april-2026-hero.png',
     description: 'Render\'s rally in 2026 has three specific drivers — AI compute demand, product improvements, and a token design that connects revenue to price. Here\'s what the market is pricing and what could go wrong.',
     sections: [
       {
