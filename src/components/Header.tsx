@@ -1,7 +1,9 @@
 "use client";
 
-import { useState, useEffect, useRef } from "react";
+import { useState, useEffect, useRef, lazy, Suspense } from "react";
 import Link from "next/link";
+
+const SearchModal = lazy(() => import("./SearchModal"));
 
 const links = [
   { label: "Markets", href: "/markets" },
@@ -35,13 +37,22 @@ function DhlmMono({ size = 28 }: { size?: number }) {
 export { DhlmMono };
 
 export default function Header() {
-  const [scrolled, setScrolled] = useState(false);
-  const [menuOpen, setMenuOpen] = useState(false);
-  const [toolsOpen, setToolsOpen] = useState(false);
+  const [scrolled,    setScrolled]    = useState(false);
+  const [menuOpen,    setMenuOpen]    = useState(false);
+  const [toolsOpen,   setToolsOpen]   = useState(false);
+  const [searchOpen,  setSearchOpen]  = useState(false);
   const toolsRef = useRef<HTMLDivElement>(null);
 
   useEffect(() => { const h = () => setScrolled(window.scrollY > 30); window.addEventListener("scroll", h, { passive: true }); return () => window.removeEventListener("scroll", h); }, []);
   useEffect(() => { document.body.style.overflow = menuOpen ? "hidden" : ""; return () => { document.body.style.overflow = ""; }; }, [menuOpen]);
+  // Cmd/Ctrl+K shortcut
+  useEffect(() => {
+    const h = (e: KeyboardEvent) => {
+      if ((e.metaKey || e.ctrlKey) && e.key === 'k') { e.preventDefault(); setSearchOpen(true); }
+    };
+    document.addEventListener('keydown', h);
+    return () => document.removeEventListener('keydown', h);
+  }, []);
   useEffect(() => {
     const h = (e: MouseEvent) => { if (toolsRef.current && !toolsRef.current.contains(e.target as Node)) setToolsOpen(false); };
     document.addEventListener("mousedown", h);
@@ -83,10 +94,38 @@ export default function Header() {
                 </div>
               )}
             </div>
+            {/* Search button — desktop */}
+            <button
+              onClick={() => setSearchOpen(true)}
+              aria-label="Search"
+              style={{
+                display: "flex", alignItems: "center", gap: 6,
+                background: "#111827", border: "1px solid #1E293B",
+                borderRadius: 8, padding: "6px 10px", cursor: "pointer",
+                color: "#64748B", transition: "border-color 0.15s",
+              }}
+              onMouseEnter={e => (e.currentTarget.style.borderColor = "#334155")}
+              onMouseLeave={e => (e.currentTarget.style.borderColor = "#1E293B")}
+            >
+              <svg width="13" height="13" viewBox="0 0 16 16" fill="none">
+                <circle cx="6.5" cy="6.5" r="5" stroke="#64748B" strokeWidth="1.5"/>
+                <path d="M10.5 10.5L14 14" stroke="#64748B" strokeWidth="1.5" strokeLinecap="round"/>
+              </svg>
+              <span style={{ fontSize: 11, fontFamily: "var(--mono)", letterSpacing: 0.5, color: "#475569" }}>⌘K</span>
+            </button>
           </div>
-          <button className="md:hidden" onClick={() => setMenuOpen(true)} aria-label="Open menu" style={{ background: "none", border: "none", padding: 8, cursor: "pointer" }}>
-            <div style={{ width: 20, height: 1.5, background: "#94A3B8", marginBottom: 5 }} /><div style={{ width: 20, height: 1.5, background: "#94A3B8" }} />
-          </button>
+          {/* Mobile: hamburger + search icon */}
+          <div className="md:hidden" style={{ display: "flex", alignItems: "center", gap: 4 }}>
+            <button onClick={() => setSearchOpen(true)} aria-label="Search" style={{ background: "none", border: "none", padding: 8, cursor: "pointer", color: "#94A3B8" }}>
+              <svg width="18" height="18" viewBox="0 0 16 16" fill="none">
+                <circle cx="6.5" cy="6.5" r="5" stroke="#94A3B8" strokeWidth="1.5"/>
+                <path d="M10.5 10.5L14 14" stroke="#94A3B8" strokeWidth="1.5" strokeLinecap="round"/>
+              </svg>
+            </button>
+            <button onClick={() => setMenuOpen(true)} aria-label="Open menu" style={{ background: "none", border: "none", padding: 8, cursor: "pointer" }}>
+              <div style={{ width: 20, height: 1.5, background: "#94A3B8", marginBottom: 5 }} /><div style={{ width: 20, height: 1.5, background: "#94A3B8" }} />
+            </button>
+          </div>
         </div>
       </nav>
       <div style={{ height: 64 }} />
@@ -94,10 +133,28 @@ export default function Header() {
       <div role="dialog" aria-label="Mobile menu" style={{ position: "fixed", top: 0, right: 0, zIndex: 151, height: "100%", width: 260, background: "#0B0F19", transform: menuOpen ? "translateX(0)" : "translateX(100%)", transition: "transform 0.2s", borderLeft: "1px solid #1E293B" }}>
         <div style={{ display: "flex", justifyContent: "flex-end", padding: 16 }}><button onClick={() => setMenuOpen(false)} aria-label="Close menu" style={{ background: "none", border: "none", color: "#94A3B8", fontSize: 24, cursor: "pointer" }}>&times;</button></div>
         <div style={{ display: "flex", flexDirection: "column", padding: "0 24px" }}>
+          {/* Search entry in mobile menu */}
+          <button
+            onClick={() => { setMenuOpen(false); setSearchOpen(true); }}
+            style={{ padding: "14px 0", fontSize: 15, fontWeight: 500, color: "#94A3B8", borderBottom: "1px solid #1E293B", fontFamily: "var(--sans)", background: "none", border: "none", textAlign: "left", cursor: "pointer", display: "flex", alignItems: "center", gap: 8 }}
+          >
+            <svg width="14" height="14" viewBox="0 0 16 16" fill="none" style={{ flexShrink: 0 }}>
+              <circle cx="6.5" cy="6.5" r="5" stroke="#94A3B8" strokeWidth="1.5"/>
+              <path d="M10.5 10.5L14 14" stroke="#94A3B8" strokeWidth="1.5" strokeLinecap="round"/>
+            </svg>
+            Search
+          </button>
           {links.map(l => <Link key={l.label} href={l.href} onClick={() => setMenuOpen(false)} style={{ padding: "14px 0", fontSize: 15, fontWeight: 500, color: "#94A3B8", borderBottom: "1px solid #1E293B", fontFamily: "var(--sans)" }}>{l.label}</Link>)}
           {toolsDropdown.map(l => <Link key={l.href} href={l.href} onClick={() => setMenuOpen(false)} style={{ padding: "14px 0", fontSize: 15, fontWeight: 500, color: "#94A3B8", borderBottom: "1px solid #1E293B", fontFamily: "var(--sans)", paddingLeft: 12 }}>{l.label}</Link>)}
         </div>
       </div>
+
+      {/* Search modal — lazy loaded */}
+      {searchOpen && (
+        <Suspense fallback={null}>
+          <SearchModal onClose={() => setSearchOpen(false)} />
+        </Suspense>
+      )}
     </>
   );
 }

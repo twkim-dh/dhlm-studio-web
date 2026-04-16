@@ -4,13 +4,14 @@
   "private": true,
   "scripts": {
     "dev": "next dev",
-    "build": "next build",
+    "build": "node scripts/build-search-index.js && next build",
     "start": "next start",
     "lint": "eslint",
     "fetch-images": "node scripts/fetch-unsplash-images.js",
     "generate-pdf": "python scripts/generate-report-pdf.py"
   },
   "dependencies": {
+    "fuse.js": "^7.3.0",
     "ioredis": "^5.10.1",
     "lightweight-charts": "^5.1.0",
     "next": "16.2.0",
