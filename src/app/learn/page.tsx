@@ -45,13 +45,6 @@ const COURSES = [
 export default function LearnPage() {
   return (
     <div style={{ background: '#0B0F19', minHeight: '100vh' }}>
-      {/* Hero Banner */}
-      {/* eslint-disable-next-line @next/next/no-img-element */}
-      <img
-        src="/images/content/brutal-edge-academy-banner.png"
-        alt="Brutal Edge Academy — Learn Investing the Way It Actually Works"
-        style={{ width: '100%', display: 'block', maxHeight: 280, objectFit: 'cover', objectPosition: 'top' }}
-      />
       <div style={{ maxWidth: 760, margin: '0 auto', padding: '48px 24px' }}>
 
         {/* Header */}
