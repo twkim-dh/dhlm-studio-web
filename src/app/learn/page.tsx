@@ -50,7 +50,7 @@ export default function LearnPage() {
       <img
         src="/images/content/brutal-edge-academy-banner.png"
         alt="Brutal Edge Academy — Learn Investing the Way It Actually Works"
-        style={{ width: '100%', display: 'block', maxHeight: 480, objectFit: 'cover', objectPosition: 'top' }}
+        style={{ width: '100%', display: 'block', maxHeight: 280, objectFit: 'cover', objectPosition: 'top' }}
       />
       <div style={{ maxWidth: 760, margin: '0 auto', padding: '48px 24px' }}>
 
