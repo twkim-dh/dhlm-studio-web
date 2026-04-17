@@ -517,9 +517,9 @@ def main():
     script_dir   = os.path.dirname(os.path.abspath(__file__))
     project_root = os.path.dirname(script_dir)
 
-    # Search in reports/ first, then blog/
+    # Search in reports/ first, then blog/, then research/
     md_path = None
-    for subdir in ('reports', 'blog'):
+    for subdir in ('reports', 'blog', 'research'):
         candidate = os.path.join(project_root, 'src', 'content', subdir, f'{slug}.md')
         if os.path.exists(candidate):
             md_path = candidate
