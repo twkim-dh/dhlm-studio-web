@@ -4,11 +4,15 @@
 // Also callable manually via GET for testing / emergency seeding.
 //
 // What it collects:
-//   - Indices   : AV GLOBAL_QUOTE  → ^GSPC, ^IXIC, ^DJI, ^RUT  (4 AV calls)
+//   - Indices   : AV GLOBAL_QUOTE  → SPY, QQQ, DIA, IWM (ETF proxies, 4 AV calls)
 //   - Sectors   : FMP batch quote  → 11 sector ETFs (XLK…XLC)   (1-2 FMP calls)
 //   - Top 30    : FMP batch quote  → TOP_30_TICKERS               (1-2 FMP calls)
 //   - Macro     : AV WTI + FMP GCUSD + FMP ^VIX + FMP treasury  (1 AV + 3 FMP)
 //   - Crypto    : CoinGecko simple/price → BTC, ETH, SOL          (0 FMP)
+//
+// Note: Index symbols use ETF proxies because AV GLOBAL_QUOTE does not support
+//       ^GSPC / ^IXIC / ^DJI / ^RUT on the free tier (returns empty response).
+//       Only changePercent is surfaced for indices; ETF price is not exposed.
 //
 // Total FMP calls: ~5–7/day  (vs. 148–172 before)
 // Total AV  calls: ~5/day    (vs. AV limit of 25/day)
@@ -33,9 +37,9 @@ const SNAPSHOT_TTL = 60 * 60 * 48; // 48 hours
 // ── Types ────────────────────────────────────────────────────────────────────
 
 interface IndexQuote {
-  symbol: string;
-  price: number;
-  change: number;
+  symbol: string;  // ETF proxy: SPY | QQQ | DIA | IWM
+  label: string;   // Display name: "S&P 500" | "Nasdaq" | "Dow Jones" | "Russell 2000"
+  id: string;      // Canonical id: sp500 | nasdaq | dow | russell
   changePercent: number;
   tradingDate: string;
 }
@@ -80,11 +84,26 @@ const FMP_NORM: Record<string, string> = {
 };
 function normSym(s: string): string { return FMP_NORM[s] || s; }
 
-// ── Alpha Vantage: GLOBAL_QUOTE for a single symbol ──────────────────────────
-// Covers: ^GSPC, ^IXIC, ^DJI, ^RUT
-// Response key: "Global Quote" → price, change, change percent, latest trading day
+// ── Index config — ETF proxies for major US indices ──────────────────────────
+// AV GLOBAL_QUOTE free tier does not support ^ prefix symbols (returns {}).
+// SPY/QQQ/DIA/IWM are liquid 1:1 proxies whose daily % change mirrors indices.
+// Only changePercent is stored and exposed — ETF price is intentionally excluded.
 
-async function avGlobalQuote(symbol: string): Promise<IndexQuote | null> {
+const INDEX_CONFIG = [
+  { symbol: 'SPY', label: 'S&P 500',     id: 'sp500'   },
+  { symbol: 'QQQ', label: 'Nasdaq',      id: 'nasdaq'  },
+  { symbol: 'DIA', label: 'Dow Jones',   id: 'dow'     },
+  { symbol: 'IWM', label: 'Russell 2000', id: 'russell' },
+] as const;
+
+// ── Alpha Vantage: GLOBAL_QUOTE for a single ETF symbol ──────────────────────
+// Returns only changePercent + tradingDate; price is intentionally omitted.
+
+async function avGlobalQuote(
+  symbol: string,
+  label: string,
+  id: string,
+): Promise<IndexQuote | null> {
   if (!AV_KEY || AV_KEY === 'demo') return null;
   try {
     const res = await fetch(
@@ -117,11 +136,10 @@ async function avGlobalQuote(symbol: string): Promise<IndexQuote | null> {
     }
 
     const price         = parseFloat(q['05. price']) || 0;
-    const change        = parseFloat(q['09. change']) || 0;
     const changePercent = parseFloat((q['10. change percent'] || '').replace('%', '')) || 0;
 
     if (price === 0) return null;
-    return { symbol, price, change, changePercent, tradingDate };
+    return { symbol, label, id, changePercent, tradingDate };
   } catch (e) {
     console.error(`[market-snapshot] avGlobalQuote(${symbol}) error:`, e);
     return null;
@@ -297,17 +315,17 @@ export async function GET(request: Request) {
   const sources: Record<string, 'ok' | 'failed'> = {};
 
   // 1. Indices via AV GLOBAL_QUOTE (4 calls, sequential to respect AV rate limits)
-  const indexSymbols = ['^GSPC', '^IXIC', '^DJI', '^RUT'];
+  // Using ETF proxies: SPY=S&P500, QQQ=Nasdaq, DIA=DowJones, IWM=Russell2000
   const indicesRaw: (IndexQuote | null)[] = [];
-  for (const sym of indexSymbols) {
-    const q = await avGlobalQuote(sym);
+  for (const cfg of INDEX_CONFIG) {
+    const q = await avGlobalQuote(cfg.symbol, cfg.label, cfg.id);
     indicesRaw.push(q);
     // Small delay between AV calls to avoid burst throttling
     await new Promise(r => setTimeout(r, 200));
   }
   const indices = indicesRaw.filter((q): q is IndexQuote => Boolean(q));
-  sources['av:indices'] = indices.length === indexSymbols.length ? 'ok' : 'failed';
-  console.log(`[market-snapshot] indices: ${indices.length}/${indexSymbols.length}`);
+  sources['av:indices'] = indices.length === INDEX_CONFIG.length ? 'ok' : 'failed';
+  console.log(`[market-snapshot] indices: ${indices.length}/${INDEX_CONFIG.length}`);
 
   // 2. Sector ETFs via FMP batch (1-2 calls)
   const sectorsRaw = await fmpBatch(SECTOR_ETFS);
@@ -356,6 +374,47 @@ export async function GET(request: Request) {
   } catch (e) {
     console.error('[market-snapshot] Redis write failed:', e);
     sources['redis'] = 'failed';
+  }
+
+  // Also write today-market:snapshot:v1 for /api/today-market (read-only endpoint).
+  // Indices use ETF proxy changePercent only (price=0 → frontend shows "—").
+  // id→symbol mapping: sp500→^GSPC, nasdaq→^IXIC, dow→^DJI, russell omitted (home page shows 3 indices).
+  // Macro field: changePercent → changesPercentage (TodayMarketPayload field name).
+  const ID_TO_SYMBOL: Record<string, string> = {
+    sp500:   '^GSPC',
+    nasdaq:  '^IXIC',
+    dow:     '^DJI',
+    russell: '^RUT',
+  };
+  const todayMarketEntry = {
+    data: {
+      asOf: snapshot.asOf,
+      indices: snapshot.indices.map(idx => ({
+        symbol: ID_TO_SYMBOL[idx.id] ?? idx.symbol,
+        price: 0,       // intentionally 0; ETF price ≠ index level; UI shows "—"
+        change: 0,
+        changesPercentage: idx.changePercent,
+      })),
+      macro: snapshot.macro.map(m => ({
+        symbol: m.symbol,
+        price: m.price,
+        change: m.change,
+        changesPercentage: m.changePercent,
+      })),
+      crypto: snapshot.crypto,
+      // fearGreed is NOT included here — /api/today-market fetches it live from CNN (free).
+      fearGreed: null,
+      verdict: null,
+      source: 'cached' as const,
+    },
+    ts: Date.now(),
+  };
+  try {
+    const redis = getRedis();
+    await redis.set('today-market:snapshot:v1', JSON.stringify(todayMarketEntry), 'EX', SNAPSHOT_TTL);
+    console.log('[market-snapshot] Wrote today-market:snapshot:v1');
+  } catch (e) {
+    console.error('[market-snapshot] today-market snapshot write failed:', e);
   }
 
   const failed = Object.entries(sources).filter(([, v]) => v === 'failed').map(([k]) => k);

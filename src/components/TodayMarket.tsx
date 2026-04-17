@@ -115,7 +115,8 @@ export default function TodayMarket() {
     // Yahoo Finance returns ^TNX as a percent value already (e.g. 4.42 means 4.42%).
     const isYield = q.symbol === '^TNX';
     const decimals = isYield ? 2 : 2;
-    const priceDisplay = isYield ? `${fmtNum(q.price, 2)}%` : fmtNum(q.price, decimals);
+    // price=0 means ETF proxy data without absolute level (e.g. SPY→S&P 500 changePercent only)
+    const priceDisplay = isYield ? `${fmtNum(q.price, 2)}%` : q.price ? fmtNum(q.price, decimals) : '—';
     return (
       <div key={q.symbol} style={{ display: 'grid', gridTemplateColumns: '1fr auto auto', alignItems: 'center', gap: 12, padding: '9px 12px', borderBottom: '1px solid #1E293B40' }}>
         <span style={{ fontSize: 11, fontWeight: 700, color: '#94A3B8', fontFamily: 'var(--mono)', letterSpacing: 0.5 }}>{label}</span>

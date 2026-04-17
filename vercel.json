@@ -5,10 +5,6 @@
       "schedule": "0 13 * * 6"
     },
     {
-      "path": "/api/today-market",
-      "schedule": "5 20 * * 1-5"
-    },
-    {
       "path": "/api/cron/daily-brief",
       "schedule": "5 20 * * 1-5"
     },
