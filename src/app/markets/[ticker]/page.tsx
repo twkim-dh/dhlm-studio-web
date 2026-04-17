@@ -1,8 +1,9 @@
 import type { Metadata } from 'next';
 import Link from 'next/link';
 import Image from 'next/image';
+import { redirect } from 'next/navigation';
 import { stocks, getStockByTicker } from '@/data/markets';
-import { TOP_STOCKS } from '@/data/top-stocks';
+import { TOP_30_TICKERS, isTop30 } from '@/lib/top-tickers';
 import { fmpCanCall, fmpTrackCall } from '@/lib/fmp-tracker';
 import { getRedis } from '@/lib/redis';
 import TradingViewChart from '@/components/TradingViewChart';
@@ -40,9 +41,9 @@ async function trackTickerFetch(): Promise<void> {
 }
 
 export function generateStaticParams() {
-  return stocks.map(s => ({ ticker: s.ticker.toLowerCase() }));
+  return TOP_30_TICKERS.map(ticker => ({ ticker: ticker.toLowerCase() }));
 }
-export const dynamicParams = true;
+export const dynamicParams = true;  // allow runtime 301 for non-Top10
 export const revalidate = 300;
 
 const AV_KEY = process.env.ALPHA_VANTAGE_KEY || 'demo';
@@ -194,12 +195,12 @@ async function fetchLiveData(ticker: string) {
 export async function generateMetadata({ params }: { params: Promise<{ ticker: string }> }): Promise<Metadata> {
   const { ticker } = await params;
   const t = ticker.toUpperCase();
+  if (!isTop30(t)) return { robots: { index: false, follow: false } };
   const stock = getStockByTicker(ticker);
-  const isKnown = TOP_STOCKS.includes(t);
   return {
-    title: stock ? `${stock.ticker} — ${stock.name} Stock Price & Analysis ${YEAR}` : `${t} Stock — Price, Profile & Analysis ${YEAR}`,
-    description: stock ? `${stock.name} (${stock.ticker}) real-time price, key metrics, and Brutal Edge analysis. ${YEAR}.` : `${t} real-time stock price, market cap, financials, and Brutal Edge analysis. ${YEAR}.`,
-    ...(!isKnown ? { robots: { index: false, follow: false } } : {}),
+    title: stock ? `${stock.ticker} — ${stock.name} Stock Analysis ${YEAR} | DHLM Studio` : `${t} Stock Analysis ${YEAR} | DHLM Studio`,
+    description: stock ? `${stock.name} (${stock.ticker}) closing price, key metrics, and Brutal Edge verdict. ${YEAR}.` : `${t} closing price, market cap, financials, and Brutal Edge analysis. ${YEAR}.`,
+    alternates: { canonical: `https://dhlm-studio.com/markets/${t.toLowerCase()}` },
   };
 }
 
@@ -210,6 +211,10 @@ const valueStyle = { fontSize: 13, fontWeight: 600, color: '#E2E8F0', fontFamily
 
 export default async function StockPage({ params }: { params: Promise<{ ticker: string }> }) {
   const { ticker } = await params;
+  // ─── Route guard: redirect non-Top10 tickers to /markets (301) ─────────────
+  if (!isTop30(ticker.toUpperCase())) {
+    redirect('/markets');
+  }
   const live = await fetchLiveData(ticker);
   const staticStock = getStockByTicker(ticker);
   const minimalStock = {
@@ -386,8 +391,7 @@ export default async function StockPage({ params }: { params: Promise<{ ticker: 
             </div>
             <div style={{ display: 'flex', gap: 8, flexWrap: 'wrap' }}>
               {peers.map(t => {
-                const known = TOP_STOCKS.includes(t);
-                if (!known) return null;
+                if (!isTop30(t)) return null;
                 return (
                   <Link key={t} href={`/markets/${t}`} style={{ padding: '8px 14px', borderRadius: 8, background: '#0D1117', border: '1px solid #1E293B', textDecoration: 'none', display: 'flex', alignItems: 'center', gap: 6 }}>
                     <span style={{ fontSize: 12, fontWeight: 700, color: '#60A5FA', fontFamily: 'var(--mono)' }}>{t}</span>

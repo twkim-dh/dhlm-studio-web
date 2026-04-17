@@ -1,5 +1,6 @@
 import type { MetadataRoute } from "next";
 import { blogPosts } from "@/data/blog-posts";
+import { TOP_30_TICKERS } from "@/lib/top-tickers";
 import fs from "fs";
 import path from "path";
 
@@ -17,14 +18,8 @@ function getReportSlugs(): string[] {
 export default function sitemap(): MetadataRoute.Sitemap {
   const now = new Date();
 
-  // Top 50 stocks with meaningful content
-  const topStocks = [
-    'nvda','aapl','msft','googl','amzn','meta','tsla','avgo','jpm','v',
-    'unh','xom','ma','orcl','cost','hd','pg','jnj','nflx','bac',
-    'abbv','crm','amd','cvx','ko','mrk','csco','pep','tmo','acn',
-    'mcd','wfc','ibm','ge','adbe','now','ms','axp','qcom','gs',
-    'dis','txn','intu','cat','pypl','pltr','coin','gme','sofi','rivn',
-  ];
+  // Top 30 tickers — only these have /markets/[ticker] pages
+  const topStocks = TOP_30_TICKERS.map(t => t.toLowerCase());
 
   const qualityBlogs = blogPosts.filter(p => !p.noindex);
 
@@ -58,7 +53,7 @@ export default function sitemap(): MetadataRoute.Sitemap {
     { url: `${BASE}/markets/crypto`,      lastModified: now, changeFrequency: "daily",   priority: 0.7 },
     { url: `${BASE}/markets/search`,     lastModified: now, changeFrequency: "weekly",  priority: 0.6 },
 
-    // Top 50 stock pages (all have live FMP data)
+    // Top 30 stock pages — analysis-focused, daily close data
     ...topStocks.map(t => ({
       url: `${BASE}/markets/${t}`,
       lastModified: now, changeFrequency: "daily" as const, priority: 0.7,

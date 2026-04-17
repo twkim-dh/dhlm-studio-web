@@ -4,6 +4,7 @@ import { useState, useEffect } from 'react';
 import Link from 'next/link';
 import StockLogo from '@/components/StockLogo';
 import { Treemap, ResponsiveContainer } from 'recharts';
+import { isTop30 } from '@/lib/top-tickers';
 
 // ─── Types ────────────────────────────────────────────────────────────────────
 
@@ -91,8 +92,9 @@ function MoverCol({ title, color, bg, items }: {
       </div>
       {items.map((s, i) => {
         const up = s.change >= 0;
-        return (
-          <Link key={s.ticker} href={`/markets/${s.ticker}`} style={{ textDecoration: 'none', display: 'flex', alignItems: 'center', gap: 8, padding: '8px 12px', borderBottom: i < items.length - 1 ? '1px solid #1E293B40' : 'none' }}>
+        const hasPage = isTop30(s.ticker);
+        const inner = (
+          <>
             <span style={{ fontSize: 9, color: '#475569', fontFamily: 'var(--mono)', width: 14, textAlign: 'right', flexShrink: 0 }}>{i + 1}</span>
             <StockLogo src={s.image} ticker={s.ticker} size={20} />
             <div style={{ flex: 1, minWidth: 0 }}>
@@ -105,7 +107,13 @@ function MoverCol({ title, color, bg, items }: {
               </div>
               <div style={{ fontSize: 9, color: '#475569', fontFamily: 'var(--mono)' }}>${s.price.toFixed(2)}</div>
             </div>
-          </Link>
+          </>
+        );
+        const rowStyle = { display: 'flex', alignItems: 'center', gap: 8, padding: '8px 12px', borderBottom: i < items.length - 1 ? '1px solid #1E293B40' : 'none' } as const;
+        return hasPage ? (
+          <Link key={s.ticker} href={`/markets/${s.ticker}`} style={{ textDecoration: 'none', ...rowStyle }}>{inner}</Link>
+        ) : (
+          <div key={s.ticker} style={rowStyle}>{inner}</div>
         );
       })}
     </div>
