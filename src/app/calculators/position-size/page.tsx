@@ -118,7 +118,7 @@ export default function PositionSizePage() {
       <div style={{ maxWidth: 860, margin: '0 auto', padding: '80px 20px 60px' }}>
 
         <Link href="/calculators" style={{ fontSize: 12, color: '#64748B' }}>← Calculators</Link>
-        <div style={{ marginTop: 20, marginBottom: 32 }}>
+        <div style={{ marginTop: 20, marginBottom: 16 }}>
           <div style={{ fontFamily: 'var(--mono)', fontSize: 10, fontWeight: 700, color: '#F59E0B', letterSpacing: 3, marginBottom: 8 }}>CALCULATOR · FREE</div>
           <h1 style={{ fontFamily: 'var(--serif)', fontSize: 'clamp(24px,4vw,36px)', fontWeight: 900, color: '#F1F5F9', margin: '0 0 8px' }}>
             Position Size Calculator
@@ -127,6 +127,17 @@ export default function PositionSizePage() {
             How much should you invest per trade? Calculate the right position size based on your risk tolerance.
           </p>
           <p style={{ fontSize: 10, color: '#334155', marginTop: 4, fontFamily: 'var(--mono)' }}>Last updated: April 2026 · NOT financial advice</p>
+        </div>
+
+        {/* EXPLORE MORE — top placement */}
+        <div style={{ background: '#111827', borderRadius: 14, border: '1px solid #1E293B', padding: '16px 20px', marginBottom: 32 }}>
+          <div style={{ fontFamily: 'var(--mono)', fontSize: 9, fontWeight: 700, color: '#64748B', letterSpacing: 2, marginBottom: 12 }}>EXPLORE MORE</div>
+          <div style={{ display: 'flex', gap: 8, flexWrap: 'wrap' }}>
+            <Link href="/reports" style={{ fontSize: 11, color: '#F59E0B', padding: '5px 12px', borderRadius: 6, background: '#F59E0B10', border: '1px solid #F59E0B20', textDecoration: 'none' }}>📋 Deep Dive Reports</Link>
+            <Link href="/markets/fear-and-greed" style={{ fontSize: 11, color: '#EF4444', padding: '5px 12px', borderRadius: 6, background: '#EF444410', border: '1px solid #EF444420', textDecoration: 'none' }}>😨 Fear & Greed Dashboard</Link>
+            <Link href="/crypto-101" style={{ fontSize: 11, color: '#A78BFA', padding: '5px 12px', borderRadius: 6, background: '#A78BFA10', border: '1px solid #A78BFA20', textDecoration: 'none' }}>📚 Crypto 101 — Reading Charts</Link>
+            <Link href="/daily" style={{ fontSize: 11, color: '#00D474', padding: '5px 12px', borderRadius: 6, background: '#00D47410', border: '1px solid #00D47420', textDecoration: 'none' }}>📰 Today&apos;s Market Brief</Link>
+          </div>
         </div>
 
         <div style={{ display: 'grid', gridTemplateColumns: 'minmax(280px,1fr) 1.6fr', gap: 16, alignItems: 'start' }}>
@@ -258,17 +269,6 @@ export default function PositionSizePage() {
                   <div style={{ fontSize: 12, color: '#94A3B8', lineHeight: 1.7 }}>{item.a}</div>
                 </div>
               ))}
-            </div>
-
-            {/* Internal Links */}
-            <div style={{ background: '#111827', borderRadius: 14, border: '1px solid #1E293B', padding: '16px 20px' }}>
-              <div style={{ fontFamily: 'var(--mono)', fontSize: 9, fontWeight: 700, color: '#64748B', letterSpacing: 2, marginBottom: 12 }}>EXPLORE MORE</div>
-              <div style={{ display: 'flex', gap: 8, flexWrap: 'wrap' }}>
-                <Link href="/reports" style={{ fontSize: 11, color: '#F59E0B', padding: '5px 12px', borderRadius: 6, background: '#F59E0B10', border: '1px solid #F59E0B20', textDecoration: 'none' }}>📋 Deep Dive Reports</Link>
-                <Link href="/markets/fear-and-greed" style={{ fontSize: 11, color: '#EF4444', padding: '5px 12px', borderRadius: 6, background: '#EF444410', border: '1px solid #EF444420', textDecoration: 'none' }}>😨 Fear & Greed Dashboard</Link>
-                <Link href="/crypto-101" style={{ fontSize: 11, color: '#A78BFA', padding: '5px 12px', borderRadius: 6, background: '#A78BFA10', border: '1px solid #A78BFA20', textDecoration: 'none' }}>📚 Crypto 101 — Reading Charts</Link>
-                <Link href="/daily" style={{ fontSize: 11, color: '#00D474', padding: '5px 12px', borderRadius: 6, background: '#00D47410', border: '1px solid #00D47420', textDecoration: 'none' }}>📰 Today&apos;s Market Brief</Link>
-              </div>
             </div>
 
           </div>

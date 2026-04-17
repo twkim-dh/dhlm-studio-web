@@ -45,7 +45,14 @@ const COURSES = [
 export default function LearnPage() {
   return (
     <div style={{ background: '#0B0F19', minHeight: '100vh' }}>
-      <div style={{ maxWidth: 760, margin: '0 auto', padding: '80px 24px' }}>
+      {/* Hero Banner */}
+      {/* eslint-disable-next-line @next/next/no-img-element */}
+      <img
+        src="/images/content/brutal-edge-academy-banner.png"
+        alt="Brutal Edge Academy — Learn Investing the Way It Actually Works"
+        style={{ width: '100%', display: 'block', maxHeight: 480, objectFit: 'cover', objectPosition: 'top' }}
+      />
+      <div style={{ maxWidth: 760, margin: '0 auto', padding: '48px 24px' }}>
 
         {/* Header */}
         <div style={{ marginBottom: 40 }}>
@@ -159,8 +166,6 @@ export default function LearnPage() {
             }}
           >
             <div style={{ position: 'absolute', top: 0, left: 0, right: 0, height: 2, background: '#3B82F6', zIndex: 2 }} />
-            {/* eslint-disable-next-line @next/next/no-img-element */}
-            <img src="/images/content/paper-vs-profit-hero.png" alt="Paper vs. Profit — Brutal Edge Research" style={{ width: '100%', height: 'auto', display: 'block', borderRadius: '14px 14px 0 0' }} />
             <div style={{ padding: '20px 28px 24px' }}>
             <div style={{ display: 'flex', gap: 20, alignItems: 'flex-start' }}>
               <div style={{
