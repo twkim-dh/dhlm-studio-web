@@ -129,11 +129,19 @@ const nextConfig: NextConfig = {
       { source: '/blog/ai-stocks-to-watch',                 destination: '/blog/top-5-ai-stocks-to-watch-2026', permanent: true },
       { source: '/blog/data-visualization-trends',          destination: '/', permanent: true },
       { source: '/blog/nvidia-3-trillion',                  destination: '/reports/deep-dive-nvda-april-2026', permanent: true },
-      { source: '/blog/sp500-vs-bitcoin',                   destination: '/blog/bitcoin-deep-dive-april-2026', permanent: true },
+      { source: '/blog/sp500-vs-bitcoin',                   destination: '/reports/deep-dive-btc-april-2026',  permanent: true },
       { source: '/blog/crypto-regulation-2026',             destination: '/reports/crypto-treasury-sector-report-april-2026', permanent: true },
       { source: '/blog/global-gdp-rankings-shift-2026',     destination: '/blog/top-10-countries-gdp-world-economy-2026', permanent: true },
       { source: '/blog/billionaire-rankings-2026',          destination: '/blog/worlds-richest-people-2026-billionaire-rankings', permanent: true },
       { source: '/blog/gdp-rankings-2026',                  destination: '/blog/top-10-countries-gdp-world-economy-2026', permanent: true },
+      // ── Deep Dive canonical fix: bitcoin/ethereum had different /blog/ slug formats ──
+      { source: '/blog/bitcoin-deep-dive-april-2026',      destination: '/reports/deep-dive-btc-april-2026',          permanent: true },
+      { source: '/blog/ethereum-deep-dive-april-2026',     destination: '/reports/deep-dive-eth-april-2026',          permanent: true },
+      // Missing explicit deep-dive redirects
+      { source: '/blog/deep-dive-crcl-circle-april-2026', destination: '/reports/deep-dive-crcl-circle-april-2026',  permanent: true },
+      { source: '/blog/deep-dive-rdw-redwire-april-2026', destination: '/reports/deep-dive-rdw-redwire-april-2026',  permanent: true },
+      // Phase 3 catch-all: any future /blog/deep-dive-* → /reports/deep-dive-*
+      { source: '/blog/deep-dive-:slug*',                  destination: '/reports/deep-dive-:slug*',                  permanent: true },
     ];
   },
 };
