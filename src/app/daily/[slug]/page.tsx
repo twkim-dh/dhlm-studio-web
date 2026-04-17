@@ -386,6 +386,8 @@ export default async function DailyBriefPage(
                 <tbody>
                   {d.macro.map(q => <QuoteRow key={q.symbol} q={q} />)}
                   {d.dxy    && <QuoteRow q={d.dxy}    />}
+                  {d.eurusd && <QuoteRow q={d.eurusd} decimals={4} />}
+                  {d.usdjpy && <QuoteRow q={d.usdjpy} decimals={2} />}
                 </tbody>
               </table>
             </div>
@@ -407,26 +409,6 @@ export default async function DailyBriefPage(
                 </tbody>
               </table>
             </div>
-
-            {/* Forex */}
-            {(d.eurusd || d.usdjpy) && (
-              <div style={cardStyle}>
-                <div style={{ padding: '10px 12px 6px', fontFamily: 'var(--mono)', fontSize: 9, fontWeight: 700, color: '#475569', letterSpacing: 2 }}>FX</div>
-                <table style={TABLE_STYLE}>
-                  <thead>
-                    <tr>
-                      <th style={TH}>Pair</th>
-                      <th style={TH_R}>Rate</th>
-                      <th style={TH_R}>Daily %</th>
-                    </tr>
-                  </thead>
-                  <tbody>
-                    {d.eurusd && <QuoteRow q={d.eurusd} decimals={4} />}
-                    {d.usdjpy && <QuoteRow q={d.usdjpy} decimals={2} />}
-                  </tbody>
-                </table>
-              </div>
-            )}
 
             {/* Sentiment */}
             <div style={{ ...cardStyle, padding: '20px 22px', display: 'flex', alignItems: 'center', gap: 20 }}>

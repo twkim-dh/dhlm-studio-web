@@ -137,6 +137,9 @@ async function avFxDaily(from: string, to: string, displaySymbol: string): Promi
     if (!series) return null;
     const dates = Object.keys(series).sort().reverse();
     if (dates.length < 2) return null;
+    // Stage 3 freshness: reject if most recent FX date is older than 3 days
+    const daysDiff = (Date.now() - new Date(dates[0]).getTime()) / 86_400_000;
+    if (daysDiff > 3) return null;
     const today = Number(series[dates[0]]?.['4. close']);
     const yesterday = Number(series[dates[1]]?.['4. close']);
     if (!today || !yesterday) return null;
@@ -162,6 +165,13 @@ async function coinGeckoExtended(): Promise<CryptoPrice[] | null> {
     return out.length > 0 ? out : null;
   } catch { return null; }
 }
+
+// ─── Report tickers for movers prioritization ────────────────────────────────
+// Tickers we have active coverage on — shown first when they appear in movers
+const PRIORITY_TICKERS = new Set([
+  'NVDA','AAPL','MSFT','GOOGL','META','AMZN','TSLA','AMD','PLTR',
+  'COIN','CRCL','IONQ','RGTI','QBTS','RDW',
+]);
 
 // ─── FMP Top Movers ───────────────────────────────────────────────────────────
 interface FmpMover { symbol: string; name?: string; price?: number; change?: number; changesPercentage?: number; changePercentage?: number }
@@ -214,7 +224,10 @@ async function fetchTopMovers(): Promise<Mover[]> {
     }
   }
 
-  return all.slice(0, 5);
+  // Prioritize our report tickers
+  const priority = all.filter(m => PRIORITY_TICKERS.has(m.symbol));
+  const rest = all.filter(m => !PRIORITY_TICKERS.has(m.symbol));
+  return [...priority, ...rest].slice(0, 5);
 }
 
 // ─── FMP Top News ─────────────────────────────────────────────────────────────
@@ -335,6 +348,24 @@ export async function GET() {
     const market = parsed.data;
 
     // 2. 3-stage validation on base data
+    // Stage 3: market cache freshness — reject if data is older than 6 hours
+    const cacheAgeHours = (Date.now() - (parsed.ts || 0)) / 3_600_000;
+    if (cacheAgeHours > 6) {
+      const reason = `Market cache is ${cacheAgeHours.toFixed(1)}h old (max 6h). Data may not reflect today's close.`;
+      await redis.set(briefKey, JSON.stringify({
+        date: etDate, generatedAt: new Date().toISOString(),
+        status: 'maintenance', maintenanceReason: reason,
+        indices: [], macro: [], crypto: [],
+        fearGreed: { value: 50, label: 'Neutral', source: 'CNN' },
+        verdict: { text: '', trigger: '' },
+        russell2000: null, dxy: null, eurusd: null, usdjpy: null, solana: null,
+        movers: [], news: [], tomorrow: [],
+        validation: { stage1Pass: true, stage2Pass: true, warnings: [reason] },
+        source: market.source,
+      } satisfies DailyBriefData), 'EX', 86400 * 7);
+      return NextResponse.json({ ok: false, date: etDate, reason });
+    }
+
     const s1 = stage1Check(market);
     const s2 = stage2Check(market);
     const allWarnings = [...s1.warnings, ...s2.warnings];
