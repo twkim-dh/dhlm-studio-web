@@ -278,27 +278,31 @@ def parse_blocks(body):
             i += 1
             continue
 
+        # Fenced code block: ```...```
+        if line.strip().startswith('```'):
+            code_lines = []
+            i += 1  # skip opening fence
+            while i < len(lines) and not lines[i].strip().startswith('```'):
+                code_lines.append(lines[i])
+                i += 1
+            if i < len(lines):
+                i += 1  # skip closing fence
+            if code_lines:
+                text = '\n'.join(code_lines)
+                blocks.append({'type': 'code', 'text': text})
+            continue
+
         # Horizontal rule (must not be a table separator)
         if re.match(r'^-{3,}\s*$', line):
             blocks.append({'type': 'hr'})
             i += 1
             continue
 
-        # H1: exactly ##
-        if re.match(r'^##\s+(?!#)', line):
-            blocks.append({'type': 'h1', 'text': line.lstrip('#').strip()})
-            i += 1
-            continue
-
-        # H2: exactly ###
-        if re.match(r'^###\s+(?!#)', line):
-            blocks.append({'type': 'h2', 'text': line.lstrip('#').strip()})
-            i += 1
-            continue
-
-        # H3: #### or deeper
-        if re.match(r'^#{4,}\s+', line):
-            blocks.append({'type': 'h2', 'text': line.lstrip('#').strip()})
+        # Any heading: #, ##, ###, ####+ (catch all, render by depth)
+        if re.match(r'^#{1,}\s+', line):
+            depth = len(re.match(r'^(#+)', line).group(1))
+            btype = 'h1' if depth <= 2 else 'h2'
+            blocks.append({'type': btype, 'text': line.lstrip('#').strip()})
             i += 1
             continue
 
@@ -354,6 +358,9 @@ def parse_blocks(body):
         if para_lines:
             text = ' '.join(para_lines)
             blocks.append({'type': 'para', 'text': text})
+        else:
+            # Safety: if no lines collected, advance to avoid infinite loop
+            i += 1
         continue
 
     return blocks
@@ -453,6 +460,23 @@ def build_story(fm, blocks):
                 items.append(Paragraph(md_to_rl(block['note']), style_table_note))
             story.append(KeepTogether(items))
 
+        elif btype == 'code':
+            code_style = ParagraphStyle(
+                'Code', fontName='Courier', fontSize=8.5, leading=13,
+                textColor=DARK_TEXT, backColor=LIGHT_GRAY,
+                leftIndent=8 * mm, rightIndent=8 * mm,
+                spaceBefore=3 * mm, spaceAfter=3 * mm,
+            )
+            # Escape XML entities only; no markdown in code blocks
+            safe = block['text'].replace('&', '&amp;').replace('<', '&lt;').replace('>', '&gt;')
+            # Render each non-empty line as its own paragraph inside a keep-together
+            code_items = []
+            for cline in safe.split('\n'):
+                if cline.strip():
+                    code_items.append(Paragraph(cline, code_style))
+            if code_items:
+                story.append(KeepTogether(code_items))
+
         elif btype == 'bullet':
             text = '\u2022 ' + md_to_rl(block['text'])
             story.append(Paragraph(text, style_body))
@@ -507,8 +531,11 @@ def main():
         content = f.read()
 
     fm, body_text = parse_frontmatter(content)
+    print(f"[1/4] Frontmatter parsed: title={fm.get('title','')[:50]}")
     blocks        = parse_blocks(body_text)
+    print(f"[2/4] Blocks parsed: {len(blocks)} blocks")
     story         = build_story(fm, blocks)
+    print(f"[3/4] Story built: {len(story)} flowables")
 
     doc = SimpleDocTemplate(
         out_path,
@@ -520,6 +547,7 @@ def main():
         title=fm.get('title', slug),
         author="DHLM Studio",
     )
+    print(f"[4/4] Building PDF (may take 5-15s for long reports)...")
     doc.build(story, onFirstPage=no_header, onLaterPages=running_hf)
 
     size_kb = os.path.getsize(out_path) / 1024

@@ -82,8 +82,8 @@ function RegularCard({ r }: { r: ReportMeta }) {
 }
 
 function ReportCard({ r }: { r: ReportMeta }) {
-  const isSpecialStyle = r.type === 'special-report' || r.type === 'hot-sector' || r.type === 'hidden-gem';
-  return isSpecialStyle ? <SpecialCard r={r} /> : <RegularCard r={r} />;
+  // Show SpecialCard (with hero image) for any report that has a thumbnail
+  return r.thumb ? <SpecialCard r={r} /> : <RegularCard r={r} />;
 }
 
 export default function ReportsClient({ reports }: { reports: ReportMeta[] }) {
