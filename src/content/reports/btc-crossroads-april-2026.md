@@ -7,7 +7,7 @@ readTime: "15 min"
 category: "Crypto"
 catColor: "#F59E0B"
 grade: "—"
-heroImage: "/images/content/spotlight-crypto.png"
+heroImage: "/images/content/btc-crossroads-hero.png"
 beafScore: 0
 description: "Bitcoin trades near $71,605, roughly 43 percent below its October 2025 all-time high. ETF cumulative inflows have crossed $56 billion. The long-term direction is up, but April 2026 is a month of selection and patience, not breakout."
 type: "hot-sector"
