@@ -1,0 +1,378 @@
+// /api/cron/market-snapshot — Daily market close snapshot cron.
+//
+// Schedule: UTC 20:30 = ET 16:30 (30 minutes after NYSE close), weekdays only.
+// Also callable manually via GET for testing / emergency seeding.
+//
+// What it collects:
+//   - Indices   : AV GLOBAL_QUOTE  → ^GSPC, ^IXIC, ^DJI, ^RUT  (4 AV calls)
+//   - Sectors   : FMP batch quote  → 11 sector ETFs (XLK…XLC)   (1-2 FMP calls)
+//   - Top 30    : FMP batch quote  → TOP_30_TICKERS               (1-2 FMP calls)
+//   - Macro     : AV WTI + FMP GCUSD + FMP ^VIX + FMP treasury  (1 AV + 3 FMP)
+//   - Crypto    : CoinGecko simple/price → BTC, ETH, SOL          (0 FMP)
+//
+// Total FMP calls: ~5–7/day  (vs. 148–172 before)
+// Total AV  calls: ~5/day    (vs. AV limit of 25/day)
+//
+// Redis keys:
+//   market:snapshot:YYYY-MM-DD  — full snapshot, 48h TTL
+//   market:snapshot:latest      — stores the latest trading date string, 48h TTL
+
+import { NextResponse } from 'next/server';
+import { getRedis } from '@/lib/redis';
+import { fmpCanCall, fmpTrackCall } from '@/lib/fmp-tracker';
+import { TOP_30_TICKERS } from '@/lib/top-tickers';
+
+export const runtime = 'nodejs';
+export const dynamic = 'force-dynamic';
+
+const FMP_KEY = process.env.FMP_API_KEY || '';
+const AV_KEY  = process.env.ALPHA_VANTAGE_KEY || '';
+
+const SNAPSHOT_TTL = 60 * 60 * 48; // 48 hours
+
+// ── Types ────────────────────────────────────────────────────────────────────
+
+interface IndexQuote {
+  symbol: string;
+  price: number;
+  change: number;
+  changePercent: number;
+  tradingDate: string;
+}
+
+export interface StockQuote {
+  symbol: string;
+  price: number;
+  change: number;
+  changePercent: number;
+}
+
+interface CryptoPrice {
+  id: string;
+  price: number;
+  change24h: number;
+}
+
+export interface MarketSnapshot {
+  tradingDate: string;       // ET date: "2026-04-16"
+  asOf: string;              // ISO UTC timestamp of when cron ran
+  indices: IndexQuote[];
+  sectors: StockQuote[];     // sector ETF daily close % change
+  top30: StockQuote[];       // TOP_30_TICKERS daily close
+  macro: StockQuote[];       // WTI, Gold, VIX, 10Y yield
+  crypto: CryptoPrice[];
+  sources: Record<string, 'ok' | 'failed'>;
+}
+
+// ── Helpers ──────────────────────────────────────────────────────────────────
+
+// ET date: used as the canonical trading date key.
+function etDateString(): string {
+  const now = new Date();
+  const et = new Date(now.toLocaleString('en-US', { timeZone: 'America/New_York' }));
+  return et.toISOString().slice(0, 10);
+}
+
+// FMP symbol normalizer (same as today-market)
+const FMP_NORM: Record<string, string> = {
+  'GC=F': 'GCUSD', 'CL=F': 'CLUSD',
+  'GCQ25': 'GCUSD', 'CLM25': 'CLUSD',
+};
+function normSym(s: string): string { return FMP_NORM[s] || s; }
+
+// ── Alpha Vantage: GLOBAL_QUOTE for a single symbol ──────────────────────────
+// Covers: ^GSPC, ^IXIC, ^DJI, ^RUT
+// Response key: "Global Quote" → price, change, change percent, latest trading day
+
+async function avGlobalQuote(symbol: string): Promise<IndexQuote | null> {
+  if (!AV_KEY || AV_KEY === 'demo') return null;
+  try {
+    const res = await fetch(
+      `https://www.alphavantage.co/query?function=GLOBAL_QUOTE&symbol=${encodeURIComponent(symbol)}&apikey=${AV_KEY}`,
+      { cache: 'no-store' }
+    );
+    if (!res.ok) return null;
+    const text = await res.text();
+    let data: Record<string, unknown>;
+    try { data = JSON.parse(text); } catch { return null; }
+
+    // AV rate-limit check
+    if (data?.Note || data?.Information) {
+      console.warn(`[market-snapshot] AV throttled for ${symbol}`);
+      return null;
+    }
+
+    const q = data['Global Quote'] as Record<string, string> | undefined;
+    if (!q || !q['05. price']) return null;
+
+    const tradingDate = q['07. latest trading day'] || '';
+
+    // Staleness check — reject if > 3 calendar days old
+    if (tradingDate) {
+      const daysDiff = (Date.now() - new Date(tradingDate).getTime()) / 86_400_000;
+      if (daysDiff > 3) {
+        console.warn(`[market-snapshot] AV stale for ${symbol}: ${tradingDate} is ${daysDiff.toFixed(1)}d old`);
+        return null;
+      }
+    }
+
+    const price         = parseFloat(q['05. price']) || 0;
+    const change        = parseFloat(q['09. change']) || 0;
+    const changePercent = parseFloat((q['10. change percent'] || '').replace('%', '')) || 0;
+
+    if (price === 0) return null;
+    return { symbol, price, change, changePercent, tradingDate };
+  } catch (e) {
+    console.error(`[market-snapshot] avGlobalQuote(${symbol}) error:`, e);
+    return null;
+  }
+}
+
+// ── Alpha Vantage: WTI daily (same pattern as today-market) ──────────────────
+
+async function avWTI(): Promise<StockQuote | null> {
+  if (!AV_KEY || AV_KEY === 'demo') return null;
+  try {
+    const res = await fetch(
+      `https://www.alphavantage.co/query?function=WTI&interval=daily&apikey=${AV_KEY}`,
+      { cache: 'no-store' }
+    );
+    if (!res.ok) return null;
+    const data = await res.json();
+    if (data?.Note || data?.Information) return null;
+
+    const arr = Array.isArray(data?.data) ? data.data : null;
+    if (!arr || arr.length < 2) return null;
+
+    // Staleness check
+    const rawDate = arr[0]?.date as string | undefined;
+    if (rawDate) {
+      const daysDiff = (Date.now() - new Date(rawDate).getTime()) / 86_400_000;
+      if (daysDiff > 3) {
+        console.warn(`[market-snapshot] AV WTI stale: ${rawDate} is ${daysDiff.toFixed(1)}d old`);
+        return null;
+      }
+    }
+
+    const today     = Number(arr[0]?.value);
+    const yesterday = Number(arr[1]?.value);
+    if (!today || !yesterday) return null;
+
+    const change        = today - yesterday;
+    const changePercent = yesterday !== 0 ? (change / yesterday) * 100 : 0;
+    return { symbol: 'CLUSD', price: today, change, changePercent };
+  } catch (e) {
+    console.error('[market-snapshot] avWTI error:', e);
+    return null;
+  }
+}
+
+// ── FMP: batch quote (tries path format first, then query-string) ─────────────
+// Path format `/api/v3/quote/AAPL,MSFT` works on free tier for stocks/ETFs.
+// Query-string format `/stable/quote?symbol=AAPL,MSFT` may require premium.
+
+async function fmpBatch(symbols: string[]): Promise<StockQuote[]> {
+  if (!FMP_KEY || symbols.length === 0) return [];
+  if (!(await fmpCanCall())) return [];
+
+  const csv = symbols.map(encodeURIComponent).join(',');
+  const urls = [
+    `https://financialmodelingprep.com/api/v3/quote/${csv}?apikey=${FMP_KEY}`,
+    `https://financialmodelingprep.com/stable/quote?symbol=${csv}&apikey=${FMP_KEY}`,
+  ];
+
+  for (const url of urls) {
+    try {
+      const res = await fetch(url, { cache: 'no-store' });
+      await fmpTrackCall();
+      if (!res.ok) continue;
+      const text = await res.text();
+      let data: unknown;
+      try { data = JSON.parse(text); } catch { continue; }
+      if (!Array.isArray(data) || data.length === 0) continue;
+
+      const out: StockQuote[] = [];
+      for (const d of data as Array<Record<string, unknown>>) {
+        const sym   = normSym(String(d.symbol || ''));
+        const price = Number(d.price) || 0;
+        if (!sym || price === 0) continue;
+        const change        = Number(d.change) || 0;
+        const changePercent = Number(d.changesPercentage ?? d.changePercentage ?? 0);
+        out.push({ symbol: sym, price, change, changePercent });
+      }
+
+      if (out.length > 0) return out;
+    } catch { continue; }
+  }
+
+  return [];
+}
+
+// ── FMP: single quote (for GCUSD, ^VIX) ──────────────────────────────────────
+
+async function fmpSingle(symbol: string): Promise<StockQuote | null> {
+  if (!FMP_KEY) return null;
+  if (!(await fmpCanCall())) return null;
+  try {
+    const url = `https://financialmodelingprep.com/stable/quote?symbol=${encodeURIComponent(symbol)}&apikey=${FMP_KEY}`;
+    const res = await fetch(url, { cache: 'no-store' });
+    await fmpTrackCall();
+    if (!res.ok) return null;
+    const text = await res.text();
+    let data: unknown;
+    try { data = JSON.parse(text); } catch { return null; }
+    if (!Array.isArray(data) || !data[0]) return null;
+    const d = data[0] as Record<string, unknown>;
+    const price = Number(d.price) || 0;
+    if (price === 0) return null;
+    return {
+      symbol: normSym(String(d.symbol || symbol)),
+      price,
+      change: Number(d.change) || 0,
+      changePercent: Number(d.changesPercentage ?? d.changePercentage ?? 0),
+    };
+  } catch {
+    return null;
+  }
+}
+
+// ── FMP: 10Y Treasury rate ────────────────────────────────────────────────────
+
+async function fmpTreasury10Y(): Promise<StockQuote | null> {
+  if (!FMP_KEY) return null;
+  if (!(await fmpCanCall())) return null;
+  try {
+    const res = await fetch(
+      `https://financialmodelingprep.com/stable/treasury-rates?apikey=${FMP_KEY}`,
+      { cache: 'no-store' }
+    );
+    await fmpTrackCall();
+    if (!res.ok) return null;
+    const data = await res.json();
+    const latest = Array.isArray(data) ? data[0] : data;
+    if (!latest) return null;
+    const rate = Number(latest.year10) || 0;
+    if (rate === 0) return null;
+    return { symbol: '^TNX', price: rate, change: 0, changePercent: 0 };
+  } catch {
+    return null;
+  }
+}
+
+// ── CoinGecko: BTC, ETH, SOL ─────────────────────────────────────────────────
+
+async function coinGecko(): Promise<CryptoPrice[]> {
+  try {
+    const res = await fetch(
+      'https://api.coingecko.com/api/v3/simple/price?ids=bitcoin,ethereum,solana&vs_currencies=usd&include_24hr_change=true',
+      { cache: 'no-store', headers: { accept: 'application/json' } }
+    );
+    if (!res.ok) return [];
+    const data = await res.json();
+    const out: CryptoPrice[] = [];
+    for (const id of ['bitcoin', 'ethereum', 'solana']) {
+      if (data[id]) {
+        out.push({ id, price: Number(data[id].usd) || 0, change24h: Number(data[id].usd_24h_change) || 0 });
+      }
+    }
+    return out;
+  } catch {
+    return [];
+  }
+}
+
+// ── Route ────────────────────────────────────────────────────────────────────
+
+const SECTOR_ETFS = ['XLK', 'XLF', 'XLV', 'XLE', 'XLY', 'XLI', 'XLP', 'XLU', 'XLRE', 'XLB', 'XLC'];
+const TOP30 = [...TOP_30_TICKERS] as string[];
+
+export async function GET(request: Request) {
+  const url = new URL(request.url);
+  const forceDate = url.searchParams.get('date'); // optional: ?date=2026-04-16
+
+  const tradingDate = forceDate || etDateString();
+
+  console.log(`[market-snapshot] Starting collection for ${tradingDate}`);
+
+  const sources: Record<string, 'ok' | 'failed'> = {};
+
+  // 1. Indices via AV GLOBAL_QUOTE (4 calls, sequential to respect AV rate limits)
+  const indexSymbols = ['^GSPC', '^IXIC', '^DJI', '^RUT'];
+  const indicesRaw: (IndexQuote | null)[] = [];
+  for (const sym of indexSymbols) {
+    const q = await avGlobalQuote(sym);
+    indicesRaw.push(q);
+    // Small delay between AV calls to avoid burst throttling
+    await new Promise(r => setTimeout(r, 200));
+  }
+  const indices = indicesRaw.filter((q): q is IndexQuote => Boolean(q));
+  sources['av:indices'] = indices.length === indexSymbols.length ? 'ok' : 'failed';
+  console.log(`[market-snapshot] indices: ${indices.length}/${indexSymbols.length}`);
+
+  // 2. Sector ETFs via FMP batch (1-2 calls)
+  const sectorsRaw = await fmpBatch(SECTOR_ETFS);
+  sources['fmp:sectors'] = sectorsRaw.length > 0 ? 'ok' : 'failed';
+  console.log(`[market-snapshot] sectors: ${sectorsRaw.length}/${SECTOR_ETFS.length}`);
+
+  // 3. Top 30 stocks via FMP batch (1-2 calls)
+  const top30Raw = await fmpBatch(TOP30);
+  sources['fmp:top30'] = top30Raw.length > 0 ? 'ok' : 'failed';
+  console.log(`[market-snapshot] top30: ${top30Raw.length}/${TOP30.length}`);
+
+  // 4. Macro: WTI (AV), Gold + VIX (FMP single), 10Y (FMP treasury)
+  const [wti, gold, vix, treasury] = await Promise.all([
+    avWTI(),
+    fmpSingle('GCUSD'),
+    fmpSingle('^VIX'),
+    fmpTreasury10Y(),
+  ]);
+  const macro: StockQuote[] = [wti, gold, vix, treasury].filter((q): q is StockQuote => Boolean(q));
+  sources['macro'] = macro.length >= 2 ? 'ok' : 'failed';
+  console.log(`[market-snapshot] macro: ${macro.map(m => m.symbol).join(', ')}`);
+
+  // 5. Crypto via CoinGecko (0 FMP calls)
+  const crypto = await coinGecko();
+  sources['coingecko'] = crypto.length > 0 ? 'ok' : 'failed';
+  console.log(`[market-snapshot] crypto: ${crypto.map(c => c.id).join(', ')}`);
+
+  const snapshot: MarketSnapshot = {
+    tradingDate,
+    asOf: new Date().toISOString(),
+    indices,
+    sectors: sectorsRaw,
+    top30: top30Raw,
+    macro,
+    crypto,
+    sources,
+  };
+
+  // Store in Redis
+  try {
+    const redis = getRedis();
+    const key = `market:snapshot:${tradingDate}`;
+    await redis.set(key, JSON.stringify(snapshot), 'EX', SNAPSHOT_TTL);
+    await redis.set('market:snapshot:latest', tradingDate, 'EX', SNAPSHOT_TTL);
+    console.log(`[market-snapshot] Saved to Redis: ${key}`);
+  } catch (e) {
+    console.error('[market-snapshot] Redis write failed:', e);
+    sources['redis'] = 'failed';
+  }
+
+  const failed = Object.entries(sources).filter(([, v]) => v === 'failed').map(([k]) => k);
+  const ok     = failed.length === 0;
+
+  return NextResponse.json({
+    ok,
+    tradingDate,
+    asOf: snapshot.asOf,
+    counts: {
+      indices:  indices.length,
+      sectors:  sectorsRaw.length,
+      top30:    top30Raw.length,
+      macro:    macro.length,
+      crypto:   crypto.length,
+    },
+    sources,
+    ...(failed.length > 0 ? { warnings: failed.map(f => `${f} failed`) } : {}),
+  });
+}

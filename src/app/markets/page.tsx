@@ -9,20 +9,24 @@ import { isTop30 } from '@/lib/top-tickers';
 // ─── Types ────────────────────────────────────────────────────────────────────
 
 interface IndexItem  { symbol: string; label: string; price: number; pct: number; }
-interface TopStock   { ticker: string; name: string; price: number; change: number; marketCap: number; sector: string; image?: string; }
+interface SectorItem { symbol: string; label: string; price: number; changePercent: number; }
 interface CryptoItem { id: string; symbol: string; name: string; price: number; change24h: number; }
-interface Mover      { rank: number; ticker: string; name: string; price: number; change: number; volume: number; image?: string; }
-interface SectorGroup { name: string; change: number; totalMC: number; stocks: TopStock[]; }
+interface Mover      { symbol: string; name: string; price: number; changePercent: number; image?: string; }
 
-// ─── Static fallback indices (shown when FMP unavailable) ─────────────────────
+// ─── Index label map ──────────────────────────────────────────────────────────
 
-// Fallback updated 2026-04-15 to reflect confirmed Apr-15 closing data.
-const INDEX_FALLBACK: IndexItem[] = [
-  { symbol: '^GSPC', label: 'S&P 500',     price: 6967, pct: 0 },
-  { symbol: '^IXIC', label: 'Nasdaq',       price: 23639, pct: 0 },
-  { symbol: '^DJI',  label: 'Dow',          price: 48536, pct: 0 },
-  { symbol: '^RUT',  label: 'Russell 2000', price: 2120,  pct: 0 },
-];
+const INDEX_LABELS: Record<string, string> = {
+  '^GSPC': 'S&P 500',
+  '^IXIC': 'Nasdaq',
+  '^DJI':  'Dow',
+  '^RUT':  'Russell 2000',
+};
+
+// Approximate market-weight for treemap tile sizing (% of S&P 500)
+const SECTOR_WEIGHTS: Record<string, number> = {
+  XLK:  33, XLC: 9,  XLF: 13, XLV: 11, XLY: 10,
+  XLI:  8,  XLE: 4,  XLP:  6, XLU:  2, XLRE: 2, XLB: 2,
+};
 
 // ─── Color helpers ────────────────────────────────────────────────────────────
 
@@ -91,19 +95,19 @@ function MoverCol({ title, color, bg, items }: {
         <div style={{ fontFamily: 'var(--mono)', fontSize: 10, fontWeight: 800, color, letterSpacing: 1.5 }}>{title}</div>
       </div>
       {items.map((s, i) => {
-        const up = s.change >= 0;
-        const hasPage = isTop30(s.ticker);
+        const up = s.changePercent >= 0;
+        const hasPage = isTop30(s.symbol);
         const inner = (
           <>
             <span style={{ fontSize: 9, color: '#475569', fontFamily: 'var(--mono)', width: 14, textAlign: 'right', flexShrink: 0 }}>{i + 1}</span>
-            <StockLogo src={s.image} ticker={s.ticker} size={20} />
+            <StockLogo src={s.image} ticker={s.symbol} size={20} />
             <div style={{ flex: 1, minWidth: 0 }}>
-              <div style={{ fontSize: 11, fontWeight: 700, color: '#E2E8F0', fontFamily: 'var(--mono)' }}>{s.ticker}</div>
+              <div style={{ fontSize: 11, fontWeight: 700, color: '#E2E8F0', fontFamily: 'var(--mono)' }}>{s.symbol}</div>
               <div style={{ fontSize: 9, color: '#475569', overflow: 'hidden', whiteSpace: 'nowrap', textOverflow: 'ellipsis' }}>{s.name}</div>
             </div>
             <div style={{ textAlign: 'right', flexShrink: 0 }}>
               <div style={{ fontSize: 11, fontWeight: 800, color: up ? '#00D474' : '#FF4545', fontFamily: 'var(--mono)' }}>
-                {up ? '+' : ''}{s.change.toFixed(1)}%
+                {up ? '+' : ''}{s.changePercent.toFixed(2)}%
               </div>
               <div style={{ fontSize: 9, color: '#475569', fontFamily: 'var(--mono)' }}>${s.price.toFixed(2)}</div>
             </div>
@@ -111,9 +115,9 @@ function MoverCol({ title, color, bg, items }: {
         );
         const rowStyle = { display: 'flex', alignItems: 'center', gap: 8, padding: '8px 12px', borderBottom: i < items.length - 1 ? '1px solid #1E293B40' : 'none' } as const;
         return hasPage ? (
-          <Link key={s.ticker} href={`/markets/${s.ticker}`} style={{ textDecoration: 'none', ...rowStyle }}>{inner}</Link>
+          <Link key={s.symbol} href={`/markets/${s.symbol.toLowerCase()}`} style={{ textDecoration: 'none', ...rowStyle }}>{inner}</Link>
         ) : (
-          <div key={s.ticker} style={rowStyle}>{inner}</div>
+          <div key={s.symbol} style={rowStyle}>{inner}</div>
         );
       })}
     </div>
@@ -123,51 +127,48 @@ function MoverCol({ title, color, bg, items }: {
 // ─── Page ─────────────────────────────────────────────────────────────────────
 
 export default function MarketsPage() {
-  const [indices,  setIndices]  = useState<IndexItem[]>(INDEX_FALLBACK);
-  const [sectors,  setSectors]  = useState<SectorGroup[]>([]);
+  const [indices,       setIndices]       = useState<IndexItem[]>([]);
+  const [indicesLoaded, setIndicesLoaded] = useState(false);
+  const [sectors,       setSectors]       = useState<SectorItem[]>([]);
   const [sectorsLoaded, setSectorsLoaded] = useState(false);
-  const [movers,   setMovers]   = useState<{ gainers: Mover[]; losers: Mover[]; actives: Mover[] }>({ gainers: [], losers: [], actives: [] });
-  const [isWeekend, setIsWeekend] = useState(false);
-  const [lastCloseLabel, setLastCloseLabel] = useState('');
+  const [movers,        setMovers]        = useState<{ gainers: Mover[]; losers: Mover[]; actives: Mover[] }>({ gainers: [], losers: [], actives: [] });
   const [moversLoading, setMoversLoading] = useState(true);
-  const [isLive, setIsLive] = useState(false);
-  const [cryptos, setCryptos] = useState<CryptoItem[]>([]);
-  const [mounted, setMounted] = useState(false);
+  const [tradingDate,   setTradingDate]   = useState('');
+  const [cryptos,       setCryptos]       = useState<CryptoItem[]>([]);
+  const [mounted,       setMounted]       = useState(false);
 
   useEffect(() => {
     setMounted(true);
-    // ① Indices
+
+    // ① Indices — Redis snapshot only, no FMP fallback
     fetch('/api/markets/indices')
       .then(r => r.json())
-      .then(d => { if (d.indices?.length > 0) setIndices(d.indices); })
-      .catch(() => {});
+      .then(d => {
+        if (d.indices?.length > 0) {
+          const mapped: IndexItem[] = d.indices.map((q: { symbol: string; price: number; changePercent: number }) => ({
+            symbol: q.symbol,
+            label:  INDEX_LABELS[q.symbol] || q.symbol,
+            price:  q.price,
+            pct:    q.changePercent,
+          }));
+          setIndices(mapped);
+          if (d.tradingDate) setTradingDate(d.tradingDate);
+        }
+      })
+      .catch(() => {})
+      .finally(() => setIndicesLoaded(true));
 
-    // ③ Top 20 → sector heatmap
-    fetch('/api/markets/top20')
+    // ② Sector ETFs — Redis snapshot only
+    fetch('/api/markets/sectors')
       .then(r => r.json())
       .then(d => {
-        const stocks: TopStock[] = d.stocks || [];
-        if (stocks.length > 0) {
-          const map = new Map<string, TopStock[]>();
-          for (const s of stocks) {
-            const sec = s.sector || 'Other';
-            if (!map.has(sec)) map.set(sec, []);
-            map.get(sec)!.push(s);
-          }
-          const list: SectorGroup[] = Array.from(map.entries()).map(([name, ss]) => {
-            const totalMC = ss.reduce((a, c) => a + c.marketCap, 0);
-            const weightedChange = totalMC > 0
-              ? ss.reduce((a, c) => a + c.change * c.marketCap, 0) / totalMC
-              : ss.reduce((a, c) => a + c.change, 0) / ss.length;
-            return { name, stocks: ss, change: weightedChange, totalMC };
-          }).sort((a, b) => b.totalMC - a.totalMC);
-          setSectors(list);
-        }
+        if (d.sectors?.length > 0) setSectors(d.sectors);
+        if (d.tradingDate && !tradingDate) setTradingDate(d.tradingDate);
       })
       .catch(() => {})
       .finally(() => setSectorsLoaded(true));
 
-    // ④ Crypto (CoinGecko)
+    // ③ Crypto (CoinGecko — separate route, unaffected by snapshot)
     const CRYPTO_WHITELIST = ['bitcoin','ethereum','solana','ripple','binancecoin','cardano','dogecoin','avalanche-2','chainlink','polkadot'];
     fetch('/api/crypto')
       .then(r => r.json())
@@ -181,27 +182,39 @@ export default function MarketsPage() {
       })
       .catch(() => {});
 
-    // ⑤⑥⑦ Gainers / Losers / Actives
-    fetch('/api/markets')
+    // ④ Movers — Top 30 based, Redis snapshot only
+    fetch('/api/markets/movers')
       .then(r => r.json())
       .then(d => {
-        if (d.isWeekend) { setIsWeekend(true); setLastCloseLabel(d.lastCloseLabel || ''); }
-        // Store whatever data arrived — even weekend-only actives
         const hasAny = d.gainers?.length > 0 || d.actives?.length > 0;
         if (hasAny) {
-          setMovers({ gainers: d.gainers || [], losers: d.losers || [], actives: d.actives || [] });
-          setIsLive(!d.isWeekend && d.gainers?.length > 0);
+          setMovers({
+            gainers: d.gainers || [],
+            losers:  d.losers  || [],
+            actives: d.actives || [],
+          });
+          if (d.tradingDate && !tradingDate) setTradingDate(d.tradingDate);
         }
       })
       .catch(() => {})
       .finally(() => setMoversLoading(false));
+  // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
 
-  const topSectors = [...sectors].sort((a, b) => b.change - a.change).slice(0, 3);
-  // Flat treemap data: each stock is one tile, sized by market cap
-  const treemapData = sectors.flatMap(sec =>
-    sec.stocks.map(s => ({ name: s.ticker, size: Math.max(s.marketCap, 1), change: s.change }))
-  );
+  // Sector treemap: one tile per sector ETF, sized by S&P 500 weight
+  const treemapData = sectors.map(s => ({
+    name:   s.symbol,
+    size:   SECTOR_WEIGHTS[s.symbol] || 1,
+    change: s.changePercent,
+  }));
+
+  // Top 3 sectors by absolute gain
+  const topSectors = [...sectors].sort((a, b) => b.changePercent - a.changePercent).slice(0, 3);
+
+  // Trading date display: "April 16, 2026"
+  const tradingDateLabel = tradingDate
+    ? new Date(tradingDate + 'T12:00:00').toLocaleDateString('en-US', { month: 'long', day: 'numeric', year: 'numeric' })
+    : '';
 
   return (
     <div style={{ background: '#0B0F19', minHeight: '100vh' }}>
@@ -214,16 +227,13 @@ export default function MarketsPage() {
               Market Snapshot
             </h1>
             <div style={{ fontSize: 11, color: '#94A3B8', marginTop: 5, display: 'flex', alignItems: 'center', gap: 8, flexWrap: 'wrap' }}>
-              {isWeekend ? (
+              {tradingDateLabel ? (
                 <>
-                  <span style={{ color: '#D4A843' }}>Last close: {lastCloseLabel}</span>
-                  <span style={{ fontSize: 9, padding: '2px 7px', borderRadius: 4, background: '#D4A84318', color: '#D4A843', fontWeight: 700, fontFamily: 'var(--mono)' }}>MARKET CLOSED</span>
+                  <span>Previous close · {tradingDateLabel}</span>
+                  <span style={{ fontSize: 9, padding: '2px 7px', borderRadius: 4, background: '#334155', color: '#94A3B8', fontWeight: 700, fontFamily: 'var(--mono)' }}>EOD DATA</span>
                 </>
               ) : (
-                <>
-                  <span>{new Date().toLocaleDateString('en-US', { weekday: 'long', month: 'long', day: 'numeric', year: 'numeric', timeZone: 'America/New_York' })}</span>
-                  {isLive && <span style={{ fontSize: 9, padding: '2px 7px', borderRadius: 4, background: '#00D47418', color: '#00D474', fontWeight: 700, fontFamily: 'var(--mono)' }}>● LIVE</span>}
-                </>
+                <span>{new Date().toLocaleDateString('en-US', { weekday: 'long', month: 'long', day: 'numeric', year: 'numeric', timeZone: 'America/New_York' })}</span>
               )}
             </div>
           </div>
@@ -232,7 +242,7 @@ export default function MarketsPage() {
           </div>
         </div>
 
-        {/* ① CRYPTO — 최상단 배치 (crypto 유입 사용자 즉시 노출) */}
+        {/* ② CRYPTO — 최상단 배치 */}
         <div style={{ background: '#111827', borderRadius: 12, border: '1px solid #1E293B', overflow: 'hidden', marginBottom: 20 }}>
           <div style={{ padding: '10px 16px', borderBottom: '1px solid #1E293B', display: 'flex', justifyContent: 'space-between', alignItems: 'center' }}>
             <div style={{ fontFamily: 'var(--mono)', fontSize: 10, fontWeight: 700, color: '#F59E0B', letterSpacing: 1.5 }}>🪙 CRYPTO — BTC · ETH · SOL + TOP ALTCOINS</div>
@@ -269,29 +279,47 @@ export default function MarketsPage() {
           </div>
         </div>
 
-        {/* ② INDEX BAR */}
-        <div style={{ display: 'grid', gridTemplateColumns: 'repeat(4, 1fr)', gap: 6, marginBottom: 20 }}>
-          {indices.map(idx => {
-            const up = idx.pct >= 0;
-            return (
-              <div key={idx.symbol} style={{ background: '#111827', borderRadius: 10, border: `1px solid ${up ? '#00D47420' : '#FF454520'}`, padding: '12px 14px' }}>
-                <div style={{ fontSize: 10, color: '#64748B', fontFamily: 'var(--mono)', fontWeight: 700, marginBottom: 4 }}>{idx.label}</div>
-                <div style={{ fontSize: 16, fontWeight: 800, color: '#F1F5F9', fontFamily: 'var(--mono)' }}>
-                  {idx.price > 0 ? idx.price.toLocaleString('en-US', { maximumFractionDigits: 0 }) : '—'}
-                </div>
-                <div style={{ fontSize: 11, fontWeight: 700, fontFamily: 'var(--mono)', marginTop: 2, color: up ? '#00D474' : '#FF4545' }}>
-                  {idx.price > 0 ? `${up ? '+' : ''}${idx.pct.toFixed(2)}%` : '—'}
-                </div>
+        {/* ③ INDEX BAR */}
+        {!indicesLoaded ? (
+          <div style={{ display: 'grid', gridTemplateColumns: 'repeat(4, 1fr)', gap: 6, marginBottom: 20 }}>
+            {['^GSPC', '^IXIC', '^DJI', '^RUT'].map(sym => (
+              <div key={sym} style={{ background: '#111827', borderRadius: 10, border: '1px solid #1E293B20', padding: '12px 14px' }}>
+                <div style={{ fontSize: 10, color: '#334155', fontFamily: 'var(--mono)', fontWeight: 700, marginBottom: 4 }}>{INDEX_LABELS[sym]}</div>
+                <div style={{ fontSize: 16, fontWeight: 800, color: '#334155', fontFamily: 'var(--mono)' }}>—</div>
+                <div style={{ fontSize: 11, fontFamily: 'var(--mono)', marginTop: 2, color: '#334155' }}>—</div>
               </div>
-            );
-          })}
-        </div>
+            ))}
+          </div>
+        ) : indices.length === 0 ? (
+          <div style={{ background: '#111827', borderRadius: 10, border: '1px solid #1E293B', padding: '16px', marginBottom: 20, textAlign: 'center' }}>
+            <div style={{ fontSize: 11, color: '#475569', fontFamily: 'var(--mono)' }}>
+              Index data temporarily unavailable · Updates daily at 4:30 PM ET
+            </div>
+          </div>
+        ) : (
+          <div style={{ display: 'grid', gridTemplateColumns: 'repeat(4, 1fr)', gap: 6, marginBottom: 20 }}>
+            {indices.map(idx => {
+              const up = idx.pct >= 0;
+              return (
+                <div key={idx.symbol} style={{ background: '#111827', borderRadius: 10, border: `1px solid ${up ? '#00D47420' : '#FF454520'}`, padding: '12px 14px' }}>
+                  <div style={{ fontSize: 10, color: '#64748B', fontFamily: 'var(--mono)', fontWeight: 700, marginBottom: 4 }}>{idx.label}</div>
+                  <div style={{ fontSize: 16, fontWeight: 800, color: '#F1F5F9', fontFamily: 'var(--mono)' }}>
+                    {idx.price.toLocaleString('en-US', { maximumFractionDigits: 0 })}
+                  </div>
+                  <div style={{ fontSize: 11, fontWeight: 700, fontFamily: 'var(--mono)', marginTop: 2, color: up ? '#00D474' : '#FF4545' }}>
+                    {up ? '+' : ''}{idx.pct.toFixed(2)}%
+                  </div>
+                </div>
+              );
+            })}
+          </div>
+        )}
 
-        {/* ③ SECTOR HEATMAP */}
+        {/* ④ SECTOR HEATMAP */}
         <div style={{ background: '#111827', borderRadius: 12, border: '1px solid #1E293B', padding: '16px', marginBottom: 20 }}>
           <div style={{ marginBottom: 10 }}>
-            <div style={{ fontFamily: 'var(--mono)', fontSize: 10, fontWeight: 700, color: '#94A3B8', letterSpacing: 1.5 }}>SECTOR HEATMAP · S&P 500 Market Sectors</div>
-            <div style={{ fontSize: 10, color: '#475569', marginTop: 2 }}>Size = market weight · Color = daily change</div>
+            <div style={{ fontFamily: 'var(--mono)', fontSize: 10, fontWeight: 700, color: '#94A3B8', letterSpacing: 1.5 }}>SECTOR HEATMAP · SPDR Sector ETFs</div>
+            <div style={{ fontSize: 10, color: '#475569', marginTop: 2 }}>Size = S&P 500 weight · Color = daily close change</div>
           </div>
 
           {/* Legend */}
@@ -304,14 +332,13 @@ export default function MarketsPage() {
             ))}
           </div>
 
-          {/* Treemap — mounted guard prevents SSR/hydration crash from ResponsiveContainer */}
           {!mounted || !sectorsLoaded ? (
             <div style={{ height: 260, display: 'flex', alignItems: 'center', justifyContent: 'center' }}>
               <span style={{ fontSize: 11, color: '#334155' }}>Loading sector data...</span>
             </div>
           ) : treemapData.length === 0 ? (
             <div style={{ height: 80, display: 'flex', alignItems: 'center', justifyContent: 'center' }}>
-              <span style={{ fontSize: 11, color: '#334155' }}>Sector data unavailable — updates during market hours</span>
+              <span style={{ fontSize: 11, color: '#334155' }}>Sector data temporarily unavailable · Updates daily at 4:30 PM ET</span>
             </div>
           ) : (
             <div style={{ height: 280 }}>
@@ -327,24 +354,24 @@ export default function MarketsPage() {
           )}
 
           <div style={{ marginTop: 8, fontSize: 9, color: '#334155', fontFamily: 'var(--mono)' }}>
-            Source: Financial Modeling Prep · Top 20 stocks by market cap · Change: daily
+            Source: FMP · 11 SPDR sector ETFs · Previous close{tradingDateLabel ? ` · ${tradingDateLabel}` : ''}
           </div>
         </div>
 
-        {/* ④ TOP SECTORS */}
+        {/* ⑤ TOP SECTORS */}
         {topSectors.length > 0 && (
           <div style={{ display: 'grid', gridTemplateColumns: 'repeat(3, 1fr)', gap: 8, marginBottom: 20 }}>
             {topSectors.map((sec, i) => {
-              const up = sec.change >= 0;
+              const up = sec.changePercent >= 0;
               const medals = ['🏆', '🥈', '🥉'];
               return (
-                <div key={sec.name} style={{ background: '#111827', borderRadius: 10, border: `1px solid ${up ? '#00D47220' : '#FF454520'}`, padding: '12px 16px' }}>
+                <div key={sec.symbol} style={{ background: '#111827', borderRadius: 10, border: `1px solid ${up ? '#00D47220' : '#FF454520'}`, padding: '12px 16px' }}>
                   <div style={{ fontSize: 9, color: '#64748B', fontFamily: 'var(--mono)', fontWeight: 700, letterSpacing: 1, marginBottom: 4 }}>
                     {medals[i]} TOP SECTOR
                   </div>
-                  <div style={{ fontSize: 13, fontWeight: 800, color: '#F1F5F9', marginBottom: 4, fontFamily: 'var(--sans)' }}>{sec.name}</div>
+                  <div style={{ fontSize: 13, fontWeight: 800, color: '#F1F5F9', marginBottom: 4, fontFamily: 'var(--sans)' }}>{sec.label}</div>
                   <div style={{ fontSize: 15, fontWeight: 700, color: up ? '#00D474' : '#FF4545', fontFamily: 'var(--mono)' }}>
-                    {up ? '+' : ''}{sec.change.toFixed(1)}%
+                    {up ? '+' : ''}{sec.changePercent.toFixed(2)}%
                   </div>
                 </div>
               );
@@ -352,40 +379,28 @@ export default function MarketsPage() {
           </div>
         )}
 
-        {/* ⑤⑥⑦ GAINERS · LOSERS · MOST ACTIVE */}
+        {/* ⑥ TOP 30 MOVERS */}
         {moversLoading && (
-          <p style={{ fontSize: 13, color: '#64748B', textAlign: 'center', padding: '20px 0' }}>Loading S&P 500 movers...</p>
+          <p style={{ fontSize: 13, color: '#64748B', textAlign: 'center', padding: '20px 0' }}>Loading movers...</p>
         )}
         {!moversLoading && movers.gainers.length === 0 && movers.actives.length === 0 && (
           <p style={{ fontSize: 13, color: '#475569', textAlign: 'center', padding: '40px 0' }}>
-            {isWeekend ? 'Markets closed. Last session data unavailable.' : 'Mover data unavailable. Try again shortly.'}
+            Mover data temporarily unavailable · Updates daily at 4:30 PM ET
           </p>
         )}
-        {/* Full 3-column grid when gainers available */}
         {movers.gainers.length > 0 && (
           <div style={{ display: 'grid', gridTemplateColumns: 'repeat(3, 1fr)', gap: 10, marginBottom: 16 }}>
-            <MoverCol title="🟢 S&P 500 GAINERS"     color="#00D474" bg="#00D47410" items={movers.gainers.slice(0, 10)} />
-            <MoverCol title="🔴 S&P 500 LOSERS"      color="#FF4545" bg="#FF454510" items={movers.losers.slice(0, 10)} />
-            <MoverCol title="📊 S&P 500 MOST ACTIVE" color="#60A5FA" bg="#3B82F610" items={movers.actives.slice(0, 10)} />
-          </div>
-        )}
-        {/* Weekend/fallback: show only Most Active when gainers unavailable */}
-        {!moversLoading && movers.gainers.length === 0 && movers.actives.length > 0 && (
-          <div style={{ marginBottom: 16 }}>
-            <div style={{ fontFamily: 'var(--mono)', fontSize: 9, color: '#D4A843', textAlign: 'center', marginBottom: 8 }}>
-              Markets closed · Last session data · Gainers/Losers unavailable on weekends
-            </div>
-            <div style={{ maxWidth: 340, margin: '0 auto' }}>
-              <MoverCol title="📊 S&P 500 MOST ACTIVE" color="#60A5FA" bg="#3B82F610" items={movers.actives.slice(0, 10)} />
-            </div>
+            <MoverCol title="🟢 TOP 30 GAINERS"     color="#00D474" bg="#00D47410" items={movers.gainers.slice(0, 10)} />
+            <MoverCol title="🔴 TOP 30 LOSERS"      color="#FF4545" bg="#FF454510" items={movers.losers.slice(0, 10)} />
+            <MoverCol title="📊 TOP 30 MOST ACTIVE" color="#60A5FA" bg="#3B82F610" items={movers.actives.slice(0, 10)} />
           </div>
         )}
 
-        {/* ⑧ DISCLAIMER */}
+        {/* ⑦ DISCLAIMER */}
         <p style={{ fontSize: 9, color: '#475569', textAlign: 'center', lineHeight: 1.8, marginTop: 8 }}>
-          Data is approximate and for informational purposes only.{' '}
+          End-of-day data updated once daily after NYSE close (4:00 PM ET).{' '}
           <strong style={{ color: '#94A3B8' }}>NOT investment advice.</strong>{' '}
-          Source: Financial Modeling Prep + Alpha Vantage. Prices may be delayed up to 15 min.
+          Source: Alpha Vantage · Financial Modeling Prep · CoinGecko.
         </p>
 
       </div>
