@@ -7,6 +7,7 @@ import { fmtDateShort } from '@/lib/fmt-date';
 
 const cats = [
   { label: 'All', color: '#F1F5F9' },
+  { label: 'The Masters', color: '#BA7517' },
   { label: 'Markets', color: '#00D474' },
   { label: 'Rankings', color: '#D4A843' },
   { label: 'Crypto', color: '#F59E0B' },

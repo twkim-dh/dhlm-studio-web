@@ -517,13 +517,20 @@ def main():
     script_dir   = os.path.dirname(os.path.abspath(__file__))
     project_root = os.path.dirname(script_dir)
 
-    md_path  = os.path.join(project_root, 'src', 'content', 'reports', f'{slug}.md')
+    # Search in reports/ first, then blog/
+    md_path = None
+    for subdir in ('reports', 'blog'):
+        candidate = os.path.join(project_root, 'src', 'content', subdir, f'{slug}.md')
+        if os.path.exists(candidate):
+            md_path = candidate
+            break
+
+    if not md_path:
+        print(f"Error: {slug}.md not found in src/content/reports/ or src/content/blog/")
+        sys.exit(1)
+
     out_dir  = os.path.join(project_root, 'public', 'pdf')
     out_path = os.path.join(out_dir, f'{slug}.pdf')
-
-    if not os.path.exists(md_path):
-        print(f"Error: {md_path} not found")
-        sys.exit(1)
 
     os.makedirs(out_dir, exist_ok=True)
 
@@ -531,7 +538,8 @@ def main():
         content = f.read()
 
     fm, body_text = parse_frontmatter(content)
-    print(f"[1/4] Frontmatter parsed: title={fm.get('title','')[:50]}")
+    safe_title = fm.get('title', '')[:50].encode('ascii', errors='replace').decode('ascii')
+    print(f"[1/4] Frontmatter parsed: title={safe_title}")
     blocks        = parse_blocks(body_text)
     print(f"[2/4] Blocks parsed: {len(blocks)} blocks")
     story         = build_story(fm, blocks)

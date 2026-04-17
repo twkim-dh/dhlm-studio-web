@@ -94,6 +94,7 @@ export default async function BlogPostPage({ params }: { params: Promise<{ slug:
   }
 
   const isDeepDive = slug.startsWith('deep-dive-');
+  const isMasters  = slug.startsWith('masters-');
   const related = blogPosts.filter(p => p.category === post.category && p.slug !== post.slug).slice(0, 3);
 
   // Resolve hero image: explicit heroImage > Unsplash manifest
@@ -162,6 +163,17 @@ export default async function BlogPostPage({ params }: { params: Promise<{ slug:
               <span style={{ fontFamily: 'var(--mono)', fontSize: 11, fontWeight: 800, color: '#C73E3A', letterSpacing: 2 }}>BRUTAL EDGE&trade; DEEP DIVE</span>
             </div>
             <div style={{ fontSize: 11, color: '#64748B', fontStyle: 'italic' }}>Data-driven analysis. Zero feelings.</div>
+          </div>
+        )}
+
+        {/* The Masters Header */}
+        {isMasters && (
+          <div style={{ marginTop: 20, padding: '20px 22px', borderRadius: 14, background: 'linear-gradient(135deg, #BA751710, #BA751705)', border: '1px solid #BA751730', marginBottom: 24 }}>
+            <div style={{ display: 'flex', alignItems: 'center', gap: 8, marginBottom: 6 }}>
+              <span style={{ fontFamily: 'var(--mono)', fontSize: 9, fontWeight: 800, padding: '3px 10px', borderRadius: 4, background: '#BA751720', color: '#BA7517', letterSpacing: 2 }}>THE MASTERS</span>
+              <span style={{ fontFamily: 'var(--mono)', fontSize: 9, fontWeight: 600, color: '#64748B', letterSpacing: 1 }}>SERIES · VOL. 1</span>
+            </div>
+            <div style={{ fontSize: 11, color: '#94A3B8', lineHeight: 1.6 }}>Methodology, not mythology. One legendary investor per month — studied for what actually explains their edge, not what makes a good quote.</div>
           </div>
         )}
 
@@ -292,6 +304,15 @@ export default async function BlogPostPage({ params }: { params: Promise<{ slug:
                 <span style={{ fontFamily: 'var(--sans)', fontSize: 14, fontWeight: 600, color: '#E2E8F0' }}>{r.title}</span>
               </Link>
             ))}
+          </div>
+        )}
+
+        {/* The Masters Footer */}
+        {isMasters && (
+          <div style={{ marginTop: 40, padding: '20px 22px', borderRadius: 14, background: '#111827', border: '1px solid #BA751730', textAlign: 'center' }}>
+            <div style={{ fontFamily: 'var(--mono)', fontSize: 10, fontWeight: 800, color: '#BA7517', letterSpacing: 2, marginBottom: 6 }}>THE MASTERS SERIES</div>
+            <div style={{ fontSize: 12, color: '#64748B', marginBottom: 4 }}>Monthly deep-dives on the methodology of legendary investors</div>
+            <div style={{ fontSize: 10, color: '#475569' }}>Next up: Warren Buffett — why doing nothing was the strategy</div>
           </div>
         )}
 
