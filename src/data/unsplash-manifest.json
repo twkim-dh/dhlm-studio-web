@@ -315,13 +315,9 @@
     "credit": null
   },
   "deep-dive-btc-april-2026": {
-    "src": "https://images.unsplash.com/photo-1632113988284-31334b398e10?ixid=M3w5MjE0MDh8MHwxfHNlYXJjaHwxfHxiaXRjb2luJTIwY3J5cHRvY3VycmVuY3klMjBkaWdpdGFsJTIwZ29sZCUyMGNvaW58ZW58MXwwfHx8MTc3NTg4NDg5MHww&ixlib=rb-4.1.0&w=720&h=380&fit=crop&q=80&fm=jpg&auto=format",
-    "alt": "a pile of gold bars sitting on top of a pile of money",
-    "credit": {
-      "author": "Dash Cryptocurrency",
-      "authorUrl": "https://unsplash.com/@dashpay?utm_source=dhlm_studio&utm_medium=referral",
-      "unsplashUrl": "https://unsplash.com/photos/-3xhXkOcKvE?utm_source=dhlm_studio&utm_medium=referral"
-    }
+    "src": "/images/content/btc-crossroads-hero.png",
+    "alt": "Deep Dive: Bitcoin — April 2026 Analysis",
+    "credit": null
   },
   "deep-dive-meta-april-2026": {
     "src": "/images/content/meta-hero.jpg",
