@@ -343,6 +343,15 @@ async function alphaVantageWTI(): Promise<Quote | null> {
     if (data?.Note || data?.Information) { dbg('av:wti', false, { err: 'AV throttled', sample: data }); return null; }
     const arr = Array.isArray(data?.data) ? data.data : null;
     if (!arr || arr.length < 2) { dbg('av:wti', false, { err: 'Bad shape', sample: data }); return null; }
+    // Stage 3: reject stale data (AV free tier sometimes returns weeks-old records)
+    const rawDate = arr[0]?.date as string | undefined;
+    if (rawDate) {
+      const daysDiff = (Date.now() - new Date(rawDate).getTime()) / 86_400_000;
+      if (daysDiff > 3) {
+        dbg('av:wti', false, { err: `Stale data: ${rawDate} is ${daysDiff.toFixed(1)}d old — rejected` });
+        return null;
+      }
+    }
     const today = Number(arr[0]?.value);
     const yesterday = Number(arr[1]?.value);
     if (!today || !yesterday) { dbg('av:wti', false, { err: 'Missing values' }); return null; }

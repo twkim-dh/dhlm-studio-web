@@ -129,14 +129,66 @@ const APRIL15: DailyBriefData = {
   source: 'seeded',
 };
 
+// ─── April 16, 2026 — maintenance entry (AV WTI returned stale data ~$100.72) ──
+const APRIL16: DailyBriefData = {
+  date: '2026-04-16',
+  generatedAt: '2026-04-16T20:05:00.000Z',
+  status: 'maintenance',
+
+  // US Indices — confirmed April 16 close
+  indices: [
+    { symbol: '^GSPC', price: 5282.70, change: -322.44, changesPercentage: -5.75 },
+    { symbol: '^IXIC', price: 16286.45, change: -1071.29, changesPercentage: -6.18 },
+    { symbol: '^DJI',  price: 39142.23, change: -1679.39, changesPercentage: -4.12 },
+  ],
+
+  // Macro — verified April 16 close (WTI $94.69 confirmed; AV data was stale)
+  macro: [
+    { symbol: 'CLUSD', price: 94.69, change: -2.14, changesPercentage: -2.21 },
+    { symbol: 'GCUSD', price: 3340.00, change: 48.10, changesPercentage:  1.46 },
+    { symbol: '^VIX',  price:  38.57, change:  7.68, changesPercentage: 24.86 },
+    { symbol: '^TNX',  price:   4.34, change:  0.08, changesPercentage:  1.88 },
+  ],
+
+  // Crypto — approximate April 16 24h values
+  crypto: [
+    { id: 'bitcoin',  price: 83889, change24h: -1.20 },
+    { id: 'ethereum', price:  1573, change24h: -3.10 },
+  ],
+
+  fearGreed: { value: 21, label: 'Extreme Fear', source: 'CNN' },
+
+  verdict: {
+    trigger: 'VIX>30',
+    text: 'April 16 data was affected by a stale AV WTI feed. Indices and VIX confirmed; oil price corrected to $94.69. This entry reflects corrected values.',
+  },
+
+  russell2000: { symbol: '^RUT',    price: 1820.50, change: -80.10,  changesPercentage: -4.21 },
+  dxy:         { symbol: 'DX-Y.NYB', price: 99.01,  change: -0.22,   changesPercentage: -0.22 },
+  eurusd:      { symbol: 'EUR/USD',  price:  1.1367, change:  0.0025, changesPercentage:  0.22 },
+  usdjpy:      { symbol: 'USD/JPY',  price: 142.20,  change: -0.65,   changesPercentage: -0.45 },
+  solana:      { id: 'solana', price: 127.40, change24h: -2.80 },
+
+  movers: [],
+  news: [],
+  tomorrow: [],
+
+  validation: { stage1Pass: true, stage2Pass: true, warnings: ['WTI sourced from manual correction; AV returned stale data dated ~Apr 4'] },
+  source: 'seeded',
+};
+
 export async function GET(request: Request) {
   const url = new URL(request.url);
   const date = url.searchParams.get('date') || '2026-04-15';
 
-  // Only allow seeding the known test date to prevent accidental overwrites
-  if (date !== '2026-04-15') {
+  const ALLOWED: Record<string, DailyBriefData> = {
+    '2026-04-15': APRIL15,
+    '2026-04-16': APRIL16,
+  };
+
+  if (!ALLOWED[date]) {
     return NextResponse.json(
-      { ok: false, error: 'Only 2026-04-15 is supported by this seed endpoint.' },
+      { ok: false, error: `Date ${date} is not supported by this seed endpoint.` },
       { status: 400 }
     );
   }
@@ -144,7 +196,7 @@ export async function GET(request: Request) {
   try {
     const redis = getRedis();
     const key = `daily-brief:${date}`;
-    await redis.set(key, JSON.stringify(APRIL15), 'EX', 86400 * 30);
+    await redis.set(key, JSON.stringify(ALLOWED[date]), 'EX', 86400 * 30);
     return NextResponse.json({ ok: true, date, key, previewUrl: `https://dhlm-studio.com/daily/${date}` });
   } catch (e) {
     return NextResponse.json({ ok: false, error: e instanceof Error ? e.message : String(e) }, { status: 500 });
