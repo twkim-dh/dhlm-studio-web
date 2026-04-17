@@ -1,7 +1,7 @@
 ---
 title: "Druckenmiller's Real Edge Wasn't Macro — It Was Knowing When He Was Wrong"
 description: "30% annualized for 30 years with zero losing years. Everyone studies his NVDA trade. Almost nobody studies why he'd reverse it within weeks. The self-doubt is the strategy."
-date: "2026-04-17"
+date: "2026-04-10"
 category: "The Masters"
 badge: "masters"
 heroImage: "/images/content/druckenmiller-masters-hero.png"
@@ -164,6 +164,9 @@ The lesson is that great investing requires holding contradictions: fast, but no
 Most investors naturally lean to one side of each pair. Druckenmiller lived in the middle. That's not an intellectual position. It's a psychological one.
 
 For the investor who's honest about which habits they haven't adopted — that's where the edge starts.
+
+**Related Reading:**
+- [Livermore Masters Vol. 2](/blog/masters-jesse-livermore-price-confirmation-april-2026) — Price confirmation over prediction
 
 *The Masters series studies the methodology, not the mythology, of legendary investors. One investor per month. Next up: Warren Buffett's real edge wasn't value investing — it was being willing to do nothing for decades.*
 
