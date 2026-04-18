@@ -60,6 +60,12 @@ const nextConfig: NextConfig = {
       // Daily brief deleted → home
       { source: '/daily', destination: '/', permanent: true },
       { source: '/daily/:path*', destination: '/', permanent: true },
+      { source: '/daily-brief', destination: '/', permanent: true },
+      { source: '/daily-brief/:path*', destination: '/', permanent: true },
+      { source: '/weekly-recap', destination: '/', permanent: true },
+      { source: '/weekly-recap/:path*', destination: '/', permanent: true },
+      { source: '/monthly-report', destination: '/', permanent: true },
+      { source: '/monthly-report/:path*', destination: '/', permanent: true },
       // Korean Lotto → home (lottery section deleted)
       { source: '/lotto', destination: '/', permanent: true },
       { source: '/lotto/:path*', destination: '/', permanent: true },
