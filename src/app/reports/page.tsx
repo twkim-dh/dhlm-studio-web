@@ -6,17 +6,32 @@ import RequestDeepDive from '@/components/RequestDeepDive';
 import ReportsClient from '@/components/ReportsClient';
 import unsplashManifest from '@/data/unsplash-manifest.json';
 
-export const metadata: Metadata = {
-  title: 'Reports — Brutal Edge™ Deep Dive Analysis | DHLM Studio',
-  description: 'In-depth stock and crypto analysis with BEAF scoring. 3,000+ word deep dives. Data-driven insights, not investment advice.',
-  alternates: { canonical: 'https://dhlm-studio.com/reports' },
-  openGraph: {
-    title: 'Brutal Edge™ Deep Dive Reports',
-    description: 'In-depth stock and crypto analysis with BEAF scoring. 3,000+ word deep dives.',
-    type: 'website',
-    url: 'https://dhlm-studio.com/reports',
-  },
-};
+export async function generateMetadata(
+  { searchParams }: { searchParams: Promise<{ page?: string; tab?: string }> }
+): Promise<Metadata> {
+  const params = await searchParams;
+  const page = Math.max(1, Number(params.page) || 1);
+  const tab = params.tab;
+  const base = 'https://dhlm-studio.com/reports';
+  const parts: string[] = [];
+  if (tab && tab !== 'all') parts.push(`tab=${tab}`);
+  if (page > 1) parts.push(`page=${page}`);
+  const canonical = base + (parts.length ? `?${parts.join('&')}` : '');
+
+  return {
+    title: page > 1
+      ? `Reports — Page ${page} | DHLM Studio`
+      : 'Reports — Brutal Edge™ Deep Dive Analysis | DHLM Studio',
+    description: 'In-depth stock and crypto analysis with BEAF scoring. 3,000+ word deep dives. Data-driven insights, not investment advice.',
+    alternates: { canonical },
+    openGraph: {
+      title: 'Brutal Edge™ Deep Dive Reports',
+      description: 'In-depth stock and crypto analysis with BEAF scoring. 3,000+ word deep dives.',
+      type: 'website',
+      url: canonical,
+    },
+  };
+}
 
 export const revalidate = 3600;
 

@@ -4,6 +4,9 @@ import { useState, useEffect } from 'react';
 import Link from 'next/link';
 import TickerLogo from '@/components/TickerLogo';
 import { fmtDateShort } from '@/lib/fmt-date';
+import Pagination from '@/components/Pagination';
+
+const PAGE_SIZE = 12;
 
 interface ReportMeta {
   title: string; slug: string; ticker: string; date: string; readTime: string;
@@ -86,23 +89,36 @@ function ReportCard({ r }: { r: ReportMeta }) {
   return r.thumb ? <SpecialCard r={r} /> : <RegularCard r={r} />;
 }
 
+function buildUrl(tab: Tab, page: number): string {
+  const tabParam = TAB_PARAM[tab];
+  const parts: string[] = [];
+  if (tabParam !== 'all') parts.push(`tab=${tabParam}`);
+  if (page > 1) parts.push(`page=${page}`);
+  return '/reports' + (parts.length ? `?${parts.join('&')}` : '');
+}
+
 export default function ReportsClient({ reports }: { reports: ReportMeta[] }) {
   const [activeTab, setActiveTab] = useState<Tab>('All');
+  const [currentPage, setCurrentPage] = useState(1);
 
-  // Read tab from URL on mount
   useEffect(() => {
     const params = new URLSearchParams(window.location.search);
     const tabParam = params.get('tab');
-    if (tabParam && PARAM_TAB[tabParam]) {
-      setActiveTab(PARAM_TAB[tabParam]);
-    }
+    const pageParam = Number(params.get('page')) || 1;
+    if (tabParam && PARAM_TAB[tabParam]) setActiveTab(PARAM_TAB[tabParam]);
+    setCurrentPage(pageParam);
   }, []);
 
   const handleTabClick = (tab: Tab) => {
     setActiveTab(tab);
-    const param = TAB_PARAM[tab];
-    const newUrl = param === 'all' ? '/reports' : `/reports?tab=${param}`;
-    window.history.replaceState(null, '', newUrl);
+    setCurrentPage(1);
+    window.history.replaceState(null, '', buildUrl(tab, 1));
+  };
+
+  const handlePageChange = (page: number) => {
+    setCurrentPage(page);
+    window.history.replaceState(null, '', buildUrl(activeTab, page));
+    window.scrollTo({ top: 0, behavior: 'smooth' });
   };
 
   // ── Filter logic ──
@@ -127,9 +143,15 @@ export default function ReportsClient({ reports }: { reports: ReportMeta[] }) {
 
   const filtered = getFiltered(activeTab);
 
-  // All tab: recent special reports go to featured section, rest to regular list
+  // All tab: recent special reports go to featured section (not paginated), rest paginated
   const specials = reports.filter(r => r.category === 'Special Report' && daysAgo(r.date) <= BADGE_TTL_DAYS);
-  const regularList = reports.filter(r => !(r.category === 'Special Report' && daysAgo(r.date) <= BADGE_TTL_DAYS));
+  const regularAll = reports.filter(r => !(r.category === 'Special Report' && daysAgo(r.date) <= BADGE_TTL_DAYS));
+
+  // Pagination for non-All tabs (All tab paginates only the regularList)
+  const paginatedItems = activeTab === 'All' ? regularAll : filtered;
+  const totalPages = Math.max(1, Math.ceil(paginatedItems.length / PAGE_SIZE));
+  const safePage = Math.min(currentPage, totalPages);
+  const pageSlice = paginatedItems.slice((safePage - 1) * PAGE_SIZE, safePage * PAGE_SIZE);
 
   return (
     <>
@@ -181,7 +203,7 @@ export default function ReportsClient({ reports }: { reports: ReportMeta[] }) {
       {/* ── ALL TAB ── */}
       {activeTab === 'All' && (
         <>
-          {/* Featured: recent Special Reports */}
+          {/* Featured: recent Special Reports (not paginated) */}
           {specials.length > 0 && (
             <div style={{ marginBottom: 28 }}>
               <div style={{ fontFamily: 'var(--mono)', fontSize: 10, fontWeight: 800, color: '#C73E3A', letterSpacing: 2, marginBottom: 10 }}>⚡ SPECIAL REPORT</div>
@@ -190,13 +212,15 @@ export default function ReportsClient({ reports }: { reports: ReportMeta[] }) {
               </div>
             </div>
           )}
-          {/* Regular list */}
-          {regularList.length > 0 && (
-            <div style={{ display: 'flex', flexDirection: 'column', gap: 10 }}>
-              {regularList.map(r => <ReportCard key={r.slug} r={r} />)}
-            </div>
-          )}
-          {specials.length === 0 && regularList.length === 0 && (
+          {/* Regular list (paginated) */}
+          {pageSlice.length > 0 ? (
+            <>
+              <div style={{ display: 'flex', flexDirection: 'column', gap: 10 }}>
+                {pageSlice.map(r => <ReportCard key={r.slug} r={r} />)}
+              </div>
+              <Pagination currentPage={safePage} totalPages={totalPages} onChange={handlePageChange} />
+            </>
+          ) : specials.length === 0 && (
             <div style={{ ...card, padding: '40px 20px', textAlign: 'center' }}>
               <div style={{ fontSize: 32, marginBottom: 8 }}>📊</div>
               <p style={{ fontSize: 14, color: '#64748B' }}>Reports coming soon.</p>
@@ -214,9 +238,12 @@ export default function ReportsClient({ reports }: { reports: ReportMeta[] }) {
               <p style={{ fontSize: 14, color: '#64748B' }}>No reports in this category yet.</p>
             </div>
           ) : (
-            <div style={{ display: 'flex', flexDirection: 'column', gap: 10 }}>
-              {filtered.map(r => <ReportCard key={r.slug} r={r} />)}
-            </div>
+            <>
+              <div style={{ display: 'flex', flexDirection: 'column', gap: 10 }}>
+                {pageSlice.map(r => <ReportCard key={r.slug} r={r} />)}
+              </div>
+              <Pagination currentPage={safePage} totalPages={totalPages} onChange={handlePageChange} />
+            </>
           )}
         </>
       )}
