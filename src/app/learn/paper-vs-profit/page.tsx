@@ -16,13 +16,15 @@ interface ResearchMeta {
   slug: string;
   title: string;
   category: string;
+  subcategory?: string;
+  badge?: string;
   date: string;
   readTime: string;
-  verdict: string;
+  verdict?: string;
   description: string;
-  paperTitle: string;
-  paperAuthors: string;
-  paperYear: number;
+  paperTitle?: string;
+  paperAuthors?: string;
+  paperYear?: number;
 }
 
 function getAllResearch(): ResearchMeta[] {
@@ -92,21 +94,29 @@ export default function PaperVsProfitPage() {
         ) : (
           <div style={{ display: 'flex', flexDirection: 'column', gap: 12 }}>
             {articles.map(a => {
-              const c = verdictColor(a.verdict);
+              const c = verdictColor(a.verdict ?? '');
               return (
                 <Link key={a.slug} href={`/learn/paper-vs-profit/${a.slug}`} style={{ ...card, padding: '22px 24px', textDecoration: 'none', display: 'block' }}>
                   <div style={{ display: 'flex', alignItems: 'center', gap: 8, marginBottom: 10, flexWrap: 'wrap' }}>
-                    <span style={{ fontFamily: 'var(--mono)', fontSize: 9, fontWeight: 800, padding: '4px 10px', borderRadius: 6, background: c.bg, color: c.fg, border: `1px solid ${c.border}`, letterSpacing: 1 }}>
-                      VERDICT: {a.verdict}
-                    </span>
+                    {a.verdict ? (
+                      <span style={{ fontFamily: 'var(--mono)', fontSize: 9, fontWeight: 800, padding: '4px 10px', borderRadius: 6, background: c.bg, color: c.fg, border: `1px solid ${c.border}`, letterSpacing: 1 }}>
+                        VERDICT: {a.verdict}
+                      </span>
+                    ) : a.subcategory ? (
+                      <span style={{ fontFamily: 'var(--mono)', fontSize: 9, fontWeight: 800, padding: '4px 10px', borderRadius: 6, background: '#7C3AED18', color: '#A78BFA', border: '1px solid #7C3AED40', letterSpacing: 1 }}>
+                        {a.subcategory.toUpperCase()}
+                      </span>
+                    ) : null}
                     <span style={{ fontFamily: 'var(--mono)', fontSize: 10, fontWeight: 700, padding: '3px 8px', borderRadius: 4, background: '#3B82F614', color: '#3B82F6' }}>{a.category}</span>
                     <span style={{ fontSize: 11, color: '#475569' }}>{fmtDateShort(a.date)} · {a.readTime}</span>
                   </div>
                   <div style={{ fontFamily: 'var(--serif)', fontSize: 19, fontWeight: 800, color: '#F1F5F9', lineHeight: 1.4, marginBottom: 6 }}>{a.title}</div>
                   <p style={{ fontSize: 13, color: '#94A3B8', margin: '0 0 10px', lineHeight: 1.6 }}>{a.description}</p>
-                  <div style={{ fontSize: 11, color: '#64748B', fontFamily: 'var(--mono)' }}>
-                    {a.paperAuthors} ({a.paperYear})
-                  </div>
+                  {a.paperAuthors && (
+                    <div style={{ fontSize: 11, color: '#64748B', fontFamily: 'var(--mono)' }}>
+                      {a.paperAuthors}{a.paperYear ? ` (${a.paperYear})` : ''}
+                    </div>
+                  )}
                 </Link>
               );
             })}
