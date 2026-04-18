@@ -15,6 +15,15 @@ function getReportSlugs(): string[] {
   } catch { return []; }
 }
 
+function getResearchSlugs(): string[] {
+  try {
+    const dir = path.join(process.cwd(), 'src/content/research');
+    return fs.readdirSync(dir)
+      .filter(f => f.endsWith('.md') && !f.startsWith('paper-vs-profit'))
+      .map(f => f.replace(/\.md$/, ''));
+  } catch { return []; }
+}
+
 export default function sitemap(): MetadataRoute.Sitemap {
   const now = new Date();
 
@@ -33,9 +42,8 @@ export default function sitemap(): MetadataRoute.Sitemap {
     { url: `${BASE}/learn`,              lastModified: now, changeFrequency: "weekly",  priority: 0.8 },
     { url: `${BASE}/learn/crypto-101`,   lastModified: now, changeFrequency: "weekly",  priority: 0.8 },
     { url: `${BASE}/learn/investing-101`,lastModified: now, changeFrequency: "monthly", priority: 0.7 },
-    { url: `${BASE}/learn/paper-vs-profit`, lastModified: now, changeFrequency: "weekly", priority: 0.8 },
+    { url: `${BASE}/research`,            lastModified: now, changeFrequency: "weekly",  priority: 0.8 },
     { url: `${BASE}/rankings/crypto`,    lastModified: now, changeFrequency: "daily",   priority: 0.8 },
-    { url: `${BASE}/lottery`,            lastModified: now, changeFrequency: "daily",   priority: 0.8 },
 
     // Rankings
     { url: `${BASE}/rankings`,           lastModified: now, changeFrequency: "weekly",  priority: 0.8 },
@@ -59,17 +67,15 @@ export default function sitemap(): MetadataRoute.Sitemap {
       lastModified: now, changeFrequency: "daily" as const, priority: 0.7,
     })),
 
-    // Lottery sub-pages
-    { url: `${BASE}/lottery/powerball`,         lastModified: now, changeFrequency: "daily",  priority: 0.8 },
-    { url: `${BASE}/lottery/mega-millions`,     lastModified: now, changeFrequency: "daily",  priority: 0.8 },
-    { url: `${BASE}/lottery/jackpot-tracker`,   lastModified: now, changeFrequency: "daily",  priority: 0.8 },
-    { url: `${BASE}/lottery/number-generator`,  lastModified: now, changeFrequency: "weekly", priority: 0.7 },
-    { url: `${BASE}/lottery/powerball/stats`,   lastModified: now, changeFrequency: "daily",  priority: 0.7 },
-    { url: `${BASE}/lottery/mega-millions/stats`, lastModified: now, changeFrequency: "daily", priority: 0.7 },
-
     // Reports (all slugs from content/reports/)
     ...getReportSlugs().map(slug => ({
       url: `${BASE}/reports/${slug}`,
+      lastModified: now, changeFrequency: "monthly" as const, priority: 0.8,
+    })),
+
+    // Research articles (Mental Game, Structural View)
+    ...getResearchSlugs().map(slug => ({
+      url: `${BASE}/research/${slug}`,
       lastModified: now, changeFrequency: "monthly" as const, priority: 0.8,
     })),
 
@@ -87,10 +93,6 @@ export default function sitemap(): MetadataRoute.Sitemap {
     { url: `${BASE}/calculators/dca`,              lastModified: now, changeFrequency: "monthly", priority: 0.7 },
     { url: `${BASE}/calculators/position-size`,    lastModified: now, changeFrequency: "monthly", priority: 0.7 },
 
-    // Tools
-    { url: `${BASE}/tools`,               lastModified: now, changeFrequency: "monthly", priority: 0.6 },
-    { url: `${BASE}/tools/qr-generator`,  lastModified: now, changeFrequency: "monthly", priority: 0.6 },
-    { url: `${BASE}/tools/password-generator`, lastModified: now, changeFrequency: "monthly", priority: 0.6 },
     { url: `${BASE}/creators`,            lastModified: now, changeFrequency: "weekly",  priority: 0.6 },
 
     // Static / Legal

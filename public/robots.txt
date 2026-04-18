@@ -1,0 +1,7 @@
+User-agent: *
+Disallow: /tools/
+Disallow: /lottery/
+Disallow: /learn/paper-vs-profit/
+Allow: /
+
+Sitemap: https://dhlm-studio.com/sitemap.xml

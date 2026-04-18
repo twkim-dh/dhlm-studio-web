@@ -29,8 +29,8 @@ const nextConfig: NextConfig = {
       { source: '/tools/life/:path*', destination: '/', permanent: true },
       { source: '/tools/mfg/:path*', destination: '/', permanent: true },
       { source: '/tools/msg/:path*', destination: '/', permanent: true },
-      { source: '/tools/gen/:path*', destination: '/tools', permanent: true },
-      { source: '/tools/image/:path*', destination: '/tools', permanent: true },
+      { source: '/tools/gen/:path*', destination: '/', permanent: true },
+      { source: '/tools/image/:path*', destination: '/', permanent: true },
       { source: '/tools/compare/:path*', destination: '/rankings', permanent: true },
       // Deleted compare
       { source: '/compare/:path*', destination: '/rankings', permanent: true },
@@ -46,19 +46,19 @@ const nextConfig: NextConfig = {
       { source: '/guessme/:path*', destination: '/', permanent: true },
       { source: '/balance/:path*', destination: '/', permanent: true },
       { source: '/spin/:path*', destination: '/', permanent: true },
-      { source: '/fortune/:path*', destination: '/lottery', permanent: true },
+      { source: '/fortune/:path*', destination: '/', permanent: true },
       // Sectors page removed — redirect to markets
       { source: '/markets/sectors', destination: '/markets', permanent: true },
       { source: '/markets/sectors/:path*', destination: '/markets', permanent: true },
       // /crypto shortcut → canonical /rankings/crypto
       { source: '/crypto', destination: '/rankings/crypto', permanent: true },
       { source: '/crypto/:path*', destination: '/rankings/crypto/:path*', permanent: true },
-      // Korean Lotto → US Lottery redirect
-      { source: '/lotto', destination: '/lottery', permanent: true },
-      { source: '/lotto/:path*', destination: '/lottery', permanent: true },
-      // Search Console top pages → redirect to new locations
-      { source: '/blog/lotto-statistics', destination: '/lottery/powerball/stats', permanent: true },
-      { source: '/blog/lotto/:path*', destination: '/lottery', permanent: true },
+      // Korean Lotto → home (lottery section deleted)
+      { source: '/lotto', destination: '/', permanent: true },
+      { source: '/lotto/:path*', destination: '/', permanent: true },
+      // Search Console redirects (lottery section deleted)
+      { source: '/blog/lotto-statistics', destination: '/', permanent: true },
+      { source: '/blog/lotto/:path*', destination: '/', permanent: true },
       { source: '/korea/no-tipping-korea', destination: '/', permanent: true },
       { source: '/today/:path*', destination: '/', permanent: true },
       { source: '/services', destination: '/', permanent: true },
@@ -91,9 +91,16 @@ const nextConfig: NextConfig = {
       { source: '/blog/ethereum-special-report-april-2026',   destination: '/reports/ethereum-special-report-april-2026', permanent: true },
       // /crypto-101 → /learn/crypto-101 (content moved to Brutal Edge Academy)
       { source: '/crypto-101', destination: '/learn/crypto-101', permanent: true },
-      // /research → /learn/paper-vs-profit (Research Lab moved to Brutal Edge Academy)
-      { source: '/research', destination: '/learn/paper-vs-profit', permanent: true },
-      { source: '/research/:slug', destination: '/learn/paper-vs-profit/:slug', permanent: true },
+      // Tools section deleted — redirect to home
+      { source: '/tools', destination: '/', permanent: true },
+      { source: '/tools/:path*', destination: '/', permanent: true },
+      // Lottery section deleted — redirect to home
+      { source: '/lottery', destination: '/', permanent: true },
+      { source: '/lottery/:path*', destination: '/', permanent: true },
+      // /fortune used to redirect to /lottery — now goes home
+      // Paper vs. Profit deleted — redirect to /research (The Mental Game)
+      { source: '/learn/paper-vs-profit', destination: '/research', permanent: true },
+      { source: '/learn/paper-vs-profit/:slug', destination: '/research/:slug', permanent: true },
       // ── Brutal Edge cleanup: 36 off-brand posts removed 2026-04-16 ──────────
       // Group A: Cost of Living → home
       { source: '/blog/nyc-vs-la-cost-of-living',           destination: '/', permanent: true },

@@ -5,13 +5,12 @@ import Link from 'next/link';
 import { fmtDateShort } from '@/lib/fmt-date';
 import type { ResearchItem, LessonItem } from '@/app/learn/page';
 
-type Tab = 'ALL' | 'CRYPTO 101' | 'INVESTING 101' | 'PAPER VS. PROFIT';
-const TABS: Tab[] = ['ALL', 'CRYPTO 101', 'INVESTING 101', 'PAPER VS. PROFIT'];
+type Tab = 'ALL' | 'CRYPTO 101' | 'INVESTING 101';
+const TABS: Tab[] = ['ALL', 'CRYPTO 101', 'INVESTING 101'];
 const TAB_PARAM: Record<Tab, string> = {
   'ALL': 'all',
   'CRYPTO 101': 'crypto-101',
   'INVESTING 101': 'investing-101',
-  'PAPER VS. PROFIT': 'paper-vs-profit',
 };
 const PARAM_TAB: Record<string, Tab> = Object.fromEntries(
   Object.entries(TAB_PARAM).map(([k, v]) => [v, k as Tab])
@@ -21,7 +20,6 @@ const TAB_COLOR: Record<Tab, string> = {
   'ALL': '#C73E3A',
   'CRYPTO 101': '#8B5CF6',
   'INVESTING 101': '#00D474',
-  'PAPER VS. PROFIT': '#3B82F6',
 };
 
 const card = { background: '#111827', borderRadius: 14, border: '1px solid #1E293B' };
@@ -202,33 +200,6 @@ function Investing101Tab() {
   );
 }
 
-/* ─── PAPER VS. PROFIT tab ─── */
-function PaperVsProfitTab({ articles }: { articles: ResearchItem[] }) {
-  return (
-    <div>
-      {articles.length === 0 ? (
-        <div style={{ ...card, padding: '32px 24px', textAlign: 'center' }}>
-          <div style={{ fontSize: 32, marginBottom: 8 }}>📚</div>
-          <p style={{ fontFamily: 'var(--sans)', fontSize: 14, color: '#94A3B8', margin: 0 }}>First issue coming soon.</p>
-        </div>
-      ) : (
-        <CardGrid>
-          {articles.map(a => <ResearchCard key={a.slug} a={a} />)}
-        </CardGrid>
-      )}
-
-      <div style={{ marginTop: 16, padding: '14px 18px', borderRadius: 12, background: '#0D1117', border: '1px solid #1E293B', display: 'flex', alignItems: 'center', justifyContent: 'space-between', gap: 16, flexWrap: 'wrap' }}>
-        <div style={{ fontSize: 12, color: '#64748B', lineHeight: 1.6 }}>
-          New issue every <strong style={{ color: '#E2E8F0' }}>Wednesday</strong>. Verdict: <strong style={{ color: '#00D474' }}>YES</strong>, <strong style={{ color: '#D4A843' }}>MAYBE</strong>, or <strong style={{ color: '#FF4545' }}>NO</strong>.
-        </div>
-        <Link href="/learn/paper-vs-profit" style={{ fontFamily: 'var(--mono)', fontSize: 11, color: '#3B82F6', textDecoration: 'none', fontWeight: 700, flexShrink: 0 }}>
-          Full Archive →
-        </Link>
-      </div>
-    </div>
-  );
-}
-
 /* ─── Main export ─── */
 export default function LearnClient({ articles, cryptoLessons }: { articles: ResearchItem[]; cryptoLessons: LessonItem[] }) {
   const [activeTab, setActiveTab] = useState<Tab>('ALL');
@@ -276,10 +247,9 @@ export default function LearnClient({ articles, cryptoLessons }: { articles: Res
         })}
       </div>
 
-      {activeTab === 'ALL'             && <AllTab articles={articles} cryptoLessons={cryptoLessons} />}
-      {activeTab === 'CRYPTO 101'      && <Crypto101Tab lessons={cryptoLessons} />}
-      {activeTab === 'INVESTING 101'   && <Investing101Tab />}
-      {activeTab === 'PAPER VS. PROFIT' && <PaperVsProfitTab articles={articles} />}
+      {activeTab === 'ALL'           && <AllTab articles={articles} cryptoLessons={cryptoLessons} />}
+      {activeTab === 'CRYPTO 101'    && <Crypto101Tab lessons={cryptoLessons} />}
+      {activeTab === 'INVESTING 101' && <Investing101Tab />}
     </>
   );
 }
