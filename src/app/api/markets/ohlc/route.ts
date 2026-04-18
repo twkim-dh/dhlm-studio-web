@@ -10,6 +10,7 @@
 import { NextResponse } from 'next/server';
 import { TOP_30_TICKERS } from '@/lib/top-tickers';
 import { fmpCanCall, fmpTrackCall } from '@/lib/fmp-tracker';
+import { getRedis } from '@/lib/redis';
 
 export const dynamic = 'force-dynamic';
 
@@ -42,6 +43,18 @@ export async function GET(req: Request) {
     );
   }
 
+  const OHLC_TTL = 4 * 60 * 60; // 4h — serve stale before calling FMP
+  const cacheKey = `ohlc:${symbol}:${days}`;
+
+  try {
+    const redis = getRedis();
+    const hit = await redis.get(cacheKey);
+    if (hit) {
+      const parsed = typeof hit === 'string' ? JSON.parse(hit) : hit;
+      return NextResponse.json(parsed);
+    }
+  } catch { /* cache miss is fine */ }
+
   if (!FMP_KEY) return NextResponse.json({ candles: [], symbol });
 
   if (!(await fmpCanCall())) {
@@ -73,7 +86,13 @@ export async function GET(req: Request) {
         volume: Number(c.volume) || 0,
       }));
 
-    return NextResponse.json({ candles, symbol });
+    const payload = { candles, symbol };
+    try {
+      const redis = getRedis();
+      await redis.set(cacheKey, JSON.stringify(payload), 'EX', OHLC_TTL);
+    } catch { /* silent */ }
+
+    return NextResponse.json(payload);
   } catch {
     return NextResponse.json({ candles: [], symbol });
   }

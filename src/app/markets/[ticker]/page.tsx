@@ -6,6 +6,8 @@ import { stocks, getStockByTicker } from '@/data/markets';
 import { TOP_30_TICKERS, isTop30 } from '@/lib/top-tickers';
 import { fmpCanCall, fmpTrackCall } from '@/lib/fmp-tracker';
 import { getRedis } from '@/lib/redis';
+
+const PROFILE_TTL = 60 * 60; // 1h — reuse cached profile before hitting FMP
 import TradingViewChart from '@/components/TradingViewChart';
 
 const FMP_KEY = process.env.FMP_API_KEY || '';
@@ -107,6 +109,15 @@ function brutalEdgeTake(change: number, volume: number, avgVolume: number, range
 async function fetchLiveData(ticker: string) {
   const sym = ticker.toUpperCase();
 
+  // Redis cache check — avoids FMP call for recently-visited tickers
+  try {
+    const redis = getRedis();
+    const cached = await redis.get(`ticker:profile:${sym}`);
+    if (cached) {
+      return typeof cached === 'string' ? JSON.parse(cached) : cached;
+    }
+  } catch { /* cache miss, proceed to live fetch */ }
+
   if (FMP_KEY) {
     try {
       // Check global budget AND per-day ticker cap before calling FMP
@@ -133,7 +144,7 @@ async function fetchLiveData(ticker: string) {
         const fmtCap = mc >= 1e12 ? `$${(mc/1e12).toFixed(2)}T` : mc >= 1e9 ? `$${(mc/1e9).toFixed(0)}B` : mc >= 1e6 ? `$${(mc/1e6).toFixed(0)}M` : '';
         const fmtVol = (v: number) => v >= 1e9 ? `${(v/1e9).toFixed(1)}B` : v >= 1e6 ? `${(v/1e6).toFixed(1)}M` : v >= 1e3 ? `${(v/1e3).toFixed(0)}K` : String(v);
         const fmtRev = (v: number) => v >= 1e9 ? `$${(v/1e9).toFixed(0)}B` : `$${(v/1e6).toFixed(0)}M`;
-        return {
+        const result = {
           ticker: p.symbol || sym,
           name: p.companyName || sym,
           price: p.price || 0,
@@ -162,6 +173,11 @@ async function fetchLiveData(ticker: string) {
           eps: f?.epsDiluted ? `$${Number(f.epsDiluted).toFixed(2)}` : '',
           live: true,
         };
+        try {
+          const redis = getRedis();
+          await redis.set(`ticker:profile:${sym}`, JSON.stringify(result), 'EX', PROFILE_TTL);
+        } catch { /* silent */ }
+        return result;
       }
     } catch { /* FMP failed, try Alpha Vantage */ }
   }

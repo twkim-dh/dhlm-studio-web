@@ -357,6 +357,48 @@ export async function GET(request: Request) {
   sources['coingecko'] = crypto.length > 0 ? 'ok' : 'failed';
   console.log(`[market-snapshot] crypto: ${crypto.map(c => c.id).join(', ')}`);
 
+  // 6. Companies screener (1 FMP call) — stored separately for /api/companies
+  const COMPANY_FLAGS: Record<string, string> = { US: '🇺🇸', CN: '🇨🇳', TW: '🇹🇼', KR: '🇰🇷', JP: '🇯🇵', GB: '🇬🇧', FR: '🇫🇷', DE: '🇩🇪', SA: '🇸🇦', NL: '🇳🇱', CH: '🇨🇭', IE: '🇮🇪', DK: '🇩🇰' };
+  let companiesSnapshot: unknown[] = [];
+  try {
+    if (FMP_KEY && (await fmpCanCall())) {
+      const screenerRes = await fetch(
+        `https://financialmodelingprep.com/api/v3/stock-screener?marketCapMoreThan=100000000000&limit=20&apikey=${FMP_KEY}`,
+        { cache: 'no-store' }
+      );
+      await fmpTrackCall();
+      if (screenerRes.ok) {
+        const raw = await screenerRes.json();
+        if (Array.isArray(raw) && raw.length > 0) {
+          const sorted = raw.sort((a: Record<string, number>, b: Record<string, number>) => (b.marketCap || 0) - (a.marketCap || 0));
+          companiesSnapshot = sorted.slice(0, 15).map((c: Record<string, unknown>, i: number) => {
+            const mktCap = (c.marketCap as number) || 0;
+            return {
+              rank: i + 1,
+              ticker: c.symbol,
+              name: c.companyName,
+              price: c.price,
+              change: c.changesPercentage || 0,
+              marketCap: mktCap,
+              marketCapFmt: mktCap >= 1e12 ? `$${(mktCap / 1e12).toFixed(2)}T` : `$${(mktCap / 1e9).toFixed(0)}B`,
+              sector: c.sector || '',
+              industry: c.industry || '',
+              country: c.country || '',
+              flag: COMPANY_FLAGS[(c.country as string) || ''] || '🏳️',
+              exchange: c.exchangeShortName || c.exchange || '',
+            };
+          });
+          sources['fmp:companies'] = 'ok';
+        }
+      }
+    } else {
+      sources['fmp:companies'] = 'failed';
+    }
+  } catch {
+    sources['fmp:companies'] = 'failed';
+  }
+  console.log(`[market-snapshot] companies: ${companiesSnapshot.length}`);
+
   const snapshot: MarketSnapshot = {
     tradingDate,
     asOf: new Date().toISOString(),
@@ -375,6 +417,10 @@ export async function GET(request: Request) {
     await redis.set(key, JSON.stringify(snapshot), 'EX', SNAPSHOT_TTL);
     await redis.set('market:snapshot:latest', tradingDate, 'EX', SNAPSHOT_TTL);
     console.log(`[market-snapshot] Saved to Redis: ${key}`);
+    if (companiesSnapshot.length > 0) {
+      await redis.set('companies:snapshot', JSON.stringify(companiesSnapshot), 'EX', SNAPSHOT_TTL);
+      console.log('[market-snapshot] companies:snapshot saved');
+    }
   } catch (e) {
     console.error('[market-snapshot] Redis write failed:', e);
     sources['redis'] = 'failed';
