@@ -107,9 +107,9 @@ function MoverCol({ title, color, bg, items }: {
             </div>
             <div style={{ textAlign: 'right', flexShrink: 0 }}>
               <div style={{ fontSize: 11, fontWeight: 800, color: up ? '#00D474' : '#FF4545', fontFamily: 'var(--mono)' }}>
-                {up ? '+' : ''}{s.changePercent.toFixed(2)}%
+                {up ? '+' : ''}{(s.changePercent ?? 0).toFixed(2)}%
               </div>
-              <div style={{ fontSize: 9, color: '#475569', fontFamily: 'var(--mono)' }}>${s.price.toFixed(2)}</div>
+              <div style={{ fontSize: 9, color: '#475569', fontFamily: 'var(--mono)' }}>${(s.price ?? 0).toFixed(2)}</div>
             </div>
           </>
         );
@@ -264,10 +264,10 @@ export default function MarketsPage() {
                   }}>
                     <div style={{ fontFamily: 'var(--mono)', fontSize: 12, fontWeight: 800, color: '#F59E0B' }}>{sym}</div>
                     <div style={{ fontFamily: 'var(--mono)', fontSize: 13, fontWeight: 700, color: '#F1F5F9' }}>
-                      {c.price >= 1000 ? `$${Math.round(c.price).toLocaleString()}` : c.price >= 1 ? `$${c.price.toFixed(2)}` : `$${c.price.toFixed(4)}`}
+                      {(c.price ?? 0) >= 1000 ? `$${Math.round(c.price ?? 0).toLocaleString()}` : (c.price ?? 0) >= 1 ? `$${(c.price ?? 0).toFixed(2)}` : `$${(c.price ?? 0).toFixed(4)}`}
                     </div>
                     <div style={{ fontFamily: 'var(--mono)', fontSize: 11, fontWeight: 700, color: up ? '#00D474' : '#FF4545' }}>
-                      {up ? '+' : ''}{c.change24h?.toFixed(2)}%
+                      {up ? '+' : ''}{(c.change24h ?? 0).toFixed(2)}%
                     </div>
                   </Link>
                 );
@@ -307,7 +307,7 @@ export default function MarketsPage() {
                     {idx.price > 0 ? idx.price.toLocaleString('en-US', { maximumFractionDigits: 0 }) : '—'}
                   </div>
                   <div style={{ fontSize: 11, fontWeight: 700, fontFamily: 'var(--mono)', marginTop: 2, color: up ? '#00D474' : '#FF4545' }}>
-                    {up ? '+' : ''}{idx.pct.toFixed(2)}%
+                    {up ? '+' : ''}{(idx.pct ?? 0).toFixed(2)}%
                   </div>
                 </div>
               );
@@ -371,7 +371,7 @@ export default function MarketsPage() {
                   </div>
                   <div style={{ fontSize: 13, fontWeight: 800, color: '#F1F5F9', marginBottom: 4, fontFamily: 'var(--sans)' }}>{sec.label}</div>
                   <div style={{ fontSize: 15, fontWeight: 700, color: up ? '#00D474' : '#FF4545', fontFamily: 'var(--mono)' }}>
-                    {up ? '+' : ''}{sec.changePercent.toFixed(2)}%
+                    {up ? '+' : ''}{(sec.changePercent ?? 0).toFixed(2)}%
                   </div>
                 </div>
               );
