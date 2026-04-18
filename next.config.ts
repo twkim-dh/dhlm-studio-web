@@ -101,6 +101,9 @@ const nextConfig: NextConfig = {
       // Paper vs. Profit deleted — redirect to /research (The Mental Game)
       { source: '/learn/paper-vs-profit', destination: '/research', permanent: true },
       { source: '/learn/paper-vs-profit/:slug', destination: '/research/:slug', permanent: true },
+      // /research/paper-vs-profit/* (old path) → /research
+      { source: '/research/paper-vs-profit', destination: '/research', permanent: true },
+      { source: '/research/paper-vs-profit/:path*', destination: '/research', permanent: true },
       // ── Brutal Edge cleanup: 36 off-brand posts removed 2026-04-16 ──────────
       // Group A: Cost of Living → home
       { source: '/blog/nyc-vs-la-cost-of-living',           destination: '/', permanent: true },
