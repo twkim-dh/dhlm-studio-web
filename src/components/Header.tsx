@@ -76,14 +76,8 @@ export default function Header() {
               <span style={{ fontSize: 11, fontFamily: "var(--mono)", letterSpacing: 0.5, color: "#475569" }}>⌘K</span>
             </button>
           </div>
-          {/* Mobile: hamburger + search icon */}
-          <div className="md:hidden" style={{ display: "flex", alignItems: "center", gap: 4 }}>
-            <button onClick={() => setSearchOpen(true)} aria-label="Search" style={{ background: "none", border: "none", padding: 8, cursor: "pointer", color: "#94A3B8" }}>
-              <svg width="18" height="18" viewBox="0 0 16 16" fill="none">
-                <circle cx="6.5" cy="6.5" r="5" stroke="#94A3B8" strokeWidth="1.5"/>
-                <path d="M10.5 10.5L14 14" stroke="#94A3B8" strokeWidth="1.5" strokeLinecap="round"/>
-              </svg>
-            </button>
+          {/* Mobile: hamburger only */}
+          <div className="md:hidden" style={{ display: "flex", alignItems: "center" }}>
             <button onClick={() => setMenuOpen(true)} aria-label="Open menu" style={{ background: "none", border: "none", padding: 8, cursor: "pointer" }}>
               <div style={{ width: 20, height: 1.5, background: "#94A3B8", marginBottom: 5 }} /><div style={{ width: 20, height: 1.5, background: "#94A3B8" }} />
             </button>
