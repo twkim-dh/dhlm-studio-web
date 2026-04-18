@@ -1,8 +1,6 @@
-name: Update Lottery Data
+name: Update Lottery Data (DISABLED — lottery section removed 2026-04-18)
 
 on:
-  schedule:
-    - cron: '0 4 * * *'
   workflow_dispatch:
 
 permissions:
