@@ -276,13 +276,9 @@
     "credit": null
   },
   "fear-greed-index-stock-prediction": {
-    "src": "https://images.unsplash.com/photo-1617696795782-cedb140e2f0b?ixid=M3w5MjE0MDh8MHwxfHNlYXJjaHwxfHxmZWFyJTIwZ3JlZWQlMjBtYXJrZXQlMjBzZW50aW1lbnQlMjBkaWFsfGVufDF8MHx8fDE3NzU4ODQ4Nzd8MA&ixlib=rb-4.1.0&w=720&h=380&fit=crop&q=80&fm=jpg&auto=format",
-    "alt": "a black sign with a price tag on it",
-    "credit": {
-      "author": "Markus Spiske",
-      "authorUrl": "https://unsplash.com/@markusspiske?utm_source=dhlm_studio&utm_medium=referral",
-      "unsplashUrl": "https://unsplash.com/photos/C0wrkGoyY-A?utm_source=dhlm_studio&utm_medium=referral"
-    }
+    "src": "/images/content/paper-vs-profit-001-hero.png",
+    "alt": "Paper vs. Profit #001 — Does the Fear & Greed Index Actually Predict Stock Returns?",
+    "credit": null
   },
   "intraday-ml-stock-prediction": {
     "src": "/images/content/paper-vs-profit-002-hero.png",
