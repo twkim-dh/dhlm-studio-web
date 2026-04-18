@@ -109,11 +109,17 @@ export default function PaperVsProfitPage() {
                       <span style={{ fontFamily: 'var(--mono)', fontSize: 9, fontWeight: 800, padding: '4px 10px', borderRadius: 6, background: c.bg, color: c.fg, border: `1px solid ${c.border}`, letterSpacing: 1 }}>
                         VERDICT: {a.verdict}
                       </span>
-                    ) : a.subcategory ? (
-                      <span style={{ fontFamily: 'var(--mono)', fontSize: 9, fontWeight: 800, padding: '4px 10px', borderRadius: 6, background: '#7C3AED18', color: '#A78BFA', border: '1px solid #7C3AED40', letterSpacing: 1 }}>
-                        {a.subcategory.toUpperCase()}
-                      </span>
-                    ) : null}
+                    ) : a.subcategory ? (() => {
+                      const isStructural = a.badge === 'structural-view';
+                      const bg = isStructural ? '#0EA5E918' : '#7C3AED18';
+                      const fg = isStructural ? '#38BDF8' : '#A78BFA';
+                      const border = isStructural ? '#0EA5E940' : '#7C3AED40';
+                      return (
+                        <span style={{ fontFamily: 'var(--mono)', fontSize: 9, fontWeight: 800, padding: '4px 10px', borderRadius: 6, background: bg, color: fg, border: `1px solid ${border}`, letterSpacing: 1 }}>
+                          {a.subcategory.toUpperCase()}
+                        </span>
+                      );
+                    })() : null}
                     <span style={{ fontFamily: 'var(--mono)', fontSize: 10, fontWeight: 700, padding: '3px 8px', borderRadius: 4, background: '#3B82F614', color: '#3B82F6' }}>{a.category}</span>
                     <span style={{ fontSize: 11, color: '#475569' }}>{fmtDateShort(a.date)} · {a.readTime}</span>
                   </div>
