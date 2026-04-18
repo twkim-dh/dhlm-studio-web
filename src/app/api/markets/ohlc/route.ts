@@ -1,21 +1,14 @@
 // /api/markets/ohlc — OHLC candles, Top30 tickers only.
 //
-// FMP historical-price-full is a per-symbol API — ~1 call per chart view.
-// Restricted to TOP_30_TICKERS whitelist to cap FMP usage. Any symbol not in the
-// whitelist returns 403 to prevent open-ended FMP quota consumption.
-//
-// Future: serve from Redis (store OHLC series in daily cron). For now, FMP is
-// called per request but only for the 30 allowed symbols.
+// Data is pre-populated daily by /api/cron/market-snapshot (step 7).
+// Reads Redis key ohlc:{symbol}:90 and slices to requested days.
+// No FMP calls from user-triggered paths.
 
 import { NextResponse } from 'next/server';
 import { TOP_30_TICKERS } from '@/lib/top-tickers';
-import { fmpCanCall, fmpTrackCall } from '@/lib/fmp-tracker';
 import { getRedis } from '@/lib/redis';
 
 export const dynamic = 'force-dynamic';
-
-const FMP_KEY  = process.env.FMP_API_KEY || '';
-const FMP_BASE = 'https://financialmodelingprep.com/api/v3';
 
 export interface OHLCCandle {
   date:   string;
@@ -35,7 +28,6 @@ export async function GET(req: Request) {
 
   if (!symbol) return NextResponse.json({ error: 'symbol required', candles: [] }, { status: 400 });
 
-  // Whitelist gate — only Top30 tickers allowed
   if (!TOP30_SET.has(symbol)) {
     return NextResponse.json(
       { error: `OHLC is only available for Top 30 tickers. '${symbol}' is not in the list.`, candles: [] },
@@ -43,57 +35,20 @@ export async function GET(req: Request) {
     );
   }
 
-  const OHLC_TTL = 4 * 60 * 60; // 4h — serve stale before calling FMP
-  const cacheKey = `ohlc:${symbol}:${days}`;
-
   try {
     const redis = getRedis();
-    const hit = await redis.get(cacheKey);
-    if (hit) {
-      const parsed = typeof hit === 'string' ? JSON.parse(hit) : hit;
-      return NextResponse.json(parsed);
+    const raw = await redis.get(`ohlc:${symbol}:90`);
+    if (raw) {
+      const parsed = typeof raw === 'string' ? JSON.parse(raw) : raw;
+      const allCandles = (parsed.candles ?? []) as OHLCCandle[];
+      const candles = allCandles.slice(-days);
+      return NextResponse.json({ candles, symbol });
     }
-  } catch { /* cache miss is fine */ }
+  } catch { /* redis error, fall through */ }
 
-  if (!FMP_KEY) return NextResponse.json({ candles: [], symbol });
-
-  if (!(await fmpCanCall())) {
-    return NextResponse.json({ candles: [], symbol, error: 'FMP daily budget exhausted' }, { status: 429 });
-  }
-
-  try {
-    const res = await fetch(
-      `${FMP_BASE}/historical-price-full/${encodeURIComponent(symbol)}?timeseries=${days}&apikey=${FMP_KEY}`,
-      { cache: 'no-store' }
-    );
-    await fmpTrackCall();
-    if (!res.ok) return NextResponse.json({ candles: [], symbol });
-    const data = await res.json();
-
-    const raw: { date: string; open: number; high: number; low: number; close: number; volume: number }[] =
-      data?.historical ?? [];
-
-    // FMP returns newest first — reverse to chronological order
-    const candles: OHLCCandle[] = raw
-      .slice(0, days)
-      .reverse()
-      .map(c => ({
-        date:   c.date,
-        open:   Number(c.open)   || 0,
-        high:   Number(c.high)   || 0,
-        low:    Number(c.low)    || 0,
-        close:  Number(c.close)  || 0,
-        volume: Number(c.volume) || 0,
-      }));
-
-    const payload = { candles, symbol };
-    try {
-      const redis = getRedis();
-      await redis.set(cacheKey, JSON.stringify(payload), 'EX', OHLC_TTL);
-    } catch { /* silent */ }
-
-    return NextResponse.json(payload);
-  } catch {
-    return NextResponse.json({ candles: [], symbol });
-  }
+  return NextResponse.json({
+    candles: [],
+    symbol,
+    error: 'OHLC data updates daily after market close.',
+  });
 }

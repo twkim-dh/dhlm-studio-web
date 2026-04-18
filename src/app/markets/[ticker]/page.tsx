@@ -4,51 +4,16 @@ import Image from 'next/image';
 import { redirect } from 'next/navigation';
 import { stocks, getStockByTicker } from '@/data/markets';
 import { TOP_30_TICKERS, isTop30 } from '@/lib/top-tickers';
-import { fmpCanCall, fmpTrackCall } from '@/lib/fmp-tracker';
 import { getRedis } from '@/lib/redis';
-
-const PROFILE_TTL = 60 * 60; // 1h — reuse cached profile before hitting FMP
 import TradingViewChart from '@/components/TradingViewChart';
 
-const FMP_KEY = process.env.FMP_API_KEY || '';
-const FMP_BASE = 'https://financialmodelingprep.com/stable';
 const YEAR = new Date().getFullYear();
-
-// Per-day cap: max 50 individual ticker fetches (2 FMP calls each = 100 calls)
-const TICKER_DAILY_CAP = 50;
-
-function tickerCapKey(): string {
-  return `fmp:ticker-calls:${new Date().toISOString().slice(0, 10)}`;
-}
-
-async function canFetchTicker(): Promise<boolean> {
-  try {
-    const redis = getRedis();
-    const count = await redis.get(tickerCapKey());
-    return count === null || Number(count) < TICKER_DAILY_CAP;
-  } catch {
-    return true; // fail-open
-  }
-}
-
-async function trackTickerFetch(): Promise<void> {
-  try {
-    const redis = getRedis();
-    const key = tickerCapKey();
-    const pipeline = redis.pipeline();
-    pipeline.incr(key);
-    pipeline.expire(key, 25 * 60 * 60);
-    await pipeline.exec();
-  } catch { /* silent */ }
-}
 
 export function generateStaticParams() {
   return TOP_30_TICKERS.map(ticker => ({ ticker: ticker.toLowerCase() }));
 }
 export const dynamicParams = true;  // allow runtime 301 for non-Top10
 export const revalidate = 300;
-
-const AV_KEY = process.env.ALPHA_VANTAGE_KEY || 'demo';
 
 // ── Deep Dive report mapping ────────────────────────────────────────────────
 const DEEP_DIVES: Record<string, string> = {
@@ -105,106 +70,14 @@ function brutalEdgeTake(change: number, volume: number, avgVolume: number, range
   return parts.join(' ');
 }
 
-// ── Data fetch ───────────────────────────────────────────────────────────────
+// ── Data fetch — Redis-only (pre-populated by Cron step 8) ──────────────────
 async function fetchLiveData(ticker: string) {
   const sym = ticker.toUpperCase();
-
-  // Redis cache check — avoids FMP call for recently-visited tickers
   try {
     const redis = getRedis();
     const cached = await redis.get(`ticker:profile:${sym}`);
-    if (cached) {
-      return typeof cached === 'string' ? JSON.parse(cached) : cached;
-    }
-  } catch { /* cache miss, proceed to live fetch */ }
-
-  if (FMP_KEY) {
-    try {
-      // Check global budget AND per-day ticker cap before calling FMP
-      const [budgetOk, capOk] = await Promise.all([fmpCanCall(), canFetchTicker()]);
-      if (!budgetOk || !capOk) {
-        console.log(`[ticker/${sym}] FMP skipped — budget:${budgetOk} cap:${capOk}`);
-        return null; // fallback to static data
-      }
-
-      const [profileRes, finRes] = await Promise.all([
-        fetch(`${FMP_BASE}/profile?symbol=${sym}&apikey=${FMP_KEY}`, { next: { revalidate: 3600 } }),
-        fetch(`${FMP_BASE}/income-statement?symbol=${sym}&period=annual&limit=1&apikey=${FMP_KEY}`, { next: { revalidate: 86400 } }),
-      ]);
-      // Track immediately after fetches fire (2 FMP calls per ticker page)
-      await Promise.all([fmpTrackCall(2), trackTickerFetch()]);
-      if (!profileRes.ok) { console.warn(`FMP profile ${profileRes.status} for ${sym}`); throw new Error(`FMP ${profileRes.status}`); }
-      const profileData = await profileRes.json();
-      if (profileData?.['Error Message'] || profileData?.['message']) return null;
-      const finData = await finRes.json();
-      const p = Array.isArray(profileData) && profileData[0] ? profileData[0] : null;
-      const f = Array.isArray(finData) && finData[0] ? finData[0] : null;
-      if (p && p.price) {
-        const mc = (p.marketCap as number) || 0;
-        const fmtCap = mc >= 1e12 ? `$${(mc/1e12).toFixed(2)}T` : mc >= 1e9 ? `$${(mc/1e9).toFixed(0)}B` : mc >= 1e6 ? `$${(mc/1e6).toFixed(0)}M` : '';
-        const fmtVol = (v: number) => v >= 1e9 ? `${(v/1e9).toFixed(1)}B` : v >= 1e6 ? `${(v/1e6).toFixed(1)}M` : v >= 1e3 ? `${(v/1e3).toFixed(0)}K` : String(v);
-        const fmtRev = (v: number) => v >= 1e9 ? `$${(v/1e9).toFixed(0)}B` : `$${(v/1e6).toFixed(0)}M`;
-        const result = {
-          ticker: p.symbol || sym,
-          name: p.companyName || sym,
-          price: p.price || 0,
-          change: p.changes ? ((p.changes / (p.price - p.changes)) * 100) : 0,
-          changeDollar: p.changes || 0,
-          cap: fmtCap,
-          marketCap: mc,
-          sector: p.sector || '',
-          industry: p.industry || '',
-          description: p.description || '',
-          ceo: p.ceo || '',
-          employees: p.fullTimeEmployees ? Number(p.fullTimeEmployees).toLocaleString() + '+' : '',
-          hq: [p.city, p.state, p.country].filter(Boolean).join(', '),
-          website: p.website ? (p.website as string).replace(/^https?:\/\//, '') : '',
-          image: p.image || '',
-          range52w: p.range || '',
-          exchange: p.exchangeShortName || p.exchange || '',
-          pe: p.peRatio ? Number(p.peRatio).toFixed(1) : '',
-          beta: p.beta ? Number(p.beta).toFixed(2) : '',
-          volAvg: p.volAvg ? fmtVol(p.volAvg) : '',
-          volAvgRaw: p.volAvg || 0,
-          lastDiv: p.lastDiv ? `$${Number(p.lastDiv).toFixed(2)}` : '',
-          volume: p.volume || 0,
-          revenue: f?.revenue ? fmtRev(f.revenue) : '',
-          netIncome: f?.netIncome ? fmtRev(f.netIncome) : '',
-          eps: f?.epsDiluted ? `$${Number(f.epsDiluted).toFixed(2)}` : '',
-          live: true,
-        };
-        try {
-          const redis = getRedis();
-          await redis.set(`ticker:profile:${sym}`, JSON.stringify(result), 'EX', PROFILE_TTL);
-        } catch { /* silent */ }
-        return result;
-      }
-    } catch { /* FMP failed, try Alpha Vantage */ }
-  }
-
-  try {
-    const avRes = await fetch(
-      `https://www.alphavantage.co/query?function=GLOBAL_QUOTE&symbol=${sym}&apikey=${AV_KEY}`,
-      { next: { revalidate: 3600 } }
-    );
-    const avData = await avRes.json();
-    const q = avData['Global Quote'];
-    if (q && q['05. price']) {
-      return {
-        ticker: sym, name: sym,
-        price: parseFloat(q['05. price']),
-        change: parseFloat(q['10. change percent']?.replace('%', '') || '0'),
-        changeDollar: parseFloat(q['09. change'] || '0'),
-        cap: '', marketCap: 0, sector: '', industry: '',
-        description: '', ceo: '', employees: '', hq: '', website: '',
-        image: '', range52w: '', exchange: '', pe: '', beta: '',
-        volAvg: '', volAvgRaw: 0, lastDiv: '', volume: 0,
-        revenue: '', netIncome: '', eps: '',
-        live: true,
-      };
-    }
-  } catch { /* Alpha Vantage also failed */ }
-
+    if (cached) return typeof cached === 'string' ? JSON.parse(cached) : cached;
+  } catch { /* ignore */ }
   return null;
 }
 
