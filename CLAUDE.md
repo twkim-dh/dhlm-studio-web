@@ -34,6 +34,29 @@
 
 ---
 
+## ⛔ FMP API 호출 규칙 (절대 준수)
+
+```
+✅ Cron 외 FMP 호출 금지
+✅ 사용자 요청 → Redis만 읽기 (캐시 miss 시 stale 반환)
+✅ FMP stable/quote 단일 심볼만 사용 (무료 tier 지원)
+❌ FMP comma-separated batch 금지 (premium 전용)
+❌ FMP ETF 심볼(XLK, XLF, SPY 등) FMP 호출 금지 (premium 전용)
+❌ FMP legacy endpoint (api/v3/quote/...) 금지 (2025-08 이후 차단)
+```
+
+**일일 호출 목표: 10회 이하 (free tier 250회 한도의 4%)**
+- Cron market-snapshot: 30(top30) + 3(macro) = 33회/일
+- Cron daily-brief: ~8회/일
+- 합계: ~41회/일 (250 이내)
+
+**새 기능 추가 시:**
+1. 이미 수집한 Redis 데이터로 구현 가능? → 재사용
+2. Cron batch에 심볼 추가? → cron 수정
+3. 추가 FMP 호출 필요? → 대표님 승인 후 진행
+
+---
+
 ## ⛔ NON-NEGOTIABLE: Every Task Must End With Git Push
 
 ```

@@ -332,26 +332,10 @@ export default function MarketsPage() {
             ))}
           </div>
 
-          {!mounted || !sectorsLoaded ? (
-            <div style={{ height: 260, display: 'flex', alignItems: 'center', justifyContent: 'center' }}>
-              <span style={{ fontSize: 11, color: '#334155' }}>Loading sector data...</span>
-            </div>
-          ) : treemapData.length === 0 ? (
-            <div style={{ height: 80, display: 'flex', alignItems: 'center', justifyContent: 'center' }}>
-              <span style={{ fontSize: 11, color: '#334155' }}>Sector data temporarily unavailable · Updates daily at 4:30 PM ET</span>
-            </div>
-          ) : (
-            <div style={{ height: 280 }}>
-              <ResponsiveContainer width="100%" height="100%">
-                <Treemap
-                  data={treemapData}
-                  dataKey="size"
-                  aspectRatio={16 / 9}
-                  content={<TreemapTile />}
-                />
-              </ResponsiveContainer>
-            </div>
-          )}
+          <div style={{ height: 80, display: 'flex', alignItems: 'center', justifyContent: 'center', flexDirection: 'column', gap: 6 }}>
+            <span style={{ fontFamily: 'var(--mono)', fontSize: 10, fontWeight: 700, color: '#475569', letterSpacing: 1 }}>COMING SOON</span>
+            <span style={{ fontSize: 11, color: '#334155' }}>Sector heatmap launches with the next data tier upgrade.</span>
+          </div>
 
           <div style={{ marginTop: 8, fontSize: 9, color: '#334155', fontFamily: 'var(--mono)' }}>
             Source: FMP · 11 SPDR sector ETFs · Previous close{tradingDateLabel ? ` · ${tradingDateLabel}` : ''}
@@ -380,19 +364,16 @@ export default function MarketsPage() {
         )}
 
         {/* ⑥ TOP 30 MOVERS */}
-        {moversLoading && (
-          <p style={{ fontSize: 13, color: '#64748B', textAlign: 'center', padding: '20px 0' }}>Loading movers...</p>
-        )}
-        {!moversLoading && movers.gainers.length === 0 && movers.actives.length === 0 && (
-          <p style={{ fontSize: 13, color: '#475569', textAlign: 'center', padding: '40px 0' }}>
-            Mover data temporarily unavailable · Updates daily at 4:30 PM ET
-          </p>
-        )}
-        {movers.gainers.length > 0 && (
+        {movers.gainers.length > 0 ? (
           <div style={{ display: 'grid', gridTemplateColumns: 'repeat(3, 1fr)', gap: 10, marginBottom: 16 }}>
             <MoverCol title="🟢 TOP 30 GAINERS"     color="#00D474" bg="#00D47410" items={movers.gainers.slice(0, 10)} />
             <MoverCol title="🔴 TOP 30 LOSERS"      color="#FF4545" bg="#FF454510" items={movers.losers.slice(0, 10)} />
             <MoverCol title="📊 TOP 30 MOST ACTIVE" color="#60A5FA" bg="#3B82F610" items={movers.actives.slice(0, 10)} />
+          </div>
+        ) : (
+          <div style={{ background: '#111827', borderRadius: 12, border: '1px solid #1E293B', padding: '24px', marginBottom: 16, textAlign: 'center' }}>
+            <div style={{ fontFamily: 'var(--mono)', fontSize: 10, fontWeight: 700, color: '#475569', letterSpacing: 1, marginBottom: 6 }}>COMING SOON</div>
+            <div style={{ fontSize: 11, color: '#334155' }}>Top 30 Gainers · Losers · Most Active — updates at next market close.</div>
           </div>
         )}
 

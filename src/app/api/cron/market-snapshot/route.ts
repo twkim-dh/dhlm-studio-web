@@ -327,13 +327,17 @@ export async function GET(request: Request) {
   sources['av:indices'] = indices.length === INDEX_CONFIG.length ? 'ok' : 'failed';
   console.log(`[market-snapshot] indices: ${indices.length}/${INDEX_CONFIG.length}`);
 
-  // 2. Sector ETFs via FMP batch (1-2 calls)
-  const sectorsRaw = await fmpBatch(SECTOR_ETFS);
-  sources['fmp:sectors'] = sectorsRaw.length > 0 ? 'ok' : 'failed';
-  console.log(`[market-snapshot] sectors: ${sectorsRaw.length}/${SECTOR_ETFS.length}`);
+  // 2. Sector ETFs — FMP free tier does not support ETF symbols (premium only).
+  // Sectors disabled until an alternative data source is available.
+  const sectorsRaw: StockQuote[] = [];
+  sources['fmp:sectors'] = 'failed'; // intentionally skipped
+  console.log('[market-snapshot] sectors: skipped (ETF quotes require FMP premium)');
 
-  // 3. Top 30 stocks via FMP batch (1-2 calls)
-  const top30Raw = await fmpBatch(TOP30);
+  // 3. Top 30 stocks — 30 parallel individual FMP calls (free tier supports single stock quotes).
+  // fmpBatch (comma-separated) requires premium; individual calls are free.
+  const top30Raw = (
+    await Promise.all(TOP30.map(sym => fmpSingle(sym)))
+  ).filter((q): q is StockQuote => Boolean(q));
   sources['fmp:top30'] = top30Raw.length > 0 ? 'ok' : 'failed';
   console.log(`[market-snapshot] top30: ${top30Raw.length}/${TOP30.length}`);
 
