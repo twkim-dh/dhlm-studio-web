@@ -145,10 +145,10 @@ export default function MarketsPage() {
       .then(r => r.json())
       .then(d => {
         if (d.indices?.length > 0) {
-          const mapped: IndexItem[] = d.indices.map((q: { symbol: string; price: number; changePercent: number }) => ({
+          const mapped: IndexItem[] = d.indices.map((q: { symbol: string; label?: string; price?: number; changePercent: number }) => ({
             symbol: q.symbol,
-            label:  INDEX_LABELS[q.symbol] || q.symbol,
-            price:  q.price,
+            label:  INDEX_LABELS[q.symbol] || q.label || q.symbol,
+            price:  q.price ?? 0,
             pct:    q.changePercent,
           }));
           setIndices(mapped);
@@ -304,7 +304,7 @@ export default function MarketsPage() {
                 <div key={idx.symbol} style={{ background: '#111827', borderRadius: 10, border: `1px solid ${up ? '#00D47420' : '#FF454520'}`, padding: '12px 14px' }}>
                   <div style={{ fontSize: 10, color: '#64748B', fontFamily: 'var(--mono)', fontWeight: 700, marginBottom: 4 }}>{idx.label}</div>
                   <div style={{ fontSize: 16, fontWeight: 800, color: '#F1F5F9', fontFamily: 'var(--mono)' }}>
-                    {idx.price.toLocaleString('en-US', { maximumFractionDigits: 0 })}
+                    {idx.price > 0 ? idx.price.toLocaleString('en-US', { maximumFractionDigits: 0 }) : '—'}
                   </div>
                   <div style={{ fontSize: 11, fontWeight: 700, fontFamily: 'var(--mono)', marginTop: 2, color: up ? '#00D474' : '#FF4545' }}>
                     {up ? '+' : ''}{idx.pct.toFixed(2)}%
