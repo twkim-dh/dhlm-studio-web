@@ -216,7 +216,7 @@ export default async function ResearchArticlePage({ params }: { params: Promise<
           <div style={{ margin: '24px 0' }}>
             <div style={{ width: '100%', background: '#0f172a', borderRadius: 12, overflow: 'hidden', border: '1px solid #1E293B' }}>
               {/* eslint-disable-next-line @next/next/no-img-element */}
-              <img src={heroSrc} alt={unsplashEntry?.alt || fm.title} style={{ width: '100%', height: 'auto', display: 'block' }} />
+              <img src={heroSrc} alt={unsplashEntry?.alt || fm.title} style={{ width: '100%', aspectRatio: '16/9', objectFit: heroSrc.endsWith('.png') ? 'contain' : 'cover', display: 'block' }} />
             </div>
             {unsplashEntry?.credit && (
               <div style={{ padding: '3px 8px', textAlign: 'right' }}>
