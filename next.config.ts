@@ -79,6 +79,8 @@ const nextConfig: NextConfig = {
       { source: '/blog/deep-dive-nvda-april-2026',         destination: '/reports/deep-dive-nvda-april-2026',         permanent: true },
       { source: '/blog/deep-dive-pltr-april-2026',         destination: '/reports/deep-dive-pltr-april-2026',         permanent: true },
       { source: '/blog/deep-dive-tsla-april-2026',         destination: '/reports/deep-dive-tsla-april-2026',         permanent: true },
+      { source: '/blog/deep-dive-eth-april-2026',          destination: '/reports/deep-dive-eth-april-2026',          permanent: true },
+      { source: '/blog/deep-dive-nflx-april-2026',         destination: '/reports/deep-dive-nflx-april-2026',         permanent: true },
       { source: '/blog/btc-crossroads-april-2026',         destination: '/reports/btc-crossroads-april-2026',         permanent: true },
       { source: '/blog/hot-sector-energy-april-2026',      destination: '/reports/hot-sector-energy-april-2026',      permanent: true },
       // SpaceX: blog/ → reports/ + old -2026 suffix → clean canonical URL
