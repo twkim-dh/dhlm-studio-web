@@ -18,7 +18,9 @@ export default function BlogFilter({ posts }: { posts: BlogPost[] }) {
   const [active, setActive] = useState('All');
   const [search, setSearch] = useState('');
 
+  const now = new Date();
   const filtered = posts.filter(p => {
+    if (new Date(p.date) > now) return false;
     const matchCat = active === 'All' || p.category === active;
     const matchSearch = !search.trim() ||
       p.title.toLowerCase().includes(search.toLowerCase()) ||
