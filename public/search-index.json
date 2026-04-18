@@ -1,5 +1,15 @@
 [
   {
+    "title": "Paper vs. Profit #003: The Inflation Paper Everyone Quotes Wrong",
+    "slug": "paper-vs-profit-003-best-strategies-inflationary-times",
+    "category": "Learn",
+    "subCategory": "Paper vs Profit",
+    "tags": [],
+    "excerpt": "95 years of data says trend-following beat gold in inflation shocks. 2026 data is already confirming it. But most investors will still buy TIPS and real estate. We read the paper everyone references b",
+    "publishDate": "2026-04-22",
+    "url": "/learn/paper-vs-profit/paper-vs-profit-003-best-strategies-inflationary-times"
+  },
+  {
     "title": "Investing 101, Week 1: What Is a Stock? (And What You\\",
     "slug": "investing-101-week1-what-is-a-stock",
     "category": "Learn",
@@ -10,16 +20,24 @@
     "url": "/learn/investing-101/investing-101-week1-what-is-a-stock"
   },
   {
-    "title": "The CLARITY Act: Who Owns the Toll Roads When Crypto Gets Legal Roads",
-    "slug": "clarity-act-digital-asset-market-structure-april-2026",
+    "title": "Navitas Semiconductor (NVTS): The Hidden AI Infrastructure Bet Nobody Priced",
+    "slug": "navitas-nvts-ai-power-infrastructure-special-report-april-2026",
     "category": "Reports",
     "subCategory": "Special Report",
-    "tags": [
-      "COIN"
-    ],
-    "excerpt": "The U.S. Market-Structure Bill That Matters More Than Any ETF Approval. The Stablecoin Yield Fight Is 99% Resolved. Here's What Changes — and who captures the value when legal roads get built.",
+    "tags": [],
+    "excerpt": "NVTS at $1.54B market cap on $7.3M quarterly revenue. NVIDIA-linked 800V HVDC architecture play. Everyone bought the GPU story. Nobody's pricing the power bottleneck. BEAF: Speculative — Not Rated.",
     "publishDate": "2026-04-17",
-    "url": "/reports/clarity-act-digital-asset-market-structure-april-2026"
+    "url": "/reports/navitas-nvts-ai-power-infrastructure-special-report-april-2026"
+  },
+  {
+    "title": "Livermore Didn\\",
+    "slug": "masters-jesse-livermore-price-confirmation-april-2026",
+    "category": "Blog",
+    "subCategory": "The Masters",
+    "tags": [],
+    "excerpt": "Jesse Livermore made $100M shorting the 1929 crash. He died broke at 63. The method worked. The man couldn\\",
+    "publishDate": "2026-04-17",
+    "url": "/blog/masters-jesse-livermore-price-confirmation-april-2026"
   },
   {
     "title": "AI as a Financial-System Threat: Anthropic's Mythos Moment and What It Means for Your Portfolio",
@@ -242,6 +260,18 @@
     "url": "/blog/how-to-spot-next-crypto-winner"
   },
   {
+    "title": "Deep Dive: Ethereum — April 2026 Analysis",
+    "slug": "deep-dive-eth-april-2026",
+    "category": "Reports",
+    "subCategory": "Crypto",
+    "tags": [
+      "ETH"
+    ],
+    "excerpt": "Ethereum is at $2,200 — 56% below its August 2025 ATH. This deep dive examines the L2 value capture problem, staking yield thesis, Harvard buying ETH for the first time, the Fusaka upgrade, and the bu",
+    "publishDate": "2026-04-11",
+    "url": "/reports/deep-dive-eth-april-2026"
+  },
+  {
     "title": "Crypto 101, Week 7: Reading Crypto Charts — The 5 Patterns That Actually Matter",
     "slug": "crypto-101-chart-patterns",
     "category": "Learn",
@@ -312,26 +342,6 @@
     "url": "/blog/best-performing-crypto-2026"
   },
   {
-    "title": "Bitcoin in April 2026: $72K, Down 43% From ATH, and Still the Most Important Asset in Crypto",
-    "slug": "bitcoin-deep-dive-april-2026",
-    "category": "Blog",
-    "subCategory": "Crypto Analysis",
-    "tags": [],
-    "excerpt": "Bitcoin is trading at $72,000 in April 2026 — 43% below its October ATH of $126,000. This deep dive examines what actually happened since the peak, the structural thesis for Bitcoin, the real risks, c",
-    "publishDate": "2026-04-11",
-    "url": "/blog/bitcoin-deep-dive-april-2026"
-  },
-  {
-    "title": "Ethereum in April 2026: The World Computer at $2,200 — Settlement Layer or Stranded Asset?",
-    "slug": "ethereum-deep-dive-april-2026",
-    "category": "Blog",
-    "subCategory": "Crypto Analysis",
-    "tags": [],
-    "excerpt": "Ethereum is at $2,200 — 56% below its August 2025 ATH. This deep dive examines the L2 value capture problem, staking yield thesis, Harvard buying ETH for the first time, the Fusaka upgrade, and the bu",
-    "publishDate": "2026-04-11",
-    "url": "/blog/ethereum-deep-dive-april-2026"
-  },
-  {
     "title": "Top AI Crypto Tokens in 2026: Render, Bittensor, and the Real Infrastructure Play",
     "slug": "ai-crypto-tokens-2026",
     "category": "Blog",
@@ -350,6 +360,16 @@
     "excerpt": "The Crypto Fear and Greed Index is at 16 — deep Extreme Fear territory. Here is what the index actually measures, its 6 components, when it works as a trading signal, when it fails, and how profession",
     "publishDate": "2026-04-10",
     "url": "/blog/crypto-fear-greed-explained"
+  },
+  {
+    "title": "Druckenmiller\\",
+    "slug": "masters-stanley-druckenmiller-real-edge-april-2026",
+    "category": "Blog",
+    "subCategory": "The Masters",
+    "tags": [],
+    "excerpt": "30% annualized for 30 years with zero losing years. Everyone studies his NVDA trade. Almost nobody studies why he\\",
+    "publishDate": "2026-04-10",
+    "url": "/blog/masters-stanley-druckenmiller-real-edge-april-2026"
   },
   {
     "title": "Paper vs. Profit #001: Does the Fear & Greed Index Actually Predict Stock Returns?",
@@ -802,5 +822,25 @@
     "excerpt": "You\\",
     "publishDate": "2026-02-14",
     "url": "/learn/crypto-101/crypto-101-what-is-blockchain"
+  },
+  {
+    "title": "clarity-act-digital-asset-market-structure-april-2026",
+    "slug": "clarity-act-digital-asset-market-structure-april-2026",
+    "category": "Reports",
+    "subCategory": "Report",
+    "tags": [],
+    "excerpt": "---\r\nslug: \"clarity-act-digital-asset-market-structure-april-2026\"\r\ntitle: \"The CLARITY Act: Who Owns the Toll Roads When Crypto Gets Legal Roads\"\r\nticker: \"COIN\"\r\ndate: \"2026-04-17\"\r\nreadTime: \"14 mi",
+    "publishDate": "",
+    "url": "/reports/clarity-act-digital-asset-market-structure-april-2026"
+  },
+  {
+    "title": "deep-dive-nflx-april-2026",
+    "slug": "deep-dive-nflx-april-2026",
+    "category": "Reports",
+    "subCategory": "Report",
+    "tags": [],
+    "excerpt": "---\r\ntitle: \"Netflix Q1 2026: A -9.72% Selloff That Misreads the Transition\"\r\nslug: \"deep-dive-nflx-april-2026\"\r\nticker: \"NFLX\"\r\ndate: \"2026-04-17\"\r\nreadTime: \"14 min\"\r\ncategory: \"Media\"\r\ncatColor: \"E",
+    "publishDate": "",
+    "url": "/reports/deep-dive-nflx-april-2026"
   }
 ]

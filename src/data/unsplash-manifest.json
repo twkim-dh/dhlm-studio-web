@@ -828,5 +828,30 @@
     "src": "/images/content/paper-vs-profit-002-hero.png",
     "alt": "Paper vs. Profit #002: Can Machine Learning Predict Intraday Stock Moves Using High-Frequency Data?",
     "credit": null
+  },
+  "masters-charlie-munger-part1-stupidity-may-2026": {
+    "src": "/images/content/masters-charlie-munger-part1-stupidity-hero.png",
+    "alt": "Charlie Munger Part 1 -- Don't Try to Be Brilliant",
+    "credit": "DHLM Studio"
+  },
+  "masters-charlie-munger-part2-ego-june-2026": {
+    "src": "/images/content/masters-charlie-munger-part2-ego-hero.png",
+    "alt": "Charlie Munger Part 2 -- It's Not Ignorance That Ruins You. It's Ego.",
+    "credit": "DHLM Studio"
+  },
+  "masters-charlie-munger-part3-safety-june-2026": {
+    "src": "/images/content/masters-charlie-munger-part3-safety-hero.png",
+    "alt": "Charlie Munger Part 3 -- When You Feel Safest, You May Be Most Exposed",
+    "credit": "DHLM Studio"
+  },
+  "masters-charlie-munger-part4-leverage-june-2026": {
+    "src": "/images/content/masters-charlie-munger-part4-leverage-hero.png",
+    "alt": "Charlie Munger Part 4 -- The Fastest Road to Ruin",
+    "credit": "DHLM Studio"
+  },
+  "masters-charlie-munger-part5-compounding-june-2026": {
+    "src": "/images/content/masters-charlie-munger-part5-compounding-hero.png",
+    "alt": "Charlie Munger Part 5 -- The Quiet Truth of Compounding",
+    "credit": "DHLM Studio"
   }
 }
