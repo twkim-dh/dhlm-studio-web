@@ -853,5 +853,20 @@
     "src": "/images/content/masters-charlie-munger-part5-compounding-hero.png",
     "alt": "Charlie Munger Part 5 -- The Quiet Truth of Compounding",
     "credit": null
+  },
+  "special-ionq-vol1-recategorization-april-2026": {
+    "src": "/images/content/special-ionq-vol1-recategorization-hero.png",
+    "alt": "IonQ Special Report Vol.1: The Re-Categorization",
+    "credit": null
+  },
+  "special-ionq-vol2-vertical-integration-april-2026": {
+    "src": "/images/content/special-ionq-vol2-vertical-integration-hero.png",
+    "alt": "IonQ Special Report Vol.2: The Vertical Integration Bet",
+    "credit": null
+  },
+  "special-ionq-vol3-price-of-admission-april-2026": {
+    "src": "/images/content/special-ionq-vol3-price-of-admission-hero.png",
+    "alt": "IonQ Special Report Vol.3: The Price of Admission",
+    "credit": null
   }
 }
