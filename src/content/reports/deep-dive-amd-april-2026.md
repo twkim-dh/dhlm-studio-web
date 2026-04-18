@@ -14,6 +14,8 @@ seoTitle: "AMD BEAF 61/100: Always Second in the AI Chip Race? | April 2026"
 seoDescription: "AMD scores 61/100 on BEAF. MI350 captured 8% AI training share. Server CPU share 33%. Is Lisa Su's roadmap enough to catch NVIDIA's CUDA moat?"
 relatedSlugs: ["deep-dive-nvda-april-2026","deep-dive-msft-april-2026","deep-dive-googl-april-2026"]
 faqs: [{"q":"What is AMD's BEAF score?","a":"61/100 (Grade C). AMD scores high on Momentum and Server CPU share but loses points on Moat as the CUDA software ecosystem keeps NVIDIA structurally ahead in AI training. See full BEAF breakdown in our Deep Dive →"},{"q":"Can AMD MI350 actually compete with NVIDIA H200?","a":"AMD captured roughly 8% AI training share in Q1 2026. The hardware is competitive on raw FLOPs, but ROCm software maturity remains the real gap. See full MI350 analysis in our Deep Dive →"},{"q":"What is the biggest risk to AMD stock?","a":"Continued NVIDIA CUDA lock-in plus Intel server CPU resurgence with Granite Rapids. AMD needs to win both fronts simultaneously. See full risk analysis in our Deep Dive →"}]
+contentLifespan: "medium"
+promotionWeeks: 2
 ---
 
 ## The Permanent Number Two

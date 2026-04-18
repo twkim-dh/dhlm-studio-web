@@ -9,6 +9,8 @@ readTime: "14 min"
 tags: ["MASTERS", "DRUCKENMILLER", "MACRO", "INVESTING", "PHILOSOPHY", "RISK"]
 slug: "masters-stanley-druckenmiller-real-edge-april-2026"
 author: "DHLM Studio"
+contentLifespan: "evergreen"
+promotionWeeks: 4
 ---
 
 ## The Number

@@ -10,6 +10,8 @@ readTime: "19 min"
 tags: ["STRUCTURAL-VIEW", "PALANTIR", "ANTHROPIC", "AI-GOVERNANCE", "ENTERPRISE-AI", "INVESTMENT-FRAMEWORK"]
 slug: "structural-view-001-palantir-vs-anthropic-april-2026"
 author: "DHLM Studio"
+contentLifespan: "evergreen"
+promotionWeeks: 4
 ---
 
 ## Why This Report Exists

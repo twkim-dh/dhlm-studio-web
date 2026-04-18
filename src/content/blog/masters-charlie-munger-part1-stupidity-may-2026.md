@@ -10,6 +10,8 @@ readTime: "16 min"
 tags: ["MASTERS", "CHARLIE-MUNGER", "SURVIVAL", "INVESTING-PHILOSOPHY", "COMPOUNDING"]
 slug: "masters-charlie-munger-part1-stupidity-may-2026"
 author: "DHLM Studio"
+contentLifespan: "evergreen"
+promotionWeeks: 4
 ---
 
 

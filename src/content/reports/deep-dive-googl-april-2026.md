@@ -14,6 +14,8 @@ seoTitle: "Alphabet BEAF 78/100: Can Search Survive ChatGPT? | April 2026"
 seoDescription: "Alphabet scores 78/100 on BEAF. Search still 56% of revenue. YouTube ad growth +21%. Cloud accelerating to 31%. Is the search moat actually cracking?"
 relatedSlugs: ["deep-dive-msft-april-2026","deep-dive-amzn-april-2026","deep-dive-meta-april-2026"]
 faqs: [{"q":"What is Alphabet's BEAF score?","a":"78/100 (Grade B). Alphabet scores high on Moat (search dominance plus YouTube) and Profitability but loses points on Growth uncertainty as generative AI threatens search query monetization. See full BEAF breakdown in our Deep Dive →"},{"q":"Is ChatGPT actually killing Google Search?","a":"Search query volume on Google.com remained roughly flat year over year, but the threat is monetization erosion as zero-click AI answers reduce ad inventory. See full search analysis in our Deep Dive →"},{"q":"What is the biggest risk to Alphabet stock?","a":"Antitrust remedies. The DOJ is seeking structural changes including a possible Chrome divestiture, which could materially alter Search distribution economics. See full regulatory analysis in our Deep Dive →"}]
+contentLifespan: "medium"
+promotionWeeks: 2
 ---
 
 ## The Inventor Who Forgot to Ship

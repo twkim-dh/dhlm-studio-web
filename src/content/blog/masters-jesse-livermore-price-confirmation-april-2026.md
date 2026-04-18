@@ -10,6 +10,8 @@ readTime: "15 min"
 tags: ["MASTERS", "LIVERMORE", "TRADING", "PSYCHOLOGY", "RISK", "DISCIPLINE"]
 slug: "masters-jesse-livermore-price-confirmation-april-2026"
 author: "DHLM Studio"
+contentLifespan: "evergreen"
+promotionWeeks: 4
 ---
 
 ## The Numbers

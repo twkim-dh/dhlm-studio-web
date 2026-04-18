@@ -10,6 +10,8 @@ readTime: "18 min"
 tags: ["MASTERS", "CHARLIE-MUNGER", "LEVERAGE", "OVERCONFIDENCE", "RUIN", "SPEED"]
 slug: "masters-charlie-munger-part4-leverage-june-2026"
 author: "DHLM Studio"
+contentLifespan: "evergreen"
+promotionWeeks: 4
 ---
 
 

@@ -10,6 +10,8 @@ readTime: "14 min"
 tags: ["MASTERS", "PETER-LYNCH", "FUNDAMENTALS", "INVESTING-PHILOSOPHY", "TEN-BAGGER"]
 slug: "masters-peter-lynch-part1-ten-bagger-april-2026"
 author: "DHLM Studio"
+contentLifespan: "evergreen"
+promotionWeeks: 4
 ---
 
 # The Peter Lynch Bible, Part 1: There's a Ten-Bagger Closer Than You Think

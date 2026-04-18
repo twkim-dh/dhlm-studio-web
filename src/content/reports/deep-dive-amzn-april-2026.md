@@ -14,6 +14,8 @@ seoTitle: "Amazon BEAF 76/100: AWS at $110B vs Razor Retail | April 2026"
 seoDescription: "Amazon scores 76/100 on BEAF. AWS crossing $110B annualized. Retail margins still thin. Ad business at $50B. Is the conglomerate fairly priced?"
 relatedSlugs: ["deep-dive-googl-april-2026","deep-dive-msft-april-2026","deep-dive-meta-april-2026"]
 faqs: [{"q":"What is Amazon's BEAF score?","a":"76/100 (Grade B). Amazon scores high on Growth (AWS +18%, Ads +24%) and Moat (Prime ecosystem) but loses points on Profitability as North America retail margins remain razor thin. See full BEAF breakdown in our Deep Dive →"},{"q":"Why is Amazon's retail margin so low compared to AWS?","a":"Amazon reinvests retail cash flow into logistics, Prime, and AI infrastructure. Operating margin sits near 5% in North America vs 35%+ at AWS. See full segment analysis in our Deep Dive →"},{"q":"What is the biggest risk to Amazon stock?","a":"AWS deceleration and antitrust action. If hyperscaler customers slow GPU spending or the FTC forces structural changes, the multiple compresses. See full risk analysis in our Deep Dive →"}]
+contentLifespan: "medium"
+promotionWeeks: 2
 ---
 
 ## Two Companies in a Trenchcoat Pretending to Be One

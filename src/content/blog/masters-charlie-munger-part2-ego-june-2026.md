@@ -10,6 +10,8 @@ readTime: "17 min"
 tags: ["MASTERS", "CHARLIE-MUNGER", "PSYCHOLOGY", "EGO", "ENVY", "TEMPERAMENT"]
 slug: "masters-charlie-munger-part2-ego-june-2026"
 author: "DHLM Studio"
+contentLifespan: "evergreen"
+promotionWeeks: 4
 ---
 
 

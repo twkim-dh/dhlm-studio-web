@@ -10,6 +10,8 @@ readTime: "19 min"
 tags: ["MASTERS", "CHARLIE-MUNGER", "COMPOUNDING", "PATIENCE", "TEMPERAMENT", "SYNTHESIS"]
 slug: "masters-charlie-munger-part5-compounding-june-2026"
 author: "DHLM Studio"
+contentLifespan: "evergreen"
+promotionWeeks: 4
 ---
 
 

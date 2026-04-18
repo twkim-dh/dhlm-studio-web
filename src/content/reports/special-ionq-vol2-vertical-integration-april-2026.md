@@ -10,6 +10,8 @@ readTime: "22 min"
 tags: ["SPECIAL-REPORT", "IONQ", "QUANTUM-COMPUTING", "SKYWATER", "VERTICAL-INTEGRATION", "MODULAR-ARCHITECTURE", "SOVEREIGN-PROCUREMENT"]
 slug: "special-ionq-vol2-vertical-integration-april-2026"
 author: "DHLM Studio"
+contentLifespan: "evergreen"
+promotionWeeks: 4
 ---
 
 ## The Setup

@@ -10,6 +10,8 @@ readTime: "17 min"
 tags: ["MASTERS", "PETER-LYNCH", "FUNDAMENTALS", "FINANCIAL-ANALYSIS", "PEG", "VALUATION"]
 slug: "masters-peter-lynch-part4-numbers-april-2026"
 author: "DHLM Studio"
+contentLifespan: "evergreen"
+promotionWeeks: 4
 ---
 
 # The Peter Lynch Bible, Part 4: Numbers Don't Lie

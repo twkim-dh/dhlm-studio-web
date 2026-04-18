@@ -14,6 +14,8 @@ seoTitle: "Palantir BEAF 52/100: 165x P/E for $3B Revenue? | April 2026"
 seoDescription: "Palantir scores 52/100 on BEAF. 165x earnings. Government 55% of revenue. AIP bootcamps fueling commercial growth. Brilliant or bubble?"
 relatedSlugs: ["deep-dive-msft-april-2026","deep-dive-googl-april-2026","deep-dive-tsla-april-2026"]
 faqs: [{"q":"What is Palantir's BEAF score?","a":"52/100 (Grade D+). Palantir scores high on Growth (commercial +54%) and Moat (government lock-in) but loses heavily on Valuation as the 165x trailing P/E gives almost no margin of safety. See full BEAF breakdown in our Deep Dive →"},{"q":"Is Palantir really worth 165x earnings?","a":"At 165x trailing P/E, Palantir would need to triple earnings just to reach NVIDIA's multiple. Whether AIP bootcamp commercial conversion justifies this is the central question. See full valuation analysis in our Deep Dive →"},{"q":"What is the biggest risk to Palantir stock?","a":"Multiple compression on any growth deceleration plus US government budget cycles affecting the 55% government revenue base. See full risk analysis in our Deep Dive →"}]
+contentLifespan: "medium"
+promotionWeeks: 2
 ---
 
 ## 165x Earnings. One Hundred and Sixty-Five Times.

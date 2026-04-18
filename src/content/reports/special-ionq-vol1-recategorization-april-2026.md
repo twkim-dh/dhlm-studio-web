@@ -10,6 +10,8 @@ readTime: "20 min"
 tags: ["SPECIAL-REPORT", "IONQ", "QUANTUM-COMPUTING", "PLATFORM-TRANSITION", "TRAPPED-ION", "RE-CATEGORIZATION"]
 slug: "special-ionq-vol1-recategorization-april-2026"
 author: "DHLM Studio"
+contentLifespan: "evergreen"
+promotionWeeks: 4
 ---
 
 ## The Opening Thesis

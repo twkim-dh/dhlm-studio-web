@@ -14,6 +14,8 @@ seoTitle: "Microsoft Down 23% From ATH — Cheapest It's Been in 3 Years. Worth 
 seoDescription: "MSFT at 28x forward earnings: Azure AI +50%, Copilot $18B run rate, 44% margins. $50B CapEx is the question. Full BEAF 81/100 analysis with bull/bear targets."
 relatedSlugs: ["deep-dive-nvda-april-2026","deep-dive-googl-april-2026","deep-dive-aapl-april-2026"]
 faqs: [{"q":"What is Microsoft's BEAF score?","a":"81/100 (Grade B+). Microsoft scores high on Profitability (44% operating margin) and Moat (enterprise lock-in) but loses points on Valuation as AI CapEx pressures free cash flow. See full BEAF breakdown in our Deep Dive →"},{"q":"Is Microsoft Copilot actually profitable?","a":"Microsoft reports Copilot at an $18B annualized run rate, but the $50B+ in annual AI CapEx means net margin contribution remains unclear until fiscal 2027. See full Copilot economics in our Deep Dive →"},{"q":"What is the biggest risk to Microsoft stock?","a":"Azure deceleration. If Azure AI growth slips below 40%, the entire $50B CapEx thesis comes under scrutiny and the multiple compresses. See full risk analysis in our Deep Dive →"}]
+contentLifespan: "medium"
+promotionWeeks: 2
 ---
 
 ## The Most Boring $3 Trillion Company on Earth

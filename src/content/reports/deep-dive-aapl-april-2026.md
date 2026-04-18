@@ -14,6 +14,8 @@ seoTitle: "Apple BEAF 77/100: Is the Subscription Pivot Enough? | April 2026"
 seoDescription: "Apple scores 77/100 on BEAF. iPhone growth at just 4%. Services revenue $96B at 70% margin. 2.2B device ecosystem. Is on-device AI enough?"
 relatedSlugs: ["deep-dive-msft-april-2026","deep-dive-googl-april-2026","deep-dive-amzn-april-2026"]
 faqs: [{"q":"What is Apple's BEAF score?","a":"77/100 (Grade B). Apple scores top on Moat (2.2 billion device ecosystem) and Profitability ($100B FCF) but loses points on Growth as iPhone unit growth slows to 4%. See full BEAF breakdown in our Deep Dive →"},{"q":"Is Apple Services growth enough to offset iPhone slowdown?","a":"Services revenue grew to $96B at 70%+ gross margin, now 25% of total revenue. Whether it can keep pace as iPhone matures is the central question. See full Services analysis in our Deep Dive →"},{"q":"What is the biggest risk to Apple stock?","a":"China regulatory risk and the absence of a category-defining AI product. Vision Pro underwhelmed and on-device Apple Intelligence rollout has been gradual. See full risk analysis in our Deep Dive →"}]
+contentLifespan: "medium"
+promotionWeeks: 2
 ---
 
 ## $274 Million Per Day. Every Day. While You Sleep.

@@ -8,6 +8,8 @@ heroImage: "/images/content/navitas-nvts-hero.png"
 readTime: "18 min"
 tags: ["NVTS", "NVDA", "AI", "SEMICONDUCTORS", "INFRASTRUCTURE", "POWER", "GAN", "SIC"]
 slug: "navitas-nvts-ai-power-infrastructure-special-report-april-2026"
+contentLifespan: "evergreen"
+promotionWeeks: 4
 ---
 
 # Navitas Semiconductor (NVTS): The Hidden AI Infrastructure Bet Nobody Priced

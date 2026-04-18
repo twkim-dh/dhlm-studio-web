@@ -10,6 +10,8 @@ readTime: "17 min"
 tags: ["MASTERS", "PETER-LYNCH", "PSYCHOLOGY", "BEAR-MARKETS", "COCKTAIL-PARTY"]
 slug: "masters-peter-lynch-part3-cocktail-party-april-2026"
 author: "DHLM Studio"
+contentLifespan: "evergreen"
+promotionWeeks: 4
 ---
 
 # The Peter Lynch Bible, Part 3: The Cocktail Party Theory and the Psychology of Bear Markets

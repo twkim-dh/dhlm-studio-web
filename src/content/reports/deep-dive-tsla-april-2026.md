@@ -14,6 +14,8 @@ seoTitle: "Tesla BEAF 58/100: 120x Earnings, 15% Promise Delivery | April 2026"
 seoDescription: "Tesla scores 58/100 on BEAF. 120x earnings. Auto margins compressing to 17%. Energy storage growing 60%. Is FSD optionality worth the multiple?"
 relatedSlugs: ["deep-dive-nvda-april-2026","deep-dive-amd-april-2026","deep-dive-pltr-april-2026"]
 faqs: [{"q":"What is Tesla's BEAF score?","a":"58/100 (Grade C+). Tesla scores high on Brand and Momentum but loses points on Valuation (120x P/E) and Risk due to slowing auto growth and concentrated key-person risk. See full BEAF breakdown in our Deep Dive →"},{"q":"Is Tesla's energy business actually material?","a":"Energy storage revenue grew 60%+ YoY to $10B annualized at 25% gross margin, now roughly 12% of revenue. It is the fastest-growing segment but still smaller than auto. See full energy analysis in our Deep Dive →"},{"q":"What is the biggest risk to Tesla stock?","a":"BYD and Chinese EV competition compressing auto margins, plus the optionality discount if FSD and Robotaxi timelines slip again. See full risk analysis in our Deep Dive →"}]
+contentLifespan: "medium"
+promotionWeeks: 2
 ---
 
 ## A $1.5 Trillion Faith-Based Financial Instrument

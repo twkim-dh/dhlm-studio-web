@@ -10,6 +10,8 @@ readTime: "17 min"
 tags: ["MENTAL-GAME", "PSYCHOLOGY", "AI-BUBBLE", "CAPEX", "APOLLO", "GOLDMAN-SACHS", "BEHAVIORAL-FINANCE"]
 slug: "mental-game-002-ai-bubble-survival"
 author: "DHLM Studio"
+contentLifespan: "evergreen"
+promotionWeeks: 4
 ---
 
 ## The Uncomfortable Setup

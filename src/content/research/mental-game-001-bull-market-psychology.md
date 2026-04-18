@@ -10,6 +10,8 @@ readTime: "15 min"
 tags: ["MENTAL-GAME", "PSYCHOLOGY", "BUBBLES", "AI", "BEHAVIORAL-FINANCE", "ODEAN"]
 slug: "mental-game-001-bull-market-psychology"
 author: "DHLM Studio"
+contentLifespan: "evergreen"
+promotionWeeks: 4
 ---
 
 ## The Uncomfortable Truth

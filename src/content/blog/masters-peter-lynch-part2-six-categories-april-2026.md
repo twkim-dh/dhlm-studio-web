@@ -10,6 +10,8 @@ readTime: "16 min"
 tags: ["MASTERS", "PETER-LYNCH", "STOCK-CATEGORIES", "VALUATION", "CLASSIFICATION"]
 slug: "masters-peter-lynch-part2-six-categories-april-2026"
 author: "DHLM Studio"
+contentLifespan: "evergreen"
+promotionWeeks: 4
 ---
 
 # The Peter Lynch Bible, Part 2: Stocks Are Not All the Same

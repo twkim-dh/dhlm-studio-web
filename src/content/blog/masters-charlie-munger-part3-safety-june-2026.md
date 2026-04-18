@@ -10,6 +10,8 @@ readTime: "17 min"
 tags: ["MASTERS", "CHARLIE-MUNGER", "RISK", "CASH", "RESILIENCE", "SAFETY-PARADOX"]
 slug: "masters-charlie-munger-part3-safety-june-2026"
 author: "DHLM Studio"
+contentLifespan: "evergreen"
+promotionWeeks: 4
 ---
 
 

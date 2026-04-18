@@ -10,6 +10,8 @@ readTime: "18 min"
 tags: ["MASTERS", "PETER-LYNCH", "AI-INVESTING", "2026", "SYNTHESIS", "MODERN-MARKETS"]
 slug: "masters-peter-lynch-part5-2026-synthesis-april-2026"
 author: "DHLM Studio"
+contentLifespan: "evergreen"
+promotionWeeks: 4
 ---
 
 # The Peter Lynch Bible, Part 5: If Peter Lynch Were Investing in 2026

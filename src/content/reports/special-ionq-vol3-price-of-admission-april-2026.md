@@ -10,6 +10,8 @@ readTime: "22 min"
 tags: ["SPECIAL-REPORT", "IONQ", "QUANTUM-COMPUTING", "EXECUTION-RISK", "VALUATION", "POSITION-SIZING", "INVESTMENT-FRAMEWORK"]
 slug: "special-ionq-vol3-price-of-admission-april-2026"
 author: "DHLM Studio"
+contentLifespan: "evergreen"
+promotionWeeks: 4
 ---
 
 ## The Setup
