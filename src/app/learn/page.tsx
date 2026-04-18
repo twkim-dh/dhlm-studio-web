@@ -68,7 +68,9 @@ function getAllResearch(): ResearchItem[] {
       if (pubDate > today) continue;
       out.push(fm as unknown as ResearchItem);
     }
-    return out.sort((a, b) => (b.date > a.date ? 1 : -1));
+    return out
+      .filter(a => a.badge !== 'mental-game' && a.badge !== 'structural-view')
+      .sort((a, b) => (b.date > a.date ? 1 : -1));
   } catch { return []; }
 }
 

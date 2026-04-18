@@ -41,14 +41,6 @@ function ResearchCard({ a }: { a: ResearchItem }) {
 
   return (
     <Link href={`/research/${a.slug}`} style={{ ...card, padding: 0, textDecoration: 'none', display: 'block', overflow: 'hidden' }}>
-      {a.heroImage && (
-        // eslint-disable-next-line @next/next/no-img-element
-        <img
-          src={a.heroImage}
-          alt={a.title}
-          style={{ width: '100%', aspectRatio: '16/9', objectFit: 'cover', display: 'block' }}
-        />
-      )}
       <div style={{ padding: '16px 20px 20px' }}>
         <div style={{ display: 'flex', alignItems: 'center', gap: 7, marginBottom: 10, flexWrap: 'wrap' }}>
           {a.verdict ? (

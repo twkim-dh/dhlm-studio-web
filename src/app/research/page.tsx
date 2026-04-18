@@ -76,20 +76,6 @@ function ArticleCard({ a }: { a: ArticleMeta }) {
   const c = seriesColor(a.badge);
   return (
     <Link href={`/research/${a.slug}`} style={{ ...card, padding: 0, textDecoration: 'none', display: 'block', overflow: 'hidden', borderColor: c.border }}>
-      {a.thumb && (
-        // eslint-disable-next-line @next/next/no-img-element
-        <img
-          src={a.thumb}
-          alt={a.title}
-          style={{
-            width: '100%',
-            aspectRatio: '16/9',
-            objectFit: a.thumb.endsWith('.png') ? 'contain' : 'cover',
-            background: '#0f172a',
-            display: 'block',
-          }}
-        />
-      )}
       <div style={{ padding: '16px 20px 20px' }}>
         <div style={{ display: 'flex', alignItems: 'center', gap: 8, marginBottom: 8, flexWrap: 'wrap' }}>
           {a.subcategory && (
