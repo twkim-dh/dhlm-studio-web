@@ -6,7 +6,6 @@ import Link from "next/link";
 const SearchModal = lazy(() => import("./SearchModal"));
 
 const links = [
-  { label: "Markets", href: "/markets" },
   { label: "Reports", href: "/reports" },
   { label: "Blog", href: "/blog" },
   { label: "Learn", href: "/learn" },

@@ -1,7 +1,10 @@
 User-agent: *
+Disallow: /markets/
+Disallow: /daily/
 Disallow: /tools/
 Disallow: /lottery/
-Disallow: /learn/paper-vs-profit/
+Disallow: /rankings/
+Disallow: /research/paper-vs-profit/
 Allow: /
 
 Sitemap: https://dhlm-studio.com/sitemap.xml

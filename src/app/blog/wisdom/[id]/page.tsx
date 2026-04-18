@@ -88,8 +88,8 @@ export default async function WisdomPage({ params }: { params: Promise<{ id: str
           <p style={{ fontSize: 14, color: '#E2E8F0', fontWeight: 600, margin: '0 0 4px' }}>{w.flag} {w.author}</p>
           <p style={{ fontSize: 12, color: '#94A3B8', margin: '0 0 8px' }}>{w.role}</p>
           {w.ticker && (
-            <Link href={`/markets/${w.ticker}`} style={{ fontSize: 11, color: '#60A5FA', fontFamily: 'var(--mono)' }}>
-              See ${w.ticker} Stock →
+            <Link href={`/reports`} style={{ fontSize: 11, color: '#60A5FA', fontFamily: 'var(--mono)' }}>
+              See {w.ticker} Reports →
             </Link>
           )}
         </div>

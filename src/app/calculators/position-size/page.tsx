@@ -134,9 +134,8 @@ export default function PositionSizePage() {
           <div style={{ fontFamily: 'var(--mono)', fontSize: 9, fontWeight: 700, color: '#64748B', letterSpacing: 2, marginBottom: 12 }}>EXPLORE MORE</div>
           <div style={{ display: 'flex', gap: 8, flexWrap: 'wrap' }}>
             <Link href="/reports" style={{ fontSize: 11, color: '#F59E0B', padding: '5px 12px', borderRadius: 6, background: '#F59E0B10', border: '1px solid #F59E0B20', textDecoration: 'none' }}>📋 Deep Dive Reports</Link>
-            <Link href="/markets/fear-and-greed" style={{ fontSize: 11, color: '#EF4444', padding: '5px 12px', borderRadius: 6, background: '#EF444410', border: '1px solid #EF444420', textDecoration: 'none' }}>😨 Fear & Greed Dashboard</Link>
-            <Link href="/crypto-101" style={{ fontSize: 11, color: '#A78BFA', padding: '5px 12px', borderRadius: 6, background: '#A78BFA10', border: '1px solid #A78BFA20', textDecoration: 'none' }}>📚 Crypto 101 — Reading Charts</Link>
-            <Link href="/daily" style={{ fontSize: 11, color: '#00D474', padding: '5px 12px', borderRadius: 6, background: '#00D47410', border: '1px solid #00D47420', textDecoration: 'none' }}>📰 Today&apos;s Market Brief</Link>
+            <Link href="/learn/crypto-101" style={{ fontSize: 11, color: '#A78BFA', padding: '5px 12px', borderRadius: 6, background: '#A78BFA10', border: '1px solid #A78BFA20', textDecoration: 'none' }}>📚 Crypto 101 — Reading Charts</Link>
+            <Link href="/research" style={{ fontSize: 11, color: '#8B5CF6', padding: '5px 12px', borderRadius: 6, background: '#8B5CF610', border: '1px solid #8B5CF620', textDecoration: 'none' }}>🧠 The Mental Game</Link>
           </div>
         </div>
 

@@ -1,21 +1,14 @@
 'use client';
 
-// TickerLogo — renders a company logo for the given ticker via FMP's
-// image-stock CDN (open URL, no API key, does not count toward FMP quota).
-//
-// FMP logos are RGBA PNGs with transparent backgrounds — two types:
-//   • Dark logo on transparent  (e.g. TSLA, NVDA) → visible on white bg
-//   • White logo on transparent (e.g. PLTR, AAPL) → visible on dark bg only
-//
-// Strategy: after onLoad, composite the image onto a 20×20 white canvas and
-// count "meaningfully dark" pixels. If < 5%, try a dark canvas instead.
-// If < 5% there too → show letter fallback. FMP CDN sends
-// Access-Control-Allow-Origin: * so canvas.getImageData() works.
+// TickerLogo — renders a company logo for the given ticker.
+// Uses Clearbit Logo API (free, no auth) or local SVG overrides.
+// Falls back to a colored letter badge if logo fails.
 //
 // Trademark notice: All company logos remain the property of their respective
 // owners. The site footer carries a global identification-only disclaimer.
 
 import { useState, useCallback } from 'react';
+import { TICKER_DOMAINS } from '@/lib/ticker-domains';
 
 function tickerBgColor(ticker: string): string {
   let hash = 0;
@@ -71,11 +64,13 @@ interface Props {
 }
 
 export default function TickerLogo({ ticker, size = 24, rounded = true }: Props) {
-  const localOverride = LOCAL_LOGO_OVERRIDES[ticker.toUpperCase()];
+  const sym = ticker.toUpperCase();
+  const localOverride = LOCAL_LOGO_OVERRIDES[sym];
+  const domain = TICKER_DOMAINS[sym];
   // Local overrides are black-on-transparent SVGs → always use white bg, skip canvas check
   const [bg, setBg] = useState<BgMode>(localOverride ? 'white' : 'loading');
   const radius = rounded ? Math.max(4, Math.round(size * 0.2)) : 0;
-  const url = localOverride ?? `https://financialmodelingprep.com/image-stock/${ticker.toUpperCase()}.png`;
+  const url = localOverride ?? (domain ? `https://logo.clearbit.com/${domain}` : null);
   const pad = Math.max(2, Math.round(size * 0.1));
 
   const handleLoad = useCallback((e: React.SyntheticEvent<HTMLImageElement>) => {
@@ -91,7 +86,7 @@ export default function TickerLogo({ ticker, size = 24, rounded = true }: Props)
     }
   }, [localOverride]);
 
-  if (bg === 'fallback') {
+  if (bg === 'fallback' || !url) {
     return (
       <div
         aria-label={ticker}
@@ -126,7 +121,7 @@ export default function TickerLogo({ ticker, size = 24, rounded = true }: Props)
     >
       {/* eslint-disable-next-line @next/next/no-img-element */}
       <img
-        src={url}
+        src={url!}
         alt={`${ticker} logo`}
         crossOrigin="anonymous"
         style={{

@@ -3,8 +3,6 @@ import type { NextConfig } from "next";
 const nextConfig: NextConfig = {
   images: {
     remotePatterns: [
-      { protocol: 'https', hostname: 'images.financialmodelingprep.com' },
-      { protocol: 'https', hostname: 'financialmodelingprep.com' },
       { protocol: 'https', hostname: 'coin-images.coingecko.com' },
       { protocol: 'https', hostname: 'assets.coingecko.com' },
       { protocol: 'https', hostname: 'logo.clearbit.com' },
@@ -50,14 +48,18 @@ const nextConfig: NextConfig = {
       // Sectors page removed — redirect to markets
       { source: '/markets/sectors', destination: '/markets', permanent: true },
       { source: '/markets/sectors/:path*', destination: '/markets', permanent: true },
-      // /crypto shortcut → /markets/crypto
-      { source: '/crypto', destination: '/markets/crypto', permanent: true },
-      { source: '/crypto/:path*', destination: '/markets/crypto', permanent: true },
-      // Rankings deleted — crypto → /markets/crypto, rest → home
-      { source: '/rankings/crypto', destination: '/markets/crypto', permanent: true },
-      { source: '/rankings/crypto/:path*', destination: '/markets/crypto', permanent: true },
+      // /crypto shortcut → home (markets deleted)
+      { source: '/crypto', destination: '/', permanent: true },
+      { source: '/crypto/:path*', destination: '/', permanent: true },
+      // Rankings deleted → home
       { source: '/rankings', destination: '/', permanent: true },
       { source: '/rankings/:path*', destination: '/', permanent: true },
+      // Markets deleted → home
+      { source: '/markets', destination: '/', permanent: true },
+      { source: '/markets/:path*', destination: '/', permanent: true },
+      // Daily brief deleted → home
+      { source: '/daily', destination: '/', permanent: true },
+      { source: '/daily/:path*', destination: '/', permanent: true },
       // Korean Lotto → home (lottery section deleted)
       { source: '/lotto', destination: '/', permanent: true },
       { source: '/lotto/:path*', destination: '/', permanent: true },

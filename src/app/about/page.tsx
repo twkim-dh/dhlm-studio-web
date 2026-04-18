@@ -179,12 +179,12 @@ export default function AboutPage() {
             <div style={{ fontFamily: 'var(--mono)', fontSize: 9, fontWeight: 700, color: '#A78BFA', letterSpacing: 2, marginBottom: 10 }}>WHAT WE BUILD</div>
             <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(200px, 1fr))', gap: 10 }}>
               {[
-                { icon: '📈', title: 'Market Movers', desc: 'Daily gainers, losers & most active', href: '/markets' },
                 { icon: '🔥', title: 'Deep Dive Reports', desc: 'Institutional-grade stock analysis (BEAF)', href: '/reports' },
-                { icon: '🪙', title: 'Crypto Markets', desc: 'Live prices & analysis', href: '/markets/crypto' },
-                { icon: '📰', title: 'Research Lab', desc: 'The Mental Game series', href: '/research' },
+                { icon: '🧠', title: 'The Mental Game', desc: 'Psychology & frameworks for investors', href: '/research' },
                 { icon: '📚', title: 'Crypto 101', desc: '12-week beginner curriculum', href: '/learn/crypto-101' },
+                { icon: '📝', title: 'Blog', desc: 'The Masters series & Weekend Read', href: '/blog' },
                 { icon: '💡', title: 'Wall Street Wisdom', desc: '100 investing quotes', href: '/blog/wisdom' },
+                { icon: '🎓', title: 'Learn', desc: 'Investing 101 & crypto education', href: '/learn' },
               ].map(item => (
                 <Link key={item.title} href={item.href} style={{ padding: '12px 14px', borderRadius: 10, background: '#0D1117', border: '1px solid #1E293B', textDecoration: 'none' }}>
                   <span style={{ fontSize: 18 }}>{item.icon}</span>

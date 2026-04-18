@@ -13,8 +13,8 @@ export default function NotFound() {
           <Link href="/" style={{ padding: '10px 24px', borderRadius: 8, background: '#C73E3A', color: '#fff', fontWeight: 700, fontSize: 13, fontFamily: 'var(--sans)' }}>
             Go Home
           </Link>
-          <Link href="/markets" style={{ padding: '10px 24px', borderRadius: 8, background: '#111827', color: '#94A3B8', border: '1px solid #1E293B', fontWeight: 600, fontSize: 13, fontFamily: 'var(--sans)' }}>
-            Markets
+          <Link href="/reports" style={{ padding: '10px 24px', borderRadius: 8, background: '#111827', color: '#94A3B8', border: '1px solid #1E293B', fontWeight: 600, fontSize: 13, fontFamily: 'var(--sans)' }}>
+            Reports
           </Link>
         </div>
       </div>

@@ -3,7 +3,6 @@ import { Playfair_Display, DM_Sans, IBM_Plex_Mono } from "next/font/google";
 import Header from "@/components/Header";
 import Footer from "@/components/Footer";
 import MobileNav from "@/components/MobileNav";
-import TickerMarquee from "@/components/TickerMarquee";
 import CookieConsent from "@/components/CookieConsent";
 import NoRightClick from "@/components/NoRightClick";
 import "./globals.css";
@@ -34,19 +33,18 @@ const YEAR = new Date().getFullYear();
 export const metadata: Metadata = {
   metadataBase: new URL("https://dhlm-studio.com"),
   title: {
-    default: `DHLM Studio — Brutal Edge Market Intelligence | ${YEAR}`,
+    default: `DHLM Studio — Brutal Edge™ Financial Analysis`,
     template: `%s | DHLM Studio`,
   },
-  description: `Real-time market data, CNN Fear & Greed Index, Brutal Edge Deep Dive reports, and data-driven stock analysis. ${YEAR}.`,
+  description: `Deep Dive reports, The Mental Game, and data-driven investing education. Brutal Edge™ — for serious long-term investors. ${YEAR}.`,
   keywords: [
-    "DHLM Studio", "Brutal Edge", "stock market analysis", "Deep Dive reports",
-    "Fear and Greed Index", "BEAF framework", "crypto analysis", "Bitcoin analysis",
-    "data-driven stock analysis", "Hot Sector reports", "market intelligence",
-    "real-time market data", "TODAY'S MARKET", "S&P 500 live",
+    "DHLM Studio", "Brutal Edge", "Deep Dive reports", "BEAF framework",
+    "stock analysis", "crypto analysis", "investing education", "financial research",
+    "The Mental Game", "The Structural View", "Crypto 101", "long-term investing",
   ],
   openGraph: {
-    title: `DHLM Studio — Brutal Edge Market Intelligence`,
-    description: `Real-time market data, Fear & Greed Index, Deep Dive reports, and data-driven stock analysis.`,
+    title: `DHLM Studio — Brutal Edge™ Financial Analysis`,
+    description: `Deep Dive reports, The Mental Game, and data-driven investing education. For serious long-term investors.`,
     url: "https://dhlm-studio.com",
     siteName: "DHLM Studio",
     locale: "en_US",
@@ -55,8 +53,8 @@ export const metadata: Metadata = {
   },
   twitter: {
     card: "summary_large_image",
-    title: "DHLM Studio — Brutal Edge Market Intelligence",
-    description: "Real-time market data, Fear & Greed Index, Deep Dive reports, and data-driven stock analysis.",
+    title: "DHLM Studio — Brutal Edge™ Financial Analysis",
+    description: "Deep Dive reports, The Mental Game, and data-driven investing education. For serious long-term investors.",
     images: [{ url: "https://dhlm-studio.com/twitter-image", width: 1200, height: 630, alt: "DHLM Studio — Brutal Edge Market Intelligence" }],
   },
   // No root-level canonical — each page sets its own via alternates.canonical.
@@ -118,12 +116,12 @@ export default function RootLayout({
             "name": "DHLM Studio",
             "url": "https://dhlm-studio.com",
             "logo": "https://dhlm-studio.com/favicon.ico",
-            "description": "Brutal Edge market intelligence: real-time market data, Fear & Greed Index, Deep Dive reports, and data-driven stock analysis.",
+            "description": "Brutal Edge financial analysis: Deep Dive reports, The Mental Game, investing education. For serious long-term investors.",
             "sameAs": ["https://github.com/twkim-dh"],
             "contactPoint": { "@type": "ContactPoint", "email": "dhlmstudio2026@gmail.com" }
           })}}
         />
-        {/* JSON-LD WebSite with SearchAction */}
+        {/* JSON-LD WebSite */}
         <script
           type="application/ld+json"
           dangerouslySetInnerHTML={{ __html: JSON.stringify({
@@ -131,20 +129,13 @@ export default function RootLayout({
             "@type": "WebSite",
             "name": "DHLM Studio",
             "url": "https://dhlm-studio.com",
-            "description": "Brutal Edge Market Intelligence — real-time market data, Fear & Greed Index, Deep Dive reports, and data-driven stock analysis.",
-            "potentialAction": {
-              "@type": "SearchAction",
-              "target": "https://dhlm-studio.com/markets/search?q={search_term_string}",
-              "query-input": "required name=search_term_string"
-            }
+            "description": "Brutal Edge financial analysis: Deep Dive reports, The Mental Game, investing education.",
           })}}
         />
       </head>
       <body style={{ background: '#0B0F19', color: '#F1F5F9', fontFamily: "'DM Sans', -apple-system, sans-serif" }} className="min-h-screen flex flex-col">
         <NoRightClick />
         <a href="#main-content" className="skip-to-content">Skip to content</a>
-        <TickerMarquee />
-        <div style={{ height: 28 }} /> {/* Marquee spacer */}
         <Header />
         <main id="main-content" className="flex-1 pb-14 md:pb-0">{children}</main>
         <Footer />
