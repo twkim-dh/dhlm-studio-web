@@ -140,8 +140,7 @@ const nextConfig: NextConfig = {
       // Missing explicit deep-dive redirects
       { source: '/blog/deep-dive-crcl-circle-april-2026', destination: '/reports/deep-dive-crcl-circle-april-2026',  permanent: true },
       { source: '/blog/deep-dive-rdw-redwire-april-2026', destination: '/reports/deep-dive-rdw-redwire-april-2026',  permanent: true },
-      // Phase 3 catch-all: any future /blog/deep-dive-* → /reports/deep-dive-*
-      { source: '/blog/deep-dive-:slug*',                  destination: '/reports/deep-dive-:slug*',                  permanent: true },
+
     ];
   },
 };
