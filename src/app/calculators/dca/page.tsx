@@ -288,7 +288,7 @@ export default function DCAPage() {
               <div style={{ display: 'flex', gap: 8, flexWrap: 'wrap' }}>
                 <Link href="/calculators/compound-interest" style={{ fontSize: 11, color: '#F59E0B', padding: '5px 12px', borderRadius: 6, background: '#F59E0B10', border: '1px solid #F59E0B20', textDecoration: 'none' }}>📈 Compound Interest Calculator</Link>
                 <Link href="/crypto-101" style={{ fontSize: 11, color: '#A78BFA', padding: '5px 12px', borderRadius: 6, background: '#A78BFA10', border: '1px solid #A78BFA20', textDecoration: 'none' }}>📚 Crypto 101 — Week 4: How to Buy</Link>
-                <Link href="/rankings/crypto" style={{ fontSize: 11, color: '#60A5FA', padding: '5px 12px', borderRadius: 6, background: '#3B82F610', border: '1px solid #3B82F620', textDecoration: 'none' }}>🪙 Live Crypto Rankings</Link>
+                <Link href="/markets/crypto" style={{ fontSize: 11, color: '#60A5FA', padding: '5px 12px', borderRadius: 6, background: '#3B82F610', border: '1px solid #3B82F620', textDecoration: 'none' }}>🪙 Live Crypto Markets</Link>
                 <Link href="/daily" style={{ fontSize: 11, color: '#00D474', padding: '5px 12px', borderRadius: 6, background: '#00D47410', border: '1px solid #00D47420', textDecoration: 'none' }}>📰 Today&apos;s Market Brief</Link>
               </div>
             </div>

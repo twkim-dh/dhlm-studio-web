@@ -271,7 +271,7 @@ export default function Crypto101Page() {
         {/* Back links */}
         <div style={{ marginTop: 24, display: 'flex', gap: 12 }}>
           <Link href="/learn" style={{ fontSize: 12, color: '#64748B', textDecoration: 'none' }}>← Back to Academy</Link>
-          <Link href="/rankings/crypto" style={{ fontSize: 12, color: '#64748B', textDecoration: 'none' }}>Crypto Rankings →</Link>
+          <Link href="/markets/crypto" style={{ fontSize: 12, color: '#64748B', textDecoration: 'none' }}>Crypto Markets →</Link>
         </div>
 
         <p style={{ fontSize: 9, color: '#334155', marginTop: 20, textAlign: 'center' }}>

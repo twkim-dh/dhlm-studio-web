@@ -16,9 +16,6 @@ export default function NotFound() {
           <Link href="/markets" style={{ padding: '10px 24px', borderRadius: 8, background: '#111827', color: '#94A3B8', border: '1px solid #1E293B', fontWeight: 600, fontSize: 13, fontFamily: 'var(--sans)' }}>
             Markets
           </Link>
-          <Link href="/rankings" style={{ padding: '10px 24px', borderRadius: 8, background: '#111827', color: '#94A3B8', border: '1px solid #1E293B', fontWeight: 600, fontSize: 13, fontFamily: 'var(--sans)' }}>
-            Rankings
-          </Link>
         </div>
       </div>
     </div>

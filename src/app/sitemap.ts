@@ -43,15 +43,6 @@ export default function sitemap(): MetadataRoute.Sitemap {
     { url: `${BASE}/learn/crypto-101`,   lastModified: now, changeFrequency: "weekly",  priority: 0.8 },
     { url: `${BASE}/learn/investing-101`,lastModified: now, changeFrequency: "monthly", priority: 0.7 },
     { url: `${BASE}/research`,            lastModified: now, changeFrequency: "weekly",  priority: 0.8 },
-    { url: `${BASE}/rankings/crypto`,    lastModified: now, changeFrequency: "daily",   priority: 0.8 },
-
-    // Rankings
-    { url: `${BASE}/rankings`,           lastModified: now, changeFrequency: "weekly",  priority: 0.8 },
-    { url: `${BASE}/rankings/billionaires`, lastModified: now, changeFrequency: "weekly", priority: 0.7 },
-    { url: `${BASE}/rankings/companies`, lastModified: now, changeFrequency: "weekly",  priority: 0.7 },
-    { url: `${BASE}/rankings/gdp`,       lastModified: now, changeFrequency: "monthly", priority: 0.6 },
-    { url: `${BASE}/rankings/population`,lastModified: now, changeFrequency: "monthly", priority: 0.6 },
-    { url: `${BASE}/rankings/sports`,    lastModified: now, changeFrequency: "weekly",  priority: 0.6 },
 
     // Markets sub-pages
     { url: `${BASE}/markets/fear-and-greed`, lastModified: now, changeFrequency: "daily", priority: 0.8 },

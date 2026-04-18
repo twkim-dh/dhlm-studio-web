@@ -17,13 +17,11 @@ const tabs = [
 // Secondary destinations live in the More menu — same set as before plus
 // Creators/Rankings demoted from primary nav, Daily promoted out of More.
 const moreLinks = [
-  { href: '/rankings/crypto', label: '🪙 Crypto', color: '#F59E0B' },
-  { href: '/lottery', label: '🎰 Lottery', color: '#EF4444' },
+  { href: '/markets/crypto', label: '🪙 Crypto', color: '#F59E0B' },
   { href: '/blog', label: '📖 Blog', color: '#60A5FA' },
   { href: '/blog/wisdom', label: '💡 Wisdom', color: '#D4A843' },
-  { href: '/rankings', label: '🏆 Rankings', color: '#D4A843' },
+  { href: '/learn', label: '🎓 Learn', color: '#A78BFA' },
   { href: '/creators', label: '🔥 Creators', color: '#A78BFA' },
-  { href: '/tools', label: '🧮 Tools', color: '#64748B' },
   { href: '/about', label: 'ℹ️ About', color: '#94A3B8' },
 ];
 

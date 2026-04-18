@@ -1,5 +1,4 @@
 import type { Metadata } from 'next';
-import Image from 'next/image';
 import fs from 'fs';
 import path from 'path';
 import LearnClient from '@/components/LearnClient';
@@ -124,18 +123,6 @@ export default function LearnPage() {
   return (
     <div style={{ background: '#0B0F19', minHeight: '100vh' }}>
       <div style={{ maxWidth: 860, margin: '0 auto', padding: '64px 24px' }}>
-
-        {/* Hero image */}
-        <div style={{ borderRadius: 16, overflow: 'hidden', marginBottom: 36 }}>
-          <Image
-            src="/images/content/learn-hero-banner.png"
-            alt="Learn investing the way it actually works"
-            width={860}
-            height={430}
-            style={{ width: '100%', height: 'auto', display: 'block' }}
-            priority
-          />
-        </div>
 
         {/* Header */}
         <div style={{ marginBottom: 32 }}>

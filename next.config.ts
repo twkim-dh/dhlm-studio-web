@@ -31,9 +31,9 @@ const nextConfig: NextConfig = {
       { source: '/tools/msg/:path*', destination: '/', permanent: true },
       { source: '/tools/gen/:path*', destination: '/', permanent: true },
       { source: '/tools/image/:path*', destination: '/', permanent: true },
-      { source: '/tools/compare/:path*', destination: '/rankings', permanent: true },
+      { source: '/tools/compare/:path*', destination: '/', permanent: true },
       // Deleted compare
-      { source: '/compare/:path*', destination: '/rankings', permanent: true },
+      { source: '/compare/:path*', destination: '/', permanent: true },
       // Deleted Korea/blog content
       { source: '/korea/:path*', destination: '/', permanent: true },
       { source: '/blog/korea/:path*', destination: '/blog', permanent: true },
@@ -50,9 +50,14 @@ const nextConfig: NextConfig = {
       // Sectors page removed — redirect to markets
       { source: '/markets/sectors', destination: '/markets', permanent: true },
       { source: '/markets/sectors/:path*', destination: '/markets', permanent: true },
-      // /crypto shortcut → canonical /rankings/crypto
-      { source: '/crypto', destination: '/rankings/crypto', permanent: true },
-      { source: '/crypto/:path*', destination: '/rankings/crypto/:path*', permanent: true },
+      // /crypto shortcut → /markets/crypto
+      { source: '/crypto', destination: '/markets/crypto', permanent: true },
+      { source: '/crypto/:path*', destination: '/markets/crypto', permanent: true },
+      // Rankings deleted — crypto → /markets/crypto, rest → home
+      { source: '/rankings/crypto', destination: '/markets/crypto', permanent: true },
+      { source: '/rankings/crypto/:path*', destination: '/markets/crypto', permanent: true },
+      { source: '/rankings', destination: '/', permanent: true },
+      { source: '/rankings/:path*', destination: '/', permanent: true },
       // Korean Lotto → home (lottery section deleted)
       { source: '/lotto', destination: '/', permanent: true },
       { source: '/lotto/:path*', destination: '/', permanent: true },

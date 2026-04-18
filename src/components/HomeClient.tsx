@@ -138,7 +138,7 @@ export function CryptoPreview() {
     <div style={{ display: 'flex', flexDirection: 'column', gap: 6 }}>
       <p style={{ fontFamily: 'var(--mono)', fontSize: 10, color: '#00D474', marginBottom: 4 }}>● LIVE — CoinGecko</p>
       {coins.map((c, i) => (
-        <Link key={c.symbol} href="/rankings/crypto" style={{
+        <Link key={c.symbol} href="/markets/crypto" style={{
           background: '#111827', borderRadius: 14, border: '1px solid #1E293B',
           display: 'flex', alignItems: 'center', gap: 12, padding: '14px 18px', textDecoration: 'none',
         }}>

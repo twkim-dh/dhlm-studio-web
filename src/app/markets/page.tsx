@@ -246,7 +246,7 @@ export default function MarketsPage() {
         <div style={{ background: '#111827', borderRadius: 12, border: '1px solid #1E293B', overflow: 'hidden', marginBottom: 20 }}>
           <div style={{ padding: '10px 16px', borderBottom: '1px solid #1E293B', display: 'flex', justifyContent: 'space-between', alignItems: 'center' }}>
             <div style={{ fontFamily: 'var(--mono)', fontSize: 10, fontWeight: 700, color: '#F59E0B', letterSpacing: 1.5 }}>🪙 CRYPTO — BTC · ETH · SOL + TOP ALTCOINS</div>
-            <Link href="/rankings/crypto" style={{ fontSize: 10, color: '#F59E0B', fontFamily: 'var(--mono)', textDecoration: 'none' }}>Full Rankings →</Link>
+            <Link href="/markets/crypto" style={{ fontSize: 10, color: '#F59E0B', fontFamily: 'var(--mono)', textDecoration: 'none' }}>Full Markets →</Link>
           </div>
           {cryptos.length === 0 ? (
             <div style={{ padding: '20px', textAlign: 'center', fontSize: 11, color: '#334155', fontFamily: 'var(--mono)' }}>Loading crypto data...</div>
@@ -256,7 +256,7 @@ export default function MarketsPage() {
                 const up = c.change24h >= 0;
                 const sym = c.symbol?.toUpperCase() || c.id.slice(0, 5).toUpperCase();
                 return (
-                  <Link key={c.id} href={`/rankings/crypto/${c.id}`} style={{
+                  <Link key={c.id} href={`/markets/crypto`} style={{
                     textDecoration: 'none', padding: '12px 14px',
                     borderRight: i % 4 !== 3 ? '1px solid #1E293B40' : 'none',
                     borderBottom: i < 4 ? '1px solid #1E293B40' : 'none',

@@ -38,7 +38,7 @@ export default function CryptoHeatmap({ coins }: { coins: HeatmapCoin[] }) {
           // Clamp between 3.5% and 25% to prevent extreme size disparities
           const flexBasis = `${Math.max(3.5, Math.min(sqrtShare, 25))}%`;
           return (
-            <Link key={c.id} href={`/rankings/crypto/${c.id}`} style={{ textDecoration: 'none', flexGrow: 1, flexBasis }}>
+            <Link key={c.id} href={`/markets/crypto`} style={{ textDecoration: 'none', flexGrow: 1, flexBasis }}>
               <div style={{
                 ...style,
                 borderRadius: 6,
