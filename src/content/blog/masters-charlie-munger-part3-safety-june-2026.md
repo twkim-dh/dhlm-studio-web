@@ -1,6 +1,6 @@
 ---
-title: "The Masters: Charlie Munger Part 3 â When You Feel Safest, You May Be Most Exposed"
-description: "The paradox of safety, the value of cash, and why real security is resilience. What feels safe is often only what feels familiar â and the moment something feels unquestionably secure may be the moment risk is most underpriced."
+title: "The Masters: Charlie Munger Part 3 — When You Feel Safest, You May Be Most Exposed"
+description: "The paradox of safety, the value of cash, and why real security is resilience. What feels safe is often only what feels familiar — and the moment something feels unquestionably secure may be the moment risk is most underpriced."
 date: "2026-06-12T12:30:00Z"
 category: "Blog"
 subcategory: "The Masters"
@@ -138,7 +138,7 @@ Resilience means:
 
 They want assets that look smooth, sound respectable, and make them feel protected.
 
-But Munger's worldview suggests that true protection lies elsewhere. It lies in building a system where, when bad things arrive â and they always do eventually â you are not forced into permanent damage.
+But Munger's worldview suggests that true protection lies elsewhere. It lies in building a system where, when bad things arrive — and they always do eventually — you are not forced into permanent damage.
 
 The truly safe investor is not the one who says:
 
@@ -328,7 +328,7 @@ An asset does not become safe because it is widely called defensive. It becomes 
 - The downside is survivable
 - The expected return still compensates for the risk
 
-If a so-called defensive asset is massively overowned, richly valued, and implicitly expected to behave perfectly â **it may be less defensive than it appears.**
+If a so-called defensive asset is massively overowned, richly valued, and implicitly expected to behave perfectly — **it may be less defensive than it appears.**
 
 This is where Munger's skepticism becomes so valuable.
 
@@ -403,7 +403,7 @@ If an investment only works when:
 - Liquidity stays abundant
 - The narrative remains intact
 
-â¦then the margin of safety is likely weaker than it looks.
+…then the margin of safety is likely weaker than it looks.
 
 ### 5. Treats emotional comfort as a warning signal, not confirmation
 
@@ -455,11 +455,11 @@ Because what investors often call "safe" is just what helps them sleep tonight.
 
 **Next in the series:**
 
-**Part 4 â The Fastest Road to Ruin Is the Desire to Get Rich Fast.** Leverage, overconfidence, and the fatal seduction of speed â why intelligent people blow up in markets not from ignorance, but from impatience.
+**Part 4 — The Fastest Road to Ruin Is the Desire to Get Rich Fast.** Leverage, overconfidence, and the fatal seduction of speed — why intelligent people blow up in markets not from ignorance, but from impatience.
 
 ---
 
-## Appendix â The Munger Resilience Checklist (Part 3)
+## Appendix — The Munger Resilience Checklist (Part 3)
 
 Before you label anything "safe," ask:
 
@@ -477,12 +477,12 @@ Before you label anything "safe," ask:
 
 ## Related Reading
 
-- [Part 1 â Don't Try to Be Brilliant. Just Stop Doing Stupid Things.](/blog/masters-charlie-munger-part1-stupidity-may-2026)
-- [Part 2 â It's Not Ignorance That Ruins You. It's Ego.](/blog/masters-charlie-munger-part2-ego-june-2026)
+- [Part 1 — Don't Try to Be Brilliant. Just Stop Doing Stupid Things.](/blog/masters-charlie-munger-part1-stupidity-may-2026)
+- [Part 2 — It's Not Ignorance That Ruins You. It's Ego.](/blog/masters-charlie-munger-part2-ego-june-2026)
 - [The Mental Game #002: How to Survive an AI Bubble](/research/mental-game-002-ai-bubble-survival)
 
 ---
 
 *For informational and educational purposes only. Not investment advice. The author has no position in any security mentioned. Always conduct your own research.*
 
-*For the edge that cuts through the noise â Brutal Edge.*
+*For the edge that cuts through the noise — Brutal Edge.*

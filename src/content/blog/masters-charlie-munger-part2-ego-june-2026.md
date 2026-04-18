@@ -1,6 +1,6 @@
 ---
-title: "The Masters: Charlie Munger Part 2 â It's Not Ignorance That Ruins You. It's Ego."
-description: "The invisible enemy in investing is usually the one in the mirror. Why the most dangerous force in markets is not lack of information, but the part of you that wants to feel smart, right, early, and in control. Fear, greed, and envy â the emotional trinity that empties portfolios."
+title: "The Masters: Charlie Munger Part 2 — It's Not Ignorance That Ruins You. It's Ego."
+description: "The invisible enemy in investing is usually the one in the mirror. Why the most dangerous force in markets is not lack of information, but the part of you that wants to feel smart, right, early, and in control. Fear, greed, and envy — the emotional trinity that empties portfolios."
 date: "2026-06-05T12:30:00Z"
 category: "Blog"
 subcategory: "The Masters"
@@ -40,7 +40,7 @@ That force has many names:
 
 Whatever you call it, the result is the same.
 
-**It makes investors do irrational things for psychological reasons â and then explain those decisions with financial language after the fact.**
+**It makes investors do irrational things for psychological reasons — and then explain those decisions with financial language after the fact.**
 
 That is the real danger.
 
@@ -87,7 +87,7 @@ But Munger would push the investor to look somewhere harder first.
 
 This is where investing becomes morally uncomfortable in the best possible way.
 
-Because the market may be volatile, manic, euphoric, stupid, cruel, and inconsistent â but none of those things can actually destroy you unless they provoke you into self-destructive behavior.
+Because the market may be volatile, manic, euphoric, stupid, cruel, and inconsistent — but none of those things can actually destroy you unless they provoke you into self-destructive behavior.
 
 - The market can offer temptation. It cannot force you to accept it.
 - The market can create panic. It cannot force you to liquidate good assets in emotional collapse.
@@ -103,7 +103,7 @@ You do not just feel the pain of loss. You feel the pain of comparison.
 
 ---
 
-## Fear, Greed, and Envy â The Emotional Trinity That Empties Portfolios
+## Fear, Greed, and Envy — The Emotional Trinity That Empties Portfolios
 
 If Munger had to reduce much of investor failure to a few enduring emotional patterns, three would stand above the rest:
 
@@ -318,7 +318,7 @@ If you know that:
 - Social comparison affects your judgment
 - Volatility reduces your decision quality
 
-â¦then your system must account for that.
+…then your system must account for that.
 
 **This is not weakness. It is maturity.**
 
@@ -491,34 +491,34 @@ And in the end, endurance is what lets compounding do its work.
 
 **Next in the series:**
 
-**Part 3 â When You Feel Safest, You May Be Most Exposed.** Why the paradox of safety, the value of cash, and the illusion of stability are often where real risk hides.
+**Part 3 — When You Feel Safest, You May Be Most Exposed.** Why the paradox of safety, the value of cash, and the illusion of stability are often where real risk hides.
 
 ---
 
-## Appendix â The Munger Temperament Checklist (Part 2)
+## Appendix — The Munger Temperament Checklist (Part 2)
 
 Before making any major investment decision, ask:
 
 1. Am I acting from analysis, or from comparison?
 2. Would I still like this idea if nobody else were talking about it?
-3. Am I increasing risk because the opportunity is great â or because I feel left behind?
+3. Am I increasing risk because the opportunity is great — or because I feel left behind?
 4. Is my reluctance to sell based on conviction, or on ego?
 5. Am I emotionally equipped to handle being wrong on this position?
-6. Have I built my system around my real temperament â or my fantasy temperament?
+6. Have I built my system around my real temperament — or my fantasy temperament?
 7. Is this portfolio serving my future, or my ego?
 
-**If those questions make you uncomfortable, that is useful. Discomfort is often the first sign that ego has entered the investment process â and that is usually the moment discipline matters most.**
+**If those questions make you uncomfortable, that is useful. Discomfort is often the first sign that ego has entered the investment process — and that is usually the moment discipline matters most.**
 
 ---
 
 ## Related Reading
 
-- [Part 1 â Don't Try to Be Brilliant. Just Stop Doing Stupid Things.](/blog/masters-charlie-munger-part1-stupidity-may-2026)
+- [Part 1 — Don't Try to Be Brilliant. Just Stop Doing Stupid Things.](/blog/masters-charlie-munger-part1-stupidity-may-2026)
 - [The Mental Game #001: Why Bull Markets Make You Worse at Investing](/research/mental-game-001-bull-market-psychology)
-- [The Masters: Livermore â The Price of Abandoning Your Rules](/blog/masters-jesse-livermore-price-confirmation-april-2026)
+- [The Masters: Livermore — The Price of Abandoning Your Rules](/blog/masters-jesse-livermore-price-confirmation-april-2026)
 
 ---
 
 *For informational and educational purposes only. Not investment advice. The author has no position in any security mentioned. Always conduct your own research.*
 
-*For the edge that cuts through the noise â Brutal Edge.*
+*For the edge that cuts through the noise — Brutal Edge.*

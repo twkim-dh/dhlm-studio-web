@@ -1,6 +1,6 @@
 ---
 title: "The Peter Lynch Bible, Part 1: There's a Ten-Bagger Closer Than You Think"
-description: "Peter Lynch's most famous line â 'invest in what you know' â is one of the most misunderstood sentences in investing. Here's what he actually meant, why it still matters in 2026, and how to turn everyday observation into disciplined investment hypotheses."
+description: "Peter Lynch's most famous line — 'invest in what you know' — is one of the most misunderstood sentences in investing. Here's what he actually meant, why it still matters in 2026, and how to turn everyday observation into disciplined investment hypotheses."
 date: "2026-04-17"
 category: "Blog"
 subcategory: "The Masters"
@@ -28,7 +28,7 @@ Then you got interested.
 
 By the time that sequence completes, the stock is usually already expensive.
 
-Peter Lynch's career was built on inverting this process. His edge wasn't predictive genius. It wasn't proprietary data. It wasn't even superior access to management â though he had plenty of that.
+Peter Lynch's career was built on inverting this process. His edge wasn't predictive genius. It wasn't proprietary data. It wasn't even superior access to management — though he had plenty of that.
 
 His edge was simpler and more brutal:
 
@@ -36,7 +36,7 @@ His edge was simpler and more brutal:
 
 Most people who quote Lynch stop at the noticing part. They skip the verification. That's why they don't get his results.
 
-This is Part 1 of a five-part series on Peter Lynch for 2026 markets. If you read only one part, read this one â because everything else fails without this foundation.
+This is Part 1 of a five-part series on Peter Lynch for 2026 markets. If you read only one part, read this one — because everything else fails without this foundation.
 
 ---
 
@@ -83,7 +83,7 @@ One of those produces compounding capital. The other produces expensive lessons.
 
 ---
 
-## The Individual Investor's Edge in 2026 â Different, Not Gone
+## The Individual Investor's Edge in 2026 — Different, Not Gone
 
 In Lynch's era, a retail investor could genuinely out-observe Wall Street. Institutions didn't see most consumer-level behavior in real time.
 
@@ -97,7 +97,7 @@ In Lynch's era, a retail investor could genuinely out-observe Wall Street. Insti
 - Social-media mention volume
 - Customer-review sentiment
 
-The old edge â "I noticed something Wall Street didn't" â is almost extinct as a standalone advantage.
+The old edge — "I noticed something Wall Street didn't" — is almost extinct as a standalone advantage.
 
 So is Lynch's framework dead?
 
@@ -237,23 +237,23 @@ Lynch told investors to look around them. He never told them to skip the numbers
 
 Translating his approach into a repeatable framework:
 
-**Step 1 â Notice the anomaly.**
+**Step 1 — Notice the anomaly.**
 
 Find something standing out in real life: unusual demand, repeated behavior, rapid adoption, sticky brand recall, a meaningful shift in routine.
 
-**Step 2 â Ask whether it's cyclical or structural.**
+**Step 2 — Ask whether it's cyclical or structural.**
 
 Is this a one-time burst? Seasonal? Promotional? Or is actual behavior changing permanently?
 
-**Step 3 â Check the numbers.**
+**Step 3 — Check the numbers.**
 
 At minimum: revenue growth, operating income, debt, cash, inventory trends, valuation vs expectations.
 
-**Step 4 â Ask why the market may still be slow.**
+**Step 4 — Ask why the market may still be slow.**
 
 Is the company too small for institutions? Too boring for retail? In an unfashionable industry? Covered by too few analysts? Misunderstood because the story sounds dull?
 
-**Step 5 â Build a scenario, not a story.**
+**Step 5 — Build a scenario, not a story.**
 
 What exactly is the thesis? What would prove it wrong? Which specific numbers would force a mind change?
 
@@ -285,7 +285,7 @@ Not why you like it. Why the broader market keeps choosing it. Your preference i
 
 **5. Never buy on first impression alone.**
 
-Always create distance between discovery and purchase. That gap â even if it's only 48 hours â is where discipline lives.
+Always create distance between discovery and purchase. That gap — even if it's only 48 hours — is where discipline lives.
 
 ---
 
@@ -326,7 +326,7 @@ That mindset has not aged in 40 years. It will not age in the next 40.
 
 The entire chapter compresses to one sentence:
 
-**A good investment idea may begin in daily life â but a good investment is completed only through financial verification.**
+**A good investment idea may begin in daily life — but a good investment is completed only through financial verification.**
 
 Everyday observation is a real advantage for individual investors.
 
@@ -341,7 +341,7 @@ Lynch did not say "buy what feels familiar."
 
 He said, in spirit:
 
-> See what others miss â then do the work.
+> See what others miss — then do the work.
 
 That is the foundation. Everything in the remaining four parts of this series builds on it.
 
@@ -355,7 +355,7 @@ That line will be the spine of the entire series. If you can't finish that sente
 
 ---
 
-## Appendix â The Lynch-Style Checklist (Part 1)
+## Appendix — The Lynch-Style Checklist (Part 1)
 
 Answer yes or no:
 
@@ -370,22 +370,22 @@ Answer yes or no:
 
 **If you cannot answer "yes" to at least six of these, you are not in the buying stage. You are still in the observation stage.**
 
-That distinction â observation vs buying â is the entire difference between Lynch-style investing and retail pattern-chasing.
+That distinction — observation vs buying — is the entire difference between Lynch-style investing and retail pattern-chasing.
 
 **Next in the series:**
 
-**Part 2 â Stocks Are Not All the Same.** Lynch's six-category framework for classifying companies, and why misclassification is the most common cause of retail underperformance.
+**Part 2 — Stocks Are Not All the Same.** Lynch's six-category framework for classifying companies, and why misclassification is the most common cause of retail underperformance.
 
 ---
 
 ## Related Reading
 
-- [The Masters: Druckenmiller](/blog/masters-stanley-druckenmiller-real-edge-april-2026) â Rules-based compounding
-- [The Masters: Livermore](/blog/masters-jesse-livermore-price-confirmation-april-2026) â What happens when a great trader stops following his own rules
-- [The Mental Game #001: Why Bull Markets Make You Worse](/research/mental-game-001-bull-market-psychology) â The psychology underneath every Lynch principle
+- [The Masters: Druckenmiller](/blog/masters-stanley-druckenmiller-real-edge-april-2026) — Rules-based compounding
+- [The Masters: Livermore](/blog/masters-jesse-livermore-price-confirmation-april-2026) — What happens when a great trader stops following his own rules
+- [The Mental Game #001: Why Bull Markets Make You Worse](/research/mental-game-001-bull-market-psychology) — The psychology underneath every Lynch principle
 
 ---
 
 *For informational and educational purposes only. Not investment advice. The author has no position in any security mentioned. Always conduct your own research.*
 
-*For the edge that cuts through the noise â Brutal Edge.*
+*For the edge that cuts through the noise — Brutal Edge.*

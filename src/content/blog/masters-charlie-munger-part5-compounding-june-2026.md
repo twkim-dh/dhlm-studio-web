@@ -1,5 +1,5 @@
 ---
-title: "The Masters: Charlie Munger Part 5 â The Quiet Truth of Compounding"
+title: "The Masters: Charlie Munger Part 5 — The Quiet Truth of Compounding"
 description: "Why investing should be boring, and why patience is a superpower. The investor who can tolerate silence, resist unnecessary action, and let time do its work has an advantage that no market cycle can easily replicate."
 date: "2026-06-26T12:30:00Z"
 category: "Blog"
@@ -49,7 +49,7 @@ But Munger understood a harder truth:
 
 > **Activity is not the same as progress. And in investing, it is often the enemy of it.**
 
-This is where the series ends â and where Munger's wisdom becomes most countercultural.
+This is where the series ends — and where Munger's wisdom becomes most countercultural.
 
 - **Part 1** taught that survival matters more than brilliance.
 - **Part 2** taught that ego is often the real enemy.
@@ -58,7 +58,7 @@ This is where the series ends â and where Munger's wisdom becomes most coun
 
 **Now Part 5 teaches the final lesson:**
 
-> Compounding requires boredom, and patience is not passive â it is one of the highest forms of financial intelligence.
+> Compounding requires boredom, and patience is not passive — it is one of the highest forms of financial intelligence.
 
 ---
 
@@ -333,7 +333,7 @@ This does not mean patience alone is enough. Patience without judgment can becom
 - Sensible prices
 - A durable process
 
-**â¦becomes one of the strongest forces in investing.**
+**…becomes one of the strongest forces in investing.**
 
 Why? Because so many people cannot do it.
 
@@ -493,24 +493,24 @@ That is the quiet truth. **And it may be the most important truth of all.**
 
 ## The Complete Series
 
-- [Part 1 â Don't Try to Be Brilliant. Just Stop Doing Stupid Things.](/blog/masters-charlie-munger-part1-stupidity-may-2026)
-- [Part 2 â It's Not Ignorance That Ruins You. It's Ego.](/blog/masters-charlie-munger-part2-ego-june-2026)
-- [Part 3 â When You Feel Safest, You May Be Most Exposed.](/blog/masters-charlie-munger-part3-safety-june-2026)
-- [Part 4 â The Fastest Road to Ruin Is the Desire to Get Rich Fast.](/blog/masters-charlie-munger-part4-leverage-june-2026)
-- **Part 5 â The Quiet Truth of Compounding** *(you are here)*
+- [Part 1 — Don't Try to Be Brilliant. Just Stop Doing Stupid Things.](/blog/masters-charlie-munger-part1-stupidity-may-2026)
+- [Part 2 — It's Not Ignorance That Ruins You. It's Ego.](/blog/masters-charlie-munger-part2-ego-june-2026)
+- [Part 3 — When You Feel Safest, You May Be Most Exposed.](/blog/masters-charlie-munger-part3-safety-june-2026)
+- [Part 4 — The Fastest Road to Ruin Is the Desire to Get Rich Fast.](/blog/masters-charlie-munger-part4-leverage-june-2026)
+- **Part 5 — The Quiet Truth of Compounding** *(you are here)*
 
 ---
 
-## Appendix â The Munger Compounding Checklist (Part 5)
+## Appendix — The Munger Compounding Checklist (Part 5)
 
 Ask yourself:
 
 1. Is my portfolio boring enough to be durable?
 2. Am I interrupting compounding just because inactivity feels uncomfortable?
 3. Do I mistake activity for progress?
-4. Is my desire to act coming from process â or from restlessness?
+4. Is my desire to act coming from process — or from restlessness?
 5. Would my long-term returns improve if I simply did fewer unnecessary things?
-6. Am I building wealth â or performing involvement?
+6. Am I building wealth — or performing involvement?
 7. Can I endure the emotional quiet that real compounding requires?
 
 **If these questions feel difficult, that is normal. Because patience is not difficult intellectually. It is difficult emotionally. And that is exactly why it is so valuable.**
@@ -520,8 +520,8 @@ Ask yourself:
 ## Related Reading
 
 **The Masters series:**
-- [Druckenmiller â Rules-based compounding](/blog/masters-stanley-druckenmiller-real-edge-april-2026)
-- [Livermore â The price of abandoning rules](/blog/masters-jesse-livermore-price-confirmation-april-2026)
+- [Druckenmiller — Rules-based compounding](/blog/masters-stanley-druckenmiller-real-edge-april-2026)
+- [Livermore — The price of abandoning rules](/blog/masters-jesse-livermore-price-confirmation-april-2026)
 - [Peter Lynch 5-part Bible](/blog/masters-peter-lynch-part1-ten-bagger-april-2026)
 
 **The Mental Game series:**
@@ -535,4 +535,4 @@ Ask yourself:
 
 *For informational and educational purposes only. Not investment advice. The author has no position in any security mentioned. Always conduct your own research.*
 
-*For the edge that cuts through the noise â Brutal Edge.*
+*For the edge that cuts through the noise — Brutal Edge.*

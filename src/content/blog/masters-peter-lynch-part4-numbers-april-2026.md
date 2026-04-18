@@ -1,6 +1,6 @@
 ---
 title: "The Peter Lynch Bible, Part 4: Numbers Don't Lie"
-description: "The financial checklist that turns a story into an investment. Debt, cash, PEG, inventory, margins, free cash flow â how to test whether an investment idea survives contact with reality before it deserves capital."
+description: "The financial checklist that turns a story into an investment. Debt, cash, PEG, inventory, margins, free cash flow — how to test whether an investment idea survives contact with reality before it deserves capital."
 date: "2026-04-17"
 category: "Blog"
 subcategory: "The Masters"
@@ -24,7 +24,7 @@ That is the problem.
 
 They discover a company. They like the product. They admire the founder. They see the market opportunity. They imagine the upside.
 
-And only after all that do they look at the financials â **often hoping the numbers will confirm what they already want to believe.**
+And only after all that do they look at the financials — **often hoping the numbers will confirm what they already want to believe.**
 
 Peter Lynch did not work that way.
 
@@ -42,7 +42,7 @@ A company can have:
 - Strong social buzz
 - Famous backers
 
-â¦and still be a terrible investment. Because the balance sheet is weak, the cash flow is fragile, the valuation is absurd, the inventory is rising, or the "growth" is far less profitable than it looks.
+…and still be a terrible investment. Because the balance sheet is weak, the cash flow is fragile, the valuation is absurd, the inventory is rising, or the "growth" is far less profitable than it looks.
 
 **Part 1** was about finding ideas.
 **Part 2** was about classifying the stock correctly.
@@ -56,7 +56,7 @@ This is not about building an institutional-grade model for every stock. It's ab
 
 ---
 
-## Numbers Are Not the Enemy of Conviction â They Are the Test of It
+## Numbers Are Not the Enemy of Conviction — They Are the Test of It
 
 Many retail investors think numbers are what make investing complicated.
 
@@ -87,7 +87,7 @@ The numbers separate **what is exciting** from **what is investable.** Those are
 
 ---
 
-## Debt â Can This Company Survive When the Story Gets Harder?
+## Debt — Can This Company Survive When the Story Gets Harder?
 
 If you remember one thing from this chapter, remember this:
 
@@ -103,7 +103,7 @@ Debt is the first thing serious investors should check because debt changes ever
 **A company with low debt and strong cash flow can survive mistakes.**
 **A company with heavy debt often cannot.**
 
-Debt is not inherently bad. Some businesses handle debt well. Real estate, utilities, stable infrastructure â these can carry significant leverage because their cash flows are predictable.
+Debt is not inherently bad. Some businesses handle debt well. Real estate, utilities, stable infrastructure — these can carry significant leverage because their cash flows are predictable.
 
 But for most businesses, **debt removes flexibility.** And flexibility is often what separates survivors from casualties when conditions change.
 
@@ -136,9 +136,9 @@ That is what debt analysis answers.
 
 ---
 
-## Cash â Dry Powder or Just Optimism?
+## Cash — Dry Powder or Just Optimism?
 
-Debt is one side of the balance-sheet story. Cash is the other side â and it's equally important.
+Debt is one side of the balance-sheet story. Cash is the other side — and it's equally important.
 
 Investors often focus on debt and forget to ask:
 
@@ -174,7 +174,7 @@ A company can look exciting on the income statement but be quietly weakening on 
 
 **The critical question:**
 
-> Is this company funding its future from internal strength â or from market generosity?
+> Is this company funding its future from internal strength — or from market generosity?
 
 That question becomes decisive in speculative sectors, where growth can hide fragility far longer than it should.
 
@@ -182,7 +182,7 @@ When the "market generosity" dries up (rates rise, risk appetite falls, IPO wind
 
 ---
 
-## PEG â Lynch's Favorite Reality Check
+## PEG — Lynch's Favorite Reality Check
 
 If one metric is most closely associated with Peter Lynch, it is PEG.
 
@@ -196,17 +196,17 @@ Lynch liked PEG because the logic was simple:
 
 That's what PEG does. It's a filter that prevents two common retail errors:
 
-**Error 1** â Rejecting a genuinely strong growth company because the P/E looks high.
+**Error 1** — Rejecting a genuinely strong growth company because the P/E looks high.
 
 A company growing earnings at 25% may justify a much higher multiple than one growing at 5%. If you only look at P/E, you'll reflexively pass on the better business.
 
-**Error 2** â Buying a weak slow-growth company because the P/E looks low.
+**Error 2** — Buying a weak slow-growth company because the P/E looks low.
 
 A company trading at 12x earnings with 3% growth may actually be more expensive than one at 30x with 25% growth. The low-P/E looks safe and turns out to be a value trap.
 
 **The rough Lynch intuition:**
 
-PEG near 1 or below is attractive. Above 2 is usually demanding. Context always matters â a stalwart might never have PEG below 1.5, but that doesn't mean it's always overpriced.
+PEG near 1 or below is attractive. Above 2 is usually demanding. Context always matters — a stalwart might never have PEG below 1.5, but that doesn't mean it's always overpriced.
 
 **Where PEG works best:**
 
@@ -221,13 +221,13 @@ PEG near 1 or below is attractive. Above 2 is usually demanding. Context always 
 - Very early-stage companies without meaningful profit
 - Businesses with distorted current earnings (one-time items, accounting noise)
 
-PEG is not a magic number. It is one filter among several. But it's one of the most useful filters in the Lynch toolkit because it forces you to evaluate **price relative to the specific growth profile** of each company â not just compared to a generic market multiple.
+PEG is not a magic number. It is one filter among several. But it's one of the most useful filters in the Lynch toolkit because it forces you to evaluate **price relative to the specific growth profile** of each company — not just compared to a generic market multiple.
 
 ---
 
-## Inventory â Is Demand Real, or Is the Business Quietly Clogging?
+## Inventory — Is Demand Real, or Is the Business Quietly Clogging?
 
-This is one of the most underused indicators in retail investing â and one of the most valuable.
+This is one of the most underused indicators in retail investing — and one of the most valuable.
 
 When a company sells physical products, **inventory can tell you whether reality matches the story.**
 
@@ -239,7 +239,7 @@ If sales are supposedly strong but inventory is building too fast, that may sign
 - Misread customer behavior
 - Margin risk ahead (inventory eventually has to be moved, often via discounts)
 
-**Why this matters:** Inventory problems typically show up in the numbers **before** the market fully understands them. The company may still be talking about strong demand while inventory quietly tells a different story. That gap â between narrative and inventory reality â is where the best short signals live, and where early warnings for long positions appear.
+**Why this matters:** Inventory problems typically show up in the numbers **before** the market fully understands them. The company may still be talking about strong demand while inventory quietly tells a different story. That gap — between narrative and inventory reality — is where the best short signals live, and where early warnings for long positions appear.
 
 **What to actually look at:**
 
@@ -276,7 +276,7 @@ In each of these sectors, when demand weakens, inventory is usually where the st
 
 ---
 
-## Margins â Is Growth Becoming More Valuable, or Less?
+## Margins — Is Growth Becoming More Valuable, or Less?
 
 Revenue growth gets the headlines. Margins tell you whether that growth is actually becoming more valuable.
 
@@ -308,13 +308,13 @@ This is a crucial distinction. Not all growth is good growth.
 
 **The question mature investors learn to ask:**
 
-> Is this company growing into higher-quality earnings â or just growing more expensively?
+> Is this company growing into higher-quality earnings — or just growing more expensively?
 
 That one question filters out many companies that look like growth plays but are actually just capital-destroying revenue accumulators. Growth at the cost of margins is not always a red flag. Growth at the cost of *structurally declining* margins usually is.
 
 ---
 
-## Free Cash Flow â Can This Business Actually Produce Money?
+## Free Cash Flow — Can This Business Actually Produce Money?
 
 Few metrics separate durable businesses from narrative stocks more clearly than free cash flow.
 
@@ -325,7 +325,7 @@ A company can report:
 - Impressive user metrics
 - Enormous addressable-market claims
 
-â¦while still failing to generate real cash for shareholders.
+…while still failing to generate real cash for shareholders.
 
 **That's why free cash flow matters.** It tells you whether the business converts accounting success into economic success.
 
@@ -345,7 +345,7 @@ Strong FCF means the company can:
 - Favorable capital markets
 - Optimistic investors willing to fund losses
 
-In easy markets, that dependence stays hidden. In harder markets, it becomes obvious â usually at the worst possible time.
+In easy markets, that dependence stays hidden. In harder markets, it becomes obvious — usually at the worst possible time.
 
 Peter Lynch didn't use modern cash flow language exactly the way investors do today, but his instinct was identical: **great businesses eventually have to produce real financial results, not just interesting stories.**
 
@@ -353,7 +353,7 @@ A company that has been "investing for growth" for 10 years and still can't prod
 
 ---
 
-## Valuation â A Great Company Can Still Be a Bad Stock
+## Valuation — A Great Company Can Still Be a Bad Stock
 
 This is the hardest lesson for retail investors to truly internalize.
 
@@ -365,7 +365,7 @@ A company can be:
 - Growing
 - Profitable
 
-â¦and still be a poor investment if the price already assumes too much.
+…and still be a poor investment if the price already assumes too much.
 
 **That's why valuation is not optional.**
 
@@ -396,7 +396,7 @@ That's a much harder and more useful question.
 - Comparing companies across the wrong category (cyclical vs. stalwart)
 - Using story logic to excuse every multiple expansion
 
-Valuation is where discipline confronts enthusiasm. And enthusiasm usually argues harder â because enthusiasm is what got you interested in the first place, while valuation is asking you to be less excited than you want to be.
+Valuation is where discipline confronts enthusiasm. And enthusiasm usually argues harder — because enthusiasm is what got you interested in the first place, while valuation is asking you to be less excited than you want to be.
 
 ---
 
@@ -430,8 +430,8 @@ If Lynch were investing today, his common sense would likely translate into some
 
 That last question is powerful because it removes emotional dependence on price action. It forces you back into business reality.
 
-If the answer is yes â you probably have a real position.
-If the answer is no â you probably have a trade wearing investment clothes.
+If the answer is yes — you probably have a real position.
+If the answer is no — you probably have a trade wearing investment clothes.
 
 ---
 
@@ -456,7 +456,7 @@ He did something harder and wiser:
 
 That is the entire discipline.
 
-Without it, even the most exciting stock can become an expensive lesson. With it, ordinary observations get upgraded into durable positions â because the observation is now backed by evidence, not just enthusiasm.
+Without it, even the most exciting stock can become an expensive lesson. With it, ordinary observations get upgraded into durable positions — because the observation is now backed by evidence, not just enthusiasm.
 
 ---
 
@@ -464,13 +464,13 @@ Without it, even the most exciting stock can become an expensive lesson. With it
 
 > "The story must survive the spreadsheet."
 
-**Next â the final installment:**
+**Next — the final installment:**
 
-**Part 5 â If Peter Lynch Were Investing in 2026.** How Lynch's framework applies to AI, space, energy, and the modern narrative-saturated market. What he would likely avoid, where he would most likely look, and the updated formula for "invest in what you know" in the information-overload era.
+**Part 5 — If Peter Lynch Were Investing in 2026.** How Lynch's framework applies to AI, space, energy, and the modern narrative-saturated market. What he would likely avoid, where he would most likely look, and the updated formula for "invest in what you know" in the information-overload era.
 
 ---
 
-## Appendix â The Lynch-Style Checklist (Part 4)
+## Appendix — The Lynch-Style Checklist (Part 4)
 
 Before buying any stock, ask:
 
@@ -489,13 +489,13 @@ Before buying any stock, ask:
 
 ## Related Reading
 
-- [Part 1 â There's a Ten-Bagger Closer Than You Think](/blog/masters-peter-lynch-part1-ten-bagger-april-2026)
-- [Part 2 â Stocks Are Not All the Same](/blog/masters-peter-lynch-part2-six-categories-april-2026)
-- [Part 3 â The Cocktail Party Theory](/blog/masters-peter-lynch-part3-cocktail-party-april-2026)
+- [Part 1 — There's a Ten-Bagger Closer Than You Think](/blog/masters-peter-lynch-part1-ten-bagger-april-2026)
+- [Part 2 — Stocks Are Not All the Same](/blog/masters-peter-lynch-part2-six-categories-april-2026)
+- [Part 3 — The Cocktail Party Theory](/blog/masters-peter-lynch-part3-cocktail-party-april-2026)
 
 
 ---
 
 *For informational and educational purposes only. Not investment advice. The author has no position in any security mentioned. Always conduct your own research.*
 
-*For the edge that cuts through the noise â Brutal Edge.*
+*For the edge that cuts through the noise — Brutal Edge.*

@@ -34,11 +34,11 @@ The gap might close. The gap might not.
 
 The honest position is that nobody knows. But the investor who acts as if the gap doesn't exist is betting their portfolio on something that the people building the infrastructure themselves are openly worried about.
 
-This is The Mental Game #002 â how to stay invested in the biggest technology story of your career while preventing that story from destroying your capital.
+This is The Mental Game #002 — how to stay invested in the biggest technology story of your career while preventing that story from destroying your capital.
 
 ---
 
-## 1. First Admission â AI Can Be Both a Bubble and Real
+## 1. First Admission — AI Can Be Both a Bubble and Real
 
 Most investors misunderstand what bubbles are.
 
@@ -65,7 +65,7 @@ One of them keeps you invested through the inevitable volatility. The other one 
 
 ---
 
-## 2. What Breaks First in a Bubble Isn't Earnings â It's Expectations
+## 2. What Breaks First in a Bubble Isn't Earnings — It's Expectations
 
 A common mistake in bubble regimes is assuming the business has to collapse for the stock to collapse.
 
@@ -122,7 +122,7 @@ When the correction arrives, the good company doesn't fall because it's a bad bu
 > "Best technology in the category."
 > "Will be even bigger in 10 years."
 
-All of these statements can be true. The stock can still fall 40-60% from its peak. It happened to Cisco in 2000 even though Cisco's underlying business continued to grow for decades afterward. Cisco's 2000 high took 24 years to be exceeded â in 2024 dollars, adjusted for inflation, it arguably still hasn't been.
+All of these statements can be true. The stock can still fall 40-60% from its peak. It happened to Cisco in 2000 even though Cisco's underlying business continued to grow for decades afterward. Cisco's 2000 high took 24 years to be exceeded — in 2024 dollars, adjusted for inflation, it arguably still hasn't been.
 
 **The principle most retail investors never internalize:**
 
@@ -153,7 +153,7 @@ This question immediately segments AI companies into four useful categories.
 
 **Category 1: Infrastructure Sellers**
 
-Chips, networking, power, cooling, data center equipment. They get paid simply because the AI boom is happening. They don't need AI to succeed commercially â they only need the buildout to continue.
+Chips, networking, power, cooling, data center equipment. They get paid simply because the AI boom is happening. They don't need AI to succeed commercially — they only need the buildout to continue.
 
 Currently dominant narrative. Most crowded positioning. Goldman Sachs flagged that AI infrastructure stocks returned 44% year-to-date while consensus 2-year forward EPS estimates rose only 9%. The gap between price action and earnings growth is the precise definition of multiple expansion. Multiple expansion works until it stops.
 
@@ -187,9 +187,9 @@ When you see an AI stock pitched, the first question should not be "is this comp
 
 Every bubble has stars. Everyone focuses on the loudest, most visible names. The stocks everyone is already talking about.
 
-But wealth in transformative technology cycles rarely concentrates exclusively in the stars. It concentrates significantly in the **supporting infrastructure** â the boring-looking companies that become indispensable precisely because the stars need them to function.
+But wealth in transformative technology cycles rarely concentrates exclusively in the stars. It concentrates significantly in the **supporting infrastructure** — the boring-looking companies that become indispensable precisely because the stars need them to function.
 
-In the internet era, the obvious winners were portals and search engines. The less obvious winners â logistics, payments, cloud infrastructure, advertising networks, cybersecurity â built structural positions that compounded for 20+ years.
+In the internet era, the obvious winners were portals and search engines. The less obvious winners — logistics, payments, cloud infrastructure, advertising networks, cybersecurity — built structural positions that compounded for 20+ years.
 
 **In the AI era, the overlooked supporting cast likely includes:**
 
@@ -208,13 +208,13 @@ These are not headline stocks. They are the physical reality making the headline
 
 **The second survival principle:**
 
-> Find the businesses the bubble cannot succeed without â especially the ones the bubble isn't obviously paying for yet.
+> Find the businesses the bubble cannot succeed without — especially the ones the bubble isn't obviously paying for yet.
 
 This is where patient investors historically outperform. Not because they predicted the star correctly, but because they identified the bottleneck that would be compensated regardless of which star won.
 
 ---
 
-## 6. The Habit to Kill Immediately â "It's Expensive but Justified"
+## 6. The Habit to Kill Immediately — "It's Expensive but Justified"
 
 The single most dangerous sentence in late-stage bubbles:
 
@@ -238,11 +238,11 @@ Most bubble casualties don't fail because they were analytically ignorant. They 
 
 **Valuation is not the enemy. The enemy is the habit of ignoring valuation.**
 
-You can choose to pay a premium multiple. That's a strategy. But paying it while refusing to do the math that justifies it is not a strategy â it's a position you hold until reality corrects you.
+You can choose to pay a premium multiple. That's a strategy. But paying it while refusing to do the math that justifies it is not a strategy — it's a position you hold until reality corrects you.
 
 ---
 
-## 7. The Investor Most at Risk Right Now â The Fast Convert
+## 7. The Investor Most at Risk Right Now — The Fast Convert
 
 Late-bubble psychology has one reliable pattern: investors become more convinced over time instead of less convinced.
 
@@ -273,7 +273,7 @@ If your confidence is rising while your question count is dropping, you are in t
 
 ---
 
-## 8. The AI Bubble Survival Playbook â Six Rules
+## 8. The AI Bubble Survival Playbook — Six Rules
 
 Now move from principles to practice. These six rules, used together, do not guarantee outperformance. They materially improve the odds of staying in the market long enough to benefit when the real wealth-creation phase arrives.
 
@@ -283,7 +283,7 @@ Your view on AI's long-term importance and your view on a specific stock's attra
 
 **Rule 2: Expectations matter more than valuation multiples.**
 
-A stock at 40x earnings can still fall if consensus expectations were for 50x deserving. A stock at 20x can still fall if expectations were for 15x. The hard work is not the multiple â it's what's already priced in. Always ask "what specifically is expected?" before "is this cheap or expensive?"
+A stock at 40x earnings can still fall if consensus expectations were for 50x deserving. A stock at 20x can still fall if expectations were for 15x. The hard work is not the multiple — it's what's already priced in. Always ask "what specifically is expected?" before "is this cheap or expensive?"
 
 **Rule 3: Look at the supporting cast, not just the stars.**
 
@@ -295,11 +295,11 @@ Bubble regimes are high-volatility, high-news-flow environments. Leverage in the
 
 **Rule 5: Treat cash as optionality, not failure.**
 
-In bull markets, cash feels stupid. In bubble resolutions, cash is the scarcest asset â because it's the only thing that lets you buy dislocated quality. Cash during the bubble is future firepower. Framing it as "sitting out" misses the point. You're not sitting out. You're waiting for a moment that statistically always arrives.
+In bull markets, cash feels stupid. In bubble resolutions, cash is the scarcest asset — because it's the only thing that lets you buy dislocated quality. Cash during the bubble is future firepower. Framing it as "sitting out" misses the point. You're not sitting out. You're waiting for a moment that statistically always arrives.
 
 **Rule 6: Write down what you'll do if you're wrong.**
 
-Entry logic is easy when prices are rising. The real test is exit logic when prices are falling. Stop-loss rules, thesis-review triggers, position-size rules â all of these should be written before you need them, because emotion will prevent you from writing them during a drawdown.
+Entry logic is easy when prices are rising. The real test is exit logic when prices are falling. Stop-loss rules, thesis-review triggers, position-size rules — all of these should be written before you need them, because emotion will prevent you from writing them during a drawdown.
 
 ---
 
@@ -313,7 +313,7 @@ Railways survived the 1840s collapse. Internet survived the 2000 collapse. AI wi
 
 The question is not whether the technology continues. The question is whether you, the investor, are still in position to deploy capital when quality companies become cheap.
 
-The historical pattern is remarkably consistent. Bubble-era investors who try to "perfectly escape" before the crash almost always fail â either by exiting too early and missing upside, or by exiting too late and losing the gains.
+The historical pattern is remarkably consistent. Bubble-era investors who try to "perfectly escape" before the crash almost always fail — either by exiting too early and missing upside, or by exiting too late and losing the gains.
 
 The realistic goal is different:
 
@@ -323,7 +323,7 @@ The realistic goal is different:
 
 This is where real wealth is generated in technology cycles. Not at the top. At the reset.
 
-Apollo's analysis suggests that the AI buildout itself will take years â data center construction, power infrastructure, grid modernization. The technology won't disappear if prices correct. It will continue. The investors with preserved capital will simply own more of the survivors at better entry points.
+Apollo's analysis suggests that the AI buildout itself will take years — data center construction, power infrastructure, grid modernization. The technology won't disappear if prices correct. It will continue. The investors with preserved capital will simply own more of the survivors at better entry points.
 
 Wealth in transformative technology cycles does not go to the investors who had the most conviction at the top. It goes to the ones who could still think clearly at the bottom.
 
@@ -348,7 +348,7 @@ You become:
 
 These are the exact behaviors bubbles punish in the short term and reward over full cycles.
 
-Surviving an AI bubble is not pessimism. It is **structural optimism** â believing in the technology's long-run importance enough to not overpay for it today.
+Surviving an AI bubble is not pessimism. It is **structural optimism** — believing in the technology's long-run importance enough to not overpay for it today.
 
 The true optimist does not need to chase every short-term move. Their optimism is durable because it doesn't require exact timing. It only requires surviving long enough for the technology to fulfill its promise.
 
@@ -360,7 +360,7 @@ That is the posture that wins this cycle.
 
 Before you leave, answer these eight questions honestly:
 
-1. What am I currently buying â technology, or a specific stock at a specific price?
+1. What am I currently buying — technology, or a specific stock at a specific price?
 2. Is this company actually generating cash, or generating expectations?
 3. Does today's price reflect strong execution, or flawless execution?
 4. Am I holding this because of my own analysis, or the crowd's conviction?
@@ -373,18 +373,18 @@ If any of these questions is uncomfortable to answer, that discomfort is probabl
 
 **Next in The Mental Game:**
 
-Issue #003 will examine **herd psychology in the social media era** â specifically, how X, Reddit, and the endless flow of market commentary create new forms of conviction that feel like research but are actually crowd dynamics in faster cycles.
+Issue #003 will examine **herd psychology in the social media era** — specifically, how X, Reddit, and the endless flow of market commentary create new forms of conviction that feel like research but are actually crowd dynamics in faster cycles.
 
 ---
 
 ## Related Reading
 
-- [The Mental Game #001: Why Bull Markets Make You Worse at Investing](/research/mental-game-001-bull-market-psychology) â The foundational psychology of why rising markets degrade investor skill
-- [NVTS Special Report](/reports/navitas-nvts-ai-power-infrastructure-special-report-april-2026) â A supporting-cast AI infrastructure bet, not a star
+- [The Mental Game #001: Why Bull Markets Make You Worse at Investing](/research/mental-game-001-bull-market-psychology) — The foundational psychology of why rising markets degrade investor skill
+- [NVTS Special Report](/reports/navitas-nvts-ai-power-infrastructure-special-report-april-2026) — A supporting-cast AI infrastructure bet, not a star
 
 
 ---
 
 *For informational and educational purposes only. Not investment advice. The author has no position in any security mentioned. Always conduct your own research.*
 
-*For the edge that cuts through the noise â Brutal Edge.*
+*For the edge that cuts through the noise — Brutal Edge.*

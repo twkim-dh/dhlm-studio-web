@@ -1,6 +1,6 @@
 ---
-title: "The Masters: Charlie Munger Part 1 â Don't Try to Be Brilliant. Just Stop Doing Stupid Things."
-description: "The first rule of investing is not getting wiped out. Charlie Munger spent his career teaching that spectacular success depends less on doing extraordinary things than on not doing fatal ones. Why avoidance of stupidity beats pursuit of brilliance â and why that lesson matters more in 2026 than ever."
+title: "The Masters: Charlie Munger Part 1 — Don't Try to Be Brilliant. Just Stop Doing Stupid Things."
+description: "The first rule of investing is not getting wiped out. Charlie Munger spent his career teaching that spectacular success depends less on doing extraordinary things than on not doing fatal ones. Why avoidance of stupidity beats pursuit of brilliance — and why that lesson matters more in 2026 than ever."
 date: "2026-05-29T12:30:00Z"
 category: "Blog"
 subcategory: "The Masters"
@@ -40,13 +40,13 @@ That is the real first principle.
 
 **Just staying alive.**
 
-This is Part 1 of a five-part series on Charlie Munger for 2026 markets. If you read only one part of the series, read this one â because every other lesson he taught assumes you have already accepted this one.
+This is Part 1 of a five-part series on Charlie Munger for 2026 markets. If you read only one part of the series, read this one — because every other lesson he taught assumes you have already accepted this one.
 
 ---
 
-## The Real First Rule Is Not Performance â It Is Survival
+## The Real First Rule Is Not Performance — It Is Survival
 
-Warren Buffett's famous line â "Rule No. 1: Never lose money. Rule No. 2: Never forget Rule No. 1" â gets repeated like a slogan, a joke, or folksy wisdom.
+Warren Buffett's famous line — "Rule No. 1: Never lose money. Rule No. 2: Never forget Rule No. 1" — gets repeated like a slogan, a joke, or folksy wisdom.
 
 Munger treated it as something more serious: **a survival code.**
 
@@ -54,7 +54,7 @@ Markets are unforgiving toward investors who treat loss as a temporary inconveni
 
 - A 10% loss is irritating.
 - A 20% loss is painful.
-- **A 50% loss is transformational** â not because of ego, but because of math.
+- **A 50% loss is transformational** — not because of ego, but because of math.
 
 Lose 50%, and you do not need a good year to recover. You need a 100% return just to get back to where you started.
 
@@ -96,7 +96,7 @@ Most investors begin in the wrong place. They start by asking:
 
 Munger would treat these as second-order questions. The first-order question is much duller:
 
-> **What are the most reliable ways people destroy themselves financially â and how do I build a system that prevents me from doing those things?**
+> **What are the most reliable ways people destroy themselves financially — and how do I build a system that prevents me from doing those things?**
 
 That question has no drama. It has enormous utility.
 
@@ -108,7 +108,7 @@ If you avoid:
 - Panic selling
 - Ego-driven decisions
 
-â¦you have already removed a huge percentage of the mistakes that permanently damage portfolios.
+…you have already removed a huge percentage of the mistakes that permanently damage portfolios.
 
 And once you remove those, something surprising happens.
 
@@ -122,7 +122,7 @@ Your portfolio should be designed the same way.
 
 ---
 
-## The Hardest Truth â One Stupid Decision Erases Years of Discipline
+## The Hardest Truth — One Stupid Decision Erases Years of Discipline
 
 Compounding is powerful. It is also fragile.
 
@@ -206,7 +206,7 @@ Munger knew this. That is why his advice often sounded less like motivation and 
 
 ---
 
-## Why This Lesson Matters More in the AI Era â Not Less
+## Why This Lesson Matters More in the AI Era — Not Less
 
 At first glance, Munger's philosophy may sound too conservative for a fast-moving era shaped by AI, robotics, defense technology, energy infrastructure, tokenization, and massive capital rotation.
 
@@ -263,7 +263,7 @@ Every position should be judged not only by upside, but by the damage it could d
 
 ### 2. Am I relying on favorable conditions that may not persist?
 
-Cheap money, high multiples, endless liquidity, perfect demand, investor enthusiasm â all of these feel normal until they stop.
+Cheap money, high multiples, endless liquidity, perfect demand, investor enthusiasm — all of these feel normal until they stop.
 
 ### 3. Is this thesis understandable in plain English?
 
@@ -370,11 +370,11 @@ But it also tends to last much longer.
 
 **Next in the series:**
 
-**Part 2 â It's Not Ignorance That Ruins You. It's Ego.** Why the most dangerous force in investing is not the market, but the part of you that wants to feel smart, right, early, superior, and in control.
+**Part 2 — It's Not Ignorance That Ruins You. It's Ego.** Why the most dangerous force in investing is not the market, but the part of you that wants to feel smart, right, early, superior, and in control.
 
 ---
 
-## Appendix â The Munger Survival Checklist (Part 1)
+## Appendix — The Munger Survival Checklist (Part 1)
 
 Before you buy anything, ask yourself:
 
@@ -391,13 +391,13 @@ Before you buy anything, ask yourself:
 
 ## Related Reading
 
-- [The Masters: Peter Lynch Part 5 â If Lynch Were Investing in 2026](/blog/masters-peter-lynch-part5-2026-synthesis-april-2026)
+- [The Masters: Peter Lynch Part 5 — If Lynch Were Investing in 2026](/blog/masters-peter-lynch-part5-2026-synthesis-april-2026)
 - [The Mental Game #001: Why Bull Markets Make You Worse at Investing](/research/mental-game-001-bull-market-psychology)
 - [The Mental Game #002: How to Survive an AI Bubble Without Denying the Technology](/research/mental-game-002-ai-bubble-survival)
-- [The Masters: Livermore â The Price of Abandoning Your Rules](/blog/masters-jesse-livermore-price-confirmation-april-2026)
+- [The Masters: Livermore — The Price of Abandoning Your Rules](/blog/masters-jesse-livermore-price-confirmation-april-2026)
 
 ---
 
 *For informational and educational purposes only. Not investment advice. The author has no position in any security mentioned. Always conduct your own research.*
 
-*For the edge that cuts through the noise â Brutal Edge.*
+*For the edge that cuts through the noise — Brutal Edge.*

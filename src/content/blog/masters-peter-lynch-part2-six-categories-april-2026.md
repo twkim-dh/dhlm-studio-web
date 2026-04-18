@@ -1,6 +1,6 @@
 ---
 title: "The Peter Lynch Bible, Part 2: Stocks Are Not All the Same"
-description: "Lynch's six-category stock framework â slow growers, stalwarts, fast growers, cyclicals, asset plays, turnarounds. Why classification matters more than valuation, and why misclassification is the single largest cause of retail underperformance."
+description: "Lynch's six-category stock framework — slow growers, stalwarts, fast growers, cyclicals, asset plays, turnarounds. Why classification matters more than valuation, and why misclassification is the single largest cause of retail underperformance."
 date: "2026-04-17"
 category: "Blog"
 subcategory: "The Masters"
@@ -45,7 +45,7 @@ That question sounds basic. It is not. Because if you misclassify the stock, you
 - Hold it on the wrong timeframe
 - Sell it on the wrong signal
 
-This is the Lynch framework that still works in 2026 â possibly better than ever, because modern markets are saturated with narrative inflation that flattens categories and makes every stock sound like a "fast grower."
+This is the Lynch framework that still works in 2026 — possibly better than ever, because modern markets are saturated with narrative inflation that flattens categories and makes every stock sound like a "fast grower."
 
 **The six categories:**
 
@@ -62,7 +62,7 @@ Get the category right, and the stock becomes analyzable. Get it wrong, and no a
 
 ---
 
-## 1. Slow Growers â Mature Businesses That Pay You to Wait
+## 1. Slow Growers — Mature Businesses That Pay You to Wait
 
 Slow growers are companies in mature industries with limited expansion potential but usually stable, cash-generative operations.
 
@@ -86,11 +86,11 @@ You buy it for:
 
 **The two mistakes retail investors make with slow growers:**
 
-**Mistake 1 â Expecting growth-stock behavior.**
+**Mistake 1 — Expecting growth-stock behavior.**
 
 When the slow grower does what slow growers do (stable, boring, low-beta), the investor becomes impatient and rotates out at the worst possible moment.
 
-**Mistake 2 â Overpaying for the "safety."**
+**Mistake 2 — Overpaying for the "safety."**
 
 A slow grower with a stretched multiple is one of the worst combinations in markets. If growth is limited AND valuation is rich, both return drivers can disappoint simultaneously. The "safe" stock suddenly becomes a dead-money trap for years.
 
@@ -110,7 +110,7 @@ Slow growers are not supposed to excite you. They are supposed to behave. If you
 
 ---
 
-## 2. Stalwarts â Big, Proven, Durable â But Not Unlimited
+## 2. Stalwarts — Big, Proven, Durable — But Not Unlimited
 
 Stalwarts are the large, high-quality businesses retail investors routinely mistake for perpetual growth machines.
 
@@ -122,7 +122,7 @@ These companies:
 - Survive almost every macro cycle
 - Have entrenched competitive positions
 
-In 2026, many mega-cap "quality" names now fall into this bucket â they are no longer in their early hypergrowth phase, even if the market still prices some of them as if they are.
+In 2026, many mega-cap "quality" names now fall into this bucket — they are no longer in their early hypergrowth phase, even if the market still prices some of them as if they are.
 
 **The fundamental truth about stalwarts:**
 
@@ -145,11 +145,11 @@ Lynch liked stalwarts because they offered attractive returns with less existent
 
 **The practical wisdom:**
 
-Stalwarts are often the stocks investors should own more of â but only when they stop pretending those stalwarts are something they aren't. A stalwart bought as a stalwart is a solid holding. A stalwart bought as a fast grower is setup for disappointment.
+Stalwarts are often the stocks investors should own more of — but only when they stop pretending those stalwarts are something they aren't. A stalwart bought as a stalwart is a solid holding. A stalwart bought as a fast grower is setup for disappointment.
 
 ---
 
-## 3. Fast Growers â Where Fortunes Are Made and Discipline Matters Most
+## 3. Fast Growers — Where Fortunes Are Made and Discipline Matters Most
 
 Fast growers are the category most associated with Lynch's legacy. This is where genuine ten-baggers typically come from.
 
@@ -201,11 +201,11 @@ Rough Lynch intuition: PEG near 1 or below is attractive, though context always 
 
 **When to sell:** Growth maturing, valuation detaching from business reality, OR thesis becoming dependent on narrative rather than execution.
 
-Fast growers are where fortunes are made. They are also where discipline matters most â because the same category that creates ten-baggers also produces the most spectacular wipeouts.
+Fast growers are where fortunes are made. They are also where discipline matters most — because the same category that creates ten-baggers also produces the most spectacular wipeouts.
 
 ---
 
-## 4. Cyclicals â The Category Retail Investors Destroy Themselves In
+## 4. Cyclicals — The Category Retail Investors Destroy Themselves In
 
 Cyclicals rise and fall with the economic cycle. This includes:
 
@@ -247,7 +247,7 @@ Cyclicals demand timing and humility. They punish investors who think a low mult
 
 ---
 
-## 5. Asset Plays â Hidden Value the Market Is Ignoring
+## 5. Asset Plays — Hidden Value the Market Is Ignoring
 
 Asset plays are stocks where value may be underappreciated because the market focuses on current earnings and ignores underlying asset value.
 
@@ -291,7 +291,7 @@ Asset plays are where patience matters most. You are often waiting for the marke
 
 ---
 
-## 6. Turnarounds â The Most Seductive and Most Dangerous Category
+## 6. Turnarounds — The Most Seductive and Most Dangerous Category
 
 Turnarounds are broken businesses that may recover.
 
@@ -299,7 +299,7 @@ This category attracts retail investors emotionally because the upside framing i
 
 - "If this survives, it could double or triple."
 - "It used to be a great company."
-- "The market is too pessimistic â it's oversold."
+- "The market is too pessimistic — it's oversold."
 - "Someone will bail it out."
 
 Sometimes that's true. More often, it isn't.
@@ -366,7 +366,7 @@ Classification is not a side exercise. It is the first step in rational investin
 
 ---
 
-## The 2026 Checklist â Before Buying Any Stock
+## The 2026 Checklist — Before Buying Any Stock
 
 Ask yourself:
 
@@ -396,29 +396,29 @@ The valuation question is meaningless without the classification answer.
 
 Most retail underperformance does not come from picking bad companies. It comes from applying the wrong framework to real companies. The stock is fine. The buyer just misunderstood what they were holding.
 
-Lynch's framework isn't about labels. It's about expectations. Each category sets appropriate expectations â for growth, for valuation, for volatility, for time horizon, for exit triggers. Get those expectations right, and investing becomes dramatically more rational.
+Lynch's framework isn't about labels. It's about expectations. Each category sets appropriate expectations — for growth, for valuation, for volatility, for time horizon, for exit triggers. Get those expectations right, and investing becomes dramatically more rational.
 
 ---
 
 ## Lynch's One-Line Principle for Part 2
 
-> "Know what you own â and what kind of stock it is."
+> "Know what you own — and what kind of stock it is."
 
 **Next in the series:**
 
-**Part 3 â The Cocktail Party Theory and the Psychology of Bear Markets.** How to recognize crowd psychology, why bear markets hurt more than they should, and why the biggest threat to your portfolio is usually not the market but your reaction to it.
+**Part 3 — The Cocktail Party Theory and the Psychology of Bear Markets.** How to recognize crowd psychology, why bear markets hurt more than they should, and why the biggest threat to your portfolio is usually not the market but your reaction to it.
 
 ---
 
 ## Related Reading
 
-- [Part 1 â There's a Ten-Bagger Closer Than You Think](/blog/masters-peter-lynch-part1-ten-bagger-april-2026)
+- [Part 1 — There's a Ten-Bagger Closer Than You Think](/blog/masters-peter-lynch-part1-ten-bagger-april-2026)
 - [The Mental Game #001: Why Bull Markets Make You Worse](/research/mental-game-001-bull-market-psychology)
-- [The Masters: Druckenmiller](/blog/masters-stanley-druckenmiller-real-edge-april-2026) â Rules-based compounding
-- [The Masters: Livermore](/blog/masters-jesse-livermore-price-confirmation-april-2026) â The price of abandoning your rules
+- [The Masters: Druckenmiller](/blog/masters-stanley-druckenmiller-real-edge-april-2026) — Rules-based compounding
+- [The Masters: Livermore](/blog/masters-jesse-livermore-price-confirmation-april-2026) — The price of abandoning your rules
 
 ---
 
 *For informational and educational purposes only. Not investment advice. The author has no position in any security mentioned. Always conduct your own research.*
 
-*For the edge that cuts through the noise â Brutal Edge.*
+*For the edge that cuts through the noise — Brutal Edge.*

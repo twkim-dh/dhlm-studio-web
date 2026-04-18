@@ -18,21 +18,21 @@ promotionWeeks: 4
 
 You made money this quarter. Every stock you bought is up. Every thesis looks right. You feel like maybe you finally figured out the market.
 
-This is the most dangerous moment of your investing career â and you can't see why because the price action keeps confirming your confidence.
+This is the most dangerous moment of your investing career — and you can't see why because the price action keeps confirming your confidence.
 
-Markets don't move on numbers. They move on human emotion â expectation, fear, impatience, conviction â layered on top of those numbers. Bubbles always arrive wearing the face of "new technology." The internal structure is remarkably consistent.
+Markets don't move on numbers. They move on human emotion — expectation, fear, impatience, conviction — layered on top of those numbers. Bubbles always arrive wearing the face of "new technology." The internal structure is remarkably consistent.
 
 Railways in the 1840s. Internet in the 1990s. AI in the 2020s.
 
 Every cycle pulls the future forward into the price too fast. Every cycle produces a generation of investors who confuse a rising market with their own skill.
 
-This series exists to document that pattern â and to give you the tools to see it happening to yourself before it becomes irreversible.
+This series exists to document that pattern — and to give you the tools to see it happening to yourself before it becomes irreversible.
 
 ---
 
 ## The Setup (Why This Series Exists)
 
-This is the first installment of **The Mental Game** â a series dedicated to the part of investing that nobody talks about until it's too late.
+This is the first installment of **The Mental Game** — a series dedicated to the part of investing that nobody talks about until it's too late.
 
 Not what to buy. Not when to sell. Not macro calls or sector rotation.
 
@@ -44,11 +44,11 @@ The S&P 500 is near record highs. AI infrastructure capex is projected at $527 b
 
 History says this is exactly when the next generation of investors builds the habits that will destroy their portfolios in the correction that eventually comes.
 
-The goal isn't to scare you. It's to give you a framework you can return to when markets get euphoric again â because they will.
+The goal isn't to scare you. It's to give you a framework you can return to when markets get euphoric again — because they will.
 
 ---
 
-## 1. The Core Misunderstanding â Technology Wins, Prices Often Don't
+## 1. The Core Misunderstanding — Technology Wins, Prices Often Don't
 
 Stocks have always been "price tags on dreams." A company needs capital to realize the future faster. An investor buys a piece of that future today. The capital market isn't really a trading venue. It's a marketplace for time.
 
@@ -73,7 +73,7 @@ Those two questions are the difference between being right about AI and being ri
 
 ---
 
-## 2. Why Individual Investors Lose â Even in Rising Markets
+## 2. Why Individual Investors Lose — Even in Rising Markets
 
 Bull markets are the most dangerous environment for investing skill because they make everyone look talented. When markets rise, any decision appears to "work" for a while.
 
@@ -81,7 +81,7 @@ Behavioral finance has documented the underlying errors for decades. Two finding
 
 **Finding 1: Overtrading destroys returns.**
 
-Odean's classic study *Do Investors Trade Too Much?* showed that individual investors trade excessively, and the result is degraded performance. The more trades you make, the stronger the illusion of competence â and typically, the worse the actual account performance.
+Odean's classic study *Do Investors Trade Too Much?* showed that individual investors trade excessively, and the result is degraded performance. The more trades you make, the stronger the illusion of competence — and typically, the worse the actual account performance.
 
 **Finding 2: The disposition effect.**
 
@@ -105,7 +105,7 @@ This is not a personal failing. It's a species-level pattern documented in decad
 
 ## 3. Why Bubbles Always Arrive Wearing New Technology
 
-Bubbles aren't simply products of greed. That's the explanation most retail investors reach for because it makes them feel safe â as long as they're "not being greedy," they assume they're safe from the bubble.
+Bubbles aren't simply products of greed. That's the explanation most retail investors reach for because it makes them feel safe — as long as they're "not being greedy," they assume they're safe from the bubble.
 
 The historical reality is more disturbing. **Bubbles almost always form around real, world-changing technology.**
 
@@ -165,7 +165,7 @@ The same principle will apply to AI. You don't need to get everything right toda
 > Who will survive long enough to benefit?
 > Is today's price correct, or should I wait for a better one?
 
-These questions do something simple and important. They take you out of "urgency mode" â the psychological state in which bubbles make money â and put you in "patience mode" â the state in which long-term wealth compounds.
+These questions do something simple and important. They take you out of "urgency mode" — the psychological state in which bubbles make money — and put you in "patience mode" — the state in which long-term wealth compounds.
 
 The urgency mode is designed to extract your capital during the bubble phase.
 The patience mode is designed to preserve your capital through the bubble and deploy it at the reset.
@@ -174,7 +174,7 @@ Both modes feel correct to the investor experiencing them. Only one builds lasti
 
 ---
 
-## 5. Leverage â Why It Is an Amateur's Enemy
+## 5. Leverage — Why It Is an Amateur's Enemy
 
 When markets rise rapidly, normal returns start to feel unacceptable. Ten percent per year feels slow. Twenty percent feels unexceptional. This is the emotional condition in which leverage appears attractive.
 
@@ -192,7 +192,7 @@ If you cannot instantly answer "yes" to that question, your position is already 
 
 People use leverage when they are afraid of missing out, not when they have higher-quality ideas. Fear-of-missing-out-driven leverage is not a signal of strength. It is a signal that your emotional regulation has deteriorated faster than your risk management.
 
-Leverage isn't a weapon. It's a multiplier. It multiplies whatever you bring to it â including your panic when the market moves against you.
+Leverage isn't a weapon. It's a multiplier. It multiplies whatever you bring to it — including your panic when the market moves against you.
 
 In a bubble regime, the cost of using leverage to "keep up" is almost always catastrophic. The cost of not using leverage is merely that you compound more slowly during the final phase of the bubble, and survive the reset with capital intact.
 
@@ -214,7 +214,7 @@ Rules are not prediction tools. They are self-destruction prevention devices.
 
 **Rule 2: Position sizing rules.**
 
-A good idea with too much capital behind it ultimately introduces emotion. Once emotion is present, discipline collapses. Position sizes should never be determined by "how good does this idea look?" â they should always be determined by "how much am I prepared to lose if I'm wrong?"
+A good idea with too much capital behind it ultimately introduces emotion. Once emotion is present, discipline collapses. Position sizes should never be determined by "how good does this idea look?" — they should always be determined by "how much am I prepared to lose if I'm wrong?"
 
 This is the most counterintuitive rule for new investors. They want to size based on conviction. Conviction is the least reliable variable in investing.
 
@@ -262,7 +262,7 @@ Bubble regimes feel like learning environments. Every decision seems to produce 
 
 They aren't. **Rising markets hide almost every error.**
 
-Overvaluation, excessive concentration, inappropriate leverage, terrible entry prices, chasing without a thesis â all of these errors are temporarily justified by a market that keeps going up.
+Overvaluation, excessive concentration, inappropriate leverage, terrible entry prices, chasing without a thesis — all of these errors are temporarily justified by a market that keeps going up.
 
 When the bubble deflates, the questions change:
 
@@ -273,7 +273,7 @@ When the bubble deflates, the questions change:
 
 **This is when the real learning starts.**
 
-Markets during corrections sell everything together â winners and losers, quality and speculation. But over the following 12-36 months, survivors separate from casualties. Wealth is built when that separation becomes visible and investors with preserved capital buy the survivors at dislocated prices.
+Markets during corrections sell everything together — winners and losers, quality and speculation. But over the following 12-36 months, survivors separate from casualties. Wealth is built when that separation becomes visible and investors with preserved capital buy the survivors at dislocated prices.
 
 A bubble is not an ending. A bubble is the beginning of a sorting process.
 
@@ -295,7 +295,7 @@ You cannot determine during the bubble which investor you will become. You can o
 
 Print this. Save this. Return to it when your account is making daily highs and you feel invincible.
 
-1. What am I actually buying â a company, or a narrative?
+1. What am I actually buying — a company, or a narrative?
 2. Are this company's 3-year earnings connected to its current price?
 3. If I feel anxious, is it from insufficient analysis or oversized position?
 4. Am I holding losing trades on hope?
@@ -304,7 +304,7 @@ Print this. Save this. Return to it when your account is making daily highs and 
 7. Is my leverage a multiplier of skill, or an expression of anxiety?
 8. Is the market good, or am I just lucky?
 9. Can I identify which companies will survive the next correction?
-10. What protects my account â conviction, or rules?
+10. What protects my account — conviction, or rules?
 
 These questions are simple. They typically hit the most painful spots first.
 
@@ -333,7 +333,7 @@ Believe in the future of the technology. Keep vigilance on the price. Love the m
 
 ## Closing
 
-This piece is not designed to be read once. It is designed to be returned to â every time markets get euphoric, every time a new technology narrative dominates, every time you feel the urge to trade faster than your rules allow.
+This piece is not designed to be read once. It is designed to be returned to — every time markets get euphoric, every time a new technology narrative dominates, every time you feel the urge to trade faster than your rules allow.
 
 **Six principles. Reread them regularly:**
 
@@ -350,18 +350,18 @@ The market will always have new narratives.
 Human errors remain the same.
 The good principles also remain the same.
 
-The next installment of The Mental Game will examine **loss aversion in depth** â why losing $100 hurts approximately 2.5x as much as gaining $100 feels good, and what that asymmetry does to every portfolio decision you will ever make.
+The next installment of The Mental Game will examine **loss aversion in depth** — why losing $100 hurts approximately 2.5x as much as gaining $100 feels good, and what that asymmetry does to every portfolio decision you will ever make.
 
 ---
 
 ## Related Reading
 
-- [The Masters: Druckenmiller](/blog/masters-stanley-druckenmiller-real-edge-april-2026) â How one investor used rules to compound 30% annually for 30 years without a losing year
-- [The Masters: Livermore](/blog/masters-jesse-livermore-price-confirmation-april-2026) â What happened when the greatest trader of his generation stopped following his own rules
+- [The Masters: Druckenmiller](/blog/masters-stanley-druckenmiller-real-edge-april-2026) — How one investor used rules to compound 30% annually for 30 years without a losing year
+- [The Masters: Livermore](/blog/masters-jesse-livermore-price-confirmation-april-2026) — What happened when the greatest trader of his generation stopped following his own rules
 
 
 ---
 
 *For informational and educational purposes only. Not investment advice. The author has no position in any security mentioned. Always conduct your own research.*
 
-*For the edge that cuts through the noise â Brutal Edge.*
+*For the edge that cuts through the noise — Brutal Edge.*

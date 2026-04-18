@@ -83,7 +83,7 @@ So instead of immediately buying:
 
 He would likely ask:
 
-> "Who else benefits if this trend is real â but is still priced like nobody noticed?"
+> "Who else benefits if this trend is real — but is still priced like nobody noticed?"
 
 That is classic Lynch thinking:
 
@@ -91,7 +91,7 @@ That is classic Lynch thinking:
 - The most obvious stock may still be too expensive
 - The real opportunity may live in a supplier, a boring enabler, a niche platform, a balance-sheet-strong second-order winner, or a plain business with suddenly improving earnings
 
-In 2026, this kind of thinking is more valuable than ever â because the market is saturated with thematic storytelling. The investor who wins is often not the one who spots the theme first, but **the one who finds the cheapest durable earnings leverage to that theme.**
+In 2026, this kind of thinking is more valuable than ever — because the market is saturated with thematic storytelling. The investor who wins is often not the one who spots the theme first, but **the one who finds the cheapest durable earnings leverage to that theme.**
 
 ---
 
@@ -153,11 +153,11 @@ Because he understood that **capital-intensive, visionary sectors can destroy in
 
 Looking at the 2026 space economy, he would likely divide companies into two groups:
 
-### Group A â Aspirational Space Stories
+### Group A — Aspirational Space Stories
 
 Compelling visions but uncertain monetization. Long cash burn. Capital dependency. Highly speculative future value. Stock price largely reflects the dream rather than documented cash flows.
 
-### Group B â Practical Space Businesses
+### Group B — Practical Space Businesses
 
 Tied to:
 
@@ -228,7 +228,7 @@ That question is where many ten-baggers begin.
 
 ---
 
-## 5. Lynch Would Still Care About Category â Especially in a Narrative-Heavy Market
+## 5. Lynch Would Still Care About Category — Especially in a Narrative-Heavy Market
 
 One of the biggest ways modern investors get hurt is buying every stock as if it were a fast grower.
 
@@ -268,9 +268,9 @@ One of Lynch's most famous observations was that stocks with:
 - Mundane businesses
 - Unglamorous products
 
-â¦could often be better investments than exciting concept stocks.
+…could often be better investments than exciting concept stocks.
 
-This matters enormously in 2026 â because modern markets reward presentation.
+This matters enormously in 2026 — because modern markets reward presentation.
 
 They reward:
 
@@ -314,7 +314,7 @@ Even if the business is good, the stock can be terrible if the price already dis
 
 ### 2. Story stocks with weak balance sheets
 
-Lynch understood that debt kills optionality. In speculative markets, weak balance sheets hide best during bull runs â and then suddenly matter all at once when capital conditions tighten.
+Lynch understood that debt kills optionality. In speculative markets, weak balance sheets hide best during bull runs — and then suddenly matter all at once when capital conditions tighten.
 
 ### 3. Businesses that are "popular but unproven"
 
@@ -338,7 +338,7 @@ If the main reason to own something is:
 - It makes you feel current
 - You're afraid of missing it
 
-â¦then Lynch would almost certainly say you're investing for the wrong reason. Social pressure is not a thesis. It's the absence of one.
+…then Lynch would almost certainly say you're investing for the wrong reason. Social pressure is not a thesis. It's the absence of one.
 
 ---
 
@@ -354,7 +354,7 @@ In Lynch's era, "what you know" often came from:
 - Product shelves
 - Everyday experience
 
-In 2026, that still matters â but not enough on its own.
+In 2026, that still matters — but not enough on its own.
 
 Because today:
 
@@ -408,11 +408,11 @@ A reasonable guess at what he might say:
 
 **Fifth:**
 
-> Be patient enough to let good businesses work. Many investors do the hard part â finding a good stock â and then ruin the result by selling too early, panicking too fast, or constantly seeking the next exciting idea.
+> Be patient enough to let good businesses work. Many investors do the hard part — finding a good stock — and then ruin the result by selling too early, panicking too fast, or constantly seeking the next exciting idea.
 
 **In short:**
 
-Lynch would probably tell modern investors to become **less impressed â and more observant.**
+Lynch would probably tell modern investors to become **less impressed — and more observant.**
 
 That is not less ambitious. It is more intelligent.
 
@@ -453,7 +453,7 @@ And markets are very loud right now. That is exactly why he still matters.
 The entire series reduces to one principle:
 
 > **Peter Lynch would not invest in the future just because it sounds inevitable.**
-> **He would invest in the businesses most likely to turn change into durable earnings â before the market fully appreciates them.**
+> **He would invest in the businesses most likely to turn change into durable earnings — before the market fully appreciates them.**
 
 That is the difference between narrative and investing.
 
@@ -465,11 +465,11 @@ The investors who actually build wealth in technology cycles do not do it by bei
 
 ## Lynch's Final One-Line Principle for the Series
 
-> **"The best stock to buy may not be the most exciting company in the hottest industry. It may be the company nobody is paying enough attention to â yet."**
+> **"The best stock to buy may not be the most exciting company in the hottest industry. It may be the company nobody is paying enough attention to — yet."**
 
 ---
 
-## Final Appendix â The Complete Lynch-Style Master Checklist
+## Final Appendix — The Complete Lynch-Style Master Checklist
 
 Before buying any stock, ask:
 
@@ -478,11 +478,11 @@ Before buying any stock, ask:
 2. Can I explain the business simply?
 
 ### Category
-3. What kind of stock is this really â slow grower, stalwart, fast grower, cyclical, asset play, or turnaround?
+3. What kind of stock is this really — slow grower, stalwart, fast grower, cyclical, asset play, or turnaround?
 4. Am I evaluating it with the correct framework for that category?
 
 ### Psychology
-5. Am I buying because I understand it â or because I fear missing it?
+5. Am I buying because I understand it — or because I fear missing it?
 6. Would I still want to own it if the stock fell 20%?
 
 ### Numbers
@@ -524,11 +524,11 @@ And clarity, over full cycles, is one of the rarest advantages an investor can h
 
 ## The Complete Series
 
-- [Part 1 â There's a Ten-Bagger Closer Than You Think](/blog/masters-peter-lynch-part1-ten-bagger-april-2026)
-- [Part 2 â Stocks Are Not All the Same](/blog/masters-peter-lynch-part2-six-categories-april-2026)
-- [Part 3 â The Cocktail Party Theory](/blog/masters-peter-lynch-part3-cocktail-party-april-2026)
-- [Part 4 â Numbers Don't Lie](/blog/masters-peter-lynch-part4-numbers-april-2026)
-- **Part 5 â If Peter Lynch Were Investing in 2026** *(you are here)*
+- [Part 1 — There's a Ten-Bagger Closer Than You Think](/blog/masters-peter-lynch-part1-ten-bagger-april-2026)
+- [Part 2 — Stocks Are Not All the Same](/blog/masters-peter-lynch-part2-six-categories-april-2026)
+- [Part 3 — The Cocktail Party Theory](/blog/masters-peter-lynch-part3-cocktail-party-april-2026)
+- [Part 4 — Numbers Don't Lie](/blog/masters-peter-lynch-part4-numbers-april-2026)
+- **Part 5 — If Peter Lynch Were Investing in 2026** *(you are here)*
 
 ---
 
@@ -543,4 +543,4 @@ And clarity, over full cycles, is one of the rarest advantages an investor can h
 
 *For informational and educational purposes only. Not investment advice. The author has no position in any security mentioned. Always conduct your own research.*
 
-*For the edge that cuts through the noise â Brutal Edge.*
+*For the edge that cuts through the noise — Brutal Edge.*

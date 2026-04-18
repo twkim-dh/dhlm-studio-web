@@ -1,6 +1,6 @@
 ---
-title: "The Masters: Charlie Munger Part 4 â The Fastest Road to Ruin Is the Desire to Get Rich Fast"
-description: "Leverage, overconfidence, and the fatal seduction of speed. Why intelligent people blow up in markets not from ignorance, but from impatience â and why the desire to accelerate wealth creation almost always destroys it."
+title: "The Masters: Charlie Munger Part 4 — The Fastest Road to Ruin Is the Desire to Get Rich Fast"
+description: "Leverage, overconfidence, and the fatal seduction of speed. Why intelligent people blow up in markets not from ignorance, but from impatience — and why the desire to accelerate wealth creation almost always destroys it."
 date: "2026-06-19T12:30:00Z"
 category: "Blog"
 subcategory: "The Masters"
@@ -19,7 +19,7 @@ promotionWeeks: 4
 
 There are many ways to lose money in markets.
 
-But when Charlie Munger looked at the truly catastrophic failures â the collapses that destroy not just performance but whole financial lives â he kept coming back to the same small group of causes:
+But when Charlie Munger looked at the truly catastrophic failures — the collapses that destroy not just performance but whole financial lives — he kept coming back to the same small group of causes:
 
 - Leverage
 - Overconfidence
@@ -324,7 +324,7 @@ This is where the rabbit and turtle metaphor matters.
 - Looks smarter
 - Attracts attention
 - Gains ground quickly
-- Seems obviously superior â until fragility enters
+- Seems obviously superior — until fragility enters
 
 **The turtle:**
 
@@ -334,7 +334,7 @@ This is where the rabbit and turtle metaphor matters.
 - Avoids catastrophe
 - Keeps moving
 
-Munger understood that in investing, survival has a strange way of looking unimpressive for very long stretches â **until it suddenly turns out to have been the central advantage all along.**
+Munger understood that in investing, survival has a strange way of looking unimpressive for very long stretches — **until it suddenly turns out to have been the central advantage all along.**
 
 Because the investor who avoids ruin gets to keep compounding. **And compounding, given enough time, becomes a force far more powerful than periodic brilliance.**
 
@@ -342,7 +342,7 @@ Because the investor who avoids ruin gets to keep compounding. **And compounding
 
 ## What Buffett's Famous Warning Really Means
 
-One of the most profound investing lines associated with Buffett â and completely aligned with Munger's worldview â is:
+One of the most profound investing lines associated with Buffett — and completely aligned with Munger's worldview — is:
 
 > **"Never risk what you have and need for what you don't have and don't need."**
 
@@ -397,7 +397,7 @@ That is why the investor who:
 - Sizes prudently
 - Accepts the slowness of compounding
 
-â¦often achieves far better long-term results than the investor who keeps trying to force outsized outcomes through aggression.
+…often achieves far better long-term results than the investor who keeps trying to force outsized outcomes through aggression.
 
 **The market often transfers money:**
 
@@ -478,22 +478,22 @@ That is why the turtle so often wins.
 
 > **"There are only three ways a smart person can go broke: liquor, ladies, and leverage."**
 
-**Next â the final installment:**
+**Next — the final installment:**
 
-**Part 5 â The Quiet Truth of Compounding.** Why investing should be boring, why patience is a superpower, and why the investor who can tolerate silence has an advantage no market cycle can replicate.
+**Part 5 — The Quiet Truth of Compounding.** Why investing should be boring, why patience is a superpower, and why the investor who can tolerate silence has an advantage no market cycle can replicate.
 
 ---
 
-## Appendix â The Munger Ruin Checklist (Part 4)
+## Appendix — The Munger Ruin Checklist (Part 4)
 
 Before increasing risk, ask yourself:
 
-1. Am I increasing exposure because the odds are truly exceptional â or because I want speed?
+1. Am I increasing exposure because the odds are truly exceptional — or because I want speed?
 2. Would this position still make sense without leverage?
 3. Am I mistaking recent success for durable skill?
 4. If this position moved sharply against me, would I still have freedom of action?
 5. Am I risking something important for something ultimately unnecessary?
-6. Is this decision driven by compounding logic â or by the urge to accelerate my results?
+6. Is this decision driven by compounding logic — or by the urge to accelerate my results?
 7. If I were forced to explain this decision after a major loss, would the explanation reveal discipline or ego?
 
 **If those questions feel uncomfortable, that is useful. Because leverage and overconfidence rarely arrive as obvious self-destruction. They arrive as opportunity, efficiency, urgency, and conviction. That is precisely why they are so dangerous.**
@@ -502,13 +502,13 @@ Before increasing risk, ask yourself:
 
 ## Related Reading
 
-- [Part 1 â Don't Try to Be Brilliant. Just Stop Doing Stupid Things.](/blog/masters-charlie-munger-part1-stupidity-may-2026)
-- [Part 2 â It's Not Ignorance That Ruins You. It's Ego.](/blog/masters-charlie-munger-part2-ego-june-2026)
-- [Part 3 â When You Feel Safest, You May Be Most Exposed.](/blog/masters-charlie-munger-part3-safety-june-2026)
-- [The Masters: Livermore â The Price of Abandoning Your Rules](/blog/masters-jesse-livermore-price-confirmation-april-2026)
+- [Part 1 — Don't Try to Be Brilliant. Just Stop Doing Stupid Things.](/blog/masters-charlie-munger-part1-stupidity-may-2026)
+- [Part 2 — It's Not Ignorance That Ruins You. It's Ego.](/blog/masters-charlie-munger-part2-ego-june-2026)
+- [Part 3 — When You Feel Safest, You May Be Most Exposed.](/blog/masters-charlie-munger-part3-safety-june-2026)
+- [The Masters: Livermore — The Price of Abandoning Your Rules](/blog/masters-jesse-livermore-price-confirmation-april-2026)
 
 ---
 
 *For informational and educational purposes only. Not investment advice. The author has no position in any security mentioned. Always conduct your own research.*
 
-*For the edge that cuts through the noise â Brutal Edge.*
+*For the edge that cuts through the noise — Brutal Edge.*

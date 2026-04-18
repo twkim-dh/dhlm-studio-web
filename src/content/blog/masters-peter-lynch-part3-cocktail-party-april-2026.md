@@ -1,6 +1,6 @@
 ---
 title: "The Peter Lynch Bible, Part 3: The Cocktail Party Theory and the Psychology of Bear Markets"
-description: "The biggest threat to your portfolio is rarely the market â it's your reaction to the market. Lynch's cocktail party framework, why bear markets hurt disproportionately, and how to behave when price action tries to make you irrational."
+description: "The biggest threat to your portfolio is rarely the market — it's your reaction to the market. Lynch's cocktail party framework, why bear markets hurt disproportionately, and how to behave when price action tries to make you irrational."
 date: "2026-04-17"
 category: "Blog"
 subcategory: "The Masters"
@@ -36,13 +36,13 @@ Peter Lynch understood something most finance education still avoids teaching cl
 
 > **The biggest threat to your portfolio is usually not the market. It's your reaction to the market.**
 
-Even a sound investing framework gets destroyed by fear, impatience, ego, or the desire to feel in control. The market has a brutal way of attacking all four simultaneously â often on the days you're most confident in your discipline.
+Even a sound investing framework gets destroyed by fear, impatience, ego, or the desire to feel in control. The market has a brutal way of attacking all four simultaneously — often on the days you're most confident in your discipline.
 
 This is why Lynch's psychological framework still matters in 2026. The information age hasn't fixed retail psychology. If anything, it's made it worse.
 
 ---
 
-## The Cocktail Party Theory â Recognizing Market Mood Before the Headlines Do
+## The Cocktail Party Theory — Recognizing Market Mood Before the Headlines Do
 
 One of Lynch's most famous psychological frameworks is deceptively simple.
 
@@ -52,27 +52,27 @@ That's the dangerous part. Because the longer a bull market runs, the more its e
 
 The four stages:
 
-**Stage 1 â Nobody cares.**
+**Stage 1 — Nobody cares.**
 
 Early in a bull market, or after a painful downturn, nobody is interested in stocks. Say you work in markets, and people politely change the subject.
 
 This is usually the healthiest psychological environment. Expectations are low. Stories are weak. Nobody is trying to impress anyone with tips.
 
-**The paradox:** This is often when the best risk-adjusted opportunities exist â and when retail investors have the least interest in taking them.
+**The paradox:** This is often when the best risk-adjusted opportunities exist — and when retail investors have the least interest in taking them.
 
-**Stage 2 â Mild curiosity.**
+**Stage 2 — Mild curiosity.**
 
 People start asking polite questions. Not obsessed, but paying attention. They might ask what sectors look interesting.
 
 Good opportunities still exist. Interest is returning, but euphoria hasn't taken over. Most mid-cycle bull markets live in this stage for extended periods.
 
-**Stage 3 â Everyone has a stock tip.**
+**Stage 3 — Everyone has a stock tip.**
 
 The mood flips. At dinners, parties, group chats, people who have never invested seriously start telling you what to buy. Conviction is everywhere. Stories are easy. Risk disappears from conversation.
 
 **This is the dangerous middle-to-late stage.** Confidence becomes contagious. The social cost of doubting consensus becomes real. New investors enter. Old investors size up. Narratives get simpler and louder.
 
-**Stage 4 â You get ignored.**
+**Stage 4 — You get ignored.**
 
 Now people don't ask your opinion. They tell you theirs. They're certain. They don't want analysis. They want validation.
 
@@ -91,7 +91,7 @@ In 2026, the cocktail party isn't a literal room. It's:
 - Telegram groups
 - Algorithmic hype loops
 
-The same psychology applies. Only the velocity has changed. A bullish narrative that took months to spread in 1989 now spreads in hours. The psychological stages still happen â they just compress.
+The same psychology applies. Only the velocity has changed. A bullish narrative that took months to spread in 1989 now spreads in hours. The psychological stages still happen — they just compress.
 
 **The question to keep asking yourself:**
 
@@ -117,7 +117,7 @@ When prices drop, the human brain does not process it as "expected volatility." 
 - Possible permanent damage
 - Evidence you were stupid
 
-That is why bear markets feel psychologically disproportionate. A 20% decline on a screen can feel like a threat to identity, not just capital. This isn't weakness â it's how human psychology processes loss. Kahneman and Tversky spent careers documenting that losses hit roughly 2.5x harder than equivalent gains feel good.
+That is why bear markets feel psychologically disproportionate. A 20% decline on a screen can feel like a threat to identity, not just capital. This isn't weakness — it's how human psychology processes loss. Kahneman and Tversky spent careers documenting that losses hit roughly 2.5x harder than equivalent gains feel good.
 
 **This asymmetry is why investors make terrible decisions in down markets.**
 
@@ -141,9 +141,9 @@ The investors who survive are not the ones with the best forecasts. They are the
 
 ---
 
-## "A Decline Is a Sale" â Easy to Say, Brutal to Live
+## "A Decline Is a Sale" — Easy to Say, Brutal to Live
 
-One of the most repeated investment clichÃ©s is that market declines are buying opportunities.
+One of the most repeated investment clichés is that market declines are buying opportunities.
 
 **This is often true. It is almost never emotionally easy.**
 
@@ -163,18 +163,18 @@ But clarity in markets is expensive. By the time certainty returns, so has most 
 
 But "declines are opportunities" only becomes useful with three conditions attached:
 
-**Condition 1 â The business must still be intact.**
+**Condition 1 — The business must still be intact.**
 
 A falling stock is not automatically a bargain. If the balance sheet is deteriorating, the moat is weakening, or the industry is structurally breaking, the decline may be completely justified. Not every dip is a sale. Some dips are the market figuring out the business was worth less than originally thought.
 
-**Condition 2 â Your thesis must still make sense.**
+**Condition 2 — Your thesis must still make sense.**
 
 Price falling does not automatically invalidate the thesis. But sometimes it does. The investor's job is to distinguish between:
 
 - Price volatility (thesis intact, sentiment wrong)
 - Fundamental deterioration (thesis broken, price correctly falling)
 
-**Condition 3 â Your position sizing must allow action.**
+**Condition 3 — Your position sizing must allow action.**
 
 Many investors cannot buy during downturns because their positions were already too large during the run-up. That's why psychology and sizing are inseparable.
 
@@ -222,7 +222,7 @@ Buying more should never be based purely on price being lower. It should be base
 
 A lower stock price is not a reason. It is an invitation to re-check your assumptions.
 
-If the business case is stronger at the lower price â buy more. If the business case is weaker (because whatever caused the decline is now known) â don't buy more just because the price looks attractive on a chart.
+If the business case is stronger at the lower price — buy more. If the business case is weaker (because whatever caused the decline is now known) — don't buy more just because the price looks attractive on a chart.
 
 Price is the trigger for re-analysis. It is not the analysis itself.
 
@@ -246,7 +246,7 @@ It means:
 - Continuing to think clearly while price moves against you
 - Re-checking the thesis without panicking
 - Resisting the urge to act purely to relieve emotional pressure
-- Waiting for the business story â not the daily chart â to tell you what changed
+- Waiting for the business story — not the daily chart — to tell you what changed
 - Being willing to act decisively when something actually changes, not when price alone moves
 
 That kind of patience is very hard because it offers almost no social reward.
@@ -297,11 +297,11 @@ The mature investor asks constantly:
 
 > Is this price movement emotional, cyclical, or fundamental?
 
-That question saves more money than prediction ever will. Most retail losses come from answering "fundamental" when the correct answer was "emotional" â or answering "emotional" when the correct answer was "fundamental."
+That question saves more money than prediction ever will. Most retail losses come from answering "fundamental" when the correct answer was "emotional" — or answering "emotional" when the correct answer was "fundamental."
 
 ---
 
-## The Hidden Enemy in Bull Markets â Overconfidence
+## The Hidden Enemy in Bull Markets — Overconfidence
 
 Most investors think their biggest psychological challenge will come in a crash.
 
@@ -363,7 +363,7 @@ These aren't complicated. They are simple rules for maintaining behavior when em
 
 ---
 
-## You Don't Need Perfect Calm â You Need Repeatable Behavior
+## You Don't Need Perfect Calm — You Need Repeatable Behavior
 
 One reason many investors fail is that they imagine great investors feel no fear.
 
@@ -417,11 +417,11 @@ That sounds simple. It is one of the hardest things in finance. Most retail fail
 
 **Next in the series:**
 
-**Part 4 â Numbers Don't Lie.** The financial checklist that turns a story into an investment. How to test whether an idea survives contact with reality â debt, cash, PEG, inventory, margins, free cash flow.
+**Part 4 — Numbers Don't Lie.** The financial checklist that turns a story into an investment. How to test whether an idea survives contact with reality — debt, cash, PEG, inventory, margins, free cash flow.
 
 ---
 
-## Appendix â The Lynch-Style Checklist (Part 3)
+## Appendix — The Lynch-Style Checklist (Part 3)
 
 Ask yourself during any significant market move:
 
@@ -432,7 +432,7 @@ Ask yourself during any significant market move:
 5. Am I selling a winner because I want emotional relief?
 6. Am I taking cues from fundamentals, or from crowd mood?
 7. If this stock fell another 20%, would I still understand why I own it?
-8. Am I acting from process â or from the desire to feel in control?
+8. Am I acting from process — or from the desire to feel in control?
 
 If too many answers make you uncomfortable, that discomfort is useful information. It means the market is showing you where your psychological weak points still live.
 
@@ -440,13 +440,13 @@ If too many answers make you uncomfortable, that discomfort is useful informatio
 
 ## Related Reading
 
-- [Part 1 â There's a Ten-Bagger Closer Than You Think](/blog/masters-peter-lynch-part1-ten-bagger-april-2026)
-- [Part 2 â Stocks Are Not All the Same](/blog/masters-peter-lynch-part2-six-categories-april-2026)
+- [Part 1 — There's a Ten-Bagger Closer Than You Think](/blog/masters-peter-lynch-part1-ten-bagger-april-2026)
+- [Part 2 — Stocks Are Not All the Same](/blog/masters-peter-lynch-part2-six-categories-april-2026)
 - [The Mental Game #001: Why Bull Markets Make You Worse](/research/mental-game-001-bull-market-psychology)
-- [The Masters: Livermore](/blog/masters-jesse-livermore-price-confirmation-april-2026) â What happens when a great trader stops listening to his own rules
+- [The Masters: Livermore](/blog/masters-jesse-livermore-price-confirmation-april-2026) — What happens when a great trader stops listening to his own rules
 
 ---
 
 *For informational and educational purposes only. Not investment advice. The author has no position in any security mentioned. Always conduct your own research.*
 
-*For the edge that cuts through the noise â Brutal Edge.*
+*For the edge that cuts through the noise — Brutal Edge.*
