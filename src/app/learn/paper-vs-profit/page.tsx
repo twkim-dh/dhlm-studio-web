@@ -1,5 +1,6 @@
 import type { Metadata } from 'next';
 import Link from 'next/link';
+import Image from 'next/image';
 import fs from 'fs';
 import path from 'path';
 import { fmtDateShort } from '@/lib/fmt-date';
@@ -77,10 +78,16 @@ export default function PaperVsProfitPage() {
         </div>
 
         <div style={{ marginBottom: 28 }}>
-          <div style={{ fontFamily: 'var(--mono)', fontSize: 10, fontWeight: 700, color: '#3B82F6', letterSpacing: 3, marginBottom: 8 }}>📚 RESEARCH LAB</div>
-          <h1 style={{ fontFamily: 'var(--serif)', fontSize: 'clamp(28px, 4.5vw, 40px)', fontWeight: 900, color: '#F1F5F9', margin: '0 0 12px', lineHeight: 1.2 }}>
-            Paper vs. Profit
-          </h1>
+          <div style={{ borderRadius: 14, overflow: 'hidden', marginBottom: 24 }}>
+            <Image
+              src="/images/content/paper-vs-profit-banner.png"
+              alt="Paper vs. Profit — Academic Finance vs. Real-World Trading"
+              width={900}
+              height={450}
+              style={{ width: '100%', height: 'auto', display: 'block' }}
+              priority
+            />
+          </div>
           <p style={{ fontFamily: 'var(--sans)', fontSize: 15, color: '#94A3B8', lineHeight: 1.7, margin: 0, maxWidth: 680 }}>
             We read the papers. We judge them. We tell you if they will make you money. Brutal Edge dissects academic finance research with one question: would this actually work in practice?
           </p>
