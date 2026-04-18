@@ -320,8 +320,8 @@ export async function GET(request: Request) {
   for (const cfg of INDEX_CONFIG) {
     const q = await avGlobalQuote(cfg.symbol, cfg.label, cfg.id);
     indicesRaw.push(q);
-    // Small delay between AV calls to avoid burst throttling
-    await new Promise(r => setTimeout(r, 200));
+    // AV free tier: 5 calls/min = 12s minimum between calls
+    await new Promise(r => setTimeout(r, 12000));
   }
   const indices = indicesRaw.filter((q): q is IndexQuote => Boolean(q));
   sources['av:indices'] = indices.length === INDEX_CONFIG.length ? 'ok' : 'failed';
