@@ -56,28 +56,15 @@ export default function Header() {
           </Link>
           <div className="hidden md:flex" style={{ gap: 28, alignItems: "center" }}>
             {links.map(l => <Link key={l.label} href={l.href} style={{ fontSize: 13, fontWeight: 500, color: "#94A3B8", fontFamily: "var(--sans)" }}>{l.label}</Link>)}
-            {/* Search button — desktop */}
-            <button
-              onClick={() => setSearchOpen(true)}
-              aria-label="Search"
-              style={{
-                display: "flex", alignItems: "center", gap: 6,
-                background: "#111827", border: "1px solid #1E293B",
-                borderRadius: 8, padding: "6px 10px", cursor: "pointer",
-                color: "#64748B", transition: "border-color 0.15s",
-              }}
-              onMouseEnter={e => (e.currentTarget.style.borderColor = "#334155")}
-              onMouseLeave={e => (e.currentTarget.style.borderColor = "#1E293B")}
-            >
-              <svg width="13" height="13" viewBox="0 0 16 16" fill="none">
-                <circle cx="6.5" cy="6.5" r="5" stroke="#64748B" strokeWidth="1.5"/>
-                <path d="M10.5 10.5L14 14" stroke="#64748B" strokeWidth="1.5" strokeLinecap="round"/>
-              </svg>
-              <span style={{ fontSize: 11, fontFamily: "var(--mono)", letterSpacing: 0.5, color: "#475569" }}>⌘K</span>
-            </button>
           </div>
-          {/* Mobile: hamburger only */}
+          {/* Mobile: search + hamburger */}
           <div className="md:hidden" style={{ display: "flex", alignItems: "center" }}>
+            <button onClick={() => setSearchOpen(true)} aria-label="Search" style={{ background: "none", border: "none", padding: 8, cursor: "pointer" }}>
+              <svg width="18" height="18" viewBox="0 0 16 16" fill="none">
+                <circle cx="6.5" cy="6.5" r="5" stroke="#94A3B8" strokeWidth="1.5"/>
+                <path d="M10.5 10.5L14 14" stroke="#94A3B8" strokeWidth="1.5" strokeLinecap="round"/>
+              </svg>
+            </button>
             <button onClick={() => setMenuOpen(true)} aria-label="Open menu" style={{ background: "none", border: "none", padding: 8, cursor: "pointer" }}>
               <div style={{ width: 20, height: 1.5, background: "#94A3B8", marginBottom: 5 }} /><div style={{ width: 20, height: 1.5, background: "#94A3B8" }} />
             </button>
