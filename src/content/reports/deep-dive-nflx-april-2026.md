@@ -291,7 +291,7 @@ The market just hasn't caught up yet.
 
 - [Druckenmiller Masters Vol. 1](/blog/masters-stanley-druckenmiller-real-edge-april-2026) — Regime-shift thinking applied to valuation framework transitions
 - [Anthropic Private Investor Report](/reports/anthropic-private-investor-report-april-2026) — Monetization quality over user growth framework
-- [Paper vs. Profit #003](/learn/paper-vs-profit/paper-vs-profit-003-best-strategies-inflationary-times) — When market mental models lag behind business reality
+
 
 ---
 

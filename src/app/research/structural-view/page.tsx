@@ -57,7 +57,7 @@ export default function StructuralViewPage() {
       <div style={{ maxWidth: 900, margin: '0 auto', padding: '80px 24px' }}>
 
         <div style={{ marginBottom: 24 }}>
-          <Link href="/learn/paper-vs-profit" style={{ fontSize: 12, color: '#64748B', textDecoration: 'none' }}>← Research Lab</Link>
+          <Link href="/research" style={{ fontSize: 12, color: '#64748B', textDecoration: 'none' }}>← The Mental Game</Link>
         </div>
 
         {/* Header */}
@@ -78,7 +78,7 @@ export default function StructuralViewPage() {
           {volumes.map((v, i) => (
             <Link
               key={v.slug}
-              href={`/learn/paper-vs-profit/${v.slug}`}
+              href={`/research/${v.slug}`}
               style={{ background: '#111827', borderRadius: 14, border: '1px solid #1E293B', padding: '22px 24px', textDecoration: 'none', display: 'block' }}
             >
               <div style={{ display: 'flex', alignItems: 'center', gap: 8, marginBottom: 10, flexWrap: 'wrap' }}>

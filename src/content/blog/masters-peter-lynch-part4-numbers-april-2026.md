@@ -492,7 +492,7 @@ Before buying any stock, ask:
 - [Part 1 â There's a Ten-Bagger Closer Than You Think](/blog/masters-peter-lynch-part1-ten-bagger-april-2026)
 - [Part 2 â Stocks Are Not All the Same](/blog/masters-peter-lynch-part2-six-categories-april-2026)
 - [Part 3 â The Cocktail Party Theory](/blog/masters-peter-lynch-part3-cocktail-party-april-2026)
-- [Paper vs. Profit #003: Inflation Strategies](/research/paper-vs-profit-003-best-strategies-inflationary-times) â When research meets execution
+
 
 ---
 

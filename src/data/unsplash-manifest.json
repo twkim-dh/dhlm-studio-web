@@ -275,21 +275,6 @@
     "alt": "Top 10 Countries by GDP: World Economy Rankings 2026",
     "credit": null
   },
-  "fear-greed-index-stock-prediction": {
-    "src": "/images/content/paper-vs-profit-001-hero.png",
-    "alt": "Paper vs. Profit #001 — Does the Fear & Greed Index Actually Predict Stock Returns?",
-    "credit": null
-  },
-  "intraday-ml-stock-prediction": {
-    "src": "/images/content/paper-vs-profit-002-hero.png",
-    "alt": "Paper vs. Profit #002: Can Machine Learning Predict Intraday Stock Moves Using High-Frequency Data?",
-    "credit": null
-  },
-  "paper-vs-profit-003-best-strategies-inflationary-times": {
-    "src": "/images/content/paper-vs-profit-003-inflation-hero.png",
-    "alt": "Paper vs. Profit #003: The Inflation Paper Everyone Quotes Wrong",
-    "credit": null
-  },
   "structural-view-001-palantir-vs-anthropic-april-2026": {
     "src": "/images/content/structural-view-001-palantir-vs-anthropic-hero.png",
     "alt": "The Structural View Vol.1: Palantir Builds the Control Tower. Anthropic Launches the Probe.",
@@ -817,16 +802,6 @@
   "nvidia-worlds-most-valuable-company-2026": {
     "src": "/images/content/nvidia-3-catalysts-hero.png",
     "alt": "NVIDIA at $4.2 Trillion: The 3 Catalysts That Decide the Next 12 Months",
-    "credit": null
-  },
-  "paper-vs-profit-001": {
-    "src": "/images/content/paper-vs-profit-001-hero.png",
-    "alt": "Paper vs. Profit #001: Does the Fear & Greed Index Actually Predict Stock Returns?",
-    "credit": null
-  },
-  "paper-vs-profit-002": {
-    "src": "/images/content/paper-vs-profit-002-hero.png",
-    "alt": "Paper vs. Profit #002: Can Machine Learning Predict Intraday Stock Moves Using High-Frequency Data?",
     "credit": null
   },
   "masters-charlie-munger-part1-stupidity-may-2026": {

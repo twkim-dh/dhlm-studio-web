@@ -381,7 +381,7 @@ Issue #003 will examine **herd psychology in the social media era** â speci
 
 - [The Mental Game #001: Why Bull Markets Make You Worse at Investing](/research/mental-game-001-bull-market-psychology) â The foundational psychology of why rising markets degrade investor skill
 - [NVTS Special Report](/reports/navitas-nvts-ai-power-infrastructure-special-report-april-2026) â A supporting-cast AI infrastructure bet, not a star
-- [Paper vs. Profit #003: Inflation Strategies](/research/paper-vs-profit-003-best-strategies-inflationary-times) â Similar framework: when regime change invalidates old valuation models
+
 
 ---
 

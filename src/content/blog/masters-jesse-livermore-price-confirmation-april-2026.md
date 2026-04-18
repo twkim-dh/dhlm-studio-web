@@ -289,7 +289,7 @@ It's also the question every serious investor eventually has to confront.
 ## Related Reading
 
 - [Druckenmiller Masters Vol. 1](/blog/masters-stanley-druckenmiller-real-edge-april-2026) — The self-doubt that made him rich
-- [Paper vs. Profit series](/research/paper-vs-profit) — Academic research on what actually predicts market moves
+
 - [Bitcoin Deep Dive](/reports/deep-dive-btc-april-2026) — Trend-following applied to modern crypto markets
 
 ---

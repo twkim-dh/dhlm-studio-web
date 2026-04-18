@@ -40,7 +40,7 @@ function ResearchCard({ a }: { a: ResearchItem }) {
   const subBorder = isStructural ? '#0EA5E940' : '#7C3AED40';
 
   return (
-    <Link href={`/learn/paper-vs-profit/${a.slug}`} style={{ ...card, padding: 0, textDecoration: 'none', display: 'block', overflow: 'hidden' }}>
+    <Link href={`/research/${a.slug}`} style={{ ...card, padding: 0, textDecoration: 'none', display: 'block', overflow: 'hidden' }}>
       {a.heroImage && (
         // eslint-disable-next-line @next/next/no-img-element
         <img

@@ -358,7 +358,7 @@ The next installment of The Mental Game will examine **loss aversion in depth** 
 
 - [The Masters: Druckenmiller](/blog/masters-stanley-druckenmiller-real-edge-april-2026) â How one investor used rules to compound 30% annually for 30 years without a losing year
 - [The Masters: Livermore](/blog/masters-jesse-livermore-price-confirmation-april-2026) â What happened when the greatest trader of his generation stopped following his own rules
-- [Paper vs. Profit #003: Inflation Strategies](/research/paper-vs-profit-003-best-strategies-inflationary-times) â When academic research and investor execution diverge
+
 
 ---
 
