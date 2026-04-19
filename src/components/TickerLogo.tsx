@@ -64,6 +64,17 @@ interface Props {
 }
 
 export default function TickerLogo({ ticker, size = 24, rounded = true }: Props) {
+  if (!ticker) {
+    return (
+      <div
+        style={{
+          width: size, height: size, borderRadius: Math.max(4, Math.round(size * 0.2)),
+          background: '#1e293b', flexShrink: 0,
+          display: 'inline-flex', alignItems: 'center', justifyContent: 'center',
+        }}
+      />
+    );
+  }
   const sym = ticker.toUpperCase();
   const localOverride = LOCAL_LOGO_OVERRIDES[sym];
   const domain = TICKER_DOMAINS[sym];

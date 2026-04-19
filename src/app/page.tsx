@@ -183,7 +183,7 @@ export default function Home() {
             <div style={{ display: 'flex', flexDirection: 'column', gap: 8 }}>
               {latestReports.map(r => (
                 <Link key={r.slug} href={`/reports/${r.slug}`} style={{ ...card, padding: '16px 20px', textDecoration: 'none', display: 'flex', gap: 14, alignItems: 'flex-start' }}>
-                  <TickerLogo ticker={r.ticker} size={40} />
+                  <TickerLogo ticker={r.ticker ?? ''} size={40} />
                   <div style={{ flex: 1, minWidth: 0 }}>
                     <div style={{ display: 'flex', gap: 8, alignItems: 'center', marginBottom: 4, flexWrap: 'wrap' }}>
                       <span style={{ fontFamily: 'var(--mono)', fontSize: 13, fontWeight: 800, color: '#60A5FA' }}>{r.ticker}</span>
