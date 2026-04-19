@@ -4,7 +4,7 @@
 // - Individual entries only. No catch-all patterns.
 // - When adding a new Deep Dive, add one line here.
 // - Mirrors the /blog/ → /reports/ entries in next.config.ts.
-//   next.config.ts handles the primary 301; middleware is the safety net.
+//   next.config.ts handles the primary 301; proxy is the safety net.
 
 import { NextResponse } from 'next/server';
 import type { NextRequest } from 'next/server';
@@ -30,7 +30,7 @@ const REDIRECTS: Record<string, string> = {
   '/blog/ethereum-deep-dive-april-2026':      '/reports/deep-dive-eth-april-2026',
 };
 
-export function middleware(request: NextRequest) {
+export function proxy(request: NextRequest) {
   const destination = REDIRECTS[request.nextUrl.pathname];
   if (destination) {
     return NextResponse.redirect(new URL(destination, request.url), 301);
