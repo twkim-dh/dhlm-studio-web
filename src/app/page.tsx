@@ -5,7 +5,6 @@ import path from 'path';
 import FadeIn from '@/components/FadeIn';
 import NewsletterCTA from '@/components/NewsletterCTA';
 import { blogPosts } from '@/data/blog-posts';
-import TickerLogo from '@/components/TickerLogo';
 import { fmtDateShort } from '@/lib/fmt-date';
 
 const YEAR = new Date().getFullYear();
@@ -23,14 +22,14 @@ interface ReportMeta {
   title: string; slug: string; ticker: string; date: string; readTime: string;
   category: string; catColor: string; grade: string; beafScore: number;
   description: string; type?: string; tickers?: string[]; homeRank?: number;
+  heroImage?: string;
 }
 
 interface ResearchMeta {
   slug: string; title: string; date: string; readTime: string;
   description: string; badge?: string; subcategory?: string;
+  heroImage?: string;
 }
-
-function daysAgo(d: string) { return Math.floor((Date.now() - new Date(d).getTime()) / 86_400_000); }
 
 function getAllReports(): ReportMeta[] {
   try {
@@ -83,33 +82,36 @@ function getAllResearch(): ResearchMeta[] {
   } catch { return []; }
 }
 
-function getFeatured(all: ReportMeta[]): ReportMeta[] {
-  return all.filter(r =>
-    (r.type === 'hot-sector' || r.type === 'hidden-gem' || r.type === 'special-report') &&
-    daysAgo(r.date) <= 14
-  ).sort((a, b) => {
-    const ra = a.homeRank ?? 99, rb = b.homeRank ?? 99;
-    if (ra !== rb) return ra - rb;
-    return b.date > a.date ? 1 : -1;
-  }).slice(0, 3);
-}
-
-function seriesColor(badge?: string) {
-  if (badge === 'mental-game') return { fg: '#A78BFA', bg: '#7C3AED18', border: '#7C3AED40', label: 'THE MENTAL GAME' };
-  if (badge === 'structural-view') return { fg: '#38BDF8', bg: '#0EA5E918', border: '#0EA5E940', label: 'THE STRUCTURAL VIEW' };
-  return { fg: '#94A3B8', bg: '#1E293B18', border: '#1E293B40', label: 'RESEARCH' };
-}
-
 export default function Home() {
   const allReports = getAllReports();
-  const featured = getFeatured(allReports);
-  const featuredSlugs = featured.map(r => r.slug);
-  const latestReports = allReports.filter(r => !featuredSlugs.includes(r.slug)).slice(0, 4);
+  const featuredReports = allReports.slice(0, 3);
+  const latestReports = allReports.slice(3, 7);
   const latestBlog = blogPosts.filter(p => !p.noindex).slice(0, 4);
   const latestResearch = getAllResearch().slice(0, 4);
 
   return (
     <div style={{ background: '#0B0F19', color: '#F1F5F9', minHeight: '100vh' }}>
+      <style>{`
+        .home-featured-grid {
+          display: grid;
+          grid-template-columns: 1fr;
+          gap: 12px;
+        }
+        @media (min-width: 560px) {
+          .home-featured-grid { grid-template-columns: repeat(2, 1fr); }
+        }
+        @media (min-width: 860px) {
+          .home-featured-grid { grid-template-columns: repeat(3, 1fr); }
+        }
+        .home-content-grid {
+          display: grid;
+          grid-template-columns: 1fr;
+          gap: 12px;
+        }
+        @media (min-width: 560px) {
+          .home-content-grid { grid-template-columns: repeat(2, 1fr); }
+        }
+      `}</style>
 
       {/* ── HERO ── */}
       <section style={{ padding: '72px 24px 56px', maxWidth: 800, margin: '0 auto' }}>
@@ -133,34 +135,44 @@ export default function Home() {
         </div>
       </section>
 
-      {/* ── FEATURED REPORTS ── */}
-      {featured.length > 0 && (
+      {/* ── FEATURED REPORTS (3-col image grid) ── */}
+      {featuredReports.length > 0 && (
         <FadeIn>
           <section style={{ padding: '0 24px 48px', maxWidth: 800, margin: '0 auto' }}>
             <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'baseline', marginBottom: 16 }}>
               <div>
                 <div style={{ fontFamily: 'var(--mono)', fontSize: 10, fontWeight: 700, color: '#C73E3A', letterSpacing: 3, marginBottom: 4 }}>🔥 BRUTAL EDGE™</div>
-                <h2 style={{ fontFamily: 'var(--serif)', fontSize: 22, fontWeight: 800, color: '#F1F5F9', margin: 0 }}>Featured Analysis</h2>
+                <h2 style={{ fontFamily: 'var(--serif)', fontSize: 22, fontWeight: 800, color: '#F1F5F9', margin: 0 }}>Featured Reports</h2>
               </div>
               <Link href="/reports" style={{ fontSize: 12, color: '#C73E3A', fontWeight: 600, fontFamily: 'var(--sans)' }}>All Reports →</Link>
             </div>
-            <div style={{ display: 'flex', flexDirection: 'column', gap: 10 }}>
-              {featured.map(r => {
-                const typeLabel = r.type === 'hot-sector' ? '🔥 HOT SECTOR' : r.type === 'hidden-gem' ? '💎 HIDDEN GEM' : '⚡ SPECIAL REPORT';
+            <div className="home-featured-grid">
+              {featuredReports.map(r => {
                 const tickers = Array.isArray(r.tickers) ? r.tickers : (r.ticker ? [r.ticker] : []);
                 return (
-                  <Link key={r.slug} href={`/reports/${r.slug}`} style={{ ...card, padding: '20px 22px', textDecoration: 'none', display: 'block', borderColor: `${r.catColor}40`, background: `linear-gradient(135deg, ${r.catColor}0A, #111827)`, position: 'relative', overflow: 'hidden' }}>
-                    <div style={{ position: 'absolute', top: 0, left: 0, right: 0, height: 2, background: r.catColor }} />
-                    <div style={{ display: 'flex', gap: 8, alignItems: 'center', marginBottom: 8, flexWrap: 'wrap' }}>
-                      <span style={{ fontFamily: 'var(--mono)', fontSize: 9, fontWeight: 800, padding: '3px 8px', borderRadius: 4, background: `${r.catColor}20`, color: r.catColor, letterSpacing: 1 }}>{typeLabel}</span>
-                      {tickers.slice(0, 5).map(t => (
-                        <span key={t} style={{ fontFamily: 'var(--mono)', fontSize: 9, fontWeight: 800, color: r.catColor }}>{t}</span>
-                      ))}
-                      <span style={{ fontSize: 10, color: '#475569', marginLeft: 'auto' }}>{fmtDateShort(r.date)} · {r.readTime}</span>
+                  <Link key={r.slug} href={`/reports/${r.slug}`} style={{ ...card, padding: 0, textDecoration: 'none', display: 'block', borderColor: `${r.catColor}40`, overflow: 'hidden' }}>
+                    {r.heroImage ? (
+                      // eslint-disable-next-line @next/next/no-img-element
+                      <img src={r.heroImage} alt={r.title} style={{ width: '100%', aspectRatio: '16/9', objectFit: 'cover', display: 'block', background: '#0f172a' }} />
+                    ) : (
+                      <div style={{ width: '100%', aspectRatio: '16/9', background: `linear-gradient(135deg, ${r.catColor}20, #0f172a)`, display: 'flex', alignItems: 'center', justifyContent: 'center' }}>
+                        <span style={{ fontFamily: 'var(--mono)', fontSize: 22, fontWeight: 900, color: `${r.catColor}80` }}>{r.ticker || '—'}</span>
+                      </div>
+                    )}
+                    <div style={{ padding: '14px 16px 18px' }}>
+                      <div style={{ display: 'flex', alignItems: 'center', gap: 6, marginBottom: 8, flexWrap: 'wrap' }}>
+                        <span style={{ fontFamily: 'var(--mono)', fontSize: 9, fontWeight: 800, padding: '2px 7px', borderRadius: 4, background: `${r.catColor}20`, color: r.catColor, letterSpacing: 1 }}>
+                          {r.category.toUpperCase()}
+                        </span>
+                        {tickers.slice(0, 3).map(t => (
+                          <span key={t} style={{ fontFamily: 'var(--mono)', fontSize: 9, fontWeight: 700, color: r.catColor }}>{t}</span>
+                        ))}
+                        <span style={{ fontSize: 10, color: '#475569', marginLeft: 'auto' }}>{fmtDateShort(r.date)}</span>
+                      </div>
+                      <div style={{ fontFamily: 'var(--serif)', fontSize: 16, fontWeight: 800, color: '#F1F5F9', lineHeight: 1.4, marginBottom: 6 }}>{r.title}</div>
+                      <p style={{ fontSize: 11, color: '#64748B', margin: '0 0 6px', lineHeight: 1.5 }}>{r.description?.length > 90 ? r.description.slice(0, 90) + '...' : r.description}</p>
+                      <span style={{ fontSize: 10, color: '#475569' }}>{r.readTime}</span>
                     </div>
-                    <div style={{ fontFamily: 'var(--serif)', fontSize: 18, fontWeight: 800, color: '#F1F5F9', lineHeight: 1.3, marginBottom: 6 }}>{r.title}</div>
-                    <p style={{ fontSize: 12, color: '#64748B', margin: '0 0 10px', lineHeight: 1.5 }}>{r.description?.length > 130 ? r.description.slice(0, 130) + '...' : r.description}</p>
-                    <span style={{ fontSize: 11, color: r.catColor, fontWeight: 700 }}>Read Report →</span>
                   </Link>
                 );
               })}
@@ -169,7 +181,7 @@ export default function Home() {
         </FadeIn>
       )}
 
-      {/* ── LATEST REPORTS ── */}
+      {/* ── LATEST REPORTS (2-col image grid) ── */}
       {latestReports.length > 0 && (
         <FadeIn delay={0.05}>
           <section style={{ padding: '0 24px 48px', maxWidth: 800, margin: '0 auto' }}>
@@ -180,21 +192,24 @@ export default function Home() {
               </div>
               <Link href="/reports" style={{ fontSize: 12, color: '#60A5FA', fontWeight: 600, fontFamily: 'var(--sans)' }}>View All →</Link>
             </div>
-            <div style={{ display: 'flex', flexDirection: 'column', gap: 8 }}>
+            <div className="home-content-grid">
               {latestReports.map(r => (
-                <Link key={r.slug} href={`/reports/${r.slug}`} style={{ ...card, padding: '16px 20px', textDecoration: 'none', display: 'flex', gap: 14, alignItems: 'flex-start' }}>
-                  <TickerLogo ticker={r.ticker ?? ''} size={40} />
-                  <div style={{ flex: 1, minWidth: 0 }}>
-                    <div style={{ display: 'flex', gap: 8, alignItems: 'center', marginBottom: 4, flexWrap: 'wrap' }}>
-                      <span style={{ fontFamily: 'var(--mono)', fontSize: 13, fontWeight: 800, color: '#60A5FA' }}>{r.ticker}</span>
+                <Link key={r.slug} href={`/reports/${r.slug}`} style={{ ...card, padding: 0, textDecoration: 'none', display: 'block', overflow: 'hidden' }}>
+                  {r.heroImage ? (
+                    // eslint-disable-next-line @next/next/no-img-element
+                    <img src={r.heroImage} alt={r.title} style={{ width: '100%', aspectRatio: '16/9', objectFit: 'cover', display: 'block', background: '#0f172a' }} />
+                  ) : (
+                    <div style={{ width: '100%', aspectRatio: '16/9', background: `linear-gradient(135deg, ${r.catColor}18, #0f172a)`, display: 'flex', alignItems: 'center', justifyContent: 'center' }}>
+                      <span style={{ fontFamily: 'var(--mono)', fontSize: 18, fontWeight: 900, color: `${r.catColor}70` }}>{r.ticker || '—'}</span>
+                    </div>
+                  )}
+                  <div style={{ padding: '12px 16px 16px' }}>
+                    <div style={{ display: 'flex', gap: 6, alignItems: 'center', marginBottom: 6, flexWrap: 'wrap' }}>
                       <span style={{ fontFamily: 'var(--mono)', fontSize: 9, fontWeight: 700, padding: '2px 7px', borderRadius: 4, background: `${r.catColor}14`, color: r.catColor }}>{r.category}</span>
-                      {r.beafScore > 0 && (
-                        <span style={{ fontFamily: 'var(--mono)', fontSize: 9, fontWeight: 700, padding: '2px 7px', borderRadius: 4, background: '#D4A84314', color: '#D4A843' }}>BEAF {r.beafScore}/100 ({r.grade})</span>
-                      )}
                       <span style={{ fontSize: 10, color: '#475569', marginLeft: 'auto' }}>{fmtDateShort(r.date)} · {r.readTime}</span>
                     </div>
                     <div style={{ fontFamily: 'var(--serif)', fontSize: 15, fontWeight: 700, color: '#E2E8F0', lineHeight: 1.35 }}>{r.title}</div>
-                    <p style={{ fontSize: 11, color: '#64748B', margin: '4px 0 0', lineHeight: 1.4 }}>{r.description?.length > 100 ? r.description.slice(0, 100) + '...' : r.description}</p>
+                    <p style={{ fontSize: 11, color: '#64748B', margin: '4px 0 0', lineHeight: 1.4 }}>{r.description?.length > 80 ? r.description.slice(0, 80) + '...' : r.description}</p>
                   </div>
                 </Link>
               ))}
@@ -203,7 +218,7 @@ export default function Home() {
         </FadeIn>
       )}
 
-      {/* ── LATEST RESEARCH (Mental Game / Structural View) ── */}
+      {/* ── THE MENTAL GAME (2-col image grid) ── */}
       {latestResearch.length > 0 && (
         <FadeIn delay={0.1}>
           <section style={{ padding: '0 24px 48px', maxWidth: 800, margin: '0 auto' }}>
@@ -214,21 +229,35 @@ export default function Home() {
               </div>
               <Link href="/research" style={{ fontSize: 12, color: '#A78BFA', fontWeight: 600, fontFamily: 'var(--sans)' }}>Full Archive →</Link>
             </div>
-            <div style={{ display: 'flex', flexDirection: 'column', gap: 8 }}>
+            <div className="home-content-grid">
               {latestResearch.map(a => {
-                const s = seriesColor(a.badge);
+                const c = a.badge === 'mental-game'
+                  ? { fg: '#A78BFA', bg: '#7C3AED18', border: '#7C3AED40' }
+                  : a.badge === 'structural-view'
+                  ? { fg: '#38BDF8', bg: '#0EA5E918', border: '#0EA5E940' }
+                  : { fg: '#94A3B8', bg: '#1E293B18', border: '#1E293B40' };
                 return (
-                  <Link key={a.slug} href={`/research/${a.slug}`} style={{ ...card, padding: '16px 20px', textDecoration: 'none', display: 'block', borderColor: s.border }}>
-                    <div style={{ display: 'flex', alignItems: 'center', gap: 8, marginBottom: 6, flexWrap: 'wrap' }}>
-                      {a.subcategory && (
-                        <span style={{ fontFamily: 'var(--mono)', fontSize: 9, fontWeight: 800, padding: '3px 9px', borderRadius: 5, background: s.bg, color: s.fg, border: `1px solid ${s.border}`, letterSpacing: 1 }}>
-                          {a.subcategory.toUpperCase()}
-                        </span>
-                      )}
-                      <span style={{ fontSize: 10, color: '#475569', marginLeft: 'auto' }}>{fmtDateShort(a.date)} · {a.readTime}</span>
+                  <Link key={a.slug} href={`/research/${a.slug}`} style={{ ...card, padding: 0, textDecoration: 'none', display: 'block', overflow: 'hidden', borderColor: c.border }}>
+                    {a.heroImage ? (
+                      // eslint-disable-next-line @next/next/no-img-element
+                      <img src={a.heroImage} alt={a.title} style={{ width: '100%', aspectRatio: '16/9', objectFit: 'cover', display: 'block', background: '#0f172a' }} />
+                    ) : (
+                      <div style={{ width: '100%', aspectRatio: '16/9', background: `linear-gradient(135deg, ${c.bg}, #0f172a)`, display: 'flex', alignItems: 'center', justifyContent: 'center' }}>
+                        <span style={{ fontSize: 28 }}>🧠</span>
+                      </div>
+                    )}
+                    <div style={{ padding: '12px 16px 16px' }}>
+                      <div style={{ display: 'flex', alignItems: 'center', gap: 8, marginBottom: 6, flexWrap: 'wrap' }}>
+                        {a.subcategory && (
+                          <span style={{ fontFamily: 'var(--mono)', fontSize: 9, fontWeight: 800, padding: '2px 8px', borderRadius: 4, background: c.bg, color: c.fg, border: `1px solid ${c.border}`, letterSpacing: 1 }}>
+                            {a.subcategory.toUpperCase()}
+                          </span>
+                        )}
+                        <span style={{ fontSize: 10, color: '#475569', marginLeft: 'auto' }}>{fmtDateShort(a.date)} · {a.readTime}</span>
+                      </div>
+                      <div style={{ fontFamily: 'var(--serif)', fontSize: 15, fontWeight: 700, color: '#E2E8F0', lineHeight: 1.35, marginBottom: 4 }}>{a.title}</div>
+                      <p style={{ fontSize: 11, color: '#64748B', margin: 0, lineHeight: 1.4 }}>{a.description?.length > 80 ? a.description.slice(0, 80) + '...' : a.description}</p>
                     </div>
-                    <div style={{ fontFamily: 'var(--serif)', fontSize: 15, fontWeight: 700, color: '#E2E8F0', lineHeight: 1.35, marginBottom: 4 }}>{a.title}</div>
-                    <p style={{ fontSize: 11, color: '#64748B', margin: 0, lineHeight: 1.4 }}>{a.description?.length > 110 ? a.description.slice(0, 110) + '...' : a.description}</p>
                   </Link>
                 );
               })}
@@ -237,7 +266,7 @@ export default function Home() {
         </FadeIn>
       )}
 
-      {/* ── LATEST BLOG POSTS ── */}
+      {/* ── BLOG (2-col image grid) ── */}
       {latestBlog.length > 0 && (
         <FadeIn delay={0.15}>
           <section style={{ padding: '0 24px 48px', maxWidth: 800, margin: '0 auto' }}>
@@ -248,19 +277,24 @@ export default function Home() {
               </div>
               <Link href="/blog" style={{ fontSize: 12, color: '#60A5FA', fontWeight: 600, fontFamily: 'var(--sans)' }}>View All →</Link>
             </div>
-            <div style={{ display: 'flex', flexDirection: 'column', gap: 8 }}>
+            <div className="home-content-grid">
               {latestBlog.map(p => (
-                <Link key={p.slug} href={`/blog/${p.slug}`} style={{ ...card, padding: '16px 20px', textDecoration: 'none', display: 'flex', gap: 14, alignItems: 'flex-start' }}>
-                  <div style={{ width: 40, height: 40, borderRadius: 10, background: `${p.catColor}18`, border: `1px solid ${p.catColor}30`, display: 'flex', alignItems: 'center', justifyContent: 'center', flexShrink: 0 }}>
-                    <span style={{ fontSize: 18 }}>📝</span>
-                  </div>
-                  <div style={{ flex: 1, minWidth: 0 }}>
-                    <div style={{ display: 'flex', gap: 8, alignItems: 'center', marginBottom: 4, flexWrap: 'wrap' }}>
+                <Link key={p.slug} href={`/blog/${p.slug}`} style={{ ...card, padding: 0, textDecoration: 'none', display: 'block', overflow: 'hidden' }}>
+                  {p.heroImage ? (
+                    // eslint-disable-next-line @next/next/no-img-element
+                    <img src={p.heroImage} alt={p.title} style={{ width: '100%', aspectRatio: '16/9', objectFit: 'cover', display: 'block', background: '#0f172a' }} />
+                  ) : (
+                    <div style={{ width: '100%', aspectRatio: '16/9', background: `${p.catColor}18`, display: 'flex', alignItems: 'center', justifyContent: 'center' }}>
+                      <span style={{ fontSize: 28 }}>📝</span>
+                    </div>
+                  )}
+                  <div style={{ padding: '12px 16px 16px' }}>
+                    <div style={{ display: 'flex', gap: 8, alignItems: 'center', marginBottom: 6, flexWrap: 'wrap' }}>
                       <span style={{ fontFamily: 'var(--mono)', fontSize: 9, fontWeight: 700, padding: '2px 7px', borderRadius: 4, background: `${p.catColor}14`, color: p.catColor }}>{p.category}</span>
                       <span style={{ fontSize: 10, color: '#475569', marginLeft: 'auto' }}>{fmtDateShort(p.date)} · {p.readTime}</span>
                     </div>
                     <div style={{ fontFamily: 'var(--serif)', fontSize: 15, fontWeight: 700, color: '#E2E8F0', lineHeight: 1.35 }}>{p.title}</div>
-                    <p style={{ fontSize: 11, color: '#64748B', margin: '4px 0 0', lineHeight: 1.4 }}>{p.description?.length > 100 ? p.description.slice(0, 100) + '...' : p.description}</p>
+                    <p style={{ fontSize: 11, color: '#64748B', margin: '4px 0 0', lineHeight: 1.4 }}>{p.description?.length > 80 ? p.description.slice(0, 80) + '...' : p.description}</p>
                   </div>
                 </Link>
               ))}

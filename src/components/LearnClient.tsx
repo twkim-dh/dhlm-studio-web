@@ -41,6 +41,14 @@ function ResearchCard({ a }: { a: ResearchItem }) {
 
   return (
     <Link href={`/research/${a.slug}`} style={{ ...card, padding: 0, textDecoration: 'none', display: 'block', overflow: 'hidden' }}>
+      {a.heroImage ? (
+        // eslint-disable-next-line @next/next/no-img-element
+        <img src={a.heroImage} alt={a.title} style={{ width: '100%', aspectRatio: '16/9', objectFit: 'cover', display: 'block', background: '#0f172a' }} />
+      ) : (
+        <div style={{ width: '100%', aspectRatio: '16/9', background: '#0f172a', display: 'flex', alignItems: 'center', justifyContent: 'center' }}>
+          <span style={{ fontSize: 28 }}>🧠</span>
+        </div>
+      )}
       <div style={{ padding: '16px 20px 20px' }}>
         <div style={{ display: 'flex', alignItems: 'center', gap: 7, marginBottom: 10, flexWrap: 'wrap' }}>
           {a.verdict ? (
@@ -79,22 +87,32 @@ function ResearchCard({ a }: { a: ResearchItem }) {
 function LessonCard({ l }: { l: LessonItem }) {
   const published = !!l.slug;
   const inner = (
-    <div style={{ ...card, padding: '16px 20px 20px', opacity: published ? 1 : 0.45 }}>
-      <div style={{ display: 'flex', alignItems: 'center', gap: 7, marginBottom: 8, flexWrap: 'wrap' }}>
-        <span style={{ fontFamily: 'var(--mono)', fontSize: 9, fontWeight: 800, padding: '3px 9px', borderRadius: 5, background: '#8B5CF618', color: '#8B5CF6', border: '1px solid #8B5CF630', letterSpacing: 1 }}>
-          CRYPTO 101
-        </span>
-        <span style={{ fontFamily: 'var(--mono)', fontSize: 9, fontWeight: 700, padding: '2px 7px', borderRadius: 4, background: `${l.phaseColor}14`, color: l.phaseColor }}>
-          WEEK {l.week}
-        </span>
-        {!published && (
-          <span style={{ fontFamily: 'var(--mono)', fontSize: 9, fontWeight: 700, padding: '3px 8px', borderRadius: 4, background: '#D4A84318', color: '#D4A843', border: '1px solid #D4A84340', marginLeft: 'auto' }}>
-            COMING SOON
+    <div style={{ ...card, padding: 0, overflow: 'hidden', opacity: published ? 1 : 0.45 }}>
+      {l.thumb ? (
+        // eslint-disable-next-line @next/next/no-img-element
+        <img src={l.thumb} alt={l.thumbAlt || l.title} style={{ width: '100%', aspectRatio: '16/9', objectFit: 'cover', display: 'block', background: '#0f172a' }} />
+      ) : (
+        <div style={{ width: '100%', aspectRatio: '16/9', background: `${l.phaseColor}18`, display: 'flex', alignItems: 'center', justifyContent: 'center' }}>
+          <span style={{ fontFamily: 'var(--mono)', fontSize: 10, fontWeight: 800, color: `${l.phaseColor}80`, letterSpacing: 1 }}>WEEK {l.week}</span>
+        </div>
+      )}
+      <div style={{ padding: '14px 16px 18px' }}>
+        <div style={{ display: 'flex', alignItems: 'center', gap: 7, marginBottom: 8, flexWrap: 'wrap' }}>
+          <span style={{ fontFamily: 'var(--mono)', fontSize: 9, fontWeight: 800, padding: '3px 9px', borderRadius: 5, background: '#8B5CF618', color: '#8B5CF6', border: '1px solid #8B5CF630', letterSpacing: 1 }}>
+            CRYPTO 101
           </span>
-        )}
+          <span style={{ fontFamily: 'var(--mono)', fontSize: 9, fontWeight: 700, padding: '2px 7px', borderRadius: 4, background: `${l.phaseColor}14`, color: l.phaseColor }}>
+            WEEK {l.week}
+          </span>
+          {!published && (
+            <span style={{ fontFamily: 'var(--mono)', fontSize: 9, fontWeight: 700, padding: '3px 8px', borderRadius: 4, background: '#D4A84318', color: '#D4A843', border: '1px solid #D4A84340', marginLeft: 'auto' }}>
+              COMING SOON
+            </span>
+          )}
+        </div>
+        <div style={{ fontFamily: 'var(--serif)', fontSize: 17, fontWeight: 800, color: '#F1F5F9', lineHeight: 1.4, marginBottom: 6 }}>{l.title}</div>
+        <p style={{ fontSize: 12, color: '#64748B', margin: 0, lineHeight: 1.55 }}>{l.description}</p>
       </div>
-      <div style={{ fontFamily: 'var(--serif)', fontSize: 17, fontWeight: 800, color: '#F1F5F9', lineHeight: 1.4, marginBottom: 6 }}>{l.title}</div>
-      <p style={{ fontSize: 12, color: '#64748B', margin: 0, lineHeight: 1.55 }}>{l.description}</p>
     </div>
   );
 
@@ -110,7 +128,7 @@ function LessonCard({ l }: { l: LessonItem }) {
 /* ─── Grid wrapper ─── */
 function CardGrid({ children }: { children: React.ReactNode }) {
   return (
-    <div style={{ display: 'flex', flexDirection: 'column', gap: 10 }}>
+    <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fill, minmax(280px, 1fr))', gap: 12 }}>
       {children}
     </div>
   );

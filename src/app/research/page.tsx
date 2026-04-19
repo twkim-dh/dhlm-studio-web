@@ -76,6 +76,14 @@ function ArticleCard({ a }: { a: ArticleMeta }) {
   const c = seriesColor(a.badge);
   return (
     <Link href={`/research/${a.slug}`} style={{ ...card, padding: 0, textDecoration: 'none', display: 'block', overflow: 'hidden', borderColor: c.border }}>
+      {a.thumb ? (
+        // eslint-disable-next-line @next/next/no-img-element
+        <img src={a.thumb} alt={a.title} style={{ width: '100%', aspectRatio: '16/9', objectFit: 'cover', display: 'block', background: '#0f172a' }} />
+      ) : (
+        <div style={{ width: '100%', aspectRatio: '16/9', background: `linear-gradient(135deg, ${c.bg}, #0f172a)`, display: 'flex', alignItems: 'center', justifyContent: 'center' }}>
+          <span style={{ fontSize: 28 }}>🧠</span>
+        </div>
+      )}
       <div style={{ padding: '16px 20px 20px' }}>
         <div style={{ display: 'flex', alignItems: 'center', gap: 8, marginBottom: 8, flexWrap: 'wrap' }}>
           {a.subcategory && (
@@ -114,10 +122,24 @@ export default function ResearchPage() {
           </p>
         </div>
 
+        <style>{`
+          .research-grid {
+            display: grid;
+            grid-template-columns: 1fr;
+            gap: 12px;
+          }
+          @media (min-width: 560px) {
+            .research-grid { grid-template-columns: repeat(2, 1fr); }
+          }
+          @media (min-width: 900px) {
+            .research-grid { grid-template-columns: repeat(3, 1fr); }
+          }
+        `}</style>
+
         {mentalGame.length > 0 && (
           <section style={{ marginBottom: 48 }}>
             <div style={{ fontFamily: 'var(--mono)', fontSize: 10, fontWeight: 800, color: '#A78BFA', letterSpacing: 2, marginBottom: 14 }}>THE MENTAL GAME</div>
-            <div style={{ display: 'flex', flexDirection: 'column', gap: 10 }}>
+            <div className="research-grid">
               {mentalGame.map(a => <ArticleCard key={a.slug} a={a} />)}
             </div>
           </section>
@@ -131,7 +153,7 @@ export default function ResearchPage() {
                 Full Archive →
               </Link>
             </div>
-            <div style={{ display: 'flex', flexDirection: 'column', gap: 10 }}>
+            <div className="research-grid">
               {structuralView.map(a => <ArticleCard key={a.slug} a={a} />)}
             </div>
           </section>
@@ -140,7 +162,7 @@ export default function ResearchPage() {
         {other.length > 0 && (
           <section>
             <div style={{ fontFamily: 'var(--mono)', fontSize: 10, fontWeight: 800, color: '#475569', letterSpacing: 2, marginBottom: 14 }}>RESEARCH</div>
-            <div style={{ display: 'flex', flexDirection: 'column', gap: 10 }}>
+            <div className="research-grid">
               {other.map(a => <ArticleCard key={a.slug} a={a} />)}
             </div>
           </section>

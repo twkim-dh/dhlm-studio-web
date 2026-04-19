@@ -14,6 +14,8 @@ const cats = [
   { label: 'Creators', color: '#A78BFA' },
 ];
 
+const card = { background: '#111827', borderRadius: 14, border: '1px solid #1E293B' };
+
 export default function BlogFilter({ posts }: { posts: BlogPost[] }) {
   const [active, setActive] = useState('All');
   const [search, setSearch] = useState('');
@@ -32,6 +34,20 @@ export default function BlogFilter({ posts }: { posts: BlogPost[] }) {
 
   return (
     <>
+      <style>{`
+        .blog-grid {
+          display: grid;
+          grid-template-columns: 1fr;
+          gap: 12px;
+        }
+        @media (min-width: 560px) {
+          .blog-grid { grid-template-columns: repeat(2, 1fr); }
+        }
+        @media (min-width: 900px) {
+          .blog-grid { grid-template-columns: repeat(3, 1fr); }
+        }
+      `}</style>
+
       {/* Search */}
       <div style={{ marginTop: 20, marginBottom: 16 }}>
         <input
@@ -42,7 +58,7 @@ export default function BlogFilter({ posts }: { posts: BlogPost[] }) {
           style={{
             width: '100%', padding: '10px 14px', borderRadius: 10,
             background: '#111827', border: '1px solid #1E293B',
-            color: '#F1F5F9', fontSize: 13, outline: 'none',
+            color: '#F1F5F9', fontSize: 13, outline: 'none', boxSizing: 'border-box',
           }}
         />
       </div>
@@ -66,30 +82,41 @@ export default function BlogFilter({ posts }: { posts: BlogPost[] }) {
         })}
       </div>
 
-      {/* Results */}
-      <div>
-        {filtered.length === 0 && (
-          <div style={{ textAlign: 'center', padding: 40 }}>
-            <p style={{ fontSize: 13, color: '#475569' }}>No posts found{search ? ` for "${search}"` : ''}.</p>
-            <div style={{ marginTop: 16 }}>
-              <div style={{ fontSize: 11, color: '#64748B', marginBottom: 8 }}>Popular posts:</div>
-              {posts.slice(0, 3).map(p => (
-                <Link key={p.slug} href={`/blog/${p.slug}`} style={{ display: 'block', fontSize: 12, color: '#60A5FA', marginBottom: 4 }}>{p.title}</Link>
-              ))}
-            </div>
+      {/* Results — card grid */}
+      {filtered.length === 0 ? (
+        <div style={{ textAlign: 'center', padding: 40 }}>
+          <p style={{ fontSize: 13, color: '#475569' }}>No posts found{search ? ` for "${search}"` : ''}.</p>
+          <div style={{ marginTop: 16 }}>
+            <div style={{ fontSize: 11, color: '#64748B', marginBottom: 8 }}>Popular posts:</div>
+            {posts.slice(0, 3).map(p => (
+              <Link key={p.slug} href={`/blog/${p.slug}`} style={{ display: 'block', fontSize: 12, color: '#60A5FA', marginBottom: 4 }}>{p.title}</Link>
+            ))}
           </div>
-        )}
-        {filtered.map(post => (
-          <Link key={post.slug} href={`/blog/${post.slug}`} style={{ display: 'block', borderBottom: '1px solid #1E293B', padding: '20px 0', textDecoration: 'none' }}>
-            <div style={{ display: 'flex', alignItems: 'center', gap: 8, marginBottom: 6 }}>
-              <span style={{ fontFamily: 'var(--mono)', fontSize: 10, fontWeight: 600, color: post.catColor, padding: '2px 8px', borderRadius: 4, background: `${post.catColor}14` }}>{post.category}</span>
-              <span style={{ fontFamily: 'var(--sans)', fontSize: 11, color: '#475569' }}>{fmtDateShort(post.date)} · {post.readTime} read</span>
-            </div>
-            <p style={{ fontFamily: 'var(--serif)', fontSize: 17, fontWeight: 700, color: '#E2E8F0', margin: 0, lineHeight: 1.5 }}>{post.title}</p>
-            <p style={{ fontFamily: 'var(--sans)', fontSize: 13, color: '#64748B', margin: '6px 0 0', lineHeight: 1.6 }}>{post.description}</p>
-          </Link>
-        ))}
-      </div>
+        </div>
+      ) : (
+        <div className="blog-grid">
+          {filtered.map(post => (
+            <Link key={post.slug} href={`/blog/${post.slug}`} style={{ ...card, padding: 0, textDecoration: 'none', display: 'block', overflow: 'hidden' }}>
+              {post.heroImage ? (
+                // eslint-disable-next-line @next/next/no-img-element
+                <img src={post.heroImage} alt={post.title} style={{ width: '100%', aspectRatio: '16/9', objectFit: 'cover', display: 'block', background: '#0f172a' }} />
+              ) : (
+                <div style={{ width: '100%', aspectRatio: '16/9', background: `${post.catColor}18`, display: 'flex', alignItems: 'center', justifyContent: 'center' }}>
+                  <span style={{ fontFamily: 'var(--mono)', fontSize: 11, fontWeight: 800, color: `${post.catColor}80`, letterSpacing: 1 }}>{post.category.toUpperCase()}</span>
+                </div>
+              )}
+              <div style={{ padding: '14px 16px 18px' }}>
+                <div style={{ display: 'flex', alignItems: 'center', gap: 8, marginBottom: 8, flexWrap: 'wrap' }}>
+                  <span style={{ fontFamily: 'var(--mono)', fontSize: 10, fontWeight: 600, color: post.catColor, padding: '2px 8px', borderRadius: 4, background: `${post.catColor}14` }}>{post.category}</span>
+                  <span style={{ fontFamily: 'var(--sans)', fontSize: 11, color: '#475569', marginLeft: 'auto' }}>{fmtDateShort(post.date)} · {post.readTime}</span>
+                </div>
+                <p style={{ fontFamily: 'var(--serif)', fontSize: 17, fontWeight: 700, color: '#E2E8F0', margin: 0, lineHeight: 1.4 }}>{post.title}</p>
+                <p style={{ fontFamily: 'var(--sans)', fontSize: 12, color: '#64748B', margin: '8px 0 0', lineHeight: 1.5 }}>{post.description?.length > 90 ? post.description.slice(0, 90) + '...' : post.description}</p>
+              </div>
+            </Link>
+          ))}
+        </div>
+      )}
 
       <p style={{ fontFamily: 'var(--mono)', fontSize: 11, color: '#475569', textAlign: 'center', marginTop: 24 }}>
         {filtered.length} post{filtered.length !== 1 ? 's' : ''}{active !== 'All' ? ` in ${active}` : ''}{search ? ` matching "${search}"` : ''}
