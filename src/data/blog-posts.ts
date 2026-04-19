@@ -75,6 +75,7 @@ export const blogPosts: BlogPost[] = [
     slug: 'how-to-read-stock-market-data-guide',
     title: 'How to Read Stock Market Data — Beginner\'s Guide',
     category: 'Markets', catColor: '#00D474', date: '2026-04-01', readTime: '5 min',
+    heroImage: '/images/content/how-to-read-stock-market-data-hero.png',
     description: 'A complete beginner\'s guide to reading stock market data: ticker symbols, price, volume, market cap, percentage changes, and charts.',
     calculatorLinks: [
       { text: 'Reading data is step one. Calculating how much to risk per trade before you enter is step two.', href: '/calculators/position-size', ctaText: 'Position Size Calculator' },
