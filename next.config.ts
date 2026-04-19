@@ -45,9 +45,9 @@ const nextConfig: NextConfig = {
       { source: '/balance/:path*', destination: '/', permanent: true },
       { source: '/spin/:path*', destination: '/', permanent: true },
       { source: '/fortune/:path*', destination: '/', permanent: true },
-      // Sectors page removed — redirect to markets
-      { source: '/markets/sectors', destination: '/markets', permanent: true },
-      { source: '/markets/sectors/:path*', destination: '/markets', permanent: true },
+      // Sectors page removed — redirect to home (markets also deleted)
+      { source: '/markets/sectors', destination: '/', permanent: true },
+      { source: '/markets/sectors/:path*', destination: '/', permanent: true },
       // /crypto shortcut → home (markets deleted)
       { source: '/crypto', destination: '/', permanent: true },
       { source: '/crypto/:path*', destination: '/', permanent: true },
@@ -75,8 +75,6 @@ const nextConfig: NextConfig = {
       { source: '/korea/no-tipping-korea', destination: '/', permanent: true },
       { source: '/today/:path*', destination: '/', permanent: true },
       { source: '/services', destination: '/', permanent: true },
-      // Old blog posts → blog hub
-      { source: '/blog/lotto/:path*', destination: '/lottery', permanent: true },
       { source: '/blog/salary-calculator', destination: '/blog', permanent: true },
       { source: '/blog/bmi-guide', destination: '/blog', permanent: true },
       { source: '/blog/typing-speed-test', destination: '/blog', permanent: true },
