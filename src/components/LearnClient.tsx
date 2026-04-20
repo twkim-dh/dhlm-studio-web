@@ -180,18 +180,54 @@ function Crypto101Tab({ lessons }: { lessons: LessonItem[] }) {
 
 /* ─── INVESTING 101 tab ─── */
 function Investing101Tab() {
+  const lessons = [
+    { week: 1, slug: 'investing-101-beginner-w1-what-is-a-stock-really', title: 'What Is a Stock, Really?', phase: 1, phaseColor: '#00D474' },
+    { week: 2, slug: 'investing-101-beginner-w2-how-the-market-actually-works', title: 'How the Market Actually Works', phase: 1, phaseColor: '#00D474' },
+    { week: 3, slug: 'investing-101-beginner-w3-opening-your-first-brokerage-account', title: 'Opening Your First Brokerage Account', phase: 1, phaseColor: '#00D474' },
+    { week: 4, slug: 'investing-101-beginner-w4-reading-income-statement', title: 'Reading a Company (Part 1): The Income Statement', phase: 2, phaseColor: '#3B82F6' },
+    { week: 5, slug: 'investing-101-beginner-w5-reading-balance-sheet', title: 'Reading a Company (Part 2): The Balance Sheet', phase: 2, phaseColor: '#3B82F6' },
+    { week: 6, slug: 'investing-101-beginner-w6-reading-cash-flow-statement', title: 'Reading a Company (Part 3): The Cash Flow Statement', phase: 2, phaseColor: '#3B82F6' },
+    { week: 7, slug: 'investing-101-beginner-w7-what-is-a-business-model', title: 'What Is a Business Model?', phase: 2, phaseColor: '#3B82F6' },
+    { week: 8, slug: 'investing-101-beginner-w8-valuation-basics', title: 'Valuation Basics: P/E, P/B, PEG', phase: 2, phaseColor: '#3B82F6' },
+    { week: 9, slug: 'investing-101-beginner-w9-dividends-and-total-return', title: 'Dividends and Total Return', phase: 3, phaseColor: '#D4A843' },
+    { week: 10, slug: 'investing-101-beginner-w10-diversification-portfolio-basics', title: 'Diversification and Portfolio Basics', phase: 3, phaseColor: '#D4A843' },
+    { week: 11, slug: 'investing-101-beginner-w11-investors-mind', title: "The Investor's Mind: Fear, Greed, Patience", phase: 3, phaseColor: '#D4A843' },
+    { week: 12, slug: 'investing-101-beginner-w12-your-first-five-years', title: 'Your First 5 Years: A Realistic Roadmap', phase: 3, phaseColor: '#D4A843' },
+  ];
+
   return (
-    <div style={{ ...card, padding: '36px 28px', textAlign: 'center', opacity: 0.7 }}>
-      <div style={{ fontSize: 32, marginBottom: 12 }}>📈</div>
-      <div style={{ fontFamily: 'var(--mono)', fontSize: 9, fontWeight: 800, padding: '4px 12px', borderRadius: 6, background: '#D4A84318', color: '#D4A843', border: '1px solid #D4A84340', display: 'inline-block', letterSpacing: 1, marginBottom: 14 }}>
-        ⏳ COMING APRIL 21, 2026
+    <div>
+      <div style={{ display: 'flex', alignItems: 'center', gap: 16, marginBottom: 20, padding: '14px 18px', borderRadius: 12, background: '#0D1117', border: '1px solid #1E293B' }}>
+        <div style={{ flex: 1 }}>
+          <div style={{ display: 'flex', justifyContent: 'space-between', marginBottom: 6 }}>
+            <span style={{ fontFamily: 'var(--mono)', fontSize: 10, fontWeight: 700, color: '#00D474' }}>CURRICULUM PROGRESS</span>
+            <span style={{ fontFamily: 'var(--mono)', fontSize: 10, color: '#64748B' }}>12/12 PUBLISHED</span>
+          </div>
+          <div style={{ height: 5, background: '#1E293B', borderRadius: 3, overflow: 'hidden' }}>
+            <div style={{ height: '100%', width: '100%', background: 'linear-gradient(90deg, #00D474, #059952)', borderRadius: 3 }} />
+          </div>
+        </div>
+        <Link href="/learn/investing-101-beginner" style={{ fontFamily: 'var(--mono)', fontSize: 11, color: '#00D474', textDecoration: 'none', fontWeight: 700, flexShrink: 0 }}>
+          Full Curriculum →
+        </Link>
       </div>
-      <div style={{ fontFamily: 'var(--serif)', fontSize: 22, fontWeight: 800, color: '#F1F5F9', marginBottom: 10 }}>
-        Stock Market Fundamentals
+      <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fill, minmax(280px, 1fr))', gap: 12 }}>
+        {lessons.map(l => (
+          <Link key={l.week} href={`/learn/${l.slug}`} style={{ textDecoration: 'none', display: 'block' }}>
+            <div style={{ ...card, padding: '14px 16px' }}>
+              <div style={{ display: 'flex', alignItems: 'center', gap: 7, marginBottom: 8 }}>
+                <span style={{ fontFamily: 'var(--mono)', fontSize: 9, fontWeight: 800, padding: '3px 9px', borderRadius: 5, background: '#00D47418', color: '#00D474', border: '1px solid #00D47430', letterSpacing: 1 }}>
+                  INVESTING 101
+                </span>
+                <span style={{ fontFamily: 'var(--mono)', fontSize: 9, fontWeight: 700, padding: '2px 7px', borderRadius: 4, background: `${l.phaseColor}14`, color: l.phaseColor }}>
+                  WEEK {l.week}
+                </span>
+              </div>
+              <div style={{ fontFamily: 'var(--serif)', fontSize: 15, fontWeight: 800, color: '#F1F5F9', lineHeight: 1.4 }}>{l.title}</div>
+            </div>
+          </Link>
+        ))}
       </div>
-      <p style={{ fontSize: 13, color: '#64748B', lineHeight: 1.7, margin: '0 auto', maxWidth: 480 }}>
-        How markets actually work. Financial statements, valuation, earnings analysis, and building an investment framework. 12 lessons · 3 phases.
-      </p>
     </div>
   );
 }

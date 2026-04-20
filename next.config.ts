@@ -76,6 +76,8 @@ const nextConfig: NextConfig = {
       { source: '/today/:path*', destination: '/', permanent: true },
       { source: '/services', destination: '/', permanent: true },
       { source: '/blog/salary-calculator', destination: '/blog', permanent: true },
+      // Old Investing 101 W1 → new beginner series canonical URL
+      { source: '/blog/investing-101-week1-what-is-a-stock', destination: '/learn/investing-101-beginner-w1-what-is-a-stock-really', permanent: true },
       { source: '/blog/bmi-guide', destination: '/blog', permanent: true },
       { source: '/blog/typing-speed-test', destination: '/blog', permanent: true },
       // ── Deep Dive / Special Reports: /blog/ → /reports/ (301 SEO rescue)

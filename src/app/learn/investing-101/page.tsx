@@ -7,7 +7,7 @@ const manifest = unsplashManifest as Record<string, ManifestEntry>;
 
 export const metadata: Metadata = {
   title: 'Investing 101 — Stock Market Fundamentals | DHLM Studio',
-  description: 'Learn how the stock market actually works. Financial statements, valuation, earnings analysis, and building a real investment framework. Coming April 21, 2026.',
+  description: 'Learn how the stock market actually works. Financial statements, valuation, earnings analysis, and building a real investment framework. 12 lessons now live.',
   alternates: { canonical: 'https://dhlm-studio.com/learn/investing-101' },
 };
 
@@ -16,6 +16,7 @@ interface Lesson {
   title: string;
   description: string;
   slug?: string;
+  isLearnRoute?: boolean;
 }
 
 interface Phase {
@@ -31,54 +32,21 @@ const CURRICULUM: Phase[] = [
     title: 'Foundations',
     color: '#00D474',
     lessons: [
-      {
-        week: 1,
-        title: 'How the Stock Market Actually Works',
-        slug: 'investing-101-week1-what-is-a-stock',
-        description: 'What you\'re actually buying when you buy a stock. How exchanges, brokers, and market makers fit together. Why prices move.',
-      },
-      {
-        week: 2,
-        title: 'Reading Financial Statements: Revenue, Profit, Cash Flow',
-        description: 'Income statement, balance sheet, cash flow statement — and why most beginners read only one of the three.',
-      },
-      {
-        week: 3,
-        title: 'Valuation 101: P/E, EV/EBITDA, and Price-to-Book',
-        description: 'What "expensive" and "cheap" actually mean in markets. Three core multiples and when each one matters.',
-      },
-      {
-        week: 4,
-        title: 'Risk, Return, and Portfolio Construction',
-        description: 'Volatility vs. risk. Diversification math. The relationship between what you own and how much you can lose.',
-      },
+      { week: 1, title: 'What Is a Stock, Really?', slug: 'investing-101-beginner-w1-what-is-a-stock-really', description: 'Forget the ticker symbols. A stock is a legal claim on a living business. Understand that, and everything else follows.', isLearnRoute: true },
+      { week: 2, title: 'How the Market Actually Works', slug: 'investing-101-beginner-w2-how-the-market-actually-works', description: 'Exchanges, market makers, clearinghouses — what actually happens between "buy" and "share in your account."', isLearnRoute: true },
+      { week: 3, title: 'Opening Your First Brokerage Account', slug: 'investing-101-beginner-w3-opening-your-first-brokerage-account', description: 'Choosing a broker, account types, and the first decisions every new investor faces before placing a single trade.', isLearnRoute: true },
     ],
   },
   {
     phase: 2,
-    title: 'Analysis',
+    title: 'Reading Companies',
     color: '#3B82F6',
     lessons: [
-      {
-        week: 5,
-        title: 'Fundamental vs. Technical Analysis — When Each Works',
-        description: 'What fundamentals tell you, what charts tell you, and why treating them as rivals is a mistake.',
-      },
-      {
-        week: 6,
-        title: 'Industry and Competitive Analysis: Moats, TAM, and Market Share',
-        description: 'Porter\'s five forces, economic moats, total addressable market — and why most "TAM" estimates are fiction.',
-      },
-      {
-        week: 7,
-        title: 'Reading an Earnings Report Like a Professional',
-        description: 'EPS beats, revenue guidance, operating leverage, management commentary — what to look for in 15 minutes.',
-      },
-      {
-        week: 8,
-        title: 'Macro Indicators Investors Actually Use',
-        description: 'Fed funds rate, CPI, employment, yield curve — the six macro indicators that actually move stock prices.',
-      },
+      { week: 4, title: 'Reading a Company (Part 1): The Income Statement', slug: 'investing-101-beginner-w4-reading-income-statement', description: 'Revenue, gross profit, operating income, net income — what each number actually tells you.', isLearnRoute: true },
+      { week: 5, title: 'Reading a Company (Part 2): The Balance Sheet', slug: 'investing-101-beginner-w5-reading-balance-sheet', description: 'Assets, liabilities, equity — the snapshot of what a company owns, owes, and what is left for shareholders.', isLearnRoute: true },
+      { week: 6, title: 'Reading a Company (Part 3): The Cash Flow Statement', slug: 'investing-101-beginner-w6-reading-cash-flow-statement', description: 'Why free cash flow matters more than earnings, and how to tell a profitable business from a cash-burning one.', isLearnRoute: true },
+      { week: 7, title: 'What Is a Business Model?', slug: 'investing-101-beginner-w7-what-is-a-business-model', description: 'How a company actually makes money — and why the model shapes everything about how to value it.', isLearnRoute: true },
+      { week: 8, title: 'Valuation Basics: P/E, P/B, PEG', slug: 'investing-101-beginner-w8-valuation-basics', description: 'What does it mean for a stock to be "expensive" or "cheap"? Three core multiples and how to use them.', isLearnRoute: true },
     ],
   },
   {
@@ -86,26 +54,10 @@ const CURRICULUM: Phase[] = [
     title: 'Strategy',
     color: '#D4A843',
     lessons: [
-      {
-        week: 9,
-        title: 'Growth vs. Value vs. Dividend Investing',
-        description: 'The evidence for each style. When growth outperforms, when value outperforms, and the myth of the permanent winner.',
-      },
-      {
-        week: 10,
-        title: 'ETFs vs. Individual Stocks: The Evidence',
-        description: 'What the data says about active vs. passive investing. When individual stock selection makes sense.',
-      },
-      {
-        week: 11,
-        title: 'Taxes, Accounts, and Compounding: The Hidden Advantages',
-        description: '401(k), IRA, taxable accounts. Long-term vs. short-term capital gains. How account structure affects real returns.',
-      },
-      {
-        week: 12,
-        title: 'Building Your Investment Framework — From Analysis to Decision',
-        description: 'Position sizing, conviction scale, decision checklist, and when to sell. A complete framework you can actually use.',
-      },
+      { week: 9, title: 'Dividends and Total Return', slug: 'investing-101-beginner-w9-dividends-and-total-return', description: 'Yield, payout ratio, dividend growth — and why total return is the only number that matters.', isLearnRoute: true },
+      { week: 10, title: 'Diversification and Portfolio Basics', slug: 'investing-101-beginner-w10-diversification-portfolio-basics', description: 'Why spreading risk works, how much diversification is enough, and building a portfolio that survives a crash.', isLearnRoute: true },
+      { week: 11, title: "The Investor's Mind: Fear, Greed, Patience", slug: 'investing-101-beginner-w11-investors-mind', description: 'The behavioral traps that destroy returns — and how to recognize them before they cost you.', isLearnRoute: true },
+      { week: 12, title: 'Your First 5 Years: A Realistic Roadmap', slug: 'investing-101-beginner-w12-your-first-five-years', description: 'A concrete action plan from Day 1 through Year 5. What to do, in what order, with what goals.', isLearnRoute: true },
     ],
   },
 ];
@@ -141,13 +93,16 @@ export default function Investing101Page() {
             How markets actually work. Financial statements, valuation, earnings analysis, and building a real investment framework. No beginner fluff — just what you need to know.
           </p>
 
-          {/* Coming Soon Banner */}
-          <div style={{ background: '#111827', borderRadius: 12, border: '1px solid #D4A84330', padding: '16px 20px', display: 'flex', alignItems: 'center', gap: 12 }}>
-            <div style={{ fontSize: 20 }}>⏳</div>
-            <div>
-              <div style={{ fontFamily: 'var(--mono)', fontSize: 11, fontWeight: 800, color: '#D4A843', marginBottom: 2 }}>COMING WEEK 1 — APRIL 21, 2026</div>
-              <div style={{ fontSize: 12, color: '#64748B' }}>First lesson drops April 21. Subscribe below to get it in your inbox.</div>
+          {/* Series live banner */}
+          <div style={{ background: '#111827', borderRadius: 12, border: '1px solid #00D47430', padding: '16px 20px', display: 'flex', alignItems: 'center', gap: 12 }}>
+            <div style={{ fontSize: 20 }}>📗</div>
+            <div style={{ flex: 1 }}>
+              <div style={{ fontFamily: 'var(--mono)', fontSize: 11, fontWeight: 800, color: '#00D474', marginBottom: 2 }}>12 LESSONS NOW LIVE</div>
+              <div style={{ fontSize: 12, color: '#64748B' }}>Full beginner series published. Start with Week 1 below.</div>
             </div>
+            <Link href="/learn/investing-101-beginner-w1-what-is-a-stock-really" style={{ display: 'inline-block', padding: '8px 18px', borderRadius: 8, background: '#00D474', color: '#0B0F19', fontSize: 12, fontWeight: 800, textDecoration: 'none', flexShrink: 0 }}>
+              Start →
+            </Link>
           </div>
         </div>
 
@@ -196,8 +151,9 @@ export default function Investing101Page() {
                     </div>
                   </div>
                 );
+                const href = lesson.isLearnRoute ? `/learn/${lesson.slug}` : `/blog/${lesson.slug}`;
                 return isPublished ? (
-                  <Link key={lesson.week} href={`/blog/${lesson.slug}`} style={{ textDecoration: 'none' }}>{card}</Link>
+                  <Link key={lesson.week} href={href} style={{ textDecoration: 'none' }}>{card}</Link>
                 ) : (
                   <div key={lesson.week}>{card}</div>
                 );
@@ -206,14 +162,14 @@ export default function Investing101Page() {
           </div>
         ))}
 
-        {/* Subscribe CTA */}
+        {/* Series index CTA */}
         <div style={{ marginTop: 8, padding: '24px', borderRadius: 14, background: 'linear-gradient(135deg, #00D47408, #00D47403)', border: '1px solid #00D47420', textAlign: 'center' }}>
-          <div style={{ fontFamily: 'var(--mono)', fontSize: 10, fontWeight: 700, color: '#00D474', letterSpacing: 2, marginBottom: 8 }}>📬 GET NOTIFIED</div>
+          <div style={{ fontFamily: 'var(--mono)', fontSize: 10, fontWeight: 700, color: '#00D474', letterSpacing: 2, marginBottom: 8 }}>📈 FULL BEGINNER SERIES</div>
           <p style={{ fontSize: 14, color: '#94A3B8', margin: '0 0 14px' }}>
-            Investing 101 launches April 21. Subscribe to get the first lesson in your inbox.
+            All 12 lessons published. View the full curriculum with hero images and descriptions.
           </p>
-          <Link href="/#subscribe" style={{ display: 'inline-block', padding: '10px 24px', borderRadius: 8, background: '#00D474', color: '#0B0F19', fontSize: 13, fontWeight: 800, textDecoration: 'none' }}>
-            Notify Me →
+          <Link href="/learn/investing-101-beginner" style={{ display: 'inline-block', padding: '10px 24px', borderRadius: 8, background: '#00D474', color: '#0B0F19', fontSize: 13, fontWeight: 800, textDecoration: 'none' }}>
+            View Full Curriculum →
           </Link>
         </div>
 

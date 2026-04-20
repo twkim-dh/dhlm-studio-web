@@ -34,8 +34,24 @@ export default function sitemap(): MetadataRoute.Sitemap {
     { url: `${BASE}/reports`,             lastModified: now, changeFrequency: "weekly",  priority: 0.9 },
     { url: `${BASE}/blog`,                lastModified: now, changeFrequency: "weekly",  priority: 0.8 },
     { url: `${BASE}/learn`,               lastModified: now, changeFrequency: "weekly",  priority: 0.8 },
-    { url: `${BASE}/learn/crypto-101`,    lastModified: now, changeFrequency: "weekly",  priority: 0.8 },
-    { url: `${BASE}/learn/investing-101`, lastModified: now, changeFrequency: "monthly", priority: 0.7 },
+    { url: `${BASE}/learn/crypto-101`,             lastModified: now, changeFrequency: "weekly",  priority: 0.8 },
+    { url: `${BASE}/learn/investing-101`,           lastModified: now, changeFrequency: "monthly", priority: 0.7 },
+    { url: `${BASE}/learn/investing-101-beginner`,  lastModified: now, changeFrequency: "monthly", priority: 0.8 },
+    // Investing 101 Beginner Series — 12 lessons
+    ...[
+      'investing-101-beginner-w1-what-is-a-stock-really',
+      'investing-101-beginner-w2-how-the-market-actually-works',
+      'investing-101-beginner-w3-opening-your-first-brokerage-account',
+      'investing-101-beginner-w4-reading-income-statement',
+      'investing-101-beginner-w5-reading-balance-sheet',
+      'investing-101-beginner-w6-reading-cash-flow-statement',
+      'investing-101-beginner-w7-what-is-a-business-model',
+      'investing-101-beginner-w8-valuation-basics',
+      'investing-101-beginner-w9-dividends-and-total-return',
+      'investing-101-beginner-w10-diversification-portfolio-basics',
+      'investing-101-beginner-w11-investors-mind',
+      'investing-101-beginner-w12-your-first-five-years',
+    ].map(slug => ({ url: `${BASE}/learn/${slug}`, lastModified: now, changeFrequency: "monthly" as const, priority: 0.7 })),
     { url: `${BASE}/research`,            lastModified: now, changeFrequency: "weekly",  priority: 0.8 },
 
     // Reports (all slugs from content/reports/)
