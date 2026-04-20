@@ -266,15 +266,6 @@ export default async function LearnLessonPage({ params }: { params: Promise<{ sl
           <span style={{ color: '#64748B' }}>Week {fm.week}</span>
         </div>
 
-        {/* Hero image */}
-        {heroSrc && (
-          <div style={{ width: '100%', aspectRatio: '3/2', borderRadius: 14, overflow: 'hidden', marginBottom: 28, border: '1px solid #1E293B', position: 'relative', background: '#0f172a' }}>
-            {/* eslint-disable-next-line @next/next/no-img-element */}
-            <img src={heroSrc} alt={fm.title} style={{ width: '100%', height: '100%', objectFit: 'cover', display: 'block', opacity: 0.9 }} />
-            <div style={{ position: 'absolute', inset: 0, background: 'linear-gradient(135deg, #00D47420 0%, transparent 50%)' }} />
-          </div>
-        )}
-
         {/* Header */}
         <div style={{ marginBottom: 28 }}>
           <div style={{ display: 'flex', alignItems: 'center', gap: 8, marginBottom: 12, flexWrap: 'wrap' }}>
@@ -301,7 +292,7 @@ export default async function LearnLessonPage({ params }: { params: Promise<{ sl
         </div>
 
         {/* Progress bar */}
-        <div style={{ marginBottom: 32, padding: '12px 16px', borderRadius: 10, background: '#0D1117', border: '1px solid #1E293B' }}>
+        <div style={{ marginBottom: 28, padding: '12px 16px', borderRadius: 10, background: '#0D1117', border: '1px solid #1E293B' }}>
           <div style={{ display: 'flex', justifyContent: 'space-between', marginBottom: 6 }}>
             <span style={{ fontFamily: 'var(--mono)', fontSize: 9, fontWeight: 700, color: '#475569' }}>SERIES PROGRESS</span>
             <span style={{ fontFamily: 'var(--mono)', fontSize: 9, color: '#475569' }}>W{fm.week} / 12</span>
@@ -310,6 +301,14 @@ export default async function LearnLessonPage({ params }: { params: Promise<{ sl
             <div style={{ height: '100%', width: `${(fm.week / 12) * 100}%`, background: 'linear-gradient(90deg, #00D474, #059952)', borderRadius: 2 }} />
           </div>
         </div>
+
+        {/* Hero image */}
+        {heroSrc && (
+          <div style={{ width: '100%', aspectRatio: '3/2', borderRadius: 14, overflow: 'hidden', marginBottom: 32, border: '1px solid #1E293B', background: '#0f172a' }}>
+            {/* eslint-disable-next-line @next/next/no-img-element */}
+            <img src={heroSrc} alt={fm.title} style={{ width: '100%', height: '100%', objectFit: 'cover', display: 'block' }} />
+          </div>
+        )}
 
         {/* Body */}
         <div style={{ lineHeight: 1.9 }}>
