@@ -3,9 +3,7 @@ import type { NextRequest } from 'next/server';
 
 // 410 Gone: permanently deleted pages — signals to Google these are gone, not moved
 const GONE_PATHS = new Set([
-  '/blog/top-crypto-gainers-this-month-april-2026',
-  '/blog/nvidia-vs-amd-ai-inference-cost-2026',
-  '/blog/nvidia-worlds-most-valuable-company-2026',
+  '/blog/bitcoin-deep-dive-april-2026',
   '/blog/lotto-statistics',
   '/blog/powerball-vs-mega-millions-better-odds',
 ]);
@@ -19,9 +17,7 @@ export function middleware(request: NextRequest) {
 
 export const config = {
   matcher: [
-    '/blog/top-crypto-gainers-this-month-april-2026',
-    '/blog/nvidia-vs-amd-ai-inference-cost-2026',
-    '/blog/nvidia-worlds-most-valuable-company-2026',
+    '/blog/bitcoin-deep-dive-april-2026',
     '/blog/lotto-statistics',
     '/blog/powerball-vs-mega-millions-better-odds',
   ],
