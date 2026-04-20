@@ -499,6 +499,7 @@ export const blogPosts: BlogPost[] = [
   {
     slug: 'investing-101-week1-what-is-a-stock',
     title: 'Investing 101, Week 1: What Is a Stock? (And What You\'re Actually Buying)',
+    noindex: true,
     category: 'Investing 101',
     catColor: '#00D474',
     date: '2026-04-21',

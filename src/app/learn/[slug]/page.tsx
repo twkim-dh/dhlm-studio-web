@@ -89,7 +89,7 @@ export async function generateMetadata({ params }: { params: Promise<{ slug: str
   const BASE = 'https://dhlm-studio.com';
   const ogImage = heroSrc ? `${BASE}${heroSrc}` : `${BASE}/opengraph-image`;
   return {
-    title: `${fm.title} | Investing 101 Beginner | DHLM Studio`,
+    title: `${fm.title} | Investing 101 Beginner`,
     description: fm.description,
     alternates: { canonical: `${BASE}/learn/${slug}` },
     openGraph: {

@@ -30,9 +30,9 @@ const REDIRECTS: Record<string, string> = {
   '/blog/ethereum-deep-dive-april-2026':      '/reports/deep-dive-eth-april-2026',
 };
 
-// 410 Gone: permanently deleted pages
+// 410 Gone: permanently deleted pages (no content, no redirect elsewhere)
+// Note: /blog/bitcoin-deep-dive-april-2026 is excluded — next.config.ts 301 takes priority
 const GONE_PATHS = new Set([
-  '/blog/bitcoin-deep-dive-april-2026',
   '/blog/lotto-statistics',
   '/blog/powerball-vs-mega-millions-better-odds',
 ]);
@@ -51,9 +51,5 @@ export function proxy(request: NextRequest) {
 }
 
 export const config = {
-  matcher: [
-    '/blog/:path*',
-    '/blog/lotto-statistics',
-    '/blog/powerball-vs-mega-millions-better-odds',
-  ],
+  matcher: ['/blog/:path*'],
 };
