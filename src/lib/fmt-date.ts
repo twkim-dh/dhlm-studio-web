@@ -10,7 +10,8 @@
 export function fmtDateShort(date: string): string {
   if (!date) return '';
   try {
-    return new Date(date + 'T12:00:00Z').toLocaleDateString('en-US', {
+    const d = date.includes('T') ? new Date(date) : new Date(date + 'T12:00:00Z');
+    return d.toLocaleDateString('en-US', {
       year: 'numeric', month: 'short', day: 'numeric',
     });
   } catch { return date; }
@@ -19,7 +20,8 @@ export function fmtDateShort(date: string): string {
 export function fmtDateLong(date: string): string {
   if (!date) return '';
   try {
-    return new Date(date + 'T12:00:00Z').toLocaleDateString('en-US', {
+    const d = date.includes('T') ? new Date(date) : new Date(date + 'T12:00:00Z');
+    return d.toLocaleDateString('en-US', {
       year: 'numeric', month: 'long', day: 'numeric',
     });
   } catch { return date; }
@@ -28,7 +30,8 @@ export function fmtDateLong(date: string): string {
 export function fmtDateCompact(date: string): string {
   if (!date) return '';
   try {
-    return new Date(date + 'T12:00:00Z').toLocaleDateString('en-US', {
+    const d = date.includes('T') ? new Date(date) : new Date(date + 'T12:00:00Z');
+    return d.toLocaleDateString('en-US', {
       month: 'short', day: 'numeric',
     });
   } catch { return date; }

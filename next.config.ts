@@ -104,6 +104,8 @@ const nextConfig: NextConfig = {
       { source: '/blog/ethereum-special-report-april-2026',   destination: '/reports/ethereum-special-report-april-2026', permanent: true },
       // /crypto-101 → /learn/crypto-101 (content moved to Brutal Edge Academy)
       { source: '/crypto-101', destination: '/learn/crypto-101', permanent: true },
+      // /research/the-mental-game → /research (safety net for external links/bookmarks)
+      { source: '/research/the-mental-game', destination: '/research', permanent: true },
       // Tools section deleted — redirect to home
       { source: '/tools', destination: '/', permanent: true },
       { source: '/tools/:path*', destination: '/', permanent: true },
