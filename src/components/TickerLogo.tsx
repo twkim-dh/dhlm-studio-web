@@ -1,8 +1,9 @@
 'use client';
 
 // TickerLogo — renders a company logo for the given ticker.
-// Uses Clearbit Logo API (free, no auth) or local SVG overrides.
-// Falls back to a colored letter badge if logo fails.
+// Priority: 1) /images/logos/{TICKER}.png (static, no CDN)
+//           2) Clearbit logo CDN (fallback for tickers not in static set)
+//           3) Colored letter badge
 //
 // Trademark notice: All company logos remain the property of their respective
 // owners. The site footer carries a global identification-only disclaimer.
@@ -16,44 +17,11 @@ function tickerBgColor(ticker: string): string {
   return `hsl(${hash % 360}, 50%, 28%)`;
 }
 
-// Tickers whose FMP CDN logo is missing/wrong — use local SVG from /logos/.
-// SVGs may be: (a) black-on-transparent → white bg, or (b) self-contained
-// with their own colored circle → white bg acts as a thin border ring.
-const LOCAL_LOGO_OVERRIDES: Record<string, string> = {
-  PLTR:      '/logos/PLTR.svg',
-  ETH:       '/logos/ETH.svg',
-  BTC:       '/logos/BTC.svg',
+// Tickers with local SVG overrides (black-on-transparent, use white bg)
+const LOCAL_SVG_OVERRIDES: Record<string, string> = {
   SPACEX:    '/logos/SPACEX.svg',
-  CRCL:      '/logos/CRCL.svg',
   ANTHROPIC: '/logos/ANTHROPIC.svg',
 };
-
-/** Count visible pixels when composited on a given fill color. Returns 0–1 ratio. */
-function visibleRatio(img: HTMLImageElement, fillHex: string): number {
-  try {
-    const sz = 20;
-    const canvas = document.createElement('canvas');
-    canvas.width = sz;
-    canvas.height = sz;
-    const ctx = canvas.getContext('2d');
-    if (!ctx) return 0;
-    ctx.fillStyle = fillHex;
-    ctx.fillRect(0, 0, sz, sz);
-    ctx.drawImage(img, 0, 0, sz, sz);
-    const d = ctx.getImageData(0, 0, sz, sz).data;
-    const isWhiteBg = fillHex === '#ffffff';
-    let count = 0;
-    for (let i = 0; i < d.length; i += 4) {
-      const brightness = (d[i] + d[i + 1] + d[i + 2]) / 3;
-      // On white bg: look for pixels noticeably darker than white (< 200)
-      // On dark bg:  look for pixels noticeably lighter than dark  (> 55)
-      if (isWhiteBg ? brightness < 200 : brightness > 55) count++;
-    }
-    return count / (sz * sz);
-  } catch {
-    return 0;
-  }
-}
 
 type BgMode = 'loading' | 'white' | 'dark' | 'fallback';
 
@@ -75,29 +43,60 @@ export default function TickerLogo({ ticker, size = 24, rounded = true }: Props)
       />
     );
   }
+
   const sym = ticker.toUpperCase();
-  const localOverride = LOCAL_LOGO_OVERRIDES[sym];
-  const domain = TICKER_DOMAINS[sym];
-  // Local overrides are black-on-transparent SVGs → always use white bg, skip canvas check
-  const [bg, setBg] = useState<BgMode>(localOverride ? 'white' : 'loading');
   const radius = rounded ? Math.max(4, Math.round(size * 0.2)) : 0;
-  const url = localOverride ?? (domain ? `https://logo.clearbit.com/${domain}` : null);
   const pad = Math.max(2, Math.round(size * 0.1));
 
+  // URL priority chain
+  const svgOverride = LOCAL_SVG_OVERRIDES[sym];
+  const staticUrl = svgOverride ?? `/images/logos/${sym}.png`;
+  const clearbitUrl = TICKER_DOMAINS[sym] ? `https://logo.clearbit.com/${TICKER_DOMAINS[sym]}` : null;
+
+  // State: which URL we're on and background detection result
+  const [urlIndex, setUrlIndex] = useState(0); // 0=static, 1=clearbit
+  const [bg, setBg] = useState<BgMode>(svgOverride ? 'white' : 'loading');
+
+  const urls = [staticUrl, clearbitUrl].filter(Boolean) as string[];
+  const currentUrl = urls[urlIndex] ?? null;
+
   const handleLoad = useCallback((e: React.SyntheticEvent<HTMLImageElement>) => {
-    if (localOverride) return; // local SVGs: bg already set to 'white', skip check
-    const img = e.currentTarget;
-    const THRESHOLD = 0.05;
-    if (visibleRatio(img, '#ffffff') >= THRESHOLD) {
+    if (svgOverride && urlIndex === 0) return; // SVG overrides always use white bg
+    if (urlIndex === 0 && !svgOverride) {
+      // Static PNG: assume transparent — use white bg
       setBg('white');
-    } else if (visibleRatio(img, '#111827') >= THRESHOLD) {
-      setBg('dark');
+      return;
+    }
+    // Clearbit: detect bg via canvas
+    try {
+      const img = e.currentTarget;
+      const sz = 20;
+      const canvas = document.createElement('canvas');
+      canvas.width = sz; canvas.height = sz;
+      const ctx = canvas.getContext('2d');
+      if (!ctx) { setBg('white'); return; }
+      ctx.fillStyle = '#ffffff';
+      ctx.fillRect(0, 0, sz, sz);
+      ctx.drawImage(img, 0, 0, sz, sz);
+      const d = ctx.getImageData(0, 0, sz, sz).data;
+      let dark = 0;
+      for (let i = 0; i < d.length; i += 4) {
+        if ((d[i] + d[i + 1] + d[i + 2]) / 3 < 200) dark++;
+      }
+      setBg(dark / (sz * sz) >= 0.05 ? 'white' : 'dark');
+    } catch { setBg('white'); }
+  }, [urlIndex, svgOverride]);
+
+  const handleError = useCallback(() => {
+    if (urlIndex + 1 < urls.length) {
+      setUrlIndex(u => u + 1);
+      setBg('loading');
     } else {
       setBg('fallback');
     }
-  }, [localOverride]);
+  }, [urlIndex, urls.length]);
 
-  if (bg === 'fallback' || !url) {
+  if (bg === 'fallback' || !currentUrl) {
     return (
       <div
         aria-label={ticker}
@@ -118,7 +117,7 @@ export default function TickerLogo({ ticker, size = 24, rounded = true }: Props)
   const containerBg =
     bg === 'white' ? '#ffffff' :
     bg === 'dark'  ? '#111827' :
-    '#111827'; // 'loading' → dark so image is invisible during check
+    '#111827';
 
   return (
     <div
@@ -132,16 +131,15 @@ export default function TickerLogo({ ticker, size = 24, rounded = true }: Props)
     >
       {/* eslint-disable-next-line @next/next/no-img-element */}
       <img
-        src={url!}
+        src={currentUrl}
         alt={`${ticker} logo`}
         crossOrigin="anonymous"
         style={{
           width: '100%', height: '100%', objectFit: 'contain', display: 'block',
-          // Hide during canvas check to avoid flash of wrong-background logo
           opacity: bg === 'loading' ? 0 : 1,
           transition: 'opacity 0.1s',
         }}
-        onError={() => setBg('fallback')}
+        onError={handleError}
         onLoad={handleLoad}
       />
     </div>
