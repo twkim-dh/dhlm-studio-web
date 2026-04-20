@@ -43,10 +43,7 @@ export default function EditorialPage() {
             <div style={{ display: 'flex', flexDirection: 'column', gap: 10 }}>
               {[
                 { name: 'Financial Modeling Prep (FMP)', use: 'Stock profiles, financial statements, company fundamentals, market cap data. Licensed for commercial use with 250 requests/day on free tier.', color: '#60A5FA' },
-                { name: 'Alpha Vantage', use: 'Real-time market movers (top gainers, losers, most active), intraday quotes. Data delayed up to 15 minutes on free tier. Licensed for commercial use.', color: '#00D474' },
                 { name: 'CoinGecko', use: 'Cryptocurrency prices, market capitalization, 24-hour volume, historical data. Free API with 30 requests/minute. No API key required.', color: '#F59E0B' },
-                { name: 'World Bank Open Data', use: 'GDP rankings, population data, economic indicators. Public domain data, unlimited access.', color: '#D4A843' },
-                { name: 'NY Open Data (data.ny.gov)', use: 'Powerball and Mega Millions lottery results. Public government data via Socrata API. Updated after each draw.', color: '#EF4444' },
               ].map(s => (
                 <div key={s.name} style={{ padding: '12px 14px', borderRadius: 8, background: '#0D1117', border: '1px solid #1E293B' }}>
                   <div style={{ display: 'flex', alignItems: 'center', gap: 8, marginBottom: 4 }}>
@@ -68,7 +65,7 @@ export default function EditorialPage() {
                 { step: '2', title: 'Quantitative Analysis', desc: 'Key metrics are compared against sector averages, historical trends, and peer companies. We analyze P/E ratios, revenue growth rates, profit margins, debt levels, and cash flow generation.' },
                 { step: '3', title: 'Qualitative Context', desc: 'We research recent news, earnings reports, product launches, regulatory actions, and competitive dynamics that affect the company\'s outlook.' },
                 { step: '4', title: 'Bull vs Bear Framework', desc: 'Every analysis presents both the optimistic and pessimistic case. We never present a one-sided view. Readers see the strongest arguments for and against.' },
-                { step: '5', title: 'Brutal Edge&trade; Commentary', desc: 'Our analytical voice adds informational and educational commentary that makes complex analysis accessible. The conversational tone is designed to engage readers while the underlying analysis remains rigorously data-driven.' },
+                { step: '5', title: 'Brutal Edge&trade; Commentary', desc: 'Our editorial voice synthesizes the data into actionable insights and makes complex analysis accessible. The conversational tone is designed to engage readers while the underlying analysis remains rigorously data-driven.' },
               ].map(s => (
                 <div key={s.step} style={{ display: 'flex', gap: 14 }}>
                   <div style={{ width: 28, height: 28, borderRadius: '50%', background: '#C73E3A15', display: 'flex', alignItems: 'center', justifyContent: 'center', fontSize: 12, fontWeight: 800, color: '#C73E3A', flexShrink: 0 }}>{s.step}</div>
@@ -112,7 +109,7 @@ export default function EditorialPage() {
               Every piece of content on DHLM Studio goes through a human editorial process before publication.
             </p>
             <p style={{ fontSize: 13, color: '#94A3B8', lineHeight: 1.8, margin: '0 0 12px' }}>
-              Our Editor-in-Chief reviews all Deep Dive reports, Daily Briefs, and BEAF scores for:
+              Our Editor-in-Chief reviews all Deep Dive reports, research articles, and BEAF scores for:
             </p>
             <div style={{ display: 'flex', flexDirection: 'column', gap: 8, marginBottom: 14 }}>
               {[
@@ -131,7 +128,7 @@ export default function EditorialPage() {
               ))}
             </div>
             <p style={{ fontSize: 13, color: '#94A3B8', lineHeight: 1.8, margin: '0 0 10px' }}>
-              AI assists with data collection and initial drafting. The editorial judgment — what to analyze, which angle to take, how to weigh competing narratives, and whether the final product meets our standards — is made by a human editor with business and manufacturing industry experience.
+              Our team uses structured research processes and quantitative tools for data collection and initial drafting. The editorial judgment — what to analyze, which angle to take, how to weigh competing narratives, and whether the final product meets our standards — is made by a human editor with business and manufacturing industry experience.
             </p>
             <p style={{ fontSize: 13, color: '#94A3B8', lineHeight: 1.8, margin: '0 0 10px' }}>
               We also employ a <strong style={{ color: '#E2E8F0' }}>data cross-verification process</strong>: every report is cross-checked against multiple independent data sources to identify blind spots, factual errors, and analytical gaps before human final review.

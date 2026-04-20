@@ -36,7 +36,7 @@ export default function AboutPage() {
               We do not tell you what to buy. We show you what the data says.
             </p>
             <p style={{ fontSize: 14, color: '#94A3B8', lineHeight: 1.9, margin: '0 0 16px' }}>
-              Every morning, we publish a market brief so you can start your day informed. Every week, we break down stocks and crypto with the depth of institutional research — without the paywall or the agenda. And we build the tools that let you run your own numbers before risking your own money.
+              Every week, we break down stocks and crypto with the depth of institutional research — without the paywall or the agenda. And we build the tools that let you run your own numbers before risking your own money.
             </p>
             <div style={{ display: 'flex', flexDirection: 'column', gap: 6, padding: '14px 16px', background: '#0D1117', borderRadius: 10, border: '1px solid #1E293B' }}>
               {[
@@ -63,9 +63,9 @@ export default function AboutPage() {
               <ul style={{ margin: 0, paddingLeft: 18, fontSize: 13, color: '#94A3B8', lineHeight: 1.9 }}>
                 <li>Oversees all published content</li>
                 <li>15+ years in manufacturing and business operations</li>
-                <li>Directs AI analysis framework (BEAF)</li>
+                <li>Directs the BEAF analysis framework</li>
                 <li>Final approval on all Deep Dive reports</li>
-                <li>Cross-verifies analysis using multiple AI models</li>
+                <li>Cross-verifies analysis against multiple independent data sources</li>
               </ul>
             </div>
             <div>
@@ -119,13 +119,12 @@ export default function AboutPage() {
             </p>
             <div style={{ display: 'flex', flexDirection: 'column', gap: 6 }}>
               {[
-                { what: 'Stock Market Movers', when: 'Real-time (15-min delayed)', color: '#00D474' },
-                { what: 'Cryptocurrency Prices', when: 'Real-time via CoinGecko', color: '#F59E0B' },
                 { what: 'Brutal Edge Deep Dive Reports', when: 'New report weekly', color: '#C73E3A' },
-                { what: 'Wall Street Wisdom Blog', when: 'Daily quote rotation', color: '#D4A843' },
-                { what: 'Global Rankings (GDP, billionaires)', when: 'Quarterly refresh', color: '#A78BFA' },
-                { what: 'US Lottery Results', when: 'Within hours of each draw', color: '#EF4444' },
-                { what: 'Editorial Policy & Methodology', when: 'Reviewed monthly', color: '#3B82F6' },
+                { what: 'The Mental Game & Structural View', when: 'New essays weekly', color: '#A78BFA' },
+                { what: 'Investing 101 Beginner', when: '12-lesson curriculum (complete)', color: '#3B82F6' },
+                { what: 'Crypto 101', when: '12-week curriculum (complete)', color: '#F59E0B' },
+                { what: 'Wall Street Wisdom', when: '100 curated investing quotes', color: '#D4A843' },
+                { what: 'Editorial Policy & Methodology', when: 'Reviewed monthly', color: '#64748B' },
               ].map(u => (
                 <div key={u.what} style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', padding: '8px 0', borderBottom: '1px solid #1E293B' }}>
                   <div style={{ display: 'flex', alignItems: 'center', gap: 8 }}>
@@ -146,11 +145,8 @@ export default function AboutPage() {
             </p>
             <div style={{ display: 'flex', flexDirection: 'column', gap: 8 }}>
               {[
-                { name: 'Financial Modeling Prep', desc: 'Stock profiles, financials, company data', color: '#60A5FA' },
-                { name: 'Alpha Vantage', desc: 'Real-time market movers (gainers, losers, most active)', color: '#00D474' },
+                { name: 'Financial Modeling Prep', desc: 'Stock profiles, financials, company data, SEC filings', color: '#60A5FA' },
                 { name: 'CoinGecko', desc: 'Cryptocurrency prices, market cap, 24h changes', color: '#F59E0B' },
-                { name: 'World Bank Open Data', desc: 'GDP, population, and economic indicators', color: '#D4A843' },
-                { name: 'NY Open Data', desc: 'Powerball & Mega Millions lottery results (2,200+ draws)', color: '#EF4444' },
               ].map(s => (
                 <div key={s.name} style={{ display: 'flex', alignItems: 'center', gap: 10, padding: '8px 0', borderBottom: '1px solid #1E293B' }}>
                   <div style={{ width: 8, height: 8, borderRadius: '50%', background: s.color, flexShrink: 0 }} />
@@ -181,10 +177,10 @@ export default function AboutPage() {
               {[
                 { icon: '🔥', title: 'Deep Dive Reports', desc: 'Institutional-grade stock analysis (BEAF)', href: '/reports' },
                 { icon: '🧠', title: 'The Mental Game', desc: 'Psychology & frameworks for investors', href: '/research' },
-                { icon: '📚', title: 'Crypto 101', desc: '12-week beginner curriculum', href: '/learn/crypto-101' },
+                { icon: '📚', title: 'Crypto 101', desc: '12-week beginner curriculum (complete)', href: '/learn/crypto-101' },
+                { icon: '🎓', title: 'Investing 101 Beginner', desc: '12-lesson beginner curriculum (complete)', href: '/learn/investing-101-beginner' },
                 { icon: '📝', title: 'Blog', desc: 'The Masters series & Weekend Read', href: '/blog' },
-                { icon: '💡', title: 'Wall Street Wisdom', desc: '100 investing quotes', href: '/blog/wisdom' },
-                { icon: '🎓', title: 'Learn', desc: 'Investing 101 & crypto education', href: '/learn' },
+                { icon: '💡', title: 'Wall Street Wisdom', desc: '100 curated investing quotes', href: '/blog/wisdom' },
               ].map(item => (
                 <Link key={item.title} href={item.href} style={{ padding: '12px 14px', borderRadius: 10, background: '#0D1117', border: '1px solid #1E293B', textDecoration: 'none' }}>
                   <span style={{ fontSize: 18 }}>{item.icon}</span>
@@ -206,10 +202,8 @@ export default function AboutPage() {
                 { icon: '📈', title: 'Compound Interest Calculator', desc: 'See how your money grows over time with monthly contributions and a year-by-year breakdown.', href: '/calculators/compound-interest', badge: 'LIVE' },
                 { icon: '📊', title: 'DCA Calculator', desc: 'Simulate dollar cost averaging into BTC, ETH, S&P 500, or any asset. Compare against lump sum.', href: '/calculators/dca', badge: 'LIVE' },
                 { icon: '🎯', title: 'Position Size Calculator', desc: 'How much should you invest per trade? Calculate based on your risk tolerance and stop loss.', href: '/calculators/position-size', badge: 'LIVE' },
-                { icon: '🪙', title: 'Crypto Profit Calculator', desc: 'Calculate profit/loss on any crypto trade with entry, exit, and fees.', href: '/calculators/crypto-profit', badge: 'COMING SOON' },
-                { icon: '📉', title: 'Stock Return Calculator', desc: 'Backtest any stock with real historical price data. Coming after FMP integration.', href: '#', badge: 'PHASE 3' },
               ].map(item => (
-                <Link key={item.title} href={item.href === '#' ? '/calculators/compound-interest' : item.href} style={{ display: 'flex', alignItems: 'center', justifyContent: 'space-between', padding: '12px 14px', borderRadius: 10, background: '#0D1117', border: '1px solid #1E293B', textDecoration: 'none', opacity: item.badge === 'PHASE 3' ? 0.5 : 1 }}>
+                <Link key={item.title} href={item.href} style={{ display: 'flex', alignItems: 'center', justifyContent: 'space-between', padding: '12px 14px', borderRadius: 10, background: '#0D1117', border: '1px solid #1E293B', textDecoration: 'none' }}>
                   <div style={{ display: 'flex', alignItems: 'center', gap: 10 }}>
                     <span style={{ fontSize: 18 }}>{item.icon}</span>
                     <div>

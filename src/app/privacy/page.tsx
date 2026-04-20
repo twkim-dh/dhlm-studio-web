@@ -13,7 +13,7 @@ export default function PrivacyPage() {
       <article style={{ maxWidth: 680, margin: '0 auto', padding: '80px 24px' }}>
         <div style={{ fontFamily: 'var(--mono)', fontSize: 10, fontWeight: 700, color: '#64748B', letterSpacing: 3, marginBottom: 8 }}>LEGAL</div>
         <h1 style={{ fontFamily: 'var(--serif)', fontSize: 32, fontWeight: 900, color: '#F1F5F9', margin: '0 0 8px' }}>Privacy Policy</h1>
-        <p style={{ fontFamily: 'var(--sans)', fontSize: 13, color: '#475569', marginBottom: 40 }}>Last updated: March {YEAR}</p>
+        <p style={{ fontFamily: 'var(--sans)', fontSize: 13, color: '#475569', marginBottom: 40 }}>Last updated: April {YEAR}</p>
 
         {[
           { h: '1. Information We Collect', b: 'We collect minimal data: anonymous usage analytics (page views, device type) through Google Analytics, and any information you voluntarily provide through contact forms. We do not collect personal identification information unless you explicitly provide it.' },
