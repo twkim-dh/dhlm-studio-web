@@ -30,13 +30,30 @@ const REDIRECTS: Record<string, string> = {
   '/blog/ethereum-deep-dive-april-2026':      '/reports/deep-dive-eth-april-2026',
 };
 
+// 410 Gone: permanently deleted pages
+const GONE_PATHS = new Set([
+  '/blog/bitcoin-deep-dive-april-2026',
+  '/blog/lotto-statistics',
+  '/blog/powerball-vs-mega-millions-better-odds',
+]);
+
 export function proxy(request: NextRequest) {
-  const destination = REDIRECTS[request.nextUrl.pathname];
+  const { pathname } = request.nextUrl;
+
+  if (GONE_PATHS.has(pathname)) {
+    return new NextResponse('Gone', { status: 410 });
+  }
+
+  const destination = REDIRECTS[pathname];
   if (destination) {
     return NextResponse.redirect(new URL(destination, request.url), 301);
   }
 }
 
 export const config = {
-  matcher: ['/blog/:path*'],
+  matcher: [
+    '/blog/:path*',
+    '/blog/lotto-statistics',
+    '/blog/powerball-vs-mega-millions-better-odds',
+  ],
 };
