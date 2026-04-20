@@ -20,6 +20,28 @@ export interface BlogPost {
 
 export const blogPosts: BlogPost[] = [
   {
+    slug: 'wall-street-weekly-2026-04-20', title: 'This Week on Wall Street — April 20, 2026',
+    category: 'Markets', catColor: '#00D474', date: '2026-04-20', readTime: '5 min',
+    description: 'Weekly market recap: top gainers, biggest losers, and what moved Wall Street. April 20, 2026.',
+    sections: [
+      { heading: 'Market Summary', body: 'Here is your weekly Wall Street recap for the week ending April 20, 2026. Markets continued to react to earnings season, macro data, and global trade developments. Check our Markets page for real-time data throughout the week.' },
+      { heading: 'Top Gainers (Large-Cap)', body: 'The biggest winners among large-cap stocks this week: 1. EFOI — $6.49 (210.5263%). 2. CRMX — $28.37 (70.8007%). 3. CRMU — $12.44 (69.7042%). 4. KLRA — $26.00 (62.5%). 5. BBGI — $21.51 (53.6429%). These moves were driven by earnings beats, analyst upgrades, and sector momentum. Visit individual stock pages for Brutal Edge commentary on each.' },
+      { heading: 'Top Losers (Large-Cap)', body: 'The biggest decliners this week: 1. LNZA — $22.57 (-37.1309%). 2. JLHL — $6.35 (-34.6708%). Earnings misses, guidance cuts, and macro headwinds drove these losses. Check our Sector Heatmap to see which sectors were hit hardest.' },
+      { heading: 'Week Ahead', body: 'Key events to watch next week include Federal Reserve commentary, major earnings reports, and economic data releases. Stay updated with our daily market movers at dhlm-studio.com/markets.' },
+      { heading: 'FAQ', body: 'Q: Where does this data come from?\\nA: Market data is sourced from Alpha Vantage API. Large-cap stocks only ($5+ price, no warrants or penny stocks).\\n\\nQ: Is this investment advice?\\nA: No. This is informational content only. Always do your own research before making investment decisions.' }
+    ],
+  },
+  {
+    slug: 'crypto-weekly-2026-04-20', title: 'Crypto Market Weekly — April 20, 2026',
+    category: 'Crypto', catColor: '#F59E0B', date: '2026-04-20', readTime: '4 min',
+    description: 'Weekly crypto recap: Bitcoin, Ethereum, and top altcoins performance. April 20, 2026.',
+    sections: [
+      { heading: 'Top 10 Cryptocurrencies', body: 'This week in crypto: 1. Bitcoin (BTC) at $74786.00, 7d: +0.0%. 2. Ethereum (ETH) at $2294.37, 7d: +0.0%. 3. Tether (USDT) at $1.00, 7d: +0.0%. 4. XRP (XRP) at $1.41, 7d: +0.0%. 5. BNB (BNB) at $623.97, 7d: +0.0%. 6. USDC (USDC) at $0.9997, 7d: +0.0%. 7. Solana (SOL) at $84.62, 7d: +0.0%. 8. TRON (TRX) at $0.3304, 7d: +0.0%. 9. Figure Heloc (FIGR_HELOC) at $1.03, 7d: +0.0%. 10. Dogecoin (DOGE) at $0.0943, 7d: +0.0%. View live prices and Brutal Edge commentary on our Crypto Rankings page.' },
+      { heading: 'Winners and Losers', body: 'Weekly winners: N/A. Weekly losers: BTC (0.0%), ETH (0.0%), USDT (0.0%). For detailed analysis on any coin, visit our individual crypto pages.' },
+      { heading: 'FAQ', body: 'Q: Where does crypto data come from?\\nA: All data is from CoinGecko API, updated in real-time.\\n\\nQ: Is this financial advice?\\nA: No. Crypto is highly volatile. This is informational content only.' }
+    ],
+  },
+  {
     slug: 'nvidia-worlds-most-valuable-company-2026',
     title: 'NVIDIA at $4.2 Trillion: The 3 Catalysts That Decide the Next 12 Months',
     category: 'Markets', catColor: '#00D474', date: '2026-04-02', readTime: '6 min',
