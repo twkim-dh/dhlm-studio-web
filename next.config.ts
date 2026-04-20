@@ -70,7 +70,7 @@ const nextConfig: NextConfig = {
       { source: '/lotto', destination: '/', permanent: true },
       { source: '/lotto/:path*', destination: '/', permanent: true },
       // Search Console redirects (lottery section deleted)
-      { source: '/blog/lotto-statistics', destination: '/', permanent: true },
+      // /blog/lotto-statistics → 410 Gone (middleware.ts)
       { source: '/blog/lotto/:path*', destination: '/', permanent: true },
       { source: '/korea/no-tipping-korea', destination: '/', permanent: true },
       { source: '/today/:path*', destination: '/', permanent: true },
@@ -137,7 +137,7 @@ const nextConfig: NextConfig = {
       { source: '/blog/world-population-8-billion',         destination: '/', permanent: true },
       { source: '/blog/global-happiness-index',             destination: '/', permanent: true },
       { source: '/blog/richest-self-made-women',            destination: '/', permanent: true },
-      { source: '/blog/powerball-vs-mega-millions-better-odds', destination: '/', permanent: true },
+      // /blog/powerball-vs-mega-millions-better-odds → 410 Gone (middleware.ts)
       // Group D: Weekly Recaps → /blog
       { source: '/blog/wall-street-weekly-2026-04-13',      destination: '/blog', permanent: true },
       { source: '/blog/wall-street-weekly-2026-04-06',      destination: '/blog', permanent: true },

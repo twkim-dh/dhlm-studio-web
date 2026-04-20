@@ -21,6 +21,7 @@ export interface BlogPost {
 export const blogPosts: BlogPost[] = [
   {
     slug: 'nvidia-worlds-most-valuable-company-2026',
+    noindex: true,
     title: 'NVIDIA at $4.2 Trillion: The 3 Catalysts That Decide the Next 12 Months',
     category: 'Markets', catColor: '#00D474', date: '2026-04-02', readTime: '6 min',
     heroImage: '/images/content/nvidia-3-catalysts-hero.png',
@@ -139,6 +140,7 @@ export const blogPosts: BlogPost[] = [
   },
   {
     slug: 'top-crypto-gainers-this-month-april-2026',
+    noindex: true,
     title: 'Top Crypto Gainers April 2026: Render +35%, Sui +28% — Real Rally or Hype?',
     category: 'Crypto', catColor: '#F59E0B', date: '2026-04-01', readTime: '7 min',
     heroImage: '/images/content/top-crypto-gainers-april-2026-hero.png',
@@ -401,6 +403,7 @@ export const blogPosts: BlogPost[] = [
   },
   {
     slug: 'nvidia-vs-amd-ai-inference-cost-2026',
+    noindex: true,
     title: 'NVIDIA vs AMD: AI Inference Cost Per Token in 2026',
     category: 'Markets', catColor: '#00D474', date: '2026-04-08', readTime: '8 min',
     heroImage: '/images/content/nvidia-vs-amd-ai-inference-2026-hero.png',
