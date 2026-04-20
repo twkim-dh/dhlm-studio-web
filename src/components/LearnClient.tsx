@@ -216,7 +216,7 @@ function Investing101Tab() {
           <Link key={l.week} href={`/learn/${l.slug}`} style={{ textDecoration: 'none', display: 'block' }}>
             <div style={{ ...card, padding: 0, overflow: 'hidden' }}>
               {/* eslint-disable-next-line @next/next/no-img-element */}
-              <img src={l.thumb} alt={l.title} style={{ width: '100%', aspectRatio: '16/9', objectFit: 'cover', display: 'block', background: '#0f172a' }} />
+              <img src={l.thumb} alt={l.title} style={{ width: '100%', aspectRatio: '3/2', objectFit: 'cover', display: 'block', background: '#0f172a' }} />
               <div style={{ padding: '14px 16px 18px' }}>
                 <div style={{ display: 'flex', alignItems: 'center', gap: 7, marginBottom: 8, flexWrap: 'wrap' }}>
                   <span style={{ fontFamily: 'var(--mono)', fontSize: 9, fontWeight: 800, padding: '3px 9px', borderRadius: 5, background: '#00D47418', color: '#00D474', border: '1px solid #00D47430', letterSpacing: 1 }}>
