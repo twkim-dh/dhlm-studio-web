@@ -181,18 +181,18 @@ function Crypto101Tab({ lessons }: { lessons: LessonItem[] }) {
 /* ─── INVESTING 101 tab ─── */
 function Investing101Tab() {
   const lessons = [
-    { week: 1, slug: 'investing-101-beginner-w1-what-is-a-stock-really', title: 'What Is a Stock, Really?', phase: 1, phaseColor: '#00D474' },
-    { week: 2, slug: 'investing-101-beginner-w2-how-the-market-actually-works', title: 'How the Market Actually Works', phase: 1, phaseColor: '#00D474' },
-    { week: 3, slug: 'investing-101-beginner-w3-opening-your-first-brokerage-account', title: 'Opening Your First Brokerage Account', phase: 1, phaseColor: '#00D474' },
-    { week: 4, slug: 'investing-101-beginner-w4-reading-income-statement', title: 'Reading a Company (Part 1): The Income Statement', phase: 2, phaseColor: '#3B82F6' },
-    { week: 5, slug: 'investing-101-beginner-w5-reading-balance-sheet', title: 'Reading a Company (Part 2): The Balance Sheet', phase: 2, phaseColor: '#3B82F6' },
-    { week: 6, slug: 'investing-101-beginner-w6-reading-cash-flow-statement', title: 'Reading a Company (Part 3): The Cash Flow Statement', phase: 2, phaseColor: '#3B82F6' },
-    { week: 7, slug: 'investing-101-beginner-w7-what-is-a-business-model', title: 'What Is a Business Model?', phase: 2, phaseColor: '#3B82F6' },
-    { week: 8, slug: 'investing-101-beginner-w8-valuation-basics', title: 'Valuation Basics: P/E, P/B, PEG', phase: 2, phaseColor: '#3B82F6' },
-    { week: 9, slug: 'investing-101-beginner-w9-dividends-and-total-return', title: 'Dividends and Total Return', phase: 3, phaseColor: '#D4A843' },
-    { week: 10, slug: 'investing-101-beginner-w10-diversification-portfolio-basics', title: 'Diversification and Portfolio Basics', phase: 3, phaseColor: '#D4A843' },
-    { week: 11, slug: 'investing-101-beginner-w11-investors-mind', title: "The Investor's Mind: Fear, Greed, Patience", phase: 3, phaseColor: '#D4A843' },
-    { week: 12, slug: 'investing-101-beginner-w12-your-first-five-years', title: 'Your First 5 Years: A Realistic Roadmap', phase: 3, phaseColor: '#D4A843' },
+    { week: 1, slug: 'investing-101-beginner-w1-what-is-a-stock-really', title: 'What Is a Stock, Really?', description: 'Forget the ticker symbols. A stock is a legal claim on a living business. Understand that, and everything else follows.', phaseColor: '#00D474', thumb: '/images/content/investing-101-beginner-w1-what-is-a-stock-hero.png' },
+    { week: 2, slug: 'investing-101-beginner-w2-how-the-market-actually-works', title: 'How the Market Actually Works', description: 'Exchanges, market makers, clearinghouses — what actually happens between "buy" and "share in your account."', phaseColor: '#00D474', thumb: '/images/content/investing-101-beginner-w2-how-market-works-hero.png' },
+    { week: 3, slug: 'investing-101-beginner-w3-opening-your-first-brokerage-account', title: 'Opening Your First Brokerage Account', description: 'Choosing a broker, account types, and the first decisions every new investor faces before placing a single trade.', phaseColor: '#00D474', thumb: '/images/content/investing-101-beginner-w3-brokerage-account-hero.png' },
+    { week: 4, slug: 'investing-101-beginner-w4-reading-income-statement', title: 'Reading a Company (Part 1): The Income Statement', description: 'Revenue, gross profit, operating income, net income — what each number actually tells you.', phaseColor: '#3B82F6', thumb: '/images/content/investing-101-beginner-w4-income-statement-hero.png' },
+    { week: 5, slug: 'investing-101-beginner-w5-reading-balance-sheet', title: 'Reading a Company (Part 2): The Balance Sheet', description: 'Assets, liabilities, equity — the snapshot of what a company owns, owes, and what is left for shareholders.', phaseColor: '#3B82F6', thumb: '/images/content/investing-101-beginner-w5-balance-sheet-hero.png' },
+    { week: 6, slug: 'investing-101-beginner-w6-reading-cash-flow-statement', title: 'Reading a Company (Part 3): The Cash Flow Statement', description: 'Why free cash flow matters more than earnings, and how to tell a profitable business from a cash-burning one.', phaseColor: '#3B82F6', thumb: '/images/content/investing-101-beginner-w6-cash-flow-statement-hero.png' },
+    { week: 7, slug: 'investing-101-beginner-w7-what-is-a-business-model', title: 'What Is a Business Model?', description: 'How a company actually makes money — and why the model shapes everything about how to value it.', phaseColor: '#3B82F6', thumb: '/images/content/investing-101-beginner-w7-business-model-hero.png' },
+    { week: 8, slug: 'investing-101-beginner-w8-valuation-basics', title: 'Valuation Basics: P/E, P/B, PEG', description: 'What does it mean for a stock to be "expensive" or "cheap"? Three core multiples and how to use them.', phaseColor: '#3B82F6', thumb: '/images/content/investing-101-beginner-w8-valuation-basics-hero.png' },
+    { week: 9, slug: 'investing-101-beginner-w9-dividends-and-total-return', title: 'Dividends and Total Return', description: 'Yield, payout ratio, dividend growth — and why total return is the only number that matters.', phaseColor: '#D4A843', thumb: '/images/content/investing-101-beginner-w9-dividends-total-return-hero.png' },
+    { week: 10, slug: 'investing-101-beginner-w10-diversification-portfolio-basics', title: 'Diversification and Portfolio Basics', description: 'Why spreading risk works, how much diversification is enough, and building a portfolio that survives a crash.', phaseColor: '#D4A843', thumb: '/images/content/investing-101-beginner-w10-diversification-portfolio-hero.png' },
+    { week: 11, slug: 'investing-101-beginner-w11-investors-mind', title: "The Investor's Mind: Fear, Greed, Patience", description: 'The behavioral traps that destroy returns — and how to recognize them before they cost you.', phaseColor: '#D4A843', thumb: '/images/content/investing-101-beginner-w11-investors-mind-hero.png' },
+    { week: 12, slug: 'investing-101-beginner-w12-your-first-five-years', title: 'Your First 5 Years: A Realistic Roadmap', description: 'A concrete action plan from Day 1 through Year 5. What to do, in what order, with what goals.', phaseColor: '#D4A843', thumb: '/images/content/investing-101-beginner-w12-five-year-roadmap-hero.png' },
   ];
 
   return (
@@ -214,16 +214,21 @@ function Investing101Tab() {
       <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fill, minmax(280px, 1fr))', gap: 12 }}>
         {lessons.map(l => (
           <Link key={l.week} href={`/learn/${l.slug}`} style={{ textDecoration: 'none', display: 'block' }}>
-            <div style={{ ...card, padding: '14px 16px' }}>
-              <div style={{ display: 'flex', alignItems: 'center', gap: 7, marginBottom: 8 }}>
-                <span style={{ fontFamily: 'var(--mono)', fontSize: 9, fontWeight: 800, padding: '3px 9px', borderRadius: 5, background: '#00D47418', color: '#00D474', border: '1px solid #00D47430', letterSpacing: 1 }}>
-                  INVESTING 101
-                </span>
-                <span style={{ fontFamily: 'var(--mono)', fontSize: 9, fontWeight: 700, padding: '2px 7px', borderRadius: 4, background: `${l.phaseColor}14`, color: l.phaseColor }}>
-                  WEEK {l.week}
-                </span>
+            <div style={{ ...card, padding: 0, overflow: 'hidden' }}>
+              {/* eslint-disable-next-line @next/next/no-img-element */}
+              <img src={l.thumb} alt={l.title} style={{ width: '100%', aspectRatio: '16/9', objectFit: 'cover', display: 'block', background: '#0f172a' }} />
+              <div style={{ padding: '14px 16px 18px' }}>
+                <div style={{ display: 'flex', alignItems: 'center', gap: 7, marginBottom: 8, flexWrap: 'wrap' }}>
+                  <span style={{ fontFamily: 'var(--mono)', fontSize: 9, fontWeight: 800, padding: '3px 9px', borderRadius: 5, background: '#00D47418', color: '#00D474', border: '1px solid #00D47430', letterSpacing: 1 }}>
+                    INVESTING 101
+                  </span>
+                  <span style={{ fontFamily: 'var(--mono)', fontSize: 9, fontWeight: 700, padding: '2px 7px', borderRadius: 4, background: `${l.phaseColor}14`, color: l.phaseColor }}>
+                    WEEK {l.week}
+                  </span>
+                </div>
+                <div style={{ fontFamily: 'var(--serif)', fontSize: 17, fontWeight: 800, color: '#F1F5F9', lineHeight: 1.4, marginBottom: 6 }}>{l.title}</div>
+                <p style={{ fontSize: 12, color: '#64748B', margin: 0, lineHeight: 1.55 }}>{l.description}</p>
               </div>
-              <div style={{ fontFamily: 'var(--serif)', fontSize: 15, fontWeight: 800, color: '#F1F5F9', lineHeight: 1.4 }}>{l.title}</div>
             </div>
           </Link>
         ))}
