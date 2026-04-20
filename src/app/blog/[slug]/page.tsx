@@ -1,6 +1,7 @@
 import type { Metadata } from 'next';
 import Link from 'next/link';
 import Image from 'next/image';
+import { notFound } from 'next/navigation';
 import { blogPosts, getBlogPostBySlug } from '@/data/blog-posts';
 import { fmtDateLong, fmtDateShort } from '@/lib/fmt-date';
 import AdUnit from '@/components/AdUnit';
@@ -9,7 +10,8 @@ import GiscusComments from '@/components/GiscusComments';
 import unsplashManifest from '@/data/unsplash-manifest.json';
 
 export function generateStaticParams() {
-  return blogPosts.map(p => ({ slug: p.slug }));
+  const today = new Date().toISOString().slice(0, 10);
+  return blogPosts.filter(p => p.date <= today).map(p => ({ slug: p.slug }));
 }
 
 export async function generateMetadata({ params }: { params: Promise<{ slug: string }> }): Promise<Metadata> {
@@ -65,6 +67,9 @@ function parseFaqPairs(body: string): { question: string; answer: string }[] {
 export default async function BlogPostPage({ params }: { params: Promise<{ slug: string }> }) {
   const { slug } = await params;
   const post = getBlogPostBySlug(slug);
+
+  // Block future-dated posts from direct URL access
+  if (post && post.date > new Date().toISOString().slice(0, 10)) notFound();
 
   if (!post) {
     const similar = blogPosts.filter(p => {

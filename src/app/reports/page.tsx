@@ -46,6 +46,7 @@ interface ReportMeta {
 
 function getAllReports(): ReportMeta[] {
   try {
+    const today = new Date().toISOString().slice(0, 10);
     const manifest = unsplashManifest as Record<string, { src: string; alt: string }>;
     const files = fs.readdirSync(REPORTS_DIR).filter(f => f.endsWith('.md'));
     return files.map(f => {
@@ -65,6 +66,9 @@ function getAllReports(): ReportMeta[] {
         }
         fm[m[1]] = raw !== '' && !isNaN(Number(raw)) ? Number(raw) : raw;
       });
+      // Filter out future-dated reports
+      const dateOnly = String(fm.date || '').slice(0, 10);
+      if (dateOnly > today) return null;
       const slug = String(fm.slug || '');
       const entry = manifest[slug];
       return {

@@ -1,5 +1,6 @@
 import type { Metadata } from 'next';
 import Link from 'next/link';
+import { notFound } from 'next/navigation';
 import fs from 'fs';
 import path from 'path';
 import LikeButton from '@/components/LikeButton';
@@ -92,7 +93,15 @@ function getReport(slug: string): { frontmatter: ReportFrontmatter; body: string
 }
 
 export function generateStaticParams() {
-  return getReportSlugs().map(slug => ({ slug }));
+  const today = new Date().toISOString().slice(0, 10);
+  return getReportSlugs().filter(slug => {
+    try {
+      const content = fs.readFileSync(path.join(REPORTS_DIR, `${slug}.md`), 'utf8');
+      const m = content.match(/^date:\s*"?([^"\n]+)"?/m);
+      if (!m) return true;
+      return m[1].trim().slice(0, 10) <= today;
+    } catch { return true; }
+  }).map(slug => ({ slug }));
 }
 
 export async function generateMetadata({ params }: { params: Promise<{ slug: string }> }): Promise<Metadata> {
@@ -233,6 +242,9 @@ export default async function ReportPage({ params }: { params: Promise<{ slug: s
   }
 
   const { frontmatter: fm, body } = report;
+  // Block future-dated reports from direct URL access
+  const today = new Date().toISOString().slice(0, 10);
+  if (String(fm.date || '').slice(0, 10) > today) notFound();
   const beafScores = parseBeafScores(body);
 
   // Manifest-first hero image — Unsplash CDN overwrites generic static fallback
