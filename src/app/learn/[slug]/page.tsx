@@ -268,9 +268,9 @@ export default async function LearnLessonPage({ params }: { params: Promise<{ sl
 
         {/* Hero image */}
         {heroSrc && (
-          <div style={{ width: '100%', height: 220, borderRadius: 14, overflow: 'hidden', marginBottom: 28, border: '1px solid #1E293B', position: 'relative' }}>
+          <div style={{ width: '100%', aspectRatio: '16/9', borderRadius: 14, overflow: 'hidden', marginBottom: 28, border: '1px solid #1E293B', position: 'relative', background: '#0f172a' }}>
             {/* eslint-disable-next-line @next/next/no-img-element */}
-            <img src={heroSrc} alt={fm.title} style={{ width: '100%', height: '100%', objectFit: 'cover', display: 'block', opacity: 0.75 }} />
+            <img src={heroSrc} alt={fm.title} style={{ width: '100%', height: '100%', objectFit: 'contain', display: 'block', opacity: 0.9 }} />
             <div style={{ position: 'absolute', inset: 0, background: 'linear-gradient(135deg, #00D47420 0%, transparent 50%)' }} />
           </div>
         )}
