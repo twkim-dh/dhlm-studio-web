@@ -6,8 +6,8 @@ date: "2026-04-16"
 readTime: "15 min"
 category: "Deep Dive"
 catColor: "#3B82F6"
-grade: "—"
-beafScore: 0
+grade: "D+"
+beafScore: 50
 heroImage: "/images/content/rdw-redwire-hero.png"
 description: "Redwire at $9.91: $411.2M record backlog, Edge Autonomy UAS acquisition, ESA quantum-secure contract, $450-500M 2026 guidance. Real backlog. Real execution risk."
 type: "deep-dive"
@@ -126,6 +126,25 @@ Redwire occupies a unique position: the only listed small-cap that bridges space
 **4. Competition.** The space-defense landscape is increasingly crowded. L3Harris, Northrop Grumman, and larger primes compete for the same defense budgets. In space components, Rocket Lab's expansion into systems and subsystems creates direct competitive overlap.
 
 **5. Valuation gap.** At ~$1.29B market cap against $450-500M revenue guidance, the stock trades at roughly 2.7x forward revenue with no earnings. Not expensive for a defense-growth story — but not cheap for a company with 5% gross margins. The multiple only works if margins expand.
+
+---
+
+## Financial Analysis: BEAF Scoring
+
+### BEAF Score: 50/100 (D+)
+
+| BEAF Axis | Score | Max | Evidence |
+|-----------|-------|-----|----------|
+| **GROWTH** | 17 | 25 | FY2025 revenue $335.4M (+10.3% YoY); 3-year +27.8%, 5-year +93.1%. Record backlog $411.2M provides forward visibility. 2026 guidance $450–500M (+34–49% acceleration). UAS delivered in 7 countries, ESA quantum-secure satellite contract, UK Ministry of Defence expansion. Deduction: current year growth (10.3%) is modest; the acceleration thesis depends entirely on 2026 execution, which has no track record yet. |
+| **PROFITABILITY** | 4 | 20 | FY2025 gross margin 5.2%, EBIT margin −64.2%, net loss −$226.6M on $335M revenue. These are development-stage economics. Management attributes losses to non-recurring items and expects 2026 margin improvement as programs transition from development to production. Q4 ATM proceeds used to repay $105.5M of debt, saving ~$17M in annual interest. Deduction: no evidence of profitability yet; the lowest-scoring axis reflects financial reality, not thesis rejection. |
+| **MOAT** | 12 | 20 | Unique positioning: the only listed small-cap bridging space components, defense autonomy (UAS), quantum-secure communications, and European expansion simultaneously. Artemis II mission hardware (Lockheed Martin prime). DARPA Otter phase 2 contract ($44M). SHIELD IDIQ eligibility signals procurement standing. Deduction: scale disadvantage vs L3Harris, Northrop Grumman; Rocket Lab's subsystems expansion creates direct competitive overlap; 1,300-person team managing multi-domain execution is a structural complexity risk. |
+| **VALUATION** | 10 | 15 | Market cap ~$1.29B, 2026 guidance $450–500M → ~2.7x forward revenue. Not expensive for a defense-growth name with a credible backlog. 52-week high $26.66 vs current $9.91 — 63% below peak suggests significant speculative premium already removed. Analyst consensus Strong Buy, median PT $13.50 (+36% upside). Deduction: the 2.7x multiple only works if margin expansion materializes; if it doesn't, backlog converts to revenue without re-rating. |
+| **RISK** | 3 | 10 | Margin conversion failure is the single most critical risk — and it is unproven. Government procurement timing and continuing resolution exposure. Edge Autonomy integration complexity. Dilution risk: ATM issuance history; $130.2M liquidity is adequate but not abundant for an unprofitable company with acquisition-driven growth. Multi-domain execution (space + defense + Europe) at 1,300 employees raises operational risk. Highest risk profile in the Deep Dive coverage universe. |
+| **MOMENTUM** | 4 | 10 | −63% from 52-week high ($26.66 → $9.91). Strong Buy analyst consensus has not translated to price recovery. Defense sector narrative broadly positive (geopolitical tailwinds) but RDW-specific momentum weak. ESA quantum contract and UK office opening are credible near-term catalysts. Deduction: institutional ownership data and price action suggest the market is waiting for margin proof before re-engaging. |
+
+### BEAF Score: 50/100 — Grade: D+
+
+Reassessment trigger: FY2026 margin transition evidence (Q2/Q3 gross margin >10%, EBIT trend toward breakeven) would warrant re-scoring. Current grade reflects snapshot financial reality, not thesis rejection.
 
 ---
 

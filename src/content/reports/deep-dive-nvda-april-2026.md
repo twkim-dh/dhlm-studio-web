@@ -104,6 +104,25 @@ Three variables determine the stock from here.
 
 ---
 
+## Financial Analysis: BEAF Scoring
+
+### BEAF Score: 83/100 (B+)
+
+| BEAF Axis | Score | Max | Evidence |
+|-----------|-------|-----|----------|
+| **GROWTH** | 22 | 25 | FY2026 revenue $215.9B (+65% YoY), Q4 Data Center $62.3B — both records. Blackwell ramp ongoing; Rubin platform due end-2026. Hyperscaler and sovereign AI capex cycle durable, with Microsoft, Alphabet, Amazon, Meta, and government buyers all indicating sustained demand. Deduction: Hopper → Blackwell product-transition friction and export restrictions create execution noise; growth rate will normalize as the base expands. |
+| **PROFITABILITY** | 18 | 20 | FY2026 gross margin 71.1%, Q4 gross margin 75.0% — extraordinary for a hardware company. $41.1B returned to shareholders in FY2026. $58.5B remaining buyback authorization. Operating leverage is near-unique in semiconductor history. Deduction: $4.5B H20 excess inventory charge from export-policy friction and Blackwell transition headwinds mid-year. |
+| **MOAT** | 20 | 20 | CUDA: 6 million+ developers and 6,000+ applications built over 20 years. This is a software ecosystem moat, not merely a hardware advantage — rivals must overcome an installed base of developer workflows, enterprise integrations, and application libraries simultaneously. The moat compounds with each new developer and application. No credible near-term displacement path exists. Full marks. |
+| **VALUATION** | 9 | 15 | 45.6x trailing P/E at $4.53T market cap. Even with 65% revenue growth and 71% gross margins, this multiple demands sustained exceptional performance. NVIDIA has historically grown into elevated multiples — but at $4.5T, each successive re-rating requires a larger absolute earnings base. The law of large numbers becomes a genuine headwind. |
+| **RISK** | 7 | 10 | Export controls already cost $4.5B in H20 inventory charges; further U.S.–China restrictions are plausible. Hyperscaler buyer concentration means a handful of customers control a significant revenue share. Custom silicon (Google TPUs, Amazon Trainium, Microsoft Maia) poses a credible long-term competitive vector. Risks are real but currently manageable given CUDA ecosystem durability. |
+| **MOMENTUM** | 7 | 10 | Blackwell ramp, AI capex cycle fully operational, record quarterly results, $58.5B buyback runway. AI factory narrative dominant in enterprise tech. Stock near ATH territory. Counterbalance: at $4.5T, any guidance miss would be punished severely; multiple compression risk grows with each passing quarter at peak valuation. |
+
+### BEAF Score: 83/100 — Grade: B+
+
+NVIDIA earns near-perfect marks on Moat and Profitability — a combination extremely rare among large-cap companies. The score reflects genuine platform dominance offset by valuation demands that leave little room for execution error at $4.53 trillion.
+
+---
+
 ## Bottom Line
 
 NVIDIA remains the single clearest public equity expression of the AI infrastructure buildout. The company has three qualities that are very hard to find together: hypergrowth, extreme profitability, and platform-level ecosystem control.

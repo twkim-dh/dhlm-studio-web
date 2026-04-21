@@ -257,6 +257,25 @@ The risk/reward asymmetry is reasonable, not exceptional. This isn't a deep valu
 
 ---
 
+## Financial Analysis: BEAF Scoring
+
+### BEAF Score: 72/100 (B-)
+
+| BEAF Axis | Score | Max | Evidence |
+|-----------|-------|-----|----------|
+| **GROWTH** | 16 | 25 | Revenue +16.2% YoY ($12.25B Q1), full-year guidance $50.7–51.7B (+14–16%). Ad revenue on track to double to $3B — a second monetization channel materializing from near-zero. Subscriber count now opaque, making growth verification harder. No longer a hyper-growth platform; a maturing monetization business scaling from a large base. |
+| **PROFITABILITY** | 15 | 20 | Operating margin guidance 31.5% full-year — one of the highest in media. Underlying FCF trend strong at $6–8B annually. Q1 FCF $5.09B partially elevated by $2.8B termination fee. Deduction: Q1 EPS inflated by one-time item; front-loaded content investment compresses Q2 margin visibility. |
+| **MOAT** | 16 | 20 | 267M+ subscriber base with no viable single alternative. Original content library creates lock-in unmatched by peers. Engagement-first reporting signals deeper platform evolution. Ad tier network effect (4,000+ advertisers, +70% YoY) is building a second monetization moat. Deduction: Disney+, Amazon, and Apple compete on content; gaming pillar unproven; price hike absorption has limits. |
+| **VALUATION** | 11 | 15 | 34x forward earnings — below 5-year average of ~42x, above "damaged growth" range of 20–25x. Sits in the transition gap: not cheap, not broken. For the multiple to expand back toward 40x+, ad revenue must hit $3B and H2 margin recovery must materialize as guided. Reasonable asymmetry, not deep value. |
+| **RISK** | 7 | 10 | Content amortization front-loaded, creating Q2 margin pressure. Subscriber transparency removed — health harder to verify. Gaming pillar unproven. WBD walk-away raises organic execution bar. Counterbalance: $2.8B termination fee de-risked one tail event; strong FCF generation provides buffer. |
+| **MOMENTUM** | 7 | 10 | Q1 beat on every line — yet stock closed −9.72% on earnings day. Temporary negative momentum driven by guidance pattern and Hastings departure, not fundamental deterioration. Full-year guidance unchanged. Ad tier 60% of new signups. Institutional thesis intact; near-term sentiment cautious. |
+
+### BEAF Score: 72/100 — Grade: B-
+
+Netflix scores solidly on Profitability and Moat but loses points on Growth (maturing revenue base) and Valuation (transition premium). The selloff creates a reasonable entry for investors who believe the engagement-to-monetization model transition succeeds.
+
+---
+
 ## 10. What to Watch — Q2 and Q3 2026
 
 Four metrics will determine if this selloff was a buying opportunity or an early warning:

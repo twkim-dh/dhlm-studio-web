@@ -6,8 +6,8 @@ date: "2026-04-15"
 readTime: "12 min"
 category: "Deep Dive"
 catColor: "#3B82F6"
-grade: "—"
-beafScore: 0
+grade: "C"
+beafScore: 61
 description: "Circle at $105: USDC at $75.3B circulation, 96% revenue from reserve yield, 162% EPS beat — but rate sensitivity and regulatory whiplash define this stablecoin infrastructure bet."
 type: "deep-dive"
 tickers: ["CRCL"]
@@ -95,6 +95,25 @@ Stablecoins are a scale game, and scale attracts both incumbents and regulators.
 
 **4. Regulatory whiplash.**
 The GENIUS Act helps, but the Clarity Act draft on March 24 showed that Congress can giveth and taketh in the same quarter. Circle's stock dropped 30%+ on a single legislative draft suggesting potential limits on stablecoin yield. That kind of policy sensitivity is unusual for a $24 billion company and will persist as long as the regulatory framework remains unfinished.
+
+---
+
+## Financial Analysis: BEAF Scoring
+
+### BEAF Score: 61/100 (C)
+
+| BEAF Axis | Score | Max | Evidence |
+|-----------|-------|-----|----------|
+| **GROWTH** | 18 | 25 | USDC circulation +72% YoY ($75.3B Q4 2025). Q4 revenue +69% YoY ($770M). EBITDA +412% YoY ($167M). Strongest growth axis — real scale at real velocity. Deduction: growth is rate-dependent; reserve return rate fell 68bps YoY, partially neutralizing circulation growth. CPN and non-reserve revenue remain nascent. |
+| **PROFITABILITY** | 12 | 20 | Q4 EBITDA margin ~22% ($167M on $770M). BlackRock-managed reserve structure with BNY custody provides institutional-grade income stability. Deduction: 96.4–98.5% of revenue from a single source (reserve yield) creates fragile profitability — any rate cycle compression directly hits top-line, not just margins. Circle is profitable now; it may not be in a 2% Fed funds rate environment. |
+| **MOAT** | 13 | 20 | Regulated U.S.-based stablecoin issuer with BlackRock reserves and BNY custody — institutional trust no competitor easily replicates. GENIUS Act framework favors scaled, compliance-heavy issuers. USDC is the dominant stablecoin in DeFi and institutional settlement. Deduction: Tether commands global volume dominance (USDT); bank and payment company entry is likely as regulation clarifies; CPN network effects are unproven. |
+| **VALUATION** | 8 | 15 | Market cap ~$24.4B, annualized revenue ~$3B → ~8x PSR. For an interest-income-dominant business, this is elevated. For a fintech platform with infrastructure ambitions, it is moderate. 65% below the $299 ATH removes speculative excess. Deduction: justifying the current multiple requires either rate stability or successful CPN revenue diversification — neither is assured in the next 12 months. |
+| **RISK** | 4 | 10 | Rate sensitivity is the dominant risk — every Fed cut directly compresses top-line revenue. The Clarity Act draft in March 2026 triggered a 30%+ single-session decline on a single legislative paragraph. Regulatory binary risk is unusual for a $24B company. Revenue concentration at 96%+ from one income source. Competitive entry from banks and exchanges accelerating. |
+| **MOMENTUM** | 6 | 10 | Stock at $105 after falling 65% from $299 ATH — speculative premium removed. Q4 162% EPS beat and GENIUS Act progress provide recent positive catalysts. Insider buying reported post-drawdown. Deduction: rate headwind narrative persists; next inflection requires either Fed pivot pause or CPN revenue milestone, neither of which is near-term visible. |
+
+### BEAF Score: 61/100 — Grade: C
+
+Circle scores well on Growth and has genuine regulatory moat — but the current economics are those of an interest-rate spread business, not a software platform. The thesis upgrades when non-reserve revenue becomes material.
 
 ---
 
