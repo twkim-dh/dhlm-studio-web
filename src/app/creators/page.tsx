@@ -4,6 +4,11 @@ import Link from "next/link";
 export const metadata: Metadata = {
   title: "Fastest Growing Creators This Week | DHLM Studio",
   description: "Trending creators across YouTube, TikTok, Instagram, and X. Updated weekly.",
+  robots: {
+    index: false,
+    follow: false,
+    googleBot: { index: false, follow: false },
+  },
 };
 
 const CREATORS = [

@@ -5,6 +5,11 @@ import { getPublishedWisdom, WISDOM } from '@/data/wisdom';
 export const metadata: Metadata = {
   title: 'Daily Wall Street Wisdom — Investment Quotes | DHLM Studio',
   description: 'A new investing quote every day from Warren Buffett, Charlie Munger, Peter Lynch, and more. 100 timeless pieces of Wall Street wisdom.',
+  robots: {
+    index: false,
+    follow: false,
+    googleBot: { index: false, follow: false },
+  },
 };
 
 export const dynamic = 'force-dynamic'; // recalculate published list on each request

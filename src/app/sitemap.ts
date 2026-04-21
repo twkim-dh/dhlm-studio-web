@@ -82,15 +82,12 @@ export default function sitemap(): MetadataRoute.Sitemap {
       lastModified: now, changeFrequency: "monthly" as const, priority: 0.7,
     })),
 
-    // Wisdom list page only (individual pages are noindex)
-    { url: `${BASE}/blog/wisdom`,          lastModified: now, changeFrequency: "weekly",  priority: 0.6 },
+    // /blog/wisdom and /creators are noindex — excluded from sitemap
 
     // Calculators (search-driven, no nav)
     { url: `${BASE}/calculators/compound-interest`, lastModified: now, changeFrequency: "monthly", priority: 0.7 },
     { url: `${BASE}/calculators/dca`,               lastModified: now, changeFrequency: "monthly", priority: 0.7 },
     { url: `${BASE}/calculators/position-size`,     lastModified: now, changeFrequency: "monthly", priority: 0.7 },
-
-    { url: `${BASE}/creators`,             lastModified: now, changeFrequency: "weekly",  priority: 0.6 },
 
     // Static / Legal
     { url: `${BASE}/about`,                lastModified: now, changeFrequency: "monthly", priority: 0.5 },
