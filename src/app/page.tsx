@@ -120,7 +120,7 @@ export default function Home() {
           For the edge that<br /><span style={{ color: '#C73E3A' }}>cuts the noise.</span>
         </h1>
         <p style={{ fontFamily: 'var(--sans)', fontSize: 15, color: '#64748B', lineHeight: 1.7, maxWidth: 520, margin: '0 0 24px' }}>
-          Deep Dive reports, The Mental Game, and data-driven investing education. No hype. No auto-generated content. Just analysis that holds up.
+          Deep Dive reports, The Mental Game, and data-driven investing education. No hype. No noise. Just analysis that holds up.
         </p>
         <div style={{ display: 'flex', gap: 10, flexWrap: 'wrap' }}>
           <Link href="/reports" style={{ display: 'inline-block', padding: '11px 22px', borderRadius: 8, background: '#C73E3A', color: '#fff', fontFamily: 'var(--sans)', fontSize: 13, fontWeight: 700, textDecoration: 'none' }}>

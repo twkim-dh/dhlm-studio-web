@@ -36,7 +36,7 @@ export const metadata: Metadata = {
     default: `DHLM Studio — Brutal Edge™ Financial Analysis`,
     template: `%s | DHLM Studio`,
   },
-  description: `Deep Dive reports, The Mental Game, and data-driven investing education. Brutal Edge™ — for serious long-term investors. ${YEAR}.`,
+  description: `Deep-dive research on AI, semiconductor, and quantum computing stocks. BEAF scoring methodology. Institutional-grade analysis for long-term investors.`,
   keywords: [
     "DHLM Studio", "Brutal Edge", "Deep Dive reports", "BEAF framework",
     "stock analysis", "crypto analysis", "investing education", "financial research",
@@ -44,7 +44,7 @@ export const metadata: Metadata = {
   ],
   openGraph: {
     title: `DHLM Studio — Brutal Edge™ Financial Analysis`,
-    description: `Deep Dive reports, The Mental Game, and data-driven investing education. For serious long-term investors.`,
+    description: `Deep-dive research on AI, semiconductor, and quantum computing stocks. BEAF scoring methodology. Institutional-grade analysis for long-term investors.`,
     url: "https://dhlm-studio.com",
     siteName: "DHLM Studio",
     locale: "en_US",
@@ -54,7 +54,7 @@ export const metadata: Metadata = {
   twitter: {
     card: "summary_large_image",
     title: "DHLM Studio — Brutal Edge™ Financial Analysis",
-    description: "Deep Dive reports, The Mental Game, and data-driven investing education. For serious long-term investors.",
+    description: "Deep-dive research on AI, semiconductor, and quantum computing stocks. BEAF scoring methodology. Institutional-grade analysis for long-term investors.",
     images: [{ url: "https://dhlm-studio.com/twitter-image", width: 1200, height: 630, alt: "DHLM Studio — Brutal Edge Market Intelligence" }],
   },
   // No root-level canonical — each page sets its own via alternates.canonical.

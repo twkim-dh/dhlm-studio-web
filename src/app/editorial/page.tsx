@@ -61,7 +61,7 @@ export default function EditorialPage() {
             <h2 style={{ fontFamily: 'var(--serif)', fontSize: 20, fontWeight: 800, color: '#E2E8F0', margin: '0 0 12px' }}>Analysis Methodology</h2>
             <div style={{ display: 'flex', flexDirection: 'column', gap: 12 }}>
               {[
-                { step: '1', title: 'Data Collection', desc: 'We pull real-time data from our licensed API sources. Stock prices, financial statements, market cap, P/E ratios, revenue growth, and sector performance are collected automatically.' },
+                { step: '1', title: 'Data Collection', desc: 'We pull real-time data from our licensed API sources. Stock prices, financial statements, market cap, P/E ratios, revenue growth, and sector performance are sourced directly from licensed APIs.' },
                 { step: '2', title: 'Quantitative Analysis', desc: 'Key metrics are compared against sector averages, historical trends, and peer companies. We analyze P/E ratios, revenue growth rates, profit margins, debt levels, and cash flow generation.' },
                 { step: '3', title: 'Qualitative Context', desc: 'We research recent news, earnings reports, product launches, regulatory actions, and competitive dynamics that affect the company\'s outlook.' },
                 { step: '4', title: 'Bull vs Bear Framework', desc: 'Every analysis presents both the optimistic and pessimistic case. We never present a one-sided view. Readers see the strongest arguments for and against.' },
@@ -114,7 +114,7 @@ export default function EditorialPage() {
             <div style={{ display: 'flex', flexDirection: 'column', gap: 8, marginBottom: 14 }}>
               {[
                 { t: 'Factual accuracy', d: 'Data cross-verified against SEC filings and consensus estimates' },
-                { t: 'Analytical depth', d: 'Does the analysis add insight beyond what any AI can generate?' },
+                { t: 'Analytical depth', d: 'Does the analysis add insight beyond surface-level data summary?' },
                 { t: 'Balance', d: 'Are bull and bear cases equally strong?' },
                 { t: 'Tone calibration', d: 'Professional analysis first, personality second' },
               ].map(item => (
@@ -217,7 +217,7 @@ export default function EditorialPage() {
                 <strong style={{ color: '#E2E8F0' }}>Not Investment Advice:</strong> DHLM Studio provides data-driven analysis for educational and entertainment purposes only. Nothing on this website constitutes investment advice, a recommendation to buy or sell any security, or an offer to participate in any investment strategy. Always consult a qualified financial advisor before making investment decisions.
               </p>
               <p style={{ marginBottom: 12 }}>
-                <strong style={{ color: '#E2E8F0' }}>Brutal Edge Character:</strong> &ldquo;Brutal Edge&rdquo; is an informational and educational analytical voice that provides data-driven commentary on market data. Its observations are generated to make financial concepts accessible and do not represent personalized investment advice. The character&apos;s BEAF scores and grades are quantitative analytical outputs, NOT buy/sell signals.
+                <strong style={{ color: '#E2E8F0' }}>Brutal Edge Character:</strong> &ldquo;Brutal Edge&rdquo; is an informational and educational analytical voice that provides data-driven commentary on market data. Its observations are crafted to make financial concepts accessible and do not represent personalized investment advice. The character&apos;s BEAF scores and grades are quantitative analytical outputs, NOT buy/sell signals.
               </p>
               <p style={{ marginBottom: 12 }}>
                 <strong style={{ color: '#E2E8F0' }}>Data Accuracy:</strong> While we strive for accuracy, financial data may be delayed, incomplete, or subject to revision. Market data on this site is delayed up to 15 minutes. Always verify critical data points with official sources before making decisions.

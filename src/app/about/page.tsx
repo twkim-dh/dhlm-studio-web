@@ -30,7 +30,7 @@ export default function AboutPage() {
               &ldquo;The tools and data serious investors check before making a move.&rdquo;
             </p>
             <p style={{ fontSize: 14, color: '#94A3B8', lineHeight: 1.9, margin: '0 0 14px' }}>
-              DHLM Studio is a data-driven financial analysis platform for North American investors.
+              Brutal Edge is built for investors focused on AI, semiconductors, and quantum computing — aged 20–40, serious about long-term capital allocation in the technologies shaping the next decade.
             </p>
             <p style={{ fontSize: 14, color: '#94A3B8', lineHeight: 1.9, margin: '0 0 14px' }}>
               We do not tell you what to buy. We show you what the data says.
@@ -72,7 +72,7 @@ export default function AboutPage() {
               <div style={{ fontFamily: 'var(--serif)', fontSize: 17, fontWeight: 800, color: '#F1F5F9', marginBottom: 6 }}>Brutal Edge&trade; Analytical Voice</div>
               <ul style={{ margin: 0, paddingLeft: 18, fontSize: 13, color: '#94A3B8', lineHeight: 1.9 }}>
                 <li>Built on institutional equity research standards</li>
-                <li>Powered by the BEAF 6-axis scoring framework</li>
+                <li>Grounded in the BEAF 6-axis scoring framework</li>
                 <li>Operates under editorial oversight</li>
                 <li>Never publishes without editor approval</li>
               </ul>
