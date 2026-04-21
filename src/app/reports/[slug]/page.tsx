@@ -74,7 +74,8 @@ function parseMarkdown(content: string): { frontmatter: ReportFrontmatter; body:
   return { frontmatter: fm as unknown as ReportFrontmatter, body: fmMatch[2] };
 }
 
-export const revalidate = 3600; // Revalidate slug pages at most once per hour
+export const revalidate = 3600;
+export const dynamicParams = false;
 
 function getReportSlugs(): string[] {
   try {

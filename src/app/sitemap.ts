@@ -35,7 +35,8 @@ function getResearchSlugs(): string[] {
 export default function sitemap(): MetadataRoute.Sitemap {
   const now = new Date();
 
-  const qualityBlogs = blogPosts.filter(p => !p.noindex);
+  const today = new Date().toISOString().slice(0, 10);
+  const qualityBlogs = blogPosts.filter(p => !p.noindex && p.date <= today);
 
   return [
     // Core pages

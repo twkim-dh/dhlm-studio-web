@@ -9,6 +9,8 @@ import LikeButton from '@/components/LikeButton';
 import GiscusComments from '@/components/GiscusComments';
 import unsplashManifest from '@/data/unsplash-manifest.json';
 
+export const dynamicParams = false;
+
 export function generateStaticParams() {
   const today = new Date().toISOString().slice(0, 10);
   return blogPosts.filter(p => p.date <= today).map(p => ({ slug: p.slug }));
