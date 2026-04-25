@@ -17,7 +17,7 @@
 - [B. Strengths Matrix — What We Can Learn](#b-strengths-matrix--what-we-can-learn)
 - [C. Weaknesses Matrix — Where We Are Already Better](#c-weaknesses-matrix--where-we-are-already-better)
 - [D. Specific Improvements for Our Reports](#d-specific-improvements-for-our-reports)
-- [E. How Brutal Edge Differentiates from All of Them](#e-how-brutal-ai-differentiates-from-all-of-them)
+- [E. How Brutal Edge Differentiates from All of Them](#e-how-brutal-edge-differentiates-from-all-of-them)
 
 ---
 
