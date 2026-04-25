@@ -1,0 +1,66 @@
+name: Notify subscribers of new report
+
+on:
+  push:
+    branches: [main]
+    paths:
+      - 'src/content/reports/*.md'
+
+jobs:
+  notify:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          fetch-depth: 2
+
+      - name: Detect newly added report files
+        id: detect
+        run: |
+          NEW=$(git diff --diff-filter=A --name-only HEAD~1 HEAD -- 'src/content/reports/*.md' 2>/dev/null || true)
+          echo "Found new report files: $NEW"
+          echo "files<<EOF" >> $GITHUB_OUTPUT
+          echo "$NEW" >> $GITHUB_OUTPUT
+          echo "EOF" >> $GITHUB_OUTPUT
+
+      - name: Send notifications
+        if: steps.detect.outputs.files != ''
+        env:
+          NOTIFY_SECRET: ${{ secrets.NOTIFY_SECRET }}
+        run: |
+          TODAY=$(date -u +%Y-%m-%d)
+          while IFS= read -r FILE; do
+            [ -z "$FILE" ] && continue
+
+            SLUG=$(grep "^slug:" "$FILE" | head -1 | sed 's/slug:[[:space:]]*"\?\([^"]*\)"\?[[:space:]]*/\1/')
+            TITLE=$(grep "^title:" "$FILE" | head -1 | sed 's/title:[[:space:]]*"\(.*\)".*/\1/')
+            DESC=$(grep "^description:" "$FILE" | head -1 | sed 's/description:[[:space:]]*"\(.*\)".*/\1/')
+            DATE=$(grep "^date:" "$FILE" | head -1 | sed 's/date:[[:space:]]*"\([0-9-]*\).*/\1/')
+
+            if [ -z "$SLUG" ] || [ -z "$TITLE" ]; then
+              echo "Skipping $FILE — could not parse slug/title"
+              continue
+            fi
+
+            if [[ "$DATE" > "$TODAY" ]]; then
+              echo "Skipping future-dated report: $SLUG ($DATE > $TODAY)"
+              continue
+            fi
+
+            URL="https://dhlm-studio.com/reports/${SLUG}"
+            echo "Notifying: $TITLE ($SLUG)"
+
+            PAYLOAD=$(printf '{"slug":"%s","title":"%s","description":"%s","url":"%s"}' \
+              "$SLUG" "$TITLE" "$DESC" "$URL")
+
+            RESPONSE=$(curl -s -w "\n%{http_code}" -X POST \
+              "https://dhlm-studio.com/api/admin/notify-report" \
+              -H "Authorization: Bearer $NOTIFY_SECRET" \
+              -H "Content-Type: application/json" \
+              -d "$PAYLOAD")
+
+            HTTP_CODE=$(echo "$RESPONSE" | tail -1)
+            BODY=$(echo "$RESPONSE" | head -1)
+            echo "Response ($HTTP_CODE): $BODY"
+
+          done <<< "${{ steps.detect.outputs.files }}"

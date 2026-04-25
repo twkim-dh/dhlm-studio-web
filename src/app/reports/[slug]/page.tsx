@@ -444,7 +444,7 @@ export default async function ReportPage({ params }: { params: Promise<{ slug: s
 
         {/* Newsletter signup */}
         <div className="print-hide" style={{ marginTop: 32 }}>
-          <InlineSubscribe source="report" headline="Get the next report before it goes public." description="Subscribers receive new Brutal Edge reports 24 hours before public release. Free." />
+          <InlineSubscribe source="report" headline="Get the next report in your inbox." description="New Brutal Edge reports delivered to subscribers first. Free." />
         </div>
 
         {/* Comments — Giscus / GitHub Discussions */}

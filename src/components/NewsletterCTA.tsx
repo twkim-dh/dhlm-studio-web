@@ -73,7 +73,7 @@ export default function NewsletterCTA({ source = 'homepage' }: { source?: string
           'Mag 7 + AI sector Deep Dives — BEAF scored',
           '32+ published reports + new analysis every week',
           'Investing 101 Beginner Series — 12 free lessons',
-          'Subscribers receive new reports 24h before public release',
+          'New reports delivered to your inbox first',
         ].map((item) => (
           <div key={item} style={{ display: 'flex', alignItems: 'flex-start', gap: 8 }}>
             <span style={{ color: '#C73E3A', fontWeight: 800, fontSize: 13, lineHeight: 1.4, flexShrink: 0 }}>→</span>
