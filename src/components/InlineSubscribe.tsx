@@ -1,24 +1,20 @@
 'use client';
 
-// Compact inline newsletter signup. Used inside reports/daily article footers,
-// where a full-width NewsletterCTA card would be too heavy.
-//
+// Compact inline newsletter signup. Used inside report/research article footers.
 // Same backend as NewsletterCTA: POST /api/subscribe with { email, source }.
 
 import { useState } from 'react';
 
 interface Props {
   source: 'report' | 'daily' | 'request-form' | 'about';
-  /** One-line headline shown above the input. */
   headline?: string;
-  /** Description below the headline. */
   description?: string;
 }
 
 export default function InlineSubscribe({
   source,
-  headline = 'Get notified of new reports',
-  description = 'One email per weekday at 7:30 AM ET. Free. No spam.',
+  headline = 'Never miss the next Deep Dive',
+  description = '32+ free reports. New analysis every week. No spam.',
 }: Props) {
   const [email, setEmail] = useState('');
   const [done, setDone] = useState(false);
@@ -47,18 +43,18 @@ export default function InlineSubscribe({
 
   if (done) {
     return (
-      <div style={{ padding: '14px 18px', borderRadius: 12, background: '#00D47410', border: '1px solid #00D47425', textAlign: 'center' }}>
-        <div style={{ fontSize: 13, fontWeight: 700, color: '#00D474' }}>✓ Subscribed</div>
-        <div style={{ fontSize: 11, color: '#64748B', marginTop: 2 }}>The next Brutal Edge Daily lands in your inbox at 7:30 AM ET.</div>
+      <div style={{ padding: '16px 20px', borderRadius: 12, background: '#00D47408', border: '1px solid #00D47430', textAlign: 'center' }}>
+        <div style={{ fontSize: 13, fontWeight: 800, color: '#00D474', marginBottom: 2 }}>✓ You&apos;re in</div>
+        <div style={{ fontSize: 11, color: '#64748B' }}>Your first Brutal Edge report summary is on the way.</div>
       </div>
     );
   }
 
   return (
-    <div style={{ padding: '16px 18px', borderRadius: 12, background: '#0D1117', border: '1px solid #1E293B' }}>
-      <div style={{ fontFamily: 'var(--mono)', fontSize: 9, fontWeight: 800, color: '#C73E3A', letterSpacing: 2, marginBottom: 6 }}>📧 BRUTAL EDGE&trade; DAILY</div>
-      <div style={{ fontSize: 14, fontWeight: 700, color: '#E2E8F0', marginBottom: 4 }}>{headline}</div>
-      <div style={{ fontSize: 11, color: '#64748B', marginBottom: 12 }}>{description}</div>
+    <div style={{ padding: '18px 20px', borderRadius: 12, background: '#0D1117', border: '1px solid #1E293B' }}>
+      <div style={{ fontFamily: 'var(--mono)', fontSize: 9, fontWeight: 800, color: '#C73E3A', letterSpacing: 2, marginBottom: 6 }}>BRUTAL EDGE&trade; WEEKLY</div>
+      <div style={{ fontSize: 14, fontWeight: 800, color: '#E2E8F0', marginBottom: 3, fontFamily: 'var(--serif)' }}>{headline}</div>
+      <div style={{ fontSize: 11, color: '#64748B', marginBottom: 12, lineHeight: 1.5 }}>{description}</div>
       <div style={{ display: 'flex', gap: 8 }}>
         <input
           type="email"
@@ -72,18 +68,21 @@ export default function InlineSubscribe({
             color: '#F1F5F9', fontFamily: 'var(--sans)', fontSize: 12, outline: 'none',
           }}
         />
-        <button onClick={submit} disabled={submitting || !email.includes('@')}
+        <button
+          onClick={submit}
+          disabled={submitting || !email.includes('@')}
           style={{
             padding: '10px 16px', borderRadius: 8, border: 'none',
             background: email.includes('@') ? '#C73E3A' : '#1E293B',
             color: email.includes('@') ? '#fff' : '#475569',
-            fontSize: 12, fontWeight: 700, cursor: email.includes('@') ? 'pointer' : 'not-allowed',
-            fontFamily: 'var(--sans)',
+            fontSize: 12, fontWeight: 800, cursor: email.includes('@') ? 'pointer' : 'not-allowed',
+            fontFamily: 'var(--sans)', whiteSpace: 'nowrap',
           }}>
-          {submitting ? '...' : 'Get it'}
+          {submitting ? '...' : 'Get it free →'}
         </button>
       </div>
       {error && <div style={{ fontSize: 10, color: '#FF4545', marginTop: 6 }}>{error}</div>}
+      <div style={{ fontSize: 10, color: '#475569', marginTop: 8 }}>No spam · Unsubscribe anytime</div>
     </div>
   );
 }
