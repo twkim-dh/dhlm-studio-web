@@ -254,7 +254,7 @@ export default async function ResearchArticlePage({ params }: { params: Promise<
         )}
 
         <div style={{ marginTop: 32 }}>
-          <InlineSubscribe source="report" headline="The Mental Game — New Issues" description="Psychology and structural thinking for serious investors. Free." />
+          <InlineSubscribe source="report" headline="Want more research like this?" description="Brutal Edge sends frameworks, not forecasts. Free weekly delivery to subscribers." />
         </div>
 
         <GiscusComments slug={`research:${slug}`} />

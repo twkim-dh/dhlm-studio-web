@@ -70,9 +70,10 @@ export default function NewsletterCTA({ source = 'homepage' }: { source?: string
       {/* Value bullets */}
       <div style={{ display: 'flex', flexDirection: 'column', gap: 6, marginBottom: 20 }}>
         {[
-          '32+ published Deep Dive reports — free access',
-          'Investing 101 Beginner Series — 12 lessons',
-          'New reports every week on the stocks that matter',
+          'Mag 7 + AI sector Deep Dives — BEAF scored',
+          '32+ published reports + new analysis every week',
+          'Investing 101 Beginner Series — 12 free lessons',
+          'Subscribers receive new reports 24h before public release',
         ].map((item) => (
           <div key={item} style={{ display: 'flex', alignItems: 'flex-start', gap: 8 }}>
             <span style={{ color: '#C73E3A', fontWeight: 800, fontSize: 13, lineHeight: 1.4, flexShrink: 0 }}>→</span>
@@ -113,9 +114,18 @@ export default function NewsletterCTA({ source = 'homepage' }: { source?: string
 
       {error && <div style={{ fontSize: 11, color: '#FF4545', marginBottom: 8 }}>{error}</div>}
 
-      {/* Trust line */}
+      {/* Trust line — tiered by count */}
       <div style={{ fontSize: 10, color: '#475569', lineHeight: 1.5 }}>
-        {count >= 10 ? `Join ${count.toLocaleString()} investors` : 'Trusted by investors in the US, UK & Canada'} · No spam · Unsubscribe anytime
+        {count >= 500
+          ? `Join ${count.toLocaleString()}+ investors`
+          : count >= 100
+          ? `Join ${Math.floor(count / 100) * 100}+ investors building frameworks`
+          : count >= 50
+          ? `Join 50+ investors`
+          : count >= 10
+          ? `Join 10+ readers`
+          : 'Trusted by investors in the US, UK & Canada'
+        } · No spam · Unsubscribe anytime
       </div>
     </div>
   );
