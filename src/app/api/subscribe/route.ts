@@ -25,7 +25,7 @@ async function sendWelcomeEmail(email: string): Promise<void> {
   const apiKey = process.env.RESEND_API_KEY;
   if (!apiKey) return;
   const resend = new Resend(apiKey);
-  const from = process.env.RESEND_FROM ?? 'Brutal Edge <hello@dhlm-studio.com>';
+  const from = process.env.RESEND_FROM ?? 'Brutal Edge <daily@dhlm-studio.com>';
 
   const html = `<!DOCTYPE html>
 <html lang="en">
