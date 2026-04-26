@@ -1,0 +1,121 @@
+name: Daily content notification check
+
+on:
+  schedule:
+    # UTC 12:00 = KST 21:00 daily
+    - cron: '0 12 * * *'
+  workflow_dispatch:
+    inputs:
+      date_override:
+        description: "Date to check (YYYY-MM-DD). Leave blank for today (UTC)."
+        required: false
+        default: ''
+
+jobs:
+  notify:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+
+      - name: Send notifications for today's content
+        env:
+          NOTIFY_SECRET: ${{ secrets.NOTIFY_SECRET }}
+        run: |
+          if [ -n "${{ github.event.inputs.date_override }}" ]; then
+            TODAY="${{ github.event.inputs.date_override }}"
+          else
+            TODAY=$(date -u +%Y-%m-%d)
+          fi
+          echo "Checking content for date: $TODAY"
+
+          SENT=0
+          SKIPPED=0
+          FAILED=0
+
+          notify_item() {
+            local SLUG="$1"
+            local TITLE="$2"
+            local DESC="$3"
+            local URL="$4"
+
+            if [ -z "$SLUG" ] || [ -z "$TITLE" ]; then
+              echo "  [SKIP] Missing slug or title"
+              SKIPPED=$((SKIPPED+1))
+              return
+            fi
+
+            PAYLOAD=$(jq -n \
+              --arg slug "$SLUG" \
+              --arg title "$TITLE" \
+              --arg description "$DESC" \
+              --arg url "$URL" \
+              '{slug:$slug,title:$title,description:$description,url:$url}')
+
+            RESPONSE=$(curl -s -w "\n%{http_code}" -X POST \
+              "https://dhlm-studio.com/api/admin/notify-report" \
+              -H "Authorization: Bearer $NOTIFY_SECRET" \
+              -H "Content-Type: application/json" \
+              -d "$PAYLOAD")
+
+            HTTP_CODE=$(echo "$RESPONSE" | tail -1)
+            BODY=$(echo "$RESPONSE" | head -1)
+
+            echo "  [$SLUG] HTTP $HTTP_CODE: $BODY"
+
+            if [ "$HTTP_CODE" = "200" ]; then
+              SENT=$((SENT+1))
+            else
+              FAILED=$((FAILED+1))
+            fi
+          }
+
+          # ── Reports: src/content/reports/*.md  (date: field) ──────────────
+          echo ""
+          echo "=== Checking reports ==="
+          for FILE in src/content/reports/*.md; do
+            [ -f "$FILE" ] || continue
+
+            DATE=$(grep "^date:" "$FILE" | head -1 | \
+              sed 's/date:[[:space:]]*"\?\([0-9-]*\).*/\1/')
+            [ "$DATE" = "$TODAY" ] || continue
+
+            echo "Found: $FILE ($DATE)"
+
+            SLUG=$(grep "^slug:" "$FILE" | head -1 | \
+              sed 's/slug:[[:space:]]*"\?\([^"]*\)"\?[[:space:]]*/\1/')
+            TITLE=$(grep "^title:" "$FILE" | head -1 | \
+              sed 's/title:[[:space:]]*"\(.*\)"/\1/')
+            DESC=$(grep "^description:" "$FILE" | head -1 | \
+              sed 's/description:[[:space:]]*"\(.*\)"/\1/')
+            URL="https://dhlm-studio.com/reports/${SLUG}"
+
+            notify_item "$SLUG" "$TITLE" "$DESC" "$URL"
+          done
+
+          # ── Learn intermediate: src/content/learn/investing-101-intermediate-*.md ──
+          echo ""
+          echo "=== Checking Investing 101 Intermediate lessons ==="
+          for FILE in src/content/learn/investing-101-intermediate-*.md; do
+            [ -f "$FILE" ] || continue
+
+            DATE=$(grep "^publishDate:" "$FILE" | head -1 | \
+              sed 's/publishDate:[[:space:]]*"\?\([0-9-]*\).*/\1/')
+            [ "$DATE" = "$TODAY" ] || continue
+
+            echo "Found: $FILE ($DATE)"
+
+            SLUG=$(grep "^slug:" "$FILE" | head -1 | \
+              sed 's/slug:[[:space:]]*"\?\([^"]*\)"\?[[:space:]]*/\1/')
+            TITLE=$(grep "^title:" "$FILE" | head -1 | \
+              sed 's/title:[[:space:]]*"\(.*\)"/\1/')
+            DESC=$(grep "^description:" "$FILE" | head -1 | \
+              sed 's/description:[[:space:]]*"\(.*\)"/\1/')
+            URL="https://dhlm-studio.com/learn/${SLUG}"
+
+            # Use "lesson:" prefix in slug to avoid Redis key collision with reports
+            notify_item "$SLUG" "$TITLE" "$DESC" "$URL"
+          done
+
+          echo ""
+          echo "=== Summary: sent=$SENT skipped=$SKIPPED failed=$FAILED ==="
+          [ "$FAILED" -eq 0 ] || exit 1
