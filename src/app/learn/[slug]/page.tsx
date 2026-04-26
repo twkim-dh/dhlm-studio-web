@@ -18,9 +18,21 @@ const HERO_MAP: Record<string, string> = {
   'investing-101-beginner-w10-diversification-portfolio-basics': '/images/content/investing-101-beginner-w10-diversification-portfolio-hero.png',
   'investing-101-beginner-w11-investors-mind':                 '/images/content/investing-101-beginner-w11-investors-mind-hero.png',
   'investing-101-beginner-w12-your-first-five-years':          '/images/content/investing-101-beginner-w12-five-year-roadmap-hero.png',
+  'investing-101-intermediate-w13-three-valuations':           '/images/content/INV-101-W13-THUMB.png',
+  'investing-101-intermediate-w14-dcf-lies':                   '/images/content/INV-101-W14-THUMB.png',
+  'investing-101-intermediate-w15-multiples':                  '/images/content/INV-101-W15-THUMB.png',
+  'investing-101-intermediate-w16-five-moats':                 '/images/content/INV-101-W16-THUMB.png',
+  'investing-101-intermediate-w17-moat-erosion':               '/images/content/INV-101-W17-THUMB.png',
+  'investing-101-intermediate-w18-new-tech-moats':             '/images/content/INV-101-W18-THUMB.png',
+  'investing-101-intermediate-w19-10k-forensics':              '/images/content/INV-101-W19-THUMB.png',
+  'investing-101-intermediate-w20-earnings-calls':             '/images/content/INV-101-W20-THUMB.png',
+  'investing-101-intermediate-w21-proxy-statements':           '/images/content/INV-101-W21-THUMB.png',
+  'investing-101-intermediate-w22-position-sizing':            '/images/content/INV-101-W22-THUMB.png',
+  'investing-101-intermediate-w23-correlation-risk':           '/images/content/INV-101-W23-THUMB.png',
+  'investing-101-intermediate-w24-when-to-sell':               '/images/content/INV-101-W24-THUMB.png',
 };
 
-const SERIES_ORDER = [
+const BEGINNER_ORDER = [
   'investing-101-beginner-w1-what-is-a-stock-really',
   'investing-101-beginner-w2-how-the-market-actually-works',
   'investing-101-beginner-w3-opening-your-first-brokerage-account',
@@ -35,6 +47,23 @@ const SERIES_ORDER = [
   'investing-101-beginner-w12-your-first-five-years',
 ];
 
+const INTERMEDIATE_ORDER = [
+  'investing-101-intermediate-w13-three-valuations',
+  'investing-101-intermediate-w14-dcf-lies',
+  'investing-101-intermediate-w15-multiples',
+  'investing-101-intermediate-w16-five-moats',
+  'investing-101-intermediate-w17-moat-erosion',
+  'investing-101-intermediate-w18-new-tech-moats',
+  'investing-101-intermediate-w19-10k-forensics',
+  'investing-101-intermediate-w20-earnings-calls',
+  'investing-101-intermediate-w21-proxy-statements',
+  'investing-101-intermediate-w22-position-sizing',
+  'investing-101-intermediate-w23-correlation-risk',
+  'investing-101-intermediate-w24-when-to-sell',
+];
+
+const SERIES_ORDER = [...BEGINNER_ORDER, ...INTERMEDIATE_ORDER];
+
 interface LessonFrontmatter {
   title: string;
   slug: string;
@@ -44,6 +73,10 @@ interface LessonFrontmatter {
   readingTime: string;
   series: string;
   tags: string[];
+}
+
+function isIntermediate(slug: string) {
+  return slug.startsWith('investing-101-intermediate');
 }
 
 function parseLesson(content: string): { fm: LessonFrontmatter; body: string } | null {
@@ -88,8 +121,9 @@ export async function generateMetadata({ params }: { params: Promise<{ slug: str
   const heroSrc = HERO_MAP[slug];
   const BASE = 'https://dhlm-studio.com';
   const ogImage = heroSrc ? `${BASE}${heroSrc}` : `${BASE}/opengraph-image`;
+  const seriesLabel = isIntermediate(slug) ? 'Investing 101 Intermediate' : 'Investing 101 Beginner';
   return {
-    title: `${fm.title} | Investing 101 Beginner`,
+    title: `${fm.title} | ${seriesLabel}`,
     description: fm.description,
     alternates: { canonical: `${BASE}/learn/${slug}` },
     openGraph: {
@@ -193,6 +227,19 @@ function renderMarkdown(md: string): React.ReactNode[] {
       flushList(); inList = false;
     } else if (inList) { flushList(); inList = false; }
 
+    // Images: ![alt](url)
+    const imgMatch = line.match(/^!\[([^\]]*)\]\(([^)]+)\)$/);
+    if (imgMatch) {
+      const [, alt, src] = imgMatch;
+      elements.push(
+        <figure key={key++} style={{ margin: '28px 0', borderRadius: 10, overflow: 'hidden', border: '1px solid #1E293B', background: '#0D1117' }}>
+          {/* eslint-disable-next-line @next/next/no-img-element */}
+          <img src={src} alt={alt} style={{ width: '100%', height: 'auto', display: 'block' }} loading="lazy" />
+        </figure>
+      );
+      continue;
+    }
+
     // Headings
     if (line.startsWith('# ')) {
       elements.push(<h1 key={key++} style={{ fontFamily: 'var(--serif)', fontSize: 28, fontWeight: 900, color: '#F1F5F9', margin: '36px 0 14px', lineHeight: 1.25 }}>{line.slice(2)}</h1>);
@@ -226,16 +273,22 @@ export default async function LearnLessonPage({ params }: { params: Promise<{ sl
     return (
       <div style={{ background: '#0B0F19', minHeight: '100vh', padding: '120px 24px', textAlign: 'center' }}>
         <h1 style={{ color: '#F1F5F9', fontFamily: 'var(--serif)', fontSize: 28 }}>Lesson Not Found</h1>
-        <Link href="/learn/investing-101-beginner" style={{ color: '#00D474', fontSize: 14, marginTop: 16, display: 'inline-block' }}>← Back to Series</Link>
+        <Link href="/learn" style={{ color: '#00D474', fontSize: 14, marginTop: 16, display: 'inline-block' }}>← Back to Academy</Link>
       </div>
     );
   }
 
   const { fm, body } = lesson;
   const heroSrc = HERO_MAP[slug];
-  const seriesIndex = SERIES_ORDER.indexOf(slug);
-  const prevSlug = seriesIndex > 0 ? SERIES_ORDER[seriesIndex - 1] : null;
-  const nextSlug = seriesIndex < SERIES_ORDER.length - 1 ? SERIES_ORDER[seriesIndex + 1] : null;
+  const inter = isIntermediate(slug);
+  const ORDER = inter ? INTERMEDIATE_ORDER : BEGINNER_ORDER;
+  const seriesIndex = ORDER.indexOf(slug);
+  const prevSlug = seriesIndex > 0 ? ORDER[seriesIndex - 1] : null;
+  const nextSlug = seriesIndex < ORDER.length - 1 ? ORDER[seriesIndex + 1] : null;
+  const seriesTotal = inter ? 24 : 12;
+  const seriesIndexPage = inter ? '/learn/investing-101-intermediate' : '/learn/investing-101-beginner';
+  const seriesBadgeLabel = inter ? 'INVESTING 101 INTERMEDIATE' : 'INVESTING 101 BEGINNER';
+  const seriesLineLabel = inter ? 'Investing 101 — Intermediate Series' : 'Investing 101 — Beginner Series';
 
   const prevLesson = prevSlug ? getLesson(prevSlug) : null;
   const nextLesson = nextSlug ? getLesson(nextSlug) : null;
@@ -246,11 +299,18 @@ export default async function LearnLessonPage({ params }: { params: Promise<{ sl
     datePublished: fm.publishDate,
     author: { '@type': 'Organization', name: 'DHLM Studio' },
     publisher: { '@type': 'Organization', name: 'DHLM Studio' },
-    isPartOf: { '@type': 'Course', name: 'Investing 101 — Beginner' },
+    isPartOf: { '@type': 'Course', name: fm.series },
   };
 
-  const phaseColor = fm.week <= 3 ? '#00D474' : fm.week <= 7 ? '#3B82F6' : '#D4A843';
-  const phaseLabel = fm.week <= 3 ? 'PHASE 1 · FOUNDATIONS' : fm.week <= 7 ? 'PHASE 2 · READING COMPANIES' : 'PHASE 3 · STRATEGY';
+  let phaseColor: string;
+  let phaseLabel: string;
+  if (inter) {
+    phaseColor = fm.week <= 15 ? '#60A5FA' : fm.week <= 18 ? '#A78BFA' : fm.week <= 21 ? '#34D399' : '#F59E0B';
+    phaseLabel = fm.week <= 15 ? 'PHASE 1 · VALUATION' : fm.week <= 18 ? 'PHASE 2 · MOAT ANALYSIS' : fm.week <= 21 ? 'PHASE 3 · DOCUMENT FORENSICS' : 'PHASE 4 · PORTFOLIO MANAGEMENT';
+  } else {
+    phaseColor = fm.week <= 3 ? '#00D474' : fm.week <= 7 ? '#3B82F6' : '#D4A843';
+    phaseLabel = fm.week <= 3 ? 'PHASE 1 · FOUNDATIONS' : fm.week <= 7 ? 'PHASE 2 · READING COMPANIES' : 'PHASE 3 · STRATEGY';
+  }
 
   return (
     <div style={{ background: '#0B0F19', minHeight: '100vh' }}>
@@ -261,7 +321,7 @@ export default async function LearnLessonPage({ params }: { params: Promise<{ sl
         <div style={{ display: 'flex', alignItems: 'center', gap: 8, marginBottom: 24, fontSize: 11, fontFamily: 'var(--mono)', color: '#475569', flexWrap: 'wrap' }}>
           <Link href="/learn" style={{ color: '#475569', textDecoration: 'none' }}>Brutal Edge Academy</Link>
           <span>/</span>
-          <Link href="/learn/investing-101-beginner" style={{ color: '#475569', textDecoration: 'none' }}>Investing 101 Beginner</Link>
+          <Link href={seriesIndexPage} style={{ color: '#475569', textDecoration: 'none' }}>{inter ? 'Investing 101 Intermediate' : 'Investing 101 Beginner'}</Link>
           <span>/</span>
           <span style={{ color: '#64748B' }}>Week {fm.week}</span>
         </div>
@@ -270,13 +330,13 @@ export default async function LearnLessonPage({ params }: { params: Promise<{ sl
         <div style={{ marginBottom: 28 }}>
           <div style={{ display: 'flex', alignItems: 'center', gap: 8, marginBottom: 12, flexWrap: 'wrap' }}>
             <span style={{ fontFamily: 'var(--mono)', fontSize: 9, fontWeight: 800, padding: '3px 9px', borderRadius: 5, background: '#00D47418', color: '#00D474', border: '1px solid #00D47430', letterSpacing: 1 }}>
-              INVESTING 101 BEGINNER
+              {seriesBadgeLabel}
             </span>
             <span style={{ fontFamily: 'var(--mono)', fontSize: 9, fontWeight: 700, padding: '2px 8px', borderRadius: 4, background: `${phaseColor}14`, color: phaseColor }}>
               {phaseLabel}
             </span>
             <span style={{ fontFamily: 'var(--mono)', fontSize: 9, fontWeight: 700, padding: '2px 8px', borderRadius: 4, background: '#1E293B', color: '#64748B' }}>
-              WEEK {fm.week} / 12
+              WEEK {fm.week} / {seriesTotal}
             </span>
           </div>
 
@@ -287,7 +347,7 @@ export default async function LearnLessonPage({ params }: { params: Promise<{ sl
           <div style={{ display: 'flex', alignItems: 'center', gap: 10, fontSize: 11, color: '#475569', fontFamily: 'var(--mono)' }}>
             <span>🕐 {fm.readingTime}</span>
             <span>·</span>
-            <span>Investing 101 — Beginner Series</span>
+            <span>{seriesLineLabel}</span>
           </div>
         </div>
 
@@ -295,10 +355,10 @@ export default async function LearnLessonPage({ params }: { params: Promise<{ sl
         <div style={{ marginBottom: 28, padding: '12px 16px', borderRadius: 10, background: '#0D1117', border: '1px solid #1E293B' }}>
           <div style={{ display: 'flex', justifyContent: 'space-between', marginBottom: 6 }}>
             <span style={{ fontFamily: 'var(--mono)', fontSize: 9, fontWeight: 700, color: '#475569' }}>SERIES PROGRESS</span>
-            <span style={{ fontFamily: 'var(--mono)', fontSize: 9, color: '#475569' }}>W{fm.week} / 12</span>
+            <span style={{ fontFamily: 'var(--mono)', fontSize: 9, color: '#475569' }}>W{fm.week} / {seriesTotal}</span>
           </div>
           <div style={{ height: 4, background: '#1E293B', borderRadius: 2, overflow: 'hidden' }}>
-            <div style={{ height: '100%', width: `${(fm.week / 12) * 100}%`, background: 'linear-gradient(90deg, #00D474, #059952)', borderRadius: 2 }} />
+            <div style={{ height: '100%', width: `${(fm.week / seriesTotal) * 100}%`, background: 'linear-gradient(90deg, #00D474, #059952)', borderRadius: 2 }} />
           </div>
         </div>
 
@@ -346,7 +406,7 @@ export default async function LearnLessonPage({ params }: { params: Promise<{ sl
 
         {/* Back links */}
         <div style={{ display: 'flex', gap: 20 }}>
-          <Link href="/learn/investing-101-beginner" style={{ fontSize: 12, color: '#64748B', textDecoration: 'none' }}>← Series Index</Link>
+          <Link href={seriesIndexPage} style={{ fontSize: 12, color: '#64748B', textDecoration: 'none' }}>← Series Index</Link>
           <Link href="/learn" style={{ fontSize: 12, color: '#64748B', textDecoration: 'none' }}>← Brutal Edge Academy</Link>
         </div>
 

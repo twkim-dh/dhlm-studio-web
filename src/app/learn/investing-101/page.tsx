@@ -162,15 +162,26 @@ export default function Investing101Page() {
           </div>
         ))}
 
-        {/* Series index CTA */}
-        <div style={{ marginTop: 8, padding: '24px', borderRadius: 14, background: 'linear-gradient(135deg, #00D47408, #00D47403)', border: '1px solid #00D47420', textAlign: 'center' }}>
-          <div style={{ fontFamily: 'var(--mono)', fontSize: 10, fontWeight: 700, color: '#00D474', letterSpacing: 2, marginBottom: 8 }}>📈 FULL BEGINNER SERIES</div>
-          <p style={{ fontSize: 14, color: '#94A3B8', margin: '0 0 14px' }}>
-            All 12 lessons published. View the full curriculum with hero images and descriptions.
-          </p>
-          <Link href="/learn/investing-101-beginner" style={{ display: 'inline-block', padding: '10px 24px', borderRadius: 8, background: '#00D474', color: '#0B0F19', fontSize: 13, fontWeight: 800, textDecoration: 'none' }}>
-            View Full Curriculum →
-          </Link>
+        {/* Series CTAs */}
+        <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(260px, 1fr))', gap: 14, marginTop: 8 }}>
+          <div style={{ padding: '24px', borderRadius: 14, background: 'linear-gradient(135deg, #00D47408, #00D47403)', border: '1px solid #00D47420', textAlign: 'center' }}>
+            <div style={{ fontFamily: 'var(--mono)', fontSize: 10, fontWeight: 700, color: '#00D474', letterSpacing: 2, marginBottom: 8 }}>BEGINNER SERIES · W1–W12</div>
+            <p style={{ fontSize: 13, color: '#94A3B8', margin: '0 0 14px', lineHeight: 1.5 }}>
+              12 lessons live. Stocks, statements, valuation basics.
+            </p>
+            <Link href="/learn/investing-101-beginner" style={{ display: 'inline-block', padding: '9px 20px', borderRadius: 8, background: '#00D474', color: '#0B0F19', fontSize: 12, fontWeight: 800, textDecoration: 'none' }}>
+              View Beginner →
+            </Link>
+          </div>
+          <div style={{ padding: '24px', borderRadius: 14, background: 'linear-gradient(135deg, #60A5FA08, #60A5FA03)', border: '1px solid #60A5FA20', textAlign: 'center' }}>
+            <div style={{ fontFamily: 'var(--mono)', fontSize: 10, fontWeight: 700, color: '#60A5FA', letterSpacing: 2, marginBottom: 8 }}>INTERMEDIATE SERIES · W13–W24</div>
+            <p style={{ fontSize: 13, color: '#94A3B8', margin: '0 0 14px', lineHeight: 1.5 }}>
+              12 lessons. Valuation, moats, forensics, portfolio sizing.
+            </p>
+            <Link href="/learn/investing-101-intermediate" style={{ display: 'inline-block', padding: '9px 20px', borderRadius: 8, background: '#60A5FA', color: '#0B0F19', fontSize: 12, fontWeight: 800, textDecoration: 'none' }}>
+              View Intermediate →
+            </Link>
+          </div>
         </div>
 
         <div style={{ marginTop: 24 }}>
