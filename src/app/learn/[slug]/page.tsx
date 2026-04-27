@@ -132,7 +132,7 @@ export async function generateMetadata({ params }: { params: Promise<{ slug: str
       title: fm.title, description: fm.description,
       type: 'article', publishedTime: fm.publishDate,
       url: `${BASE}/learn/${slug}`,
-      images: [{ url: ogImage, width: 1200, height: 800 }],
+      images: [{ url: ogImage, width: 1672, height: 941 }],
     },
     twitter: { card: 'summary_large_image', title: fm.title, description: fm.description, images: [ogImage] },
     ...(isFuture ? { robots: { index: false, follow: true } } : {}),
@@ -168,11 +168,11 @@ function renderMarkdown(md: string): React.ReactNode[] {
       <div key={key++} style={{ overflowX: 'auto', margin: '20px 0' }}>
         <table style={{ width: '100%', borderCollapse: 'collapse', fontSize: 13, fontFamily: 'var(--mono)' }}>
           <thead>
-            <tr>{headers.map((h, i) => <th key={i} style={{ padding: '8px 12px', borderBottom: '2px solid #1E293B', color: '#94A3B8', textAlign: 'left', fontWeight: 700 }}>{h.trim()}</th>)}</tr>
+            <tr>{headers.map((h, i) => <th key={i} style={{ padding: '8px 12px', borderBottom: '2px solid #334155', borderRight: i < headers.length - 1 ? '1px solid #1E293B' : undefined, background: '#111827', color: '#94A3B8', textAlign: 'left', fontWeight: 700, whiteSpace: 'nowrap' }} dangerouslySetInnerHTML={{ __html: processInline(h.trim()) }} />)}</tr>
           </thead>
           <tbody>
             {dataRows.map((row, ri) => (
-              <tr key={ri}>{row.map((cell, ci) => <td key={ci} style={{ padding: '7px 12px', borderBottom: '1px solid #1E293B20', color: '#E2E8F0' }} dangerouslySetInnerHTML={{ __html: processInline(cell.trim()) }} />)}</tr>
+              <tr key={ri}>{row.map((cell, ci) => <td key={ci} style={{ padding: '7px 12px', borderBottom: '1px solid #1E293B', borderRight: ci < row.length - 1 ? '1px solid #1E293B' : undefined, color: '#E2E8F0' }} dangerouslySetInnerHTML={{ __html: processInline(cell.trim()) }} />)}</tr>
             ))}
           </tbody>
         </table>
@@ -392,7 +392,7 @@ export default async function LearnLessonPage({ params }: { params: Promise<{ sl
 
         {/* Hero image */}
         {heroSrc && (
-          <div style={{ width: '100%', aspectRatio: '3/2', borderRadius: 14, overflow: 'hidden', marginBottom: 32, border: '1px solid #1E293B', background: '#0f172a' }}>
+          <div style={{ width: '100%', aspectRatio: '16/9', borderRadius: 14, overflow: 'hidden', marginBottom: 32, border: '1px solid #1E293B', background: '#0f172a' }}>
             {/* eslint-disable-next-line @next/next/no-img-element */}
             <img src={heroSrc} alt={fm.title} style={{ width: '100%', height: '100%', objectFit: 'cover', display: 'block' }} />
           </div>
