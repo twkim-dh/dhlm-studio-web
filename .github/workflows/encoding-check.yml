@@ -19,21 +19,18 @@ jobs:
           python3 - <<'PYEOF'
           import sys, os, re
 
-          MOJIBAKE = [
-              '\xc3\x97',  # Ã\x97 -> should be ×
-              '\xc3\xb7',  # Ã· -> should be ÷
-              '\xe2\x80\x94',  # â\x80\x94 -> should be —
-              '\xe2\x80\x93',  # â\x80\x93 -> should be –
-              '\xe2\x88\x92',  # â\x88\x92 -> should be −
-              '\xe2\x80\x98',  # left single quote mojibake
-              '\xe2\x80\x99',  # right single quote mojibake
-              '\xe2\x80\x9c',  # left double quote mojibake
-              '\xe2\x80\x9d',  # right double quote mojibake
-              '\xe2\x80\xa6',  # ellipsis mojibake
-          ]
+          # Detects double-encoded UTF-8 (UTF-8 bytes treated as Latin-1 chars, then re-saved as UTF-8).
+          # Pattern: Latin-1 range chars (U+00C2-U+00EF) followed by C1/continuation bytes (U+0080-U+00BF).
+          # Covers: box drawing, arrows, math symbols, smart quotes, em/en dash, currency, etc.
+          PAT3 = re.compile(r'[\xe0-\xef][\x80-\xbf][\x80-\xbf]')  # 3-byte sequences
+          PAT2 = re.compile(r'[\xc2-\xdf][\x80-\xbf]')              # 2-byte sequences
 
-          dirs = ['src/content/reports','src/content/learn','src/content/research','src/content/blog']
+          # Additional heuristic: 5+ consecutive â chars = box drawing line that was corrupted
+          PAT_REPEAT = re.compile(r'â{5,}')
+
+          dirs = ['src/content/reports', 'src/content/learn', 'src/content/research', 'src/content/blog']
           errors = []
+          scanned = 0
 
           for d in dirs:
               if not os.path.exists(d):
@@ -42,23 +39,30 @@ jobs:
                   if not f.endswith('.md'):
                       continue
                   path = f'{d}/{f}'
+                  scanned += 1
                   try:
                       text = open(path, 'r', encoding='utf-8').read()
                   except UnicodeDecodeError as e:
                       errors.append(f'{path}: UTF-8 decode error — {e}')
                       continue
-                  for pat in MOJIBAKE:
-                      if pat in text:
-                          m = re.search(re.escape(pat), text)
-                          ctx = text[max(0,m.start()-20):m.end()+20].replace('\n', ' ')
-                          errors.append(f'{path}: mojibake pattern {repr(pat)} found near: ...{ctx}...')
+
+                  for pat, label in [
+                      (PAT3, '3-byte mojibake'),
+                      (PAT2, '2-byte mojibake'),
+                      (PAT_REPEAT, 'repeated-â (box drawing corruption)'),
+                  ]:
+                      m = pat.search(text)
+                      if m:
+                          ctx = text[max(0, m.start()-25):m.end()+25].replace('\n', ' ')
+                          errors.append(f'{path}: {label} near: ...{ctx}...')
                           break
 
+          print(f'Scanned {scanned} files')
           if errors:
-              print('ENCODING ERRORS FOUND:')
+              print(f'\nENCODING ERRORS ({len(errors)} files):')
               for e in errors:
                   print(f'  {e}')
               sys.exit(1)
           else:
-              print(f'OK — all markdown files are clean')
+              print('OK — all files clean')
           PYEOF

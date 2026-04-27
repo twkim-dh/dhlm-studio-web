@@ -49,7 +49,7 @@ Those are the facts of Tesla today. What the stock is priced on is everything el
 
 Here is a concrete five-year forecast using assumptions a Tesla bull would defend in a research note. Revenue growth accelerates as Robotaxi and Cybercab ramp. Operating margin expands as software revenue (FSD subscriptions, currently 456,000 active users generating roughly $45 million per month) grows faster than hardware cost. CapEx stays elevated at the $25 billion guided 2026 level and fades gradually as capacity matures.
 
-| Year | Revenue | Growth | Op Margin | EBIT | Tax (21%) | NOPAT | + D&A | – CapEx | – ÎWC | **FCF** |
+| Year | Revenue | Growth | Op Margin | EBIT | Tax (21%) | NOPAT | + D&A | – CapEx | – ΔWC | **FCF** |
 |---|---|---|---|---|---|---|---|---|---|---|
 | 2026 | $105B | 11% | 6% | $6.3B | $1.3B | $5.0B | $5.5B | $25.0B | $0.5B | **($15.0B)** |
 | 2027 | $125B | 19% | 9% | $11.3B | $2.4B | $8.9B | $7.0B | $20.0B | $0.8B | **($4.9B)** |
@@ -69,7 +69,7 @@ After 2030, assume the business settles into steady state: 3 percent perpetual g
 
 ```
                     FCF_2030 × (1 + g)       $26.4B × 1.03
-  Terminal Value = âââââââââââââââââââââ  =  âââââââââââââââââ  =  $454B
+  Terminal Value = ─────────────────────  =  ─────────────────  =  $454B
                           r – g                 0.09 – 0.03
 ```
 
@@ -212,13 +212,13 @@ Here is the full triangulation. Three methods, three ranges, and the current mar
 
 ```
 Valuation Method                 Low          Mid          High
-ââââââââââââââââââââââââââââââââââââââââââââââââââââââââââââââââ
+────────────────────────────────────────────────────────────────
 DCF (operational)               $38          $85          $204
 Comparable Companies            $20          $130         $220
 Precedent Transactions          $125         $190         $255
-ââââââââââââââââââââââââââââââââââââââââââââââââââââââââââââââââ
-Current Stock Price             âââââââââ ~$373 âââââââââ
-Blended Fair Value Range        âââââââââ $85 – $220 âââââââââ
+────────────────────────────────────────────────────────────────
+Current Stock Price             ───────── ~$373 ─────────
+Blended Fair Value Range        ───────── $85 – $220 ─────────
 ```
 
 

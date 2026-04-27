@@ -52,7 +52,7 @@ Here is the factual starting point, from the Q4 FY2026 earnings report filed Feb
 | Free cash flow | $97.0B | $35.0B |
 | GAAP diluted EPS | $4.90 | $1.76 |
 | Shares outstanding | 24.3B | |
-| Q1 FY27 revenue guidance | $78.0B (Â±2%) | (implies ~55% YoY growth) |
+| Q1 FY27 revenue guidance | $78.0B (±2%) | (implies ~55% YoY growth) |
 
 Management has also publicly referenced a **$500 billion Blackwell + Rubin revenue opportunity** through end of calendar 2026 and indicated sequential growth continues throughout the year. That is a forward data point, not a fact — but it is a specific commitment from management, not a guess.
 
@@ -60,7 +60,7 @@ Management has also publicly referenced a **$500 billion Blackwell + Rubin reven
 
 Here is a concrete five-year forecast using assumptions a reasonable bull would defend in a research note. Revenue decelerates gradually as the law of large numbers kicks in. Operating margin compresses slightly as competition from custom silicon (Google TPU, Amazon Trainium, Marvell/Alphabet partnership) and AMD MI-series erodes the near-monopoly. CapEx stays elevated to support Rubin rollout.
 
-| Year | Revenue | Growth | Op Margin | EBIT | Tax (15%*) | NOPAT | + D&A | – CapEx | – ÎWC | **FCF** |
+| Year | Revenue | Growth | Op Margin | EBIT | Tax (15%*) | NOPAT | + D&A | – CapEx | – ΔWC | **FCF** |
 |---|---|---|---|---|---|---|---|---|---|---|
 | FY27 | $320B | 48% | 62% | $198B | $30B | $168B | $9B | $18B | $12B | **$147B** |
 | FY28 | $420B | 31% | 60% | $252B | $38B | $214B | $11B | $22B | $15B | **$188B** |
@@ -82,7 +82,7 @@ After FY31, assume the business settles into steady state: 4 percent perpetual g
 
 ```
                     FCF_FY31 × (1 + g)       $257B × 1.04
-  Terminal Value = âââââââââââââââââââââ  =  âââââââââââââââââ  =  $4,454B
+  Terminal Value = ─────────────────────  =  ─────────────────  =  $4,454B
                           r – g                 0.10 – 0.04
 ```
 

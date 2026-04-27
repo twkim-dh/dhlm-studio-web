@@ -29,7 +29,7 @@ The simplified formula for equity investing:
 
 ```
                           Edge
-  Optimal Position %  =  ââââââââ
+  Optimal Position %  =  ────────
                         Uncertainty
 
   Or, more precisely:
