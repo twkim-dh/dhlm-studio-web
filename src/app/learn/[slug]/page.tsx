@@ -122,6 +122,8 @@ export async function generateMetadata({ params }: { params: Promise<{ slug: str
   const BASE = 'https://dhlm-studio.com';
   const ogImage = heroSrc ? `${BASE}${heroSrc}` : `${BASE}/opengraph-image`;
   const seriesLabel = isIntermediate(slug) ? 'Investing 101 Intermediate' : 'Investing 101 Beginner';
+  const today = new Date().toISOString().slice(0, 10);
+  const isFuture = isIntermediate(slug) && fm.publishDate && fm.publishDate > today;
   return {
     title: `${fm.title} | ${seriesLabel}`,
     description: fm.description,
@@ -133,6 +135,7 @@ export async function generateMetadata({ params }: { params: Promise<{ slug: str
       images: [{ url: ogImage, width: 1200, height: 800 }],
     },
     twitter: { card: 'summary_large_image', title: fm.title, description: fm.description, images: [ogImage] },
+    ...(isFuture ? { robots: { index: false, follow: true } } : {}),
   };
 }
 
@@ -154,6 +157,8 @@ function renderMarkdown(md: string): React.ReactNode[] {
   let blockquoteLines: string[] = [];
   let listItems: string[] = [];
   let inList = false;
+  let inCodeFence = false;
+  let codeFenceLines: string[] = [];
 
   const flushTable = () => {
     if (tableRows.length < 2) { tableRows = []; return; }
@@ -199,6 +204,26 @@ function renderMarkdown(md: string): React.ReactNode[] {
   };
 
   for (const line of lines) {
+    // Code fence
+    if (line.startsWith('```')) {
+      if (inCodeFence) {
+        elements.push(
+          <pre key={key++} style={{ background: '#0D1117', border: '1px solid #1E293B', borderRadius: 8, padding: '16px 18px', overflowX: 'auto', margin: '20px 0', fontFamily: 'var(--mono)', fontSize: 13, color: '#94A3B8', lineHeight: 1.7 }}>
+            <code>{codeFenceLines.join('\n')}</code>
+          </pre>
+        );
+        codeFenceLines = [];
+        inCodeFence = false;
+      } else {
+        if (inTable) { inTable = false; flushTable(); }
+        if (inBlockquote) { flushBlockquote(); inBlockquote = false; }
+        if (inList) { flushList(); inList = false; }
+        inCodeFence = true;
+      }
+      continue;
+    }
+    if (inCodeFence) { codeFenceLines.push(line); continue; }
+
     // Table
     if (line.trim().startsWith('|') && line.trim().endsWith('|')) {
       if (inBlockquote) { flushBlockquote(); inBlockquote = false; }
@@ -261,6 +286,9 @@ function renderMarkdown(md: string): React.ReactNode[] {
   if (inTable) flushTable();
   if (inBlockquote) flushBlockquote();
   if (inList) flushList();
+  if (inCodeFence && codeFenceLines.length) {
+    elements.push(<pre key={key++} style={{ background: '#0D1117', border: '1px solid #1E293B', borderRadius: 8, padding: '16px 18px', overflowX: 'auto', margin: '20px 0', fontFamily: 'var(--mono)', fontSize: 13, color: '#94A3B8', lineHeight: 1.7 }}><code>{codeFenceLines.join('\n')}</code></pre>);
+  }
 
   return elements;
 }

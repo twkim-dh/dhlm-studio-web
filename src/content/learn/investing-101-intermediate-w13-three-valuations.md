@@ -67,11 +67,14 @@ Two things deserve immediate attention. First, free cash flow is deeply negative
 
 After 2030, assume the business settles into steady state: 3 percent perpetual growth, 20 percent operating margin, stable capex-to-revenue. Using a WACC of 9 percent (Tesla's beta of 1.86 pushes this higher than a consumer staples name, but we will test other levels shortly):
 
-```
-                    FCF_2030 × (1 + g)       $26.4B × 1.03
-  Terminal Value = ─────────────────────  =  ─────────────────  =  $454B
-                          r – g                 0.09 – 0.03
-```
+| Component | Value |
+|---|---|
+| Terminal year FCF (FCF_2030) | $26.4B |
+| Terminal growth rate (g) | 3% |
+| WACC (r) | 9% |
+| r − g | 0.09 − 0.03 = **0.06** |
+| FCF × (1 + g) | $26.4B × 1.03 = **$27.2B** |
+| **Terminal Value** | **$27.2B ÷ 0.06 = $454B** |
 
 ### Discounting Everything Back to 2026
 
@@ -210,16 +213,13 @@ For Tesla specifically, the precedent-transactions lens serves less as a valuati
 
 Here is the full triangulation. Three methods, three ranges, and the current market price.
 
-```
-Valuation Method                 Low          Mid          High
-────────────────────────────────────────────────────────────────
-DCF (operational)               $38          $85          $204
-Comparable Companies            $20          $130         $220
-Precedent Transactions          $125         $190         $255
-────────────────────────────────────────────────────────────────
-Current Stock Price             ───────── ~$373 ─────────
-Blended Fair Value Range        ───────── $85 – $220 ─────────
-```
+| Valuation Method | Low | Mid | High |
+|---|---|---|---|
+| DCF (operational) | $38 | $85 | $204 |
+| Comparable Companies | $20 | $130 | $220 |
+| Precedent Transactions | $125 | $190 | $255 |
+| **Current Stock Price** | | | **~$373** |
+| **Blended Fair Value Range** | **$85** | | **$220** |
 
 
 ![Chart 4](/images/content/INV-101-W13-CHART-4-triangulated-valuation.png)

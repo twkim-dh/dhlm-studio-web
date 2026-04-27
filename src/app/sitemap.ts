@@ -23,6 +23,22 @@ function getReportSlugs(): string[] {
   } catch { return []; }
 }
 
+function getLearnIntermediateSlugs(): string[] {
+  try {
+    const today = new Date().toISOString().slice(0, 10);
+    const dir = path.join(process.cwd(), 'src/content/learn');
+    return fs.readdirSync(dir)
+      .filter(f => f.includes('intermediate') && f.endsWith('.md'))
+      .filter(f => {
+        const content = fs.readFileSync(path.join(dir, f), 'utf8');
+        const m = content.match(/^publishDate:\s*"?([^"\n]+)"?/m);
+        if (!m) return true;
+        return m[1].trim().slice(0, 10) <= today;
+      })
+      .map(f => f.replace(/\.md$/, ''));
+  } catch { return []; }
+}
+
 function getResearchSlugs(): string[] {
   try {
     const dir = path.join(process.cwd(), 'src/content/research');
@@ -46,7 +62,8 @@ export default function sitemap(): MetadataRoute.Sitemap {
     { url: `${BASE}/learn`,               lastModified: now, changeFrequency: "weekly",  priority: 0.8 },
     { url: `${BASE}/learn/crypto-101`,             lastModified: now, changeFrequency: "weekly",  priority: 0.8 },
     { url: `${BASE}/learn/investing-101`,           lastModified: now, changeFrequency: "monthly", priority: 0.7 },
-    { url: `${BASE}/learn/investing-101-beginner`,  lastModified: now, changeFrequency: "monthly", priority: 0.8 },
+    { url: `${BASE}/learn/investing-101-beginner`,       lastModified: now, changeFrequency: "monthly", priority: 0.8 },
+    { url: `${BASE}/learn/investing-101-intermediate`,    lastModified: now, changeFrequency: "monthly", priority: 0.8 },
     // Investing 101 Beginner Series — 12 lessons
     ...[
       'investing-101-beginner-w1-what-is-a-stock-really',
@@ -62,6 +79,12 @@ export default function sitemap(): MetadataRoute.Sitemap {
       'investing-101-beginner-w11-investors-mind',
       'investing-101-beginner-w12-your-first-five-years',
     ].map(slug => ({ url: `${BASE}/learn/${slug}`, lastModified: now, changeFrequency: "monthly" as const, priority: 0.7 })),
+    // Investing 101 Intermediate Series — published lessons only (future dates excluded)
+    ...getLearnIntermediateSlugs().map(slug => ({
+      url: `${BASE}/learn/${slug}`,
+      lastModified: now, changeFrequency: 'monthly' as const, priority: 0.7,
+    })),
+
     { url: `${BASE}/research`,            lastModified: now, changeFrequency: "weekly",  priority: 0.8 },
 
     // Reports (all slugs from content/reports/)

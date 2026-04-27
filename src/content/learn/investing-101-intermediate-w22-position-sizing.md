@@ -27,21 +27,16 @@ The Kelly Criterion is a mathematical formula for optimal bet sizing when both t
 
 The simplified formula for equity investing:
 
-```
-                          Edge
-  Optimal Position %  =  ────────
-                        Uncertainty
+**Optimal Position % = Edge ÷ Uncertainty**
 
-  Or, more precisely:
+More precisely: **Kelly % = (W × A − L × B) / (A × B)**
 
-  Kelly %  =  (W × A − L × B) / (A × B)
-
-  Where:
-    W = probability of winning (expected)
-    L = probability of losing = 1 - W
-    A = expected loss (if wrong) in percent
-    B = expected gain (if right) in percent
-```
+| Variable | Meaning |
+|---|---|
+| W | Probability of winning (your expected win rate) |
+| L | Probability of losing = 1 − W |
+| A | Expected loss if wrong (in %) |
+| B | Expected gain if right (in %) |
 
 The formula is not the important part. The *discipline* of filling in the inputs is.
 

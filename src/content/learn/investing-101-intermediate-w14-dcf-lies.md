@@ -80,11 +80,14 @@ Two things stand out when you put this table next to last week's TSLA forecast. 
 
 After FY31, assume the business settles into steady state: 4 percent perpetual growth (higher than GDP because AI infrastructure is a multi-decade build-out), 45 percent operating margin (materially lower than today as maturity sets in). Using a WACC of 10 percent (NVIDIA's beta is 2.33, so we need a higher equity risk premium than on a consumer staples name):
 
-```
-                    FCF_FY31 × (1 + g)       $257B × 1.04
-  Terminal Value = ─────────────────────  =  ─────────────────  =  $4,454B
-                          r – g                 0.10 – 0.04
-```
+| Component | Value |
+|---|---|
+| Terminal year FCF (FCF_FY31) | $257B |
+| Terminal growth rate (g) | 4% |
+| WACC (r) | 10% |
+| r − g | 0.10 − 0.04 = **0.06** |
+| FCF × (1 + g) | $257B × 1.04 = **$267.3B** |
+| **Terminal Value** | **$267.3B ÷ 0.06 = $4,454B** |
 
 ### Discounting Everything Back to Today
 
