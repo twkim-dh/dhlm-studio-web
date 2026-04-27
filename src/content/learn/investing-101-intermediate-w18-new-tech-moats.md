@@ -11,13 +11,13 @@ tags: ["Investing 101", "Intermediate", "AI Moats", "Anthropic", "OpenAI"]
 
 ## Moats in New Tech
 
-The classical moat framework â network effects, switching costs, cost advantage, intangible assets, efficient scale â was developed by studying businesses that had already existed for decades. The analyst could look at 30 years of financial statements, 30 years of market share data, 30 years of competitive entry attempts, and reach confident conclusions about which moats were durable and which were cyclical.
+The classical moat framework — network effects, switching costs, cost advantage, intangible assets, efficient scale — was developed by studying businesses that had already existed for decades. The analyst could look at 30 years of financial statements, 30 years of market share data, 30 years of competitive entry attempts, and reach confident conclusions about which moats were durable and which were cyclical.
 
 That luxury does not exist for the businesses currently reshaping the largest industries in the world.
 
-Anthropic's annualized revenue went from $1B at end-of-2024 to $9B at end-of-2025 to **$30B by April 2026** â a 30x jump in roughly 15 months. OpenAI just closed a $110 billion funding round at an $852 billion valuation. Tesla has accumulated approximately 9 billion miles of real-world driving data and is running them through a fleet that nobody else has access to. Each of these is arguably building a moat in a category that did not meaningfully exist five years ago. And each of them is being valued by capital markets today as if the moat is real, even though no traditional framework can confirm it yet.
+Anthropic's annualized revenue went from $1B at end-of-2024 to $9B at end-of-2025 to **$30B by April 2026** — a 30x jump in roughly 15 months. OpenAI just closed a $110 billion funding round at an $852 billion valuation. Tesla has accumulated approximately 9 billion miles of real-world driving data and is running them through a fleet that nobody else has access to. Each of these is arguably building a moat in a category that did not meaningfully exist five years ago. And each of them is being valued by capital markets today as if the moat is real, even though no traditional framework can confirm it yet.
 
-This is the hard problem of new-technology moat analysis. You cannot wait for 20 years of ROIC data â by the time that data exists, the category leaders have already been decided and the stocks have already moved. You have to read the moat from behavioral and structural signals, while the business is still being built, and make an investment decision on evidence that a traditional analyst would consider incomplete. This week we cover how.
+This is the hard problem of new-technology moat analysis. You cannot wait for 20 years of ROIC data — by the time that data exists, the category leaders have already been decided and the stocks have already moved. You have to read the moat from behavioral and structural signals, while the business is still being built, and make an investment decision on evidence that a traditional analyst would consider incomplete. This week we cover how.
 
 ---
 
@@ -42,7 +42,7 @@ The reason these deserve their own framework is that the *time-to-evidence* is m
 
 Both companies are building AI foundation models. Both have strong research teams. Both sell API access to developers and enterprises. As of early 2026, both are at roughly similar scale on surface metrics. But their moat profiles are diverging sharply, and reading the divergence is a masterclass in new-tech moat analysis.
 
-**Revenue and valuation snapshot â April 2026**
+**Revenue and valuation snapshot — April 2026**
 
 | Metric | Anthropic | OpenAI |
 |---|---|---|
@@ -73,7 +73,7 @@ Apply the four-category framework:
 | **Regulatory-gated scale** | Constitutional AI + Responsible Scaling Policy + Public Benefit Corp structure; first choice for healthcare (HIPAA-ready), finance, regulated industries | Less emphasis; more generalist positioning |
 | **Deep vertical integration** | Multi-cloud (AWS Trainium, Google TPUs, NVIDIA GPUs) to match workloads | Heavier dependence on Microsoft / NVIDIA stack |
 
-Two different moat profiles, different strategic bets. Neither is obviously wrong. What matters for an investor is recognizing that they are different kinds of bet â and that a retail investor who treats "OpenAI vs Anthropic" as interchangeable "AI stocks" is failing to price what is actually being purchased.
+Two different moat profiles, different strategic bets. Neither is obviously wrong. What matters for an investor is recognizing that they are different kinds of bet — and that a retail investor who treats "OpenAI vs Anthropic" as interchangeable "AI stocks" is failing to price what is actually being purchased.
 
 
 ![Chart 1](/images/content/INV-101-W18-CHART-1-openai-anthropic-share.png)
@@ -83,9 +83,9 @@ Two different moat profiles, different strategic bets. Neither is obviously wron
 
 Here is the single strongest moat signal visible in the Anthropic numbers: the customer count at the high spending tier doubled in two months. From 500 enterprise customers spending >$1M annually (February 2026) to over 1,000 (April 2026).
 
-That pattern is impossible without structural stickiness. Enterprise contracts at that spending level are not impulse decisions. They involve procurement, legal review, security assessment, integration planning, and pilot testing. The fact that the count doubled in two months means contracts signed 3â6 months earlier are now converting to spending, and the conversion rate itself is accelerating.
+That pattern is impossible without structural stickiness. Enterprise contracts at that spending level are not impulse decisions. They involve procurement, legal review, security assessment, integration planning, and pilot testing. The fact that the count doubled in two months means contracts signed 3–6 months earlier are now converting to spending, and the conversion rate itself is accelerating.
 
-This is the behavioral signal you look for in a data-network or platform-ecosystem moat: not just that revenue is growing, but that the *commitment depth* is growing. Enterprise customers running Claude 10 million API calls per month because it replaced an internal team are not going to switch to a competitor based on a small price change. The integration, the workflow adaptation, the operational muscle memory â all of that is switching-cost formation happening in real time.
+This is the behavioral signal you look for in a data-network or platform-ecosystem moat: not just that revenue is growing, but that the *commitment depth* is growing. Enterprise customers running Claude 10 million API calls per month because it replaced an internal team are not going to switch to a competitor based on a small price change. The integration, the workflow adaptation, the operational muscle memory — all of that is switching-cost formation happening in real time.
 
 ---
 
@@ -115,7 +115,7 @@ This is what a new-tech moat looks like when the evidence is still being generat
 
 ## Case Study: Reading Moat Formation in Real Time
 
-Consider three investors looking at Anthropic and OpenAI in January 2026, when both are at roughly $10â20B ARR and racing against each other for the enterprise LLM market.
+Consider three investors looking at Anthropic and OpenAI in January 2026, when both are at roughly $10–20B ARR and racing against each other for the enterprise LLM market.
 
 **Investor A** compares them by weekly active users. OpenAI has 900M; Anthropic does not disclose but is known to have far fewer. Conclusion: OpenAI has the larger moat. They are wrong, because weekly active users at the consumer level are not the relevant moat metric for an enterprise-API business. The metric matters only if the business you are valuing is consumer-first. Different businesses require different moat signals.
 
@@ -141,9 +141,9 @@ When you cannot wait 20 years for financial evidence, these are the signals that
 
 **3. Regulatory and safety positioning becomes a sales advantage.** For AI, "we pass enterprise security review" used to be a feature. For the current wave, it is the baseline. The next-layer moat is being first-choice for industries where deployment requires sector-specific compliance (healthcare HIPAA, finance compliance, government). Anthropic's positioning in these is materially ahead of OpenAI and Google.
 
-**4. The company can lose at a subcategory and still win the category.** Real moats show resilience. OpenAI invented the transformer-based LLM boom and still saw its enterprise share cut in half while revenue kept growing â the category was bigger than the initial leader's moat. The question for any current leader is whether they can survive losing a subcategory (Anthropic losing consumer chat, OpenAI losing coding) without compromising the core moat.
+**4. The company can lose at a subcategory and still win the category.** Real moats show resilience. OpenAI invented the transformer-based LLM boom and still saw its enterprise share cut in half while revenue kept growing — the category was bigger than the initial leader's moat. The question for any current leader is whether they can survive losing a subcategory (Anthropic losing consumer chat, OpenAI losing coding) without compromising the core moat.
 
-**5. Partner and customer decisions point structurally in your direction.** When Amazon commits $25B to Anthropic, when Microsoft 365 Copilot integrates Claude alongside OpenAI, when Fortune 10 companies standardize on Claude for enterprise deployment â those are not marketing wins. They are infrastructure-layer bets that compound for years. Partner reach is one of the cleanest moat-formation signals available.
+**5. Partner and customer decisions point structurally in your direction.** When Amazon commits $25B to Anthropic, when Microsoft 365 Copilot integrates Claude alongside OpenAI, when Fortune 10 companies standardize on Claude for enterprise deployment — those are not marketing wins. They are infrastructure-layer bets that compound for years. Partner reach is one of the cleanest moat-formation signals available.
 
 ---
 
@@ -153,13 +153,13 @@ The single most expensive error in new-technology investing is treating fast rev
 
 Every category that becomes large enough to attract public attention also attracts massive capital investment. The fast-growing leader in the *early* phase is almost always a temporary winner, not a durable one. Cisco in 1998 was growing at 40%+ as the internet built out. Half the names in the Nasdaq 100 of 1999 no longer exist as independent companies today. Fast growth, by itself, is evidence of a category tailwind, not evidence of a moat.
 
-The discipline is to ask, every time: *would this growth continue if capital were cut off tomorrow?* If the business depends on ongoing massive funding to sustain itself, the moat is unproven. OpenAI is projected to burn $14B in 2026, with an infrastructure commitment of over $1 trillion and no projected positive free cash flow until 2029. That capital dependence is not a criticism â it is a category reality â but it does mean the moat thesis is contingent on continued capital availability. Anthropic's path is directionally similar though with faster revenue growth relative to burn.
+The discipline is to ask, every time: *would this growth continue if capital were cut off tomorrow?* If the business depends on ongoing massive funding to sustain itself, the moat is unproven. OpenAI is projected to burn $14B in 2026, with an infrastructure commitment of over $1 trillion and no projected positive free cash flow until 2029. That capital dependence is not a criticism — it is a category reality — but it does mean the moat thesis is contingent on continued capital availability. Anthropic's path is directionally similar though with faster revenue growth relative to burn.
 
 
 ![Chart 3](/images/content/INV-101-W18-CHART-3-moat-vs-tailwind-paths.png)
 
 
-The fix is to write down, explicitly, the specific moat hypothesis for any new-tech position you own: which of the four categories, what the behavioral signals are, and what would prove the thesis wrong. If the thesis is "the business is growing fast," that is not a moat hypothesis â that is an extrapolation. Extrapolation does not hold up when category growth rates normalize.
+The fix is to write down, explicitly, the specific moat hypothesis for any new-tech position you own: which of the four categories, what the behavioral signals are, and what would prove the thesis wrong. If the thesis is "the business is growing fast," that is not a moat hypothesis — that is an extrapolation. Extrapolation does not hold up when category growth rates normalize.
 
 ---
 
@@ -167,9 +167,9 @@ The fix is to write down, explicitly, the specific moat hypothesis for any new-t
 
 Three habits will turn new-tech moat analysis from speculation into disciplined evaluation.
 
-**Track the commitment-depth signals, not just revenue.** Customer count at high-spend tiers, percentage of workflow integrated, percentage of commits generated, percentage of engineering teams standardized on the tool, renewal rate, net revenue retention. These signals lead revenue by 6â12 months. Revenue is the output. Commitment depth is the cause.
+**Track the commitment-depth signals, not just revenue.** Customer count at high-spend tiers, percentage of workflow integrated, percentage of commits generated, percentage of engineering teams standardized on the tool, renewal rate, net revenue retention. These signals lead revenue by 6–12 months. Revenue is the output. Commitment depth is the cause.
 
-**Read the losing side for signals.** Sam Altman declared a "code red" at OpenAI in December 2025 specifically because enterprise API share had shifted. When a competitor publicly restructures around responding to you, that is an acknowledgement from inside the losing company that your moat is real. Read these statements carefully â they often contain concessions that are more revealing than the winning company's marketing.
+**Read the losing side for signals.** Sam Altman declared a "code red" at OpenAI in December 2025 specifically because enterprise API share had shifted. When a competitor publicly restructures around responding to you, that is an acknowledgement from inside the losing company that your moat is real. Read these statements carefully — they often contain concessions that are more revealing than the winning company's marketing.
 
 **Pre-commit to kill criteria.** For any new-tech position, write down the three observations that would make you exit. For Anthropic: "If enterprise customer growth slows to <10% QoQ for two quarters" or "If Claude Code market share drops below 40%" or "If a major enterprise publicly switches back to OpenAI." For Tesla FSD: "If unsupervised-FSD regulatory approval slips past a specific date" or "If a major OEM reaches competitive per-mile safety numbers at scale." These are not predictions. They are trip-wires. Without them, you will hold too long or exit too early based on whichever direction the price has moved most recently.
 
@@ -179,10 +179,10 @@ Three habits will turn new-tech moat analysis from speculation into disciplined 
 
 This week's framework maps directly onto our coverage:
 
-- **Anthropic Private Investor Report** â the full new-tech moat decomposition for Anthropic, including the enterprise customer cohort analysis, the regulatory-gated scale thesis, the multi-cloud infrastructure strategy as vertical integration, and the specific scenarios under which the moat either continues compounding or plateaus. Reading this week's framework alongside that report is the cleanest way to see each signal in action on a specific company.
-- **Physical AI Sector Report** â applies the same framework to Tesla's FSD data-network moat, Chinese AV program competitive positioning, and the humanoid robotics category where moat formation is still at the "pre-category" stage. The specific moat-vs-tailwind decomposition for Tesla sits in that report.
-- **TSLA Deep Dive Rev.2 (BEAF 58/C+)** â the score specifically reflects moats that are partially formed and partially unverified. Reading the score alongside this week's framework clarifies which components of the Tesla thesis are durable and which are tailwind-riding.
-- **NVDA Deep Dive (BEAF 83/B+)** â the case where new-tech moats (CUDA ecosystem, developer lock-in, scale of installed base) passed the behavioral-signal tests earlier than most competitors realized. The 83 score reflects that those signals held up across multiple years.
+- **Anthropic Private Investor Report** — the full new-tech moat decomposition for Anthropic, including the enterprise customer cohort analysis, the regulatory-gated scale thesis, the multi-cloud infrastructure strategy as vertical integration, and the specific scenarios under which the moat either continues compounding or plateaus. Reading this week's framework alongside that report is the cleanest way to see each signal in action on a specific company.
+- **Physical AI Sector Report** — applies the same framework to Tesla's FSD data-network moat, Chinese AV program competitive positioning, and the humanoid robotics category where moat formation is still at the "pre-category" stage. The specific moat-vs-tailwind decomposition for Tesla sits in that report.
+- **TSLA Deep Dive Rev.2 (BEAF 58/C+)** — the score specifically reflects moats that are partially formed and partially unverified. Reading the score alongside this week's framework clarifies which components of the Tesla thesis are durable and which are tailwind-riding.
+- **NVDA Deep Dive (BEAF 83/B+)** — the case where new-tech moats (CUDA ecosystem, developer lock-in, scale of installed base) passed the behavioral-signal tests earlier than most competitors realized. The 83 score reflects that those signals held up across multiple years.
 
 For additional frameworks, see our Deep Dive archive.
 
@@ -190,9 +190,9 @@ For additional frameworks, see our Deep Dive archive.
 
 ## Looking Ahead
 
-This week closes the moat module. Over the next three weeks we shift from *what makes businesses worth more than their peers* to *how to actually read public company disclosures* â the 10-K, the earnings call, and the proxy statement. These are the documents where real moat-and-valuation analysis actually happens for most investors, and where most retail investors never go. Next week we start with the 10-K, using Tesla's most recent filing as the working example.
+This week closes the moat module. Over the next three weeks we shift from *what makes businesses worth more than their peers* to *how to actually read public company disclosures* — the 10-K, the earnings call, and the proxy statement. These are the documents where real moat-and-valuation analysis actually happens for most investors, and where most retail investors never go. Next week we start with the 10-K, using Tesla's most recent filing as the working example.
 
-For now, sit with this week's lesson. The moat framework still works for new-technology businesses. You just have to learn to read the early behavioral signals instead of waiting for the 20-year financial track record. The investors who master this reading have an edge that does not show up in the Bloomberg terminal â which is exactly why it is still available.
+For now, sit with this week's lesson. The moat framework still works for new-technology businesses. You just have to learn to read the early behavioral signals instead of waiting for the 20-year financial track record. The investors who master this reading have an edge that does not show up in the Bloomberg terminal — which is exactly why it is still available.
 
 ---
 

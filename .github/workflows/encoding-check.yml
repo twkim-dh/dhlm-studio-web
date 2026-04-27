@@ -1,0 +1,64 @@
+name: Encoding validation
+
+on:
+  push:
+    paths:
+      - 'src/content/**/*.md'
+  pull_request:
+    paths:
+      - 'src/content/**/*.md'
+
+jobs:
+  check-encoding:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+
+      - name: Check for mojibake in markdown files
+        run: |
+          python3 - <<'PYEOF'
+          import sys, os, re
+
+          MOJIBAKE = [
+              '\xc3\x97',  # Ã\x97 -> should be ×
+              '\xc3\xb7',  # Ã· -> should be ÷
+              '\xe2\x80\x94',  # â\x80\x94 -> should be —
+              '\xe2\x80\x93',  # â\x80\x93 -> should be –
+              '\xe2\x88\x92',  # â\x88\x92 -> should be −
+              '\xe2\x80\x98',  # left single quote mojibake
+              '\xe2\x80\x99',  # right single quote mojibake
+              '\xe2\x80\x9c',  # left double quote mojibake
+              '\xe2\x80\x9d',  # right double quote mojibake
+              '\xe2\x80\xa6',  # ellipsis mojibake
+          ]
+
+          dirs = ['src/content/reports','src/content/learn','src/content/research','src/content/blog']
+          errors = []
+
+          for d in dirs:
+              if not os.path.exists(d):
+                  continue
+              for f in sorted(os.listdir(d)):
+                  if not f.endswith('.md'):
+                      continue
+                  path = f'{d}/{f}'
+                  try:
+                      text = open(path, 'r', encoding='utf-8').read()
+                  except UnicodeDecodeError as e:
+                      errors.append(f'{path}: UTF-8 decode error — {e}')
+                      continue
+                  for pat in MOJIBAKE:
+                      if pat in text:
+                          m = re.search(re.escape(pat), text)
+                          ctx = text[max(0,m.start()-20):m.end()+20].replace('\n', ' ')
+                          errors.append(f'{path}: mojibake pattern {repr(pat)} found near: ...{ctx}...')
+                          break
+
+          if errors:
+              print('ENCODING ERRORS FOUND:')
+              for e in errors:
+                  print(f'  {e}')
+              sys.exit(1)
+          else:
+              print(f'OK — all markdown files are clean')
+          PYEOF
