@@ -3,7 +3,7 @@
 import { useState, useEffect } from 'react';
 import Link from 'next/link';
 import { fmtDateShort } from '@/lib/fmt-date';
-import type { ResearchItem, LessonItem } from '@/app/learn/page';
+import type { ResearchItem, LessonItem, InvestingLesson } from '@/app/learn/page';
 
 type Tab = 'ALL' | 'CRYPTO 101' | 'INVESTING 101';
 const TABS: Tab[] = ['ALL', 'CRYPTO 101', 'INVESTING 101'];
@@ -125,6 +125,41 @@ function LessonCard({ l }: { l: LessonItem }) {
   );
 }
 
+/* ─── Investing lesson card (Beginner or Intermediate) ─── */
+function InvestingCard({ slug, title, description, thumb, week, published, accentColor }: {
+  slug: string; title: string; description: string; thumb: string;
+  week: number; published: boolean; accentColor: string;
+}) {
+  const inner = (
+    <div style={{ ...card, padding: 0, overflow: 'hidden', opacity: published ? 1 : 0.45 }}>
+      {/* eslint-disable-next-line @next/next/no-img-element */}
+      <img src={thumb} alt={title} style={{ width: '100%', aspectRatio: '16/9', objectFit: 'cover', display: 'block', background: '#0f172a' }} />
+      <div style={{ padding: '14px 16px 18px' }}>
+        <div style={{ display: 'flex', alignItems: 'center', gap: 7, marginBottom: 8, flexWrap: 'wrap' }}>
+          <span style={{ fontFamily: 'var(--mono)', fontSize: 9, fontWeight: 800, padding: '3px 9px', borderRadius: 5, background: `${accentColor}18`, color: accentColor, border: `1px solid ${accentColor}30`, letterSpacing: 1 }}>
+            INVESTING 101
+          </span>
+          <span style={{ fontFamily: 'var(--mono)', fontSize: 9, fontWeight: 700, padding: '2px 7px', borderRadius: 4, background: `${accentColor}14`, color: accentColor }}>
+            WEEK {week}
+          </span>
+          {!published && (
+            <span style={{ fontFamily: 'var(--mono)', fontSize: 9, fontWeight: 700, padding: '3px 8px', borderRadius: 4, background: '#D4A84318', color: '#D4A843', border: '1px solid #D4A84340', marginLeft: 'auto' }}>
+              COMING SOON
+            </span>
+          )}
+        </div>
+        <div style={{ fontFamily: 'var(--serif)', fontSize: 17, fontWeight: 800, color: '#F1F5F9', lineHeight: 1.4, marginBottom: 6 }}>{title}</div>
+        <p style={{ fontSize: 12, color: '#64748B', margin: 0, lineHeight: 1.55 }}>{description}</p>
+      </div>
+    </div>
+  );
+  return published ? (
+    <Link href={`/learn/${slug}`} style={{ textDecoration: 'none', display: 'block' }}>{inner}</Link>
+  ) : (
+    <div>{inner}</div>
+  );
+}
+
 /* ─── Grid wrapper ─── */
 function CardGrid({ children }: { children: React.ReactNode }) {
   return (
@@ -157,6 +192,11 @@ function Crypto101Tab({ lessons }: { lessons: LessonItem[] }) {
   const published = lessons.filter(l => l.slug).length;
   return (
     <div>
+      {/* Edition label */}
+      <div style={{ display: 'flex', alignItems: 'center', gap: 8, marginBottom: 16 }}>
+        <span style={{ fontFamily: 'var(--mono)', fontSize: 9, fontWeight: 800, padding: '3px 10px', borderRadius: 5, background: '#8B5CF618', color: '#8B5CF6', border: '1px solid #8B5CF630', letterSpacing: 1 }}>CRYPTO 101</span>
+        <span style={{ fontFamily: 'var(--mono)', fontSize: 9, fontWeight: 700, padding: '3px 10px', borderRadius: 5, background: '#1E293B', color: '#64748B', letterSpacing: 1 }}>2026 EDITION</span>
+      </div>
       <div style={{ display: 'flex', alignItems: 'center', gap: 16, marginBottom: 20, padding: '14px 18px', borderRadius: 12, background: '#0D1117', border: '1px solid #1E293B' }}>
         <div style={{ flex: 1 }}>
           <div style={{ display: 'flex', justifyContent: 'space-between', marginBottom: 6 }}>
@@ -178,67 +218,103 @@ function Crypto101Tab({ lessons }: { lessons: LessonItem[] }) {
   );
 }
 
+/* ─── Beginner lesson list (hardcoded, all published) ─── */
+const BEGINNER_LESSONS = [
+  { week: 1, slug: 'investing-101-beginner-w1-what-is-a-stock-really', title: 'What Is a Stock, Really?', description: 'Forget the ticker symbols. A stock is a legal claim on a living business. Understand that, and everything else follows.', thumb: '/images/content/investing-101-beginner-w1-what-is-a-stock-hero.png' },
+  { week: 2, slug: 'investing-101-beginner-w2-how-the-market-actually-works', title: 'How the Market Actually Works', description: 'Exchanges, market makers, clearinghouses — what actually happens between "buy" and "share in your account."', thumb: '/images/content/investing-101-beginner-w2-how-market-works-hero.png' },
+  { week: 3, slug: 'investing-101-beginner-w3-opening-your-first-brokerage-account', title: 'Opening Your First Brokerage Account', description: 'Choosing a broker, account types, and the first decisions every new investor faces before placing a single trade.', thumb: '/images/content/investing-101-beginner-w3-brokerage-account-hero.png' },
+  { week: 4, slug: 'investing-101-beginner-w4-reading-income-statement', title: 'Reading a Company (Part 1): The Income Statement', description: 'Revenue, gross profit, operating income, net income — what each number actually tells you.', thumb: '/images/content/investing-101-beginner-w4-income-statement-hero.png' },
+  { week: 5, slug: 'investing-101-beginner-w5-reading-balance-sheet', title: 'Reading a Company (Part 2): The Balance Sheet', description: 'Assets, liabilities, equity — the snapshot of what a company owns, owes, and what is left for shareholders.', thumb: '/images/content/investing-101-beginner-w5-balance-sheet-hero.png' },
+  { week: 6, slug: 'investing-101-beginner-w6-reading-cash-flow-statement', title: 'Reading a Company (Part 3): The Cash Flow Statement', description: 'Why free cash flow matters more than earnings, and how to tell a profitable business from a cash-burning one.', thumb: '/images/content/investing-101-beginner-w6-cash-flow-statement-hero.png' },
+  { week: 7, slug: 'investing-101-beginner-w7-what-is-a-business-model', title: 'What Is a Business Model?', description: 'How a company actually makes money — and why the model shapes everything about how to value it.', thumb: '/images/content/investing-101-beginner-w7-business-model-hero.png' },
+  { week: 8, slug: 'investing-101-beginner-w8-valuation-basics', title: 'Valuation Basics: P/E, P/B, PEG', description: 'What does it mean for a stock to be "expensive" or "cheap"? Three core multiples and how to use them.', thumb: '/images/content/investing-101-beginner-w8-valuation-basics-hero.png' },
+  { week: 9, slug: 'investing-101-beginner-w9-dividends-and-total-return', title: 'Dividends and Total Return', description: 'Yield, payout ratio, dividend growth — and why total return is the only number that matters.', thumb: '/images/content/investing-101-beginner-w9-dividends-total-return-hero.png' },
+  { week: 10, slug: 'investing-101-beginner-w10-diversification-portfolio-basics', title: 'Diversification and Portfolio Basics', description: 'Why spreading risk works, how much diversification is enough, and building a portfolio that survives a crash.', thumb: '/images/content/investing-101-beginner-w10-diversification-portfolio-hero.png' },
+  { week: 11, slug: 'investing-101-beginner-w11-investors-mind', title: "The Investor's Mind: Fear, Greed, Patience", description: 'The behavioral traps that destroy returns — and how to recognize them before they cost you.', thumb: '/images/content/investing-101-beginner-w11-investors-mind-hero.png' },
+  { week: 12, slug: 'investing-101-beginner-w12-your-first-five-years', title: 'Your First 5 Years: A Realistic Roadmap', description: 'A concrete action plan from Day 1 through Year 5. What to do, in what order, with what goals.', thumb: '/images/content/investing-101-beginner-w12-five-year-roadmap-hero.png' },
+];
+
 /* ─── INVESTING 101 tab ─── */
-function Investing101Tab() {
-  const lessons = [
-    { week: 1, slug: 'investing-101-beginner-w1-what-is-a-stock-really', title: 'What Is a Stock, Really?', description: 'Forget the ticker symbols. A stock is a legal claim on a living business. Understand that, and everything else follows.', phaseColor: '#00D474', thumb: '/images/content/investing-101-beginner-w1-what-is-a-stock-hero.png' },
-    { week: 2, slug: 'investing-101-beginner-w2-how-the-market-actually-works', title: 'How the Market Actually Works', description: 'Exchanges, market makers, clearinghouses — what actually happens between "buy" and "share in your account."', phaseColor: '#00D474', thumb: '/images/content/investing-101-beginner-w2-how-market-works-hero.png' },
-    { week: 3, slug: 'investing-101-beginner-w3-opening-your-first-brokerage-account', title: 'Opening Your First Brokerage Account', description: 'Choosing a broker, account types, and the first decisions every new investor faces before placing a single trade.', phaseColor: '#00D474', thumb: '/images/content/investing-101-beginner-w3-brokerage-account-hero.png' },
-    { week: 4, slug: 'investing-101-beginner-w4-reading-income-statement', title: 'Reading a Company (Part 1): The Income Statement', description: 'Revenue, gross profit, operating income, net income — what each number actually tells you.', phaseColor: '#3B82F6', thumb: '/images/content/investing-101-beginner-w4-income-statement-hero.png' },
-    { week: 5, slug: 'investing-101-beginner-w5-reading-balance-sheet', title: 'Reading a Company (Part 2): The Balance Sheet', description: 'Assets, liabilities, equity — the snapshot of what a company owns, owes, and what is left for shareholders.', phaseColor: '#3B82F6', thumb: '/images/content/investing-101-beginner-w5-balance-sheet-hero.png' },
-    { week: 6, slug: 'investing-101-beginner-w6-reading-cash-flow-statement', title: 'Reading a Company (Part 3): The Cash Flow Statement', description: 'Why free cash flow matters more than earnings, and how to tell a profitable business from a cash-burning one.', phaseColor: '#3B82F6', thumb: '/images/content/investing-101-beginner-w6-cash-flow-statement-hero.png' },
-    { week: 7, slug: 'investing-101-beginner-w7-what-is-a-business-model', title: 'What Is a Business Model?', description: 'How a company actually makes money — and why the model shapes everything about how to value it.', phaseColor: '#3B82F6', thumb: '/images/content/investing-101-beginner-w7-business-model-hero.png' },
-    { week: 8, slug: 'investing-101-beginner-w8-valuation-basics', title: 'Valuation Basics: P/E, P/B, PEG', description: 'What does it mean for a stock to be "expensive" or "cheap"? Three core multiples and how to use them.', phaseColor: '#3B82F6', thumb: '/images/content/investing-101-beginner-w8-valuation-basics-hero.png' },
-    { week: 9, slug: 'investing-101-beginner-w9-dividends-and-total-return', title: 'Dividends and Total Return', description: 'Yield, payout ratio, dividend growth — and why total return is the only number that matters.', phaseColor: '#D4A843', thumb: '/images/content/investing-101-beginner-w9-dividends-total-return-hero.png' },
-    { week: 10, slug: 'investing-101-beginner-w10-diversification-portfolio-basics', title: 'Diversification and Portfolio Basics', description: 'Why spreading risk works, how much diversification is enough, and building a portfolio that survives a crash.', phaseColor: '#D4A843', thumb: '/images/content/investing-101-beginner-w10-diversification-portfolio-hero.png' },
-    { week: 11, slug: 'investing-101-beginner-w11-investors-mind', title: "The Investor's Mind: Fear, Greed, Patience", description: 'The behavioral traps that destroy returns — and how to recognize them before they cost you.', phaseColor: '#D4A843', thumb: '/images/content/investing-101-beginner-w11-investors-mind-hero.png' },
-    { week: 12, slug: 'investing-101-beginner-w12-your-first-five-years', title: 'Your First 5 Years: A Realistic Roadmap', description: 'A concrete action plan from Day 1 through Year 5. What to do, in what order, with what goals.', phaseColor: '#D4A843', thumb: '/images/content/investing-101-beginner-w12-five-year-roadmap-hero.png' },
-  ];
+function Investing101Tab({ intermediateLessons }: { intermediateLessons: InvestingLesson[] }) {
+  const [level, setLevel] = useState<'beginner' | 'intermediate'>('beginner');
+
+  const intPublished = intermediateLessons.filter(l => l.published).length;
+  const intTotal = intermediateLessons.length;
+
+  const levelBtnStyle = (active: boolean, color: string) => ({
+    padding: '6px 14px',
+    borderRadius: 7,
+    border: active ? `1px solid ${color}50` : '1px solid #1E293B',
+    background: active ? `${color}18` : '#111827',
+    color: active ? color : '#64748B',
+    fontFamily: 'var(--mono)',
+    fontSize: 10,
+    fontWeight: active ? 800 : 600,
+    cursor: 'pointer',
+    letterSpacing: 0.5,
+    transition: 'all 0.15s',
+  } as React.CSSProperties);
 
   return (
     <div>
+      {/* Edition label */}
+      <div style={{ display: 'flex', alignItems: 'center', gap: 8, marginBottom: 16 }}>
+        <span style={{ fontFamily: 'var(--mono)', fontSize: 9, fontWeight: 800, padding: '3px 10px', borderRadius: 5, background: '#00D47418', color: '#00D474', border: '1px solid #00D47430', letterSpacing: 1 }}>INVESTING 101</span>
+        <span style={{ fontFamily: 'var(--mono)', fontSize: 9, fontWeight: 700, padding: '3px 10px', borderRadius: 5, background: '#1E293B', color: '#64748B', letterSpacing: 1 }}>2026 EDITION</span>
+      </div>
+
+      {/* Level sub-tabs */}
+      <div style={{ display: 'flex', gap: 6, marginBottom: 20 }}>
+        <button onClick={() => setLevel('beginner')} style={levelBtnStyle(level === 'beginner', '#00D474')}>
+          BEGINNER (W1-12)
+        </button>
+        <button onClick={() => setLevel('intermediate')} style={levelBtnStyle(level === 'intermediate', '#3B82F6')}>
+          INTERMEDIATE (W13-24)
+        </button>
+      </div>
+
+      {/* Progress bar */}
       <div style={{ display: 'flex', alignItems: 'center', gap: 16, marginBottom: 20, padding: '14px 18px', borderRadius: 12, background: '#0D1117', border: '1px solid #1E293B' }}>
         <div style={{ flex: 1 }}>
           <div style={{ display: 'flex', justifyContent: 'space-between', marginBottom: 6 }}>
-            <span style={{ fontFamily: 'var(--mono)', fontSize: 10, fontWeight: 700, color: '#00D474' }}>CURRICULUM PROGRESS</span>
-            <span style={{ fontFamily: 'var(--mono)', fontSize: 10, color: '#64748B' }}>12/12 PUBLISHED</span>
+            <span style={{ fontFamily: 'var(--mono)', fontSize: 10, fontWeight: 700, color: level === 'beginner' ? '#00D474' : '#3B82F6' }}>CURRICULUM PROGRESS</span>
+            <span style={{ fontFamily: 'var(--mono)', fontSize: 10, color: '#64748B' }}>
+              {level === 'beginner' ? '12/12 PUBLISHED' : `${intPublished}/${intTotal} PUBLISHED`}
+            </span>
           </div>
           <div style={{ height: 5, background: '#1E293B', borderRadius: 3, overflow: 'hidden' }}>
-            <div style={{ height: '100%', width: '100%', background: 'linear-gradient(90deg, #00D474, #059952)', borderRadius: 3 }} />
+            <div style={{ height: '100%', width: level === 'beginner' ? '100%' : `${(intPublished / intTotal) * 100}%`, background: level === 'beginner' ? 'linear-gradient(90deg, #00D474, #059952)' : 'linear-gradient(90deg, #3B82F6, #1D4ED8)', borderRadius: 3, transition: 'width 0.3s' }} />
           </div>
         </div>
-        <Link href="/learn/investing-101-beginner" style={{ fontFamily: 'var(--mono)', fontSize: 11, color: '#00D474', textDecoration: 'none', fontWeight: 700, flexShrink: 0 }}>
+        <Link
+          href={level === 'beginner' ? '/learn/investing-101-beginner' : '/learn/investing-101-intermediate'}
+          style={{ fontFamily: 'var(--mono)', fontSize: 11, color: level === 'beginner' ? '#00D474' : '#3B82F6', textDecoration: 'none', fontWeight: 700, flexShrink: 0 }}
+        >
           Full Curriculum →
         </Link>
       </div>
-      <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fill, minmax(280px, 1fr))', gap: 12 }}>
-        {lessons.map(l => (
-          <Link key={l.week} href={`/learn/${l.slug}`} style={{ textDecoration: 'none', display: 'block' }}>
-            <div style={{ ...card, padding: 0, overflow: 'hidden' }}>
-              {/* eslint-disable-next-line @next/next/no-img-element */}
-              <img src={l.thumb} alt={l.title} style={{ width: '100%', aspectRatio: '3/2', objectFit: 'cover', display: 'block', background: '#0f172a' }} />
-              <div style={{ padding: '14px 16px 18px' }}>
-                <div style={{ display: 'flex', alignItems: 'center', gap: 7, marginBottom: 8, flexWrap: 'wrap' }}>
-                  <span style={{ fontFamily: 'var(--mono)', fontSize: 9, fontWeight: 800, padding: '3px 9px', borderRadius: 5, background: '#00D47418', color: '#00D474', border: '1px solid #00D47430', letterSpacing: 1 }}>
-                    INVESTING 101
-                  </span>
-                  <span style={{ fontFamily: 'var(--mono)', fontSize: 9, fontWeight: 700, padding: '2px 7px', borderRadius: 4, background: `${l.phaseColor}14`, color: l.phaseColor }}>
-                    WEEK {l.week}
-                  </span>
-                </div>
-                <div style={{ fontFamily: 'var(--serif)', fontSize: 17, fontWeight: 800, color: '#F1F5F9', lineHeight: 1.4, marginBottom: 6 }}>{l.title}</div>
-                <p style={{ fontSize: 12, color: '#64748B', margin: 0, lineHeight: 1.55 }}>{l.description}</p>
-              </div>
-            </div>
-          </Link>
-        ))}
-      </div>
+
+      {/* Cards */}
+      <CardGrid>
+        {level === 'beginner'
+          ? BEGINNER_LESSONS.map(l => (
+              <InvestingCard key={l.week} slug={l.slug} title={l.title} description={l.description} thumb={l.thumb} week={l.week} published={true} accentColor="#00D474" />
+            ))
+          : intermediateLessons.map(l => (
+              <InvestingCard key={l.week} slug={l.slug} title={l.title} description={l.description} thumb={l.thumb} week={l.week} published={l.published} accentColor="#3B82F6" />
+            ))
+        }
+      </CardGrid>
     </div>
   );
 }
 
 /* ─── Main export ─── */
-export default function LearnClient({ articles, cryptoLessons }: { articles: ResearchItem[]; cryptoLessons: LessonItem[] }) {
+export default function LearnClient({ articles, cryptoLessons, intermediateLessons }: {
+  articles: ResearchItem[];
+  cryptoLessons: LessonItem[];
+  intermediateLessons: InvestingLesson[];
+}) {
   const [activeTab, setActiveTab] = useState<Tab>('ALL');
 
   useEffect(() => {
@@ -286,7 +362,7 @@ export default function LearnClient({ articles, cryptoLessons }: { articles: Res
 
       {activeTab === 'ALL'           && <AllTab articles={articles} cryptoLessons={cryptoLessons} />}
       {activeTab === 'CRYPTO 101'    && <Crypto101Tab lessons={cryptoLessons} />}
-      {activeTab === 'INVESTING 101' && <Investing101Tab />}
+      {activeTab === 'INVESTING 101' && <Investing101Tab intermediateLessons={intermediateLessons} />}
     </>
   );
 }

@@ -117,11 +117,11 @@ function renderMarkdown(md: string): React.ReactNode[] {
       <div key={key++} style={{ overflowX: 'auto', margin: '16px 0' }}>
         <table style={{ width: '100%', borderCollapse: 'collapse', fontSize: 12, fontFamily: 'var(--mono)' }}>
           <thead>
-            <tr>{headers.map((h, i) => <th key={i} style={{ padding: '8px 10px', borderBottom: '2px solid #1E293B', color: '#94A3B8', textAlign: i === 0 ? 'left' : 'right', fontWeight: 700 }}>{h.trim()}</th>)}</tr>
+            <tr>{headers.map((h, i) => <th key={i} style={{ padding: '8px 10px', borderBottom: '2px solid #334155', borderRight: i < headers.length - 1 ? '1px solid #1E293B' : undefined, background: '#111827', color: '#94A3B8', textAlign: i === 0 ? 'left' : 'right', fontWeight: 700, whiteSpace: 'nowrap' }} dangerouslySetInnerHTML={{ __html: inline(h.trim()) }} />)}</tr>
           </thead>
           <tbody>
             {dataRows.map((row, ri) => (
-              <tr key={ri}>{row.map((cell, ci) => <td key={ci} style={{ padding: '6px 10px', borderBottom: '1px solid #1E293B40', color: '#E2E8F0', textAlign: ci === 0 ? 'left' : 'right' }}>{cell.trim()}</td>)}</tr>
+              <tr key={ri}>{row.map((cell, ci) => <td key={ci} style={{ padding: '6px 10px', borderBottom: '1px solid #1E293B', borderRight: ci < row.length - 1 ? '1px solid #1E293B' : undefined, color: '#E2E8F0', textAlign: ci === 0 ? 'left' : 'right' }} dangerouslySetInnerHTML={{ __html: inline(cell.trim()) }} />)}</tr>
             ))}
           </tbody>
         </table>

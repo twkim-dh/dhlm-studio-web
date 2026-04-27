@@ -42,6 +42,15 @@ export interface LessonItem {
   phaseColor: string;
 }
 
+export interface InvestingLesson {
+  week: number;
+  slug: string;
+  title: string;
+  description: string;
+  thumb: string;
+  published: boolean;
+}
+
 function getAllResearch(): ResearchItem[] {
   try {
     if (!fs.existsSync(CONTENT_DIR)) return [];
@@ -116,9 +125,70 @@ function getCryptoLessons(): LessonItem[] {
   );
 }
 
+const INTERMEDIATE_SLUGS = [
+  'investing-101-intermediate-w13-three-valuations',
+  'investing-101-intermediate-w14-dcf-lies',
+  'investing-101-intermediate-w15-multiples',
+  'investing-101-intermediate-w16-five-moats',
+  'investing-101-intermediate-w17-moat-erosion',
+  'investing-101-intermediate-w18-new-tech-moats',
+  'investing-101-intermediate-w19-10k-forensics',
+  'investing-101-intermediate-w20-earnings-calls',
+  'investing-101-intermediate-w21-proxy-statements',
+  'investing-101-intermediate-w22-position-sizing',
+  'investing-101-intermediate-w23-correlation-risk',
+  'investing-101-intermediate-w24-when-to-sell',
+];
+
+const INTERMEDIATE_THUMBS: Record<string, string> = {
+  'investing-101-intermediate-w13-three-valuations':  '/images/content/INV-101-W13.png',
+  'investing-101-intermediate-w14-dcf-lies':           '/images/content/INV-101-W14.png',
+  'investing-101-intermediate-w15-multiples':          '/images/content/INV-101-W15.png',
+  'investing-101-intermediate-w16-five-moats':         '/images/content/INV-101-W16.png',
+  'investing-101-intermediate-w17-moat-erosion':       '/images/content/INV-101-W17.png',
+  'investing-101-intermediate-w18-new-tech-moats':     '/images/content/INV-101-W18.png',
+  'investing-101-intermediate-w19-10k-forensics':      '/images/content/INV-101-W19.png',
+  'investing-101-intermediate-w20-earnings-calls':     '/images/content/INV-101-W20.png',
+  'investing-101-intermediate-w21-proxy-statements':   '/images/content/INV-101-W21.png',
+  'investing-101-intermediate-w22-position-sizing':    '/images/content/INV-101-W22.png',
+  'investing-101-intermediate-w23-correlation-risk':   '/images/content/INV-101-W23.png',
+  'investing-101-intermediate-w24-when-to-sell':       '/images/content/INV-101-W24.png',
+};
+
+const LEARN_DIR_PATH = path.join(process.cwd(), 'src/content/learn');
+
+function getIntermediateLessons(): InvestingLesson[] {
+  const today = new Date().toISOString().slice(0, 10);
+  return INTERMEDIATE_SLUGS.map(slug => {
+    try {
+      const content = fs.readFileSync(path.join(LEARN_DIR_PATH, `${slug}.md`), 'utf8');
+      const m = content.match(/^---\n([\s\S]*?)\n---/);
+      if (!m) return null;
+      const fm: Record<string, unknown> = {};
+      for (const line of m[1].split('\n')) {
+        const lm = line.match(/^(\w+):\s*(.+)$/);
+        if (!lm) continue;
+        let raw = lm[2].trim();
+        if ((raw.startsWith('"') && raw.endsWith('"')) || (raw.startsWith("'") && raw.endsWith("'"))) raw = raw.slice(1, -1);
+        else if (raw !== '' && !isNaN(Number(raw))) { fm[lm[1]] = Number(raw); continue; }
+        fm[lm[1]] = raw;
+      }
+      return {
+        week: Number(fm['week'] || 0),
+        slug,
+        title: String(fm['title'] || ''),
+        description: String(fm['description'] || ''),
+        thumb: INTERMEDIATE_THUMBS[slug] || '',
+        published: String(fm['publishDate'] || '9999-99-99') <= today,
+      };
+    } catch { return null; }
+  }).filter(Boolean) as InvestingLesson[];
+}
+
 export default function LearnPage() {
   const articles = getAllResearch();
   const cryptoLessons = getCryptoLessons();
+  const intermediateLessons = getIntermediateLessons();
 
   return (
     <div style={{ background: '#0B0F19', minHeight: '100vh' }}>
@@ -137,7 +207,7 @@ export default function LearnPage() {
           </p>
         </div>
 
-        <LearnClient articles={articles} cryptoLessons={cryptoLessons} />
+        <LearnClient articles={articles} cryptoLessons={cryptoLessons} intermediateLessons={intermediateLessons} />
 
         {/* Philosophy */}
         <div style={{ padding: '22px', borderRadius: 14, background: '#0D1117', border: '1px solid #1E293B', marginTop: 36, marginBottom: 28 }}>

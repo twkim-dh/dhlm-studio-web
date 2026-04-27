@@ -513,6 +513,7 @@ That is the Brutal Edge view.
 
 ## Related Reading
 
+- [The Structural View Vol.2 — Distribution Layer Wars](/research/the-structural-view-vol-2-distribution-layer-wars) — Microsoft owns the pipes. Google owns the audience. Why distribution is the real AI moat.
 - [The Mental Game #002: How to Survive an AI Bubble](/research/mental-game-002-ai-bubble-survival) — The psychology required to hold structural AI positions through volatility
 - [NVTS Special Report — AI Power Infrastructure](/reports/navitas-nvts-ai-power-infrastructure-special-report-april-2026) — A different angle on the AI-era supporting cast
 - [Anthropic Private Investor Report](/reports/anthropic-private-investor-report-april-2026) — Deeper numerical framework on Anthropic as a private-market asset
@@ -521,7 +522,7 @@ That is the Brutal Edge view.
 
 ## Coming Next in The Structural View
 
-**Vol.2 — (To be announced):** The next installment will apply the same structural framework to another industry at a paradigm inflection point. Subscribe for updates when the next volume drops.
+**[The Structural View Vol.2 — Distribution Layer Wars](/research/the-structural-view-vol-2-distribution-layer-wars)** is now published. Microsoft owns the pipes. Google owns the audience. Why distribution is the real AI moat — and what that means for where the largest multiples settle.
 
 ---
 
