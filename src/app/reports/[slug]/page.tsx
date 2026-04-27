@@ -7,7 +7,6 @@ import LikeButton from '@/components/LikeButton';
 import { fmtDateLong } from '@/lib/fmt-date';
 import ListenButton from '@/components/ListenButton';
 import ReportPDF from '@/components/ReportPDF';
-import InlineSubscribe from '@/components/InlineSubscribe';
 import GiscusComments from '@/components/GiscusComments';
 import TickerLogo from '@/components/TickerLogo';
 import BeafRadarChart, { type BeafAxisScore } from '@/components/BeafRadarChart';
@@ -300,10 +299,13 @@ export default async function ReportPage({ params }: { params: Promise<{ slug: s
         {/* Brutal Edge Header — type-aware */}
         {(() => {
           const isHotSector = fm.type === 'hot-sector' || fm.type === 'hidden-gem';
+          const isSpecialReport = fm.type === 'special-report';
           const headerLabel = isHotSector
             ? (fm.type === 'hidden-gem' ? 'BRUTAL EDGE™ HIDDEN GEM' : 'BRUTAL EDGE™ HOT SECTOR')
-            : 'BRUTAL EDGE™ DEEP DIVE';
-          const headerColor = isHotSector ? '#D4A843' : '#C73E3A';
+            : isSpecialReport
+              ? 'BRUTAL EDGE™ SPECIAL REPORT'
+              : 'BRUTAL EDGE™ DEEP DIVE';
+          const headerColor = isHotSector ? '#D4A843' : isSpecialReport ? '#A78BFA' : '#C73E3A';
           return (
             <div className="print-hide" style={{ marginTop: 20, padding: '20px 22px', borderRadius: 14, background: `linear-gradient(135deg, ${headerColor}10, ${headerColor}05)`, border: `1px solid ${headerColor}30`, marginBottom: 16 }}>
               <div style={{ display: 'flex', alignItems: 'center', gap: 8, marginBottom: 8 }}>
@@ -344,7 +346,9 @@ export default async function ReportPage({ params }: { params: Promise<{ slug: s
         <div className="print-hide" style={{ display: 'flex', flexWrap: 'wrap', gap: 6, marginBottom: 24 }}>
           <span style={{ fontFamily: 'var(--mono)', fontSize: 10, fontWeight: 700, padding: '5px 10px', borderRadius: 6, background: '#00D47412', color: '#00D474', border: '1px solid #00D47425' }}>✓ Editor Reviewed</span>
           <span style={{ fontFamily: 'var(--mono)', fontSize: 10, fontWeight: 700, padding: '5px 10px', borderRadius: 6, background: '#3B82F612', color: '#3B82F6', border: '1px solid #3B82F625' }}>✓ Data Verified</span>
-          <span style={{ fontFamily: 'var(--mono)', fontSize: 10, fontWeight: 700, padding: '5px 10px', borderRadius: 6, background: '#D4A84312', color: '#D4A843', border: '1px solid #D4A84325' }}>✓ BEAF Scored</span>
+          {(!fm.type || fm.type === 'deep-dive') && (
+            <span style={{ fontFamily: 'var(--mono)', fontSize: 10, fontWeight: 700, padding: '5px 10px', borderRadius: 6, background: '#D4A84312', color: '#D4A843', border: '1px solid #D4A84325' }}>✓ BEAF Scored</span>
+          )}
         </div>
 
         {/* Title */}
@@ -395,7 +399,7 @@ export default async function ReportPage({ params }: { params: Promise<{ slug: s
         )}
 
         {/* BEAF Radar Chart — only for deep-dive reports with sub-scores */}
-        {beafScores && beafScores.length > 0 && (
+        {beafScores && beafScores.length > 0 && (!fm.type || fm.type === 'deep-dive') && (
           <BeafRadarChart scores={beafScores} totalScore={fm.beafScore} grade={fm.grade} />
         )}
 
@@ -442,9 +446,9 @@ export default async function ReportPage({ params }: { params: Promise<{ slug: s
           </section>
         )}
 
-        {/* Newsletter signup */}
-        <div className="print-hide" style={{ marginTop: 32 }}>
-          <InlineSubscribe source="report" headline="Get the next report in your inbox." description="New Brutal Edge reports delivered to subscribers first. Free." />
+        {/* Subscribe text link */}
+        <div className="print-hide" style={{ marginTop: 32, paddingTop: 24, borderTop: '1px solid #1E293B', textAlign: 'center' }}>
+          <a href="/" style={{ fontSize: 13, color: '#60A5FA', textDecoration: 'none', fontWeight: 600 }}>Subscribe to Brutal Edge Weekly →</a>
         </div>
 
         {/* Comments — Giscus / GitHub Discussions */}

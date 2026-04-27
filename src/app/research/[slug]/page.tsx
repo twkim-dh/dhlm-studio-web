@@ -6,7 +6,6 @@ import path from 'path';
 import { fmtDateShort } from '@/lib/fmt-date';
 import ListenButton from '@/components/ListenButton';
 import ReportPDF from '@/components/ReportPDF';
-import InlineSubscribe from '@/components/InlineSubscribe';
 import GiscusComments from '@/components/GiscusComments';
 import unsplashManifest from '@/data/unsplash-manifest.json';
 
@@ -253,8 +252,8 @@ export default async function ResearchArticlePage({ params }: { params: Promise<
           </section>
         )}
 
-        <div style={{ marginTop: 32 }}>
-          <InlineSubscribe source="report" headline="Want more research like this?" description="Brutal Edge sends frameworks, not forecasts. Free weekly delivery to subscribers." />
+        <div style={{ marginTop: 32, paddingTop: 24, borderTop: '1px solid #1E293B', textAlign: 'center' }}>
+          <a href="/" style={{ fontSize: 13, color: '#60A5FA', textDecoration: 'none', fontWeight: 600 }}>Subscribe to Brutal Edge Weekly →</a>
         </div>
 
         <GiscusComments slug={`research:${slug}`} />

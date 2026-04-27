@@ -5,14 +5,15 @@ import { useState, useEffect } from 'react';
 export default function NewsletterCTA({ source = 'homepage' }: { source?: string }) {
   const [email, setEmail] = useState('');
   const [subscribed, setSubscribed] = useState(false);
+  const [justSubscribed, setJustSubscribed] = useState(false);
   const [count, setCount] = useState(0);
   const [submitting, setSubmitting] = useState(false);
   const [error, setError] = useState('');
 
   useEffect(() => {
-    if (typeof window !== 'undefined' && localStorage.getItem('dhlm-newsletter')) {
-      setSubscribed(true);
-    }
+    const hasLocalStorage = typeof window !== 'undefined' && !!localStorage.getItem('dhlm-newsletter');
+    const hasCookie = typeof document !== 'undefined' && document.cookie.split(';').some(c => c.trim().startsWith('dhlm-sub='));
+    if (hasLocalStorage || hasCookie) setSubscribed(true);
     fetch('/api/subscribe').then(r => r.json()).then(d => { if (typeof d.total === 'number') setCount(d.total); }).catch(() => {});
   }, []);
 
@@ -29,6 +30,8 @@ export default function NewsletterCTA({ source = 'homepage' }: { source?: string
       const d = await res.json();
       if (!res.ok) { setError(d.error || 'Server error'); setSubmitting(false); return; }
       localStorage.setItem('dhlm-newsletter', e);
+      document.cookie = 'dhlm-sub=1; max-age=31536000; path=/; SameSite=Lax';
+      setJustSubscribed(true);
       setSubscribed(true);
       if (typeof d.total === 'number') setCount(d.total);
     } catch {
@@ -43,9 +46,19 @@ export default function NewsletterCTA({ source = 'homepage' }: { source?: string
         padding: '24px 28px', borderRadius: 16,
         background: '#00D47408', border: '1px solid #00D47430', textAlign: 'center',
       }}>
-        <div style={{ fontSize: 13, fontWeight: 800, color: '#00D474', letterSpacing: 1, marginBottom: 4 }}>YOU&apos;RE IN</div>
-        <div style={{ fontSize: 22, fontFamily: 'var(--serif)', fontWeight: 900, color: '#F1F5F9', marginBottom: 6 }}>Welcome to Brutal Edge.</div>
-        <div style={{ fontSize: 12, color: '#64748B' }}>Check your inbox — your first report summary is on the way.</div>
+        {justSubscribed ? (
+          <>
+            <div style={{ fontSize: 13, fontWeight: 800, color: '#00D474', letterSpacing: 1, marginBottom: 4 }}>YOU&apos;RE IN</div>
+            <div style={{ fontSize: 22, fontFamily: 'var(--serif)', fontWeight: 900, color: '#F1F5F9', marginBottom: 6 }}>Welcome to Brutal Edge.</div>
+            <div style={{ fontSize: 12, color: '#64748B' }}>Check your inbox — your first report summary is on the way.</div>
+          </>
+        ) : (
+          <>
+            <div style={{ fontSize: 13, fontWeight: 800, color: '#00D474', letterSpacing: 1, marginBottom: 4 }}>WELCOME BACK</div>
+            <div style={{ fontSize: 22, fontFamily: 'var(--serif)', fontWeight: 900, color: '#F1F5F9', marginBottom: 6 }}>Welcome back, subscriber.</div>
+            <div style={{ fontSize: 12, color: '#64748B' }}>You&apos;re already on the list. New reports in your inbox every week.</div>
+          </>
+        )}
       </div>
     );
   }

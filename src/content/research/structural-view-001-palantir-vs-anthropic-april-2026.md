@@ -513,7 +513,6 @@ That is the Brutal Edge view.
 
 ## Related Reading
 
-- [The Masters: Peter Lynch Part 5 — If Lynch Were Investing in 2026](/blog/masters-peter-lynch-part5-2026-synthesis-april-2026) — Why the obvious AI winner is often not the best investment
 - [The Mental Game #002: How to Survive an AI Bubble](/research/mental-game-002-ai-bubble-survival) — The psychology required to hold structural AI positions through volatility
 - [NVTS Special Report — AI Power Infrastructure](/reports/navitas-nvts-ai-power-infrastructure-special-report-april-2026) — A different angle on the AI-era supporting cast
 - [Anthropic Private Investor Report](/reports/anthropic-private-investor-report-april-2026) — Deeper numerical framework on Anthropic as a private-market asset
