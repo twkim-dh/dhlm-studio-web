@@ -8,7 +8,7 @@ export const metadata: Metadata = {
   openGraph: {
     title: 'Investing 101 Intermediate — Brutal Edge',
     description: 'From valuation frameworks to position sizing. 12 lessons. Real companies. Zero hype.',
-    images: [{ url: 'https://dhlm-studio.com/images/content/INV-101-W13-THUMB.png', width: 1792, height: 1024 }],
+    images: [{ url: 'https://dhlm-studio.com/images/content/INV-101-W13.png', width: 1792, height: 1024 }],
   },
 };
 
@@ -205,7 +205,7 @@ export default function Investing101IntermediatePage() {
                     }}>
                       {/* eslint-disable-next-line @next/next/no-img-element */}
                       <img
-                        src={`/images/content/INV-101-W${String(lesson.week).padStart(2, '0')}-THUMB.png`}
+                        src={`/images/content/INV-101-W${lesson.week}.png`}
                         alt={lesson.title}
                         style={{ width: '100%', height: '100%', objectFit: 'cover', display: 'block' }}
                       />
