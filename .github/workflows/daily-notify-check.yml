@@ -92,6 +92,29 @@ jobs:
             notify_item "$SLUG" "$TITLE" "$DESC" "$URL"
           done
 
+          # ── Research articles: src/content/research/*.md  (date: field) ──────────
+          echo ""
+          echo "=== Checking research articles ==="
+          for FILE in src/content/research/*.md; do
+            [ -f "$FILE" ] || continue
+
+            DATE=$(grep "^date:" "$FILE" | head -1 | \
+              sed 's/date:[[:space:]]*"\?\([0-9-]*\).*/\1/')
+            [ "$DATE" = "$TODAY" ] || continue
+
+            echo "Found: $FILE ($DATE)"
+
+            SLUG=$(grep "^slug:" "$FILE" | head -1 | \
+              sed 's/slug:[[:space:]]*"\?\([^"]*\)"\?[[:space:]]*/\1/')
+            TITLE=$(grep "^title:" "$FILE" | head -1 | \
+              sed 's/title:[[:space:]]*"\(.*\)"/\1/')
+            DESC=$(grep "^description:" "$FILE" | head -1 | \
+              sed 's/description:[[:space:]]*"\(.*\)"/\1/')
+            URL="https://dhlm-studio.com/research/${SLUG}"
+
+            notify_item "$SLUG" "$TITLE" "$DESC" "$URL"
+          done
+
           # ── Learn intermediate: src/content/learn/investing-101-intermediate-*.md ──
           echo ""
           echo "=== Checking Investing 101 Intermediate lessons ==="
