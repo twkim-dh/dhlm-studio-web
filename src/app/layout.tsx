@@ -5,6 +5,7 @@ import Footer from "@/components/Footer";
 import MobileNav from "@/components/MobileNav";
 import CookieConsent from "@/components/CookieConsent";
 import NoRightClick from "@/components/NoRightClick";
+import NewsletterModal from "@/components/NewsletterModal";
 import "./globals.css";
 
 const playfair = Playfair_Display({
@@ -141,6 +142,7 @@ export default function RootLayout({
         <Footer />
         <MobileNav />
         <CookieConsent />
+        <NewsletterModal />
       </body>
     </html>
   );
