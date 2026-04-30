@@ -36,6 +36,8 @@ interface ReportFrontmatter {
   // Hot Sector / Hidden Gem report support (April 8, 2026 — PART 2-7)
   /** "deep-dive" (default) | "hot-sector" | "hidden-gem" */
   type?: string;
+  /** Alternative to type — some reports use badge instead of type */
+  badge?: string;
   /** For hot-sector reports: covered industry e.g. "Energy" */
   sector?: string;
   /** For hot-sector reports: array of tickers covered */
