@@ -1,7 +1,14 @@
 'use client';
 
-import { useState, useEffect, useCallback } from 'react';
+import { useState, useEffect, useCallback, useRef } from 'react';
 import { usePathname } from 'next/navigation';
+
+// eslint-disable-next-line @typescript-eslint/no-explicit-any
+const ga = (event: string, params?: Record<string, unknown>) => {
+  if (typeof window !== 'undefined' && typeof (window as any).gtag === 'function') {
+    (window as any).gtag('event', event, params);
+  }
+};
 
 function getCookie(name: string): boolean {
   if (typeof document === 'undefined') return false;
@@ -20,6 +27,7 @@ export default function NewsletterModal() {
   const [submitting, setSubmitting] = useState(false);
   const [done, setDone] = useState(false);
   const [error, setError] = useState('');
+  const formStarted = useRef(false);
 
   const isTargetPage = pathname.startsWith('/reports/') || pathname.startsWith('/research/');
 
@@ -43,6 +51,10 @@ export default function NewsletterModal() {
     return () => window.removeEventListener('scroll', onScroll);
   }, [isTargetPage, pathname]);
 
+  useEffect(() => {
+    if (visible) ga('modal_view', { modal_name: 'newsletter_subscribe', page_path: pathname });
+  }, [visible, pathname]);
+
   const dismiss = useCallback(() => {
     setDismissedCookie();
     setVisible(false);
@@ -62,6 +74,7 @@ export default function NewsletterModal() {
       if (!res.ok) { setError(d.error || 'Server error'); setSubmitting(false); return; }
       localStorage.setItem('dhlm-newsletter', e);
       document.cookie = 'dhlm-sub=1; max-age=31536000; path=/; SameSite=Lax';
+      ga('form_submit', { form_id: 'newsletter_modal', form_name: 'Newsletter Subscribe Modal', page_path: pathname });
       setDone(true);
     } catch {
       setError('Network error — please try again');
@@ -160,6 +173,12 @@ export default function NewsletterModal() {
                 value={email}
                 onChange={e => setEmail(e.target.value)}
                 onKeyDown={e => e.key === 'Enter' && subscribe()}
+                onFocus={() => {
+                  if (!formStarted.current) {
+                    formStarted.current = true;
+                    ga('form_start', { form_id: 'newsletter_modal', form_name: 'Newsletter Subscribe Modal', page_path: pathname });
+                  }
+                }}
                 placeholder="your@email.com"
                 autoComplete="email"
                 style={{
