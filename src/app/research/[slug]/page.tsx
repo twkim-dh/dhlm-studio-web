@@ -82,12 +82,17 @@ export async function generateMetadata({ params }: { params: Promise<{ slug: str
   if (!a) return { title: 'Not Found', robots: { index: false, follow: false } };
   const title = a.fm.seoTitle || a.fm.title;
   const description = a.fm.seoDescription || a.fm.description;
+  const BASE = 'https://dhlm-studio.com';
+  const rawHero = (unsplashManifest as Record<string, { src: string }>)[slug]?.src || a.fm.heroImage;
+  const ogImage = rawHero
+    ? (rawHero.startsWith('http') ? rawHero : `${BASE}${rawHero}`)
+    : `${BASE}/opengraph-image`;
   return {
     title: title.includes('DHLM Studio') ? title : `${title} | DHLM Studio`,
     description,
     alternates: { canonical: `https://dhlm-studio.com/research/${slug}` },
-    openGraph: { title, description, type: 'article', publishedTime: a.fm.date },
-    twitter: { card: 'summary_large_image', title, description },
+    openGraph: { title, description, type: 'article', publishedTime: a.fm.date, images: [{ url: ogImage, width: 1200, height: 630 }] },
+    twitter: { card: 'summary_large_image', title, description, images: [ogImage] },
   };
 }
 

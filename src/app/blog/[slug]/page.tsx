@@ -24,22 +24,21 @@ export async function generateMetadata({ params }: { params: Promise<{ slug: str
     title: post.title,
     description: post.description,
     alternates: { canonical: `https://dhlm-studio.com/blog/${slug}` },
-    openGraph: {
-      title: post.title,
-      description: post.description,
-      type: 'article',
-      publishedTime: post.date,
-      modifiedTime: post.lastUpdated || post.date,
-      ...(() => {
-        const manifest = unsplashManifest as Record<string, { src: string }>;
-        const src = post.heroImage || manifest[slug]?.src;
-        if (!src) return {};
-        const url = src.startsWith('/') ? `https://dhlm-studio.com${src}` : src;
-        const [w, h] = src.endsWith('.png') ? [1792, 1024] : [1200, 630];
-        return { images: [{ url, width: w, height: h }] };
-      })(),
-    },
-    twitter: { card: 'summary_large_image', title: post.title, description: post.description },
+    ...(() => {
+      const manifest = unsplashManifest as Record<string, { src: string }>;
+      const src = post.heroImage || manifest[slug]?.src;
+      const BASE = 'https://dhlm-studio.com';
+      const imgUrl = src ? (src.startsWith('/') ? `${BASE}${src}` : src) : `${BASE}/opengraph-image`;
+      const [w, h] = src?.endsWith('.png') ? [1792, 1024] : [1200, 630];
+      return {
+        openGraph: {
+          title: post.title, description: post.description, type: 'article' as const,
+          publishedTime: post.date, modifiedTime: post.lastUpdated || post.date,
+          images: [{ url: imgUrl, width: w, height: h }],
+        },
+        twitter: { card: 'summary_large_image' as const, title: post.title, description: post.description, images: [imgUrl] },
+      };
+    })(),
     robots: post.noindex ? { index: false, follow: false } : undefined,
   };
 }
