@@ -121,7 +121,8 @@ export default function AboutPage() {
               {[
                 { what: 'Brutal Edge Deep Dive Reports', when: 'New report weekly', color: '#C73E3A' },
                 { what: 'The Mental Game & Structural View', when: 'New essays weekly', color: '#A78BFA' },
-                { what: 'Investing 101 Beginner', when: '12-lesson curriculum (complete)', color: '#3B82F6' },
+                { what: 'Investing 101 Intermediate', when: 'New lesson weekly (W13–W24)', color: '#3B82F6' },
+                { what: 'Investing 101 Beginner', when: '12-lesson curriculum (complete)', color: '#60A5FA' },
                 { what: 'Crypto 101', when: '12-week curriculum (complete)', color: '#F59E0B' },
                 { what: 'Wall Street Wisdom', when: '100 curated investing quotes', color: '#D4A843' },
                 { what: 'Editorial Policy & Methodology', when: 'Reviewed monthly', color: '#64748B' },
@@ -176,10 +177,12 @@ export default function AboutPage() {
             <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(200px, 1fr))', gap: 10 }}>
               {[
                 { icon: '🔥', title: 'Deep Dive Reports', desc: 'Institutional-grade stock analysis (BEAF)', href: '/reports' },
-                { icon: '🧠', title: 'The Mental Game', desc: 'Psychology & frameworks for investors', href: '/research' },
+                { icon: '🧠', title: 'The Mental Game', desc: 'Behavioral investing psychology series', href: '/research' },
+                { icon: '🔭', title: 'The Structural View', desc: 'Quarterly macro & sector research', href: '/research' },
                 { icon: '📚', title: 'Crypto 101', desc: '12-week beginner curriculum (complete)', href: '/learn/crypto-101' },
                 { icon: '🎓', title: 'Investing 101 Beginner', desc: '12-lesson beginner curriculum (complete)', href: '/learn/investing-101-beginner' },
-                { icon: '📝', title: 'Blog', desc: 'The Masters series & Weekend Read', href: '/blog' },
+                { icon: '📈', title: 'Investing 101 Intermediate', desc: 'Advanced valuation, moat analysis, forensics', href: '/learn?tab=investing-101' },
+                { icon: '📝', title: 'The Masters Blog', desc: 'Lessons from Lynch, Munger, Druckenmiller', href: '/blog' },
                 { icon: '💡', title: 'Wall Street Wisdom', desc: '100 curated investing quotes', href: '/blog/wisdom' },
               ].map(item => (
                 <Link key={item.title} href={item.href} style={{ padding: '12px 14px', borderRadius: 10, background: '#0D1117', border: '1px solid #1E293B', textDecoration: 'none' }}>
@@ -217,6 +220,28 @@ export default function AboutPage() {
                     color: item.badge === 'LIVE' ? '#00D474' : '#94A3B8',
                   }}>{item.badge}</span>
                 </Link>
+              ))}
+            </div>
+          </div>
+
+          {/* Content Curation Policy */}
+          <div style={{ ...card, padding: '24px 22px', borderColor: '#00D47430' }}>
+            <div style={{ fontFamily: 'var(--mono)', fontSize: 9, fontWeight: 700, color: '#00D474', letterSpacing: 2, marginBottom: 10 }}>CONTENT CURATION POLICY</div>
+            <p style={{ fontSize: 14, fontWeight: 700, color: '#E2E8F0', lineHeight: 1.6, margin: '0 0 12px' }}>
+              Every article on Brutal Edge is manually researched, written, and reviewed by a human editor before publication.
+            </p>
+            <div style={{ display: 'flex', flexDirection: 'column', gap: 8 }}>
+              {[
+                'Deep Dive reports require 15+ hours of original research per report',
+                'All financial data is independently verified against SEC filings and official company disclosures',
+                'No content is auto-generated or published without editorial approval',
+                'The Mental Game and Structural View series are original essays, not summaries or rewrites',
+                'Investing 101 and Crypto 101 curricula are purpose-built for retail investors — not repurposed from other sources',
+              ].map(item => (
+                <div key={item} style={{ display: 'flex', alignItems: 'flex-start', gap: 8 }}>
+                  <span style={{ color: '#00D474', fontWeight: 800, fontSize: 12, flexShrink: 0, marginTop: 1 }}>✓</span>
+                  <span style={{ fontSize: 13, color: '#94A3B8', lineHeight: 1.6 }}>{item}</span>
+                </div>
               ))}
             </div>
           </div>

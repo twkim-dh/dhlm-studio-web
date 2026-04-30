@@ -239,6 +239,8 @@ function Investing101Tab({ intermediateLessons }: { intermediateLessons: Investi
   const [level, setLevel] = useState<'beginner' | 'intermediate'>('beginner');
 
   const intPublished = intermediateLessons.filter(l => l.published).length;
+  // Auto-restore all COMING SOON cards once 6+ lessons are published (≥50%)
+  const showAllIntermediate = intPublished >= 6;
 
   const levelBtnStyle = (active: boolean, color: string) => ({
     padding: '6px 14px',
@@ -299,13 +301,13 @@ function Investing101Tab({ intermediateLessons }: { intermediateLessons: Investi
           ? BEGINNER_LESSONS.map(l => (
               <InvestingCard key={l.week} slug={l.slug} title={l.title} description={l.description} thumb={l.thumb} week={l.week} published={true} accentColor="#00D474" />
             ))
-          : intermediateLessons.filter(l => l.published).map(l => (
-              <InvestingCard key={l.week} slug={l.slug} title={l.title} description={l.description} thumb={l.thumb} week={l.week} published={true} accentColor="#3B82F6" />
+          : (showAllIntermediate ? intermediateLessons : intermediateLessons.filter(l => l.published)).map(l => (
+              <InvestingCard key={l.week} slug={l.slug} title={l.title} description={l.description} thumb={l.thumb} week={l.week} published={l.published} accentColor="#3B82F6" />
             ))
         }
       </CardGrid>
 
-      {level === 'intermediate' && (
+      {level === 'intermediate' && !showAllIntermediate && (
         <div style={{ marginTop: 20, padding: '16px 20px', borderRadius: 12, background: '#0D1117', border: '1px solid #1E293B', textAlign: 'center' }}>
           <p style={{ fontSize: 13, color: '#64748B', margin: '0 0 8px', lineHeight: 1.6 }}>
             More lessons published weekly.
