@@ -41,9 +41,18 @@ function getLearnIntermediateSlugs(): string[] {
 
 function getResearchSlugs(): string[] {
   try {
+    const today = new Date().toISOString().slice(0, 10);
     const dir = path.join(process.cwd(), 'src/content/research');
     return fs.readdirSync(dir)
       .filter(f => f.endsWith('.md') && !f.startsWith('paper-vs-profit'))
+      .filter(f => {
+        try {
+          const content = fs.readFileSync(path.join(dir, f), 'utf8');
+          const m = content.match(/^date:\s*"?([^"\n]+)"?/m);
+          if (!m) return true;
+          return m[1].trim().slice(0, 10) <= today;
+        } catch { return true; }
+      })
       .map(f => f.replace(/\.md$/, ''));
   } catch { return []; }
 }

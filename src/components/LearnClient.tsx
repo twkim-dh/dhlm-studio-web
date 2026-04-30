@@ -239,7 +239,6 @@ function Investing101Tab({ intermediateLessons }: { intermediateLessons: Investi
   const [level, setLevel] = useState<'beginner' | 'intermediate'>('beginner');
 
   const intPublished = intermediateLessons.filter(l => l.published).length;
-  const intTotal = intermediateLessons.length;
 
   const levelBtnStyle = (active: boolean, color: string) => ({
     padding: '6px 14px',
@@ -279,11 +278,11 @@ function Investing101Tab({ intermediateLessons }: { intermediateLessons: Investi
           <div style={{ display: 'flex', justifyContent: 'space-between', marginBottom: 6 }}>
             <span style={{ fontFamily: 'var(--mono)', fontSize: 10, fontWeight: 700, color: level === 'beginner' ? '#00D474' : '#3B82F6' }}>CURRICULUM PROGRESS</span>
             <span style={{ fontFamily: 'var(--mono)', fontSize: 10, color: '#64748B' }}>
-              {level === 'beginner' ? '12/12 PUBLISHED' : `${intPublished}/${intTotal} PUBLISHED`}
+              {level === 'beginner' ? '12/12 PUBLISHED' : `${intPublished} PUBLISHED · NEW WEEKLY`}
             </span>
           </div>
           <div style={{ height: 5, background: '#1E293B', borderRadius: 3, overflow: 'hidden' }}>
-            <div style={{ height: '100%', width: level === 'beginner' ? '100%' : `${(intPublished / intTotal) * 100}%`, background: level === 'beginner' ? 'linear-gradient(90deg, #00D474, #059952)' : 'linear-gradient(90deg, #3B82F6, #1D4ED8)', borderRadius: 3, transition: 'width 0.3s' }} />
+            <div style={{ height: '100%', width: '100%', background: level === 'beginner' ? 'linear-gradient(90deg, #00D474, #059952)' : 'linear-gradient(90deg, #3B82F6, #1D4ED8)', borderRadius: 3, transition: 'width 0.3s' }} />
           </div>
         </div>
         <Link
@@ -300,11 +299,22 @@ function Investing101Tab({ intermediateLessons }: { intermediateLessons: Investi
           ? BEGINNER_LESSONS.map(l => (
               <InvestingCard key={l.week} slug={l.slug} title={l.title} description={l.description} thumb={l.thumb} week={l.week} published={true} accentColor="#00D474" />
             ))
-          : intermediateLessons.map(l => (
-              <InvestingCard key={l.week} slug={l.slug} title={l.title} description={l.description} thumb={l.thumb} week={l.week} published={l.published} accentColor="#3B82F6" />
+          : intermediateLessons.filter(l => l.published).map(l => (
+              <InvestingCard key={l.week} slug={l.slug} title={l.title} description={l.description} thumb={l.thumb} week={l.week} published={true} accentColor="#3B82F6" />
             ))
         }
       </CardGrid>
+
+      {level === 'intermediate' && (
+        <div style={{ marginTop: 20, padding: '16px 20px', borderRadius: 12, background: '#0D1117', border: '1px solid #1E293B', textAlign: 'center' }}>
+          <p style={{ fontSize: 13, color: '#64748B', margin: '0 0 8px', lineHeight: 1.6 }}>
+            More lessons published weekly.
+          </p>
+          <a href="/" style={{ fontSize: 12, fontWeight: 700, color: '#3B82F6', textDecoration: 'none' }}>
+            Subscribe to receive new releases first →
+          </a>
+        </div>
+      )}
     </div>
   );
 }
