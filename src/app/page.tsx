@@ -1,12 +1,14 @@
 import type { Metadata } from 'next';
 import Image from 'next/image';
 import Link from 'next/link';
+import dynamic from 'next/dynamic';
 import fs from 'fs';
 import path from 'path';
 import FadeIn from '@/components/FadeIn';
-import NewsletterCTA from '@/components/NewsletterCTA';
 import { blogPosts } from '@/data/blog-posts';
 import { fmtDateShort } from '@/lib/fmt-date';
+
+const NewsletterCTA = dynamic(() => import('@/components/NewsletterCTA'), { ssr: false });
 
 const YEAR = new Date().getFullYear();
 
@@ -136,49 +138,47 @@ export default function Home() {
         </div>
       </section>
 
-      {/* ── FEATURED REPORTS (3-col image grid) ── */}
+      {/* ── FEATURED REPORTS (3-col image grid) — no FadeIn: LCP section must not be wrapped in client component ── */}
       {featuredReports.length > 0 && (
-        <FadeIn>
-          <section style={{ padding: '0 24px 48px', maxWidth: 800, margin: '0 auto' }}>
-            <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'baseline', marginBottom: 16 }}>
-              <div>
-                <div style={{ fontFamily: 'var(--mono)', fontSize: 10, fontWeight: 700, color: '#C73E3A', letterSpacing: 3, marginBottom: 4 }}>🔥 BRUTAL EDGE™</div>
-                <h2 style={{ fontFamily: 'var(--serif)', fontSize: 22, fontWeight: 800, color: '#F1F5F9', margin: 0 }}>Featured Reports</h2>
-              </div>
-              <Link href="/reports" style={{ fontSize: 12, color: '#C73E3A', fontWeight: 600, fontFamily: 'var(--sans)' }}>All Reports →</Link>
+        <section style={{ padding: '0 24px 48px', maxWidth: 800, margin: '0 auto' }}>
+          <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'baseline', marginBottom: 16 }}>
+            <div>
+              <div style={{ fontFamily: 'var(--mono)', fontSize: 10, fontWeight: 700, color: '#C73E3A', letterSpacing: 3, marginBottom: 4 }}>🔥 BRUTAL EDGE™</div>
+              <h2 style={{ fontFamily: 'var(--serif)', fontSize: 22, fontWeight: 800, color: '#F1F5F9', margin: 0 }}>Featured Reports</h2>
             </div>
-            <div className="home-featured-grid">
-              {featuredReports.map((r, idx) => {
-                const tickers = Array.isArray(r.tickers) ? r.tickers : (r.ticker ? [r.ticker] : []);
-                return (
-                  <Link key={r.slug} href={`/reports/${r.slug}`} style={{ ...card, padding: 0, textDecoration: 'none', display: 'block', borderColor: `${r.catColor}40`, overflow: 'hidden' }}>
-                    {r.heroImage ? (
-                      <Image src={r.heroImage} alt={r.title} width={800} height={450} quality={65} priority={idx === 0} loading={idx === 0 ? 'eager' : 'lazy'} sizes="(max-width: 640px) calc(100vw - 48px), (max-width: 860px) calc(50vw - 32px), 246px" style={{ width: '100%', height: 'auto', objectFit: 'cover', display: 'block', background: '#0f172a' }} />
-                    ) : (
-                      <div style={{ width: '100%', aspectRatio: '16/9', background: `linear-gradient(135deg, ${r.catColor}20, #0f172a)`, display: 'flex', alignItems: 'center', justifyContent: 'center' }}>
-                        <span style={{ fontFamily: 'var(--mono)', fontSize: 22, fontWeight: 900, color: `${r.catColor}80` }}>{r.ticker || '—'}</span>
-                      </div>
-                    )}
-                    <div style={{ padding: '14px 16px 18px' }}>
-                      <div style={{ display: 'flex', alignItems: 'center', gap: 6, marginBottom: 8, flexWrap: 'wrap' }}>
-                        <span style={{ fontFamily: 'var(--mono)', fontSize: 9, fontWeight: 800, padding: '2px 7px', borderRadius: 4, background: `${r.catColor}20`, color: r.catColor, letterSpacing: 1 }}>
-                          {r.category.toUpperCase()}
-                        </span>
-                        {tickers.slice(0, 3).map(t => (
-                          <span key={t} style={{ fontFamily: 'var(--mono)', fontSize: 9, fontWeight: 700, color: r.catColor }}>{t}</span>
-                        ))}
-                        <span style={{ fontSize: 10, color: '#475569', marginLeft: 'auto' }}>{fmtDateShort(r.date)}</span>
-                      </div>
-                      <div style={{ fontFamily: 'var(--serif)', fontSize: 16, fontWeight: 800, color: '#F1F5F9', lineHeight: 1.4, marginBottom: 6 }}>{r.title}</div>
-                      <p style={{ fontSize: 11, color: '#64748B', margin: '0 0 6px', lineHeight: 1.5 }}>{r.description?.length > 90 ? r.description.slice(0, 90) + '...' : r.description}</p>
-                      <span style={{ fontSize: 10, color: '#475569' }}>{r.readTime}</span>
+            <Link href="/reports" style={{ fontSize: 12, color: '#C73E3A', fontWeight: 600, fontFamily: 'var(--sans)' }}>All Reports →</Link>
+          </div>
+          <div className="home-featured-grid">
+            {featuredReports.map((r, idx) => {
+              const tickers = Array.isArray(r.tickers) ? r.tickers : (r.ticker ? [r.ticker] : []);
+              return (
+                <Link key={r.slug} href={`/reports/${r.slug}`} style={{ ...card, padding: 0, textDecoration: 'none', display: 'block', borderColor: `${r.catColor}40`, overflow: 'hidden' }}>
+                  {r.heroImage ? (
+                    <Image src={r.heroImage} alt={r.title} width={800} height={450} quality={65} priority={idx === 0} loading={idx === 0 ? 'eager' : 'lazy'} sizes="(max-width: 640px) calc(100vw - 48px), (max-width: 860px) calc(50vw - 32px), 246px" style={{ width: '100%', height: 'auto', objectFit: 'cover', display: 'block', background: '#0f172a' }} />
+                  ) : (
+                    <div style={{ width: '100%', aspectRatio: '16/9', background: `linear-gradient(135deg, ${r.catColor}20, #0f172a)`, display: 'flex', alignItems: 'center', justifyContent: 'center' }}>
+                      <span style={{ fontFamily: 'var(--mono)', fontSize: 22, fontWeight: 900, color: `${r.catColor}80` }}>{r.ticker || '—'}</span>
                     </div>
-                  </Link>
-                );
-              })}
-            </div>
-          </section>
-        </FadeIn>
+                  )}
+                  <div style={{ padding: '14px 16px 18px' }}>
+                    <div style={{ display: 'flex', alignItems: 'center', gap: 6, marginBottom: 8, flexWrap: 'wrap' }}>
+                      <span style={{ fontFamily: 'var(--mono)', fontSize: 9, fontWeight: 800, padding: '2px 7px', borderRadius: 4, background: `${r.catColor}20`, color: r.catColor, letterSpacing: 1 }}>
+                        {r.category.toUpperCase()}
+                      </span>
+                      {tickers.slice(0, 3).map(t => (
+                        <span key={t} style={{ fontFamily: 'var(--mono)', fontSize: 9, fontWeight: 700, color: r.catColor }}>{t}</span>
+                      ))}
+                      <span style={{ fontSize: 10, color: '#475569', marginLeft: 'auto' }}>{fmtDateShort(r.date)}</span>
+                    </div>
+                    <div style={{ fontFamily: 'var(--serif)', fontSize: 16, fontWeight: 800, color: '#F1F5F9', lineHeight: 1.4, marginBottom: 6 }}>{r.title}</div>
+                    <p style={{ fontSize: 11, color: '#64748B', margin: '0 0 6px', lineHeight: 1.5 }}>{r.description?.length > 90 ? r.description.slice(0, 90) + '...' : r.description}</p>
+                    <span style={{ fontSize: 10, color: '#475569' }}>{r.readTime}</span>
+                  </div>
+                </Link>
+              );
+            })}
+          </div>
+        </section>
       )}
 
       {/* ── LATEST REPORTS (2-col image grid) ── */}

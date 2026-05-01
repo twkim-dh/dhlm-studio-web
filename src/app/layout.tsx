@@ -1,12 +1,15 @@
 import type { Metadata } from "next";
+import dynamic from "next/dynamic";
 import { Playfair_Display, DM_Sans, IBM_Plex_Mono } from "next/font/google";
 import Header from "@/components/Header";
 import Footer from "@/components/Footer";
-import MobileNav from "@/components/MobileNav";
-import CookieConsent from "@/components/CookieConsent";
-import NoRightClick from "@/components/NoRightClick";
-import NewsletterModal from "@/components/NewsletterModal";
 import "./globals.css";
+
+// Deferred client components — not needed for initial paint
+const MobileNav = dynamic(() => import("@/components/MobileNav"), { ssr: false });
+const CookieConsent = dynamic(() => import("@/components/CookieConsent"), { ssr: false });
+const NoRightClick = dynamic(() => import("@/components/NoRightClick"), { ssr: false });
+const NewsletterModal = dynamic(() => import("@/components/NewsletterModal"), { ssr: false });
 
 const playfair = Playfair_Display({
   variable: "--font-playfair",
