@@ -142,7 +142,7 @@ export default function RootLayout({
         <Footer />
         <MobileNav />
         <CookieConsent />
-        <NewsletterModal />
+        {process.env.NEXT_PUBLIC_NEWSLETTER_MODAL_ENABLED === 'true' && <NewsletterModal />}
       </body>
     </html>
   );
