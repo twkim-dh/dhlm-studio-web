@@ -43,7 +43,7 @@ function ResearchCard({ a }: { a: ResearchItem }) {
     <Link href={`/research/${a.slug}`} style={{ ...card, padding: 0, textDecoration: 'none', display: 'block', overflow: 'hidden' }}>
       {a.heroImage ? (
         // eslint-disable-next-line @next/next/no-img-element
-        <img src={a.heroImage} alt={a.title} style={{ width: '100%', aspectRatio: '16/9', objectFit: 'cover', display: 'block', background: '#0f172a' }} />
+        <img src={a.heroImage} alt={a.title} loading="lazy" decoding="async" style={{ width: '100%', aspectRatio: '16/9', objectFit: 'cover', display: 'block', background: '#0f172a' }} />
       ) : (
         <div style={{ width: '100%', aspectRatio: '16/9', background: '#0f172a', display: 'flex', alignItems: 'center', justifyContent: 'center' }}>
           <span style={{ fontSize: 28 }}>🧠</span>
@@ -90,7 +90,7 @@ function LessonCard({ l }: { l: LessonItem }) {
     <div style={{ ...card, padding: 0, overflow: 'hidden', opacity: published ? 1 : 0.45 }}>
       {l.thumb ? (
         // eslint-disable-next-line @next/next/no-img-element
-        <img src={l.thumb} alt={l.thumbAlt || l.title} style={{ width: '100%', aspectRatio: '16/9', objectFit: 'cover', display: 'block', background: '#0f172a' }} />
+        <img src={l.thumb} alt={l.thumbAlt || l.title} loading="lazy" decoding="async" style={{ width: '100%', aspectRatio: '16/9', objectFit: 'cover', display: 'block', background: '#0f172a' }} />
       ) : (
         <div style={{ width: '100%', aspectRatio: '16/9', background: `${l.phaseColor}18`, display: 'flex', alignItems: 'center', justifyContent: 'center' }}>
           <span style={{ fontFamily: 'var(--mono)', fontSize: 10, fontWeight: 800, color: `${l.phaseColor}80`, letterSpacing: 1 }}>WEEK {l.week}</span>
@@ -133,7 +133,7 @@ function InvestingCard({ slug, title, description, thumb, week, published, accen
   const inner = (
     <div style={{ ...card, padding: 0, overflow: 'hidden', opacity: published ? 1 : 0.45 }}>
       {/* eslint-disable-next-line @next/next/no-img-element */}
-      <img src={thumb} alt={title} style={{ width: '100%', aspectRatio: '16/9', objectFit: 'cover', display: 'block', background: '#0f172a' }} />
+      <img src={thumb} alt={title} loading="lazy" decoding="async" style={{ width: '100%', aspectRatio: '16/9', objectFit: 'cover', display: 'block', background: '#0f172a' }} />
       <div style={{ padding: '14px 16px 18px' }}>
         <div style={{ display: 'flex', alignItems: 'center', gap: 7, marginBottom: 8, flexWrap: 'wrap' }}>
           <span style={{ fontFamily: 'var(--mono)', fontSize: 9, fontWeight: 800, padding: '3px 9px', borderRadius: 5, background: `${accentColor}18`, color: accentColor, border: `1px solid ${accentColor}30`, letterSpacing: 1 }}>

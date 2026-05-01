@@ -1,4 +1,5 @@
 import type { Metadata } from 'next';
+import Image from 'next/image';
 import Link from 'next/link';
 import { notFound } from 'next/navigation';
 import ContentDisclaimer from '@/components/ContentDisclaimer';
@@ -396,9 +397,15 @@ export default async function ReportPage({ params }: { params: Promise<{ slug: s
         {/* Hero Image */}
         {heroSrc && (
           <div style={{ margin: '24px 0' }}>
-            <div style={{ width: '100%', background: '#0f172a', borderRadius: 12, overflow: 'hidden', border: '1px solid #1E293B' }}>
-              {/* eslint-disable-next-line @next/next/no-img-element */}
-              <img src={heroSrc} alt={heroAlt} style={{ width: '100%', height: 'auto', display: 'block' }} />
+            <div style={{ position: 'relative', width: '100%', aspectRatio: '16/9', background: '#0f172a', borderRadius: 12, overflow: 'hidden', border: '1px solid #1E293B' }}>
+              <Image
+                src={heroSrc}
+                alt={heroAlt}
+                fill
+                priority
+                sizes="(max-width: 768px) 100vw, 800px"
+                style={{ objectFit: 'cover' }}
+              />
             </div>
             {unsplashEntry?.credit && (
               <div style={{ padding: '3px 8px', textAlign: 'right' }}>

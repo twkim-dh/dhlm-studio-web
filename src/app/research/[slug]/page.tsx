@@ -1,5 +1,6 @@
 import type { Metadata } from 'next';
 import { notFound } from 'next/navigation';
+import Image from 'next/image';
 import Link from 'next/link';
 import ContentDisclaimer from '@/components/ContentDisclaimer';
 import fs from 'fs';
@@ -225,9 +226,15 @@ export default async function ResearchArticlePage({ params }: { params: Promise<
 
         {heroSrc && (
           <div style={{ margin: '24px 0' }}>
-            <div style={{ width: '100%', background: '#0f172a', borderRadius: 12, overflow: 'hidden', border: '1px solid #1E293B' }}>
-              {/* eslint-disable-next-line @next/next/no-img-element */}
-              <img src={heroSrc} alt={unsplashEntry?.alt || fm.title} style={{ width: '100%', height: 'auto', display: 'block' }} />
+            <div style={{ position: 'relative', width: '100%', aspectRatio: '16/9', background: '#0f172a', borderRadius: 12, overflow: 'hidden', border: '1px solid #1E293B' }}>
+              <Image
+                src={heroSrc}
+                alt={unsplashEntry?.alt || fm.title}
+                fill
+                priority
+                sizes="(max-width: 768px) 100vw, 800px"
+                style={{ objectFit: 'cover' }}
+              />
             </div>
             {unsplashEntry?.credit && (
               <div style={{ padding: '3px 8px', textAlign: 'right' }}>
