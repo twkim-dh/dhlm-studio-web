@@ -1,4 +1,5 @@
 import type { Metadata } from 'next';
+import Image from 'next/image';
 import Link from 'next/link';
 import fs from 'fs';
 import path from 'path';
@@ -152,8 +153,7 @@ export default function Home() {
                 return (
                   <Link key={r.slug} href={`/reports/${r.slug}`} style={{ ...card, padding: 0, textDecoration: 'none', display: 'block', borderColor: `${r.catColor}40`, overflow: 'hidden' }}>
                     {r.heroImage ? (
-                      // eslint-disable-next-line @next/next/no-img-element
-                      <img src={r.heroImage} alt={r.title} loading={idx === 0 ? undefined : 'lazy'} decoding={idx === 0 ? 'sync' : 'async'} fetchPriority={idx === 0 ? 'high' : 'auto'} style={{ width: '100%', aspectRatio: '16/9', objectFit: 'cover', display: 'block', background: '#0f172a' }} />
+                      <Image src={r.heroImage} alt={r.title} width={800} height={450} priority={idx === 0} loading={idx === 0 ? 'eager' : 'lazy'} sizes="(max-width: 640px) 100vw, (max-width: 1024px) 50vw, 400px" style={{ width: '100%', height: 'auto', objectFit: 'cover', display: 'block', background: '#0f172a' }} />
                     ) : (
                       <div style={{ width: '100%', aspectRatio: '16/9', background: `linear-gradient(135deg, ${r.catColor}20, #0f172a)`, display: 'flex', alignItems: 'center', justifyContent: 'center' }}>
                         <span style={{ fontFamily: 'var(--mono)', fontSize: 22, fontWeight: 900, color: `${r.catColor}80` }}>{r.ticker || '—'}</span>
@@ -196,8 +196,7 @@ export default function Home() {
               {latestReports.map(r => (
                 <Link key={r.slug} href={`/reports/${r.slug}`} style={{ ...card, padding: 0, textDecoration: 'none', display: 'block', overflow: 'hidden' }}>
                   {r.heroImage ? (
-                    // eslint-disable-next-line @next/next/no-img-element
-                    <img src={r.heroImage} alt={r.title} loading="lazy" decoding="async" style={{ width: '100%', aspectRatio: '16/9', objectFit: 'cover', display: 'block', background: '#0f172a' }} />
+                    <Image src={r.heroImage} alt={r.title} width={800} height={450} loading="lazy" sizes="(max-width: 640px) 100vw, (max-width: 1024px) 50vw, 400px" style={{ width: '100%', height: 'auto', objectFit: 'cover', display: 'block', background: '#0f172a' }} />
                   ) : (
                     <div style={{ width: '100%', aspectRatio: '16/9', background: `linear-gradient(135deg, ${r.catColor}18, #0f172a)`, display: 'flex', alignItems: 'center', justifyContent: 'center' }}>
                       <span style={{ fontFamily: 'var(--mono)', fontSize: 18, fontWeight: 900, color: `${r.catColor}70` }}>{r.ticker || '—'}</span>
@@ -239,8 +238,7 @@ export default function Home() {
                 return (
                   <Link key={a.slug} href={`/research/${a.slug}`} style={{ ...card, padding: 0, textDecoration: 'none', display: 'block', overflow: 'hidden', borderColor: c.border }}>
                     {a.heroImage ? (
-                      // eslint-disable-next-line @next/next/no-img-element
-                      <img src={a.heroImage} alt={a.title} loading="lazy" decoding="async" style={{ width: '100%', aspectRatio: '16/9', objectFit: 'cover', display: 'block', background: '#0f172a' }} />
+                      <Image src={a.heroImage} alt={a.title} width={800} height={450} loading="lazy" sizes="(max-width: 640px) 100vw, (max-width: 1024px) 50vw, 400px" style={{ width: '100%', height: 'auto', objectFit: 'cover', display: 'block', background: '#0f172a' }} />
                     ) : (
                       <div style={{ width: '100%', aspectRatio: '16/9', background: `linear-gradient(135deg, ${c.bg}, #0f172a)`, display: 'flex', alignItems: 'center', justifyContent: 'center' }}>
                         <span style={{ fontSize: 28 }}>🧠</span>
@@ -281,8 +279,7 @@ export default function Home() {
               {latestBlog.map(p => (
                 <Link key={p.slug} href={`/blog/${p.slug}`} style={{ ...card, padding: 0, textDecoration: 'none', display: 'block', overflow: 'hidden' }}>
                   {p.heroImage ? (
-                    // eslint-disable-next-line @next/next/no-img-element
-                    <img src={p.heroImage} alt={p.title} loading="lazy" decoding="async" style={{ width: '100%', aspectRatio: '16/9', objectFit: 'cover', display: 'block', background: '#0f172a' }} />
+                    <Image src={p.heroImage} alt={p.title} width={800} height={450} loading="lazy" sizes="(max-width: 640px) 100vw, (max-width: 1024px) 50vw, 400px" style={{ width: '100%', height: 'auto', objectFit: 'cover', display: 'block', background: '#0f172a' }} />
                   ) : (
                     <div style={{ width: '100%', aspectRatio: '16/9', background: `${p.catColor}18`, display: 'flex', alignItems: 'center', justifyContent: 'center' }}>
                       <span style={{ fontSize: 28 }}>📝</span>

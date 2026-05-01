@@ -26,7 +26,14 @@ export default function FadeIn({ children, delay = 0, direction = 'up', duration
       return;
     }
 
-    // On client mount: hide briefly, then animate in when visible
+    // Skip animation for above-fold elements (already visible = LCP candidates)
+    // Hiding and re-showing these destroys LCP measurement (Google measures last visible time)
+    const rect = el.getBoundingClientRect();
+    if (rect.top < window.innerHeight && rect.bottom > 0) {
+      setVisible(true);
+      return;
+    }
+
     setVisible(false);
     setAnimated(true);
 
