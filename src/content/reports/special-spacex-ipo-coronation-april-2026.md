@@ -5,7 +5,7 @@ date: "2026-05-13T12:30:00Z"
 category: "Reports"
 subcategory: "Special Report"
 badge: "special-report"
-heroImage: "/images/content/special-spacex-ipo-coronation-hero.png"
+heroImage: "/images/content/special-spacex-ipo-coronation-hero.webp"
 readTime: "19 min"
 tags: ["SPECIAL-REPORT", "SPACEX", "IPO", "ELON-MUSK", "STARLINK", "SPACE-ECONOMY", "ORBITAL-INFRASTRUCTURE", "MUSK-EMPIRE"]
 slug: "special-spacex-ipo-coronation-april-2026"

@@ -141,18 +141,18 @@ const INTERMEDIATE_SLUGS = [
 ];
 
 const INTERMEDIATE_THUMBS: Record<string, string> = {
-  'investing-101-intermediate-w13-three-valuations':  '/images/content/INV-101-W13.png',
-  'investing-101-intermediate-w14-dcf-lies':           '/images/content/INV-101-W14.png',
-  'investing-101-intermediate-w15-multiples':          '/images/content/INV-101-W15.png',
-  'investing-101-intermediate-w16-five-moats':         '/images/content/INV-101-W16.png',
-  'investing-101-intermediate-w17-moat-erosion':       '/images/content/INV-101-W17.png',
-  'investing-101-intermediate-w18-new-tech-moats':     '/images/content/INV-101-W18.png',
-  'investing-101-intermediate-w19-10k-forensics':      '/images/content/INV-101-W19.png',
-  'investing-101-intermediate-w20-earnings-calls':     '/images/content/INV-101-W20.png',
-  'investing-101-intermediate-w21-proxy-statements':   '/images/content/INV-101-W21.png',
-  'investing-101-intermediate-w22-position-sizing':    '/images/content/INV-101-W22.png',
-  'investing-101-intermediate-w23-correlation-risk':   '/images/content/INV-101-W23.png',
-  'investing-101-intermediate-w24-when-to-sell':       '/images/content/INV-101-W24.png',
+  'investing-101-intermediate-w13-three-valuations':  '/images/content/INV-101-W13.webp',
+  'investing-101-intermediate-w14-dcf-lies':           '/images/content/INV-101-W14.webp',
+  'investing-101-intermediate-w15-multiples':          '/images/content/INV-101-W15.webp',
+  'investing-101-intermediate-w16-five-moats':         '/images/content/INV-101-W16.webp',
+  'investing-101-intermediate-w17-moat-erosion':       '/images/content/INV-101-W17.webp',
+  'investing-101-intermediate-w18-new-tech-moats':     '/images/content/INV-101-W18.webp',
+  'investing-101-intermediate-w19-10k-forensics':      '/images/content/INV-101-W19.webp',
+  'investing-101-intermediate-w20-earnings-calls':     '/images/content/INV-101-W20.webp',
+  'investing-101-intermediate-w21-proxy-statements':   '/images/content/INV-101-W21.webp',
+  'investing-101-intermediate-w22-position-sizing':    '/images/content/INV-101-W22.webp',
+  'investing-101-intermediate-w23-correlation-risk':   '/images/content/INV-101-W23.webp',
+  'investing-101-intermediate-w24-when-to-sell':       '/images/content/INV-101-W24.webp',
 };
 
 const LEARN_DIR_PATH = path.join(process.cwd(), 'src/content/learn');

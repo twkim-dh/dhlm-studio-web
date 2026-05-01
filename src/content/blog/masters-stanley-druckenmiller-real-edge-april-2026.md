@@ -4,7 +4,7 @@ description: "30% annualized for 30 years with zero losing years. Everyone studi
 date: "2026-04-10"
 category: "The Masters"
 badge: "masters"
-heroImage: "/images/content/druckenmiller-masters-hero.png"
+heroImage: "/images/content/druckenmiller-masters-hero.webp"
 readTime: "14 min"
 tags: ["MASTERS", "DRUCKENMILLER", "MACRO", "INVESTING", "PHILOSOPHY", "RISK"]
 slug: "masters-stanley-druckenmiller-real-edge-april-2026"

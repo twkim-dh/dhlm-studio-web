@@ -5,7 +5,7 @@ date: "2026-04-17"
 category: "Research"
 subcategory: "The Mental Game"
 badge: "mental-game"
-heroImage: "/images/content/mental-game-001-bull-market-psychology-hero.png"
+heroImage: "/images/content/mental-game-001-bull-market-psychology-hero.webp"
 readTime: "15 min"
 tags: ["MENTAL-GAME", "PSYCHOLOGY", "BUBBLES", "AI", "BEHAVIORAL-FINANCE", "ODEAN"]
 slug: "mental-game-001-bull-market-psychology"

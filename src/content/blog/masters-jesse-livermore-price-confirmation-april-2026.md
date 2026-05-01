@@ -5,7 +5,7 @@ date: "2026-04-17"
 category: "Blog"
 subcategory: "The Masters"
 badge: "masters"
-heroImage: "/images/content/livermore-masters-hero.png"
+heroImage: "/images/content/livermore-masters-hero.webp"
 readTime: "15 min"
 tags: ["MASTERS", "LIVERMORE", "TRADING", "PSYCHOLOGY", "RISK", "DISCIPLINE"]
 slug: "masters-jesse-livermore-price-confirmation-april-2026"

@@ -5,7 +5,7 @@ date: "2026-05-20T12:30:00Z"
 category: "Reports"
 subcategory: "Special Report"
 badge: "special-report"
-heroImage: "/images/content/special-tesla-spacex-operating-systems-hero.png"
+heroImage: "/images/content/special-tesla-spacex-operating-systems-hero.webp"
 readTime: "18 min"
 tags: ["SPECIAL-REPORT", "TESLA", "SPACEX", "MUSK", "WEALTH-CONCENTRATION", "PLATFORM-COMPANIES", "AUTONOMY", "ORBITAL-INFRASTRUCTURE", "ROBOTICS"]
 slug: "special-tesla-spacex-operating-systems-april-2026"

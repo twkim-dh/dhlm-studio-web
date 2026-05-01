@@ -5,7 +5,7 @@ date: "2026-06-05T12:30:00Z"
 category: "Blog"
 subcategory: "The Masters"
 badge: "masters"
-heroImage: "/images/content/masters-charlie-munger-part2-ego-hero.png"
+heroImage: "/images/content/masters-charlie-munger-part2-ego-hero.webp"
 readTime: "17 min"
 tags: ["MASTERS", "CHARLIE-MUNGER", "PSYCHOLOGY", "EGO", "ENVY", "TEMPERAMENT"]
 slug: "masters-charlie-munger-part2-ego-june-2026"

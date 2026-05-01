@@ -7,7 +7,7 @@ readTime: "12 min"
 category: "Markets"
 catColor: "#00D474"
 grade: "—"
-heroImage: "/images/content/energy-iran-war-hero.png"
+heroImage: "/images/content/energy-iran-war-hero.webp"
 beafScore: 0
 description: "The Iran war produced the biggest oil shock in years. After the April 8 ceasefire headline, the easy trade is over. The next winners are the energy companies whose cash flow holds whether crude stays at $110 or settles back to $85. Five names ranked: MPC, XOM, CVX, VLO, OXY."
 type: "hot-sector"

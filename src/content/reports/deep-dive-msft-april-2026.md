@@ -7,7 +7,7 @@ readTime: "14 min"
 category: "Markets"
 catColor: "#00D474"
 grade: "B+"
-heroImage: "/images/content/deep-dive-report.png"
+heroImage: "/images/content/deep-dive-report.webp"
 beafScore: 81
 description: "Microsoft at $3T: Copilot generating $18B, Azure AI at 50%+, 44% operating margins. But $50B annual CapEx must pay off. BEAF 81/100."
 seoTitle: "Microsoft Down 23% From ATH — Cheapest It's Been in 3 Years. Worth Buying?"

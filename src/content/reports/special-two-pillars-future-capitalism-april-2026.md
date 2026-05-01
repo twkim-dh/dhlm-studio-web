@@ -5,7 +5,7 @@ date: "2026-05-27T12:30:00Z"
 category: "Reports"
 subcategory: "Special Report"
 badge: "special-report"
-heroImage: "/images/content/special-two-pillars-future-capitalism-hero.png"
+heroImage: "/images/content/special-two-pillars-future-capitalism-hero.webp"
 readTime: "20 min"
 tags: ["SPECIAL-REPORT", "MUSK-EMPIRE", "ANTHROPIC", "CLAUDE", "SPACEX", "FUTURE-CAPITALISM", "INFRASTRUCTURE", "AI-TRUST"]
 slug: "special-two-pillars-future-capitalism-april-2026"

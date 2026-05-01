@@ -5,7 +5,7 @@ date: "2026-04-18T12:30:00Z"
 category: "Reports"
 subcategory: "Special Report"
 badge: "special-report"
-heroImage: "/images/content/special-ionq-vol2-vertical-integration-hero.png"
+heroImage: "/images/content/special-ionq-vol2-vertical-integration-hero.webp"
 readTime: "22 min"
 tags: ["SPECIAL-REPORT", "IONQ", "QUANTUM-COMPUTING", "SKYWATER", "VERTICAL-INTEGRATION", "MODULAR-ARCHITECTURE", "SOVEREIGN-PROCUREMENT"]
 slug: "special-ionq-vol2-vertical-integration-april-2026"

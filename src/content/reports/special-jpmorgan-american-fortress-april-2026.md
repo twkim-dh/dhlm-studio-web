@@ -5,7 +5,7 @@ date: "2026-04-24T12:30:00Z"
 category: "Reports"
 subcategory: "Special Report"
 badge: "special-report"
-heroImage: "/images/content/special-jpmorgan-american-fortress-hero.png"
+heroImage: "/images/content/special-jpmorgan-american-fortress-hero.webp"
 readTime: "16 min"
 tags: ["SPECIAL-REPORT", "JPMORGAN", "JPM", "DIMON", "AMERICAN-POWER", "DOLLAR-DOMINANCE", "PRIVATE-CREDIT", "RESERVE-CURRENCY"]
 slug: "special-jpmorgan-american-fortress-april-2026"

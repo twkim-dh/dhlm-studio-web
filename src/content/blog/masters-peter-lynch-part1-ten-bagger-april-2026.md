@@ -5,7 +5,7 @@ date: "2026-04-17"
 category: "Blog"
 subcategory: "The Masters"
 badge: "masters"
-heroImage: "/images/content/masters-peter-lynch-part1-ten-bagger-hero.png"
+heroImage: "/images/content/masters-peter-lynch-part1-ten-bagger-hero.webp"
 readTime: "14 min"
 tags: ["MASTERS", "PETER-LYNCH", "FUNDAMENTALS", "INVESTING-PHILOSOPHY", "TEN-BAGGER"]
 slug: "masters-peter-lynch-part1-ten-bagger-april-2026"

@@ -7,7 +7,7 @@ readTime: "18 min"
 category: "Special Report"
 catColor: "#C73E3A"
 grade: "B-"
-heroImage: "/images/content/spacex-ipo-hero.png"
+heroImage: "/images/content/spacex-ipo-hero.webp"
 beafScore: 77
 description: "SpaceX's rumored $1.75T IPO would be the largest in history. Revenue breakdown, SOTP valuation, risk scenarios, and our Brutal Edge verdict."
 type: "special-report"

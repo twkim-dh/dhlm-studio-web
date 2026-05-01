@@ -5,7 +5,7 @@ date: "2026-06-17T12:30:00Z"
 category: "Reports"
 subcategory: "Special Report"
 badge: "special-report"
-heroImage: "/images/content/special-trust-architecture-hero.png"
+heroImage: "/images/content/special-trust-architecture-hero.webp"
 readTime: "20 min"
 tags: ["SPECIAL-REPORT", "AI-TRUST", "AGI-GOVERNANCE", "ANTHROPIC", "MYTHOS", "CYBER-SECURITY", "QUANTUM-SAFE", "INTELLIGENCE-ECONOMY", "SYNTHESIS"]
 slug: "special-trust-architecture-april-2026"

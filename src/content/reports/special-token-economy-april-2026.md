@@ -5,7 +5,7 @@ date: "2026-05-01T12:30:00Z"
 category: "Reports"
 subcategory: "Special Report"
 badge: "special-report"
-heroImage: "/images/content/special-token-economy-hero.png"
+heroImage: "/images/content/special-token-economy-hero.webp"
 readTime: "20 min"
 tags: ["SPECIAL-REPORT", "TOKEN-ECONOMY", "AI-INFRASTRUCTURE", "AMZN", "MSFT", "GOOGL", "AWS", "AZURE", "INFERENCE-ECONOMICS", "INTELLIGENCE-ECONOMY"]
 slug: "special-token-economy-april-2026"

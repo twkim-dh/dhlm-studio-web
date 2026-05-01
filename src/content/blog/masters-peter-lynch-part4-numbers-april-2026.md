@@ -5,7 +5,7 @@ date: "2026-04-17"
 category: "Blog"
 subcategory: "The Masters"
 badge: "masters"
-heroImage: "/images/content/masters-peter-lynch-part4-numbers-hero.png"
+heroImage: "/images/content/masters-peter-lynch-part4-numbers-hero.webp"
 readTime: "17 min"
 tags: ["MASTERS", "PETER-LYNCH", "FUNDAMENTALS", "FINANCIAL-ANALYSIS", "PEG", "VALUATION"]
 slug: "masters-peter-lynch-part4-numbers-april-2026"

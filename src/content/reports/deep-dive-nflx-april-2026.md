@@ -7,7 +7,7 @@ readTime: "14 min"
 category: "Media"
 catColor: "#E50914"
 grade: "B-"
-heroImage: "/images/content/deepdive-nflx-april-2026-hero.png"
+heroImage: "/images/content/deepdive-nflx-april-2026-hero.webp"
 beafScore: 72
 description: "Netflix beat Q1 on every line. Revenue $12.25B. EPS $1.23. Ad revenue on track to double to $3B. Stock closed down 9.72%. The market is still valuing the old Netflix while the company is becoming something different."
 seoTitle: "Netflix Q1 2026: -9.72% Selloff That Misreads the Transition | Brutal Edge"

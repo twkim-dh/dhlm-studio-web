@@ -5,7 +5,7 @@ date: "2026-04-18T12:30:00Z"
 category: "Reports"
 subcategory: "Special Report"
 badge: "special-report"
-heroImage: "/images/content/special-ionq-vol1-recategorization-hero.png"
+heroImage: "/images/content/special-ionq-vol1-recategorization-hero.webp"
 readTime: "20 min"
 tags: ["SPECIAL-REPORT", "IONQ", "QUANTUM-COMPUTING", "PLATFORM-TRANSITION", "TRAPPED-ION", "RE-CATEGORIZATION"]
 slug: "special-ionq-vol1-recategorization-april-2026"

@@ -5,7 +5,7 @@ date: "2026-06-19T12:30:00Z"
 category: "Blog"
 subcategory: "The Masters"
 badge: "masters"
-heroImage: "/images/content/masters-charlie-munger-part4-leverage-hero.png"
+heroImage: "/images/content/masters-charlie-munger-part4-leverage-hero.webp"
 readTime: "18 min"
 tags: ["MASTERS", "CHARLIE-MUNGER", "LEVERAGE", "OVERCONFIDENCE", "RUIN", "SPEED"]
 slug: "masters-charlie-munger-part4-leverage-june-2026"

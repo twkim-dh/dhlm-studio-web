@@ -5,7 +5,7 @@ date: "2026-04-30"
 category: "Research"
 subcategory: "The Mental Game"
 badge: "mental-game"
-heroImage: "/images/content/MENTAL-GAME-003.png"
+heroImage: "/images/content/MENTAL-GAME-003.webp"
 readTime: "17 min"
 tags: ["MENTAL-GAME", "PSYCHOLOGY", "CONFIRMATION-BIAS", "DCF", "BEHAVIORAL-FINANCE", "KILL-CRITERIA", "NVIDIA", "TESLA", "MICROSOFT"]
 slug: "the-mental-game-003-confirmation-loop"

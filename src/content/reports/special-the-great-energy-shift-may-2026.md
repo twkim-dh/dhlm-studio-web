@@ -5,7 +5,7 @@ date: "2026-05-05T12:30:00Z"
 category: "Reports"
 subcategory: "Special Report"
 badge: "special-report"
-heroImage: "/images/content/SPECIAL-THE-GREAT-ENERGY-SHIFT.png"
+heroImage: "/images/content/SPECIAL-THE-GREAT-ENERGY-SHIFT.webp"
 readTime: "22 min"
 tags: ["SPECIAL-REPORT", "ENERGY", "OPEC", "UAE", "LNG", "GEOPOLITICS", "XOM", "CVX", "LNG-EXPORT", "MIDSTREAM", "HORMUZ", "INFRASTRUCTURE"]
 slug: "special-the-great-energy-shift-may-2026"

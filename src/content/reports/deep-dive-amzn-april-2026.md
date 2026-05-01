@@ -7,7 +7,7 @@ readTime: "14 min"
 category: "Markets"
 catColor: "#00D474"
 grade: "B"
-heroImage: "/images/content/deep-dive-report.png"
+heroImage: "/images/content/deep-dive-report.webp"
 beafScore: 76
 description: "Amazon at $2.2T: AWS crossing $110B, retail margins still puzzling, and an ad business nobody saw coming. BEAF Score 76/100."
 seoTitle: "Amazon BEAF 76/100: AWS at $110B vs Razor Retail | April 2026"

@@ -5,7 +5,7 @@ date: "2026-04-17"
 category: "Research"
 subcategory: "The Mental Game"
 badge: "mental-game"
-heroImage: "/images/content/mental-game-002-ai-bubble-survival-hero.png"
+heroImage: "/images/content/mental-game-002-ai-bubble-survival-hero.webp"
 readTime: "17 min"
 tags: ["MENTAL-GAME", "PSYCHOLOGY", "AI-BUBBLE", "CAPEX", "APOLLO", "GOLDMAN-SACHS", "BEHAVIORAL-FINANCE"]
 slug: "mental-game-002-ai-bubble-survival"

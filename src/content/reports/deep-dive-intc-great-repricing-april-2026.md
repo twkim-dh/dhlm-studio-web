@@ -5,7 +5,7 @@ date: "2026-04-28T12:30:00Z"
 category: "Reports"
 subcategory: "Deep Dive"
 badge: "deep-dive"
-heroImage: "/images/content/deep-dive-intc-great-repricing-hero.png"
+heroImage: "/images/content/deep-dive-intc-great-repricing-hero.webp"
 readTime: "18 min"
 tags: ["DEEP-DIVE", "INTEL", "INTC", "AI-INFERENCE", "FOUNDRY", "CPU", "GAUDI", "US-MANUFACTURING", "SEMICONDUCTOR"]
 slug: "deep-dive-intc-great-repricing-april-2026"

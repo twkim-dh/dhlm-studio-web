@@ -5,7 +5,7 @@ date: "2026-05-22T12:30:00Z"
 category: "Reports"
 subcategory: "Special Report"
 badge: "special-report"
-heroImage: "/images/content/special-digital-dollar-empire-hero.png"
+heroImage: "/images/content/special-digital-dollar-empire-hero.webp"
 readTime: "18 min"
 tags: ["SPECIAL-REPORT", "STABLECOINS", "TOKENIZATION", "DIGITAL-DOLLAR", "GENIUS-ACT", "ETHEREUM", "BITCOIN", "DOLLAR-DOMINANCE", "FINANCIAL-INFRASTRUCTURE"]
 slug: "special-digital-dollar-empire-april-2026"

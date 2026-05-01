@@ -5,7 +5,7 @@ date: "2026-05-06T12:30:00Z"
 category: "Reports"
 subcategory: "Special Report"
 badge: "special-report"
-heroImage: "/images/content/special-rise-of-claude-hero.png"
+heroImage: "/images/content/special-rise-of-claude-hero.webp"
 readTime: "19 min"
 tags: ["SPECIAL-REPORT", "ANTHROPIC", "CLAUDE", "MYTHOS", "AI-SECURITY", "CONSTITUTIONAL-AI", "ENTERPRISE-AI", "INTELLIGENCE-ECONOMY", "TRUST-LAYER"]
 slug: "special-rise-of-claude-april-2026"

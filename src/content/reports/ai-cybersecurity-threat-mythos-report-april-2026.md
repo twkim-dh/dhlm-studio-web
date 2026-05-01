@@ -8,7 +8,7 @@ category: "Special Report"
 catColor: "#C73E3A"
 grade: "—"
 beafScore: 0
-heroImage: "/images/content/ai-cybersecurity-mythos-hero.png"
+heroImage: "/images/content/ai-cybersecurity-mythos-hero.webp"
 description: "Treasury and the Fed called an emergency meeting. Claude Mythos can autonomously exploit zero-day vulnerabilities. The investment case: follow the forced spending into cybersecurity, compute, and sovereign AI infrastructure."
 type: "special-report"
 tickers: ["ANTHROPIC", "CRWD", "PANW", "NVDA", "MSFT", "AVGO"]

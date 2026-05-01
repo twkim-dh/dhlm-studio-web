@@ -7,7 +7,7 @@ readTime: "14 min"
 category: "Markets"
 catColor: "#00D474"
 grade: "C+"
-heroImage: "/images/content/deep-dive-report.png"
+heroImage: "/images/content/deep-dive-report.webp"
 beafScore: 58
 description: "Tesla at $1.5T: 120x earnings for a company with 15% promise delivery rate. Energy storage is the hidden gem nobody prices. BEAF 58/100."
 seoTitle: "Tesla BEAF 58/100: 120x Earnings, 15% Promise Delivery | April 2026"

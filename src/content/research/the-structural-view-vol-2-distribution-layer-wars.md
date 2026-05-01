@@ -5,7 +5,7 @@ date: "2026-04-29"
 category: "Research"
 subcategory: "The Structural View"
 badge: "structural-view"
-heroImage: "/images/content/STRUCTURAL-VIEW-VOL-2.png"
+heroImage: "/images/content/STRUCTURAL-VIEW-VOL-2.webp"
 readTime: "19 min"
 tags: ["STRUCTURAL-VIEW", "MICROSOFT", "GOOGLE", "AI-DISTRIBUTION", "AI-MOAT", "INVESTMENT-FRAMEWORK", "META", "AMAZON"]
 slug: "the-structural-view-vol-2-distribution-layer-wars"

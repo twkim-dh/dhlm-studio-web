@@ -5,7 +5,7 @@ date: "2026-05-08T12:30:00Z"
 category: "Reports"
 subcategory: "Deep Dive"
 badge: "deep-dive"
-heroImage: "/images/content/deep-dive-nke-long-runway-hero.png"
+heroImage: "/images/content/deep-dive-nke-long-runway-hero.webp"
 readTime: "16 min"
 tags: ["DEEP-DIVE", "NIKE", "NKE", "TURNAROUND", "CONSUMER-BRANDS", "DTC", "WHOLESALE", "ELLIOTT-HILL", "CHINA-CONSUMER"]
 slug: "deep-dive-nke-long-runway-april-2026"

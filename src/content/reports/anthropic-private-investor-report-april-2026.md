@@ -11,7 +11,7 @@ homeRank: 2
 description: "Anthropic at $380B post-money, $30B run-rate revenue, 300,000+ business customers. The most important private AI company most investors can't access. Here is what you need to understand before you try."
 type: "special-report"
 badge: "special"
-heroImage: "/images/content/anthropic-hero.jpg"
+heroImage: "/images/content/anthropic-hero.webp"
 tickers: ["ANTHROPIC"]
 seoTitle: "Anthropic Private Investor Report April 2026: $380B Valuation Analysis | DHLM Studio"
 seoDescription: "Anthropic at $380B post-money valuation, $30B annualized revenue run-rate. Claude, Claude Code, Managed Agents, enterprise platform. Is it the best private AI investment? Full analysis April 2026."

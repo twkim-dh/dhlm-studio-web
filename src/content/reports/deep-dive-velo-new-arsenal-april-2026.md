@@ -5,7 +5,7 @@ date: "2026-05-15T12:30:00Z"
 category: "Reports"
 subcategory: "Deep Dive"
 badge: "deep-dive"
-heroImage: "/images/content/deep-dive-velo-new-arsenal-hero.png"
+heroImage: "/images/content/deep-dive-velo-new-arsenal-hero.webp"
 readTime: "15 min"
 tags: ["DEEP-DIVE", "VELO3D", "VELO", "ADDITIVE-MANUFACTURING", "DEFENSE", "AEROSPACE", "US-MANUFACTURING", "RAPID-PRODUCTION"]
 slug: "deep-dive-velo-new-arsenal-april-2026"

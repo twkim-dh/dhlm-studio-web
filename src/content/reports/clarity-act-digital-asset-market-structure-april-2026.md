@@ -8,7 +8,7 @@ category: "Special Report"
 catColor: "#C73E3A"
 grade: "N/R"
 beafScore: 0
-heroImage: "/images/content/clarity-act-digital-asset-market-structure-hero.png"
+heroImage: "/images/content/clarity-act-digital-asset-market-structure-hero.webp"
 description: "The U.S. Market-Structure Bill That Matters More Than Any ETF Approval. The Stablecoin Yield Fight Is 99% Resolved. Here's What Changes — and who captures the value when legal roads get built."
 type: "special-report"
 homeRank: 1

@@ -5,7 +5,7 @@ date: "2026-04-22T12:30:00Z"
 category: "Reports"
 subcategory: "Special Report"
 badge: "special-report"
-heroImage: "/images/content/special-nvidia-industrial-architect-hero.png"
+heroImage: "/images/content/special-nvidia-industrial-architect-hero.webp"
 readTime: "22 min"
 tags: ["SPECIAL-REPORT", "NVIDIA", "NVDA", "AI-INFRASTRUCTURE", "TOKEN-ECONOMY", "JENSEN-HUANG", "INTELLIGENCE-ECONOMY", "RUBIN", "BLACKWELL"]
 slug: "special-nvidia-industrial-architect-april-2026"

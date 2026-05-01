@@ -5,7 +5,7 @@ date: "2026-04-17"
 category: "Blog"
 subcategory: "The Masters"
 badge: "masters"
-heroImage: "/images/content/masters-peter-lynch-part2-categories-hero.png"
+heroImage: "/images/content/masters-peter-lynch-part2-categories-hero.webp"
 readTime: "16 min"
 tags: ["MASTERS", "PETER-LYNCH", "STOCK-CATEGORIES", "VALUATION", "CLASSIFICATION"]
 slug: "masters-peter-lynch-part2-six-categories-april-2026"

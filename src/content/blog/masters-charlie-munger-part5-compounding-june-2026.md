@@ -5,7 +5,7 @@ date: "2026-06-26T12:30:00Z"
 category: "Blog"
 subcategory: "The Masters"
 badge: "masters"
-heroImage: "/images/content/masters-charlie-munger-part5-compounding-hero.png"
+heroImage: "/images/content/masters-charlie-munger-part5-compounding-hero.webp"
 readTime: "19 min"
 tags: ["MASTERS", "CHARLIE-MUNGER", "COMPOUNDING", "PATIENCE", "TEMPERAMENT", "SYNTHESIS"]
 slug: "masters-charlie-munger-part5-compounding-june-2026"

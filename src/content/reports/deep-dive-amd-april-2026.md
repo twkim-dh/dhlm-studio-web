@@ -7,7 +7,7 @@ readTime: "14 min"
 category: "Markets"
 catColor: "#00D474"
 grade: "C"
-heroImage: "/images/content/deep-dive-report.png"
+heroImage: "/images/content/deep-dive-report.webp"
 beafScore: 61
 description: "AMD at $280B: Lisa Su's genius, MI350 progress, but always one step behind NVIDIA. BEAF Score 61/100."
 seoTitle: "AMD BEAF 61/100: Always Second in the AI Chip Race? | April 2026"

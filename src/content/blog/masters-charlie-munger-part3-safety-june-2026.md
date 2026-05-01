@@ -5,7 +5,7 @@ date: "2026-06-12T12:30:00Z"
 category: "Blog"
 subcategory: "The Masters"
 badge: "masters"
-heroImage: "/images/content/masters-charlie-munger-part3-safety-hero.png"
+heroImage: "/images/content/masters-charlie-munger-part3-safety-hero.webp"
 readTime: "17 min"
 tags: ["MASTERS", "CHARLIE-MUNGER", "RISK", "CASH", "RESILIENCE", "SAFETY-PARADOX"]
 slug: "masters-charlie-munger-part3-safety-june-2026"

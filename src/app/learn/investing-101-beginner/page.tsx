@@ -8,18 +8,18 @@ export const metadata: Metadata = {
 };
 
 const HERO_MAP: Record<string, string> = {
-  'investing-101-beginner-w1-what-is-a-stock-really':          '/images/content/investing-101-beginner-w1-what-is-a-stock-hero.png',
-  'investing-101-beginner-w2-how-the-market-actually-works':   '/images/content/investing-101-beginner-w2-how-market-works-hero.png',
-  'investing-101-beginner-w3-opening-your-first-brokerage-account': '/images/content/investing-101-beginner-w3-brokerage-account-hero.png',
-  'investing-101-beginner-w4-reading-income-statement':        '/images/content/investing-101-beginner-w4-income-statement-hero.png',
-  'investing-101-beginner-w5-reading-balance-sheet':           '/images/content/investing-101-beginner-w5-balance-sheet-hero.png',
-  'investing-101-beginner-w6-reading-cash-flow-statement':     '/images/content/investing-101-beginner-w6-cash-flow-statement-hero.png',
-  'investing-101-beginner-w7-what-is-a-business-model':        '/images/content/investing-101-beginner-w7-business-model-hero.png',
-  'investing-101-beginner-w8-valuation-basics':                '/images/content/investing-101-beginner-w8-valuation-basics-hero.png',
-  'investing-101-beginner-w9-dividends-and-total-return':      '/images/content/investing-101-beginner-w9-dividends-total-return-hero.png',
-  'investing-101-beginner-w10-diversification-portfolio-basics': '/images/content/investing-101-beginner-w10-diversification-portfolio-hero.png',
-  'investing-101-beginner-w11-investors-mind':                 '/images/content/investing-101-beginner-w11-investors-mind-hero.png',
-  'investing-101-beginner-w12-your-first-five-years':          '/images/content/investing-101-beginner-w12-five-year-roadmap-hero.png',
+  'investing-101-beginner-w1-what-is-a-stock-really':          '/images/content/investing-101-beginner-w1-what-is-a-stock-hero.webp',
+  'investing-101-beginner-w2-how-the-market-actually-works':   '/images/content/investing-101-beginner-w2-how-market-works-hero.webp',
+  'investing-101-beginner-w3-opening-your-first-brokerage-account': '/images/content/investing-101-beginner-w3-brokerage-account-hero.webp',
+  'investing-101-beginner-w4-reading-income-statement':        '/images/content/investing-101-beginner-w4-income-statement-hero.webp',
+  'investing-101-beginner-w5-reading-balance-sheet':           '/images/content/investing-101-beginner-w5-balance-sheet-hero.webp',
+  'investing-101-beginner-w6-reading-cash-flow-statement':     '/images/content/investing-101-beginner-w6-cash-flow-statement-hero.webp',
+  'investing-101-beginner-w7-what-is-a-business-model':        '/images/content/investing-101-beginner-w7-business-model-hero.webp',
+  'investing-101-beginner-w8-valuation-basics':                '/images/content/investing-101-beginner-w8-valuation-basics-hero.webp',
+  'investing-101-beginner-w9-dividends-and-total-return':      '/images/content/investing-101-beginner-w9-dividends-total-return-hero.webp',
+  'investing-101-beginner-w10-diversification-portfolio-basics': '/images/content/investing-101-beginner-w10-diversification-portfolio-hero.webp',
+  'investing-101-beginner-w11-investors-mind':                 '/images/content/investing-101-beginner-w11-investors-mind-hero.webp',
+  'investing-101-beginner-w12-your-first-five-years':          '/images/content/investing-101-beginner-w12-five-year-roadmap-hero.webp',
 };
 
 interface Lesson {

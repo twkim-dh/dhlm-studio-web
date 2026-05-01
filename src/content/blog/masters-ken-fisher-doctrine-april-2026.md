@@ -5,7 +5,7 @@ date: "2026-04-25T12:30:00Z"
 category: "Blog"
 subcategory: "The Masters"
 badge: "masters"
-heroImage: "/images/content/masters-ken-fisher-doctrine-hero.png"
+heroImage: "/images/content/masters-ken-fisher-doctrine-hero.webp"
 readTime: "17 min"
 tags: ["MASTERS", "KEN-FISHER", "MIDTERM-MIRACLE", "WALL-OF-WORRY", "VALUATION", "INVESTOR-PSYCHOLOGY", "MARKET-HISTORY"]
 slug: "masters-ken-fisher-doctrine-april-2026"

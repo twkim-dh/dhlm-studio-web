@@ -5,7 +5,7 @@ date: "2026-04-18T12:30:00Z"
 category: "Reports"
 subcategory: "Special Report"
 badge: "special-report"
-heroImage: "/images/content/special-ionq-vol3-price-of-admission-hero.png"
+heroImage: "/images/content/special-ionq-vol3-price-of-admission-hero.webp"
 readTime: "22 min"
 tags: ["SPECIAL-REPORT", "IONQ", "QUANTUM-COMPUTING", "EXECUTION-RISK", "VALUATION", "POSITION-SIZING", "INVESTMENT-FRAMEWORK"]
 slug: "special-ionq-vol3-price-of-admission-april-2026"

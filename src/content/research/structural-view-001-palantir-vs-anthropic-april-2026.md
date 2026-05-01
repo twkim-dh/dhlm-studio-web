@@ -5,7 +5,7 @@ date: "2026-04-19"
 category: "Research"
 subcategory: "The Structural View"
 badge: "structural-view"
-heroImage: "/images/content/structural-view-001-palantir-vs-anthropic-hero.png"
+heroImage: "/images/content/structural-view-001-palantir-vs-anthropic-hero.webp"
 readTime: "19 min"
 tags: ["STRUCTURAL-VIEW", "PALANTIR", "ANTHROPIC", "AI-GOVERNANCE", "ENTERPRISE-AI", "INVESTMENT-FRAMEWORK"]
 slug: "structural-view-001-palantir-vs-anthropic-april-2026"

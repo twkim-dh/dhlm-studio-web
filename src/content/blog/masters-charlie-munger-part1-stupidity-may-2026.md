@@ -5,7 +5,7 @@ date: "2026-05-29T12:30:00Z"
 category: "Blog"
 subcategory: "The Masters"
 badge: "masters"
-heroImage: "/images/content/masters-charlie-munger-part1-stupidity-hero.png"
+heroImage: "/images/content/masters-charlie-munger-part1-stupidity-hero.webp"
 readTime: "16 min"
 tags: ["MASTERS", "CHARLIE-MUNGER", "SURVIVAL", "INVESTING-PHILOSOPHY", "COMPOUNDING"]
 slug: "masters-charlie-munger-part1-stupidity-may-2026"

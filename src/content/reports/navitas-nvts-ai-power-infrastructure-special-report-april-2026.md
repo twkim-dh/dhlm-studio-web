@@ -4,7 +4,7 @@ description: "NVTS at $1.54B market cap on $7.3M quarterly revenue. NVIDIA-linke
 date: "2026-04-17"
 category: "Special Report"
 badge: "special"
-heroImage: "/images/content/navitas-nvts-hero.png"
+heroImage: "/images/content/navitas-nvts-hero.webp"
 readTime: "18 min"
 tags: ["NVTS", "NVDA", "AI", "SEMICONDUCTORS", "INFRASTRUCTURE", "POWER", "GAN", "SIC"]
 slug: "navitas-nvts-ai-power-infrastructure-special-report-april-2026"

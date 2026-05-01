@@ -9,7 +9,7 @@ export interface BlogPost {
   description: string;
   /** When true, the page sets robots: noindex,nofollow and is omitted from sitemap. */
   noindex?: boolean;
-  /** Hero image path e.g. /images/content/deep-dive-report.png */
+  /** Hero image path e.g. /images/content/deep-dive-report.webp */
   heroImage?: string;
   /** ISO date string for last significant content update — shown as "Updated" and used in Article JSON-LD dateModified */
   lastUpdated?: string;
@@ -23,7 +23,7 @@ export const blogPosts: BlogPost[] = [
     slug: 'nvidia-worlds-most-valuable-company-2026',
     title: 'NVIDIA at $4.2 Trillion: The 3 Catalysts That Decide the Next 12 Months',
     category: 'Markets', catColor: '#00D474', date: '2026-04-02', readTime: '6 min',
-    heroImage: '/images/content/nvidia-3-catalysts-hero.png',
+    heroImage: '/images/content/nvidia-3-catalysts-hero.webp',
     description: 'Data center +90% YoY, 77% gross margin, $60B backlog. Three make-or-break events for NVIDIA in 2026 — plus bull ($220), base ($165), and bear ($120) price scenarios.',
     calculatorLinks: [
       { text: 'Before sizing a position in NVIDIA, run the numbers — how much of your portfolio is actually at risk?', href: '/calculators/position-size', ctaText: 'Position Size Calculator' },
@@ -43,7 +43,7 @@ export const blogPosts: BlogPost[] = [
     title: 'Top 5 AI Stocks to Watch Right Now (2026)',
     category: 'Markets', catColor: '#00D474', date: '2026-04-02', readTime: '7 min',
     lastUpdated: '2026-04-12',
-    heroImage: '/images/content/top5-ai-stocks-hero.png',
+    heroImage: '/images/content/top5-ai-stocks-hero.webp',
     description: 'The top 5 AI stocks dominating 2026: NVDA, MSFT, GOOGL, META, and PLTR. Learn why each stock matters and how to evaluate them.',
     noindex: true,
     sections: [
@@ -57,7 +57,7 @@ export const blogPosts: BlogPost[] = [
     slug: 'what-is-pe-ratio-beginners-guide',
     title: 'What is P/E Ratio? A Simple Guide for Beginners',
     category: 'Markets', catColor: '#00D474', date: '2026-04-01', readTime: '4 min',
-    heroImage: '/images/content/pe-ratio-beginners-guide-hero.png',
+    heroImage: '/images/content/pe-ratio-beginners-guide-hero.webp',
     description: 'Learn what the P/E ratio means, how to calculate it, and what counts as a good or bad P/E ratio with real stock examples.',
     calculatorLinks: [
       { text: 'P/E tells you the price. Compound interest shows what that price does over time. Model it free.', href: '/calculators/compound-interest', ctaText: 'Compound Interest Calculator' },
@@ -76,7 +76,7 @@ export const blogPosts: BlogPost[] = [
     slug: 'how-to-read-stock-market-data-guide',
     title: 'How to Read Stock Market Data — Beginner\'s Guide',
     category: 'Markets', catColor: '#00D474', date: '2026-04-01', readTime: '5 min',
-    heroImage: '/images/content/how-to-read-stock-market-data-hero.png',
+    heroImage: '/images/content/how-to-read-stock-market-data-hero.webp',
     description: 'A complete beginner\'s guide to reading stock market data: ticker symbols, price, volume, market cap, percentage changes, and charts.',
     calculatorLinks: [
       { text: 'Reading data is step one. Calculating how much to risk per trade before you enter is step two.', href: '/calculators/position-size', ctaText: 'Position Size Calculator' },
@@ -93,7 +93,7 @@ export const blogPosts: BlogPost[] = [
     slug: 'us-dominates-global-wealth-billionaires-2026',
     title: 'US Dominates Global Wealth 2026: The Structural Forces Behind It',
     category: 'Rankings', catColor: '#D4A843', date: '2026-04-16', readTime: '8 min',
-    heroImage: '/images/content/us-dominates-global-wealth-hero.png',
+    heroImage: '/images/content/us-dominates-global-wealth-hero.webp',
     description: 'BRUTAL EDGE™ VERDICT: American wealth dominance is not a cultural victory. It is a structural outcome of three forces: technology platform economics, deep capital markets, and dollar reserve status. When one of those forces weakens, the pattern breaks.',
     sections: [
       { heading: 'The Number', body: 'As of April 2026, the United States hosts 902 billionaires — more than any other country by a wide margin. China is second (around 750-800), followed by India (~280) and Germany (~170).\n\nSeven of the top 10 individuals on global wealth rankings are American. The top 10 U.S. billionaires alone gained approximately $700 billion in the last year. Globally, the billionaire population grew 5% year over year to roughly 3,030 individuals, with combined wealth of around $16 trillion.\n\nThe raw numbers make America look dominant. The more useful question is: why.' },
@@ -109,7 +109,7 @@ export const blogPosts: BlogPost[] = [
     title: 'Top 10 Countries by GDP — World Economy 2026',
     category: 'Rankings', catColor: '#D4A843', date: '2026-04-01', readTime: '6 min',
     lastUpdated: '2026-04-12',
-    heroImage: '/images/content/gdp-top10-countries-hero.png',
+    heroImage: '/images/content/gdp-top10-countries-hero.webp',
     description: 'The top 10 largest economies by GDP in 2026. See how the US, China, Germany, and India rank in the global economic landscape.',
     sections: [
       { heading: 'The Global GDP Leaderboard 2026', body: 'The world economy in 2026 is dominated by familiar names, but the rankings are shifting. The United States maintains its position as the world\'s largest economy with a GDP of approximately $28.8 trillion, driven by AI-led productivity gains, strong consumer spending, and robust tech sector growth. China holds second place at $19.5 trillion, though its growth has slowed to approximately 4.5% as the property sector continues to weigh on the economy. Germany ($4.6T), Japan ($4.4T), and India ($4.3T) round out the top five. India has nearly overtaken Japan and is projected to pass it within the next 12 months, making it the fourth-largest economy in the world. The United Kingdom ($3.5T), France ($3.2T), Brazil ($2.3T), Canada ($2.2T), and Italy ($2.1T) complete the top ten. View our Rankings page for detailed economic indicators and GDP comparisons with interactive charts and historical data trends.' },
@@ -123,7 +123,7 @@ export const blogPosts: BlogPost[] = [
     slug: 'bitcoin-vs-ethereum-differences-explained',
     title: 'Bitcoin vs Ethereum — Key Differences Explained',
     category: 'Crypto', catColor: '#F59E0B', date: '2026-04-02', readTime: '6 min',
-    heroImage: '/images/content/bitcoin-vs-ethereum-hero.png',
+    heroImage: '/images/content/bitcoin-vs-ethereum-hero.webp',
     lastUpdated: '2026-04-12',
     description: 'Bitcoin vs Ethereum: understand the key differences in purpose, technology, supply, speed, and use cases for the two largest cryptocurrencies.',
     calculatorLinks: [
@@ -141,7 +141,7 @@ export const blogPosts: BlogPost[] = [
     slug: 'top-crypto-gainers-this-month-april-2026',
     title: 'Top Crypto Gainers April 2026: Render +35%, Sui +28% — Real Rally or Hype?',
     category: 'Crypto', catColor: '#F59E0B', date: '2026-04-01', readTime: '7 min',
-    heroImage: '/images/content/top-crypto-gainers-april-2026-hero.png',
+    heroImage: '/images/content/top-crypto-gainers-april-2026-hero.webp',
     description: '3 specific catalysts, 3 risk signals (funding rate, USDT supply, ETF flows), and how April 2026 compares to the 2017, 2021, and 2024 cycles. Data-only breakdown.',
     calculatorLinks: [
       { text: 'Crypto rallies reverse fast. Know exactly how much you\'re risking before entering any position.', href: '/calculators/position-size', ctaText: 'Position Size Calculator' },
@@ -161,7 +161,7 @@ export const blogPosts: BlogPost[] = [
     slug: 'top-stock-gainers-today-how-to-spot-winners-2026',
     title: 'Top Stock Gainers Today: How to Spot Winners Before They Surge (2026)',
     category: 'Markets', catColor: '#00D474', date: '2026-03-31', readTime: '7 min',
-    heroImage: '/images/content/top-stock-gainers-today-hero.png',
+    heroImage: '/images/content/top-stock-gainers-today-hero.webp',
     description: 'Learn proven strategies for identifying top stock gainers before they make their biggest moves. Data-driven methods for finding winning stocks in 2026.',
     calculatorLinks: [
       { text: 'Spotted a potential winner? Calculate exactly how many shares to buy based on your portfolio and max risk.', href: '/calculators/position-size', ctaText: 'Position Size Calculator' },
@@ -180,7 +180,7 @@ export const blogPosts: BlogPost[] = [
     slug: 'sp500-sector-performance-2026-which-sectors-leading',
     title: 'S&P 500 Sector Performance 2026: Which Sectors Are Leading?',
     category: 'Markets', catColor: '#00D474', date: '2026-03-31', readTime: '6 min',
-    heroImage: '/images/content/sp500-sector-performance-2026-hero.png',
+    heroImage: '/images/content/sp500-sector-performance-2026-hero.webp',
     description: 'A comprehensive breakdown of S&P 500 sector performance in 2026. Discover which sectors are outperforming and where smart money is flowing.',
     calculatorLinks: [
       { text: 'Rather than rotating between sectors, DCA into the broad S&P 500 and capture the whole market systematically.', href: '/calculators/dca', ctaText: 'DCA Calculator' },
@@ -197,7 +197,7 @@ export const blogPosts: BlogPost[] = [
     slug: 'pre-market-movers-why-stocks-gap-up-down-before-open',
     title: 'Pre-Market Movers: Why Stocks Gap Up or Down Before Open',
     category: 'Markets', catColor: '#00D474', date: '2026-03-30', readTime: '6 min',
-    heroImage: '/images/content/pre-market-movers-hero.png',
+    heroImage: '/images/content/pre-market-movers-hero.webp',
     description: 'Understand why stocks gap up or down in pre-market trading. Learn to analyze pre-market movers and make better trading decisions in 2026.',
     sections: [
       { heading: 'How Pre-Market Trading Works', body: 'Pre-market trading occurs between 4:00 AM and 9:30 AM ET, before the regular market session opens. During this window, stocks can move dramatically based on overnight news, earnings releases, economic data, and global market movements. In 2026, approximately 8% of total daily volume occurs pre-market, up from 5% in 2020, driven by algorithmic trading and global market integration. The mechanics are straightforward but the implications are significant. Pre-market trades execute through Electronic Communication Networks (ECNs) with wider bid-ask spreads than regular hours. This means prices can be more volatile and less reliable as indicators of where a stock will trade at the open. A stock showing +5% pre-market might open at +3% or +8% depending on the flood of orders at 9:30 AM. Check our Markets page for real-time pre-market movers updated every minute. Understanding pre-market dynamics gives you a critical edge: 65% of daily high or low prices are set within the first 15 minutes of regular trading, and pre-market trends often establish the direction.' },
@@ -213,7 +213,7 @@ export const blogPosts: BlogPost[] = [
     slug: 'most-shorted-stocks-2026-short-squeeze-candidates',
     title: 'Most Shorted Stocks 2026: Short Squeeze Candidates to Watch',
     category: 'Markets', catColor: '#00D474', date: '2026-03-29', readTime: '7 min',
-    heroImage: '/images/content/most-shorted-stocks-2026-hero.png',
+    heroImage: '/images/content/most-shorted-stocks-2026-hero.webp',
     description: 'Discover the most heavily shorted stocks in 2026 and which ones have the highest short squeeze potential based on data analysis.',
     calculatorLinks: [
       { text: 'Short squeeze plays move fast. Know your exact max loss and position size before entering a volatile trade.', href: '/calculators/position-size', ctaText: 'Position Size Calculator' },
@@ -232,7 +232,7 @@ export const blogPosts: BlogPost[] = [
     slug: 'dividend-aristocrats-2026-consecutive-increases',
     title: 'Dividend Aristocrats 2026: 25+ Years of Consecutive Increases',
     category: 'Markets', catColor: '#00D474', date: '2026-03-28', readTime: '6 min',
-    heroImage: '/images/content/dividend-aristocrats-2026-hero.png',
+    heroImage: '/images/content/dividend-aristocrats-2026-hero.webp',
     description: 'The complete list of Dividend Aristocrats in 2026 with 25+ consecutive years of dividend increases. Reliable income stocks for long-term investors.',
     calculatorLinks: [
       { text: 'Dividend Aristocrats + reinvestment is the classic compound growth engine. Model exactly how much it builds over 30 years.', href: '/calculators/compound-interest', ctaText: 'Compound Interest Calculator' },
@@ -251,7 +251,7 @@ export const blogPosts: BlogPost[] = [
     slug: 'nvidia-vs-apple-vs-microsoft-ai-stock-showdown-2026',
     title: 'NVIDIA vs Apple vs Microsoft: AI Stock Showdown 2026',
     category: 'Markets', catColor: '#00D474', date: '2026-03-27', readTime: '7 min',
-    heroImage: '/images/content/nvidia-vs-apple-vs-microsoft-hero.png',
+    heroImage: '/images/content/nvidia-vs-apple-vs-microsoft-hero.webp',
     description: 'A head-to-head comparison of NVIDIA, Apple, and Microsoft in the AI race. Which mega-cap tech stock is the best investment in 2026?',
     sections: [
       { heading: 'The Three AI Giants', body: 'NVIDIA, Apple, and Microsoft are the three most valuable companies on earth in 2026, each with market caps exceeding $3 trillion. But their AI strategies could not be more different. NVIDIA is the infrastructure play — selling the picks and shovels of the AI gold rush. Their GPUs power 80%+ of all AI training worldwide. Revenue grew 94% year-over-year to $130B, with data center revenue alone exceeding $100B. The Blackwell architecture is sold out through 2027. NVIDIA trades at 45x forward earnings, expensive but backed by explosive growth. Apple is the consumer AI play — integrating AI into the devices that 2 billion people use daily. Apple Intelligence, their on-device AI suite, is driving the strongest iPhone upgrade cycle since iPhone 6. Services revenue (including AI features) hit $100B annually. Apple trades at 32x forward earnings with the steadiest revenue growth of the three. Microsoft is the enterprise AI play — Copilot is embedded in Office 365, Azure AI revenue grows 55% YoY, and their OpenAI partnership gives them exclusive access to the most advanced models. Microsoft trades at 35x forward earnings. Visit our Markets page for real-time price comparisons and analyst ratings for all three stocks.' },
@@ -267,7 +267,7 @@ export const blogPosts: BlogPost[] = [
     slug: 'how-tariffs-affect-stock-prices-data-driven-analysis',
     title: 'How Tariffs Affect Stock Prices: A Data-Driven Analysis',
     category: 'Markets', catColor: '#00D474', date: '2026-03-27', readTime: '8 min',
-    heroImage: '/images/content/how-tariffs-affect-stock-prices-hero.png',
+    heroImage: '/images/content/how-tariffs-affect-stock-prices-hero.webp',
     description: 'A comprehensive data analysis of how tariffs impact stock prices across sectors. Historical evidence from 2018-2026 tariff actions.',
     sections: [
       { heading: 'Tariff Impact by the Numbers', body: 'Since 2018, the US has implemented multiple rounds of tariffs affecting trillions of dollars in trade. The data reveals clear patterns in how stock prices respond. On the day tariffs are announced, the S&P 500 drops an average of 1.8%. Import-dependent sectors (Consumer Discretionary, Technology) fall 2.5-4%, while domestic-focused sectors (Utilities, Healthcare) are largely flat. However, the announcement effect is temporary — markets typically recover 50-70% of the initial drop within two weeks as businesses begin adapting. The 2026 reciprocal tariffs (10% baseline, up to 34% on China) followed this historical pattern but with amplified magnitude. The S&P 500 dropped 4.8% in the announcement week — more than double the historical average — because the scope was unprecedented, affecting 180+ countries simultaneously. Technology stocks bore the brunt: Apple fell 8%, semiconductor companies dropped 6-10%, and retailers with Asian supply chains declined 5-12%. Our Markets page tracks real-time tariff impact data across all sectors.' },
@@ -281,7 +281,7 @@ export const blogPosts: BlogPost[] = [
     slug: 'worlds-richest-people-2026-billionaire-rankings',
     title: 'World\'s Richest People 2026: What Billionaires Actually Own',
     category: 'Rankings', catColor: '#D4A843', date: '2026-04-16', readTime: '8 min',
-    heroImage: '/images/content/worlds-richest-people-2026-hero.png',
+    heroImage: '/images/content/worlds-richest-people-2026-hero.webp',
     description: 'BRUTAL EDGE™ VERDICT: Billionaire rankings are usually treated as entertainment. They shouldn\'t be. The top 10 billionaires collectively hold over $2.5 trillion in wealth, most of it locked in concentrated stock positions. When these people buy, sell, or borrow against their holdings, it moves real markets.',
     sections: [
       { heading: 'The Number', body: 'As of April 2026, approximately 3,030 billionaires globally control nearly $16 trillion in combined wealth. The top 20 alone hold about $3.8 trillion — more than the GDP of France. The top 10 hold roughly $2.5 trillion.\n\nFive years ago, crossing $200 billion was historic. Today, eight people are above that threshold. Elon Musk crossed $700 billion in January 2026 — the first person in history to do so.\n\nThe story is not wealth creation. It is wealth concentration into specific equity holdings.' },
@@ -296,7 +296,7 @@ export const blogPosts: BlogPost[] = [
     slug: 'largest-companies-by-market-cap-2026-trillion-dollar-club',
     title: 'Largest Companies by Market Cap 2026: Inside the Trillion Dollar Club',
     category: 'Rankings', catColor: '#D4A843', date: '2026-04-16', readTime: '8 min',
-    heroImage: '/images/content/largest-companies-market-cap-2026-hero.png',
+    heroImage: '/images/content/largest-companies-market-cap-2026-hero.webp',
     description: 'BRUTAL EDGE™ VERDICT: Reaching $1 trillion in market cap is no longer a ceiling. Four companies crossed $4 trillion this year. The real question has shifted from "who gets in" to "who gets squeezed out" — and the answer will reshape S&P 500 weightings for the next decade.',
     sections: [
       { heading: 'The Number', body: 'As of April 2026, eleven companies hold a market capitalization above $1 trillion. The top ten alone account for roughly $20 trillion in market value — nearly 18% of the global equity market capitalization of $115 trillion.\n\nFour of those have crossed the $4 trillion threshold: NVIDIA, Alphabet, Apple, and Microsoft. A milestone that didn\'t exist five years ago is now held by four companies simultaneously.\n\nThis is not a story about expansion. It is a story about concentration.' },
@@ -312,7 +312,7 @@ export const blogPosts: BlogPost[] = [
     slug: 'gdp-per-capita-rankings-2026-richest-countries',
     title: 'GDP Per Capita Rankings 2026: The Small Economies That Quietly Dominate',
     category: 'Rankings', catColor: '#D4A843', date: '2026-04-16', readTime: '8 min',
-    heroImage: '/images/content/gdp-per-capita-rankings-2026-hero.png',
+    heroImage: '/images/content/gdp-per-capita-rankings-2026-hero.webp',
     description: 'BRUTAL EDGE™ VERDICT: GDP per capita rankings are dominated by countries most investors cannot meaningfully invest in. Luxembourg, Liechtenstein, Monaco, and Qatar produce extraordinary per-person wealth, but their public equity markets are tiny or nonexistent. Economic size and investment access are two different questions — and this ranking proves it.',
     sections: [
       { heading: 'The Number', body: 'In 2026, the estimated average global GDP per capita (PPP) is approximately $25,591. Meanwhile, the top-ranked country produces nearly ten times that figure per person.\n\nMonaco leads at $256,667. Liechtenstein follows at $201,162. Luxembourg at $154,115. Ireland at $135,247. Singapore hovers near $155,000 in PPP terms.\n\nThe United States, at roughly $97,000 per capita, ranks around 9th-10th globally — despite having the world\'s largest economy.\n\nThe richest countries per person are small, specialized, and often financial hubs. That is not an accident.' },
@@ -327,7 +327,7 @@ export const blogPosts: BlogPost[] = [
     slug: 'fastest-growing-economies-2026-emerging-markets',
     title: 'Fastest Growing Economies 2026: Where Growth Actually Meets Investable Markets',
     category: 'Rankings', catColor: '#D4A843', date: '2026-04-16', readTime: '8 min',
-    heroImage: '/images/content/fastest-growing-economies-2026-hero.png',
+    heroImage: '/images/content/fastest-growing-economies-2026-hero.webp',
     description: 'BRUTAL EDGE™ VERDICT: The fastest-growing economies in 2026 are clustered in Asia and Africa. The fastest-growing stock markets are not. GDP growth is real economic activity. Equity returns require investable structures, governance, and access — three things most high-growth emerging markets struggle to deliver simultaneously.',
     sections: [
       { heading: 'The Number', body: 'Global GDP growth for 2026 is forecast at approximately 3.1%. Advanced economies average under 2%. Emerging markets in Asia lead by a wide margin.\n\nIndia: 6.2-6.9%. More than triple the US growth rate. World\'s fastest-growing major economy.\nVietnam: 6.3%. Despite 20% US tariff headwinds.\nPhilippines: 5.7%. Consumer-driven domestic expansion.\nIndonesia: 5.0%. Infrastructure and manufacturing tailwinds.\nEgypt: 4.5%+. Stabilizing from currency crisis.\n\nMeanwhile, Guyana\'s GDP is projected to grow 22.95% — the fastest in the world — driven entirely by an oil production boom that would be irrelevant to most investors.\n\nGrowth rates tell you where economic activity is expanding. They do not tell you where capital is compounding.' },
@@ -342,7 +342,7 @@ export const blogPosts: BlogPost[] = [
     slug: 'most-valuable-brands-2026-global-brand-power',
     title: 'Most Valuable Brands 2026: Why Brand Power Doesn\'t Always Equal Stock Power',
     category: 'Rankings', catColor: '#D4A843', date: '2026-04-16', readTime: '8 min',
-    heroImage: '/images/content/most-valuable-brands-2026-hero.png',
+    heroImage: '/images/content/most-valuable-brands-2026-hero.webp',
     description: 'BRUTAL EDGE™ VERDICT: Brand value rankings look like investment ideas but aren\'t. The world\'s 500 most valuable brands grew 11% in 2026 to $10.4 trillion — outpacing global GDP growth by 3.6x. But brand value and stock returns diverge in critical ways. Apple\'s brand is worth $608 billion while its market cap is $3.8 trillion. The gap tells you where pricing power ends and capital structure begins.',
     sections: [
       { heading: 'The Number', body: 'Global top 500 brands in 2026: $10.4 trillion combined brand value. Growth rate of 11% year-over-year, against global GDP growth of just 3.1%.\n\nTop 5 Brands (Brand Finance Global 500, 2026):\n1. Apple — $607.6 billion (+6% YoY)\n2. Microsoft — $565.2 billion (+23% YoY, first time above $550B)\n3. Google — $433.1 billion (+5% YoY)\n4. Amazon — $369.9 billion (+4% YoY)\n5. NVIDIA — $184.3 billion (+110% YoY, jumped 4 spots)\n\nUS technology dominates the top 10. Chinese tech (TikTok, WeChat, Tencent) and state banks follow in the 11–30 range.' },
@@ -358,7 +358,7 @@ export const blogPosts: BlogPost[] = [
     slug: 'bitcoin-price-prediction-2026-expert-analysis',
     title: 'Bitcoin Price Prediction 2026: Expert Analysis and Forecasts',
     category: 'Crypto', catColor: '#F59E0B', date: '2026-03-26', readTime: '7 min',
-    heroImage: '/images/content/bitcoin-price-prediction-2026-hero.png',
+    heroImage: '/images/content/bitcoin-price-prediction-2026-hero.webp',
     description: 'Expert Bitcoin price predictions for 2026. Technical analysis, on-chain data, and institutional forecasts for BTC price targets.',
     sections: [
       { heading: 'Where Bitcoin Stands in April 2026', body: 'Bitcoin trades at approximately $72,000 in early April 2026, up 71% from its 2026 opening price of $42,000. The rally has been driven by three converging forces: the halving cycle effect (the April 2024 halving reduced supply issuance by 50%), institutional ETF inflows exceeding $3 billion per month, and increasing adoption as a treasury reserve asset by corporations. The technical picture is bullish: Bitcoin trades above its 200-day moving average ($58,000), the monthly MACD is in a bullish crossover, and on-chain data shows long-term holders are accumulating rather than distributing — a pattern that historically precedes major price advances. However, the macro environment adds uncertainty. Tariff-driven inflation could force the Federal Reserve to maintain higher interest rates, which historically creates headwinds for risk assets including Bitcoin. The correlation between Bitcoin and the Nasdaq remains elevated at 0.65, meaning tech stock movements significantly influence crypto prices. Check our Markets page for real-time Bitcoin price tracking alongside traditional market data.' },
@@ -374,7 +374,7 @@ export const blogPosts: BlogPost[] = [
     slug: 'top-10-cryptocurrencies-market-cap-2026-guide',
     title: 'Top 10 Cryptocurrencies 2026: BTC $1.42T, ETH $380B, SOL $95B Ranked',
     category: 'Crypto', catColor: '#F59E0B', date: '2026-04-01', readTime: '7 min',
-    heroImage: '/images/content/top-10-cryptocurrencies-2026-hero.png',
+    heroImage: '/images/content/top-10-cryptocurrencies-2026-hero.webp',
     description: 'Crypto market cap hit $3.2T in 2026. Bitcoin dominates at 44% share with $1.42T. Ethereum $380B. Solana $95B. Where does each top-10 coin sit and what is each one really good at?',
     sections: [
       { heading: 'Top 10 by Market Cap', body: 'The cryptocurrency market reached $3.2 trillion in total market cap in April 2026, approaching its 2021 all-time high. The top 10 cryptocurrencies: 1) Bitcoin (BTC) — $1.42T market cap, $72,000 price. The undisputed king of crypto, Bitcoin dominates with 44% market share. Its role has evolved from speculative asset to institutional-grade store of value, with spot ETFs holding $80B+. 2) Ethereum (ETH) — $380B market cap, $3,200 price. The smart contract platform powering DeFi, NFTs, and tokenization. Ethereum\'s shift to Proof of Stake reduced energy consumption by 99.9%. 3) Solana (SOL) — $95B market cap, $210 price. The fastest major blockchain, processing 65,000 transactions per second. Solana captured significant DeFi and NFT market share from Ethereum. 4) BNB — $72B, $480. Binance\'s ecosystem token powering the world\'s largest exchange. 5) XRP — $65B, $1.15. Ripple\'s cross-border payment token, boosted by SEC lawsuit resolution. 6) Cardano (ADA) — $28B, $0.80. 7) Avalanche (AVAX) — $22B, $55. 8) Polkadot (DOT) — $18B, $12. 9) Chainlink (LINK) — $15B, $25. 10) Toncoin (TON) — $14B, $5.50. Check our Markets page for real-time crypto price data alongside traditional market indicators.' },
@@ -390,7 +390,7 @@ export const blogPosts: BlogPost[] = [
     title: 'Ethereum vs Solana 2026: Which Blockchain Wins?',
     category: 'Crypto', catColor: '#F59E0B', date: '2026-04-01', readTime: '7 min',
     lastUpdated: '2026-04-12',
-    heroImage: '/images/content/ethereum-vs-solana-2026-hero.png',
+    heroImage: '/images/content/ethereum-vs-solana-2026-hero.webp',
     description: 'A comprehensive comparison of Ethereum and Solana in 2026. Performance, fees, ecosystem, and investment analysis for both blockchains.',
     sections: [
       { heading: 'The Technical Architecture: What Actually Differs and Why It Matters', body: 'The Ethereum versus Solana debate is often framed as a contest between speed and security, but the actual technical differences are more nuanced and have direct implications for which types of applications each platform can support well.\n\nEthereum was designed around a philosophy of maximizing decentralization and security at the base layer, even at the cost of throughput. The base layer (Layer 1) processes approximately 15 to 30 transactions per second, with block times of 12 seconds since the Merge. This is intentionally conservative — the design prioritizes that any laptop-class computer anywhere in the world can run a validator node, which is why Ethereum has accumulated over 900,000 active validators. That validator count is the source of Ethereum\'s security claims: no single entity controls enough stake to unilaterally threaten network integrity.\n\nThe throughput limitation is addressed through Layer 2 rollup networks — Arbitrum, Optimism, and Base being the largest. These L2 networks process transactions off-chain, compress them, and post proofs or transaction data back to Ethereum for settlement. The result is transaction costs in the range of fractions of a cent and throughput that effectively exceeds Ethereum\'s base layer by orders of magnitude. The complexity tradeoff is that users interact with multiple distinct networks, bridges between them carry security assumptions, and the developer experience is more fragmented than a single-chain architecture.\n\nSolana took the opposite design choice: optimize throughput at the single-chain level and accept a higher hardware requirement for validators. Solana validators require high-end server hardware — fast CPUs, significant RAM, high-bandwidth networking — which limits who can run a validator economically. The network currently operates approximately 1,900 active validators, compared to Ethereum\'s 900,000. The throughput result is impressive: Solana processes thousands of transactions per second at fees so low they are effectively negligible for end users. The architectural risk is that higher hardware requirements and a smaller validator set create more centralization than Ethereum\'s design. Track live ETH and SOL prices on the DHLM Studio Markets page.' },
@@ -403,7 +403,7 @@ export const blogPosts: BlogPost[] = [
     slug: 'nvidia-vs-amd-ai-inference-cost-2026',
     title: 'NVIDIA vs AMD: AI Inference Cost Per Token in 2026',
     category: 'Markets', catColor: '#00D474', date: '2026-04-08', readTime: '8 min',
-    heroImage: '/images/content/nvidia-vs-amd-ai-inference-2026-hero.png',
+    heroImage: '/images/content/nvidia-vs-amd-ai-inference-2026-hero.webp',
     description: 'NVIDIA H200 vs AMD MI350 head to head on AI inference cost per million tokens. Latency, throughput, software ecosystem maturity, and what hyperscaler order books reveal about the real AI accelerator race in 2026.',
     sections: [
       { heading: 'The Inference Economics Problem Nobody Talks About', body: 'Most AI infrastructure coverage focuses on training. Training is where the largest single contracts get signed and where NVIDIA Hopper and Blackwell GPUs have approximately 90 percent market share. But the much larger long-term opportunity is inference — running already-trained models against real user queries — and that is where the cost battle is being fought today.\n\nA single ChatGPT-class query consumes between 0.001 and 0.01 dollars in compute cost depending on model size, prompt length, and the underlying accelerator. Multiplied by the billions of daily queries that will flow through commercial AI products by late 2026, the addressable inference market is expected to exceed 90 billion dollars annually according to McKinsey AI Infrastructure Outlook 2026. Capturing inference market share matters more than capturing training market share because inference workloads recur every day forever, while training is episodic.\n\nThe per-token cost gap is what investors should watch. NVIDIA H200 deployed in a typical hyperscaler configuration delivers approximately 3,800 tokens per second on a Llama 3 70B model at FP8 precision. AMD MI350X published benchmarks show approximately 2,900 tokens per second on the same workload — about 76 percent of NVIDIA throughput. After accounting for hardware acquisition cost (MI350X street price is approximately 28 percent below H200), the effective cost per million tokens lands within roughly 8 percent of NVIDIA. This is the closest AMD has ever been to genuine cost parity. Live MSFT and NVDA performance is tracked on our Markets page.' },
@@ -418,7 +418,7 @@ export const blogPosts: BlogPost[] = [
     slug: 'tesla-vs-byd-global-ev-market-share-2026',
     title: 'Tesla vs BYD: Global EV Market Share Battle in 2026',
     category: 'Markets', catColor: '#00D474', date: '2026-04-08', readTime: '8 min',
-    heroImage: '/images/content/tesla-vs-byd-ev-market-2026-hero.png',
+    heroImage: '/images/content/tesla-vs-byd-ev-market-2026-hero.webp',
     description: 'Tesla vs BYD by the numbers in 2026. Global delivery share, regional breakdown, gross margins, battery vertical integration, and what each company strongest market reveals about who actually wins the EV race.',
     sections: [
       { heading: 'Global Delivery Share: BYD Already Won the Volume Race', body: 'BYD passed Tesla in quarterly battery electric vehicle deliveries during Q4 2023 and never looked back. The 2025 calendar year final numbers were stark: BYD delivered approximately 4.27 million new energy vehicles globally including approximately 1.95 million pure battery electric vehicles, while Tesla delivered approximately 1.79 million units across all models. On pure BEV count BYD now leads Tesla by approximately 9 percent and the gap is widening.\n\nThe full picture is more nuanced. BYD reported number includes approximately 2.3 million plug-in hybrid vehicles, which Tesla does not produce at all. Looking strictly at pure battery electric vehicles, BYD lead is meaningful but not overwhelming. Looking at average selling price, Tesla still commands a significant premium — Tesla average revenue per vehicle in 2025 was approximately 41,000 dollars compared to BYD approximately 22,000 dollars.\n\nThe revenue picture makes the rivalry look much more even than the unit picture. Tesla automotive revenue for 2025 was approximately 84 billion dollars. BYD automotive revenue was approximately 95 billion dollars. The gap is roughly 13 percent in BYD favor on revenue versus 9 percent on BEV units. That implies BYD is actually closing the average selling price gap as it pushes upmarket with the Han, Tang, and Yangwang brand vehicles. Live TSLA performance is tracked on our Markets page.' },
@@ -433,7 +433,7 @@ export const blogPosts: BlogPost[] = [
     slug: 'microsoft-copilot-vs-google-gemini-enterprise-2026',
     title: 'Microsoft Copilot vs Google Gemini Enterprise: The 2026 Race',
     category: 'Markets', catColor: '#00D474', date: '2026-04-08', readTime: '8 min',
-    heroImage: '/images/content/microsoft-copilot-vs-google-gemini-2026-hero.png',
+    heroImage: '/images/content/microsoft-copilot-vs-google-gemini-2026-hero.webp',
     description: 'Microsoft Copilot at $18B run rate vs Google Gemini Enterprise rollout. Distribution advantage, pricing, integration depth, and what enterprise IT buyers actually choose in 2026.',
     sections: [
       { heading: 'Two Different Distribution Stories', body: 'Microsoft Copilot for Microsoft 365 reached an estimated 18 billion dollar annualized run rate by Q4 2025 according to Microsoft fiscal 2025 earnings call commentary. Google Workspace with Gemini reached approximately 4 billion dollar annualized run rate over the same period. The 4.5x revenue gap is real but the gap is not primarily about product quality — it is about distribution.\n\nMicrosoft enters the AI productivity race with approximately 400 million Microsoft 365 commercial seats already deployed across roughly 1 million enterprise customers. The Copilot upsell motion does not require any new vendor relationship, IT procurement cycle, change management initiative, or contract negotiation. A Microsoft 365 administrator can enable Copilot for a department in approximately 4 hours of configuration. The pricing is 30 dollars per user per month, billed through the existing Microsoft enterprise agreement.\n\nGoogle Workspace serves approximately 11 million paying business customers including approximately 60 percent of US K-12 schools and a substantial small business base. The enterprise count outside of education and small business is meaningfully smaller — Google does not break out the number but industry estimates suggest under 200,000 enterprise customers compared to Microsoft 1 million. Google distribution advantage in education does not translate directly into Gemini Enterprise sales because schools rarely buy generative AI seats at scale. See our MSFT Deep Dive at /reports for the full BEAF breakdown.' },
@@ -448,7 +448,7 @@ export const blogPosts: BlogPost[] = [
     slug: 'palantir-vs-snowflake-government-ai-contracts-2026',
     title: 'Palantir vs Snowflake: Government AI Contract Battle in 2026',
     category: 'Markets', catColor: '#00D474', date: '2026-04-08', readTime: '8 min',
-    heroImage: '/images/content/palantir-vs-snowflake-2026-hero.png',
+    heroImage: '/images/content/palantir-vs-snowflake-2026-hero.webp',
     description: 'Palantir vs Snowflake by government revenue, contract size, sales motion, and margin profile in 2026. Why two very different data companies are converging on the same defense and intelligence opportunity.',
     sections: [
       { heading: 'Two Different Companies, One Customer Base', body: 'Palantir and Snowflake started as different companies serving different customers. Palantir was founded in 2003 with seed funding from In-Q-Tel (CIA venture arm) and built its reputation on classified intelligence and defense applications. Snowflake was founded in 2012 as a commercial cloud data warehouse aimed primarily at Fortune 500 enterprise analytics workloads. Throughout the mid 2010s the two companies almost never crossed paths.\n\nThat changed in 2024 and 2025. Palantir reported government revenue of approximately 1.4 billion dollars for fiscal 2025 (representing roughly 55 percent of total Palantir revenue). Snowflake government revenue is significantly smaller in absolute terms but grew approximately 60 percent year-over-year in fiscal 2026 from a small base. Both companies are now bidding on the same Department of Defense Joint Warfighting Cloud Capability (JWCC) task orders, the same intelligence community data analytics initiatives, and the same Veterans Affairs and Health and Human Services modernization projects.\n\nThe convergence is driven by a single reality: the federal government discovered generative AI in 2024 and the resulting procurement wave has created appetite for both Palantir-style integrated platforms and Snowflake-style flexible data infrastructure. Both companies now appear on the same shortlists for the same agency awards. Live PLTR performance is tracked on our Markets page.' },
@@ -463,7 +463,7 @@ export const blogPosts: BlogPost[] = [
     slug: 'apple-services-vs-google-cloud-revenue-growth-2026',
     title: 'Apple Services vs Google Cloud: Recurring Revenue Growth in 2026',
     category: 'Markets', catColor: '#00D474', date: '2026-04-08', readTime: '8 min',
-    heroImage: '/images/content/apple-services-vs-google-cloud-2026-hero.png',
+    heroImage: '/images/content/apple-services-vs-google-cloud-2026-hero.webp',
     description: 'Apple Services at $96B vs Google Cloud at $43B. Two completely different recurring revenue engines compared on growth, margin, customer base, and what each company growth rate reveals about its future.',
     sections: [
       { heading: 'Two Recurring Revenue Engines, Different Models', body: 'Apple Services and Google Cloud are both reported as separate segments by their respective parent companies and both grew over 12 percent year over year in calendar 2025. That is where the similarity ends. They are fundamentally different businesses serving different customers, generating different margins, and following completely different growth trajectories.\n\nApple Services delivered approximately 96 billion dollars in revenue for fiscal 2025 (the 12 months ending September 2025). The segment includes the App Store, Apple Music, Apple TV Plus, iCloud, Apple Care, advertising on Apple platforms, and various licensing arrangements with companies like Google (where Google pays Apple approximately 20 billion dollars annually to remain the default search engine on Safari). Apple Services growth was approximately 12.5 percent year over year, decelerating from 14.2 percent the prior year.\n\nGoogle Cloud delivered approximately 43 billion dollars in revenue for calendar 2025. The segment includes Google Cloud Platform infrastructure services, Workspace productivity software, and Google Maps Platform APIs. Google Cloud growth was approximately 31 percent year over year, accelerating from 27 percent the prior year. The growth rate gap is enormous — Google Cloud is growing roughly 2.5 times faster than Apple Services on a smaller revenue base. Live AAPL and GOOGL performance is tracked on our Markets page.' },
@@ -482,7 +482,7 @@ export const blogPosts: BlogPost[] = [
     catColor: '#00D474',
     date: '2026-04-21',
     readTime: '10 min',
-    heroImage: '/images/content/investing-101-week1-what-is-a-stock-hero.png',
+    heroImage: '/images/content/investing-101-week1-what-is-a-stock-hero.webp',
     description: 'A stock is ownership in a real business. Not a ticker. Not a gambling token. Here is what you are actually buying — and why that distinction changes everything about how you invest.',
     sections: [
       { heading: 'What Is a Stock?', body: 'You hear it everywhere. "Buy stocks." "The stock market is up." "I lost money in stocks." But most people who say these things cannot answer a simple question: what is a stock, exactly?\n\nHere is the one-sentence version: a stock is a small piece of ownership in a real business. When you buy one share of Apple, you own a fraction of a company that designs phones, runs services, and generates over $90 billion a year in profit. You are not betting on a number going up. You are buying a piece of a machine that makes money.\n\nThat distinction matters more than any chart pattern or analyst rating you will ever read. Because once you understand what a stock actually is, every other investing concept — valuation, dividends, risk, portfolio construction — starts to make sense.' },
@@ -503,7 +503,7 @@ export const blogPosts: BlogPost[] = [
     title: 'Crypto 101, Week 1: What Is Blockchain? (And Why Most Explanations Are Useless)',
     category: 'Crypto 101',
     catColor: '#8B5CF6',
-    heroImage: '/images/content/crypto101-week1-hero.png',
+    heroImage: '/images/content/crypto101-week1-hero.webp',
     date: '2026-02-14',
     readTime: '12 min',
     lastUpdated: '2026-02-14',
@@ -544,7 +544,7 @@ export const blogPosts: BlogPost[] = [
     title: 'Crypto 101, Week 2: Bitcoin vs. Ethereum — The Only Differences That Actually Matter',
     category: 'Crypto 101',
     catColor: '#8B5CF6',
-    heroImage: '/images/content/crypto101-week2-hero.png',
+    heroImage: '/images/content/crypto101-week2-hero.webp',
     date: '2026-02-21',
     readTime: '13 min',
     lastUpdated: '2026-02-21',
@@ -589,7 +589,7 @@ export const blogPosts: BlogPost[] = [
     title: 'Crypto 101, Week 3: Crypto Wallets Explained — Hot, Cold, and Everything Between',
     category: 'Crypto 101',
     catColor: '#8B5CF6',
-    heroImage: '/images/content/crypto101-week3-hero.png',
+    heroImage: '/images/content/crypto101-week3-hero.webp',
     date: '2026-02-28',
     readTime: '12 min',
     description: 'You bought Bitcoin. Now where does it actually live — and what happens if you lose your password? In 2025 alone, hackers made off with $3.4 billion in cryptocurrency. Understanding wallets isn\'t optional. It\'s the difference between owning crypto and thinking you own crypto.',
@@ -637,7 +637,7 @@ export const blogPosts: BlogPost[] = [
     title: 'Crypto 101, Week 4: How to Actually Buy Crypto Without Getting Scammed',
     category: 'Crypto 101',
     catColor: '#8B5CF6',
-    heroImage: '/images/content/crypto101-week4-hero.png',
+    heroImage: '/images/content/crypto101-week4-hero.webp',
     date: '2026-03-07',
     readTime: '13 min',
     description: 'In 2024, crypto-related scams cost US victims $9.3 billion — a 66% increase from the year before. This guide covers picking a real exchange, understanding where the fees actually hide, and recognizing the red flags before they cost you anything.',
@@ -677,7 +677,7 @@ export const blogPosts: BlogPost[] = [
     title: 'Crypto 101, Week 5: Staking Explained — Free Money or Hidden Risk?',
     category: 'Crypto 101',
     catColor: '#8B5CF6',
-    heroImage: '/images/content/crypto101-week5-hero.png',
+    heroImage: '/images/content/crypto101-week5-hero.webp',
     date: '2026-03-14',
     readTime: '14 min',
     description: 'If you\'ve spent five minutes on any crypto platform, you\'ve seen the pitch: "Earn up to 15% APY. Passive income while you sleep." Staking can genuinely be a useful tool. But calling it "free money" is like calling a savings account "free money" — technically true in the narrowest sense, and deeply misleading in every way that matters.',
@@ -721,7 +721,7 @@ export const blogPosts: BlogPost[] = [
     title: 'Crypto 101, Week 6: DeFi for Normal People — What It Is and Why You Should Care',
     category: 'Crypto 101',
     catColor: '#8B5CF6',
-    heroImage: '/images/content/crypto101-week6-hero.png',
+    heroImage: '/images/content/crypto101-week6-hero.webp',
     date: '2026-03-21',
     readTime: '14 min',
     description: 'Banks take your money, lend it to someone else, charge them interest, give you a fraction, and keep the rest. DeFi asks a simple question: what if software did the bank\'s job instead? In 2026, the DeFi market sits at roughly $238 billion with over 20 million unique users. Here\'s what it actually is, what it can do for you, and what can go wrong.',
@@ -757,7 +757,7 @@ export const blogPosts: BlogPost[] = [
     title: 'Crypto 101, Week 7: Reading Crypto Charts — The 5 Patterns That Actually Matter',
     category: 'Crypto 101',
     catColor: '#8B5CF6',
-    heroImage: '/images/content/crypto101-week7-hero.png',
+    heroImage: '/images/content/crypto101-week7-hero.webp',
     date: '2026-04-11',
     lastUpdated: '2026-04-11',
     readTime: '11 min',
@@ -806,7 +806,7 @@ export const blogPosts: BlogPost[] = [
     title: 'Crypto 101, Week 8: Portfolio Basics — How Much Crypto Should You Actually Own?',
     category: 'Crypto 101',
     catColor: '#8B5CF6',
-    heroImage: '/images/content/crypto101-week8-hero.png',
+    heroImage: '/images/content/crypto101-week8-hero.webp',
     date: '2026-04-11',
     lastUpdated: '2026-04-11',
     readTime: '12 min',
@@ -851,7 +851,7 @@ export const blogPosts: BlogPost[] = [
     title: 'Crypto 101, Week 9: Layer 1 vs. Layer 2 — Solana, Arbitrum, and the Scaling Wars',
     category: 'Crypto 101',
     catColor: '#8B5CF6',
-    heroImage: '/images/content/crypto101-week9-hero.png',
+    heroImage: '/images/content/crypto101-week9-hero.webp',
     date: '2026-04-11',
     lastUpdated: '2026-04-11',
     readTime: '11 min',
@@ -892,7 +892,7 @@ export const blogPosts: BlogPost[] = [
     title: 'Crypto 101, Week 10: NFTs in 2026 — Dead or Evolving?',
     category: 'Crypto 101',
     catColor: '#8B5CF6',
-    heroImage: '/images/content/crypto101-week10-hero.png',
+    heroImage: '/images/content/crypto101-week10-hero.webp',
     date: '2026-04-11',
     lastUpdated: '2026-04-11',
     readTime: '10 min',
@@ -929,7 +929,7 @@ export const blogPosts: BlogPost[] = [
     title: 'Crypto 101, Week 11: Crypto Taxes — What the IRS Actually Wants From You',
     category: 'Crypto 101',
     catColor: '#8B5CF6',
-    heroImage: '/images/content/crypto101-week11-hero.png',
+    heroImage: '/images/content/crypto101-week11-hero.webp',
     date: '2026-04-11',
     lastUpdated: '2026-04-11',
     readTime: '12 min',
@@ -970,7 +970,7 @@ export const blogPosts: BlogPost[] = [
     title: 'Crypto 101, Week 12: Advanced Strategies — Yield Farming, Liquidity Pools, and When to Walk Away',
     category: 'Crypto 101',
     catColor: '#8B5CF6',
-    heroImage: '/images/content/crypto101-week12-hero.png',
+    heroImage: '/images/content/crypto101-week12-hero.webp',
     date: '2026-04-11',
     lastUpdated: '2026-04-11',
     readTime: '13 min',
@@ -1013,7 +1013,7 @@ export const blogPosts: BlogPost[] = [
     catColor: '#F59E0B',
     date: '2026-04-11',
     lastUpdated: '2026-04-11',
-    heroImage: '/images/content/best-performing-crypto-2026-hero.png',
+    heroImage: '/images/content/best-performing-crypto-2026-hero.webp',
     readTime: '11 min',
     description: 'Not the hype list. The actual YTD leaderboard for 2026 — who led, why they led, and what the data says about whether any of it holds.',
     sections: [
@@ -1057,7 +1057,7 @@ export const blogPosts: BlogPost[] = [
     category: 'Crypto',
     catColor: '#F59E0B',
     date: '2026-04-08',
-    heroImage: '/images/content/solana-vs-ethereum-2026-hero.png',
+    heroImage: '/images/content/solana-vs-ethereum-2026-hero.webp',
     lastUpdated: '2026-04-11',
     readTime: '10 min',
     description: 'SOL vs ETH: not a horse race. A structural comparison of two chains that made opposite bets — and what each bet means for investors in 2026.',
@@ -1100,7 +1100,7 @@ export const blogPosts: BlogPost[] = [
     date: '2026-04-05',
     lastUpdated: '2026-04-11',
     readTime: '9 min',
-    heroImage: '/images/content/is-it-too-late-to-buy-bitcoin-2026-hero.png',
+    heroImage: '/images/content/is-it-too-late-to-buy-bitcoin-2026-hero.webp',
     description: 'Bitcoin is off its all-time high, institutions are in, and everyone has an opinion. Here\'s what the on-chain data, halving cycles, and ETF flows actually say — without the price targets.',
     sections: [
       {
@@ -1141,7 +1141,7 @@ export const blogPosts: BlogPost[] = [
     date: '2026-04-09',
     lastUpdated: '2026-04-11',
     readTime: '9 min',
-    heroImage: '/images/content/why-render-rndr-up-april-2026-hero.png',
+    heroImage: '/images/content/why-render-rndr-up-april-2026-hero.webp',
     description: 'Render\'s rally in 2026 has three specific drivers — AI compute demand, product improvements, and a token design that connects revenue to price. Here\'s what the market is pricing and what could go wrong.',
     sections: [
       {
@@ -1186,7 +1186,7 @@ export const blogPosts: BlogPost[] = [
     date: '2026-04-12',
     lastUpdated: '2026-04-11',
     readTime: '12 min',
-    heroImage: '/images/content/how-to-spot-next-crypto-winner-hero.png',
+    heroImage: '/images/content/how-to-spot-next-crypto-winner-hero.webp',
     description: 'Not tips, not guesses, not Twitter alpha. Seven on-chain and market signals that historically precede crypto outperformance — plus the red flags that indicate a project headed to zero.',
     sections: [
       {
@@ -1241,7 +1241,7 @@ export const blogPosts: BlogPost[] = [
     category: 'Crypto Analysis',
     catColor: '#00D474',
     date: '2026-04-09',
-    heroImage: '/images/content/best-crypto-during-crash-hero.png',
+    heroImage: '/images/content/best-crypto-during-crash-hero.webp',
     readTime: '10 min',
     description: 'The Fear and Greed Index is at 16. Bitcoin is down 43%. What has actually worked during past crypto crashes — and what has gone to zero? A data-driven look at COVID crash, Terra/LUNA, and FTX collapse to find the pattern.',
     lastUpdated: '2026-04-09',
@@ -1262,7 +1262,7 @@ export const blogPosts: BlogPost[] = [
     category: 'Market Analysis',
     catColor: '#60A5FA',
     date: '2026-04-10',
-    heroImage: '/images/content/crypto-fear-greed-explained-hero.png',
+    heroImage: '/images/content/crypto-fear-greed-explained-hero.webp',
     readTime: '10 min',
     description: 'The Crypto Fear and Greed Index is at 16 — deep Extreme Fear territory. Here is what the index actually measures, its 6 components, when it works as a trading signal, when it fails, and how professional investors actually use it.',
     lastUpdated: '2026-04-10',
@@ -1282,7 +1282,7 @@ export const blogPosts: BlogPost[] = [
     category: 'Crypto Analysis',
     catColor: '#A78BFA',
     date: '2026-04-11',
-    heroImage: '/images/content/ai-crypto-tokens-2026-hero.png',
+    heroImage: '/images/content/ai-crypto-tokens-2026-hero.webp',
     readTime: '11 min',
     description: 'Everyone wants AI crypto exposure. Most people are buying the wrong thing. This article covers Render (RENDER) and Bittensor (TAO) — the two credible AI infrastructure tokens — explains what makes them different, and provides a framework to separate real AI crypto from noise.',
     lastUpdated: '2026-04-11',
@@ -1303,7 +1303,7 @@ export const blogPosts: BlogPost[] = [
     catColor: '#BA7517',
     date: '2026-04-17',
     readTime: '15 min',
-    heroImage: '/images/content/livermore-masters-hero.png',
+    heroImage: '/images/content/livermore-masters-hero.webp',
     description: 'Jesse Livermore made $100M shorting the 1929 crash. He died broke at 63. The method worked. The man couldn\'t survive his own method. That\'s the lesson most investors miss.',
     sections: [
       {
@@ -1355,7 +1355,7 @@ export const blogPosts: BlogPost[] = [
     catColor: '#BA7517',
     date: '2026-04-10',
     readTime: '14 min',
-    heroImage: '/images/content/druckenmiller-masters-hero.png',
+    heroImage: '/images/content/druckenmiller-masters-hero.webp',
     description: '30% annualized for 30 years with zero losing years. Everyone studies his NVDA trade. Almost nobody studies why he\'d reverse it within weeks. The self-doubt is the strategy.',
     sections: [
       {
@@ -1411,7 +1411,7 @@ export const blogPosts: BlogPost[] = [
     catColor: "#BA7517",
     date: "2026-04-24",
     readTime: "14 min",
-    heroImage: "/images/content/masters-peter-lynch-part1-ten-bagger-hero.png",
+    heroImage: "/images/content/masters-peter-lynch-part1-ten-bagger-hero.webp",
     description: "Peter Lynch's most famous line  --  'invest in what you know'  --  is one of the most misunderstood sentences in investing. Here's what he actually meant, why it still matters in 2026, and how to turn everyday observation into disciplined investment hypotheses.",
     sections: [
       { heading: "The Uncomfortable Truth About How You Find Stocks", body: "You probably learned most of your stock ideas the same way:\nThey appeared in the headlines.\nThey trended on YouTube.\nReddit or X wouldn't shut up about them.\nYou looked at the chart.\nThen you got interested.\nBy the time that sequence completes, the stock is usually already expensive.\nPeter Lynch's career was built on inverting this process. His edge wasn't predictive genius. It wasn't proprietary data. It wasn't even superior access to management  --  though he had plenty of that.\nHis edge was simpler and more brutal:\nHe noticed things in real life before the market did, and then he did the work to verify whether what he noticed was actually investable.\nMost people who quote Lynch stop at the noticing part. They skip the verification. That's why they don't get his results.\nThis is Part 1 of a five-part series on Peter Lynch for 2026 markets. If you read only one part, read this one  --  because everything else fails without this foundation." },
@@ -1436,7 +1436,7 @@ export const blogPosts: BlogPost[] = [
     catColor: "#BA7517",
     date: "2026-05-01",
     readTime: "16 min",
-    heroImage: "/images/content/masters-peter-lynch-part2-categories-hero.png",
+    heroImage: "/images/content/masters-peter-lynch-part2-categories-hero.webp",
     description: "Lynch's six-category stock framework  --  slow growers, stalwarts, fast growers, cyclicals, asset plays, turnarounds. Why classification matters more than valuation, and why misclassification is the single largest cause of retail underperformance.",
     sections: [
       { heading: "The Mistake That Breaks Most Portfolios", body: "Part 1 was about where investment ideas come from. This part is about something harder:\nHow to think about those ideas correctly once you find them.\nMost retail investors apply the same mental template to completely different types of companies. They ask the same questions of:\nA utility\nA dominant semiconductor leader\nA cyclical steel producer\nA struggling retailer in turnaround\nA bank trading below book value\nA rapidly scaling software company\nThat is category confusion, and it is the single largest source of retail underperformance. Not bad stock selection. Not bad timing. Just applying the wrong framework to the wrong stock.\nPeter Lynch's most underrated practical contribution was not his ten-baggers. It was his insistence that before you evaluate a stock, you first classify it.\nBefore asking \"is this cheap or expensive?\" he asked:\n> What kind of stock is this?\nThat question sounds basic. It is not. Because if you misclassify the stock, you will inevitably:\nBuy it for the wrong reason\nHold it on the wrong timeframe\nSell it on the wrong signal\nThis is the Lynch framework that still works in 2026  --  possibly better than ever, because modern markets are saturated with narrative inflation that flattens categories and makes every stock sound like a \"fast grower.\"\nThe six categories:\n1. Slow growers\n2. Stalwarts\n3. Fast growers\n4. Cyclicals\n5. Asset plays\n6. Turnarounds\nEach behaves differently. Each demands different questions. Each has its own valuation logic, its own risk profile, and its own correct entry/exit discipline.\nGet the category right, and the stock becomes analyzable. Get it wrong, and no amount of research saves you." },
@@ -1460,7 +1460,7 @@ export const blogPosts: BlogPost[] = [
     catColor: "#BA7517",
     date: "2026-05-08",
     readTime: "17 min",
-    heroImage: "/images/content/masters-peter-lynch-part3-cocktail-party-hero.png",
+    heroImage: "/images/content/masters-peter-lynch-part3-cocktail-party-hero.webp",
     description: "The biggest threat to your portfolio is rarely the market  --  it's your reaction to the market. Lynch's cocktail party framework, why bear markets hurt disproportionately, and how to behave when price action tries to make you irrational.",
     sections: [
       { heading: "The Part Most Investors Skip", body: "Part 1 was about where ideas come from.\nPart 2 was about classifying what kind of stock you're dealing with.\nThis part is about the harder problem:\nHow to survive your own mind.\nMost investors do not fail because they lack information. They fail because they cannot manage the emotional experience of owning stocks.\nThey panic when prices fall.\nThey get greedy when prices rise.\nThey become most confident exactly at tops, most fragile exactly at bottoms.\nThey confuse volatility with danger, and excitement with opportunity.\nPeter Lynch understood something most finance education still avoids teaching clearly:\n> The biggest threat to your portfolio is usually not the market. It's your reaction to the market.\nEven a sound investing framework gets destroyed by fear, impatience, ego, or the desire to feel in control. The market has a brutal way of attacking all four simultaneously  --  often on the days you're most confident in your discipline.\nThis is why Lynch's psychological framework still matters in 2026. The information age hasn't fixed retail psychology. If anything, it's made it worse." },
@@ -1486,7 +1486,7 @@ export const blogPosts: BlogPost[] = [
     catColor: "#BA7517",
     date: "2026-05-15",
     readTime: "17 min",
-    heroImage: "/images/content/masters-peter-lynch-part4-numbers-hero.png",
+    heroImage: "/images/content/masters-peter-lynch-part4-numbers-hero.webp",
     description: "The financial checklist that turns a story into an investment. Debt, cash, PEG, inventory, margins, free cash flow  --  how to test whether an investment idea survives contact with reality before it deserves capital.",
     sections: [
       { heading: "Where Bad Investment Ideas Finally Die", body: "By the time most retail investors reach the numbers, they are already emotionally attached to the story.\nThat is the problem.\nThey discover a company. They like the product. They admire the founder. They see the market opportunity. They imagine the upside.\nAnd only after all that do they look at the financials  --  often hoping the numbers will confirm what they already want to believe.\nPeter Lynch did not work that way.\nHe loved finding ideas in the real world. But he never treated observation as enough. The moment a stock became interesting, the next step was always the same:\n> Check the numbers.\nThis is where discipline becomes real. Because stories are flexible. Numbers are far less forgiving.\nA company can have:\nA great product\nA compelling narrative\nA hot industry\nStrong social buzz\nFamous backers\n???and still be a terrible investment. Because the balance sheet is weak, the cash flow is fragile, the valuation is absurd, the inventory is rising, or the \"growth\" is far less profitable than it looks.\nPart 1 was about finding ideas.\nPart 2 was about classifying the stock correctly.\nPart 3 was about surviving your own psychology.\nNow we reach the point where many bad ideas finally die:\nThe financial checklist.\nThis is not about building an institutional-grade model for every stock. It's about learning how to test whether the story is actually investable." },
@@ -1512,7 +1512,7 @@ export const blogPosts: BlogPost[] = [
     catColor: "#BA7517",
     date: "2026-05-22",
     readTime: "18 min",
-    heroImage: "/images/content/masters-peter-lynch-part5-2026-hero.png",
+    heroImage: "/images/content/masters-peter-lynch-part5-2026-hero.webp",
     description: "How to apply a timeless investing philosophy to AI, space, energy, and the modern narrative-saturated market. What Lynch would likely avoid, where he would most likely look, and the updated formula for 'invest in what you know' in the information-overload era.",
     sections: [
       { heading: "The Most Dangerous Mistake Investors Make With Peter Lynch", body: "When retail investors hear \"Peter Lynch,\" they think of one thing:\nTen-baggers.\nThat's understandable. Lynch became legendary because he had an extraordinary ability to find companies that could multiply many times over.\nBut this is also the biggest distortion of his legacy.\nPeter Lynch was not a philosopher of excitement. He was a philosopher of practical asymmetry.\nHe did not ask:\nWhat sounds revolutionary?\nWhat is getting the most attention?\nWhat theme looks unstoppable?\nWhat stock has the most momentum?\nHe asked:\nWhat kind of company is this?\nIs the business understandable?\nAre the numbers real?\nHas the market misunderstood the opportunity?\nWhat could go wrong?\nIf we carry that mindset into 2026, the question is not \"what would Lynch buy because AI is hot?\"\nThe real question is:\n> How would Peter Lynch separate real opportunity from overhyped noise in a market dominated by AI, space, defense, energy, and narrative-driven capital?\nThis final chapter answers that question." },
@@ -1542,7 +1542,7 @@ export const blogPosts: BlogPost[] = [
     catColor: "#BA7517",
     date: "2026-05-29",
     readTime: "16 min",
-    heroImage: "/images/content/masters-charlie-munger-part1-stupidity-hero.png",
+    heroImage: "/images/content/masters-charlie-munger-part1-stupidity-hero.webp",
     description: "The first rule of investing is not getting wiped out. Charlie Munger spent his career teaching that spectacular success depends less on doing extraordinary things than on not doing fatal ones. Why avoidance of stupidity beats pursuit of brilliance  --  and why that lesson matters more in 2026 than ever.",
     sections: [
       { heading: "The Wrong Starting Point", body: "Most investors are told the path to wealth begins with genius.\n\nFaster insight. Sharper predictions. Better models. Better timing. Better courage. The winning investor gets framed as someone who sees what others miss, bets bigger than others dare, and proves they are right faster than the market.\n\nCharlie Munger spent his career teaching the opposite.\n\n**He did not believe great investing began with brilliance. He believed it began with avoiding catastrophe.**\n\nThat sounds simple. It is not. Because the human mind is naturally drawn toward heroic stories. We want wealth to come from boldness, conviction, and dramatic moves. We want the legend. We want the ten-bagger before everyone else sees it. We want to feel early, different, and right.\n\nMunger's worldview was colder. More practical. More durable.\n\nHe understood that in investing, as in life, spectacular success often depends less on doing a few extraordinary things than on **not doing a few fatal things.**\n\nThat is the real first principle.\n\n- Not maximizing upside\n- Not sounding clever\n- Not catching every rally\n- Not proving you are right\n\n**Just staying alive.**\n\nThis is Part 1 of a five-part series on Charlie Munger for 2026 markets. If you read only one part of the series, read this one  --  because every other lesson he taught assumes you have already accepted this one.\n\n---" },
@@ -1567,7 +1567,7 @@ export const blogPosts: BlogPost[] = [
     catColor: "#BA7517",
     date: "2026-06-05",
     readTime: "17 min",
-    heroImage: "/images/content/masters-charlie-munger-part2-ego-hero.png",
+    heroImage: "/images/content/masters-charlie-munger-part2-ego-hero.webp",
     description: "The invisible enemy in investing is usually the one in the mirror. Why the most dangerous force in markets is not lack of information, but the part of you that wants to feel smart, right, early, and in control. Fear, greed, and envy  --  the emotional trinity that empties portfolios.",
     sections: [
       { heading: "The Enemy Inside", body: "Most investors spend far too much time trying to defeat the market.\n\nCharlie Munger spent his life trying to teach people to defeat something else first:\n\n**Themselves.**\n\nThat sounds simple, almost motivational. It is not.\n\nMunger did not mean \"believe in yourself less\" in a vague self-help sense. He meant something much sharper, much more uncomfortable, and much more useful:\n\n> **The most dangerous force in investing is not lack of information. It is the part of you that wants to feel smart, right, early, superior, and in control.**\n\nThat force has many names:\n\n- Ego\n- Pride\n- Envy\n- Overconfidence\n- Emotional fragility\n- The inability to admit error\n\nWhatever you call it, the result is the same.\n\n**It makes investors do irrational things for psychological reasons  --  and then explain those decisions with financial language after the fact.**\n\nThat is the real danger.\n\nPeople rarely say out loud:\n\n- \"I bought this because I was jealous.\"\n- \"I doubled down because I could not bear being wrong.\"\n- \"I sold because I was humiliated by the decline.\"\n- \"I chased this because everyone else seemed to be making money.\"\n\nInstead, they construct narratives:\n\n- \"The setup looked compelling.\"\n- \"The market was mispricing future optionality.\"\n- \"This is a transformational category.\"\n- \"The correction was overdone.\"\n- \"I'm thinking long term.\"\n\nSometimes those statements are true. **Very often, they are just well-dressed emotional reactions.**\n\nMunger understood this with brutal clarity. The average investor's problem was not that they lacked knowledge. It was that their psychology kept corrupting whatever knowledge they had.\n\nIf Part 1 was about avoiding obvious stupidity, Part 2 is about identifying the source from which much of that stupidity emerges:\n\n**Ego.**\n\n---" },
@@ -1593,7 +1593,7 @@ export const blogPosts: BlogPost[] = [
     catColor: "#BA7517",
     date: "2026-06-12",
     readTime: "17 min",
-    heroImage: "/images/content/masters-charlie-munger-part3-safety-hero.png",
+    heroImage: "/images/content/masters-charlie-munger-part3-safety-hero.webp",
     description: "The paradox of safety, the value of cash, and why real security is resilience. What feels safe is often only what feels familiar  --  and the moment something feels unquestionably secure may be the moment risk is most underpriced.",
     sections: [
       { heading: "The Most Dangerous Word in Markets", body: "One of the most dangerous words in investing is **safe.**\n\nPeople use it constantly:\n\n- \"This stock feels safe.\"\n- \"This market is stable.\"\n- \"This sector is defensive.\"\n- \"This asset has low volatility.\"\n- \"Everyone owns it.\"\n- \"The downside seems limited.\"\n\nCharlie Munger understood something most investors never fully absorb:\n\n> **What feels safe is often only what feels familiar. And what feels familiar is often what has already been widely accepted, widely owned, and widely believed.**\n\nThat distinction matters because markets do not reward comfort. They often punish it.\n\n- Comfort is not the same thing as safety.\n- Price stability is not the same thing as resilience.\n- Consensus is not the same thing as protection.\n\nSome of the worst losses in financial history did not come from investors taking obviously reckless bets. They came from investors who believed they were standing on solid ground because everyone around them believed the same thing.\n\n**This is the paradox of safety.**\n\nThe moment something feels unquestionably secure, it may also be the moment when:\n\n- Expectations are highest\n- Valuations are most stretched\n- Positioning is crowded\n- Imagination about downside is at its weakest\n\nIf Part 1 was about survival, and Part 2 was about ego, Part 3 is about the illusion that usually appears right before real danger:\n\n**The feeling of safety.**\n\n---" },
@@ -1619,7 +1619,7 @@ export const blogPosts: BlogPost[] = [
     catColor: "#BA7517",
     date: "2026-06-19",
     readTime: "18 min",
-    heroImage: "/images/content/masters-charlie-munger-part4-leverage-hero.png",
+    heroImage: "/images/content/masters-charlie-munger-part4-leverage-hero.webp",
     description: "Leverage, overconfidence, and the fatal seduction of speed. Why intelligent people blow up in markets not from ignorance, but from impatience  --  and why the desire to accelerate wealth creation almost always destroys it.",
     sections: [
       { heading: "The Three Accelerants", body: "There are many ways to lose money in markets.\n\nBut when Charlie Munger looked at the truly catastrophic failures  --  the collapses that destroy not just performance but whole financial lives  --  he kept coming back to the same small group of causes:\n\n- Leverage\n- Overconfidence\n- The irresistible human urge to accelerate what should have been allowed to compound\n\n**This is where investing becomes especially dangerous for intelligent people.**\n\nThe biggest blowups are rarely caused by ignorance alone. They are often caused by people who know quite a lot, have had some success, and begin to believe that:\n\n- Their edge is larger than it is\n- Their timing is better than it is\n- Their conviction deserves more size than it does\n- Money can be made faster if one simply pushes harder\n\n**That is the seduction.**\n\nMunger understood it deeply. He knew markets do not merely reward intelligence. They also punish the **emotional misuses of intelligence:**\n\n- Arrogance\n- Speed\n- Impatience\n- The inability to distinguish between a good opportunity and an excuse to overreach\n\nPart 1 was about survival.\nPart 2 was about ego.\nPart 3 was about false safety.\n\nNow we arrive at one of the most direct engines of financial self-destruction:\n\n**The attempt to get rich faster than reality allows.**\n\n---" },
@@ -1645,7 +1645,7 @@ export const blogPosts: BlogPost[] = [
     catColor: "#BA7517",
     date: "2026-06-26",
     readTime: "19 min",
-    heroImage: "/images/content/masters-charlie-munger-part5-compounding-hero.png",
+    heroImage: "/images/content/masters-charlie-munger-part5-compounding-hero.webp",
     description: "Why investing should be boring, and why patience is a superpower. The investor who can tolerate silence, resist unnecessary action, and let time do its work has an advantage that no market cycle can easily replicate.",
     sections: [
       { heading: "The Fantasy Modern Markets Sell", body: "If modern investing has a favorite fantasy, it is **movement.**\n\nPeople want:\n\n- More trades\n- More action\n- More catalysts\n- More urgency\n- More alerts\n- More reasons to do something\n\nCharlie Munger spent his life moving in the opposite direction.\n\nHe believed one of the hardest truths in investing is also one of the most profitable:\n\n> **If your investing life is constantly exciting, there is a good chance something is wrong.**\n\nThat idea feels almost offensive to market culture. Because markets reward the appearance of activity:\n\n- Commentary\n- Forecast updates\n- Tactical shifts\n- Endless reactions\n- Fresh ideas\n- Visible decisiveness\n\n**All of this makes investors feel productive.**\n\nBut Munger understood a harder truth:\n\n> **Activity is not the same as progress. And in investing, it is often the enemy of it.**\n\nThis is where the series ends  --  and where Munger's wisdom becomes most countercultural.\n\n- **Part 1** taught that survival matters more than brilliance.\n- **Part 2** taught that ego is often the real enemy.\n- **Part 3** taught that comfort can disguise danger.\n- **Part 4** taught that leverage and speed can destroy what years built.\n\n**Now Part 5 teaches the final lesson:**\n\n> Compounding requires boredom, and patience is not passive  --  it is one of the highest forms of financial intelligence.\n\n---" },

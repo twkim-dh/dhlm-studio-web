@@ -5,7 +5,7 @@ date: "2026-04-29T12:30:00Z"
 category: "Blog"
 subcategory: "The Masters"
 badge: "masters"
-heroImage: "/images/content/masters-paul-tudor-jones-legacy-hero.png"
+heroImage: "/images/content/masters-paul-tudor-jones-legacy-hero.webp"
 readTime: "17 min"
 tags: ["MASTERS", "PAUL-TUDOR-JONES", "RISK-MANAGEMENT", "TRADING-DISCIPLINE", "DEFENSE-FIRST", "INFLECTION-POINTS", "INVESTOR-PSYCHOLOGY"]
 slug: "masters-paul-tudor-jones-legacy-april-2026"

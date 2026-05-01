@@ -5,7 +5,7 @@ date: "2026-04-17"
 category: "Blog"
 subcategory: "The Masters"
 badge: "masters"
-heroImage: "/images/content/masters-peter-lynch-part5-2026-hero.png"
+heroImage: "/images/content/masters-peter-lynch-part5-2026-hero.webp"
 readTime: "18 min"
 tags: ["MASTERS", "PETER-LYNCH", "AI-INVESTING", "2026", "SYNTHESIS", "MODERN-MARKETS"]
 slug: "masters-peter-lynch-part5-2026-synthesis-april-2026"

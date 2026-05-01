@@ -9,7 +9,7 @@ export const metadata: Metadata = {
   openGraph: {
     title: 'Investing 101 Intermediate — Brutal Edge',
     description: 'From valuation frameworks to position sizing. 12 lessons. Real companies. Zero hype.',
-    images: [{ url: 'https://dhlm-studio.com/images/content/INV-101-W13.png', width: 1792, height: 1024 }],
+    images: [{ url: 'https://dhlm-studio.com/images/content/INV-101-W13.webp', width: 1792, height: 1024 }],
   },
 };
 

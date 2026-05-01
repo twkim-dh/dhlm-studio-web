@@ -5,7 +5,7 @@ date: "2026-06-10T12:30:00Z"
 category: "Reports"
 subcategory: "Special Report"
 badge: "special-report"
-heroImage: "/images/content/special-final-frontier-m7-agi-hero.png"
+heroImage: "/images/content/special-final-frontier-m7-agi-hero.webp"
 readTime: "24 min"
 tags: ["SPECIAL-REPORT", "AGI", "M7", "NVIDIA", "GOOGLE", "TESLA", "MICROSOFT", "AMAZON", "META", "APPLE", "WORLD-MODELS", "ROBOTICS", "MACHINE-LABOR"]
 slug: "special-final-frontier-m7-agi-april-2026"
