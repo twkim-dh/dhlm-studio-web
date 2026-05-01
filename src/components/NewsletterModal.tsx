@@ -37,18 +37,27 @@ export default function NewsletterModal() {
     if (getCookie('dhlm-modal-dismissed')) return;
 
     let triggered = false;
-    const onScroll = () => {
+    const trigger = () => {
       if (triggered) return;
-      const total = document.documentElement.scrollHeight - window.innerHeight;
-      if (total > 0 && window.scrollY / total >= 0.5) {
-        triggered = true;
-        setVisible(true);
-        window.removeEventListener('scroll', onScroll);
-      }
+      triggered = true;
+      setVisible(true);
+      window.removeEventListener('scroll', onScroll);
+      clearTimeout(timer);
     };
 
+    const onScroll = () => {
+      const total = document.documentElement.scrollHeight - window.innerHeight;
+      if (total > 0 && window.scrollY / total >= 0.35) trigger();
+    };
+
+    // Fallback: show after 25s if user hasn't scrolled 35%
+    const timer = setTimeout(trigger, 25000);
+
     window.addEventListener('scroll', onScroll, { passive: true });
-    return () => window.removeEventListener('scroll', onScroll);
+    return () => {
+      window.removeEventListener('scroll', onScroll);
+      clearTimeout(timer);
+    };
   }, [isTargetPage, pathname]);
 
   useEffect(() => {
