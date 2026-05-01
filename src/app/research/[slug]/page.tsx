@@ -213,6 +213,8 @@ export default async function ResearchArticlePage({ params }: { params: Promise<
           <div style={{ display: 'flex', alignItems: 'center', gap: 6, marginTop: 10, flexWrap: 'wrap' }}>
             <span style={{ fontSize: 12, color: '#475569' }}>By</span>
             <Link href="/editorial" style={{ fontSize: 12, color: '#60A5FA', fontWeight: 600, textDecoration: 'none' }}>Brutal Edge Editorial</Link>
+            <span style={{ fontSize: 12, color: '#334155' }}>·</span>
+            <Link href="/editorial#beaf" style={{ fontSize: 11, color: '#64748B', textDecoration: 'none' }}>Reviewed against BEAF Framework</Link>
           </div>
           <p style={{ fontSize: 15, color: '#64748B', lineHeight: 1.7, marginTop: 10 }}>{fm.description}</p>
           <div style={{ marginTop: 14, display: 'flex', flexWrap: 'wrap', gap: 8, alignItems: 'center' }}>

@@ -2,8 +2,8 @@ import type { Metadata } from 'next';
 import Link from 'next/link';
 
 export const metadata: Metadata = {
-  title: 'Editorial Policy — How Brutal Edge Analyzes Stocks | DHLM Studio',
-  description: 'Our methodology: how Brutal Edge generates stock analysis, data sources we use, quality standards, and important disclaimers.',
+  title: 'Editorial Standards & Team | Brutal Edge — DHLM Studio',
+  description: 'How Brutal Edge produces institutional-grade investment research. Our editorial team background, BEAF Framework methodology, and commitment to conflict-free analysis.',
   alternates: { canonical: 'https://dhlm-studio.com/editorial' },
 };
 
@@ -13,12 +13,35 @@ export default function EditorialPage() {
   return (
     <div style={{ background: '#0B0F19', minHeight: '100vh' }}>
       <div style={{ maxWidth: 720, margin: '0 auto', padding: '80px 24px' }}>
-        <Link href="/about" style={{ fontSize: 12, color: '#64748B' }}>← About</Link>
+        <Link href="/" style={{ fontSize: 12, color: '#64748B' }}>← Home</Link>
 
         <div style={{ marginTop: 20, marginBottom: 32 }}>
-          <div style={{ fontFamily: 'var(--mono)', fontSize: 10, fontWeight: 700, color: '#C73E3A', letterSpacing: 3, marginBottom: 8 }}>EDITORIAL POLICY</div>
-          <h1 style={{ fontFamily: 'var(--serif)', fontSize: 28, fontWeight: 900, color: '#F1F5F9', margin: 0 }}>How Brutal Edge Analyzes Stocks</h1>
-          <p style={{ fontSize: 14, color: '#64748B', marginTop: 6 }}>Our methodology, data sources, and commitment to accuracy</p>
+          <div style={{ fontFamily: 'var(--mono)', fontSize: 10, fontWeight: 700, color: '#C73E3A', letterSpacing: 3, marginBottom: 8 }}>EDITORIAL</div>
+          <h1 style={{ fontFamily: 'var(--serif)', fontSize: 28, fontWeight: 900, color: '#F1F5F9', margin: 0 }}>Brutal Edge Editorial</h1>
+          <p style={{ fontSize: 14, color: '#64748B', marginTop: 6 }}>Institutional-grade research for serious long-term investors. Frameworks over forecasts. Signal over noise.</p>
+        </div>
+
+        {/* Who We Are */}
+        <div style={{ ...card, padding: '24px 22px', marginBottom: 20 }}>
+          <div style={{ fontFamily: 'var(--mono)', fontSize: 9, fontWeight: 700, color: '#64748B', letterSpacing: 3, marginBottom: 14 }}>WHO WE ARE</div>
+          <p style={{ fontSize: 14, color: '#94A3B8', lineHeight: 1.8, margin: '0 0 14px' }}>
+            Brutal Edge is the editorial brand of DHLM Studio. We produce investment research and educational content for serious long-term investors who prefer frameworks over forecasts and signal over noise.
+          </p>
+          <div style={{ display: 'flex', flexDirection: 'column', gap: 6 }}>
+            {[
+              'Deep Dive reports on individual companies (BEAF Framework scored)',
+              'Special Reports on macro and sector themes',
+              'Sector Reports on industry structure and trends',
+              'The Structural View — quarterly thematic research',
+              'The Mental Game — behavioral investing series',
+              'Brutal Edge Academy — Investing 101 and Crypto 101 educational curriculum',
+            ].map(item => (
+              <div key={item} style={{ display: 'flex', alignItems: 'flex-start', gap: 8 }}>
+                <span style={{ color: '#3B82F6', fontSize: 12, flexShrink: 0, marginTop: 2 }}>▸</span>
+                <span style={{ fontSize: 13, color: '#94A3B8', lineHeight: 1.6 }}>{item}</span>
+              </div>
+            ))}
+          </div>
         </div>
 
         <div style={{ display: 'flex', flexDirection: 'column', gap: 20 }}>
@@ -57,7 +80,7 @@ export default function EditorialPage() {
           </div>
 
           {/* Analysis Methodology */}
-          <div style={{ ...card, padding: '24px 22px' }}>
+          <div id="beaf" style={{ ...card, padding: '24px 22px' }}>
             <h2 style={{ fontFamily: 'var(--serif)', fontSize: 20, fontWeight: 800, color: '#E2E8F0', margin: '0 0 12px' }}>Analysis Methodology</h2>
             <div style={{ display: 'flex', flexDirection: 'column', gap: 12 }}>
               {[
@@ -130,6 +153,21 @@ export default function EditorialPage() {
             <p style={{ fontSize: 13, color: '#94A3B8', lineHeight: 1.8, margin: '0 0 10px' }}>
               Our team uses structured research processes and quantitative tools for data collection and initial drafting. The editorial judgment — what to analyze, which angle to take, how to weigh competing narratives, and whether the final product meets our standards — is made by a human editor with business and manufacturing industry experience.
             </p>
+            <div style={{ marginTop: 14, marginBottom: 14 }}>
+              <div style={{ fontFamily: 'var(--mono)', fontSize: 9, fontWeight: 700, color: '#64748B', letterSpacing: 2, marginBottom: 10 }}>TEAM BACKGROUND</div>
+              {[
+                'Equity research and quantitative framework development',
+                'AI, semiconductor, and quantum computing sector analysis',
+                'Macroeconomic and sector-level investment research',
+                'Cryptocurrency market structure and regulation',
+                'Manufacturing operations and industrial process analysis',
+              ].map(item => (
+                <div key={item} style={{ display: 'flex', alignItems: 'flex-start', gap: 8, marginBottom: 6 }}>
+                  <span style={{ color: '#D4A843', fontSize: 12, flexShrink: 0, marginTop: 2 }}>▸</span>
+                  <span style={{ fontSize: 13, color: '#94A3B8', lineHeight: 1.6 }}>{item}</span>
+                </div>
+              ))}
+            </div>
             <p style={{ fontSize: 13, color: '#94A3B8', lineHeight: 1.8, margin: '0 0 10px' }}>
               We also employ a <strong style={{ color: '#E2E8F0' }}>data cross-verification process</strong>: every report is cross-checked against multiple independent data sources to identify blind spots, factual errors, and analytical gaps before human final review.
             </p>

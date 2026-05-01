@@ -17,6 +17,7 @@ export default function Footer() {
           {[
             { label: "About", href: "/about" },
             { label: "Editorial", href: "/editorial" },
+            { label: "Disclaimer", href: "/disclaimer" },
             { label: "Privacy", href: "/privacy" },
             { label: "Terms", href: "/terms" },
             { label: "Contact", href: "/contact" },

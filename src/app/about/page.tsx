@@ -113,7 +113,10 @@ export default function AboutPage() {
 
           {/* Editorial Standards */}
           <div style={{ ...card, padding: '24px 22px', borderColor: '#60A5FA30' }}>
-            <div style={{ fontFamily: 'var(--mono)', fontSize: 9, fontWeight: 700, color: '#60A5FA', letterSpacing: 2, marginBottom: 10 }}>EDITORIAL STANDARDS</div>
+            <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', marginBottom: 10 }}>
+              <div style={{ fontFamily: 'var(--mono)', fontSize: 9, fontWeight: 700, color: '#60A5FA', letterSpacing: 2 }}>EDITORIAL STANDARDS</div>
+              <Link href="/editorial" style={{ fontSize: 10, color: '#60A5FA', textDecoration: 'none', fontWeight: 600 }}>Full editorial page →</Link>
+            </div>
             <p style={{ fontSize: 13, fontWeight: 700, color: '#E2E8F0', lineHeight: 1.6, margin: '0 0 12px' }}>
               Every Brutal Edge report follows four non-negotiable editorial standards:
             </p>
