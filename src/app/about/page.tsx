@@ -111,6 +111,27 @@ export default function AboutPage() {
             </p>
           </div>
 
+          {/* Editorial Standards */}
+          <div style={{ ...card, padding: '24px 22px', borderColor: '#60A5FA30' }}>
+            <div style={{ fontFamily: 'var(--mono)', fontSize: 9, fontWeight: 700, color: '#60A5FA', letterSpacing: 2, marginBottom: 10 }}>EDITORIAL STANDARDS</div>
+            <p style={{ fontSize: 13, fontWeight: 700, color: '#E2E8F0', lineHeight: 1.6, margin: '0 0 12px' }}>
+              Every Brutal Edge report follows four non-negotiable editorial standards:
+            </p>
+            <div style={{ display: 'flex', flexDirection: 'column', gap: 10 }}>
+              {[
+                { label: 'Original Analysis', desc: 'We do not summarize or repackage existing content. Every report starts from primary sources — SEC filings, earnings transcripts, official disclosures.' },
+                { label: 'Data-Driven', desc: 'Claims are supported by verified data. All figures are cross-referenced against at least two independent sources before publication.' },
+                { label: 'Framework-First', desc: 'Analysis follows the BEAF framework before narrative is written. The data shapes the story — not the other way around.' },
+                { label: 'Honest on Uncertainty', desc: 'Where data is ambiguous or the outcome is uncertain, we say so explicitly. We do not manufacture conviction we do not have.' },
+              ].map(s => (
+                <div key={s.label} style={{ padding: '10px 14px', borderRadius: 8, background: '#0D1117', border: '1px solid #1E293B' }}>
+                  <div style={{ fontSize: 13, fontWeight: 700, color: '#60A5FA', marginBottom: 4 }}>{s.label}</div>
+                  <div style={{ fontSize: 12, color: '#64748B', lineHeight: 1.6 }}>{s.desc}</div>
+                </div>
+              ))}
+            </div>
+          </div>
+
           {/* Update Frequency */}
           <div style={{ ...card, padding: '24px 22px' }}>
             <div style={{ fontFamily: 'var(--mono)', fontSize: 9, fontWeight: 700, color: '#00D474', letterSpacing: 2, marginBottom: 10 }}>UPDATE FREQUENCY</div>

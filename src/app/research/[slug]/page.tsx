@@ -1,6 +1,7 @@
 import type { Metadata } from 'next';
 import { notFound } from 'next/navigation';
 import Link from 'next/link';
+import ContentDisclaimer from '@/components/ContentDisclaimer';
 import fs from 'fs';
 import path from 'path';
 import { fmtDateShort } from '@/lib/fmt-date';
@@ -209,7 +210,11 @@ export default async function ResearchArticlePage({ params }: { params: Promise<
             <span style={{ fontSize: 11, color: '#475569' }}>{fmtDateShort(fm.date)} · {fm.readTime}</span>
           </div>
           <h1 style={{ fontFamily: 'var(--serif)', fontSize: 'clamp(24px, 4vw, 32px)', fontWeight: 900, color: '#F1F5F9', lineHeight: 1.3, margin: 0 }}>{fm.title}</h1>
-          <p style={{ fontSize: 15, color: '#64748B', lineHeight: 1.7, marginTop: 12 }}>{fm.description}</p>
+          <div style={{ display: 'flex', alignItems: 'center', gap: 6, marginTop: 10, flexWrap: 'wrap' }}>
+            <span style={{ fontSize: 12, color: '#475569' }}>By</span>
+            <Link href="/editorial" style={{ fontSize: 12, color: '#60A5FA', fontWeight: 600, textDecoration: 'none' }}>Brutal Edge Editorial</Link>
+          </div>
+          <p style={{ fontSize: 15, color: '#64748B', lineHeight: 1.7, marginTop: 10 }}>{fm.description}</p>
           <div style={{ marginTop: 14, display: 'flex', flexWrap: 'wrap', gap: 8, alignItems: 'center' }}>
             <ListenButton text={a.body} />
             <ReportPDF title={fm.title} date={fm.date} description={fm.description} category={fm.category} body={a.body} />
@@ -256,6 +261,8 @@ export default async function ResearchArticlePage({ params }: { params: Promise<
             </div>
           </section>
         )}
+
+        <ContentDisclaimer />
 
         <div style={{ marginTop: 32, paddingTop: 24, borderTop: '1px solid #1E293B', textAlign: 'center' }}>
           <a href="/" style={{ fontSize: 13, color: '#60A5FA', textDecoration: 'none', fontWeight: 600 }}>Subscribe to Brutal Edge Weekly →</a>

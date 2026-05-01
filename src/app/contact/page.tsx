@@ -71,10 +71,17 @@ export default function ContactPage() {
         )}
 
         <div style={{ marginTop: 24, ...card, padding: '18px 22px' }}>
-          <div style={{ fontSize: 13, color: '#94A3B8', lineHeight: 1.7 }}>
-            <strong style={{ color: '#E2E8F0' }}>Other ways to reach us:</strong><br />
-            📧 Email: <a href="mailto:dhlmstudio2026@gmail.com" style={{ color: '#60A5FA' }}>dhlmstudio2026@gmail.com</a><br />
-            𝕏 Twitter: <a href="https://x.com/dhlm_studio" target="_blank" rel="noopener noreferrer" style={{ color: '#60A5FA' }}>@dhlm_studio</a>
+          <div style={{ fontFamily: 'var(--mono)', fontSize: 9, fontWeight: 700, color: '#64748B', letterSpacing: 2, marginBottom: 10 }}>INQUIRY TYPES</div>
+          <div style={{ fontSize: 13, color: '#94A3B8', lineHeight: 2 }}>
+            <strong style={{ color: '#E2E8F0' }}>General Questions &amp; Feedback:</strong> Use the form above<br />
+            <strong style={{ color: '#E2E8F0' }}>Business &amp; Partnerships:</strong>{' '}
+            <a href="mailto:dhlmstudio2026@gmail.com?subject=Business Inquiry" style={{ color: '#60A5FA' }}>dhlmstudio2026@gmail.com</a><br />
+            <strong style={{ color: '#E2E8F0' }}>Privacy Concerns:</strong>{' '}
+            <a href="mailto:dhlmstudio2026@gmail.com?subject=Privacy Inquiry" style={{ color: '#60A5FA' }}>dhlmstudio2026@gmail.com</a><br />
+            <strong style={{ color: '#E2E8F0' }}>Press &amp; Media:</strong>{' '}
+            <a href="mailto:dhlmstudio2026@gmail.com?subject=Press Inquiry" style={{ color: '#60A5FA' }}>dhlmstudio2026@gmail.com</a><br />
+            𝕏 Twitter:{' '}
+            <a href="https://x.com/dhlm_studio" target="_blank" rel="noopener noreferrer" style={{ color: '#60A5FA' }}>@dhlm_studio</a>
           </div>
         </div>
       </div>

@@ -1,6 +1,7 @@
 import type { Metadata } from 'next';
 import Link from 'next/link';
 import fs from 'fs';
+import ContentDisclaimer from '@/components/ContentDisclaimer';
 import path from 'path';
 
 const LEARN_DIR = path.join(process.cwd(), 'src/content/learn');
@@ -438,9 +439,7 @@ export default async function LearnLessonPage({ params }: { params: Promise<{ sl
           <Link href="/learn" style={{ fontSize: 12, color: '#64748B', textDecoration: 'none' }}>← Brutal Edge Academy</Link>
         </div>
 
-        <p style={{ fontSize: 9, color: '#334155', marginTop: 24, textAlign: 'center' }}>
-          Educational content only. Not investment advice. Always do your own research.
-        </p>
+        <ContentDisclaimer />
       </article>
     </div>
   );

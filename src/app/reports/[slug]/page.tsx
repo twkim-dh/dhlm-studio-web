@@ -1,6 +1,7 @@
 import type { Metadata } from 'next';
 import Link from 'next/link';
 import { notFound } from 'next/navigation';
+import ContentDisclaimer from '@/components/ContentDisclaimer';
 import fs from 'fs';
 import path from 'path';
 import LikeButton from '@/components/LikeButton';
@@ -364,7 +365,11 @@ export default async function ReportPage({ params }: { params: Promise<{ slug: s
             <span style={{ fontSize: 11, color: '#475569' }}>Published {fmtDateLong(fm.date)} · {fm.readTime} read</span>
           </div>
           <h1 style={{ fontFamily: 'var(--serif)', fontSize: 'clamp(24px, 4vw, 34px)', fontWeight: 900, color: '#F1F5F9', lineHeight: 1.3, margin: 0 }}>{fm.title}</h1>
-          <p style={{ fontSize: 15, color: '#64748B', lineHeight: 1.7, marginTop: 12 }}>{fm.description}</p>
+          <div style={{ display: 'flex', alignItems: 'center', gap: 6, marginTop: 10, flexWrap: 'wrap' }}>
+            <span style={{ fontSize: 12, color: '#475569' }}>By</span>
+            <Link href="/editorial" style={{ fontSize: 12, color: '#60A5FA', fontWeight: 600, textDecoration: 'none' }}>Brutal Edge Editorial</Link>
+          </div>
+          <p style={{ fontSize: 15, color: '#64748B', lineHeight: 1.7, marginTop: 10 }}>{fm.description}</p>
           <div className="print-hide" style={{ marginTop: 12, display: 'flex', flexWrap: 'wrap', alignItems: 'center', gap: 10 }}>
             <ListenButton text={body} />
             <ReportPDF
@@ -447,6 +452,8 @@ export default async function ReportPage({ params }: { params: Promise<{ slug: s
             </div>
           </section>
         )}
+
+        <ContentDisclaimer />
 
         {/* Subscribe text link */}
         <div className="print-hide" style={{ marginTop: 32, paddingTop: 24, borderTop: '1px solid #1E293B', textAlign: 'center' }}>
