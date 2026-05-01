@@ -112,6 +112,11 @@ const nextConfig: NextConfig = {
       // Lottery section deleted — redirect to home
       { source: '/lottery', destination: '/', permanent: true },
       { source: '/lottery/:path*', destination: '/', permanent: true },
+      // Off-brand pages → 301 (Option C: noindex already set + redirect)
+      { source: '/creators', destination: '/', permanent: true },
+      { source: '/creators/:path*', destination: '/', permanent: true },
+      { source: '/blog/wisdom', destination: '/blog', permanent: true },
+      { source: '/blog/wisdom/:path*', destination: '/blog', permanent: true },
       // /fortune used to redirect to /lottery — now goes home
       // Paper vs. Profit deleted — redirect to /research (The Mental Game)
       { source: '/learn/paper-vs-profit', destination: '/research', permanent: true },
