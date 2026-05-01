@@ -4,8 +4,9 @@ import { blogPosts } from "@/data/blog-posts";
 import BlogFilter from "@/components/BlogFilter";
 
 export const metadata: Metadata = {
-  title: "Blog — Data Insights & Analysis | DHLM Studio",
-  description: "Market analysis, global rankings, cost of living insights, creator trends, and data-driven stories.",
+  title: "Blog — Market Analysis & Financial Insights | DHLM Studio",
+  description: "In-depth market analysis, stock market data, global economic rankings, and financial insights from the Brutal Edge team.",
+  alternates: { canonical: 'https://dhlm-studio.com/blog' },
 };
 
 export default function BlogPage() {
