@@ -2,6 +2,7 @@ import type { Metadata } from 'next';
 import Link from 'next/link';
 import { notFound } from 'next/navigation';
 import ContentDisclaimer from '@/components/ContentDisclaimer';
+import ContentSources from '@/components/ContentSources';
 import fs from 'fs';
 import path from 'path';
 import LikeButton from '@/components/LikeButton';
@@ -43,6 +44,8 @@ interface ReportFrontmatter {
   sector?: string;
   /** For hot-sector reports: array of tickers covered */
   tickers?: string[];
+  /** Primary sources cited in this report */
+  sources?: string[];
 }
 
 function parseMarkdown(content: string): { frontmatter: ReportFrontmatter; body: string } {
@@ -453,6 +456,10 @@ export default async function ReportPage({ params }: { params: Promise<{ slug: s
               ))}
             </div>
           </section>
+        )}
+
+        {fm.sources && fm.sources.length > 0 && (
+          <ContentSources sources={fm.sources} />
         )}
 
         <ContentDisclaimer />

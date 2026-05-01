@@ -10,6 +10,7 @@ readTime: "20 min"
 tags: ["SPECIAL-REPORT", "TOKEN-ECONOMY", "AI-INFRASTRUCTURE", "AMZN", "MSFT", "GOOGL", "AWS", "AZURE", "INFERENCE-ECONOMICS", "INTELLIGENCE-ECONOMY"]
 slug: "special-token-economy-april-2026"
 author: "DHLM Studio"
+sources: ["Microsoft Q3 FY2026 Earnings Call Transcript — Microsoft Investor Relations — https://www.microsoft.com/en-us/investor", "Alphabet Q1 2026 Earnings Call Transcript — Alphabet Investor Relations — https://abc.xyz/investor/", "Amazon Q1 2026 Earnings Release — Amazon Investor Relations — https://ir.aboutamazon.com/", "Meta Q1 2026 Earnings Release — Meta Investor Relations — https://investor.fb.com/", "IEA Electricity 2024 Report Data Center Demand — International Energy Agency — https://www.iea.org/reports/electricity-2024", "Anthropic API Pricing and Model Documentation — Anthropic — https://docs.anthropic.com/", "OpenAI API Pricing and Usage Documentation — OpenAI — https://openai.com/pricing", "Gartner Forecast AI Infrastructure Spending 2025 — Gartner Research — https://www.gartner.com/"]
 ---
 
 # The Token Economy
