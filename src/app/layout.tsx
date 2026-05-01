@@ -1,5 +1,6 @@
 import type { Metadata } from "next";
 import dynamic from "next/dynamic";
+import Script from "next/script";
 import { Playfair_Display, DM_Sans, IBM_Plex_Mono } from "next/font/google";
 import Header from "@/components/Header";
 import Footer from "@/components/Footer";
@@ -92,25 +93,10 @@ export default function RootLayout({
         <link rel="manifest" href="/manifest.json" />
         <meta name="theme-color" content="#0B0F19" />
         {/* No Twemoji — caused image explosion bug. Flag emojis show as text on Windows, which is acceptable. */}
-        {/* Google Analytics 4 — set NEXT_PUBLIC_GA_ID in .env.local and Vercel */}
-        {process.env.NEXT_PUBLIC_GA_ID && (
-          <>
-            <script async src={`https://www.googletagmanager.com/gtag/js?id=${process.env.NEXT_PUBLIC_GA_ID}`} />
-            <script dangerouslySetInnerHTML={{ __html: `
-              window.dataLayer = window.dataLayer || [];
-              function gtag(){dataLayer.push(arguments);}
-              gtag('js', new Date());
-              gtag('config', '${process.env.NEXT_PUBLIC_GA_ID}');
-            `}} />
-          </>
-        )}
+        {/* Preconnect to external origins */}
+        <link rel="preconnect" href="https://www.googletagmanager.com" />
+        <link rel="preconnect" href="https://pagead2.googlesyndication.com" />
         {/* Fonts loaded via next/font/google — no external link needed */}
-        <script
-          async
-          src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-5182634360822108"
-          crossOrigin="anonymous"
-          data-loading="lazy"
-        />
         {/* JSON-LD Organization */}
         <script
           type="application/ld+json"
@@ -146,6 +132,31 @@ export default function RootLayout({
         <MobileNav />
         <CookieConsent />
         {process.env.NEXT_PUBLIC_NEWSLETTER_MODAL_ENABLED === 'true' && <NewsletterModal />}
+        {/* GA4 — afterInteractive: loads after page becomes interactive, not render-blocking */}
+        {process.env.NEXT_PUBLIC_GA_ID && (
+          <>
+            <Script
+              strategy="afterInteractive"
+              src={`https://www.googletagmanager.com/gtag/js?id=${process.env.NEXT_PUBLIC_GA_ID}`}
+            />
+            <Script
+              id="gtag-init"
+              strategy="afterInteractive"
+              dangerouslySetInnerHTML={{ __html: `
+                window.dataLayer = window.dataLayer || [];
+                function gtag(){dataLayer.push(arguments);}
+                gtag('js', new Date());
+                gtag('config', '${process.env.NEXT_PUBLIC_GA_ID}');
+              `}}
+            />
+          </>
+        )}
+        {/* AdSense — afterInteractive: does not block initial render */}
+        <Script
+          strategy="afterInteractive"
+          src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-5182634360822108"
+          crossOrigin="anonymous"
+        />
       </body>
     </html>
   );
