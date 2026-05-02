@@ -151,9 +151,9 @@ export default function RootLayout({
             />
           </>
         )}
-        {/* AdSense — afterInteractive: does not block initial render */}
+        {/* AdSense — lazyOnload: fires during browser idle time, does not contribute to TBT */}
         <Script
-          strategy="afterInteractive"
+          strategy="lazyOnload"
           src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-5182634360822108"
           crossOrigin="anonymous"
         />

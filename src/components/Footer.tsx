@@ -1,5 +1,3 @@
-"use client";
-
 import Link from "next/link";
 
 const YEAR = new Date().getFullYear();

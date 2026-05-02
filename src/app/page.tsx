@@ -12,6 +12,8 @@ const NewsletterCTA = dynamic(() => import('@/components/NewsletterCTA'), { ssr:
 
 const YEAR = new Date().getFullYear();
 
+export const revalidate = 3600;
+
 export const metadata: Metadata = {
   title: 'DHLM Studio — Brutal Edge™ Financial Analysis',
   description: `Deep Dive reports, The Mental Game, and data-driven investing education. For serious long-term investors. ${YEAR}.`,
@@ -154,7 +156,7 @@ export default function Home() {
               return (
                 <Link key={r.slug} href={`/reports/${r.slug}`} style={{ ...card, padding: 0, textDecoration: 'none', display: 'block', borderColor: `${r.catColor}40`, overflow: 'hidden' }}>
                   {r.heroImage ? (
-                    <Image src={r.heroImage} alt={r.title} width={800} height={450} quality={65} priority={idx === 0} loading={idx === 0 ? 'eager' : 'lazy'} sizes="(max-width: 640px) calc(100vw - 48px), (max-width: 860px) calc(50vw - 32px), 246px" style={{ width: '100%', height: 'auto', objectFit: 'cover', display: 'block', background: '#0f172a' }} />
+                    <Image src={r.heroImage} alt={r.title} width={800} height={450} quality={65} priority={idx === 0} unoptimized={idx === 0} loading={idx === 0 ? 'eager' : 'lazy'} sizes="(max-width: 640px) calc(100vw - 48px), (max-width: 860px) calc(50vw - 32px), 246px" style={{ width: '100%', height: 'auto', objectFit: 'cover', display: 'block', background: '#0f172a' }} />
                   ) : (
                     <div style={{ width: '100%', aspectRatio: '16/9', background: `linear-gradient(135deg, ${r.catColor}20, #0f172a)`, display: 'flex', alignItems: 'center', justifyContent: 'center' }}>
                       <span style={{ fontFamily: 'var(--mono)', fontSize: 22, fontWeight: 900, color: `${r.catColor}80` }}>{r.ticker || '—'}</span>
