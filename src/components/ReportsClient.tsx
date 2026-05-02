@@ -45,8 +45,8 @@ function SpecialCard({ r }: { r: ReportMeta }) {
   return (
     <Link href={`/reports/${r.slug}`} style={{ ...card, padding: 0, textDecoration: 'none', display: 'block', borderColor: `${r.catColor}40`, background: `linear-gradient(135deg, ${r.catColor}08, #111827)`, overflow: 'hidden' }}>
       {r.thumb && (
-        <div style={{ position: 'relative', width: '100%', aspectRatio: r.thumb.endsWith('.png') ? '3/2' : '16/9', background: '#0f172a' }}>
-          <Image src={r.thumb} alt={r.thumbAlt || r.title} fill loading="lazy" sizes="(max-width: 640px) 100vw, (max-width: 1024px) 50vw, 400px" style={{ objectFit: r.thumb.endsWith('.png') ? 'contain' : 'cover' }} />
+        <div style={{ position: 'relative', width: '100%', aspectRatio: '16/9', background: '#0f172a' }}>
+          <Image src={r.thumb} alt={r.thumbAlt || r.title} fill loading="lazy" sizes="(max-width: 640px) 100vw, (max-width: 1024px) 50vw, 400px" style={{ objectFit: 'cover' }} />
         </div>
       )}
       <div style={{ padding: '16px 22px 20px' }}>
