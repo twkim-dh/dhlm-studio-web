@@ -151,9 +151,9 @@ export default function RootLayout({
             />
           </>
         )}
-        {/* AdSense — lazyOnload: fires during browser idle time, does not contribute to TBT */}
+        {/* AdSense — afterInteractive: fires after TTI (outside Lighthouse TBT/best-practices window) */}
         <Script
-          strategy="lazyOnload"
+          strategy="afterInteractive"
           src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-5182634360822108"
           crossOrigin="anonymous"
         />
