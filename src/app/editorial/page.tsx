@@ -115,7 +115,7 @@ export default function EditorialPage() {
                 'NOT investment advice disclaimers appear on every analysis page',
                 'We correct factual errors immediately upon discovery',
                 'Our content is original — we do not copy from other financial sites',
-                'Deep Dive reports are minimum 3,000 words of substantive analysis (BEAF Framework)',
+                'Deep Dive reports represent extensive original research, typically including 3,000+ words of substantive analysis with multiple data cross-references',
               ].map((item, i) => (
                 <div key={i} style={{ display: 'flex', alignItems: 'flex-start', gap: 8 }}>
                   <span style={{ color: '#00D474', fontSize: 12, flexShrink: 0, marginTop: 2 }}>✓</span>
@@ -228,8 +228,8 @@ export default function EditorialPage() {
                 'No sponsored content — we do not accept payment to write about any stock or crypto',
                 'No paid stock promotions — every analysis is editorially independent',
                 'No affiliate trading links — we do not earn commissions on trades',
-                'Revenue from display advertising only — Google AdSense is our sole revenue model',
-                'No conflicts of interest — DHLM Studio does not hold positions in stocks we analyze',
+                'Display advertising (Google AdSense) is currently our primary revenue model — we are exploring premium content tiers and educational products',
+                'No pump-and-dump schemes or coordinated promotion — any material position the editor holds in a covered company is disclosed in the relevant report',
               ].map((item, i) => (
                 <div key={i} style={{ display: 'flex', alignItems: 'flex-start', gap: 8 }}>
                   <span style={{ color: '#00D474', fontSize: 12, flexShrink: 0, marginTop: 2 }}>✓</span>
