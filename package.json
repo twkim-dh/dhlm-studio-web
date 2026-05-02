@@ -8,7 +8,8 @@
     "start": "next start",
     "lint": "eslint",
     "fetch-images": "node scripts/fetch-unsplash-images.js",
-    "generate-pdf": "python scripts/generate-report-pdf.py"
+    "generate-pdf": "python scripts/generate-report-pdf.py",
+    "thumbnails": "node scripts/validate-and-crop.mjs"
   },
   "dependencies": {
     "fuse.js": "^7.3.0",
