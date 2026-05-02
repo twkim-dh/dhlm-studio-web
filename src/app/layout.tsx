@@ -1,16 +1,10 @@
 import type { Metadata } from "next";
-import dynamic from "next/dynamic";
 import Script from "next/script";
 import { Playfair_Display, DM_Sans, IBM_Plex_Mono } from "next/font/google";
 import Header from "@/components/Header";
 import Footer from "@/components/Footer";
+import ClientWidgets from "./ClientWidgets";
 import "./globals.css";
-
-// Deferred client components — not needed for initial paint
-const MobileNav = dynamic(() => import("@/components/MobileNav"), { ssr: false });
-const CookieConsent = dynamic(() => import("@/components/CookieConsent"), { ssr: false });
-const NoRightClick = dynamic(() => import("@/components/NoRightClick"), { ssr: false });
-const NewsletterModal = dynamic(() => import("@/components/NewsletterModal"), { ssr: false });
 
 const playfair = Playfair_Display({
   variable: "--font-playfair",
@@ -126,14 +120,11 @@ export default function RootLayout({
         />
       </head>
       <body style={{ background: '#0B0F19', color: '#F1F5F9', fontFamily: "'DM Sans', -apple-system, sans-serif" }} className="min-h-screen flex flex-col">
-        <NoRightClick />
         <a href="#main-content" className="skip-to-content">Skip to content</a>
         <Header />
         <main id="main-content" className="flex-1 pb-14 md:pb-0">{children}</main>
         <Footer />
-        <MobileNav />
-        <CookieConsent />
-        {process.env.NEXT_PUBLIC_NEWSLETTER_MODAL_ENABLED === 'true' && <NewsletterModal />}
+        <ClientWidgets showModal={process.env.NEXT_PUBLIC_NEWSLETTER_MODAL_ENABLED === 'true'} />
         {/* GA4 — afterInteractive: loads after page becomes interactive, not render-blocking */}
         {process.env.NEXT_PUBLIC_GA_ID && (
           <>

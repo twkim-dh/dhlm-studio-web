@@ -1,14 +1,12 @@
 import type { Metadata } from 'next';
 import Image from 'next/image';
 import Link from 'next/link';
-import dynamic from 'next/dynamic';
 import fs from 'fs';
 import path from 'path';
 import FadeIn from '@/components/FadeIn';
 import { blogPosts } from '@/data/blog-posts';
 import { fmtDateShort } from '@/lib/fmt-date';
-
-const NewsletterCTA = dynamic(() => import('@/components/NewsletterCTA'), { ssr: false });
+import NewsletterCTAWrapper from './NewsletterCTAWrapper';
 
 const YEAR = new Date().getFullYear();
 
@@ -308,7 +306,7 @@ export default function Home() {
           <div style={{ fontFamily: 'var(--mono)', fontSize: 10, fontWeight: 700, color: '#475569', letterSpacing: 3, marginBottom: 8 }}>NEWSLETTER</div>
           <h2 style={{ fontFamily: 'var(--serif)', fontSize: 22, fontWeight: 800, color: '#F1F5F9', margin: '0 0 6px' }}>Free market analysis.</h2>
           <p style={{ fontFamily: 'var(--sans)', fontSize: 14, color: '#64748B', margin: '0 0 20px' }}>No daily noise. Just the reports and research that matter.</p>
-          <NewsletterCTA source="homepage" />
+          <NewsletterCTAWrapper source="homepage" />
         </div>
       </section>
 
