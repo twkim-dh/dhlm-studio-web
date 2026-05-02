@@ -256,7 +256,7 @@ export default function AboutPage() {
             </p>
             <div style={{ display: 'flex', flexDirection: 'column', gap: 8 }}>
               {[
-                'Deep Dive reports require 15+ hours of original research per report',
+                'Deep Dive reports represent extensive original research, typically including 3,000+ words of substantive analysis with multiple data cross-references',
                 'All financial data is independently verified against SEC filings and official company disclosures',
                 'No content is auto-generated or published without editorial approval',
                 'The Mental Game and Structural View series are original essays, not summaries or rewrites',
