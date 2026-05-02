@@ -25,6 +25,32 @@ const nextConfig: NextConfig = {
         destination: 'https://dhlm-studio.com/:path*',
         permanent: true,
       },
+      // Subdomain shutdowns — all redirect to main domain.
+      // lotto: highest priority (gambling = AdSense instant rejection)
+      {
+        source: '/:path*',
+        has: [{ type: 'host', value: 'lotto.dhlm-studio.com' }],
+        destination: 'https://dhlm-studio.com',
+        permanent: true,
+      },
+      {
+        source: '/:path*',
+        has: [{ type: 'host', value: 'guessme.dhlm-studio.com' }],
+        destination: 'https://dhlm-studio.com',
+        permanent: true,
+      },
+      {
+        source: '/:path*',
+        has: [{ type: 'host', value: 'tools.dhlm-studio.com' }],
+        destination: 'https://dhlm-studio.com',
+        permanent: true,
+      },
+      {
+        source: '/:path*',
+        has: [{ type: 'host', value: 'mwomuk.dhlm-studio.com' }],
+        destination: 'https://dhlm-studio.com',
+        permanent: true,
+      },
       // Deleted utilities → home or relevant page
       { source: '/tools/calc/:path*', destination: '/', permanent: true },
       { source: '/tools/dev/:path*', destination: '/', permanent: true },
