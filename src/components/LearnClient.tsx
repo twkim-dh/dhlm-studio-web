@@ -1,4 +1,4 @@
-'use client';
+﻿'use client';
 
 import { useState, useEffect } from 'react';
 import Image from 'next/image';
@@ -44,7 +44,7 @@ function ResearchCard({ a }: { a: ResearchItem }) {
     <Link href={`/research/${a.slug}`} style={{ ...card, padding: 0, textDecoration: 'none', display: 'block', overflow: 'hidden' }}>
       {a.heroImage ? (
         <div style={{ position: 'relative', width: '100%', aspectRatio: '16/9', overflow: 'hidden', background: '#0f172a' }}>
-          <Image src={a.heroImage} alt={a.title} fill loading="lazy" sizes="(max-width: 640px) 100vw, (max-width: 1024px) 50vw, 400px" style={{ objectFit: 'cover' }} />
+          <Image src={a.heroImage} alt={a.title} fill loading="lazy" sizes="(max-width: 640px) 100vw, (max-width: 1024px) 50vw, 400px" style={{ objectFit: 'contain' }} />
         </div>
       ) : (
         <div style={{ width: '100%', aspectRatio: '16/9', background: '#0f172a', display: 'flex', alignItems: 'center', justifyContent: 'center' }}>
@@ -92,7 +92,7 @@ function LessonCard({ l }: { l: LessonItem }) {
     <div style={{ ...card, padding: 0, overflow: 'hidden', opacity: published ? 1 : 0.45 }}>
       {l.thumb ? (
         <div style={{ position: 'relative', width: '100%', aspectRatio: '16/9', overflow: 'hidden', background: '#0f172a' }}>
-          <Image src={l.thumb} alt={l.thumbAlt || l.title} fill loading="lazy" sizes="(max-width: 640px) 100vw, (max-width: 1024px) 50vw, 400px" style={{ objectFit: 'cover' }} />
+          <Image src={l.thumb} alt={l.thumbAlt || l.title} fill loading="lazy" sizes="(max-width: 640px) 100vw, (max-width: 1024px) 50vw, 400px" style={{ objectFit: 'contain' }} />
         </div>
       ) : (
         <div style={{ width: '100%', aspectRatio: '16/9', background: `${l.phaseColor}18`, display: 'flex', alignItems: 'center', justifyContent: 'center' }}>
@@ -136,7 +136,7 @@ function InvestingCard({ slug, title, description, thumb, week, published, accen
   const inner = (
     <div style={{ ...card, padding: 0, overflow: 'hidden', opacity: published ? 1 : 0.45 }}>
       <div style={{ position: 'relative', width: '100%', aspectRatio: '16/9', overflow: 'hidden', background: '#0f172a' }}>
-        <Image src={thumb} alt={title} fill loading="lazy" sizes="(max-width: 640px) 100vw, (max-width: 1024px) 50vw, 400px" style={{ objectFit: 'cover' }} />
+        <Image src={thumb} alt={title} fill loading="lazy" sizes="(max-width: 640px) 100vw, (max-width: 1024px) 50vw, 400px" style={{ objectFit: 'contain' }} />
       </div>
       <div style={{ padding: '14px 16px 18px' }}>
         <div style={{ display: 'flex', alignItems: 'center', gap: 7, marginBottom: 8, flexWrap: 'wrap' }}>
