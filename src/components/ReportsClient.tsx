@@ -1,4 +1,4 @@
-'use client';
+﻿'use client';
 
 import { useState, useEffect } from 'react';
 import Link from 'next/link';
@@ -46,7 +46,7 @@ function SpecialCard({ r }: { r: ReportMeta }) {
     <Link href={`/reports/${r.slug}`} style={{ ...card, padding: 0, textDecoration: 'none', display: 'block', borderColor: `${r.catColor}40`, background: `linear-gradient(135deg, ${r.catColor}08, #111827)`, overflow: 'hidden' }}>
       {r.thumb && (
         <div style={{ position: 'relative', width: '100%', aspectRatio: '16/9', background: '#0f172a' }}>
-          <Image src={r.thumb} alt={r.thumbAlt || r.title} fill loading="lazy" sizes="(max-width: 640px) 100vw, (max-width: 1024px) 50vw, 400px" style={{ objectFit: 'cover' }} />
+          <Image src={r.thumb} alt={r.thumbAlt || r.title} fill loading="lazy" sizes="(max-width: 640px) 100vw, (max-width: 1024px) 50vw, 400px" style={{ objectFit: 'contain' }} />
         </div>
       )}
       <div style={{ padding: '16px 22px 20px' }}>

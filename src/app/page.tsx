@@ -1,4 +1,4 @@
-import type { Metadata } from 'next';
+﻿import type { Metadata } from 'next';
 import Image from 'next/image';
 import Link from 'next/link';
 import fs from 'fs';
@@ -155,7 +155,7 @@ export default function Home() {
                 <Link key={r.slug} href={`/reports/${r.slug}`} style={{ ...card, padding: 0, textDecoration: 'none', display: 'block', borderColor: `${r.catColor}40`, overflow: 'hidden' }}>
                   {r.heroImage ? (
                     <div style={{ position: 'relative', width: '100%', aspectRatio: '16/9', overflow: 'hidden', background: '#0f172a' }}>
-                      <Image src={r.heroImage} alt={r.title} fill quality={65} priority={idx === 0} unoptimized={idx === 0} loading={idx === 0 ? 'eager' : 'lazy'} sizes="(max-width: 640px) calc(100vw - 48px), (max-width: 860px) calc(50vw - 32px), 246px" style={{ objectFit: 'cover' }} />
+                      <Image src={r.heroImage} alt={r.title} fill quality={65} priority={idx === 0} unoptimized={idx === 0} loading={idx === 0 ? 'eager' : 'lazy'} sizes="(max-width: 640px) calc(100vw - 48px), (max-width: 860px) calc(50vw - 32px), 246px" style={{ objectFit: 'contain' }} />
                     </div>
                   ) : (
                     <div style={{ width: '100%', aspectRatio: '16/9', background: `linear-gradient(135deg, ${r.catColor}20, #0f172a)`, display: 'flex', alignItems: 'center', justifyContent: 'center' }}>
@@ -199,7 +199,7 @@ export default function Home() {
                 <Link key={r.slug} href={`/reports/${r.slug}`} style={{ ...card, padding: 0, textDecoration: 'none', display: 'block', overflow: 'hidden' }}>
                   {r.heroImage ? (
                     <div style={{ position: 'relative', width: '100%', aspectRatio: '16/9', overflow: 'hidden', background: '#0f172a' }}>
-                      <Image src={r.heroImage} alt={r.title} fill quality={65} loading="lazy" sizes="(max-width: 640px) calc(100vw - 48px), (max-width: 800px) calc(50vw - 32px), 376px" style={{ objectFit: 'cover' }} />
+                      <Image src={r.heroImage} alt={r.title} fill quality={65} loading="lazy" sizes="(max-width: 640px) calc(100vw - 48px), (max-width: 800px) calc(50vw - 32px), 376px" style={{ objectFit: 'contain' }} />
                     </div>
                   ) : (
                     <div style={{ width: '100%', aspectRatio: '16/9', background: `linear-gradient(135deg, ${r.catColor}18, #0f172a)`, display: 'flex', alignItems: 'center', justifyContent: 'center' }}>
@@ -243,7 +243,7 @@ export default function Home() {
                   <Link key={a.slug} href={`/research/${a.slug}`} style={{ ...card, padding: 0, textDecoration: 'none', display: 'block', overflow: 'hidden', borderColor: c.border }}>
                     {a.heroImage ? (
                       <div style={{ position: 'relative', width: '100%', aspectRatio: '16/9', overflow: 'hidden', background: '#0f172a' }}>
-                        <Image src={a.heroImage} alt={a.title} fill quality={65} loading="lazy" sizes="(max-width: 640px) calc(100vw - 48px), (max-width: 800px) calc(50vw - 32px), 376px" style={{ objectFit: 'cover' }} />
+                        <Image src={a.heroImage} alt={a.title} fill quality={65} loading="lazy" sizes="(max-width: 640px) calc(100vw - 48px), (max-width: 800px) calc(50vw - 32px), 376px" style={{ objectFit: 'contain' }} />
                       </div>
                     ) : (
                       <div style={{ width: '100%', aspectRatio: '16/9', background: `linear-gradient(135deg, ${c.bg}, #0f172a)`, display: 'flex', alignItems: 'center', justifyContent: 'center' }}>
@@ -286,7 +286,7 @@ export default function Home() {
                 <Link key={p.slug} href={`/blog/${p.slug}`} style={{ ...card, padding: 0, textDecoration: 'none', display: 'block', overflow: 'hidden' }}>
                   {p.heroImage ? (
                     <div style={{ position: 'relative', width: '100%', aspectRatio: '16/9', overflow: 'hidden', background: '#0f172a' }}>
-                      <Image src={p.heroImage} alt={p.title} fill quality={65} loading="lazy" sizes="(max-width: 640px) calc(100vw - 48px), (max-width: 800px) calc(50vw - 32px), 376px" style={{ objectFit: 'cover' }} />
+                      <Image src={p.heroImage} alt={p.title} fill quality={65} loading="lazy" sizes="(max-width: 640px) calc(100vw - 48px), (max-width: 800px) calc(50vw - 32px), 376px" style={{ objectFit: 'contain' }} />
                     </div>
                   ) : (
                     <div style={{ width: '100%', aspectRatio: '16/9', background: `${p.catColor}18`, display: 'flex', alignItems: 'center', justifyContent: 'center' }}>
