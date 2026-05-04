@@ -215,7 +215,7 @@ export default function Crypto101Page() {
                     {img?.src && (
                       <div style={{ width: 80, flexShrink: 0, position: 'relative', overflow: 'hidden' }}>
                         {/* eslint-disable-next-line @next/next/no-img-element */}
-                        <img src={img.src} alt={img.alt} style={{ width: '100%', height: '100%', objectFit: 'contain', display: 'block', opacity: isPublished ? 0.75 : 0.35 }} />
+                        <img src={img.src} alt={img.alt} style={{ width: '100%', height: 'auto', display: 'block', opacity: isPublished ? 0.75 : 0.35 }} />
                         <div style={{ position: 'absolute', inset: 0, background: `linear-gradient(to right, transparent 40%, #111827 100%)` }} />
                       </div>
                     )}

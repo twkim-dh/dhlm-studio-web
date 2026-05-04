@@ -202,14 +202,14 @@ export default function Investing101IntermediatePage() {
                   }}>
                     {/* Thumbnail */}
                     <div style={{
-                      width: 72, height: 42, borderRadius: 6, overflow: 'hidden',
+                      width: 72, borderRadius: 6, overflow: 'hidden',
                       background: '#1B2A4A', flexShrink: 0,
                     }}>
                       {/* eslint-disable-next-line @next/next/no-img-element */}
                       <img
                         src={`/images/content/INV-101-W${lesson.week}.png`}
                         alt={lesson.title}
-                        style={{ width: '100%', height: '100%', objectFit: 'contain', display: 'block' }}
+                        style={{ width: '100%', height: 'auto', display: 'block' }}
                       />
                     </div>
                     {/* Info */}

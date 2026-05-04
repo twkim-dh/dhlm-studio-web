@@ -393,9 +393,9 @@ export default async function LearnLessonPage({ params }: { params: Promise<{ sl
 
         {/* Hero image */}
         {heroSrc && (
-          <div style={{ width: '100%', aspectRatio: '16/9', borderRadius: 14, overflow: 'hidden', marginBottom: 32, border: '1px solid #1E293B', background: '#0f172a' }}>
+          <div style={{ borderRadius: 14, overflow: 'hidden', marginBottom: 32, border: '1px solid #1E293B', background: '#0f172a' }}>
             {/* eslint-disable-next-line @next/next/no-img-element */}
-            <img src={heroSrc} alt={fm.title} style={{ width: '100%', height: '100%', objectFit: 'contain', display: 'block' }} />
+            <img src={heroSrc} alt={fm.title} style={{ width: '100%', height: 'auto', display: 'block' }} />
           </div>
         )}
 

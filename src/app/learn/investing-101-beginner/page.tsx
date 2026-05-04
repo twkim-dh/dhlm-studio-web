@@ -133,7 +133,7 @@ export default function Investing101BeginnerPage() {
                       {hero && (
                         <div style={{ width: 100, flexShrink: 0, overflow: 'hidden', position: 'relative' }}>
                           {/* eslint-disable-next-line @next/next/no-img-element */}
-                          <img src={hero} alt={lesson.title} style={{ width: '100%', height: '100%', objectFit: 'contain', display: 'block', opacity: 0.7 }} />
+                          <img src={hero} alt={lesson.title} style={{ width: '100%', height: 'auto', display: 'block', opacity: 0.7 }} />
                         </div>
                       )}
                       <div style={{ flex: 1, padding: '14px 16px', display: 'flex', alignItems: 'flex-start', gap: 14 }}>
