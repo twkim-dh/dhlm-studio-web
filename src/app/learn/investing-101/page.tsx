@@ -78,7 +78,7 @@ export default function Investing101Page() {
         {manifest['learn-investing-101']?.src && (
           <div style={{ width: '100%', height: 180, borderRadius: 14, overflow: 'hidden', marginBottom: 28, position: 'relative', border: '1px solid #1E293B' }}>
             {/* eslint-disable-next-line @next/next/no-img-element */}
-            <img src={manifest['learn-investing-101'].src} alt={manifest['learn-investing-101'].alt} style={{ width: '100%', height: '100%', objectFit: 'cover', display: 'block', opacity: 0.6 }} />
+            <img src={manifest['learn-investing-101'].src} alt={manifest['learn-investing-101'].alt} style={{ width: '100%', height: '100%', objectFit: 'contain', display: 'block', opacity: 0.6 }} />
             <div style={{ position: 'absolute', inset: 0, background: 'linear-gradient(135deg, #00D47430 0%, transparent 60%)' }} />
           </div>
         )}

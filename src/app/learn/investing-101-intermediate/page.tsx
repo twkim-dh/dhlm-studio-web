@@ -209,7 +209,7 @@ export default function Investing101IntermediatePage() {
                       <img
                         src={`/images/content/INV-101-W${lesson.week}.png`}
                         alt={lesson.title}
-                        style={{ width: '100%', height: '100%', objectFit: 'cover', display: 'block' }}
+                        style={{ width: '100%', height: '100%', objectFit: 'contain', display: 'block' }}
                       />
                     </div>
                     {/* Info */}

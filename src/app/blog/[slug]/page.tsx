@@ -209,7 +209,7 @@ export default async function BlogPostPage({ params }: { params: Promise<{ slug:
                 src={heroSrc}
                 alt={unsplashEntry?.alt || post.title}
                 fill
-                style={{ objectFit: 'cover' }}
+                style={{ objectFit: 'contain' }}
                 priority
                 unoptimized={heroSrc.startsWith('https://images.unsplash.com')}
                 sizes="(max-width: 768px) 100vw, 800px"

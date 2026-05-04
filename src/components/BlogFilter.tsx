@@ -99,7 +99,7 @@ export default function BlogFilter({ posts }: { posts: BlogPost[] }) {
             <Link key={post.slug} href={`/blog/${post.slug}`} style={{ ...card, padding: 0, textDecoration: 'none', display: 'block', overflow: 'hidden' }}>
               {post.heroImage ? (
                 // eslint-disable-next-line @next/next/no-img-element
-                <img src={post.heroImage} alt={post.title} style={{ width: '100%', aspectRatio: '16/9', objectFit: 'cover', display: 'block', background: '#0f172a' }} />
+                <img src={post.heroImage} alt={post.title} style={{ width: '100%', aspectRatio: '16/9', objectFit: 'contain', display: 'block', background: '#0f172a' }} />
               ) : (
                 <div style={{ width: '100%', aspectRatio: '16/9', background: `${post.catColor}18`, display: 'flex', alignItems: 'center', justifyContent: 'center' }}>
                   <span style={{ fontFamily: 'var(--mono)', fontSize: 11, fontWeight: 800, color: `${post.catColor}80`, letterSpacing: 1 }}>{post.category.toUpperCase()}</span>

@@ -233,7 +233,7 @@ export default async function ResearchArticlePage({ params }: { params: Promise<
                 fill
                 priority
                 sizes="(max-width: 768px) 100vw, 800px"
-                style={{ objectFit: 'cover' }}
+                style={{ objectFit: 'contain' }}
               />
             </div>
             {unsplashEntry?.credit && (

@@ -404,7 +404,7 @@ export default async function ReportPage({ params }: { params: Promise<{ slug: s
                 fill
                 priority
                 sizes="(max-width: 768px) 100vw, 800px"
-                style={{ objectFit: 'cover' }}
+                style={{ objectFit: 'contain' }}
               />
             </div>
             {unsplashEntry?.credit && (
