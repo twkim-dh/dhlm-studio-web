@@ -43,9 +43,7 @@ function ResearchCard({ a }: { a: ResearchItem }) {
   return (
     <Link href={`/research/${a.slug}`} style={{ ...card, padding: 0, textDecoration: 'none', display: 'block', overflow: 'hidden' }}>
       {a.heroImage ? (
-        <div style={{ position: 'relative', width: '100%', aspectRatio: '16/9', overflow: 'hidden', background: '#0f172a' }}>
-          <Image src={a.heroImage} alt={a.title} fill loading="lazy" sizes="(max-width: 640px) 100vw, (max-width: 1024px) 50vw, 400px" style={{ objectFit: 'contain' }} />
-        </div>
+        <Image src={a.heroImage} alt={a.title} width={1200} height={675} loading="lazy" sizes="(max-width: 640px) 100vw, (max-width: 1024px) 50vw, 400px" style={{ width: '100%', height: 'auto', display: 'block', background: '#0f172a' }} />
       ) : (
         <div style={{ width: '100%', aspectRatio: '16/9', background: '#0f172a', display: 'flex', alignItems: 'center', justifyContent: 'center' }}>
           <span style={{ fontSize: 28 }}>🧠</span>
@@ -91,9 +89,7 @@ function LessonCard({ l }: { l: LessonItem }) {
   const inner = (
     <div style={{ ...card, padding: 0, overflow: 'hidden', opacity: published ? 1 : 0.45 }}>
       {l.thumb ? (
-        <div style={{ position: 'relative', width: '100%', aspectRatio: '16/9', overflow: 'hidden', background: '#0f172a' }}>
-          <Image src={l.thumb} alt={l.thumbAlt || l.title} fill loading="lazy" sizes="(max-width: 640px) 100vw, (max-width: 1024px) 50vw, 400px" style={{ objectFit: 'contain' }} />
-        </div>
+        <Image src={l.thumb} alt={l.thumbAlt || l.title} width={1200} height={675} loading="lazy" sizes="(max-width: 640px) 100vw, (max-width: 1024px) 50vw, 400px" style={{ width: '100%', height: 'auto', display: 'block', background: '#0f172a' }} />
       ) : (
         <div style={{ width: '100%', aspectRatio: '16/9', background: `${l.phaseColor}18`, display: 'flex', alignItems: 'center', justifyContent: 'center' }}>
           <span style={{ fontFamily: 'var(--mono)', fontSize: 10, fontWeight: 800, color: `${l.phaseColor}80`, letterSpacing: 1 }}>WEEK {l.week}</span>
@@ -135,9 +131,7 @@ function InvestingCard({ slug, title, description, thumb, week, published, accen
 }) {
   const inner = (
     <div style={{ ...card, padding: 0, overflow: 'hidden', opacity: published ? 1 : 0.45 }}>
-      <div style={{ position: 'relative', width: '100%', aspectRatio: '16/9', overflow: 'hidden', background: '#0f172a' }}>
-        <Image src={thumb} alt={title} fill loading="lazy" sizes="(max-width: 640px) 100vw, (max-width: 1024px) 50vw, 400px" style={{ objectFit: 'contain' }} />
-      </div>
+      <Image src={thumb} alt={title} width={1200} height={675} loading="lazy" sizes="(max-width: 640px) 100vw, (max-width: 1024px) 50vw, 400px" style={{ width: '100%', height: 'auto', display: 'block', background: '#0f172a' }} />
       <div style={{ padding: '14px 16px 18px' }}>
         <div style={{ display: 'flex', alignItems: 'center', gap: 7, marginBottom: 8, flexWrap: 'wrap' }}>
           <span style={{ fontFamily: 'var(--mono)', fontSize: 9, fontWeight: 800, padding: '3px 9px', borderRadius: 5, background: `${accentColor}18`, color: accentColor, border: `1px solid ${accentColor}30`, letterSpacing: 1 }}>
