@@ -9,7 +9,7 @@ import LikeButton from '@/components/LikeButton';
 import GiscusComments from '@/components/GiscusComments';
 import unsplashManifest from '@/data/unsplash-manifest.json';
 
-export const dynamicParams = false;
+export const dynamicParams = true;
 
 export function generateStaticParams() {
   const today = new Date().toISOString().slice(0, 10);

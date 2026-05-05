@@ -81,7 +81,7 @@ function parseMarkdown(content: string): { frontmatter: ReportFrontmatter; body:
 }
 
 export const revalidate = 3600;
-export const dynamicParams = false;
+export const dynamicParams = true;
 
 function getReportSlugs(): string[] {
   try {
