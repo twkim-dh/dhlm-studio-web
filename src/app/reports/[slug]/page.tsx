@@ -99,8 +99,13 @@ function getReport(slug: string): { frontmatter: ReportFrontmatter; body: string
   } catch { return null; }
 }
 
+function todayKST(): string {
+  const now = new Date();
+  return new Date(now.getTime() + 9 * 60 * 60 * 1000).toISOString().slice(0, 10);
+}
+
 export function generateStaticParams() {
-  const today = new Date().toISOString().slice(0, 10);
+  const today = todayKST();
   return getReportSlugs().filter(slug => {
     try {
       const content = fs.readFileSync(path.join(REPORTS_DIR, `${slug}.md`), 'utf8');
@@ -249,9 +254,8 @@ export default async function ReportPage({ params }: { params: Promise<{ slug: s
   }
 
   const { frontmatter: fm, body } = report;
-  // Block future-dated reports from direct URL access
-  const today = new Date().toISOString().slice(0, 10);
-  if (String(fm.date || '').slice(0, 10) > today) notFound();
+  // Block future-dated reports from direct URL access (KST-based)
+  if (String(fm.date || '').slice(0, 10) > todayKST()) notFound();
   const beafScores = parseBeafScores(body);
 
   // Manifest-first hero image — Unsplash CDN overwrites generic static fallback
