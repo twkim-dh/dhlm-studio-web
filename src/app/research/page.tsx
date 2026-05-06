@@ -78,9 +78,7 @@ function ArticleCard({ a }: { a: ArticleMeta }) {
     <Link href={`/research/${a.slug}`} style={{ ...card, padding: 0, textDecoration: 'none', display: 'block', overflow: 'hidden', borderColor: c.border }}>
       {a.thumb ? (
         // eslint-disable-next-line @next/next/no-img-element
-        <div style={{ aspectRatio: '16/9', overflow: 'hidden', background: '#0f172a' }}>
-          <img src={a.thumb} alt={a.title} loading="lazy" decoding="async" style={{ width: '100%', height: '100%', objectFit: 'cover', display: 'block' }} />
-        </div>
+        <img src={a.thumb} alt={a.title} loading="lazy" decoding="async" style={{ width: '100%', height: 'auto', display: 'block', background: '#0f172a' }} />
       ) : (
         <div style={{ width: '100%', aspectRatio: '16/9', background: `linear-gradient(135deg, ${c.bg}, #0f172a)`, display: 'flex', alignItems: 'center', justifyContent: 'center' }}>
           <span style={{ fontSize: 28 }}>🧠</span>
