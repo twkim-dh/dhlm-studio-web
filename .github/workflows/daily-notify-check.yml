@@ -14,8 +14,54 @@ on:
 jobs:
   notify:
     runs-on: ubuntu-latest
+    permissions:
+      contents: write
     steps:
       - uses: actions/checkout@v4
+
+      - name: Setup Python
+        uses: actions/setup-python@v5
+        with:
+          python-version: '3.11'
+
+      - name: Install PDF dependencies
+        run: pip install reportlab
+
+      - name: Generate PDFs for today's reports
+        id: pdf_gen
+        run: |
+          if [ -n "${{ github.event.inputs.date_override }}" ]; then
+            TODAY="${{ github.event.inputs.date_override }}"
+          else
+            TODAY=$(date -u +%Y-%m-%d)
+          fi
+          echo "Generating PDFs for date: $TODAY"
+          GENERATED=0
+          for FILE in src/content/reports/*.md; do
+            [ -f "$FILE" ] || continue
+            DATE=$(grep "^date:" "$FILE" | head -1 | sed 's/date:[[:space:]]*"\?\([0-9-]*\).*/\1/')
+            [ "$DATE" = "$TODAY" ] || continue
+            SLUG=$(grep "^slug:" "$FILE" | head -1 | sed 's/slug:[[:space:]]*"\?\([^"]*\)"\?[[:space:]]*/\1/')
+            [ -z "$SLUG" ] && continue
+            PDF_PATH="public/pdf/${SLUG}.pdf"
+            if [ -f "$PDF_PATH" ]; then
+              echo "  [SKIP] PDF already exists: $SLUG"
+            else
+              echo "  [GEN] Generating: $SLUG"
+              python scripts/generate-report-pdf.py "$SLUG" && GENERATED=$((GENERATED+1)) || echo "  [FAIL] PDF generation failed: $SLUG"
+            fi
+          done
+          echo "generated=$GENERATED" >> $GITHUB_OUTPUT
+          echo "Total new PDFs: $GENERATED"
+
+      - name: Commit and push generated PDFs
+        if: steps.pdf_gen.outputs.generated != '0'
+        run: |
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git add public/pdf/
+          git diff --staged --quiet || git commit -m "chore: auto-generate PDFs for $(date -u +%Y-%m-%d) reports [skip ci]"
+          git push
 
       - name: Send notifications for today's content
         env:

@@ -91,15 +91,36 @@ export default function ListenButton({ text, minutes }: Props) {
   const indexRef = useRef(0);
   // Stop flag — iOS onend fires after cancel(), this guards the chain.
   const stoppedRef = useRef(false);
+  // Chrome keep-alive: Chrome pauses speechSynthesis after ~15s on background tabs.
+  // Calling pause()+resume() every 14s resets its internal timer.
+  const keepAliveRef = useRef<ReturnType<typeof setInterval> | null>(null);
+
+  const stopKeepAlive = useCallback(() => {
+    if (keepAliveRef.current !== null) {
+      clearInterval(keepAliveRef.current);
+      keepAliveRef.current = null;
+    }
+  }, []);
+
+  const startKeepAlive = useCallback(() => {
+    stopKeepAlive();
+    keepAliveRef.current = setInterval(() => {
+      if (typeof window !== 'undefined' && window.speechSynthesis?.speaking) {
+        window.speechSynthesis.pause();
+        window.speechSynthesis.resume();
+      }
+    }, 14000);
+  }, [stopKeepAlive]);
 
   useEffect(() => {
     setSupported(typeof window !== 'undefined' && 'speechSynthesis' in window);
     return () => {
+      stopKeepAlive();
       if (typeof window !== 'undefined' && 'speechSynthesis' in window) {
         try { window.speechSynthesis.cancel(); } catch { /* ignore */ }
       }
     };
-  }, []);
+  }, [stopKeepAlive]);
 
   // Speak a single chunk and chain onend → next chunk. Defined as ref so
   // the onend callback always sees the latest version after rebuild.
@@ -109,6 +130,7 @@ export default function ListenButton({ text, minutes }: Props) {
     if (!synth) return;
     const i = indexRef.current;
     if (i >= chunksRef.current.length) {
+      stopKeepAlive();
       setStatus('idle');
       return;
     }
@@ -132,7 +154,9 @@ export default function ListenButton({ text, minutes }: Props) {
       setTimeout(speakNext, 30);
     };
     synth.speak(u);
-  }, []);
+  // stopKeepAlive is stable (useCallback []), safe to include
+  // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, [stopKeepAlive]);
 
   // Play handler — must be called DIRECTLY from the click event so iOS
   // honors the user gesture. No await, no setTimeout before the first speak.
@@ -171,16 +195,18 @@ export default function ListenButton({ text, minutes }: Props) {
       setTimeout(speakNext, 30);
     };
     synth.speak(first);
+    startKeepAlive();
     setStatus('playing');
-  }, [supported, cleanText, speakNext]);
+  }, [supported, cleanText, speakNext, startKeepAlive]);
 
   // Stop handler — sets the guard then calls cancel.
   const stop = useCallback(() => {
     if (!supported) return;
     stoppedRef.current = true;
+    stopKeepAlive();
     try { window.speechSynthesis.cancel(); } catch { /* ignore */ }
     setStatus('idle');
-  }, [supported]);
+  }, [supported, stopKeepAlive]);
 
   if (!supported) {
     return (
