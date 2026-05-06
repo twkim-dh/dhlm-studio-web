@@ -204,16 +204,15 @@ export default async function BlogPostPage({ params }: { params: Promise<{ slug:
         {/* Hero image */}
         {heroSrc && (
           <div style={{ margin: '24px 0' }}>
-            <div style={{ background: '#0f172a', borderRadius: 12, overflow: 'hidden', border: '1px solid #1E293B' }}>
+            <div style={{ position: 'relative', aspectRatio: '16/9', background: '#0f172a', borderRadius: 12, overflow: 'hidden', border: '1px solid #1E293B' }}>
               <Image
                 src={heroSrc}
                 alt={unsplashEntry?.alt || post.title}
-                width={1200}
-                height={675}
+                fill
                 priority
                 unoptimized={heroSrc.startsWith('https://images.unsplash.com')}
                 sizes="(max-width: 768px) 100vw, 800px"
-                style={{ width: '100%', height: 'auto', display: 'block' }}
+                style={{ objectFit: 'cover' }}
               />
             </div>
             {heroCredit && (
