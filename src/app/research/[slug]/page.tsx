@@ -226,14 +226,15 @@ export default async function ResearchArticlePage({ params }: { params: Promise<
 
         {heroSrc && (
           <div style={{ margin: '24px 0' }}>
-            <div style={{ position: 'relative', aspectRatio: '16/9', background: '#0f172a', borderRadius: 12, overflow: 'hidden', border: '1px solid #1E293B' }}>
+            <div style={{ background: '#0f172a', borderRadius: 12, overflow: 'hidden', border: '1px solid #1E293B' }}>
               <Image
                 src={heroSrc}
                 alt={unsplashEntry?.alt || fm.title}
-                fill
+                width={1200}
+                height={800}
                 priority
                 sizes="(max-width: 768px) 100vw, 800px"
-                style={{ objectFit: 'cover' }}
+                style={{ width: '100%', height: 'auto', display: 'block' }}
               />
             </div>
             {unsplashEntry?.credit && (
