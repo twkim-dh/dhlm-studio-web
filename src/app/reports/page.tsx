@@ -78,7 +78,7 @@ function getAllReports(): ReportMeta[] {
       const entry = manifest[slug];
       return {
         ...fm,
-        thumb: entry?.src || (fm.heroImage as string) || undefined,
+        thumb: entry?.src || undefined,
         thumbAlt: entry?.alt,
       } as unknown as ReportMeta;
     }).filter(Boolean).sort((a, b) => (b!.date > a!.date ? 1 : -1)) as ReportMeta[];
