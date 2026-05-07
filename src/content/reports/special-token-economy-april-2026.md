@@ -293,3 +293,22 @@ It may belong to the company that can produce the most valuable tokens at the lo
 ---
 
 *This Special Report is Part 2 of Brutal Edge's "Intelligence Economy" series. Related analysis: The Rise of Claude (Part 1), NVIDIA: The Industrial Architect (Part 3), The Final Frontier — M7 AGI Map (Part 4).*
+
+---
+
+## Sources & Verification
+
+**Primary Sources**:
+- Epoch AI — Compute Trends and AI Training Cost Forecast, 2026
+- Anthropic API pricing documentation (token cost benchmarks)
+- OpenAI API pricing schedule, April 2026
+- a16z "State of AI" report, 2026
+- CoinGecko DeFi sector and AI-token category report, Q1 2026
+
+**Market Data**:
+- Financial Modeling Prep (equity data: NVDA, MSFT, GOOGL, AMZN)
+- CoinGecko (crypto and AI-token market data)
+- NVIDIA earnings transcripts — compute cost trajectory data
+
+**Last Verified**: May 7, 2026
+**Data Delay**: Market data may be delayed up to 15 minutes. Token pricing benchmarks reflect published API schedules and may change without notice.

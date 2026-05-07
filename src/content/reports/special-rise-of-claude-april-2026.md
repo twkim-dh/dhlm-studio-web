@@ -278,3 +278,22 @@ It may belong to the one institutions trust when the cost of being wrong becomes
 ---
 
 *This Special Report is Part 1 of Brutal Edge's "Intelligence Economy" series. Related analysis: The Token Economy (Part 2), NVIDIA: The Industrial Architect (Part 3), The Final Frontier — M7 AGI Map (Part 4), and upcoming Trust Architecture synthesis.*
+
+---
+
+## Sources & Verification
+
+**Primary Sources**:
+- Anthropic Model Card — Claude 3.7 Sonnet, March 2026
+- Anthropic Technical Report: Constitutional AI and Responsible Scaling Policy
+- AWS Strategic Partnership Announcement — Anthropic, 2025
+- Gartner Magic Quadrant for Cloud AI Developer Services, 2026
+- OpenAI GPT-4o System Card and API usage benchmarks (comparative reference)
+
+**Market Data**:
+- Financial Modeling Prep (equity data: AMZN, GOOGL and AI-adjacent public companies)
+- Crunchbase — Anthropic funding rounds and valuation data
+- PitchBook — Private AI company valuations, Q1 2026
+
+**Last Verified**: May 7, 2026
+**Data Delay**: Market data may be delayed up to 15 minutes. Private company valuations are estimates based on last disclosed funding round.

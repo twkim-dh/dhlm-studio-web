@@ -33,6 +33,11 @@ export function proxy(request: NextRequest) {
   const host = request.headers.get('host') || '';
   const { pathname } = request.nextUrl;
 
+  // 410 Gone for all /lottery paths (gambling content — permanently deleted)
+  if (pathname.startsWith('/lottery')) {
+    return new NextResponse('Gone', { status: 410 });
+  }
+
   // Block Vercel preview URLs from being indexed as duplicate content
   if (host.endsWith('.vercel.app')) {
     const url = new URL(request.url);

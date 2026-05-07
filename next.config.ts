@@ -139,9 +139,7 @@ const nextConfig: NextConfig = {
       // Tools section deleted — redirect to home
       { source: '/tools', destination: '/', permanent: true },
       { source: '/tools/:path*', destination: '/', permanent: true },
-      // Lottery section deleted — redirect to home
-      { source: '/lottery', destination: '/', permanent: true },
-      { source: '/lottery/:path*', destination: '/', permanent: true },
+      // Lottery section deleted — 410 Gone handled in proxy.ts
       // Off-brand pages → 301 (Option C: noindex already set + redirect)
       { source: '/creators', destination: '/', permanent: true },
       { source: '/creators/:path*', destination: '/', permanent: true },

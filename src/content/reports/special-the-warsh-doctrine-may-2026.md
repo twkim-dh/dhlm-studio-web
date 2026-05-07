@@ -334,3 +334,22 @@ Brutal Edge does not provide personalized investment advice. This content is for
 - The Structural View Vol. 2: Distribution Layer Wars
 - The Mental Game #003: The Confirmation Loop
 - Alphabet / Fed Fracture Thesis (May 2026)
+
+---
+
+## Sources & Verification
+
+**Primary Sources**:
+- Federal Reserve Board of Governors, Meeting Minutes & Statements, April–May 2026
+- Kevin Warsh, Hoover Institution Monetary Policy Conference testimony, April 2026
+- Bank for International Settlements (BIS) Quarterly Review, Q1 2026
+- U.S. Treasury yield curve data — TreasuryDirect.gov
+- Federal Reserve H.8 Statistical Release — Assets and Liabilities of Commercial Banks, May 2026
+
+**Market Data**:
+- Financial Modeling Prep (equity and macro data)
+- U.S. Treasury Department — Daily Treasury Par Yield Curve Rates
+- FRED (Federal Reserve Economic Data) — St. Louis Fed
+
+**Last Verified**: May 7, 2026
+**Data Delay**: Market data may be delayed up to 15 minutes. Macro and policy data reflects publicly available statements as of publication date.

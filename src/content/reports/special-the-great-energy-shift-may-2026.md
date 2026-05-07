@@ -309,3 +309,22 @@ Brutal Edge does not provide personalized investment advice. This content is for
 ---
 
 *Brutal Edge. Frameworks over forecasts. Signal over noise.*
+
+---
+
+## Sources & Verification
+
+**Primary Sources**:
+- OPEC Secretariat official communiqué, May 1, 2026
+- UAE Ministry of Energy and Infrastructure statement, May 2026
+- U.S. Energy Information Administration (EIA) Short-Term Energy Outlook, May 2026
+- S&P Global Commodity Insights — LNG market intelligence, Q2 2026
+- U.S. Department of Defense — Strait of Hormuz transit data
+
+**Market Data**:
+- Financial Modeling Prep (equity data: XOM, CVX, LNG, midstream tickers)
+- EIA Petroleum Supply Monthly
+- CME Group — WTI and Brent futures settlement prices
+
+**Last Verified**: May 7, 2026
+**Data Delay**: Market data may be delayed up to 15 minutes. Geopolitical conditions can change rapidly; this report carries a 30-day analytical shelf life from publication date.
