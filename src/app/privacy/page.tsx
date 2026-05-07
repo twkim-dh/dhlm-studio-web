@@ -24,11 +24,11 @@ export default function PrivacyPage() {
           },
           {
             h: '3. Cookies & Advertising (Google AdSense)',
-            b: 'This site uses cookies. Third-party vendors, including Google, use cookies to serve ads based on your prior visits to this website or other websites. Google\'s use of advertising cookies enables it and its partners to serve ads based on your visits to dhlm-studio.com and other sites on the Internet. You may opt out of personalized advertising by visiting Google Ad Settings at https://www.google.com/settings/ads. Alternatively, you may opt out of third-party vendor use of cookies for personalized advertising by visiting www.aboutads.info. We also use Google Analytics to analyze usage of this site. Google Analytics uses cookies to collect data about how visitors use the site. This data is anonymous and does not identify individual users.',
+            b: 'This site uses cookies. Google and third-party advertising vendors use cookies to serve ads based on your prior visits to this website or other websites. Google\'s use of advertising cookies enables it and its partners to serve personalized ads based on your visits to dhlm-studio.com and other sites on the Internet. You may opt out of personalized advertising by visiting Google Ad Settings at https://adssettings.google.com. Alternatively, you may opt out of third-party vendor use of cookies for personalized advertising by visiting www.aboutads.info. We also use Google Analytics to analyze usage of this site. Google Analytics uses cookies to collect data about how visitors use the site. This data is anonymous and does not identify individual users.',
           },
           {
             h: '4. Third-Party Services',
-            b: 'This site uses the following third-party services, each of which may collect data according to their own privacy policies: (1) Google AdSense — display advertising; (2) Google Analytics 4 — traffic analysis; (3) Vercel — website hosting and deployment; (4) Giscus / GitHub Discussions — user comments; (5) Financial Modeling Prep — market data. We are not responsible for the privacy practices of these third-party services.',
+            b: 'This site uses the following third-party services, each of which may collect data according to their own privacy policies: (1) Google AdSense — display advertising; (2) Google Analytics 4 — traffic analysis; (3) Vercel — website hosting and deployment; (4) Financial Modeling Prep — market data. We are not responsible for the privacy practices of these third-party services.',
           },
           {
             h: '5. Data Security',
