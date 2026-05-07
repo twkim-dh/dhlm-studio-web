@@ -1,5 +1,5 @@
----
-author: "DHLM Studio"
+﻿---
+author: "Brutal Edge Team"
 slug: "ethereum-special-report-april-2026"
 title: "Ethereum Special Report: Is ETH a Recovery Asset or a Re-Rating Asset in 2026?"
 ticker: "ETH"

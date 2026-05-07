@@ -1,4 +1,4 @@
----
+﻿---
 title: "Intel's Great Repricing: Why the AI Inference Era Could Make Intel Matter Again"
 description: "The easiest way to get Intel wrong in 2026 is to tell one of two oversimplified stories. The first says Intel is finished. The second says Intel is on the verge of a clean comeback. Both are too simple. The real Intel case is more interesting — and more difficult."
 date: "2026-04-28T12:30:00Z"
@@ -11,7 +11,7 @@ tags: ["DEEP-DIVE", "INTEL", "INTC", "AI-INFERENCE", "FOUNDRY", "CPU", "GAUDI", 
 slug: "deep-dive-intc-great-repricing-april-2026"
 grade: "C+"
 beafScore: 65
-author: "DHLM Studio"
+author: "Brutal Edge Team"
 ---
 
 # Intel's Great Repricing

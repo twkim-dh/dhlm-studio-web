@@ -1,6 +1,6 @@
----
+﻿---
 title: "Deep Dive: Ethereum — April 2026 Analysis"
-author: "DHLM Studio"
+author: "Brutal Edge Team"
 slug: "deep-dive-eth-april-2026"
 ticker: "ETH"
 date: "2026-04-11"

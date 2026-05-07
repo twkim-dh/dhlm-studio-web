@@ -1,5 +1,5 @@
----
-author: "DHLM Studio"
+﻿---
+author: "Brutal Edge Team"
 slug: "deep-dive-rdw-redwire-april-2026"
 title: "Redwire (RDW): From Space Infrastructure to Defense Autonomy"
 ticker: "RDW"

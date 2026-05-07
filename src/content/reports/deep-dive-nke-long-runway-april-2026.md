@@ -1,4 +1,4 @@
----
+﻿---
 title: "Nike's Long Runway Back: A Premium Brand's Strategic Self-Inflicted Wound"
 description: "Nike's problem is not that consumers suddenly stopped caring about sportswear. Its problem is that for several years the company behaved as though distribution, product innovation, and brand heat were all more replaceable than they really were. The result was not a normal cyclical slowdown. It was a strategic self-inflicted wound."
 date: "2026-05-08T12:30:00Z"
@@ -9,7 +9,7 @@ heroImage: "/images/content/deep-dive-nke-long-runway-hero.webp"
 readTime: "16 min"
 tags: ["DEEP-DIVE", "NIKE", "NKE", "TURNAROUND", "CONSUMER-BRANDS", "DTC", "WHOLESALE", "ELLIOTT-HILL", "CHINA-CONSUMER"]
 slug: "deep-dive-nke-long-runway-april-2026"
-author: "DHLM Studio"
+author: "Brutal Edge Team"
 ---
 
 # Nike's Long Runway Back

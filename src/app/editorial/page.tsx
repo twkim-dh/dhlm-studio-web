@@ -239,6 +239,51 @@ export default function EditorialPage() {
             </div>
           </div>
 
+          {/* How We Produce Research */}
+          <div style={{ ...card, padding: '24px 22px' }}>
+            <h2 style={{ fontFamily: 'var(--serif)', fontSize: 20, fontWeight: 800, color: '#E2E8F0', margin: '0 0 12px' }}>How We Produce Research</h2>
+            <p style={{ fontSize: 13, color: '#94A3B8', lineHeight: 1.8, marginBottom: 18 }}>
+              All Brutal Edge research is produced through a human-led editorial process. Our team sets the analytical agenda, conducts the research, draws the conclusions, and owns every published claim.
+            </p>
+            <div style={{ display: 'flex', flexDirection: 'column', gap: 16, marginBottom: 18 }}>
+              <div>
+                <div style={{ fontSize: 12, fontWeight: 700, color: '#60A5FA', marginBottom: 6, textTransform: 'uppercase', letterSpacing: 1 }}>Where Humans Do the Work</div>
+                <ul style={{ fontSize: 13, color: '#64748B', lineHeight: 1.8, margin: 0, paddingLeft: 18 }}>
+                  <li>Selecting research topics and defining the investment thesis</li>
+                  <li>Gathering and cross-verifying data from primary sources</li>
+                  <li>Building the analytical argument and applying the BEAF framework</li>
+                  <li>Writing the full report text and all analytical commentary</li>
+                  <li>Making all editorial judgments, risk assessments, and publication decisions</li>
+                  <li>Issuing corrections when errors are identified</li>
+                </ul>
+              </div>
+              <div>
+                <div style={{ fontSize: 12, fontWeight: 700, color: '#60A5FA', marginBottom: 6, textTransform: 'uppercase', letterSpacing: 1 }}>Where AI Tools May Assist</div>
+                <ul style={{ fontSize: 13, color: '#64748B', lineHeight: 1.8, margin: 0, paddingLeft: 18 }}>
+                  <li>Data formatting and table organization</li>
+                  <li>Proofreading for grammar and spelling</li>
+                  <li>Structural drafting of outlines (finalized by human editors)</li>
+                </ul>
+                <p style={{ fontSize: 13, color: '#64748B', lineHeight: 1.7, marginTop: 8, marginBottom: 0 }}>
+                  AI tools are never used to generate investment analysis, write our final report text, or produce editorial conclusions. If that changes, we will disclose it explicitly.
+                </p>
+              </div>
+            </div>
+            <div style={{ display: 'flex', flexDirection: 'column', gap: 10 }}>
+              <div>
+                <div style={{ fontSize: 12, fontWeight: 700, color: '#60A5FA', marginBottom: 4, textTransform: 'uppercase', letterSpacing: 1 }}>Our Standards</div>
+                <p style={{ fontSize: 13, color: '#64748B', lineHeight: 1.7, margin: 0 }}>
+                  Every factual claim is supported by a cited source. Data is verified against at least one primary source before publication. Analysis that relies on estimates or projections is labeled as such. We do not publish to meet content quotas — reports are published when they meet our quality bar.
+                </p>
+              </div>
+              <div style={{ padding: '12px 14px', background: '#0F172A', borderRadius: 6, borderLeft: '3px solid #334155' }}>
+                <p style={{ fontSize: 12, color: '#64748B', lineHeight: 1.7, margin: 0 }}>
+                  <strong style={{ color: '#94A3B8' }}>Disclosure:</strong> DHLM Studio is an independent publisher. We do not receive compensation from any company we cover, and we do not hold financial positions in securities we analyze. The Brutal Edge editorial voice is maintained by the DHLM Studio team.
+                </p>
+              </div>
+            </div>
+          </div>
+
           {/* Corrections Policy */}
           <div style={{ ...card, padding: '18px 22px' }}>
             <h2 style={{ fontFamily: 'var(--serif)', fontSize: 18, fontWeight: 800, color: '#E2E8F0', margin: '0 0 8px' }}>Corrections Policy</h2>

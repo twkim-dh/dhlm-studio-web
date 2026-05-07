@@ -1,6 +1,6 @@
----
+﻿---
 title: "Netflix Q1 2026: A -9.72% Selloff That Misreads the Transition"
-author: "DHLM Studio"
+author: "Brutal Edge Team"
 slug: "deep-dive-nflx-april-2026"
 ticker: "NFLX"
 date: "2026-04-17"

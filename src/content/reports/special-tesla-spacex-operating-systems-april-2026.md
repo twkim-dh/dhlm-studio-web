@@ -1,4 +1,4 @@
----
+﻿---
 title: "The Operating Systems for Earth and Beyond: Why Tesla and SpaceX Belong in the Same Conversation"
 description: "The stock market is not an equal-opportunity wealth machine. It is an extreme-outcome machine. Hendrik Bessembinder's 100-year study shows that just 46 firms accounted for half of the roughly $91 trillion in net shareholder wealth creation since 1926. The biggest fortunes aren't built by owning many average businesses. They're built by identifying the rare companies that become operating systems for entire domains."
 date: "2026-05-20T12:30:00Z"
@@ -9,7 +9,7 @@ heroImage: "/images/content/special-tesla-spacex-operating-systems-hero.webp"
 readTime: "18 min"
 tags: ["SPECIAL-REPORT", "TESLA", "SPACEX", "MUSK", "WEALTH-CONCENTRATION", "PLATFORM-COMPANIES", "AUTONOMY", "ORBITAL-INFRASTRUCTURE", "ROBOTICS"]
 slug: "special-tesla-spacex-operating-systems-april-2026"
-author: "DHLM Studio"
+author: "Brutal Edge Team"
 ---
 
 # The Operating Systems for Earth and Beyond

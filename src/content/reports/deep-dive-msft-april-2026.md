@@ -1,6 +1,6 @@
----
+﻿---
 title: "Deep Dive: Microsoft — April 2026 Analysis"
-author: "DHLM Studio"
+author: "Brutal Edge Team"
 slug: "deep-dive-msft-april-2026"
 ticker: "MSFT"
 date: "2026-04-02"

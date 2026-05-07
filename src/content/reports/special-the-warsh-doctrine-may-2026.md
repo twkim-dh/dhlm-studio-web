@@ -1,4 +1,4 @@
----
+﻿---
 title: "The Warsh Doctrine"
 description: "What a Warsh-led Fed means for the yield curve, bank repricing, and the end of easy-money assumptions in U.S. capital markets."
 date: "2026-05-07T12:30:00Z"
@@ -12,7 +12,7 @@ ticker: "MACRO"
 tickers: ["MACRO", "FED", "BANKS"]
 tags: ["SPECIAL-REPORT", "WARSH-DOCTRINE", "MONETARY-POLICY", "FED", "MACRO", "YIELD-CURVE", "BANKS", "TERM-PREMIUM", "REGIME-CHANGE"]
 slug: "special-the-warsh-doctrine-may-2026"
-author: "DHLM Studio"
+author: "Brutal Edge Team"
 ---
 
 # The Warsh Doctrine

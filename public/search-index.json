@@ -1,145 +1,23 @@
 [
   {
-    "title": "The Trust Architecture: Why AGI Will Be Won by the Most Trusted, Not the Most Intelligent",
-    "slug": "special-trust-architecture-april-2026",
-    "category": "Reports",
-    "subCategory": "Reports",
+    "title": "The Mental Game #003: The Confirmation Loop That Destroys Long-Term Investors",
+    "slug": "the-mental-game-003-confirmation-loop",
+    "category": "Learn",
+    "subCategory": "Paper vs Profit",
     "tags": [],
-    "excerpt": "The Intelligence Economy framework suggests the frontier is no longer about chatbots — it's about embodied AI, machine labor, and systemic cyber capability. But that raises a deeper question most inve",
-    "publishDate": "2026-06-17T12:30:00Z",
-    "url": "/reports/special-trust-architecture-april-2026"
+    "excerpt": "You like a stock. You buy it. The price falls. You reopen the model. The stock now looks cheaper than it did before. You buy more. The price keeps falling. The model keeps confirming. The model is not",
+    "publishDate": "2026-04-30",
+    "url": "/learn/paper-vs-profit/the-mental-game-003-confirmation-loop"
   },
   {
-    "title": "The Final Frontier: The M7 Collision Course Toward AGI",
-    "slug": "special-final-frontier-m7-agi-april-2026",
-    "category": "Reports",
-    "subCategory": "Reports",
+    "title": "The Structural View Vol.2: Microsoft Owns the Pipes. Google Owns the Audience. Why Distribution Is the Real AI Moat.",
+    "slug": "the-structural-view-vol-2-distribution-layer-wars",
+    "category": "Learn",
+    "subCategory": "Paper vs Profit",
     "tags": [],
-    "excerpt": "The market is still talking about AI as though the story were mainly about better chatbots and faster copilots. That is already yesterday's framing. The next stage of the AI cycle is not about answeri",
-    "publishDate": "2026-06-10T12:30:00Z",
-    "url": "/reports/special-final-frontier-m7-agi-april-2026"
-  },
-  {
-    "title": "The Two Pillars of Future Capitalism: Musk's Physical Empire and Anthropic's Intelligence-Security Stack",
-    "slug": "special-two-pillars-future-capitalism-april-2026",
-    "category": "Reports",
-    "subCategory": "Reports",
-    "tags": [],
-    "excerpt": "The most interesting long-duration investment thesis in 2026 may not be a single stock, a single technology, or even a single industry. It may be a structural split in capitalism itself — where value ",
-    "publishDate": "2026-05-27T12:30:00Z",
-    "url": "/reports/special-two-pillars-future-capitalism-april-2026"
-  },
-  {
-    "title": "The Digital Dollar Empire: Stablecoins, Tokenization, and the Next Expansion of American Financial Power",
-    "slug": "special-digital-dollar-empire-april-2026",
-    "category": "Reports",
-    "subCategory": "Reports",
-    "tags": [],
-    "excerpt": "The most important thing investors still miss about stablecoins is this: they are no longer just crypto plumbing. They are becoming a distribution layer for dollars, a settlement rail for tokenized as",
-    "publishDate": "2026-05-22T12:30:00Z",
-    "url": "/reports/special-digital-dollar-empire-april-2026"
-  },
-  {
-    "title": "The Operating Systems for Earth and Beyond: Why Tesla and SpaceX Belong in the Same Conversation",
-    "slug": "special-tesla-spacex-operating-systems-april-2026",
-    "category": "Reports",
-    "subCategory": "Reports",
-    "tags": [],
-    "excerpt": "The stock market is not an equal-opportunity wealth machine. It is an extreme-outcome machine. Hendrik Bessembinder's 100-year study shows that just 46 firms accounted for half of the roughly $91 tril",
-    "publishDate": "2026-05-20T12:30:00Z",
-    "url": "/reports/special-tesla-spacex-operating-systems-april-2026"
-  },
-  {
-    "title": "Velo3D and the New Arsenal of American Manufacturing",
-    "slug": "deep-dive-velo-new-arsenal-april-2026",
-    "category": "Reports",
-    "subCategory": "Reports",
-    "tags": [],
-    "excerpt": "The easiest way to misunderstand Velo3D is to call it a 3D-printing company. That description is technically true. It is also strategically too small. The more useful way to think about Velo3D in 2026",
-    "publishDate": "2026-05-15T12:30:00Z",
-    "url": "/reports/deep-dive-velo-new-arsenal-april-2026"
-  },
-  {
-    "title": "The Coronation of Elon Musk: SpaceX and the IPO That Could Redraw the Map of Capital Markets",
-    "slug": "special-spacex-ipo-coronation-april-2026",
-    "category": "Reports",
-    "subCategory": "Reports",
-    "tags": [],
-    "excerpt": "If SpaceX comes public in 2026, it will not be just another large tech IPO. It will be a capital-markets event with the scale to alter how investors think about private-company scarcity, aerospace eco",
-    "publishDate": "2026-05-13T12:30:00Z",
-    "url": "/reports/special-spacex-ipo-coronation-april-2026"
-  },
-  {
-    "title": "Nike's Long Runway Back: A Premium Brand's Strategic Self-Inflicted Wound",
-    "slug": "deep-dive-nke-long-runway-april-2026",
-    "category": "Reports",
-    "subCategory": "Reports",
-    "tags": [],
-    "excerpt": "Nike's problem is not that consumers suddenly stopped caring about sportswear. Its problem is that for several years the company behaved as though distribution, product innovation, and brand heat were",
-    "publishDate": "2026-05-08T12:30:00Z",
-    "url": "/reports/deep-dive-nke-long-runway-april-2026"
-  },
-  {
-    "title": "The Rise of Claude: Why the Next AI Investment Cycle May Be About Trust, Not Scale",
-    "slug": "special-rise-of-claude-april-2026",
-    "category": "Reports",
-    "subCategory": "Reports",
-    "tags": [],
-    "excerpt": "The strongest way to understand Anthropic in 2026 is not as 'another frontier-model company.' It is as a company trying to own the trust layer of enterprise AI. The first phase of the AI boom rewarded",
-    "publishDate": "2026-05-06T12:30:00Z",
-    "url": "/reports/special-rise-of-claude-april-2026"
-  },
-  {
-    "title": "The Token Economy: How Big Tech Is Turning AI Into a New Industrial Output",
-    "slug": "special-token-economy-april-2026",
-    "category": "Reports",
-    "subCategory": "Reports",
-    "tags": [],
-    "excerpt": "The most important mistake investors can make in 2026 is to think the AI race is still mainly about 'who has the smartest model.' That was the first round. The next round is about who can produce, dis",
-    "publishDate": "2026-05-01T12:30:00Z",
-    "url": "/reports/special-token-economy-april-2026"
-  },
-  {
-    "title": "Intel's Great Repricing: Why the AI Inference Era Could Make Intel Matter Again",
-    "slug": "deep-dive-intc-great-repricing-april-2026",
-    "category": "Reports",
-    "subCategory": "Reports",
-    "tags": [],
-    "excerpt": "The easiest way to get Intel wrong in 2026 is to tell one of two oversimplified stories. The first says Intel is finished. The second says Intel is on the verge of a clean comeback. Both are too simpl",
-    "publishDate": "2026-04-28T12:30:00Z",
-    "url": "/reports/deep-dive-intc-great-repricing-april-2026"
-  },
-  {
-    "title": "JPMorgan and the American Fortress",
-    "slug": "special-jpmorgan-american-fortress-april-2026",
-    "category": "Reports",
-    "subCategory": "Reports",
-    "tags": [],
-    "excerpt": "Jamie Dimon's 2026 shareholder letter isn't really about bank earnings. It's a worldview — one that treats American financial strength as inseparable from national strength. Why JPMorgan is one of the",
-    "publishDate": "2026-04-24T12:30:00Z",
-    "url": "/reports/special-jpmorgan-american-fortress-april-2026"
-  },
-  {
-    "title": "NVIDIA: The Industrial Architect of the Intelligence Economy",
-    "slug": "special-nvidia-industrial-architect-april-2026",
-    "category": "Reports",
-    "subCategory": "Reports",
-    "tags": [],
-    "excerpt": "The easiest way to misunderstand NVIDIA in 2026 is to call it a chip company. That description is technically correct — and strategically incomplete. NVIDIA is no longer really selling GPUs. It's sell",
-    "publishDate": "2026-04-22T12:30:00Z",
-    "url": "/reports/special-nvidia-industrial-architect-april-2026"
-  },
-  {
-    "title": "Netflix Q1 2026: A -9.72% Selloff That Misreads the Transition",
-    "slug": "deep-dive-nflx-april-2026",
-    "category": "Reports",
-    "subCategory": "Media",
-    "tags": [
-      "NFLX"
-    ],
-    "excerpt": "Netflix beat Q1 on every line. Revenue $12.25B. EPS $1.23. Ad revenue on track to double to $3B. Stock closed down 9.72%. The market is still valuing the old Netflix while the company is becoming some",
-    "publishDate": "2026-04-17",
-    "url": "/reports/deep-dive-nflx-april-2026"
+    "excerpt": "As frontier-model capability compresses, durable value flows to whoever owns the route through which intelligence becomes habitual. Microsoft owns the pipes. Google owns the audience. Everyone else is",
+    "publishDate": "2026-04-29",
+    "url": "/learn/paper-vs-profit/the-structural-view-vol-2-distribution-layer-wars"
   },
   {
     "title": "The Mental Game #001: Why Bull Markets Make You Worse at Investing",
@@ -657,7 +535,7 @@
     "category": "Reports",
     "subCategory": "Report",
     "tags": [],
-    "excerpt": "---\r\nslug: \"ai-cybersecurity-threat-mythos-report-april-2026\"\r\ntitle: \"AI as a Financial-System Threat: Anthropic's Mythos Moment and What It Means for Your Portfolio\"\r\nticker: \"ANTHROPIC\"\r\ndate: \"202",
+    "excerpt": "---\nauthor: \"Brutal Edge Team\"\nslug: \"ai-cybersecurity-threat-mythos-report-april-2026\"\ntitle: \"AI as a Financial-System Threat: Anthropic's Mythos Moment and What It Means for Your Portfolio\"\nticker:",
     "publishDate": "",
     "url": "/reports/ai-cybersecurity-threat-mythos-report-april-2026"
   },
@@ -667,7 +545,7 @@
     "category": "Reports",
     "subCategory": "Report",
     "tags": [],
-    "excerpt": "---\r\nslug: \"anthropic-private-investor-report-april-2026\"\r\ntitle: \"Anthropic: Private Investor Report — April 2026\"\r\ndate: \"2026-04-14\"\r\nreadTime: \"18 min\"\r\ncategory: \"Special Report\"\r\ncatColor: \"C73E",
+    "excerpt": "---\nauthor: \"Brutal Edge Team\"\nslug: \"anthropic-private-investor-report-april-2026\"\ntitle: \"Anthropic: Private Investor Report — April 2026\"\ndate: \"2026-04-14\"\nreadTime: \"18 min\"\ncategory: \"Special Re",
     "publishDate": "",
     "url": "/reports/anthropic-private-investor-report-april-2026"
   },
@@ -677,7 +555,7 @@
     "category": "Reports",
     "subCategory": "Report",
     "tags": [],
-    "excerpt": "---\r\nslug: \"btc-crossroads-april-2026\"\r\ntitle: \"Bitcoin's April 2026 Crossroads: Repricing, Not Euphoria\"\r\nticker: \"BTC\"\r\ndate: \"2026-04-08\"\r\nreadTime: \"15 min\"\r\ncategory: \"Crypto\"\r\ncatColor: \"F59E0B\"",
+    "excerpt": "---\nauthor: \"Brutal Edge Team\"\nslug: \"btc-crossroads-april-2026\"\ntitle: \"Bitcoin's April 2026 Crossroads: Repricing, Not Euphoria\"\nticker: \"BTC\"\ndate: \"2026-04-08\"\nreadTime: \"15 min\"\ncategory: \"Crypto",
     "publishDate": "",
     "url": "/reports/btc-crossroads-april-2026"
   },
@@ -687,7 +565,7 @@
     "category": "Reports",
     "subCategory": "Report",
     "tags": [],
-    "excerpt": "---\r\nslug: \"clarity-act-digital-asset-market-structure-april-2026\"\r\ntitle: \"The CLARITY Act: Who Owns the Toll Roads When Crypto Gets Legal Roads\"\r\nticker: \"COIN\"\r\ndate: \"2026-04-17\"\r\nreadTime: \"14 mi",
+    "excerpt": "---\nauthor: \"Brutal Edge Team\"\nslug: \"clarity-act-digital-asset-market-structure-april-2026\"\ntitle: \"The CLARITY Act: Who Owns the Toll Roads When Crypto Gets Legal Roads\"\nticker: \"COIN\"\ndate: \"2026-0",
     "publishDate": "",
     "url": "/reports/clarity-act-digital-asset-market-structure-april-2026"
   },
@@ -697,7 +575,7 @@
     "category": "Reports",
     "subCategory": "Report",
     "tags": [],
-    "excerpt": "---\r\nslug: \"crypto-treasury-sector-report-april-2026\"\r\ntitle: \"Crypto Treasury Stocks: Leveraged Genius or Financial Engineering Gone Too Far?\"\r\nticker: \"MSTR\"\r\ndate: \"2026-04-15\"\r\nreadTime: \"20 min\"\r",
+    "excerpt": "---\nauthor: \"Brutal Edge Team\"\nslug: \"crypto-treasury-sector-report-april-2026\"\ntitle: \"Crypto Treasury Stocks: Leveraged Genius or Financial Engineering Gone Too Far?\"\nticker: \"MSTR\"\ndate: \"2026-04-1",
     "publishDate": "",
     "url": "/reports/crypto-treasury-sector-report-april-2026"
   },
@@ -707,7 +585,7 @@
     "category": "Reports",
     "subCategory": "Report",
     "tags": [],
-    "excerpt": "---\r\ntitle: \"Deep Dive: Apple — April 2026 Analysis\"\r\nslug: \"deep-dive-aapl-april-2026\"\r\nticker: \"AAPL\"\r\ndate: \"2026-04-03\"\r\nreadTime: \"13 min\"\r\ncategory: \"Markets\"\r\ncatColor: \"00D474\"\r\ngrade: \"B\"\r\nhe",
+    "excerpt": "---\ntitle: \"Deep Dive: Apple — April 2026 Analysis\"\nauthor: \"Brutal Edge Team\"\nslug: \"deep-dive-aapl-april-2026\"\nticker: \"AAPL\"\ndate: \"2026-04-03\"\nreadTime: \"13 min\"\ncategory: \"Markets\"\ncatColor: \"00D",
     "publishDate": "",
     "url": "/reports/deep-dive-aapl-april-2026"
   },
@@ -717,7 +595,7 @@
     "category": "Reports",
     "subCategory": "Report",
     "tags": [],
-    "excerpt": "---\r\ntitle: \"Deep Dive: AMD — April 2026 Analysis\"\r\nslug: \"deep-dive-amd-april-2026\"\r\nticker: \"AMD\"\r\ndate: \"2026-04-05\"\r\nreadTime: \"14 min\"\r\ncategory: \"Markets\"\r\ncatColor: \"00D474\"\r\ngrade: \"C\"\r\nheroIm",
+    "excerpt": "---\ntitle: \"Deep Dive: AMD — April 2026 Analysis\"\nauthor: \"Brutal Edge Team\"\nslug: \"deep-dive-amd-april-2026\"\nticker: \"AMD\"\ndate: \"2026-04-05\"\nreadTime: \"14 min\"\ncategory: \"Markets\"\ncatColor: \"00D474\"",
     "publishDate": "",
     "url": "/reports/deep-dive-amd-april-2026"
   },
@@ -727,7 +605,7 @@
     "category": "Reports",
     "subCategory": "Report",
     "tags": [],
-    "excerpt": "---\r\ntitle: \"Deep Dive: Amazon — April 2026 Analysis\"\r\nslug: \"deep-dive-amzn-april-2026\"\r\nticker: \"AMZN\"\r\ndate: \"2026-04-04\"\r\nreadTime: \"14 min\"\r\ncategory: \"Markets\"\r\ncatColor: \"00D474\"\r\ngrade: \"B\"\r\nh",
+    "excerpt": "---\ntitle: \"Deep Dive: Amazon — April 2026 Analysis\"\nauthor: \"Brutal Edge Team\"\nslug: \"deep-dive-amzn-april-2026\"\nticker: \"AMZN\"\ndate: \"2026-04-04\"\nreadTime: \"14 min\"\ncategory: \"Markets\"\ncatColor: \"00",
     "publishDate": "",
     "url": "/reports/deep-dive-amzn-april-2026"
   },
@@ -737,7 +615,7 @@
     "category": "Reports",
     "subCategory": "Report",
     "tags": [],
-    "excerpt": "---\r\ntitle: \"Deep Dive: Bitcoin — April 2026 Analysis\"\r\nslug: \"deep-dive-btc-april-2026\"\r\nticker: \"BTC\"\r\ndate: \"2026-04-07\"\r\nreadTime: \"14 min\"\r\ncategory: \"Crypto\"\r\ncatColor: \"F59E0B\"\r\ngrade: \"C+\"\r\nhe",
+    "excerpt": "---\ntitle: \"Deep Dive: Bitcoin — April 2026 Analysis\"\nauthor: \"Brutal Edge Team\"\nslug: \"deep-dive-btc-april-2026\"\nticker: \"BTC\"\ndate: \"2026-04-07\"\nreadTime: \"14 min\"\ncategory: \"Crypto\"\ncatColor: \"F59E",
     "publishDate": "",
     "url": "/reports/deep-dive-btc-april-2026"
   },
@@ -747,7 +625,7 @@
     "category": "Reports",
     "subCategory": "Report",
     "tags": [],
-    "excerpt": "---\r\nslug: \"deep-dive-crcl-circle-april-2026\"\r\ntitle: \"Circle Internet Group (CRCL): The Stablecoin Leader That Fell Hard — and May Still Matter\"\r\nticker: \"CRCL\"\r\ndate: \"2026-04-15\"\r\nreadTime: \"12 min",
+    "excerpt": "---\nauthor: \"Brutal Edge Team\"\nslug: \"deep-dive-crcl-circle-april-2026\"\ntitle: \"Circle Internet Group (CRCL): The Stablecoin Leader That Fell Hard — and May Still Matter\"\nticker: \"CRCL\"\ndate: \"2026-04",
     "publishDate": "",
     "url": "/reports/deep-dive-crcl-circle-april-2026"
   },
@@ -757,7 +635,7 @@
     "category": "Reports",
     "subCategory": "Report",
     "tags": [],
-    "excerpt": "---\r\ntitle: \"Deep Dive: Ethereum — April 2026 Analysis\"\r\nslug: \"deep-dive-eth-april-2026\"\r\nticker: \"ETH\"\r\ndate: \"2026-04-11\"\r\nreadTime: \"14 min\"\r\ncategory: \"Crypto\"\r\ncatColor: \"8B5CF6\"\r\ngrade: \"—\"\r\nhe",
+    "excerpt": "---\ntitle: \"Deep Dive: Ethereum — April 2026 Analysis\"\nauthor: \"Brutal Edge Team\"\nslug: \"deep-dive-eth-april-2026\"\nticker: \"ETH\"\ndate: \"2026-04-11\"\nreadTime: \"14 min\"\ncategory: \"Crypto\"\ncatColor: \"8B5",
     "publishDate": "",
     "url": "/reports/deep-dive-eth-april-2026"
   },
@@ -767,9 +645,19 @@
     "category": "Reports",
     "subCategory": "Report",
     "tags": [],
-    "excerpt": "---\r\ntitle: \"Deep Dive: Alphabet/Google — April 2026 Analysis\"\r\nslug: \"deep-dive-googl-april-2026\"\r\nticker: \"GOOGL\"\r\ndate: \"2026-04-03\"\r\nreadTime: \"14 min\"\r\ncategory: \"Markets\"\r\ncatColor: \"00D474\"\r\ngr",
+    "excerpt": "---\ntitle: \"Deep Dive: Alphabet/Google — April 2026 Analysis\"\nauthor: \"Brutal Edge Team\"\nslug: \"deep-dive-googl-april-2026\"\nticker: \"GOOGL\"\ndate: \"2026-04-03\"\nreadTime: \"14 min\"\ncategory: \"Markets\"\nca",
     "publishDate": "",
     "url": "/reports/deep-dive-googl-april-2026"
+  },
+  {
+    "title": "deep-dive-intc-great-repricing-april-2026",
+    "slug": "deep-dive-intc-great-repricing-april-2026",
+    "category": "Reports",
+    "subCategory": "Report",
+    "tags": [],
+    "excerpt": "---\ntitle: \"Intel's Great Repricing: Why the AI Inference Era Could Make Intel Matter Again\"\ndescription: \"The easiest way to get Intel wrong in 2026 is to tell one of two oversimplified stories. The ",
+    "publishDate": "",
+    "url": "/reports/deep-dive-intc-great-repricing-april-2026"
   },
   {
     "title": "deep-dive-meta-april-2026",
@@ -777,7 +665,7 @@
     "category": "Reports",
     "subCategory": "Report",
     "tags": [],
-    "excerpt": "---\r\ntitle: \"Deep Dive: Meta Platforms — April 2026 Analysis\"\r\nslug: \"deep-dive-meta-april-2026\"\r\nticker: \"META\"\r\ndate: \"2026-04-04\"\r\nreadTime: \"14 min\"\r\ncategory: \"Markets\"\r\ncatColor: \"00D474\"\r\ngrade",
+    "excerpt": "---\ntitle: \"Deep Dive: Meta Platforms — April 2026 Analysis\"\nauthor: \"Brutal Edge Team\"\nslug: \"deep-dive-meta-april-2026\"\nticker: \"META\"\ndate: \"2026-04-04\"\nreadTime: \"14 min\"\ncategory: \"Markets\"\ncatCo",
     "publishDate": "",
     "url": "/reports/deep-dive-meta-april-2026"
   },
@@ -787,9 +675,29 @@
     "category": "Reports",
     "subCategory": "Report",
     "tags": [],
-    "excerpt": "---\r\ntitle: \"Deep Dive: Microsoft — April 2026 Analysis\"\r\nslug: \"deep-dive-msft-april-2026\"\r\nticker: \"MSFT\"\r\ndate: \"2026-04-02\"\r\nreadTime: \"14 min\"\r\ncategory: \"Markets\"\r\ncatColor: \"00D474\"\r\ngrade: \"B+",
+    "excerpt": "---\ntitle: \"Deep Dive: Microsoft — April 2026 Analysis\"\nauthor: \"Brutal Edge Team\"\nslug: \"deep-dive-msft-april-2026\"\nticker: \"MSFT\"\ndate: \"2026-04-02\"\nreadTime: \"14 min\"\ncategory: \"Markets\"\ncatColor: ",
     "publishDate": "",
     "url": "/reports/deep-dive-msft-april-2026"
+  },
+  {
+    "title": "deep-dive-nflx-april-2026",
+    "slug": "deep-dive-nflx-april-2026",
+    "category": "Reports",
+    "subCategory": "Report",
+    "tags": [],
+    "excerpt": "---\ntitle: \"Netflix Q1 2026: A -9.72% Selloff That Misreads the Transition\"\nauthor: \"Brutal Edge Team\"\nslug: \"deep-dive-nflx-april-2026\"\nticker: \"NFLX\"\ndate: \"2026-04-17\"\nreadTime: \"14 min\"\ncategory: ",
+    "publishDate": "",
+    "url": "/reports/deep-dive-nflx-april-2026"
+  },
+  {
+    "title": "deep-dive-nke-long-runway-april-2026",
+    "slug": "deep-dive-nke-long-runway-april-2026",
+    "category": "Reports",
+    "subCategory": "Report",
+    "tags": [],
+    "excerpt": "---\ntitle: \"Nike's Long Runway Back: A Premium Brand's Strategic Self-Inflicted Wound\"\ndescription: \"Nike's problem is not that consumers suddenly stopped caring about sportswear. Its problem is that ",
+    "publishDate": "",
+    "url": "/reports/deep-dive-nke-long-runway-april-2026"
   },
   {
     "title": "deep-dive-nvda-april-2026",
@@ -797,7 +705,7 @@
     "category": "Reports",
     "subCategory": "Report",
     "tags": [],
-    "excerpt": "---\r\nslug: \"deep-dive-nvda-april-2026\"\r\ntitle: \"NVIDIA (NVDA): Building the AI Factory for the Age of Intelligence\"\r\nticker: \"NVDA\"\r\ndate: \"2026-04-16\"\r\nreadTime: \"18 min\"\r\ncategory: \"Deep Dive\"\r\ncatC",
+    "excerpt": "---\nauthor: \"Brutal Edge Team\"\nslug: \"deep-dive-nvda-april-2026\"\ntitle: \"NVIDIA (NVDA): Building the AI Factory for the Age of Intelligence\"\nticker: \"NVDA\"\ndate: \"2026-04-16\"\nreadTime: \"18 min\"\ncatego",
     "publishDate": "",
     "url": "/reports/deep-dive-nvda-april-2026"
   },
@@ -807,7 +715,7 @@
     "category": "Reports",
     "subCategory": "Report",
     "tags": [],
-    "excerpt": "---\r\ntitle: \"Deep Dive: Palantir — April 2026 Analysis\"\r\nslug: \"deep-dive-pltr-april-2026\"\r\nticker: \"PLTR\"\r\ndate: \"2026-04-06\"\r\nreadTime: \"14 min\"\r\ncategory: \"Markets\"\r\ncatColor: \"00D474\"\r\ngrade: \"D+\"",
+    "excerpt": "---\ntitle: \"Deep Dive: Palantir — April 2026 Analysis\"\nauthor: \"Brutal Edge Team\"\nslug: \"deep-dive-pltr-april-2026\"\nticker: \"PLTR\"\ndate: \"2026-04-06\"\nreadTime: \"14 min\"\ncategory: \"Markets\"\ncatColor: \"",
     "publishDate": "",
     "url": "/reports/deep-dive-pltr-april-2026"
   },
@@ -817,7 +725,7 @@
     "category": "Reports",
     "subCategory": "Report",
     "tags": [],
-    "excerpt": "---\r\nslug: \"deep-dive-rdw-redwire-april-2026\"\r\ntitle: \"Redwire (RDW): From Space Infrastructure to Defense Autonomy\"\r\nticker: \"RDW\"\r\ndate: \"2026-04-16\"\r\nreadTime: \"15 min\"\r\ncategory: \"Deep Dive\"\r\ncatC",
+    "excerpt": "---\nauthor: \"Brutal Edge Team\"\nslug: \"deep-dive-rdw-redwire-april-2026\"\ntitle: \"Redwire (RDW): From Space Infrastructure to Defense Autonomy\"\nticker: \"RDW\"\ndate: \"2026-04-16\"\nreadTime: \"15 min\"\ncatego",
     "publishDate": "",
     "url": "/reports/deep-dive-rdw-redwire-april-2026"
   },
@@ -827,9 +735,19 @@
     "category": "Reports",
     "subCategory": "Report",
     "tags": [],
-    "excerpt": "---\r\ntitle: \"Deep Dive: Tesla — April 2026 Analysis\"\r\nslug: \"deep-dive-tsla-april-2026\"\r\nticker: \"TSLA\"\r\ndate: \"2026-04-05\"\r\nreadTime: \"14 min\"\r\ncategory: \"Markets\"\r\ncatColor: \"00D474\"\r\ngrade: \"C+\"\r\nh",
+    "excerpt": "---\ntitle: \"Deep Dive: Tesla — April 2026 Analysis\"\nauthor: \"Brutal Edge Team\"\nslug: \"deep-dive-tsla-april-2026\"\nticker: \"TSLA\"\ndate: \"2026-04-05\"\nreadTime: \"14 min\"\ncategory: \"Markets\"\ncatColor: \"00D",
     "publishDate": "",
     "url": "/reports/deep-dive-tsla-april-2026"
+  },
+  {
+    "title": "deep-dive-velo-new-arsenal-april-2026",
+    "slug": "deep-dive-velo-new-arsenal-april-2026",
+    "category": "Reports",
+    "subCategory": "Report",
+    "tags": [],
+    "excerpt": "---\ntitle: \"Velo3D and the New Arsenal of American Manufacturing\"\ndescription: \"The easiest way to misunderstand Velo3D is to call it a 3D-printing company. That description is technically true. It is",
+    "publishDate": "",
+    "url": "/reports/deep-dive-velo-new-arsenal-april-2026"
   },
   {
     "title": "ethereum-special-report-april-2026",
@@ -837,7 +755,7 @@
     "category": "Reports",
     "subCategory": "Report",
     "tags": [],
-    "excerpt": "---\r\nslug: \"ethereum-special-report-april-2026\"\r\ntitle: \"Ethereum Special Report: Is ETH a Recovery Asset or a Re-Rating Asset in 2026?\"\r\nticker: \"ETH\"\r\ndate: \"2026-04-14\"\r\nreadTime: \"16 min\"\r\ncategor",
+    "excerpt": "---\nauthor: \"Brutal Edge Team\"\nslug: \"ethereum-special-report-april-2026\"\ntitle: \"Ethereum Special Report: Is ETH a Recovery Asset or a Re-Rating Asset in 2026?\"\nticker: \"ETH\"\ndate: \"2026-04-14\"\nreadT",
     "publishDate": "",
     "url": "/reports/ethereum-special-report-april-2026"
   },
@@ -847,7 +765,7 @@
     "category": "Reports",
     "subCategory": "Report",
     "tags": [],
-    "excerpt": "---\r\nslug: \"hot-sector-energy-april-2026\"\r\ntitle: \"After the Spike: 5 Energy Stocks Still Built to Win if the Iran War Premium Lingers\"\r\nticker: \"XOM\"\r\ndate: \"2026-04-08\"\r\nreadTime: \"12 min\"\r\ncategory",
+    "excerpt": "---\nauthor: \"Brutal Edge Team\"\nslug: \"hot-sector-energy-april-2026\"\ntitle: \"After the Spike: 5 Energy Stocks Still Built to Win if the Iran War Premium Lingers\"\nticker: \"XOM\"\ndate: \"2026-04-08\"\nreadTi",
     "publishDate": "",
     "url": "/reports/hot-sector-energy-april-2026"
   },
@@ -857,7 +775,7 @@
     "category": "Reports",
     "subCategory": "Report",
     "tags": [],
-    "excerpt": "---\r\nslug: \"leveraged-etf-report-april-2026\"\r\ntitle: \"Leveraged ETFs in the U.S. Market — April 2026 Analysis\"\r\ndate: \"2026-04-14\"\r\nreadTime: \"14 min\"\r\ncategory: \"Markets\"\r\ncatColor: \"C73E3A\"\r\ngrade: ",
+    "excerpt": "---\nauthor: \"Brutal Edge Team\"\nslug: \"leveraged-etf-report-april-2026\"\ntitle: \"Leveraged ETFs in the U.S. Market — April 2026 Analysis\"\ndate: \"2026-04-14\"\nreadTime: \"14 min\"\ncategory: \"Markets\"\ncatCol",
     "publishDate": "",
     "url": "/reports/leveraged-etf-report-april-2026"
   },
@@ -867,7 +785,7 @@
     "category": "Reports",
     "subCategory": "Report",
     "tags": [],
-    "excerpt": "---\r\ntitle: \"Navitas Semiconductor (NVTS): The Hidden AI Infrastructure Bet Nobody Priced\"\r\ndescription: \"NVTS at $1.54B market cap on $7.3M quarterly revenue. NVIDIA-linked 800V HVDC architecture pla",
+    "excerpt": "---\ntitle: \"Navitas Semiconductor (NVTS): The Hidden AI Infrastructure Bet Nobody Priced\"\ndescription: \"NVTS at $1.54B market cap on $7.3M quarterly revenue. NVIDIA-linked 800V HVDC architecture play.",
     "publishDate": "",
     "url": "/reports/navitas-nvts-ai-power-infrastructure-special-report-april-2026"
   },
@@ -877,7 +795,7 @@
     "category": "Reports",
     "subCategory": "Report",
     "tags": [],
-    "excerpt": "---\r\nslug: \"new-space-sector-report-april-2026\"\r\ntitle: \"New Space: The $1 Trillion Sector That Stopped Being Science Fiction\"\r\nticker: \"RKLB\"\r\ndate: \"2026-04-16\"\r\nreadTime: \"20 min\"\r\ncategory: \"Speci",
+    "excerpt": "---\nauthor: \"Brutal Edge Team\"\nslug: \"new-space-sector-report-april-2026\"\ntitle: \"New Space: The $1 Trillion Sector That Stopped Being Science Fiction\"\nticker: \"RKLB\"\ndate: \"2026-04-16\"\nreadTime: \"20 ",
     "publishDate": "",
     "url": "/reports/new-space-sector-report-april-2026"
   },
@@ -887,7 +805,7 @@
     "category": "Reports",
     "subCategory": "Report",
     "tags": [],
-    "excerpt": "---\r\nslug: \"nvidia-ising-quantum-control-plane-april-2026\"\r\ntitle: \"NVIDIA Ising: Why the Quantum Control Plane Matters More Than the Qubits\"\r\nticker: \"NVDA\"\r\ndate: \"2026-04-16\"\r\nreadTime: \"15 min\"\r\nc",
+    "excerpt": "---\nauthor: \"Brutal Edge Team\"\nslug: \"nvidia-ising-quantum-control-plane-april-2026\"\ntitle: \"NVIDIA Ising: Why the Quantum Control Plane Matters More Than the Qubits\"\nticker: \"NVDA\"\ndate: \"2026-04-16\"",
     "publishDate": "",
     "url": "/reports/nvidia-ising-quantum-control-plane-april-2026"
   },
@@ -897,7 +815,7 @@
     "category": "Reports",
     "subCategory": "Report",
     "tags": [],
-    "excerpt": "---\r\nslug: \"quantum-sector-special-report-april-2026\"\r\ntitle: \"Quantum Sector Special Report: Not Commercialization Complete — An Investable Early-Stage Industry\"\r\nticker: \"IONQ\"\r\ndate: \"2026-04-14\"\r\n",
+    "excerpt": "---\nauthor: \"Brutal Edge Team\"\nslug: \"quantum-sector-special-report-april-2026\"\ntitle: \"Quantum Sector Special Report: Not Commercialization Complete — An Investable Early-Stage Industry\"\nticker: \"ION",
     "publishDate": "",
     "url": "/reports/quantum-sector-special-report-april-2026"
   },
@@ -907,9 +825,29 @@
     "category": "Reports",
     "subCategory": "Report",
     "tags": [],
-    "excerpt": "---\r\nslug: \"spacex-ipo-special-report\"\r\ntitle: \"SpaceX IPO Special Report: The $1.75 Trillion Question\"\r\nticker: \"SPACEX\"\r\ndate: \"2026-04-12\"\r\nreadTime: \"18 min\"\r\ncategory: \"Special Report\"\r\ncatColor:",
+    "excerpt": "---\nauthor: \"Brutal Edge Team\"\nslug: \"spacex-ipo-special-report\"\ntitle: \"SpaceX IPO Special Report: The $1.75 Trillion Question\"\nticker: \"SPACEX\"\ndate: \"2026-04-12\"\nreadTime: \"18 min\"\ncategory: \"Speci",
     "publishDate": "",
     "url": "/reports/spacex-ipo-special-report"
+  },
+  {
+    "title": "special-digital-dollar-empire-april-2026",
+    "slug": "special-digital-dollar-empire-april-2026",
+    "category": "Reports",
+    "subCategory": "Report",
+    "tags": [],
+    "excerpt": "---\ntitle: \"The Digital Dollar Empire: Stablecoins, Tokenization, and the Next Expansion of American Financial Power\"\ndescription: \"The most important thing investors still miss about stablecoins is t",
+    "publishDate": "",
+    "url": "/reports/special-digital-dollar-empire-april-2026"
+  },
+  {
+    "title": "special-final-frontier-m7-agi-april-2026",
+    "slug": "special-final-frontier-m7-agi-april-2026",
+    "category": "Reports",
+    "subCategory": "Report",
+    "tags": [],
+    "excerpt": "---\ntitle: \"The Final Frontier: The M7 Collision Course Toward AGI\"\ndescription: \"The market is still talking about AI as though the story were mainly about better chatbots and faster copilots. That i",
+    "publishDate": "",
+    "url": "/reports/special-final-frontier-m7-agi-april-2026"
   },
   {
     "title": "special-ionq-vol1-recategorization-april-2026",
@@ -940,6 +878,106 @@
     "excerpt": "---\r\ntitle: \"IonQ Special Report Vol.3: The Price of Admission\"\r\ndescription: \"The execution risks, the valuation mathematics, and the honest framework for deciding whether to own this thesis. Vol.1 d",
     "publishDate": "",
     "url": "/reports/special-ionq-vol3-price-of-admission-april-2026"
+  },
+  {
+    "title": "special-jpmorgan-american-fortress-april-2026",
+    "slug": "special-jpmorgan-american-fortress-april-2026",
+    "category": "Reports",
+    "subCategory": "Report",
+    "tags": [],
+    "excerpt": "---\ntitle: \"JPMorgan and the American Fortress\"\ndescription: \"Jamie Dimon's 2026 shareholder letter isn't really about bank earnings. It's a worldview — one that treats American financial strength as ",
+    "publishDate": "",
+    "url": "/reports/special-jpmorgan-american-fortress-april-2026"
+  },
+  {
+    "title": "special-nvidia-industrial-architect-april-2026",
+    "slug": "special-nvidia-industrial-architect-april-2026",
+    "category": "Reports",
+    "subCategory": "Report",
+    "tags": [],
+    "excerpt": "---\ntitle: \"NVIDIA: The Industrial Architect of the Intelligence Economy\"\ndescription: \"The easiest way to misunderstand NVIDIA in 2026 is to call it a chip company. That description is technically co",
+    "publishDate": "",
+    "url": "/reports/special-nvidia-industrial-architect-april-2026"
+  },
+  {
+    "title": "special-rise-of-claude-april-2026",
+    "slug": "special-rise-of-claude-april-2026",
+    "category": "Reports",
+    "subCategory": "Report",
+    "tags": [],
+    "excerpt": "---\ntitle: \"The Rise of Claude: Why the Next AI Investment Cycle May Be About Trust, Not Scale\"\ndescription: \"The strongest way to understand Anthropic in 2026 is not as 'another frontier-model compan",
+    "publishDate": "",
+    "url": "/reports/special-rise-of-claude-april-2026"
+  },
+  {
+    "title": "special-spacex-ipo-coronation-april-2026",
+    "slug": "special-spacex-ipo-coronation-april-2026",
+    "category": "Reports",
+    "subCategory": "Report",
+    "tags": [],
+    "excerpt": "---\ntitle: \"The Coronation of Elon Musk: SpaceX and the IPO That Could Redraw the Map of Capital Markets\"\ndescription: \"If SpaceX comes public in 2026, it will not be just another large tech IPO. It w",
+    "publishDate": "",
+    "url": "/reports/special-spacex-ipo-coronation-april-2026"
+  },
+  {
+    "title": "special-tesla-spacex-operating-systems-april-2026",
+    "slug": "special-tesla-spacex-operating-systems-april-2026",
+    "category": "Reports",
+    "subCategory": "Report",
+    "tags": [],
+    "excerpt": "---\ntitle: \"The Operating Systems for Earth and Beyond: Why Tesla and SpaceX Belong in the Same Conversation\"\ndescription: \"The stock market is not an equal-opportunity wealth machine. It is an extrem",
+    "publishDate": "",
+    "url": "/reports/special-tesla-spacex-operating-systems-april-2026"
+  },
+  {
+    "title": "special-the-great-energy-shift-may-2026",
+    "slug": "special-the-great-energy-shift-may-2026",
+    "category": "Reports",
+    "subCategory": "Report",
+    "tags": [],
+    "excerpt": "---\ntitle: \"The Great Energy Shift: UAE Exits OPEC, Hormuz Burns, and Why Energy Is No Longer a Sector — It Is American Strategic Infrastructure\"\ndescription: \"The UAE's exit from OPEC is not Middle E",
+    "publishDate": "",
+    "url": "/reports/special-the-great-energy-shift-may-2026"
+  },
+  {
+    "title": "special-the-warsh-doctrine-may-2026",
+    "slug": "special-the-warsh-doctrine-may-2026",
+    "category": "Reports",
+    "subCategory": "Report",
+    "tags": [],
+    "excerpt": "---\ntitle: \"The Warsh Doctrine\"\ndescription: \"What a Warsh-led Fed means for the yield curve, bank repricing, and the end of easy-money assumptions in U.S. capital markets.\"\ndate: \"2026-05-07T12:30:00",
+    "publishDate": "",
+    "url": "/reports/special-the-warsh-doctrine-may-2026"
+  },
+  {
+    "title": "special-token-economy-april-2026",
+    "slug": "special-token-economy-april-2026",
+    "category": "Reports",
+    "subCategory": "Report",
+    "tags": [],
+    "excerpt": "---\r\ntitle: \"The Token Economy: How Big Tech Is Turning AI Into a New Industrial Output\"\r\ndescription: \"The most important mistake investors can make in 2026 is to think the AI race is still mainly ab",
+    "publishDate": "",
+    "url": "/reports/special-token-economy-april-2026"
+  },
+  {
+    "title": "special-trust-architecture-april-2026",
+    "slug": "special-trust-architecture-april-2026",
+    "category": "Reports",
+    "subCategory": "Report",
+    "tags": [],
+    "excerpt": "---\ntitle: \"The Trust Architecture: Why AGI Will Be Won by the Most Trusted, Not the Most Intelligent\"\ndescription: \"The Intelligence Economy framework suggests the frontier is no longer about chatbot",
+    "publishDate": "",
+    "url": "/reports/special-trust-architecture-april-2026"
+  },
+  {
+    "title": "special-two-pillars-future-capitalism-april-2026",
+    "slug": "special-two-pillars-future-capitalism-april-2026",
+    "category": "Reports",
+    "subCategory": "Report",
+    "tags": [],
+    "excerpt": "---\ntitle: \"The Two Pillars of Future Capitalism: Musk's Physical Empire and Anthropic's Intelligence-Security Stack\"\ndescription: \"The most interesting long-duration investment thesis in 2026 may not",
+    "publishDate": "",
+    "url": "/reports/special-two-pillars-future-capitalism-april-2026"
   },
   {
     "title": "structural-view-001-palantir-vs-anthropic-april-2026",

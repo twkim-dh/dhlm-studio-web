@@ -1,4 +1,4 @@
----
+﻿---
 title: "IonQ Special Report Vol.1: The Re-Categorization"
 description: "IonQ is not a quantum hardware company anymore. The market still categorizes it that way — and that categorization is the single biggest analytical error in public quantum investing right now. A structural case for why IonQ must be re-categorized as a platform company, and why that reframing changes everything about how the stock should be valued."
 date: "2026-04-18T12:30:00Z"
@@ -9,7 +9,7 @@ heroImage: "/images/content/special-ionq-vol1-recategorization-hero.webp"
 readTime: "20 min"
 tags: ["SPECIAL-REPORT", "IONQ", "QUANTUM-COMPUTING", "PLATFORM-TRANSITION", "TRAPPED-ION", "RE-CATEGORIZATION"]
 slug: "special-ionq-vol1-recategorization-april-2026"
-author: "DHLM Studio"
+author: "Brutal Edge Team"
 contentLifespan: "evergreen"
 promotionWeeks: 4
 ---

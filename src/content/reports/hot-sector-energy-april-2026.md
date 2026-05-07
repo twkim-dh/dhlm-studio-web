@@ -1,5 +1,5 @@
----
-author: "DHLM Studio"
+﻿---
+author: "Brutal Edge Team"
 slug: "hot-sector-energy-april-2026"
 title: "After the Spike: 5 Energy Stocks Still Built to Win if the Iran War Premium Lingers"
 ticker: "XOM"

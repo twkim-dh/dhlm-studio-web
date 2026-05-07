@@ -1,5 +1,5 @@
----
-author: "DHLM Studio"
+﻿---
+author: "Brutal Edge Team"
 slug: "new-space-sector-report-april-2026"
 title: "New Space: The $1 Trillion Sector That Stopped Being Science Fiction"
 ticker: "RKLB"

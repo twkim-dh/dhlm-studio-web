@@ -1,6 +1,6 @@
----
+﻿---
 title: "Deep Dive: Palantir — April 2026 Analysis"
-author: "DHLM Studio"
+author: "Brutal Edge Team"
 slug: "deep-dive-pltr-april-2026"
 ticker: "PLTR"
 date: "2026-04-06"

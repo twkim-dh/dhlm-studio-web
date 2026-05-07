@@ -1,4 +1,4 @@
----
+﻿---
 title: "IonQ Special Report Vol.3: The Price of Admission"
 description: "The execution risks, the valuation mathematics, and the honest framework for deciding whether to own this thesis. Vol.1 defined what IonQ is becoming. Vol.2 showed how the transition is unfolding. Vol.3 confronts what the thesis costs — and what actually makes it break."
 date: "2026-04-18T12:30:00Z"
@@ -9,7 +9,7 @@ heroImage: "/images/content/special-ionq-vol3-price-of-admission-hero.webp"
 readTime: "22 min"
 tags: ["SPECIAL-REPORT", "IONQ", "QUANTUM-COMPUTING", "EXECUTION-RISK", "VALUATION", "POSITION-SIZING", "INVESTMENT-FRAMEWORK"]
 slug: "special-ionq-vol3-price-of-admission-april-2026"
-author: "DHLM Studio"
+author: "Brutal Edge Team"
 contentLifespan: "evergreen"
 promotionWeeks: 4
 ---

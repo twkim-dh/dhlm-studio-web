@@ -1,4 +1,4 @@
----
+﻿---
 title: "The Coronation of Elon Musk: SpaceX and the IPO That Could Redraw the Map of Capital Markets"
 description: "If SpaceX comes public in 2026, it will not be just another large tech IPO. It will be a capital-markets event with the scale to alter how investors think about private-company scarcity, aerospace economics, and Musk's industrial empire. The question isn't whether this would be historic. It's whether public investors would be buying greatness at the start of a new category — or the most ambitious industrial story on Earth at a price that assumes near-impossible execution."
 date: "2026-05-13T12:30:00Z"
@@ -9,7 +9,7 @@ heroImage: "/images/content/special-spacex-ipo-coronation-hero.webp"
 readTime: "19 min"
 tags: ["SPECIAL-REPORT", "SPACEX", "IPO", "ELON-MUSK", "STARLINK", "SPACE-ECONOMY", "ORBITAL-INFRASTRUCTURE", "MUSK-EMPIRE"]
 slug: "special-spacex-ipo-coronation-april-2026"
-author: "DHLM Studio"
+author: "Brutal Edge Team"
 ---
 
 # The Coronation of Elon Musk

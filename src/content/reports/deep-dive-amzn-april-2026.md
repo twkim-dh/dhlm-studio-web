@@ -1,6 +1,6 @@
----
+﻿---
 title: "Deep Dive: Amazon — April 2026 Analysis"
-author: "DHLM Studio"
+author: "Brutal Edge Team"
 slug: "deep-dive-amzn-april-2026"
 ticker: "AMZN"
 date: "2026-04-04"

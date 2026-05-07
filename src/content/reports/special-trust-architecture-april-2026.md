@@ -1,4 +1,4 @@
----
+﻿---
 title: "The Trust Architecture: Why AGI Will Be Won by the Most Trusted, Not the Most Intelligent"
 description: "The Intelligence Economy framework suggests the frontier is no longer about chatbots — it's about embodied AI, machine labor, and systemic cyber capability. But that raises a deeper question most investors haven't asked: who decides what is safe to deploy? The next durable AI multiple may not accrue to the smartest model. It may accrue to the firm that builds the trust architecture around that intelligence."
 date: "2026-06-17T12:30:00Z"
@@ -9,7 +9,7 @@ heroImage: "/images/content/special-trust-architecture-hero.webp"
 readTime: "20 min"
 tags: ["SPECIAL-REPORT", "AI-TRUST", "AGI-GOVERNANCE", "ANTHROPIC", "MYTHOS", "CYBER-SECURITY", "QUANTUM-SAFE", "INTELLIGENCE-ECONOMY", "SYNTHESIS"]
 slug: "special-trust-architecture-april-2026"
-author: "DHLM Studio"
+author: "Brutal Edge Team"
 ---
 
 # The Trust Architecture

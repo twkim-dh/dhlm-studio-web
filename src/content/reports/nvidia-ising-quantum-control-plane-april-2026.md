@@ -1,5 +1,5 @@
----
-author: "DHLM Studio"
+﻿---
+author: "Brutal Edge Team"
 slug: "nvidia-ising-quantum-control-plane-april-2026"
 title: "NVIDIA Ising: Why the Quantum Control Plane Matters More Than the Qubits"
 ticker: "NVDA"

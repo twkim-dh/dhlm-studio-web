@@ -1,4 +1,4 @@
----
+﻿---
 title: "The Great Energy Shift: UAE Exits OPEC, Hormuz Burns, and Why Energy Is No Longer a Sector — It Is American Strategic Infrastructure"
 description: "The UAE's exit from OPEC is not Middle East political drama. It is a regime change in how global energy markets organize themselves — and the opening of a multi-year re-rating of the American energy complex from cyclical sector to strategic infrastructure."
 date: "2026-05-05T12:30:00Z"
@@ -9,7 +9,7 @@ heroImage: "/images/content/SPECIAL-THE-GREAT-ENERGY-SHIFT.webp"
 readTime: "22 min"
 tags: ["SPECIAL-REPORT", "ENERGY", "OPEC", "UAE", "LNG", "GEOPOLITICS", "XOM", "CVX", "LNG-EXPORT", "MIDSTREAM", "HORMUZ", "INFRASTRUCTURE"]
 slug: "special-the-great-energy-shift-may-2026"
-author: "DHLM Studio"
+author: "Brutal Edge Team"
 relatedSlugs: ["hot-sector-energy-april-2026","the-structural-view-vol-2-distribution-layer-wars","special-token-economy-april-2026"]
 seoTitle: "The Great Energy Shift: UAE Exits OPEC & Why US Energy Is Now Strategic Infrastructure | DHLM Studio"
 seoDescription: "UAE exits OPEC on May 1, 2026. Brutal Edge analyzes why this is a regime change — not a political event — and why the American energy complex deserves a higher multiple as strategic infrastructure."

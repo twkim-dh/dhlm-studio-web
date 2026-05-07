@@ -1,6 +1,6 @@
----
+﻿---
 title: "Deep Dive: Bitcoin — April 2026 Analysis"
-author: "DHLM Studio"
+author: "Brutal Edge Team"
 slug: "deep-dive-btc-april-2026"
 ticker: "BTC"
 date: "2026-04-07"
