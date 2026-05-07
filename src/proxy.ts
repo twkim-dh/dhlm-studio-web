@@ -1,11 +1,3 @@
-// Explicit redirect mapping table for Deep Dive reports.
-//
-// Rules:
-// - Individual entries only. No catch-all patterns.
-// - When adding a new Deep Dive, add one line here.
-// - Mirrors the /blog/ → /reports/ entries in next.config.ts.
-//   next.config.ts handles the primary 301; proxy is the safety net.
-
 import { NextResponse } from 'next/server';
 import type { NextRequest } from 'next/server';
 
@@ -38,7 +30,19 @@ const GONE_PATHS = new Set([
 ]);
 
 export function proxy(request: NextRequest) {
+  const host = request.headers.get('host') || '';
   const { pathname } = request.nextUrl;
+
+  // Block Vercel preview URLs from being indexed as duplicate content
+  if (host.endsWith('.vercel.app')) {
+    const url = new URL(request.url);
+    url.host = 'dhlm-studio.com';
+    url.protocol = 'https:';
+    url.port = '';
+    const res = NextResponse.redirect(url.toString(), { status: 301 });
+    res.headers.set('X-Robots-Tag', 'noindex');
+    return res;
+  }
 
   if (GONE_PATHS.has(pathname)) {
     return new NextResponse('Gone', { status: 410 });
@@ -51,5 +55,5 @@ export function proxy(request: NextRequest) {
 }
 
 export const config = {
-  matcher: ['/blog/:path*'],
+  matcher: ['/((?!_next/static|_next/image|favicon.ico).*)'],
 };
