@@ -29,9 +29,20 @@ const GONE_PATHS = new Set([
   '/blog/powerball-vs-mega-millions-better-odds',
 ]);
 
+// ── Singapore geo-block (INACTIVE — uncomment ONE line below to activate) ──
+// Activation: confirm bot via GA4 (pages/session < 2, engagement < 5s) then uncomment.
+// Deactivate after AdSense review passes (target: 5-14).
+// const BLOCK_SG = true;
+
 export function proxy(request: NextRequest) {
   const host = request.headers.get('host') || '';
   const { pathname } = request.nextUrl;
+
+  // SG block (activate by uncommenting BLOCK_SG above AND this block)
+  // const country = request.headers.get('x-vercel-ip-country') || '';
+  // if (typeof BLOCK_SG !== 'undefined' && country === 'SG') {
+  //   return new NextResponse('Access temporarily restricted', { status: 403 });
+  // }
 
   // 410 Gone for all /lottery paths (gambling content — permanently deleted)
   if (pathname.startsWith('/lottery')) {
