@@ -1,4 +1,4 @@
-﻿---
+---
 title: "Deep Dive: Palantir — April 2026 Analysis"
 author: "Brutal Edge Team"
 slug: "deep-dive-pltr-april-2026"

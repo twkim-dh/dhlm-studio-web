@@ -1,4 +1,4 @@
-﻿---
+---
 title: "The Rise of Claude: Why the Next AI Investment Cycle May Be About Trust, Not Scale"
 description: "The strongest way to understand Anthropic in 2026 is not as 'another frontier-model company.' It is as a company trying to own the trust layer of enterprise AI. The first phase of the AI boom rewarded model novelty. The next phase is increasingly about who can be trusted inside regulated workflows, codebases, and decision environments where being wrong is expensive."
 date: "2026-05-06T12:30:00Z"

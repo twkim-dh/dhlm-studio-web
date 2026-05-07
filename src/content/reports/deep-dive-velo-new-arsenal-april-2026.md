@@ -1,4 +1,4 @@
-﻿---
+---
 title: "Velo3D and the New Arsenal of American Manufacturing"
 description: "The easiest way to misunderstand Velo3D is to call it a 3D-printing company. That description is technically true. It is also strategically too small. The more useful way to think about Velo3D in 2026 is as part of the production infrastructure that allows the United States to rebuild a more resilient defense and aerospace supply chain."
 date: "2026-05-15T12:30:00Z"

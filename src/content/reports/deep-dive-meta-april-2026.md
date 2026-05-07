@@ -1,4 +1,4 @@
-﻿---
+---
 title: "Deep Dive: Meta Platforms — April 2026 Analysis"
 author: "Brutal Edge Team"
 slug: "deep-dive-meta-april-2026"

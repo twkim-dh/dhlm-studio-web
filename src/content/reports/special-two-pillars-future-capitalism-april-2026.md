@@ -1,4 +1,4 @@
-﻿---
+---
 title: "The Two Pillars of Future Capitalism: Musk's Physical Empire and Anthropic's Intelligence-Security Stack"
 description: "The most interesting long-duration investment thesis in 2026 may not be a single stock, a single technology, or even a single industry. It may be a structural split in capitalism itself — where value concentrates in two layers at once: the physical control layer and the intelligence control layer."
 date: "2026-05-27T12:30:00Z"

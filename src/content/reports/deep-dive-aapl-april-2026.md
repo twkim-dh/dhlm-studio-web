@@ -1,4 +1,4 @@
-﻿---
+---
 title: "Deep Dive: Apple — April 2026 Analysis"
 author: "Brutal Edge Team"
 slug: "deep-dive-aapl-april-2026"

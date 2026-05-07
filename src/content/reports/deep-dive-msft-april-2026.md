@@ -1,4 +1,4 @@
-﻿---
+---
 title: "Deep Dive: Microsoft — April 2026 Analysis"
 author: "Brutal Edge Team"
 slug: "deep-dive-msft-april-2026"

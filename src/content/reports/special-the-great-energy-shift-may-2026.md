@@ -1,4 +1,4 @@
-﻿---
+---
 title: "The Great Energy Shift: UAE Exits OPEC, Hormuz Burns, and Why Energy Is No Longer a Sector — It Is American Strategic Infrastructure"
 description: "The UAE's exit from OPEC is not Middle East political drama. It is a regime change in how global energy markets organize themselves — and the opening of a multi-year re-rating of the American energy complex from cyclical sector to strategic infrastructure."
 date: "2026-05-05T12:30:00Z"

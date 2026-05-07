@@ -1,4 +1,4 @@
-﻿---
+---
 author: "Brutal Edge Team"
 slug: "anthropic-private-investor-report-april-2026"
 title: "Anthropic: Private Investor Report — April 2026"

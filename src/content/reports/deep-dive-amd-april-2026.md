@@ -1,4 +1,4 @@
-﻿---
+---
 title: "Deep Dive: AMD — April 2026 Analysis"
 author: "Brutal Edge Team"
 slug: "deep-dive-amd-april-2026"

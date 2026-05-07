@@ -1,4 +1,4 @@
-﻿---
+---
 author: "Brutal Edge Team"
 slug: "btc-crossroads-april-2026"
 title: "Bitcoin's April 2026 Crossroads: Repricing, Not Euphoria"

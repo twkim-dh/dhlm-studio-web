@@ -1,4 +1,4 @@
-﻿---
+---
 title: "Deep Dive: Bitcoin — April 2026 Analysis"
 author: "Brutal Edge Team"
 slug: "deep-dive-btc-april-2026"

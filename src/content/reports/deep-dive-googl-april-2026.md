@@ -1,4 +1,4 @@
-﻿---
+---
 title: "Deep Dive: Alphabet/Google — April 2026 Analysis"
 author: "Brutal Edge Team"
 slug: "deep-dive-googl-april-2026"

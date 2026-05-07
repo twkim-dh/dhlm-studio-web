@@ -1,4 +1,4 @@
-﻿---
+---
 title: "Deep Dive: Ethereum — April 2026 Analysis"
 author: "Brutal Edge Team"
 slug: "deep-dive-eth-april-2026"

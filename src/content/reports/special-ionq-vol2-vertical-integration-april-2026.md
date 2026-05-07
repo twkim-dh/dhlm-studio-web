@@ -1,4 +1,4 @@
-﻿---
+---
 title: "IonQ Special Report Vol.2: The Vertical Integration Bet"
 description: "How IonQ's platform transition is mechanically unfolding. The SkyWater acquisition, the modular photonic architecture, the commercial customer transition, and the global sovereign procurement footprint — examined in detail. Vol.1 asked what IonQ is becoming. Vol.2 shows how it is actually happening."
 date: "2026-04-18T12:30:00Z"

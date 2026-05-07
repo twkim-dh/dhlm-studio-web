@@ -1,4 +1,4 @@
-﻿---
+---
 title: "Deep Dive: Tesla — April 2026 Analysis"
 author: "Brutal Edge Team"
 slug: "deep-dive-tsla-april-2026"

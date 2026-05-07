@@ -1,4 +1,4 @@
-﻿---
+---
 title: "The Token Economy: How Big Tech Is Turning AI Into a New Industrial Output"
 description: "The most important mistake investors can make in 2026 is to think the AI race is still mainly about 'who has the smartest model.' That was the first round. The next round is about who can produce, distribute, and monetize intelligence at industrial scale — and the unit of that scale is the token."
 date: "2026-05-01T12:30:00Z"

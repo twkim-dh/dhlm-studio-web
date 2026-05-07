@@ -1,4 +1,4 @@
-﻿---
+---
 author: "Brutal Edge Team"
 slug: "deep-dive-nvda-april-2026"
 title: "NVIDIA (NVDA): Building the AI Factory for the Age of Intelligence"

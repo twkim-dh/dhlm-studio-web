@@ -1,4 +1,4 @@
-﻿---
+---
 title: "Navitas Semiconductor (NVTS): The Hidden AI Infrastructure Bet Nobody Priced"
 description: "NVTS at $1.54B market cap on $7.3M quarterly revenue. NVIDIA-linked 800V HVDC architecture play. Everyone bought the GPU story. Nobody's pricing the power bottleneck. BEAF: Speculative — Not Rated."
 date: "2026-04-17"

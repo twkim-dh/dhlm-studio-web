@@ -1,4 +1,4 @@
-﻿---
+---
 author: "Brutal Edge Team"
 slug: "clarity-act-digital-asset-market-structure-april-2026"
 title: "The CLARITY Act: Who Owns the Toll Roads When Crypto Gets Legal Roads"

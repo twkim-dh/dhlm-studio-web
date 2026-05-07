@@ -1,4 +1,4 @@
-﻿---
+---
 title: "IonQ Special Report Vol.3: The Price of Admission"
 description: "The execution risks, the valuation mathematics, and the honest framework for deciding whether to own this thesis. Vol.1 defined what IonQ is becoming. Vol.2 showed how the transition is unfolding. Vol.3 confronts what the thesis costs — and what actually makes it break."
 date: "2026-04-18T12:30:00Z"

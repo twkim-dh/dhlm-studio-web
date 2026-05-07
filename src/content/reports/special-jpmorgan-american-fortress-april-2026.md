@@ -1,4 +1,4 @@
-﻿---
+---
 title: "JPMorgan and the American Fortress"
 description: "Jamie Dimon's 2026 shareholder letter isn't really about bank earnings. It's a worldview — one that treats American financial strength as inseparable from national strength. Why JPMorgan is one of the clearest public-market expressions of the architecture of American power."
 date: "2026-04-24T12:30:00Z"

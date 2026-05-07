@@ -1,4 +1,4 @@
-﻿---
+---
 title: "The Warsh Doctrine"
 description: "What a Warsh-led Fed means for the yield curve, bank repricing, and the end of easy-money assumptions in U.S. capital markets."
 date: "2026-05-07T12:30:00Z"

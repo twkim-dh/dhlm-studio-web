@@ -1,4 +1,4 @@
-﻿---
+---
 title: "Deep Dive: Amazon — April 2026 Analysis"
 author: "Brutal Edge Team"
 slug: "deep-dive-amzn-april-2026"
