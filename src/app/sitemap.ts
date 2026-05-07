@@ -5,9 +5,14 @@ import path from "path";
 
 const BASE = "https://dhlm-studio.com";
 
+function todayKST(): string {
+  const now = new Date();
+  return new Date(now.getTime() + 9 * 60 * 60 * 1000).toISOString().slice(0, 10);
+}
+
 function getReportSlugs(): string[] {
   try {
-    const today = new Date().toISOString().slice(0, 10);
+    const today = todayKST();
     const dir = path.join(process.cwd(), 'src/content/reports');
     return fs.readdirSync(dir)
       .filter(f => f.endsWith('.md'))
@@ -25,7 +30,7 @@ function getReportSlugs(): string[] {
 
 function getLearnIntermediateSlugs(): string[] {
   try {
-    const today = new Date().toISOString().slice(0, 10);
+    const today = todayKST();
     const dir = path.join(process.cwd(), 'src/content/learn');
     return fs.readdirSync(dir)
       .filter(f => f.includes('intermediate') && f.endsWith('.md'))
@@ -41,7 +46,7 @@ function getLearnIntermediateSlugs(): string[] {
 
 function getResearchSlugs(): string[] {
   try {
-    const today = new Date().toISOString().slice(0, 10);
+    const today = todayKST();
     const dir = path.join(process.cwd(), 'src/content/research');
     return fs.readdirSync(dir)
       .filter(f => f.endsWith('.md') && !f.startsWith('paper-vs-profit'))
@@ -60,7 +65,7 @@ function getResearchSlugs(): string[] {
 export default function sitemap(): MetadataRoute.Sitemap {
   const now = new Date();
 
-  const today = new Date().toISOString().slice(0, 10);
+  const today = todayKST();
   const qualityBlogs = blogPosts.filter(p => !p.noindex && p.date <= today);
 
   return [
