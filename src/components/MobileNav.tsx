@@ -13,8 +13,7 @@ const tabs = [
 
 const moreLinks = [
   { href: '/research', label: '🧠 The Mental Game', color: '#A78BFA' },
-  { href: '/blog/wisdom', label: '💡 Wisdom', color: '#D4A843' },
-  { href: '/creators', label: '🔥 Creators', color: '#EF4444' },
+  { href: '/editorial', label: '📋 Editorial', color: '#38BDF8' },
   { href: '/about', label: 'ℹ️ About', color: '#94A3B8' },
 ];
 

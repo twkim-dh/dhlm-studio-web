@@ -11,7 +11,6 @@ const cats = [
   { label: 'Markets', color: '#00D474' },
   { label: 'Rankings', color: '#D4A843' },
   { label: 'Crypto', color: '#F59E0B' },
-  { label: 'Creators', color: '#A78BFA' },
 ];
 
 const card = { background: '#111827', borderRadius: 14, border: '1px solid #1E293B' };
