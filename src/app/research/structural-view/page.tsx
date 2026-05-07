@@ -92,16 +92,6 @@ export default function StructuralViewPage() {
             </Link>
           ))}
 
-          {/* Coming soon placeholder */}
-          <div style={{ background: '#0D1117', borderRadius: 14, border: '1px dashed #1E293B', padding: '22px 24px' }}>
-            <div style={{ display: 'flex', alignItems: 'center', gap: 8, marginBottom: 10 }}>
-              <span style={{ fontFamily: 'var(--mono)', fontSize: 9, fontWeight: 800, padding: '3px 10px', borderRadius: 6, background: '#1E293B', color: '#475569', border: '1px solid #334155', letterSpacing: 1 }}>
-                VOL.{volumes.length + 1}
-              </span>
-              <span style={{ fontSize: 11, color: '#334155' }}>Coming soon</span>
-            </div>
-            <div style={{ fontFamily: 'var(--sans)', fontSize: 13, color: '#334155' }}>Next volume in preparation.</div>
-          </div>
         </div>
 
         {/* Series description */}

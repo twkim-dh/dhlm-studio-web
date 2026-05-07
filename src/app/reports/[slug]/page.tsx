@@ -10,7 +10,7 @@ import LikeButton from '@/components/LikeButton';
 import { fmtDateLong } from '@/lib/fmt-date';
 import ListenButton from '@/components/ListenButton';
 import ReportPDF from '@/components/ReportPDF';
-import GiscusComments from '@/components/GiscusComments';
+
 import TickerLogo from '@/components/TickerLogo';
 import BeafRadarChart, { type BeafAxisScore } from '@/components/BeafRadarChart';
 import unsplashManifest from '@/data/unsplash-manifest.json';
@@ -479,11 +479,6 @@ export default async function ReportPage({ params }: { params: Promise<{ slug: s
         {/* Subscribe text link */}
         <div className="print-hide" style={{ marginTop: 32, paddingTop: 24, borderTop: '1px solid #1E293B', textAlign: 'center' }}>
           <a href="/" style={{ fontSize: 13, color: '#60A5FA', textDecoration: 'none', fontWeight: 600 }}>Subscribe to Brutal Edge Weekly →</a>
-        </div>
-
-        {/* Comments — Giscus / GitHub Discussions */}
-        <div className="print-hide">
-          <GiscusComments slug={`report:${slug}`} />
         </div>
 
         {/* Brutal Edge Footer */}

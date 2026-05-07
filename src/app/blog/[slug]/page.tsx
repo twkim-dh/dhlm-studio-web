@@ -6,7 +6,7 @@ import { blogPosts, getBlogPostBySlug } from '@/data/blog-posts';
 import { fmtDateLong, fmtDateShort } from '@/lib/fmt-date';
 import AdUnit from '@/components/AdUnit';
 import LikeButton from '@/components/LikeButton';
-import GiscusComments from '@/components/GiscusComments';
+
 import unsplashManifest from '@/data/unsplash-manifest.json';
 
 export const dynamicParams = true;
@@ -334,9 +334,6 @@ export default async function BlogPostPage({ params }: { params: Promise<{ slug:
             </div>
           </div>
         )}
-
-        {/* Comments — Giscus / GitHub Discussions */}
-        <GiscusComments slug={`blog:${slug}`} />
 
         {/* Disclaimer */}
         <p style={{ fontFamily: 'var(--sans)', fontSize: 10, color: '#334155', marginTop: isDeepDive ? 16 : 40, lineHeight: 1.6, textAlign: 'center' }}>

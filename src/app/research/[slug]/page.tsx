@@ -8,7 +8,7 @@ import path from 'path';
 import { fmtDateShort } from '@/lib/fmt-date';
 import ListenButton from '@/components/ListenButton';
 import ReportPDF from '@/components/ReportPDF';
-import GiscusComments from '@/components/GiscusComments';
+
 import unsplashManifest from '@/data/unsplash-manifest.json';
 
 const CONTENT_DIR = path.join(process.cwd(), 'src/content/research');
@@ -277,8 +277,6 @@ export default async function ResearchArticlePage({ params }: { params: Promise<
         <div style={{ marginTop: 32, paddingTop: 24, borderTop: '1px solid #1E293B', textAlign: 'center' }}>
           <a href="/" style={{ fontSize: 13, color: '#60A5FA', textDecoration: 'none', fontWeight: 600 }}>Subscribe to Brutal Edge Weekly →</a>
         </div>
-
-        <GiscusComments slug={`research:${slug}`} />
 
         <div style={{ marginTop: 40, padding: '20px 22px', borderRadius: 14, background: '#111827', border: '1px solid #1E293B', textAlign: 'center' }}>
           <div style={{ fontFamily: 'var(--mono)', fontSize: 10, fontWeight: 800, color: series.fg, letterSpacing: 2, marginBottom: 6 }}>🧠 BRUTAL EDGE™ — {series.label}</div>
