@@ -1,4 +1,5 @@
 ---
+author: "DHLM Studio"
 slug: "anthropic-private-investor-report-april-2026"
 title: "Anthropic: Private Investor Report — April 2026"
 date: "2026-04-14"

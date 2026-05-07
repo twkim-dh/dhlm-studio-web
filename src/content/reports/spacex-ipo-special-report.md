@@ -1,4 +1,5 @@
 ---
+author: "DHLM Studio"
 slug: "spacex-ipo-special-report"
 title: "SpaceX IPO Special Report: The $1.75 Trillion Question"
 ticker: "SPACEX"

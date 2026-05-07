@@ -1,5 +1,6 @@
 ---
 title: "Deep Dive: Alphabet/Google — April 2026 Analysis"
+author: "DHLM Studio"
 slug: "deep-dive-googl-april-2026"
 ticker: "GOOGL"
 date: "2026-04-03"

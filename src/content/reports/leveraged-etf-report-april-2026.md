@@ -1,4 +1,5 @@
 ---
+author: "DHLM Studio"
 slug: "leveraged-etf-report-april-2026"
 title: "Leveraged ETFs in the U.S. Market — April 2026 Analysis"
 date: "2026-04-14"

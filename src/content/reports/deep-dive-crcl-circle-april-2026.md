@@ -1,4 +1,5 @@
 ---
+author: "DHLM Studio"
 slug: "deep-dive-crcl-circle-april-2026"
 title: "Circle Internet Group (CRCL): The Stablecoin Leader That Fell Hard — and May Still Matter"
 ticker: "CRCL"

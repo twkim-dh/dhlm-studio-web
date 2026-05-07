@@ -1,5 +1,6 @@
 ---
 title: "Deep Dive: Apple — April 2026 Analysis"
+author: "DHLM Studio"
 slug: "deep-dive-aapl-april-2026"
 ticker: "AAPL"
 date: "2026-04-03"

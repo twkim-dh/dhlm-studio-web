@@ -1,5 +1,6 @@
 ---
 title: "Deep Dive: Meta Platforms — April 2026 Analysis"
+author: "DHLM Studio"
 slug: "deep-dive-meta-april-2026"
 ticker: "META"
 date: "2026-04-04"

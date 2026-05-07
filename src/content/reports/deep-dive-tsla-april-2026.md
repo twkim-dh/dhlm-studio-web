@@ -1,5 +1,6 @@
 ---
 title: "Deep Dive: Tesla — April 2026 Analysis"
+author: "DHLM Studio"
 slug: "deep-dive-tsla-april-2026"
 ticker: "TSLA"
 date: "2026-04-05"

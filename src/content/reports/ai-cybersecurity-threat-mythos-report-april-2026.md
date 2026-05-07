@@ -1,4 +1,5 @@
 ---
+author: "DHLM Studio"
 slug: "ai-cybersecurity-threat-mythos-report-april-2026"
 title: "AI as a Financial-System Threat: Anthropic's Mythos Moment and What It Means for Your Portfolio"
 ticker: "ANTHROPIC"

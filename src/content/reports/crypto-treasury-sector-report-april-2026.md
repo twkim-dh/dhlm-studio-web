@@ -1,4 +1,5 @@
 ---
+author: "DHLM Studio"
 slug: "crypto-treasury-sector-report-april-2026"
 title: "Crypto Treasury Stocks: Leveraged Genius or Financial Engineering Gone Too Far?"
 ticker: "MSTR"

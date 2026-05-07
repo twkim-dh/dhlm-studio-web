@@ -1,4 +1,5 @@
 ---
+author: "DHLM Studio"
 slug: "quantum-sector-special-report-april-2026"
 title: "Quantum Sector Special Report: Not Commercialization Complete — An Investable Early-Stage Industry"
 ticker: "IONQ"

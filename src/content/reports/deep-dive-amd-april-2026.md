@@ -1,5 +1,6 @@
 ---
 title: "Deep Dive: AMD — April 2026 Analysis"
+author: "DHLM Studio"
 slug: "deep-dive-amd-april-2026"
 ticker: "AMD"
 date: "2026-04-05"
