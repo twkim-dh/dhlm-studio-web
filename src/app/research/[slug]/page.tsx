@@ -13,6 +13,11 @@ import unsplashManifest from '@/data/unsplash-manifest.json';
 
 const CONTENT_DIR = path.join(process.cwd(), 'src/content/research');
 
+function todayKST(): string {
+  const now = new Date();
+  return new Date(now.getTime() + 9 * 60 * 60 * 1000).toISOString().slice(0, 10);
+}
+
 interface FaqItem { q: string; a: string }
 
 interface ResearchFrontmatter {
@@ -64,7 +69,7 @@ function getArticle(slug: string) {
 export function generateStaticParams() {
   try {
     if (!fs.existsSync(CONTENT_DIR)) return [];
-    const today = new Date().toISOString().slice(0, 10);
+    const today = todayKST();
     return fs.readdirSync(CONTENT_DIR)
       .filter(f => f.endsWith('.md') && !f.startsWith('paper-vs-profit'))
       .map(f => f.replace(/\.md$/, ''))
@@ -167,7 +172,7 @@ export default async function ResearchArticlePage({ params }: { params: Promise<
   const a = getArticle(slug);
   if (!a) notFound();
 
-  const today = new Date().toISOString().slice(0, 10);
+  const today = todayKST();
   const publishDate = (a.fm as unknown as Record<string, string>)['publishDate'] || a.fm.date;
   if (publishDate > today) notFound();
 

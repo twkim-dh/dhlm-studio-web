@@ -12,6 +12,11 @@ export const metadata: Metadata = {
 
 const CONTENT_DIR = path.join(process.cwd(), 'src/content/research');
 
+function todayKST(): string {
+  const now = new Date();
+  return new Date(now.getTime() + 9 * 60 * 60 * 1000).toISOString().slice(0, 10);
+}
+
 interface VolumeMeta {
   slug: string;
   title: string;
@@ -24,7 +29,7 @@ function getPublishedVolumes(): VolumeMeta[] {
   try {
     if (!fs.existsSync(CONTENT_DIR)) return [];
     const files = fs.readdirSync(CONTENT_DIR).filter(f => f.startsWith('structural-view-') && f.endsWith('.md'));
-    const today = new Date().toISOString().slice(0, 10);
+    const today = todayKST();
     const out: VolumeMeta[] = [];
     for (const f of files) {
       const content = fs.readFileSync(path.join(CONTENT_DIR, f), 'utf8');

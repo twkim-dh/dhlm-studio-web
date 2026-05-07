@@ -35,6 +35,11 @@ export async function generateMetadata(
 
 export const revalidate = 3600;
 
+function todayKST(): string {
+  const now = new Date();
+  return new Date(now.getTime() + 9 * 60 * 60 * 1000).toISOString().slice(0, 10);
+}
+
 const REPORTS_DIR = path.join(process.cwd(), 'src/content/reports');
 
 interface ReportMeta {
@@ -46,7 +51,7 @@ interface ReportMeta {
 
 function getAllReports(): ReportMeta[] {
   try {
-    const today = new Date().toISOString().slice(0, 10);
+    const today = todayKST();
     const manifest = unsplashManifest as Record<string, { src: string; alt: string }>;
     const files = fs.readdirSync(REPORTS_DIR).filter(f => f.endsWith('.md'));
     return files.map(f => {

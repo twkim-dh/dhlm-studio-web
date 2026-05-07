@@ -6,6 +6,11 @@ import path from 'path';
 
 const LEARN_DIR = path.join(process.cwd(), 'src/content/learn');
 
+function todayKST(): string {
+  const now = new Date();
+  return new Date(now.getTime() + 9 * 60 * 60 * 1000).toISOString().slice(0, 10);
+}
+
 const HERO_MAP: Record<string, string> = {
   'investing-101-beginner-w1-what-is-a-stock-really':          '/images/content/investing-101-beginner-w1-what-is-a-stock-hero.webp',
   'investing-101-beginner-w2-how-the-market-actually-works':   '/images/content/investing-101-beginner-w2-how-market-works-hero.webp',
@@ -123,7 +128,7 @@ export async function generateMetadata({ params }: { params: Promise<{ slug: str
   const BASE = 'https://dhlm-studio.com';
   const ogImage = heroSrc ? `${BASE}${heroSrc}` : `${BASE}/opengraph-image`;
   const seriesLabel = isIntermediate(slug) ? 'Investing 101 Intermediate' : 'Investing 101 Beginner';
-  const today = new Date().toISOString().slice(0, 10);
+  const today = todayKST();
   const isFuture = isIntermediate(slug) && fm.publishDate && fm.publishDate > today;
   return {
     title: `${fm.title} | ${seriesLabel}`,

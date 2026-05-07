@@ -11,8 +11,13 @@ import unsplashManifest from '@/data/unsplash-manifest.json';
 
 export const dynamicParams = true;
 
+function todayKST(): string {
+  const now = new Date();
+  return new Date(now.getTime() + 9 * 60 * 60 * 1000).toISOString().slice(0, 10);
+}
+
 export function generateStaticParams() {
-  const today = new Date().toISOString().slice(0, 10);
+  const today = todayKST();
   return blogPosts.filter(p => p.date <= today).map(p => ({ slug: p.slug }));
 }
 
@@ -70,7 +75,7 @@ export default async function BlogPostPage({ params }: { params: Promise<{ slug:
   const post = getBlogPostBySlug(slug);
 
   // Block future-dated posts from direct URL access
-  if (post && post.date > new Date().toISOString().slice(0, 10)) notFound();
+  if (post && post.date > todayKST()) notFound();
 
   if (!post) {
     const similar = blogPosts.filter(p => {

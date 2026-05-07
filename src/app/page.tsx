@@ -12,6 +12,11 @@ const YEAR = new Date().getFullYear();
 
 export const revalidate = 3600;
 
+function todayKST(): string {
+  const now = new Date();
+  return new Date(now.getTime() + 9 * 60 * 60 * 1000).toISOString().slice(0, 10);
+}
+
 export const metadata: Metadata = {
   title: 'DHLM Studio — Brutal Edge™ Financial Analysis',
   description: `Deep Dive reports, The Mental Game, and data-driven investing education. For serious long-term investors. ${YEAR}.`,
@@ -37,7 +42,7 @@ interface ResearchMeta {
 function getAllReports(): ReportMeta[] {
   try {
     const dir = path.join(process.cwd(), 'src/content/reports');
-    const today = new Date().toISOString().slice(0, 10);
+    const today = todayKST();
     return fs.readdirSync(dir).filter(f => f.endsWith('.md')).map(f => {
       const content = fs.readFileSync(path.join(dir, f), 'utf8');
       const fmMatch = content.match(/^---\n([\s\S]*?)\n---/);
@@ -61,7 +66,7 @@ function getAllReports(): ReportMeta[] {
 function getAllResearch(): ResearchMeta[] {
   try {
     const dir = path.join(process.cwd(), 'src/content/research');
-    const today = new Date().toISOString().slice(0, 10);
+    const today = todayKST();
     return fs.readdirSync(dir)
       .filter(f => f.endsWith('.md') && !f.startsWith('paper-vs-profit'))
       .map(f => {

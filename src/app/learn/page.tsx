@@ -14,6 +14,11 @@ const CONTENT_DIR = path.join(process.cwd(), 'src/content/research');
 type ManifestEntry = { src: string; alt: string; credit: { author: string; authorUrl: string; unsplashUrl: string } | null };
 const manifest = unsplashManifest as Record<string, ManifestEntry>;
 
+function todayKST(): string {
+  const now = new Date();
+  return new Date(now.getTime() + 9 * 60 * 60 * 1000).toISOString().slice(0, 10);
+}
+
 export interface ResearchItem {
   slug: string;
   title: string;
@@ -71,7 +76,7 @@ function getAllResearch(): ResearchItem[] {
         if (raw.startsWith('"') && raw.endsWith('"')) raw = raw.slice(1, -1);
         fm[m[1]] = raw !== '' && !isNaN(Number(raw)) ? Number(raw) : raw;
       }
-      const today = new Date().toISOString().slice(0, 10);
+      const today = todayKST();
       const pubDate = String(fm['publishDate'] || fm['date'] || '');
       if (pubDate > today) continue;
       out.push(fm as unknown as ResearchItem);
@@ -158,7 +163,7 @@ const INTERMEDIATE_THUMBS: Record<string, string> = {
 const LEARN_DIR_PATH = path.join(process.cwd(), 'src/content/learn');
 
 function getIntermediateLessons(): InvestingLesson[] {
-  const today = new Date().toISOString().slice(0, 10);
+  const today = todayKST();
   return INTERMEDIATE_SLUGS.map(slug => {
     try {
       const content = fs.readFileSync(path.join(LEARN_DIR_PATH, `${slug}.md`), 'utf8');
