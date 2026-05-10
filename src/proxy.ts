@@ -23,24 +23,30 @@ const REDIRECTS: Record<string, string> = {
 };
 
 // 410 Gone: permanently deleted pages (no content, no redirect elsewhere)
-// Note: /blog/bitcoin-deep-dive-april-2026 is excluded — next.config.ts 301 takes priority
 const GONE_PATHS = new Set([
   '/blog/lotto-statistics',
   '/blog/powerball-vs-mega-millions-better-odds',
 ]);
 
-// ── Singapore geo-block (ACTIVE — bot confirmed: 0s engagement, 5.17% rate) ──
-// Deactivate after AdSense review passes. To deactivate: remove the SG block below.
-const BLOCK_COUNTRIES = new Set(['SG']);
+// Country-based blocking: confirmed/suspected bot traffic
+// SG: 69 users, 0s avg engagement, 4.29% rate = bot confirmed (GA4 2026-04-13~05-10)
+// CN: 60 users, 7s avg engagement, 15.38% rate = bot suspected
+const BLOCK_COUNTRIES = new Set(['SG', 'CN']);
 
-export function proxy(request: NextRequest) {
+// Whitelist: must never be blocked — AdSense review + SEO indexing
+const ALLOWED_BOTS = /googlebot|adsbot-google|mediapartners-google|bingbot|applebot/i;
+
+export default function proxy(request: NextRequest) {
   const host = request.headers.get('host') || '';
   const { pathname } = request.nextUrl;
+  const userAgent = request.headers.get('user-agent') || '';
 
-  // Block confirmed bot-traffic countries
-  const country = request.headers.get('x-vercel-ip-country') || '';
-  if (BLOCK_COUNTRIES.has(country)) {
-    return new NextResponse('Service temporarily unavailable', { status: 503 });
+  // Google/Bing bots bypass all geo-blocks — AdSense + SEO must not be interrupted
+  if (!ALLOWED_BOTS.test(userAgent)) {
+    const country = request.headers.get('x-vercel-ip-country') || '';
+    if (BLOCK_COUNTRIES.has(country)) {
+      return new NextResponse('Service temporarily unavailable', { status: 503 });
+    }
   }
 
   // 410 Gone for all /lottery paths (gambling content — permanently deleted)
