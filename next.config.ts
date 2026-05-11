@@ -51,15 +51,7 @@ const nextConfig: NextConfig = {
         destination: 'https://dhlm-studio.com',
         permanent: true,
       },
-      // Deleted utilities → home or relevant page
-      { source: '/tools/calc/:path*', destination: '/', permanent: true },
-      { source: '/tools/dev/:path*', destination: '/', permanent: true },
-      { source: '/tools/life/:path*', destination: '/', permanent: true },
-      { source: '/tools/mfg/:path*', destination: '/', permanent: true },
-      { source: '/tools/msg/:path*', destination: '/', permanent: true },
-      { source: '/tools/gen/:path*', destination: '/', permanent: true },
-      { source: '/tools/image/:path*', destination: '/', permanent: true },
-      { source: '/tools/compare/:path*', destination: '/', permanent: true },
+      // Deleted utilities — 410 Gone handled in proxy.ts (startsWith /tools)
       // Deleted compare
       { source: '/compare/:path*', destination: '/', permanent: true },
       // Deleted Korea/blog content
@@ -136,9 +128,7 @@ const nextConfig: NextConfig = {
       { source: '/crypto-101', destination: '/learn/crypto-101', permanent: true },
       // /research/the-mental-game → /research (safety net for external links/bookmarks)
       { source: '/research/the-mental-game', destination: '/research', permanent: true },
-      // Tools section deleted — redirect to home
-      { source: '/tools', destination: '/', permanent: true },
-      { source: '/tools/:path*', destination: '/', permanent: true },
+      // Tools section deleted — 410 Gone handled in proxy.ts
       // Lottery section deleted — 410 Gone handled in proxy.ts
       // Off-brand pages → 301 (Option C: noindex already set + redirect)
       { source: '/creators', destination: '/', permanent: true },

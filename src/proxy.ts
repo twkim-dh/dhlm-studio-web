@@ -64,8 +64,8 @@ export default function proxy(request: NextRequest) {
     }
   }
 
-  // 410 Gone for all /lottery paths (gambling content — permanently deleted)
-  if (pathname.startsWith('/lottery')) {
+  // 410 Gone: all deleted sections (tools = legacy utilities, lottery = gambling)
+  if (pathname.startsWith('/tools') || pathname.startsWith('/lottery')) {
     return new NextResponse('Gone', { status: 410 });
   }
 
