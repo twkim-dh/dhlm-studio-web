@@ -7,6 +7,12 @@ export default function robots(): MetadataRoute.Robots {
       allow: "/",
       disallow: [
         "/api/",
+        "/markets/",
+        "/daily/",
+        "/tools/",
+        "/lottery/",
+        "/rankings/",
+        "/research/paper-vs-profit/",
       ],
     },
     sitemap: "https://dhlm-studio.com/sitemap.xml",
