@@ -26,6 +26,7 @@ const REDIRECTS: Record<string, string> = {
 const GONE_PATHS = new Set([
   '/blog/lotto-statistics',
   '/blog/powerball-vs-mega-millions-better-odds',
+  '/tools/dev/cron',
 ]);
 
 // Country-based blocking: confirmed/suspected bot traffic
@@ -33,18 +34,32 @@ const GONE_PATHS = new Set([
 // CN: 60 users, 7s avg engagement, 15.38% rate = bot suspected
 const BLOCK_COUNTRIES = new Set(['SG', 'CN']);
 
-// Whitelist: must never be blocked — AdSense review + SEO indexing
+// AdSense/Googlebot must NEVER be blocked — critical for ad review + SEO indexing
 const ALLOWED_BOTS = /googlebot|adsbot-google|mediapartners-google|bingbot|applebot/i;
+
+// Secondary UA block: catch bots that bypass geo-headers (no country = no country block)
+const SUSPICIOUS_UA = /bot|crawler|spider|scraper|headless|python-requests/i;
 
 export default function proxy(request: NextRequest) {
   const host = request.headers.get('host') || '';
   const { pathname } = request.nextUrl;
   const userAgent = request.headers.get('user-agent') || '';
+  const ip = request.headers.get('x-forwarded-for') || 'unknown';
+  const country = request.headers.get('x-vercel-ip-country') || '';
 
-  // Google/Bing bots bypass all geo-blocks — AdSense + SEO must not be interrupted
+  // Debug log — remove after 72h GA4 verification
+  console.log(`[PROXY] ${pathname} | country=${country || 'none'} | ua=${userAgent.substring(0, 60)} | ip=${ip}`);
+
+  // AdSense/Googlebot bypass ALL blocks unconditionally
   if (!ALLOWED_BOTS.test(userAgent)) {
-    const country = request.headers.get('x-vercel-ip-country') || '';
+    // Primary: geo-block (x-vercel-ip-country set by Vercel edge, client cannot spoof)
     if (BLOCK_COUNTRIES.has(country)) {
+      console.log(`[BLOCKED-GEO] country=${country} | ip=${ip}`);
+      return new NextResponse('Service temporarily unavailable', { status: 503 });
+    }
+    // Secondary: UA-based block (backup for bots with no/wrong country header)
+    if (SUSPICIOUS_UA.test(userAgent)) {
+      console.log(`[BLOCKED-UA] ua=${userAgent.substring(0, 60)}`);
       return new NextResponse('Service temporarily unavailable', { status: 503 });
     }
   }
