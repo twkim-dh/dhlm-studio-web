@@ -90,6 +90,7 @@ async function sendWelcomeEmail(email: string): Promise<void> {
   <tr><td style="padding:24px 24px 0;text-align:center;">
     <div style="font-size:11px;color:#475569;line-height:1.6;">
       You subscribed at dhlm-studio.com<br/>
+      DHLM Studio · Seoul, Republic of Korea<br/>
       <a href="https://dhlm-studio.com/api/unsubscribe?email=${encodeURIComponent(email)}" style="color:#475569;">Unsubscribe</a>
     </div>
   </td></tr>

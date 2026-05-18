@@ -41,7 +41,7 @@ function buildHtml(title: string, description: string, url: string, email: strin
   <tr><td style="padding:24px 24px 0;text-align:center;">
     <div style="font-size:11px;color:#475569;line-height:1.8;">
       <a href="https://dhlm-studio.com" style="color:#64748B;text-decoration:none;">dhlm-studio.com</a>
-      &nbsp;·&nbsp;
+      &nbsp;·&nbsp;DHLM Studio, Seoul, Republic of Korea<br/>
       <a href="${unsubUrl}" style="color:#475569;">Unsubscribe</a>
     </div>
   </td></tr>

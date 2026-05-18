@@ -97,10 +97,11 @@ function buildHtml(fm, body) {
 
       <div style="font-size:11px;color:#64748B;line-height:1.7;">
         DHLM Studio · Dream · Horizon · Link · Media<br>
+        Seoul, Republic of Korea<br>
         AI-assisted analysis under human editorial oversight, for informational and educational purposes.<br>
         NOT investment advice. Always do your own research.<br>
         <br>
-        <a href="https://${HOST}/api/subscribe?email={{email}}" style="color:#64748B;text-decoration:underline;">Unsubscribe</a>
+        <a href="https://${HOST}/unsubscribe" style="color:#64748B;text-decoration:underline;">Unsubscribe</a>
       </div>
     </td></tr>
   </table>
