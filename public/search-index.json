@@ -1,5 +1,25 @@
 [
   {
+    "title": "The 945 TWh Question: Why AI's Power Crisis Is the Investment Story Most Investors Are Still Missing",
+    "slug": "special-945-twh-question-power-crisis-may-2026",
+    "category": "Reports",
+    "subCategory": "Reports",
+    "tags": [],
+    "excerpt": "The IEA's Energy and AI special report — 304 pages, published by the institution that defines the global energy outlook — has put a specific number on something most AI infrastructure coverage has bee",
+    "publishDate": "2026-07-30T12:30:00Z",
+    "url": "/reports/special-945-twh-question-power-crisis-may-2026"
+  },
+  {
+    "title": "The Optical Bottleneck: Why AI's Next Constraint Is Light — and the Chokepoint I Was Underweighting Until Now",
+    "slug": "special-optical-bottleneck-three-layer-may-2026",
+    "category": "Reports",
+    "subCategory": "Reports",
+    "tags": [],
+    "excerpt": "I spent most of 2024 and 2025 treating networking as plumbing. Compute mattered. Memory mattered. Power mattered. Networking was the boring middle layer that delivered packets. That framing is now wro",
+    "publishDate": "2026-06-21T12:30:00Z",
+    "url": "/reports/special-optical-bottleneck-three-layer-may-2026"
+  },
+  {
     "title": "The Trust Architecture: Why AGI Will Be Won by the Most Trusted, Not the Most Intelligent",
     "slug": "special-trust-architecture-april-2026",
     "category": "Reports",
@@ -10,6 +30,16 @@
     "url": "/reports/special-trust-architecture-april-2026"
   },
   {
+    "title": "Beyond Memory Renaissance: The Three-Layer Memory-Storage Stack — Why AI's Compute Bottleneck Has Moved Downstack",
+    "slug": "special-memory-storage-stack-three-layer-may-2026",
+    "category": "Reports",
+    "subCategory": "Reports",
+    "tags": [],
+    "excerpt": "When I wrote Memory Renaissance in April, I was tracking one shift — memory moving from swing factor to strategic constraint. One month later, the more important story is what's happening across memor",
+    "publishDate": "2026-06-14T12:30:00Z",
+    "url": "/reports/special-memory-storage-stack-three-layer-may-2026"
+  },
+  {
     "title": "The Final Frontier: The M7 Collision Course Toward AGI",
     "slug": "special-final-frontier-m7-agi-april-2026",
     "category": "Reports",
@@ -18,6 +48,16 @@
     "excerpt": "The market is still talking about AI as though the story were mainly about better chatbots and faster copilots. That is already yesterday's framing. The next stage of the AI cycle is not about answeri",
     "publishDate": "2026-06-10T12:30:00Z",
     "url": "/reports/special-final-frontier-m7-agi-april-2026"
+  },
+  {
+    "title": "Strategy: The Bitcoin Standard 2.0 in Practice — Why MSTR Is Becoming the Operating Model, Not Just the Treasury",
+    "slug": "deep-dive-strategy-mstr-june-2026",
+    "category": "Reports",
+    "subCategory": "Reports",
+    "tags": [],
+    "excerpt": "Two weeks ago I wrote about Bitcoin Standard 2.0 as a three-layer framework. Strategy is the company actively operating that architecture at scale, in public markets, with a $65 billion Bitcoin positi",
+    "publishDate": "2026-06-07T12:30:00Z",
+    "url": "/reports/deep-dive-strategy-mstr-june-2026"
   },
   {
     "title": "Bitcoin Standard 2.0: From Asset to Architecture — Why Saylor's Real Bet Is on Capital Markets, Not Cryptography",
@@ -48,6 +88,16 @@
     "excerpt": "The most interesting long-duration investment thesis in 2026 may not be a single stock, a single technology, or even a single industry. It may be a structural split in capitalism itself — where value ",
     "publishDate": "2026-05-27T12:30:00Z",
     "url": "/reports/special-two-pillars-future-capitalism-april-2026"
+  },
+  {
+    "title": "The IonQ Snub: Why the $2 Billion Quantum Funding Round Skipped the One Public Pure-Play That May Need It Least",
+    "slug": "special-ionq-2b-quantum-funding-snub-may-2026",
+    "category": "Reports",
+    "subCategory": "Reports",
+    "tags": [],
+    "excerpt": "On May 21, 2026, the US Commerce Department announced nine letters of intent for $2.013 billion in CHIPS Act quantum incentives. IBM took $1 billion. GlobalFoundries took $375 million. Seven other qua",
+    "publishDate": "2026-05-25T12:30:00Z",
+    "url": "/reports/special-ionq-2b-quantum-funding-snub-may-2026"
   },
   {
     "title": "The Digital Dollar Empire: Stablecoins, Tokenization, and the Next Expansion of American Financial Power",
