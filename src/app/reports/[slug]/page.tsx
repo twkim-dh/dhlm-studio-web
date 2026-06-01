@@ -244,14 +244,7 @@ export default async function ReportPage({ params }: { params: Promise<{ slug: s
   const { slug } = await params;
   const report = getReport(slug);
 
-  if (!report) {
-    return (
-      <div style={{ background: '#0B0F19', minHeight: '100vh', padding: '120px 24px', textAlign: 'center' }}>
-        <h1 style={{ color: '#F1F5F9', fontFamily: 'var(--serif)', fontSize: 28 }}>Report Not Found</h1>
-        <Link href="/reports" style={{ color: '#C73E3A', fontSize: 14, marginTop: 16, display: 'inline-block' }}>← All Reports</Link>
-      </div>
-    );
-  }
+  if (!report) notFound();
 
   const { frontmatter: fm, body } = report;
   // Block future-dated reports from direct URL access (KST-based)

@@ -77,32 +77,7 @@ export default async function BlogPostPage({ params }: { params: Promise<{ slug:
   // Block future-dated posts from direct URL access
   if (post && post.date > todayKST()) notFound();
 
-  if (!post) {
-    const similar = blogPosts.filter(p => {
-      const words = slug.split('-').filter(w => w.length > 3);
-      return words.some(w => p.slug.includes(w));
-    }).slice(0, 5);
-
-    return (
-      <div style={{ background: '#0B0F19', minHeight: '100vh', padding: '120px 24px', maxWidth: 600, margin: '0 auto' }}>
-        <h1 style={{ color: '#F1F5F9', fontFamily: 'var(--serif)', fontSize: 28, textAlign: 'center' }}>Post Not Found</h1>
-        <p style={{ color: '#64748B', fontSize: 14, textAlign: 'center', marginTop: 8 }}>The URL may have changed. Try one of these:</p>
-        {similar.length > 0 && (
-          <div style={{ marginTop: 24, display: 'flex', flexDirection: 'column', gap: 8 }}>
-            {similar.map(p => (
-              <Link key={p.slug} href={`/blog/${p.slug}`} style={{ display: 'block', padding: '12px 16px', borderRadius: 10, background: '#111827', border: '1px solid #1E293B', textDecoration: 'none' }}>
-                <div style={{ fontSize: 14, fontWeight: 600, color: '#E2E8F0' }}>{p.title}</div>
-                <div style={{ fontSize: 11, color: '#475569', marginTop: 2 }}>{p.category} · {fmtDateShort(p.date)}</div>
-              </Link>
-            ))}
-          </div>
-        )}
-        <div style={{ textAlign: 'center', marginTop: 20 }}>
-          <Link href="/blog" style={{ color: '#C73E3A', fontSize: 14 }}>← View All Posts</Link>
-        </div>
-      </div>
-    );
-  }
+  if (!post) notFound();
 
   const isDeepDive = slug.startsWith('deep-dive-');
   const isMasters  = slug.startsWith('masters-');

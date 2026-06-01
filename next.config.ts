@@ -190,7 +190,17 @@ const nextConfig: NextConfig = {
       // Missing explicit deep-dive redirects
       { source: '/blog/deep-dive-crcl-circle-april-2026', destination: '/reports/deep-dive-crcl-circle-april-2026',  permanent: true },
       { source: '/blog/deep-dive-rdw-redwire-april-2026', destination: '/reports/deep-dive-rdw-redwire-april-2026',  permanent: true },
+      // AdSense re-application: old GSC URLs → correct URLs (soft-404 fix, 2026-06-01)
+      { source: '/blog/gdp-top10-countries-world-economy-2026',   destination: '/blog/top-10-countries-gdp-world-economy-2026',           permanent: true },
+      { source: '/blog/worlds-richest-people-2026',               destination: '/blog/worlds-richest-people-2026-billionaire-rankings',    permanent: true },
+      { source: '/blog/top-10-cryptocurrencies-2026',             destination: '/blog/top-10-cryptocurrencies-market-cap-2026-guide',      permanent: true },
 
+    ];
+  },
+  async headers() {
+    return [
+      // PDF files: noindex to prevent duplicate/thin content in search index
+      { source: '/pdf/:path*', headers: [{ key: 'X-Robots-Tag', value: 'noindex, nofollow' }] },
     ];
   },
 };

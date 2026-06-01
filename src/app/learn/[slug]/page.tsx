@@ -1,5 +1,6 @@
 import type { Metadata } from 'next';
 import Link from 'next/link';
+import { notFound } from 'next/navigation';
 import fs from 'fs';
 import ContentDisclaimer from '@/components/ContentDisclaimer';
 import path from 'path';
@@ -114,6 +115,8 @@ function getLessonSlugs(): string[] {
     return fs.readdirSync(LEARN_DIR).filter(f => f.endsWith('.md')).map(f => f.replace('.md', ''));
   } catch { return []; }
 }
+
+export const dynamicParams = true;
 
 export function generateStaticParams() {
   return getLessonSlugs().map(slug => ({ slug }));
@@ -303,14 +306,7 @@ export default async function LearnLessonPage({ params }: { params: Promise<{ sl
   const { slug } = await params;
   const lesson = getLesson(slug);
 
-  if (!lesson) {
-    return (
-      <div style={{ background: '#0B0F19', minHeight: '100vh', padding: '120px 24px', textAlign: 'center' }}>
-        <h1 style={{ color: '#F1F5F9', fontFamily: 'var(--serif)', fontSize: 28 }}>Lesson Not Found</h1>
-        <Link href="/learn" style={{ color: '#00D474', fontSize: 14, marginTop: 16, display: 'inline-block' }}>← Back to Academy</Link>
-      </div>
-    );
-  }
+  if (!lesson) notFound();
 
   const { fm, body } = lesson;
   const heroSrc = HERO_MAP[slug];

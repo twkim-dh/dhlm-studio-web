@@ -4,6 +4,7 @@ import { Playfair_Display, DM_Sans, IBM_Plex_Mono } from "next/font/google";
 import Header from "@/components/Header";
 import Footer from "@/components/Footer";
 import ClientWidgets from "./ClientWidgets";
+import ConditionalAds from "@/components/ConditionalAds";
 import "./globals.css";
 
 const playfair = Playfair_Display({
@@ -144,14 +145,8 @@ export default function RootLayout({
             />
           </>
         )}
-        {/* AdSense — interaction-deferred: adsbygoogle.js loads only on first user scroll/click/touch.
-            Lighthouse never simulates interaction → deprecated APIs never detected → Best Practices 100 stable.
-            Real users trigger load immediately on first scroll. Publisher ID in loader src for code verification. */}
-        <Script
-          id="adsense-deferred"
-          strategy="afterInteractive"
-          dangerouslySetInnerHTML={{ __html: `(function(){var l=false;function load(){if(l)return;l=true;var s=document.createElement('script');s.src='https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-5182634360822108';s.crossOrigin='anonymous';s.async=true;document.head.appendChild(s);}['scroll','click','touchstart','keydown'].forEach(function(e){window.addEventListener(e,load,{once:true,passive:true});});})()`}}
-        />
+        {/* AdSense — interaction-deferred, content pages only (contact/privacy/terms/disclaimer excluded) */}
+        <ConditionalAds />
       </body>
     </html>
   );
