@@ -166,18 +166,22 @@ export default function AboutPage() {
           <div style={{ ...card, padding: '24px 22px' }}>
             <div style={{ fontFamily: 'var(--mono)', fontSize: 9, fontWeight: 700, color: '#3B82F6', letterSpacing: 2, marginBottom: 10 }}>DATA SOURCES</div>
             <p style={{ fontSize: 13, color: '#94A3B8', marginBottom: 14 }}>
-              Our data comes from officially licensed sources. All APIs are used within their commercial license terms.
+              Our data comes from officially licensed sources and authoritative public institutions. All figures are attributed to their primary source within each report.
             </p>
             <div style={{ display: 'flex', flexDirection: 'column', gap: 8 }}>
               {[
-                { name: 'Financial Modeling Prep', desc: 'Stock profiles, financials, company data, SEC filings', color: '#60A5FA' },
-                { name: 'CoinGecko', desc: 'Cryptocurrency prices, market cap, 24h changes', color: '#F59E0B' },
+                { name: 'Financial Modeling Prep (FMP)', desc: 'Stock profiles, financial statements, SEC filings (10-K, 10-Q, 8-K), earnings data', color: '#60A5FA', href: 'https://financialmodelingprep.com' },
+                { name: 'CoinGecko', desc: 'Cryptocurrency prices, market cap, 24h volume, historical price data', color: '#F59E0B', href: 'https://www.coingecko.com' },
+                { name: 'IEA — International Energy Agency', desc: 'Energy production, consumption, AI power demand forecasts (Energy and AI 2025 report)', color: '#00D474', href: 'https://www.iea.org' },
+                { name: 'SEC EDGAR', desc: 'Official company filings, prospectuses, proxy statements, 13-F holdings', color: '#A78BFA', href: 'https://www.sec.gov/edgar' },
+                { name: 'Federal Reserve (FRED)', desc: 'Macroeconomic data: interest rates, inflation, GDP, monetary policy', color: '#C73E3A', href: 'https://fred.stlouisfed.org' },
+                { name: 'NIST — National Institute of Standards and Technology', desc: 'Quantum computing standards, post-quantum cryptography, technical frameworks', color: '#64748B', href: 'https://www.nist.gov' },
               ].map(s => (
-                <div key={s.name} style={{ display: 'flex', alignItems: 'center', gap: 10, padding: '8px 0', borderBottom: '1px solid #1E293B' }}>
-                  <div style={{ width: 8, height: 8, borderRadius: '50%', background: s.color, flexShrink: 0 }} />
+                <div key={s.name} style={{ display: 'flex', alignItems: 'flex-start', gap: 10, padding: '10px 0', borderBottom: '1px solid #1E293B' }}>
+                  <div style={{ width: 8, height: 8, borderRadius: '50%', background: s.color, flexShrink: 0, marginTop: 4 }} />
                   <div>
-                    <span style={{ fontSize: 13, fontWeight: 600, color: '#E2E8F0' }}>{s.name}</span>
-                    <span style={{ fontSize: 12, color: '#64748B', marginLeft: 8 }}>{s.desc}</span>
+                    <a href={s.href} target="_blank" rel="noopener noreferrer" style={{ fontSize: 13, fontWeight: 600, color: '#E2E8F0', textDecoration: 'none' }}>{s.name} ↗</a>
+                    <div style={{ fontSize: 12, color: '#64748B', marginTop: 2, lineHeight: 1.5 }}>{s.desc}</div>
                   </div>
                 </div>
               ))}

@@ -61,17 +61,21 @@ export default function EditorialPage() {
           <div style={{ ...card, padding: '24px 22px' }}>
             <h2 style={{ fontFamily: 'var(--serif)', fontSize: 20, fontWeight: 800, color: '#E2E8F0', margin: '0 0 12px' }}>Data Sources</h2>
             <p style={{ fontSize: 13, color: '#94A3B8', marginBottom: 14 }}>
-              All data is sourced from commercially licensed APIs. We do not scrape, fabricate, or estimate data points.
+              All data is sourced from commercially licensed APIs and authoritative public institutions. We do not scrape, fabricate, or estimate data points. Primary sources are cited within each report.
             </p>
             <div style={{ display: 'flex', flexDirection: 'column', gap: 10 }}>
               {[
-                { name: 'Financial Modeling Prep (FMP)', use: 'Stock profiles, financial statements, company fundamentals, market cap data. Licensed for commercial use with 250 requests/day on free tier.', color: '#60A5FA' },
-                { name: 'CoinGecko', use: 'Cryptocurrency prices, market capitalization, 24-hour volume, historical data. Free API with 30 requests/minute. No API key required.', color: '#F59E0B' },
+                { name: 'Financial Modeling Prep (FMP)', use: 'Stock profiles, financial statements, company fundamentals, SEC filings (10-K, 10-Q, 8-K), earnings data. Licensed for commercial use.', color: '#60A5FA', href: 'https://financialmodelingprep.com' },
+                { name: 'CoinGecko', use: 'Cryptocurrency prices, market capitalization, 24-hour volume, historical data. Public API.', color: '#F59E0B', href: 'https://www.coingecko.com' },
+                { name: 'IEA — International Energy Agency', use: 'Energy & AI reports, power demand forecasting, data centre electricity consumption projections. Cited in Energy and Power series.', color: '#00D474', href: 'https://www.iea.org' },
+                { name: 'SEC EDGAR', use: 'Primary source for company filings, prospectuses, proxy statements, and 13-F institutional holdings. Used for all Deep Dive reports.', color: '#A78BFA', href: 'https://www.sec.gov/edgar' },
+                { name: 'Federal Reserve Economic Data (FRED)', use: 'Macroeconomic indicators: interest rates, CPI inflation, GDP, monetary policy data. Used in macro-themed reports.', color: '#C73E3A', href: 'https://fred.stlouisfed.org' },
+                { name: 'NIST', use: 'Post-quantum cryptography standards, quantum computing framework references. Used in Quantum series.', color: '#64748B', href: 'https://www.nist.gov' },
               ].map(s => (
                 <div key={s.name} style={{ padding: '12px 14px', borderRadius: 8, background: '#0D1117', border: '1px solid #1E293B' }}>
                   <div style={{ display: 'flex', alignItems: 'center', gap: 8, marginBottom: 4 }}>
                     <div style={{ width: 8, height: 8, borderRadius: '50%', background: s.color }} />
-                    <span style={{ fontSize: 13, fontWeight: 700, color: '#E2E8F0' }}>{s.name}</span>
+                    <a href={s.href} target="_blank" rel="noopener noreferrer" style={{ fontSize: 13, fontWeight: 700, color: '#E2E8F0', textDecoration: 'none' }}>{s.name} ↗</a>
                   </div>
                   <p style={{ fontSize: 12, color: '#64748B', lineHeight: 1.6, margin: 0 }}>{s.use}</p>
                 </div>

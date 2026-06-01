@@ -5,7 +5,6 @@ import { notFound } from 'next/navigation';
 import { blogPosts, getBlogPostBySlug } from '@/data/blog-posts';
 import { fmtDateLong, fmtDateShort } from '@/lib/fmt-date';
 import AdUnit from '@/components/AdUnit';
-import LikeButton from '@/components/LikeButton';
 
 import unsplashManifest from '@/data/unsplash-manifest.json';
 
@@ -178,7 +177,6 @@ export default async function BlogPostPage({ params }: { params: Promise<{ slug:
           <p style={{ fontFamily: 'var(--sans)', fontSize: 15, color: '#64748B', lineHeight: 1.7, marginTop: 16 }}>
             {post.description}
           </p>
-          <div style={{ marginTop: 16 }}><LikeButton pageId={`blog-${slug}`} /></div>
         </div>
 
         {/* Hero image */}

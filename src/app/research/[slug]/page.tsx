@@ -6,7 +6,6 @@ import ContentDisclaimer from '@/components/ContentDisclaimer';
 import fs from 'fs';
 import path from 'path';
 import { fmtDateShort } from '@/lib/fmt-date';
-import ListenButton from '@/components/ListenButton';
 import ReportPDF from '@/components/ReportPDF';
 
 import unsplashManifest from '@/data/unsplash-manifest.json';
@@ -224,7 +223,6 @@ export default async function ResearchArticlePage({ params }: { params: Promise<
           </div>
           <p style={{ fontSize: 15, color: '#64748B', lineHeight: 1.7, marginTop: 10 }}>{fm.description}</p>
           <div style={{ marginTop: 14, display: 'flex', flexWrap: 'wrap', gap: 8, alignItems: 'center' }}>
-            <ListenButton text={a.body} />
             <ReportPDF title={fm.title} date={fm.date} description={fm.description} category={fm.category} body={a.body} />
           </div>
         </div>

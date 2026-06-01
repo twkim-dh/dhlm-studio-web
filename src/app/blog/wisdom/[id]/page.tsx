@@ -1,7 +1,6 @@
 import type { Metadata } from 'next';
 import Link from 'next/link';
 import { WISDOM, getWisdomById } from '@/data/wisdom';
-import LikeButton from '@/components/LikeButton';
 
 export function generateStaticParams() {
   return WISDOM.map(w => ({ id: String(w.id).padStart(3, '0') }));
@@ -103,7 +102,6 @@ export default async function WisdomPage({ params }: { params: Promise<{ id: str
         {/* Category tag */}
         <div style={{ display: 'flex', alignItems: 'center', gap: 8, marginBottom: 20 }}>
           <span style={{ fontSize: 10, fontWeight: 600, padding: '3px 10px', borderRadius: 6, background: '#D4A84314', color: '#D4A843', fontFamily: 'var(--mono)', textTransform: 'uppercase' }}>{w.category}</span>
-          <LikeButton pageId={`wisdom-${w.id}`} />
         </div>
 
         {/* Share */}
