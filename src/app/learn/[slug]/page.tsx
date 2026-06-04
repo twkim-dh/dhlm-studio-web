@@ -379,6 +379,12 @@ export default async function LearnLessonPage({ params }: { params: Promise<{ sl
             <span>·</span>
             <span>{seriesLineLabel}</span>
           </div>
+          <div style={{ display: 'flex', alignItems: 'center', gap: 6, marginTop: 10, flexWrap: 'wrap' }}>
+            <span style={{ fontSize: 12, color: '#475569' }}>By</span>
+            <Link href="/editorial" style={{ fontSize: 12, color: '#00D474', fontWeight: 600, textDecoration: 'none' }}>Brutal Edge Team</Link>
+            <span style={{ fontSize: 12, color: '#334155' }}>·</span>
+            <span style={{ fontSize: 11, color: '#475569' }}>Brutal Edge Academy</span>
+          </div>
         </div>
 
         {/* Progress bar */}

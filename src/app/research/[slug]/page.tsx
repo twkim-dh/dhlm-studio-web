@@ -212,7 +212,8 @@ export default async function ResearchArticlePage({ params }: { params: Promise<
         <div style={{ marginBottom: 20 }}>
           <div style={{ display: 'flex', alignItems: 'center', gap: 8, marginBottom: 10, flexWrap: 'wrap' }}>
             <span style={{ fontFamily: 'var(--mono)', fontSize: 10, fontWeight: 700, padding: '3px 8px', borderRadius: 4, background: series.bg, color: series.fg, border: `1px solid ${series.border}` }}>{fm.category}</span>
-            <span style={{ fontSize: 11, color: '#475569' }}>{fmtDateShort(fm.date)} · {fm.readTime}</span>
+            <span style={{ fontSize: 11, color: '#475569' }}>Published {fmtDateShort(fm.date)} · {fm.readTime}</span>
+            {(fm as unknown as Record<string, string>).dataAsOf && <span style={{ fontSize: 11, color: '#475569' }}>· Data as of {(fm as unknown as Record<string, string>).dataAsOf}</span>}
           </div>
           <h1 style={{ fontFamily: 'var(--serif)', fontSize: 'clamp(24px, 4vw, 32px)', fontWeight: 900, color: '#F1F5F9', lineHeight: 1.3, margin: 0 }}>{fm.title}</h1>
           <div style={{ display: 'flex', alignItems: 'center', gap: 6, marginTop: 10, flexWrap: 'wrap' }}>

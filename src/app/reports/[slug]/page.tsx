@@ -45,6 +45,10 @@ interface ReportFrontmatter {
   tickers?: string[];
   /** Primary sources cited in this report */
   sources?: string[];
+  /** Data as of date string e.g. "May 2026" */
+  dataAsOf?: string;
+  /** Last updated date ISO string */
+  updatedDate?: string;
 }
 
 function parseMarkdown(content: string): { frontmatter: ReportFrontmatter; body: string } {
@@ -362,6 +366,8 @@ export default async function ReportPage({ params }: { params: Promise<{ slug: s
               <span style={{ fontFamily: 'var(--mono)', fontSize: 10, fontWeight: 700, padding: '3px 8px', borderRadius: 4, background: '#D4A84314', color: '#D4A843' }}>BEAF: {fm.beafScore}/100 ({fm.grade})</span>
             )}
             <span style={{ fontSize: 11, color: '#475569' }}>Published {fmtDateLong(fm.date)} · {fm.readTime} read</span>
+            {fm.updatedDate && <span style={{ fontSize: 11, color: '#475569' }}>· Updated {fmtDateLong(fm.updatedDate)}</span>}
+            {fm.dataAsOf && <span style={{ fontSize: 11, color: '#475569' }}>· Data as of {fm.dataAsOf}</span>}
           </div>
           <h1 style={{ fontFamily: 'var(--serif)', fontSize: 'clamp(24px, 4vw, 34px)', fontWeight: 900, color: '#F1F5F9', lineHeight: 1.3, margin: 0 }}>{fm.title}</h1>
           <div style={{ display: 'flex', alignItems: 'center', gap: 6, marginTop: 10, flexWrap: 'wrap' }}>
