@@ -91,6 +91,7 @@ export const blogPosts: BlogPost[] = [
   },
   {
     slug: 'us-dominates-global-wealth-billionaires-2026',
+    noindex: true,
     title: 'US Dominates Global Wealth 2026: The Structural Forces Behind It',
     category: 'Rankings', catColor: '#D4A843', date: '2026-04-16', readTime: '8 min',
     heroImage: '/images/content/us-dominates-global-wealth-hero.webp',
@@ -106,6 +107,7 @@ export const blogPosts: BlogPost[] = [
   },
   {
     slug: 'top-10-countries-gdp-world-economy-2026',
+    noindex: true,
     title: 'Top 10 Countries by GDP — World Economy 2026',
     category: 'Rankings', catColor: '#D4A843', date: '2026-04-01', readTime: '6 min',
     lastUpdated: '2026-04-12',
@@ -279,6 +281,7 @@ export const blogPosts: BlogPost[] = [
   },
   {
     slug: 'worlds-richest-people-2026-billionaire-rankings',
+    noindex: true,
     title: 'World\'s Richest People 2026: What Billionaires Actually Own',
     category: 'Rankings', catColor: '#D4A843', date: '2026-04-16', readTime: '8 min',
     heroImage: '/images/content/worlds-richest-people-2026-hero.webp',

@@ -24,9 +24,19 @@ const REDIRECTS: Record<string, string> = {
 
 // 410 Gone: permanently deleted pages (no content, no redirect elsewhere)
 const GONE_PATHS = new Set([
+  // Previously deleted
   '/blog/lotto-statistics',
   '/blog/powerball-vs-mega-millions-better-odds',
   '/tools/dev/cron',
+  // 2026-06-04: non-finance content purge (AdSense E-E-A-T consistency)
+  '/creators',
+  '/markets/roast-portfolio',
+  '/markets/most-roasted',
+  '/markets/most-blessed',
+  '/blog/highest-paid-nba-players-2025-26',
+  '/blog/us-dominates-global-wealth-billionaires-2026',
+  '/blog/worlds-richest-people-2026-billionaire-rankings',
+  '/blog/top-10-countries-gdp-world-economy-2026',
 ]);
 
 // Country-based blocking: confirmed/suspected bot traffic
@@ -47,25 +57,21 @@ export default function proxy(request: NextRequest) {
   const ip = request.headers.get('x-forwarded-for') || 'unknown';
   const country = request.headers.get('x-vercel-ip-country') || '';
 
-  // Debug log — remove after 72h GA4 verification
-  console.log(`[PROXY] ${pathname} | country=${country || 'none'} | ua=${userAgent.substring(0, 60)} | ip=${ip}`);
-
   // AdSense/Googlebot bypass ALL blocks unconditionally
   if (!ALLOWED_BOTS.test(userAgent)) {
     // Primary: geo-block (x-vercel-ip-country set by Vercel edge, client cannot spoof)
     if (BLOCK_COUNTRIES.has(country)) {
-      console.log(`[BLOCKED-GEO] country=${country} | ip=${ip}`);
       return new NextResponse('Service temporarily unavailable', { status: 503 });
     }
     // Secondary: UA-based block (backup for bots with no/wrong country header)
     if (SUSPICIOUS_UA.test(userAgent)) {
-      console.log(`[BLOCKED-UA] ua=${userAgent.substring(0, 60)}`);
       return new NextResponse('Service temporarily unavailable', { status: 503 });
     }
   }
 
-  // 410 Gone: all deleted sections (tools = legacy utilities, lottery = gambling)
-  if (pathname.startsWith('/tools') || pathname.startsWith('/lottery')) {
+  // 410 Gone: deleted sections (tools, lottery, lotto, rankings = off-brand)
+  if (pathname.startsWith('/tools') || pathname.startsWith('/lottery') ||
+      pathname.startsWith('/lotto') || pathname.startsWith('/rankings')) {
     return new NextResponse('Gone', { status: 410 });
   }
 
