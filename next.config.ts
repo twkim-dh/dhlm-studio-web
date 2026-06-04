@@ -73,12 +73,8 @@ const nextConfig: NextConfig = {
       // /crypto shortcut → home (markets deleted)
       { source: '/crypto', destination: '/', permanent: true },
       { source: '/crypto/:path*', destination: '/', permanent: true },
-      // Rankings deleted → home
-      { source: '/rankings', destination: '/', permanent: true },
-      { source: '/rankings/:path*', destination: '/', permanent: true },
-      // Markets deleted → home
-      { source: '/markets', destination: '/', permanent: true },
-      { source: '/markets/:path*', destination: '/', permanent: true },
+      // Rankings deleted → 410 Gone handled in proxy.ts (startsWith /rankings)
+      // Markets catch-all removed → proxy.ts GONE_PATHS handles roast/blessed (410)
       // Daily brief deleted → home
       { source: '/daily', destination: '/', permanent: true },
       { source: '/daily/:path*', destination: '/', permanent: true },
@@ -88,9 +84,7 @@ const nextConfig: NextConfig = {
       { source: '/weekly-recap/:path*', destination: '/', permanent: true },
       { source: '/monthly-report', destination: '/', permanent: true },
       { source: '/monthly-report/:path*', destination: '/', permanent: true },
-      // Korean Lotto → home (lottery section deleted)
-      { source: '/lotto', destination: '/', permanent: true },
-      { source: '/lotto/:path*', destination: '/', permanent: true },
+      // Korean Lotto → 410 Gone handled in proxy.ts (startsWith /lotto)
       // Search Console redirects (lottery section deleted)
       // /blog/lotto-statistics → 410 Gone (middleware.ts)
       { source: '/blog/lotto/:path*', destination: '/', permanent: true },
@@ -130,9 +124,7 @@ const nextConfig: NextConfig = {
       { source: '/research/the-mental-game', destination: '/research', permanent: true },
       // Tools section deleted — 410 Gone handled in proxy.ts
       // Lottery section deleted — 410 Gone handled in proxy.ts
-      // Off-brand pages → 301 (Option C: noindex already set + redirect)
-      { source: '/creators', destination: '/', permanent: true },
-      { source: '/creators/:path*', destination: '/', permanent: true },
+      // /creators → 410 Gone handled in proxy.ts GONE_PATHS
       { source: '/blog/wisdom', destination: '/blog', permanent: true },
       { source: '/blog/wisdom/:path*', destination: '/blog', permanent: true },
       // /fortune used to redirect to /lottery — now goes home
@@ -158,7 +150,7 @@ const nextConfig: NextConfig = {
       { source: '/blog/tiktok-vs-youtube-creators',         destination: '/', permanent: true },
       { source: '/blog/youtube-subscriber-milestones',      destination: '/', permanent: true },
       // Group C: Sports/Lifestyle Rankings → home
-      { source: '/blog/highest-paid-nba-players-2025-26',           destination: '/', permanent: true },
+      // /blog/highest-paid-nba-players-2025-26 → 410 Gone handled in proxy.ts GONE_PATHS
       { source: '/blog/best-countries-to-live-in-2026-quality-of-life', destination: '/', permanent: true },
       { source: '/blog/highest-paid-athletes-2026-sports-salary-rankings', destination: '/', permanent: true },
       { source: '/blog/world-population-8-billion',         destination: '/', permanent: true },
