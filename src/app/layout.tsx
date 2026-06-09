@@ -90,7 +90,7 @@ export default function RootLayout({
         {/* No Twemoji — caused image explosion bug. Flag emojis show as text on Windows, which is acceptable. */}
         {/* Preconnect to external origins */}
         <link rel="preconnect" href="https://www.googletagmanager.com" />
-        <link rel="preconnect" href="https://pagead2.googlesyndication.com" />
+        {/* pagead2 preconnect moved to ConditionalAds — only on content pages */}
         {/* Fonts loaded via next/font/google — no external link needed */}
         {/* AdSense publisher verification — ensures code check passes without requiring script to be present at load time */}
         <meta name="google-adsense-account" content="ca-pub-5182634360822108" />

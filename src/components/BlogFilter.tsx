@@ -21,6 +21,7 @@ export default function BlogFilter({ posts }: { posts: BlogPost[] }) {
 
   const now = new Date();
   const filtered = posts.filter(p => {
+    if (p.noindex) return false;
     if (new Date(p.date) > now) return false;
     const matchCat = active === 'All' || p.category === active;
     const matchSearch = !search.trim() ||
@@ -66,7 +67,8 @@ export default function BlogFilter({ posts }: { posts: BlogPost[] }) {
       <div style={{ display: 'flex', gap: 6, flexWrap: 'wrap', marginBottom: 24, paddingBottom: 16, borderBottom: '1px solid #1E293B' }}>
         {cats.map(c => {
           const isActive = active === c.label;
-          const count = c.label === 'All' ? posts.length : posts.filter(p => p.category === c.label).length;
+          const validPosts = posts.filter(p => !p.noindex && new Date(p.date) <= now);
+          const count = c.label === 'All' ? validPosts.length : validPosts.filter(p => p.category === c.label).length;
           return (
             <button key={c.label} onClick={() => setActive(c.label)}
               style={{
