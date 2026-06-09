@@ -23,7 +23,7 @@ export default function BlogPage() {
         </div>
 
         {/* Crypto 101 banner */}
-        <Link href="/crypto-101" style={{ display: 'flex', alignItems: 'center', justifyContent: 'space-between', padding: '14px 18px', borderRadius: 12, background: '#A78BFA10', border: '1px solid #A78BFA20', textDecoration: 'none', marginBottom: 24 }}>
+        <Link href="/learn/crypto-101" style={{ display: 'flex', alignItems: 'center', justifyContent: 'space-between', padding: '14px 18px', borderRadius: 12, background: '#A78BFA10', border: '1px solid #A78BFA20', textDecoration: 'none', marginBottom: 24 }}>
           <div style={{ display: 'flex', alignItems: 'center', gap: 10 }}>
             <span style={{ fontSize: 18 }}>📚</span>
             <div>

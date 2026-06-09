@@ -287,7 +287,7 @@ export default function DCAPage() {
               <div style={{ fontFamily: 'var(--mono)', fontSize: 9, fontWeight: 700, color: '#64748B', letterSpacing: 2, marginBottom: 12 }}>EXPLORE MORE</div>
               <div style={{ display: 'flex', gap: 8, flexWrap: 'wrap' }}>
                 <Link href="/calculators/compound-interest" style={{ fontSize: 11, color: '#F59E0B', padding: '5px 12px', borderRadius: 6, background: '#F59E0B10', border: '1px solid #F59E0B20', textDecoration: 'none' }}>📈 Compound Interest Calculator</Link>
-                <Link href="/crypto-101" style={{ fontSize: 11, color: '#A78BFA', padding: '5px 12px', borderRadius: 6, background: '#A78BFA10', border: '1px solid #A78BFA20', textDecoration: 'none' }}>📚 Crypto 101 — Week 4: How to Buy</Link>
+                <Link href="/learn/crypto-101" style={{ fontSize: 11, color: '#A78BFA', padding: '5px 12px', borderRadius: 6, background: '#A78BFA10', border: '1px solid #A78BFA20', textDecoration: 'none' }}>📚 Crypto 101 — Week 4: How to Buy</Link>
                 <Link href="/learn/crypto-101" style={{ fontSize: 11, color: '#60A5FA', padding: '5px 12px', borderRadius: 6, background: '#3B82F610', border: '1px solid #3B82F620', textDecoration: 'none' }}>📚 Crypto 101 — How to Buy</Link>
                 <Link href="/research" style={{ fontSize: 11, color: '#A78BFA', padding: '5px 12px', borderRadius: 6, background: '#A78BFA10', border: '1px solid #A78BFA20', textDecoration: 'none' }}>🧠 The Mental Game</Link>
               </div>

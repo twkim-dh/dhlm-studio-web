@@ -1,4 +1,4 @@
-import { redirect } from 'next/navigation';
+import { permanentRedirect } from 'next/navigation';
 import type { Metadata } from 'next';
 import Link from 'next/link';
 
@@ -109,7 +109,7 @@ const PHASES = [
 ];
 
 export default function Investing101IntermediatePage() {
-  redirect('/learn?tab=investing-101');
+  permanentRedirect('/learn/investing-101');
   return (
     <div style={{ background: '#0B0F19', minHeight: '100vh' }}>
       <div style={{ maxWidth: 900, margin: '0 auto', padding: '80px 24px 80px' }}>
