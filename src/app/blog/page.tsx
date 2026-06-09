@@ -34,7 +34,7 @@ export default function BlogPage() {
           <span style={{ fontSize: 12, color: '#A78BFA', fontFamily: 'var(--mono)' }}>Start →</span>
         </Link>
 
-        <BlogFilter posts={blogPosts} />
+        <BlogFilter posts={blogPosts.filter(p => !p.noindex)} />
       </div>
     </div>
   );
