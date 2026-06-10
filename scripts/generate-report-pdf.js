@@ -442,8 +442,8 @@ function renderCover(doc, fm) {
   doc.font(SANS).fontSize(8.5).fillColor('#aaa')
      .text(badges, ML, y, { width: CW, align: 'center' });
 
-  // ── Bottom footer ──────────────────────────────────────────────────────────
-  const fy = PH - MB + 10;
+  // ── Bottom footer — must stay within margins (fy < PH - MB = 785.89) ──────
+  const fy = PH - MB - 20;
   hline(doc, fy - 5, ML, ML + CW, 0.5, '#eeeeee');
   doc.font(SANS).fontSize(7.5).fillColor('#aaaaaa')
      .text(
