@@ -56,6 +56,15 @@ export interface InvestingLesson {
   published: boolean;
 }
 
+export interface QuantumLesson {
+  part: number;
+  slug: string;
+  title: string;
+  description: string;
+  thumb: string;
+  published: boolean;
+}
+
 function getAllResearch(): ResearchItem[] {
   try {
     if (!fs.existsSync(CONTENT_DIR)) return [];
@@ -130,6 +139,36 @@ function getCryptoLessons(): LessonItem[] {
   );
 }
 
+const QUANTUM_SLUGS: { slug: string; part: number; title: string; description: string }[] = [
+  { part: 1,  slug: 'quantum-101-part1-superconducting-qubits',  title: 'Superconducting Qubits: The Semiconductor Path to Quantum Computing', description: 'How IBM and Google built their quantum bets on superconducting chips, and the one metric that matters more than any qubit headline.' },
+  { part: 2,  slug: 'quantum-101-part2-trapped-ion',             title: 'Trapped-Ion Quantum Computers: The Slow but Precise Path', description: 'IonQ and Quantinuum use individual charged atoms as qubits — the most accurate gate operations in production today, at the cost of speed.' },
+  { part: 3,  slug: 'quantum-101-part3-neutral-atom',            title: 'Neutral-Atom Quantum Computers: The Laser Tweezer Path to Scale', description: 'QuEra and Atom Computing use optical tweezers to arrange hundreds of atoms in programmable arrays — a hardware-efficient path to scale.' },
+  { part: 4,  slug: 'quantum-101-part4-photonic',                title: 'Photonic Quantum Computers: The Light-Speed Network Path', description: 'PsiQuantum and Xanadu use photons instead of matter qubits — room-temperature operation and a natural bridge to quantum networking.' },
+  { part: 5,  slug: 'quantum-101-part5-silicon-spin',            title: 'Silicon Spin Quantum Computers: The Semiconductor Path to Scale', description: 'Intel and others embed electron spin qubits in standard silicon chips — the most manufacturable approach, still early in fidelity.' },
+  { part: 6,  slug: 'quantum-101-part6-topological',             title: 'Topological Quantum Computing: The High-Risk, High-Reward Path', description: 'Microsoft is pursuing topological qubits, which would be inherently error-resistant — an unproven approach that could leap ahead if it works.' },
+  { part: 7,  slug: 'quantum-101-part7-quantum-annealing',       title: 'Quantum Annealing: The Optimization Machine Path', description: 'D-Wave\'s specialized approach solves optimization problems today — real commercial contracts, but a narrow scope compared to gate-based quantum.' },
+  { part: 8,  slug: 'quantum-101-part8-software-cloud',          title: 'Quantum Software & Cloud Platforms: The Operating System Layer', description: 'Qiskit, Cirq, and cloud access via AWS Braket and Azure Quantum — the software and API layer that turns quantum hardware into usable infrastructure.' },
+  { part: 9,  slug: 'quantum-101-part9-quantum-security',        title: 'Quantum Security & Post-Quantum Cryptography: The Cybersecurity Upgrade Wall', description: 'A sufficiently powerful quantum computer would break RSA encryption. NIST has standardized the first post-quantum algorithms — and the migration clock is running.' },
+  { part: 10, slug: 'quantum-101-part10-quantum-applications',   title: 'Quantum Applications: Where Quantum Computing Could Actually Matter', description: 'Drug discovery, materials simulation, financial optimization, logistics — the specific problem classes where quantum advantage has been demonstrated or is expected.' },
+  { part: 11, slug: 'quantum-101-part11-investing-framework',    title: 'The Quantum Investing Framework: Separating Real Platforms from Expensive Science Projects', description: 'A structured framework for evaluating quantum companies: qubit count vs. fidelity, fault-tolerance progress, revenue quality, and cash runway.' },
+  { part: 12, slug: 'quantum-101-part12-watchlist',              title: 'The Quantum Investing Watchlist: Companies, Layers, and Signals Worth Tracking', description: 'A structured watchlist across hardware, software, and infrastructure layers — with the specific milestones that would signal real commercial progress.' },
+];
+
+const QUANTUM_THUMBS: Record<string, string> = {
+  'quantum-101-part1-superconducting-qubits':  '/images/content/quantum-101-part1-hero.webp',
+  'quantum-101-part2-trapped-ion':             '/images/content/quantum-101-part2-hero.webp',
+  'quantum-101-part3-neutral-atom':            '/images/content/quantum-101-part3-hero.webp',
+  'quantum-101-part4-photonic':                '/images/content/quantum-101-part4-hero.webp',
+  'quantum-101-part5-silicon-spin':            '/images/content/quantum-101-part5-hero.webp',
+  'quantum-101-part6-topological':             '/images/content/quantum-101-part6-hero.webp',
+  'quantum-101-part7-quantum-annealing':       '/images/content/quantum-101-part7-hero.webp',
+  'quantum-101-part8-software-cloud':          '/images/content/quantum-101-part8-hero.webp',
+  'quantum-101-part9-quantum-security':        '/images/content/quantum-101-part9-hero.webp',
+  'quantum-101-part10-quantum-applications':   '/images/content/quantum-101-part10-hero.webp',
+  'quantum-101-part11-investing-framework':    '/images/content/quantum-101-part11-hero.webp',
+  'quantum-101-part12-watchlist':              '/images/content/quantum-101-part12-hero.webp',
+};
+
 const INTERMEDIATE_SLUGS = [
   'investing-101-intermediate-w13-three-valuations',
   'investing-101-intermediate-w14-dcf-lies',
@@ -190,10 +229,40 @@ function getIntermediateLessons(): InvestingLesson[] {
   }).filter(Boolean) as InvestingLesson[];
 }
 
+function getQuantumLessons(): QuantumLesson[] {
+  const today = todayKST();
+  return QUANTUM_SLUGS.map(({ slug, part, title, description }) => {
+    try {
+      const content = fs.readFileSync(path.join(LEARN_DIR_PATH, `${slug}.md`), 'utf8');
+      const m = content.match(/^---\n([\s\S]*?)\n---/);
+      if (!m) return { part, slug, title, description, thumb: QUANTUM_THUMBS[slug] || '', published: false };
+      const fm: Record<string, unknown> = {};
+      for (const line of m[1].split('\n')) {
+        const lm = line.match(/^(\w+):\s*(.+)$/);
+        if (!lm) continue;
+        let raw = lm[2].trim();
+        if ((raw.startsWith('"') && raw.endsWith('"')) || (raw.startsWith("'") && raw.endsWith("'"))) raw = raw.slice(1, -1);
+        fm[lm[1]] = raw;
+      }
+      return {
+        part,
+        slug,
+        title: String(fm['title'] || title),
+        description: String(fm['description'] || description),
+        thumb: QUANTUM_THUMBS[slug] || '',
+        published: String(fm['publishDate'] || '9999-99-99') <= today,
+      };
+    } catch {
+      return { part, slug, title, description, thumb: QUANTUM_THUMBS[slug] || '', published: false };
+    }
+  });
+}
+
 export default function LearnPage() {
   const articles = getAllResearch();
   const cryptoLessons = getCryptoLessons();
   const intermediateLessons = getIntermediateLessons();
+  const quantumLessons = getQuantumLessons();
 
   return (
     <div style={{ background: '#0B0F19', minHeight: '100vh' }}>
@@ -212,7 +281,7 @@ export default function LearnPage() {
           </p>
         </div>
 
-        <LearnClient articles={articles} cryptoLessons={cryptoLessons} intermediateLessons={intermediateLessons} />
+        <LearnClient articles={articles} cryptoLessons={cryptoLessons} intermediateLessons={intermediateLessons} quantumLessons={quantumLessons} />
 
         {/* Philosophy */}
         <div style={{ padding: '22px', borderRadius: 14, background: '#0D1117', border: '1px solid #1E293B', marginTop: 36, marginBottom: 28 }}>

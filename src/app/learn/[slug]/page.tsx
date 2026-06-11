@@ -13,6 +13,18 @@ function todayKST(): string {
 }
 
 const HERO_MAP: Record<string, string> = {
+  'quantum-101-part1-superconducting-qubits':   '/images/content/quantum-101-part1-hero.webp',
+  'quantum-101-part2-trapped-ion':              '/images/content/quantum-101-part2-hero.webp',
+  'quantum-101-part3-neutral-atom':             '/images/content/quantum-101-part3-hero.webp',
+  'quantum-101-part4-photonic':                 '/images/content/quantum-101-part4-hero.webp',
+  'quantum-101-part5-silicon-spin':             '/images/content/quantum-101-part5-hero.webp',
+  'quantum-101-part6-topological':              '/images/content/quantum-101-part6-hero.webp',
+  'quantum-101-part7-quantum-annealing':        '/images/content/quantum-101-part7-hero.webp',
+  'quantum-101-part8-software-cloud':           '/images/content/quantum-101-part8-hero.webp',
+  'quantum-101-part9-quantum-security':         '/images/content/quantum-101-part9-hero.webp',
+  'quantum-101-part10-quantum-applications':    '/images/content/quantum-101-part10-hero.webp',
+  'quantum-101-part11-investing-framework':     '/images/content/quantum-101-part11-hero.webp',
+  'quantum-101-part12-watchlist':               '/images/content/quantum-101-part12-hero.webp',
   'investing-101-beginner-w1-what-is-a-stock-really':          '/images/content/investing-101-beginner-w1-what-is-a-stock-hero.webp',
   'investing-101-beginner-w2-how-the-market-actually-works':   '/images/content/investing-101-beginner-w2-how-market-works-hero.webp',
   'investing-101-beginner-w3-opening-your-first-brokerage-account': '/images/content/investing-101-beginner-w3-brokerage-account-hero.webp',
@@ -69,7 +81,22 @@ const INTERMEDIATE_ORDER = [
   'investing-101-intermediate-w24-when-to-sell',
 ];
 
-const SERIES_ORDER = [...BEGINNER_ORDER, ...INTERMEDIATE_ORDER];
+const QUANTUM_ORDER = [
+  'quantum-101-part1-superconducting-qubits',
+  'quantum-101-part2-trapped-ion',
+  'quantum-101-part3-neutral-atom',
+  'quantum-101-part4-photonic',
+  'quantum-101-part5-silicon-spin',
+  'quantum-101-part6-topological',
+  'quantum-101-part7-quantum-annealing',
+  'quantum-101-part8-software-cloud',
+  'quantum-101-part9-quantum-security',
+  'quantum-101-part10-quantum-applications',
+  'quantum-101-part11-investing-framework',
+  'quantum-101-part12-watchlist',
+];
+
+const SERIES_ORDER = [...BEGINNER_ORDER, ...INTERMEDIATE_ORDER, ...QUANTUM_ORDER];
 
 interface LessonFrontmatter {
   title: string;
@@ -84,6 +111,10 @@ interface LessonFrontmatter {
 
 function isIntermediate(slug: string) {
   return slug.startsWith('investing-101-intermediate');
+}
+
+function isQuantum(slug: string) {
+  return slug.startsWith('quantum-101-');
 }
 
 function parseLesson(content: string): { fm: LessonFrontmatter; body: string } | null {
@@ -130,9 +161,13 @@ export async function generateMetadata({ params }: { params: Promise<{ slug: str
   const heroSrc = HERO_MAP[slug];
   const BASE = 'https://dhlm-studio.com';
   const ogImage = heroSrc ? `${BASE}${heroSrc}` : `${BASE}/opengraph-image`;
-  const seriesLabel = isIntermediate(slug) ? 'Investing 101 Intermediate' : 'Investing 101 Beginner';
+  const quantum = isQuantum(slug);
+  const inter = isIntermediate(slug);
+  const seriesLabel = quantum ? 'Quantum Computing 101' : inter ? 'Investing 101 Intermediate' : 'Investing 101 Beginner';
   const today = todayKST();
-  const isFuture = isIntermediate(slug) && fm.publishDate && fm.publishDate > today;
+  const isFuture = (inter || quantum) && fm.publishDate && fm.publishDate > today;
+  const ogW = quantum ? 1920 : 1672;
+  const ogH = quantum ? 1080 : 941;
   return {
     title: `${fm.title} | ${seriesLabel}`,
     description: fm.description,
@@ -141,7 +176,7 @@ export async function generateMetadata({ params }: { params: Promise<{ slug: str
       title: fm.title, description: fm.description,
       type: 'article', publishedTime: fm.publishDate,
       url: `${BASE}/learn/${slug}`,
-      images: [{ url: ogImage, width: 1672, height: 941 }],
+      images: [{ url: ogImage, width: ogW, height: ogH }],
     },
     twitter: { card: 'summary_large_image', title: fm.title, description: fm.description, images: [ogImage] },
     ...(isFuture ? { robots: { index: false, follow: true } } : {}),
@@ -311,14 +346,16 @@ export default async function LearnLessonPage({ params }: { params: Promise<{ sl
   const { fm, body } = lesson;
   const heroSrc = HERO_MAP[slug];
   const inter = isIntermediate(slug);
-  const ORDER = inter ? INTERMEDIATE_ORDER : BEGINNER_ORDER;
+  const quantum = isQuantum(slug);
+  const ORDER = quantum ? QUANTUM_ORDER : inter ? INTERMEDIATE_ORDER : BEGINNER_ORDER;
   const seriesIndex = ORDER.indexOf(slug);
   const prevSlug = seriesIndex > 0 ? ORDER[seriesIndex - 1] : null;
   const nextSlug = seriesIndex < ORDER.length - 1 ? ORDER[seriesIndex + 1] : null;
   const seriesTotal = inter ? 24 : 12;
-  const seriesIndexPage = inter ? '/learn/investing-101-intermediate' : '/learn/investing-101-beginner';
-  const seriesBadgeLabel = inter ? 'INVESTING 101 INTERMEDIATE' : 'INVESTING 101 BEGINNER';
-  const seriesLineLabel = inter ? 'Investing 101 — Intermediate Series' : 'Investing 101 — Beginner Series';
+  const seriesIndexPage = quantum ? '/learn/quantum-101' : inter ? '/learn/investing-101-intermediate' : '/learn/investing-101-beginner';
+  const seriesBadgeLabel = quantum ? 'QUANTUM 101' : inter ? 'INVESTING 101 INTERMEDIATE' : 'INVESTING 101 BEGINNER';
+  const seriesLineLabel = quantum ? 'Quantum Computing 101' : inter ? 'Investing 101 — Intermediate Series' : 'Investing 101 — Beginner Series';
+  const partLabel = quantum ? 'PART' : 'WEEK';
 
   const prevLesson = prevSlug ? getLesson(prevSlug) : null;
   const nextLesson = nextSlug ? getLesson(nextSlug) : null;
@@ -334,7 +371,10 @@ export default async function LearnLessonPage({ params }: { params: Promise<{ sl
 
   let phaseColor: string;
   let phaseLabel: string;
-  if (inter) {
+  if (quantum) {
+    phaseColor = fm.week <= 7 ? '#7C3AED' : fm.week <= 10 ? '#3B82F6' : '#D4A843';
+    phaseLabel = fm.week <= 7 ? 'PHASE 1 · QUBIT APPROACHES' : fm.week <= 10 ? 'PHASE 2 · PLATFORMS & APPLICATIONS' : 'PHASE 3 · INVESTING FRAMEWORK';
+  } else if (inter) {
     phaseColor = fm.week <= 15 ? '#60A5FA' : fm.week <= 18 ? '#A78BFA' : fm.week <= 21 ? '#34D399' : '#F59E0B';
     phaseLabel = fm.week <= 15 ? 'PHASE 1 · VALUATION' : fm.week <= 18 ? 'PHASE 2 · MOAT ANALYSIS' : fm.week <= 21 ? 'PHASE 3 · DOCUMENT FORENSICS' : 'PHASE 4 · PORTFOLIO MANAGEMENT';
   } else {
@@ -351,22 +391,22 @@ export default async function LearnLessonPage({ params }: { params: Promise<{ sl
         <div style={{ display: 'flex', alignItems: 'center', gap: 8, marginBottom: 24, fontSize: 11, fontFamily: 'var(--mono)', color: '#475569', flexWrap: 'wrap' }}>
           <Link href="/learn" style={{ color: '#475569', textDecoration: 'none' }}>Brutal Edge Academy</Link>
           <span>/</span>
-          <Link href={seriesIndexPage} style={{ color: '#475569', textDecoration: 'none' }}>{inter ? 'Investing 101 Intermediate' : 'Investing 101 Beginner'}</Link>
+          <Link href={seriesIndexPage} style={{ color: '#475569', textDecoration: 'none' }}>{seriesLineLabel}</Link>
           <span>/</span>
-          <span style={{ color: '#64748B' }}>Week {fm.week}</span>
+          <span style={{ color: '#64748B' }}>{quantum ? 'Part' : 'Week'} {fm.week}</span>
         </div>
 
         {/* Header */}
         <div style={{ marginBottom: 28 }}>
           <div style={{ display: 'flex', alignItems: 'center', gap: 8, marginBottom: 12, flexWrap: 'wrap' }}>
-            <span style={{ fontFamily: 'var(--mono)', fontSize: 9, fontWeight: 800, padding: '3px 9px', borderRadius: 5, background: '#00D47418', color: '#00D474', border: '1px solid #00D47430', letterSpacing: 1 }}>
+            <span style={{ fontFamily: 'var(--mono)', fontSize: 9, fontWeight: 800, padding: '3px 9px', borderRadius: 5, background: quantum ? '#7C3AED18' : '#00D47418', color: quantum ? '#A78BFA' : '#00D474', border: quantum ? '1px solid #7C3AED30' : '1px solid #00D47430', letterSpacing: 1 }}>
               {seriesBadgeLabel}
             </span>
             <span style={{ fontFamily: 'var(--mono)', fontSize: 9, fontWeight: 700, padding: '2px 8px', borderRadius: 4, background: `${phaseColor}14`, color: phaseColor }}>
               {phaseLabel}
             </span>
             <span style={{ fontFamily: 'var(--mono)', fontSize: 9, fontWeight: 700, padding: '2px 8px', borderRadius: 4, background: '#1E293B', color: '#64748B' }}>
-              WEEK {fm.week} / {seriesTotal}
+              {partLabel} {fm.week} / {seriesTotal}
             </span>
           </div>
 
@@ -391,7 +431,7 @@ export default async function LearnLessonPage({ params }: { params: Promise<{ sl
         <div style={{ marginBottom: 28, padding: '12px 16px', borderRadius: 10, background: '#0D1117', border: '1px solid #1E293B' }}>
           <div style={{ display: 'flex', justifyContent: 'space-between', marginBottom: 6 }}>
             <span style={{ fontFamily: 'var(--mono)', fontSize: 9, fontWeight: 700, color: '#475569' }}>SERIES PROGRESS</span>
-            <span style={{ fontFamily: 'var(--mono)', fontSize: 9, color: '#475569' }}>W{fm.week} / {seriesTotal}</span>
+            <span style={{ fontFamily: 'var(--mono)', fontSize: 9, color: '#475569' }}>{quantum ? 'P' : 'W'}{fm.week} / {seriesTotal}</span>
           </div>
           <div style={{ height: 4, background: '#1E293B', borderRadius: 2, overflow: 'hidden' }}>
             <div style={{ height: '100%', width: `${(fm.week / seriesTotal) * 100}%`, background: 'linear-gradient(90deg, #00D474, #059952)', borderRadius: 2 }} />
@@ -428,13 +468,13 @@ export default async function LearnLessonPage({ params }: { params: Promise<{ sl
         <div style={{ display: 'grid', gridTemplateColumns: prevLesson ? (nextLesson ? '1fr 1fr' : '1fr') : (nextLesson ? '1fr' : 'none'), gap: 12, marginBottom: 32 }}>
           {prevLesson && (
             <Link href={`/learn/${prevSlug}`} style={{ textDecoration: 'none', padding: '14px 16px', borderRadius: 10, background: '#111827', border: '1px solid #1E293B', display: 'block' }}>
-              <div style={{ fontFamily: 'var(--mono)', fontSize: 9, fontWeight: 700, color: '#475569', marginBottom: 4 }}>← PREV · WEEK {prevLesson.fm.week}</div>
+              <div style={{ fontFamily: 'var(--mono)', fontSize: 9, fontWeight: 700, color: '#475569', marginBottom: 4 }}>← PREV · {partLabel} {prevLesson.fm.week}</div>
               <div style={{ fontSize: 13, fontWeight: 700, color: '#E2E8F0', lineHeight: 1.4 }}>{prevLesson.fm.title}</div>
             </Link>
           )}
           {nextLesson && (
             <Link href={`/learn/${nextSlug}`} style={{ textDecoration: 'none', padding: '14px 16px', borderRadius: 10, background: '#111827', border: '1px solid #1E293B', display: 'block', textAlign: prevLesson ? 'right' : 'left' }}>
-              <div style={{ fontFamily: 'var(--mono)', fontSize: 9, fontWeight: 700, color: '#475569', marginBottom: 4 }}>NEXT · WEEK {nextLesson.fm.week} →</div>
+              <div style={{ fontFamily: 'var(--mono)', fontSize: 9, fontWeight: 700, color: '#475569', marginBottom: 4 }}>NEXT · {partLabel} {nextLesson.fm.week} →</div>
               <div style={{ fontSize: 13, fontWeight: 700, color: '#E2E8F0', lineHeight: 1.4 }}>{nextLesson.fm.title}</div>
             </Link>
           )}

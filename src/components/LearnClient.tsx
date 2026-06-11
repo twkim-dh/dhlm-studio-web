@@ -4,14 +4,15 @@ import { useState, useEffect } from 'react';
 import Image from 'next/image';
 import Link from 'next/link';
 import { fmtDateShort } from '@/lib/fmt-date';
-import type { ResearchItem, LessonItem, InvestingLesson } from '@/app/learn/page';
+import type { ResearchItem, LessonItem, InvestingLesson, QuantumLesson } from '@/app/learn/page';
 
-type Tab = 'ALL' | 'CRYPTO 101' | 'INVESTING 101';
-const TABS: Tab[] = ['ALL', 'CRYPTO 101', 'INVESTING 101'];
+type Tab = 'ALL' | 'CRYPTO 101' | 'INVESTING 101' | 'QUANTUM 101';
+const TABS: Tab[] = ['ALL', 'QUANTUM 101', 'INVESTING 101', 'CRYPTO 101'];
 const TAB_PARAM: Record<Tab, string> = {
   'ALL': 'all',
   'CRYPTO 101': 'crypto-101',
   'INVESTING 101': 'investing-101',
+  'QUANTUM 101': 'quantum-101',
 };
 const PARAM_TAB: Record<string, Tab> = Object.fromEntries(
   Object.entries(TAB_PARAM).map(([k, v]) => [v, k as Tab])
@@ -21,6 +22,7 @@ const TAB_COLOR: Record<Tab, string> = {
   'ALL': '#C73E3A',
   'CRYPTO 101': '#8B5CF6',
   'INVESTING 101': '#00D474',
+  'QUANTUM 101': '#A78BFA',
 };
 
 const card = { background: '#111827', borderRadius: 14, border: '1px solid #1E293B' };
@@ -319,11 +321,93 @@ function Investing101Tab({ intermediateLessons }: { intermediateLessons: Investi
   );
 }
 
+/* ─── Quantum lesson card ─── */
+function QuantumCard({ slug, title, description, thumb, part, published }: {
+  slug: string; title: string; description: string; thumb: string;
+  part: number; published: boolean;
+}) {
+  const accentColor = '#A78BFA';
+  const inner = (
+    <div style={{ ...card, padding: 0, overflow: 'hidden', opacity: published ? 1 : 0.45 }}>
+      {thumb ? (
+        <Image src={thumb} alt={title} width={1920} height={1080} loading="lazy" sizes="(max-width: 640px) 100vw, (max-width: 1024px) 50vw, 400px" style={{ width: '100%', height: 'auto', display: 'block', background: '#0f172a' }} />
+      ) : (
+        <div style={{ width: '100%', aspectRatio: '16/9', background: `${accentColor}18`, display: 'flex', alignItems: 'center', justifyContent: 'center' }}>
+          <span style={{ fontFamily: 'var(--mono)', fontSize: 10, fontWeight: 800, color: `${accentColor}80`, letterSpacing: 1 }}>PART {part}</span>
+        </div>
+      )}
+      <div style={{ padding: '14px 16px 18px' }}>
+        <div style={{ display: 'flex', alignItems: 'center', gap: 7, marginBottom: 8, flexWrap: 'wrap' }}>
+          <span style={{ fontFamily: 'var(--mono)', fontSize: 9, fontWeight: 800, padding: '3px 9px', borderRadius: 5, background: `${accentColor}18`, color: accentColor, border: `1px solid ${accentColor}30`, letterSpacing: 1 }}>
+            QUANTUM 101
+          </span>
+          <span style={{ fontFamily: 'var(--mono)', fontSize: 9, fontWeight: 700, padding: '2px 7px', borderRadius: 4, background: `${accentColor}14`, color: accentColor }}>
+            PART {part}
+          </span>
+          {!published && (
+            <span style={{ fontFamily: 'var(--mono)', fontSize: 9, fontWeight: 700, padding: '3px 8px', borderRadius: 4, background: '#D4A84318', color: '#D4A843', border: '1px solid #D4A84340', marginLeft: 'auto' }}>
+              COMING SOON
+            </span>
+          )}
+        </div>
+        <div style={{ fontFamily: 'var(--serif)', fontSize: 17, fontWeight: 800, color: '#F1F5F9', lineHeight: 1.4, marginBottom: 6 }}>{title}</div>
+        <p style={{ fontSize: 12, color: '#64748B', margin: 0, lineHeight: 1.55 }}>{description}</p>
+      </div>
+    </div>
+  );
+  return published ? (
+    <Link href={`/learn/${slug}`} style={{ textDecoration: 'none', display: 'block' }}>{inner}</Link>
+  ) : (
+    <div>{inner}</div>
+  );
+}
+
+/* ─── QUANTUM 101 tab ─── */
+function Quantum101Tab({ lessons }: { lessons: QuantumLesson[] }) {
+  const published = lessons.filter(l => l.published).length;
+  return (
+    <div>
+      <div style={{ display: 'flex', alignItems: 'center', gap: 8, marginBottom: 16 }}>
+        <span style={{ fontFamily: 'var(--mono)', fontSize: 9, fontWeight: 800, padding: '3px 10px', borderRadius: 5, background: '#7C3AED18', color: '#A78BFA', border: '1px solid #7C3AED30', letterSpacing: 1 }}>QUANTUM 101</span>
+        <span style={{ fontFamily: 'var(--mono)', fontSize: 9, fontWeight: 700, padding: '3px 10px', borderRadius: 5, background: '#1E293B', color: '#64748B', letterSpacing: 1 }}>2026 EDITION</span>
+      </div>
+      <div style={{ display: 'flex', alignItems: 'center', gap: 16, marginBottom: 20, padding: '14px 18px', borderRadius: 12, background: '#0D1117', border: '1px solid #1E293B' }}>
+        <div style={{ flex: 1 }}>
+          <div style={{ display: 'flex', justifyContent: 'space-between', marginBottom: 6 }}>
+            <span style={{ fontFamily: 'var(--mono)', fontSize: 10, fontWeight: 700, color: '#A78BFA' }}>CURRICULUM PROGRESS</span>
+            <span style={{ fontFamily: 'var(--mono)', fontSize: 10, color: '#64748B' }}>{published} PUBLISHED · NEW WEEKLY</span>
+          </div>
+          <div style={{ height: 5, background: '#1E293B', borderRadius: 3, overflow: 'hidden' }}>
+            <div style={{ height: '100%', width: `${(published / lessons.length) * 100}%`, background: 'linear-gradient(90deg, #A78BFA, #7C3AED)', borderRadius: 3 }} />
+          </div>
+        </div>
+        <Link href="/learn/quantum-101" style={{ fontFamily: 'var(--mono)', fontSize: 11, color: '#A78BFA', textDecoration: 'none', fontWeight: 700, flexShrink: 0 }}>
+          Full Curriculum →
+        </Link>
+      </div>
+      <CardGrid>
+        {lessons.map(l => (
+          <QuantumCard key={l.part} slug={l.slug} title={l.title} description={l.description} thumb={l.thumb} part={l.part} published={l.published} />
+        ))}
+      </CardGrid>
+      {published < lessons.length && (
+        <div style={{ marginTop: 20, padding: '16px 20px', borderRadius: 12, background: '#0D1117', border: '1px solid #1E293B', textAlign: 'center' }}>
+          <p style={{ fontSize: 13, color: '#64748B', margin: '0 0 8px', lineHeight: 1.6 }}>New parts published every Monday.</p>
+          <Link href="/learn/quantum-101" style={{ fontSize: 12, fontWeight: 700, color: '#A78BFA', textDecoration: 'none' }}>
+            View full series schedule →
+          </Link>
+        </div>
+      )}
+    </div>
+  );
+}
+
 /* ─── Main export ─── */
-export default function LearnClient({ articles, cryptoLessons, intermediateLessons }: {
+export default function LearnClient({ articles, cryptoLessons, intermediateLessons, quantumLessons }: {
   articles: ResearchItem[];
   cryptoLessons: LessonItem[];
   intermediateLessons: InvestingLesson[];
+  quantumLessons: QuantumLesson[];
 }) {
   const [activeTab, setActiveTab] = useState<Tab>('ALL');
 
@@ -371,6 +455,7 @@ export default function LearnClient({ articles, cryptoLessons, intermediateLesso
       </div>
 
       {activeTab === 'ALL'           && <AllTab articles={articles} cryptoLessons={cryptoLessons} />}
+      {activeTab === 'QUANTUM 101'   && <Quantum101Tab lessons={quantumLessons} />}
       {activeTab === 'CRYPTO 101'    && <Crypto101Tab lessons={cryptoLessons} />}
       {activeTab === 'INVESTING 101' && <Investing101Tab intermediateLessons={intermediateLessons} />}
     </>
