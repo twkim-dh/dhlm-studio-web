@@ -282,8 +282,8 @@ export default async function BlogPostPage({ params }: { params: Promise<{ slug:
           </div>
         )}
 
-        {/* Ad Unit */}
-        <AdUnit format="horizontal" />
+        {/* Ad Unit — skip on noindex (thin content) posts */}
+        {!post.noindex && <AdUnit format="horizontal" />}
 
         {/* Related */}
         {related.length > 0 && (

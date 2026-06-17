@@ -121,10 +121,7 @@ export default function sitemap(): MetadataRoute.Sitemap {
 
     // /blog/wisdom and /creators are noindex — excluded from sitemap
 
-    // Calculators (search-driven, no nav)
-    { url: `${BASE}/calculators/compound-interest`, lastModified: now, changeFrequency: "monthly", priority: 0.7 },
-    { url: `${BASE}/calculators/dca`,               lastModified: now, changeFrequency: "monthly", priority: 0.7 },
-    { url: `${BASE}/calculators/position-size`,     lastModified: now, changeFrequency: "monthly", priority: 0.7 },
+    // Calculators excluded from sitemap (tool/action pages — AdSense policy)
 
     // Static / Legal
     { url: `${BASE}/about`,                lastModified: now, changeFrequency: "monthly", priority: 0.5 },
