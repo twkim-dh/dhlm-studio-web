@@ -7,6 +7,7 @@ export const metadata: Metadata = {
   title: "Blog — Market Analysis & Financial Insights | DHLM Studio",
   description: "In-depth market analysis, stock market data, global economic rankings, and financial insights from the Brutal Edge team.",
   alternates: { canonical: 'https://dhlm-studio.com/blog' },
+  robots: { index: false, follow: false },
 };
 
 export default function BlogPage() {

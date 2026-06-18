@@ -4,8 +4,6 @@ import Image from 'next/image';
 import { notFound } from 'next/navigation';
 import { blogPosts, getBlogPostBySlug } from '@/data/blog-posts';
 import { fmtDateLong, fmtDateShort } from '@/lib/fmt-date';
-import AdUnit from '@/components/AdUnit';
-
 import unsplashManifest from '@/data/unsplash-manifest.json';
 
 export const dynamicParams = true;
@@ -43,7 +41,7 @@ export async function generateMetadata({ params }: { params: Promise<{ slug: str
         twitter: { card: 'summary_large_image' as const, title: post.title, description: post.description, images: [imgUrl] },
       };
     })(),
-    robots: post.noindex ? { index: false, follow: false } : undefined,
+    robots: { index: false, follow: true },
   };
 }
 
@@ -281,9 +279,6 @@ export default async function BlogPostPage({ params }: { params: Promise<{ slug:
             </div>
           </div>
         )}
-
-        {/* Ad Unit — skip on noindex (thin content) posts */}
-        {!post.noindex && <AdUnit format="horizontal" />}
 
         {/* Related */}
         {related.length > 0 && (

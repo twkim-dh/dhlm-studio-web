@@ -1,5 +1,4 @@
 import type { MetadataRoute } from "next";
-import { blogPosts } from "@/data/blog-posts";
 import fs from "fs";
 import path from "path";
 
@@ -44,6 +43,24 @@ function getLearnIntermediateSlugs(): string[] {
   } catch { return []; }
 }
 
+function getLearnQuantumSlugs(): string[] {
+  try {
+    const today = todayKST();
+    const dir = path.join(process.cwd(), 'src/content/learn');
+    return fs.readdirSync(dir)
+      .filter(f => f.includes('quantum-101-part') && f.endsWith('.md'))
+      .filter(f => {
+        try {
+          const content = fs.readFileSync(path.join(dir, f), 'utf8');
+          const m = content.match(/^publishDate:\s*"?([^"\n]+)"?/m);
+          if (!m) return true;
+          return m[1].trim().slice(0, 10) <= today;
+        } catch { return true; }
+      })
+      .map(f => f.replace(/\.md$/, ''));
+  } catch { return []; }
+}
+
 function getResearchSlugs(): string[] {
   try {
     const today = todayKST();
@@ -63,21 +80,15 @@ function getResearchSlugs(): string[] {
 }
 
 export default function sitemap(): MetadataRoute.Sitemap {
-  const now = new Date();
-
-  const today = todayKST();
-  const qualityBlogs = blogPosts.filter(p => !p.noindex && p.date <= today);
-
   return [
     // Core pages
-    { url: BASE,                          lastModified: now, changeFrequency: "weekly",  priority: 1.0 },
-    { url: `${BASE}/reports`,             lastModified: now, changeFrequency: "weekly",  priority: 0.9 },
-    { url: `${BASE}/blog`,                lastModified: now, changeFrequency: "weekly",  priority: 0.8 },
-    { url: `${BASE}/learn`,               lastModified: now, changeFrequency: "weekly",  priority: 0.8 },
-    { url: `${BASE}/learn/crypto-101`,             lastModified: now, changeFrequency: "weekly",  priority: 0.8 },
-    { url: `${BASE}/learn/investing-101`,           lastModified: now, changeFrequency: "monthly", priority: 0.7 },
-    { url: `${BASE}/learn/investing-101-beginner`,       lastModified: now, changeFrequency: "monthly", priority: 0.8 },
-    { url: `${BASE}/learn/investing-101-intermediate`,    lastModified: now, changeFrequency: "monthly", priority: 0.8 },
+    { url: BASE,                                    changeFrequency: "weekly",  priority: 1.0 },
+    { url: `${BASE}/reports`,                       changeFrequency: "weekly",  priority: 0.9 },
+    { url: `${BASE}/learn`,                         changeFrequency: "weekly",  priority: 0.8 },
+    { url: `${BASE}/learn/crypto-101`,              changeFrequency: "weekly",  priority: 0.8 },
+    { url: `${BASE}/learn/quantum-101`,             changeFrequency: "weekly",  priority: 0.8 },
+    { url: `${BASE}/learn/investing-101`,           changeFrequency: "monthly", priority: 0.7 },
+    { url: `${BASE}/learn/investing-101-beginner`,  changeFrequency: "monthly", priority: 0.8 },
     // Investing 101 Beginner Series — 12 lessons
     ...[
       'investing-101-beginner-w1-what-is-a-stock-really',
@@ -92,41 +103,39 @@ export default function sitemap(): MetadataRoute.Sitemap {
       'investing-101-beginner-w10-diversification-portfolio-basics',
       'investing-101-beginner-w11-investors-mind',
       'investing-101-beginner-w12-your-first-five-years',
-    ].map(slug => ({ url: `${BASE}/learn/${slug}`, lastModified: now, changeFrequency: "monthly" as const, priority: 0.7 })),
+    ].map(slug => ({ url: `${BASE}/learn/${slug}`, changeFrequency: "monthly" as const, priority: 0.7 })),
     // Investing 101 Intermediate Series — published lessons only (future dates excluded)
     ...getLearnIntermediateSlugs().map(slug => ({
       url: `${BASE}/learn/${slug}`,
-      lastModified: now, changeFrequency: 'monthly' as const, priority: 0.7,
+      changeFrequency: 'monthly' as const, priority: 0.7,
+    })),
+    // Quantum 101 Series — published parts only (future dates excluded)
+    ...getLearnQuantumSlugs().map(slug => ({
+      url: `${BASE}/learn/${slug}`,
+      changeFrequency: 'monthly' as const, priority: 0.7,
     })),
 
-    { url: `${BASE}/research`,            lastModified: now, changeFrequency: "weekly",  priority: 0.8 },
+    { url: `${BASE}/research`,                      changeFrequency: "weekly",  priority: 0.8 },
 
-    // Reports (all slugs from content/reports/)
+    // Reports (all slugs from content/reports/, future dates excluded)
     ...getReportSlugs().map(slug => ({
       url: `${BASE}/reports/${slug}`,
-      lastModified: now, changeFrequency: "monthly" as const, priority: 0.8,
+      changeFrequency: "monthly" as const, priority: 0.8,
     })),
 
     // Research articles (Mental Game, Structural View)
     ...getResearchSlugs().map(slug => ({
       url: `${BASE}/research/${slug}`,
-      lastModified: now, changeFrequency: "monthly" as const, priority: 0.8,
+      changeFrequency: "monthly" as const, priority: 0.8,
     })),
 
-    // Blog posts (quality filter: no noindex flag)
-    ...qualityBlogs.map(p => ({
-      url: `${BASE}/blog/${p.slug}`,
-      lastModified: now, changeFrequency: "monthly" as const, priority: 0.7,
-    })),
-
-    // /blog/wisdom and /creators are noindex — excluded from sitemap
-
-    // Calculators excluded from sitemap (tool/action pages — AdSense policy)
+    // Blog excluded — all posts noindex (AdSense policy)
+    // Calculators excluded — tool/action pages (AdSense policy)
 
     // Static / Legal
-    { url: `${BASE}/about`,                lastModified: now, changeFrequency: "monthly", priority: 0.5 },
-    { url: `${BASE}/editorial`,            lastModified: now, changeFrequency: "monthly", priority: 0.5 },
-    { url: `${BASE}/privacy`,              lastModified: now, changeFrequency: "monthly", priority: 0.3 },
-    { url: `${BASE}/terms`,                lastModified: now, changeFrequency: "monthly", priority: 0.3 },
+    { url: `${BASE}/about`,      changeFrequency: "monthly", priority: 0.5 },
+    { url: `${BASE}/editorial`,  changeFrequency: "monthly", priority: 0.5 },
+    { url: `${BASE}/privacy`,    changeFrequency: "monthly", priority: 0.3 },
+    { url: `${BASE}/terms`,      changeFrequency: "monthly", priority: 0.3 },
   ];
 }
