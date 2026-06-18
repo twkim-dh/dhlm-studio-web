@@ -20,6 +20,7 @@ faqs: [{"q":"What is NVIDIA's revenue and valuation in 2026?","a":"NVIDIA report
 contentLifespan: "medium"
 promotionWeeks: 2
 sources: ["NVIDIA Q4 FY2026 Earnings Release — NVIDIA Investor Relations — https://nvidianews.nvidia.com/", "NVIDIA 10-K FY2026 Annual Report — SEC EDGAR — https://www.sec.gov/cgi-bin/browse-edgar?action=getcompany&CIK=0001045810&type=10-K", "Semiconductor Industry Association Billings Report — SIA — https://www.semiconductors.org/", "US Export Controls on Advanced Chips — Bureau of Industry and Security — https://www.bis.doc.gov/", "TSMC Capacity and Leading-Edge Node Disclosures — TSMC Investor Relations — https://investor.tsmc.com/", "Federal Reserve Economic Data (Industrial Production Semiconductors) — FRED St. Louis — https://fred.stlouisfed.org/"]
+disclosure: "The author holds NVIDIA. This is disclosed for transparency and does not constitute a recommendation."
 ---
 
 🔥 **BRUTAL EDGE™ VERDICT**
@@ -134,3 +135,5 @@ NVIDIA is evolving from the company that sold picks and shovels for AI into the 
 The caution is equally simple. The company can continue to win while the stock becomes more demanding. At $4.5 trillion, future returns depend less on whether NVIDIA is great and more on whether it can remain great enough, long enough, to outrun expectations that are already historic.
 
 NVIDIA remains a buy-quality, watch-valuation name. For long-term investors, it is still one of the strongest strategic assets in U.S. equities. For everyone else, the entry point matters more than ever.
+
+> **Disclosure.** The author holds NVIDIA. Disclosed above in the interest of transparency.

@@ -18,6 +18,7 @@ relatedSlugs: ["deep-dive-nvda-april-2026","deep-dive-tsla-april-2026","deep-div
 faqs: [{"q":"What is SpaceX expected IPO valuation in 2026?","a":"Major media reporting places the discussed range at $1.5T to $1.75T, with a potential raise of up to $75B which would surpass Saudi Aramco 2019 and become the largest IPO in market history."},{"q":"Is SpaceX worth $1.75 trillion?","a":"Our BEAF-adapted IPO analysis scores the deal 46 out of 60. The business quality is extraordinary but at $1.75T and 70x forward revenue, the valuation bakes in multiple businesses that do not yet fully exist at scale. Verdict: buy the company, question the price."},{"q":"Can retail investors buy SpaceX IPO shares?","a":"Reporting suggests SpaceX plans an unusually large retail allocation. Actual access will depend on participating brokers disclosed in the final S-1 prospectus, which is not yet public as of April 2026."}]
 contentLifespan: "evergreen"
 promotionWeeks: 4
+disclosure: "The author is considering a position in SpaceX. This is disclosed for transparency and does not constitute a recommendation."
 ---
 
 ## 1. Executive Summary

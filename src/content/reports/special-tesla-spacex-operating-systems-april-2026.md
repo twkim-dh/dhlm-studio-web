@@ -10,6 +10,7 @@ readTime: "18 min"
 tags: ["SPECIAL-REPORT", "TESLA", "SPACEX", "MUSK", "WEALTH-CONCENTRATION", "PLATFORM-COMPANIES", "AUTONOMY", "ORBITAL-INFRASTRUCTURE", "ROBOTICS"]
 slug: "special-tesla-spacex-operating-systems-april-2026"
 author: "Brutal Edge Team"
+disclosure: "The author holds Tesla. The author is considering a position in SpaceX. This is disclosed for transparency and does not constitute a recommendation."
 ---
 
 # The Operating Systems for Earth and Beyond
@@ -277,5 +278,19 @@ In the next great phase of U.S. wealth creation, the biggest winners may not be 
 They may be the companies that become **the operating systems for entire domains of human activity.**
 
 ---
+
+## Sources & Methodology
+
+- Tesla Q1 2026 Earnings Release and Investor Presentation
+- SpaceX company announcements: Starlink subscriber data, launch cadence, and revenue disclosures
+- Hendrik Bessembinder — "Do Stocks Outperform Treasury Bills?" (Journal of Financial Economics, 2018) — 100-year wealth concentration study
+- xAI Grok product announcements and Colossus AI supercomputer development updates
+- Elon Musk public statements via X (formerly Twitter) and earnings call transcripts
+- Data as of: May 2026
+- Framework: Brutal Edge Analysis Framework (BEAF) — independent investment analysis
+
+---
+
+> **Disclosure.** The author holds Tesla. The author is considering a position in SpaceX. Disclosed above in the interest of transparency.
 
 *This Special Report is Part 2 of Brutal Edge's "Musk Empire" series. Related analysis: The Coronation of Elon Musk — SpaceX IPO (Part 1), The Two Pillars of Future Capitalism — Musk + Anthropic (Part 3 — synthesis).*

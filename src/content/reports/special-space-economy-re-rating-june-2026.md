@@ -15,6 +15,7 @@ heroImage: "/images/reports/space-economy-re-rating-thumb.webp"
 author: "Brutal Edge Team"
 byline: "Brutal Edge Team"
 reviewed: "Reviewed against BEAF Framework"
+disclosure: "The author is considering positions in SpaceX and Rocket Lab. This is disclosed for transparency and does not constitute a recommendation."
 audience: "U.S. investors evaluating space sector exposure — including SpaceX (SPCX), Rocket Lab (RKLB), and the broader space infrastructure value chain"
 tags: ["SPECIAL-REPORT", "SPACE", "SPACEX", "SPCX", "ROCKET-LAB", "RKLB", "BLUE-ORIGIN", "INFRASTRUCTURE", "SATELLITE", "STARLINK", "DEFENSE", "NEUTRON", "EARTH-OBSERVATION", "IPO", "MACRO-INFRASTRUCTURE", "TESLA"]
 sources: ["SpaceX SPCX IPO pricing and market capitalization data (June 2026)", "Blue Origin New Glenn NG-4 static-fire incident report and U.S. Space Force NSSL statement (May 2026)", "Rocket Lab Neutron development updates and Q4 2026 target timeline (CEO Peter Beck, mid-2026)", "Amazon Project Kuiper and NASA Artemis / Blue Moon program documents"]
@@ -28,6 +29,8 @@ promotionWeeks: 3
 ## SpaceX, Rocket Lab, Blue Origin, and the New Infrastructure Layer Above Earth
 
 > **About this report.** This is an independent, educational analysis. It is not investment advice or a recommendation to buy or sell any security. Companies are named because they are useful examples of how each part of the space value chain actually works — not as investment picks. Market and technical figures are as of mid-June 2026 and change quickly in this sector.
+>
+> **Disclosure:** The author is considering positions in SpaceX and Rocket Lab. This is disclosed for transparency and does not constitute a recommendation.
 
 The space industry is no longer a science-fiction category. It is becoming one of the most important infrastructure markets of the next decade — a market where launch access, satellite manufacturing, broadband connectivity, defense systems, Earth observation, AI data pipelines, and orbital logistics are merging into one strategic value chain.
 
@@ -181,6 +184,20 @@ Fifth, defense demand is likely to remain the strongest anchor customer. Space i
 **Final line: The space economy is entering its infrastructure decade. SpaceX built the benchmark. Rocket Lab offers the public-market alternative. Blue Origin provides strategic redundancy — if it can recover. The next winners will be the companies that turn orbit into a recurring, defensible, data-rich business layer above Earth.**
 
 ---
+
+## Sources & Methodology
+
+- SpaceX SPCX IPO pricing and market capitalization data — June 2026 (company announcements and market data)
+- Blue Origin New Glenn NG-4 static-fire incident report and U.S. Space Force NSSL statement — May 2026
+- Rocket Lab Neutron development updates and Q4 2026 target timeline — CEO Peter Beck, mid-2026
+- Amazon Project Kuiper development timeline and NASA Artemis / Blue Moon program documents
+- U.S. Space Force National Security Space Launch (NSSL) program documentation
+- Data as of: mid-June 2026
+- Framework: Brutal Edge Analysis Framework (BEAF) — independent investment analysis
+
+---
+
+> **Disclosure.** The author is considering positions in SpaceX and Rocket Lab, disclosed above in the interest of transparency. This does not constitute a recommendation to buy or sell any security.
 
 > **Disclaimer.** This report is for educational and informational purposes only. It does not constitute investment advice or a recommendation to buy or sell any security. Market capitalizations, launch schedules, and technical figures are as of mid-June 2026 and are subject to rapid change. Forward-looking statements about launch timing and company milestones are inherently uncertain. Investors should conduct independent research and consult qualified financial professionals before making decisions.
 

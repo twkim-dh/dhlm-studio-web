@@ -10,6 +10,7 @@ readTime: "19 min"
 tags: ["SPECIAL-REPORT", "SPACEX", "IPO", "ELON-MUSK", "STARLINK", "SPACE-ECONOMY", "ORBITAL-INFRASTRUCTURE", "MUSK-EMPIRE"]
 slug: "special-spacex-ipo-coronation-april-2026"
 author: "Brutal Edge Team"
+disclosure: "The author is considering a position in SpaceX. This is disclosed for transparency and does not constitute a recommendation."
 ---
 
 # The Coronation of Elon Musk
@@ -217,5 +218,7 @@ SpaceX may indeed mark the beginning of a new economic era.
 But the best investors will remember that **even empires have entry prices.**
 
 ---
+
+> **Disclosure.** The author is considering a position in SpaceX. Disclosed above in the interest of transparency.
 
 *This Special Report is Part 1 of Brutal Edge's "Musk Empire" series. Related analysis: The Operating Systems for Earth and Beyond (Part 2), The Two Pillars of Future Capitalism (Part 3 — synthesis with Anthropic).*

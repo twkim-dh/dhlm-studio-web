@@ -184,6 +184,18 @@ This is a time to protect the process, not to abandon it.
 
 ---
 
+## Sources & Methodology
+
+- Bureau of Labor Statistics — May 2026 Employment Situation Summary (released June 6, 2026)
+- Philadelphia Semiconductor Index (PHLX SOX) — daily price data, June 5–10, 2026
+- Nasdaq Composite — daily price data, June 5–10, 2026
+- Broadcom (AVGO) Q2 FY2026 Earnings Release and investor commentary
+- Federal Reserve FOMC statements and rate-path projections
+- Data as of: June 10, 2026
+- Framework: Brutal Edge Analysis Framework (BEAF) — independent investment analysis
+
+---
+
 > **Disclaimer.** This report is for educational and informational purposes only and does not constitute investment advice, a recommendation to buy or sell any security, or an offer to transact in any financial instrument. It does not recommend any specific stock, sector, or allocation, and references to a "20% cash" level are illustrative of risk-management psychology, not a personalized recommendation. Market figures (index moves, single-stock moves, and economic data) are as of the dates cited and are subject to revision. Past performance is not indicative of future results. All investment decisions should be made based on your own independent research, individual risk tolerance, time horizon, and consultation with a qualified financial professional.
 
 *Brutal Edge — Frameworks over forecasts. Signal over noise.*

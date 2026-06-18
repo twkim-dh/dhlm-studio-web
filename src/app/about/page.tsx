@@ -61,11 +61,11 @@ export default function AboutPage() {
             <div style={{ marginBottom: 16 }}>
               <div style={{ fontFamily: 'var(--serif)', fontSize: 17, fontWeight: 800, color: '#F1F5F9', marginBottom: 6 }}>Editor-in-Chief</div>
               <ul style={{ margin: 0, paddingLeft: 18, fontSize: 13, color: '#94A3B8', lineHeight: 1.9 }}>
-                <li>Oversees all published content</li>
+                <li>Active investor — builds and manages a real portfolio based on this research</li>
                 <li>15+ years in manufacturing and business operations</li>
-                <li>Directs the BEAF analysis framework</li>
-                <li>Final approval on all Deep Dive reports</li>
-                <li>Cross-verifies analysis against multiple independent data sources</li>
+                <li>Core holdings span AI, semiconductors, quantum computing, and digital assets</li>
+                <li>Directs the BEAF analysis framework and final approval on all reports</li>
+                <li>Positions relevant to any report are disclosed within that report</li>
               </ul>
             </div>
             <div>

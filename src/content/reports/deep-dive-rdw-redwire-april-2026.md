@@ -20,6 +20,7 @@ relatedSlugs: ["new-space-sector-report-april-2026","spacex-ipo-special-report-2
 faqs: [{"q":"What does Redwire (RDW) do?","a":"Redwire provides space infrastructure and defense technology for government and commercial customers. Products include spacecraft sensors, deployable solar arrays (ROSA/ELSA), RF systems, and uncrewed autonomous airborne systems (Stalker/Penguin UAS) acquired via Edge Autonomy in 2025. The company has approximately 1,300 employees across the U.S. and Europe."},{"q":"What is Redwire's backlog and revenue guidance?","a":"Entering 2026, Redwire reported a record backlog of $411.2 million. 2026 revenue guidance is $450M-$500M (+34-49% vs FY2025 $335.4M). Analyst consensus is Strong Buy with a median price target of $13.50 (range: $6-$22)."},{"q":"What is Edge Autonomy and why did Redwire acquire it?","a":"Edge Autonomy is a maker of combat-proven UAS platforms including the Stalker and Penguin drones. After the acquisition, Redwire delivered 100+ units in seven countries including to the U.S. Army, U.S. Marine Corps, and NATO/allied nations. The deal expanded Redwire's exposure to defense budgets and recurring defense-program revenue."},{"q":"What is the biggest risk with Redwire stock?","a":"Margin conversion. FY2025 gross margin was 5.2% and net loss was $226.6M on $335M revenue — development-stage economics. The bull case requires 2026 to show meaningful margin improvement as programs move from development to production. If that doesn't happen, the $411M backlog doesn't translate to re-rating."},{"q":"How does Redwire compare to Rocket Lab (RKLB)?","a":"Rocket Lab is more mature: $602M revenue, $1.85B backlog, 100% mission success in 2025. Redwire ($335M revenue, $411M backlog) sits in a different tier but occupies a unique position — the only listed small-cap bridging space components, defense autonomy, and European expansion simultaneously. Higher execution risk, higher optionality."}]
 contentLifespan: "medium"
 promotionWeeks: 2
+disclosure: "The author is considering a position in Redwire. This is disclosed for transparency and does not constitute a recommendation."
 ---
 
 🔥 **BRUTAL EDGE™ VERDICT**
@@ -156,3 +157,7 @@ Redwire is evolving from a space infrastructure supplier into a hybrid space-def
 The honest framing: Redwire is a high-upside, execution-sensitive growth contractor. The backlog, defense positioning, and European expansion create a credible foundation. The real upside comes if 2026 becomes the year when production ramps, margin improvement, and autonomous systems revenue show up cleanly in the financials.
 
 At $9.91, the stock is 63% below its 52-week high. The setup is interesting. The proof is still pending. Best approached with position sizing discipline and close monitoring of quarterly margin conversion, backlog quality, and cash flow.
+
+> **Disclosure.** The author is considering a position in Redwire. Disclosed above in the interest of transparency.
+
+> **Disclaimer.** This report is for informational purposes only and does not constitute investment advice. All opinions are the author's own. Past performance is not indicative of future results.

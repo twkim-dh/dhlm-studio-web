@@ -12,6 +12,7 @@ slug: "special-ionq-vol1-recategorization-april-2026"
 author: "Brutal Edge Team"
 contentLifespan: "evergreen"
 promotionWeeks: 4
+disclosure: "The author holds IonQ. This is disclosed for transparency and does not constitute a recommendation."
 ---
 
 ## The Opening Thesis
@@ -270,6 +271,8 @@ The market is still partially in the old category. That gap — between what Ion
 - [The Mental Game #002: How to Survive an AI Bubble](/research/mental-game-002-ai-bubble-survival)
 
 ---
+
+> **Disclosure.** The author holds IonQ. Disclosed above in the interest of transparency.
 
 *For informational and educational purposes only. Not investment advice. The author has no position in any security mentioned. Always conduct your own research. Quantum computing investments carry exceptional execution, technical, and timeline risk.*
 

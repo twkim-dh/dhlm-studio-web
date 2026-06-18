@@ -10,7 +10,7 @@ readTime: "17 min"
 heroImage: "/images/reports/special-ionq-2b-quantum-funding-snub-may-2026.webp"
 author: "Brutal Edge Team"
 byline: "Brutal Edge Team"
-disclosure: "The author holds a position in IonQ (IONQ) representing more than 5% of personal financial assets. The position was initiated at approximately 2% allocation and has grown beyond 5% through price appreciation. The author has not rebalanced and intends to maintain the position. This report is not investment advice. It is a transparent disclosure of an existing position alongside structural analysis of the quantum sector."
+disclosure: "The author holds IonQ. This is disclosed for transparency and does not constitute a recommendation."
 tags: ["SPECIAL-REPORT", "IONQ", "QUANTUM-COMPUTING", "CHIPS-ACT", "QUANTUM-FUNDING", "SKYWATER", "SKYT", "IBM", "RIGETTI", "D-WAVE", "QUANTINUUM", "PSIQUANTUM", "TRAPPED-ION", "DARPA-HARQ", "VERTICAL-INTEGRATION", "CHOKEPOINT"]
 contentLifespan: "evergreen"
 promotionWeeks: 4

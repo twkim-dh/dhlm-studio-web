@@ -10,6 +10,7 @@ readTime: "22 min"
 tags: ["SPECIAL-REPORT", "NVIDIA", "NVDA", "AI-INFRASTRUCTURE", "TOKEN-ECONOMY", "JENSEN-HUANG", "INTELLIGENCE-ECONOMY", "RUBIN", "BLACKWELL"]
 slug: "special-nvidia-industrial-architect-april-2026"
 author: "Brutal Edge Team"
+disclosure: "The author holds NVIDIA. This is disclosed for transparency and does not constitute a recommendation."
 ---
 
 # NVIDIA: The Industrial Architect of the Intelligence Economy

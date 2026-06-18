@@ -12,6 +12,7 @@ slug: "special-ionq-vol2-vertical-integration-april-2026"
 author: "Brutal Edge Team"
 contentLifespan: "evergreen"
 promotionWeeks: 4
+disclosure: "The author holds IonQ. This is disclosed for transparency and does not constitute a recommendation."
 ---
 
 ## The Setup

@@ -46,6 +46,25 @@ export default function EditorialPage() {
 
         <div style={{ display: 'flex', flexDirection: 'column', gap: 20 }}>
 
+          {/* Why You Can Trust Brutal Edge */}
+          <div style={{ ...card, padding: '24px 22px', borderColor: '#00D47430' }}>
+            <div style={{ fontFamily: 'var(--mono)', fontSize: 9, fontWeight: 700, color: '#00D474', letterSpacing: 3, marginBottom: 14 }}>WHY YOU CAN TRUST BRUTAL EDGE</div>
+            <p style={{ fontSize: 14, fontWeight: 700, color: '#F1F5F9', lineHeight: 1.7, margin: '0 0 14px' }}>
+              Brutal Edge is not anonymous, AI-generated content farming.
+            </p>
+            <p style={{ fontSize: 14, color: '#94A3B8', lineHeight: 1.9, margin: '0 0 14px' }}>
+              Our analysis is written by an active investor who builds and manages a real portfolio based on this research. We have skin in the game — which is exactly why we disclose our positions, cite our sources, and prioritize frameworks over hype.
+            </p>
+            <p style={{ fontSize: 14, color: '#94A3B8', lineHeight: 1.9, margin: '0 0 14px' }}>
+              The author&apos;s core holdings span artificial intelligence, semiconductors, quantum computing, and digital assets. Positions relevant to any specific report are disclosed within that report.
+            </p>
+            <div style={{ padding: '12px 16px', background: '#0D1117', borderRadius: 8, borderLeft: '3px solid #00D474' }}>
+              <p style={{ fontSize: 13, color: '#94A3B8', lineHeight: 1.7, margin: 0, fontStyle: 'italic' }}>
+                This is research we use ourselves. That is the standard we hold it to.
+              </p>
+            </div>
+          </div>
+
           {/* Our Approach */}
           <div style={{ ...card, padding: '24px 22px' }}>
             <h2 style={{ fontFamily: 'var(--serif)', fontSize: 20, fontWeight: 800, color: '#E2E8F0', margin: '0 0 12px' }}>Our Approach</h2>
@@ -282,7 +301,7 @@ export default function EditorialPage() {
               </div>
               <div style={{ padding: '12px 14px', background: '#0F172A', borderRadius: 6, borderLeft: '3px solid #334155' }}>
                 <p style={{ fontSize: 12, color: '#64748B', lineHeight: 1.7, margin: 0 }}>
-                  <strong style={{ color: '#94A3B8' }}>Disclosure:</strong> DHLM Studio is an independent publisher. We do not receive compensation from any company we cover, and we do not hold financial positions in securities we analyze. The Brutal Edge editorial voice is maintained by the DHLM Studio team.
+                  <strong style={{ color: '#94A3B8' }}>Disclosure:</strong> Brutal Edge analysis is written by an active investor who manages a real portfolio based on this research. The author holds positions in the securities, sectors, and digital assets discussed; specific holdings material to any report are disclosed within that report. We do not receive compensation from any company we cover.
                 </p>
               </div>
             </div>

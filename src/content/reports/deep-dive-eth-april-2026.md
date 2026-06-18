@@ -17,6 +17,7 @@ relatedSlugs: ["deep-dive-btc-april-2026","deep-dive-msft-april-2026","deep-dive
 faqs: [{"q":"Is Ethereum a settlement layer or a stranded asset?","a":"Neither fully, yet. Ethereum is successfully functioning as a settlement and data availability layer for L2 networks, but the economic value capture at the L1 level has been weaker than expected post-Dencun. The thesis is structurally intact but requires continued L2 adoption growth to validate."},{"q":"Why has ETH underperformed Bitcoin so badly in this cycle?","a":"Bitcoin had a clearer institutional narrative (spot ETF, digital gold, strategic reserve) and simpler value proposition. ETH's L2-centric architecture reduced L1 fee revenue, which hurt the investment case. In risk-off environments, simpler narratives attract more capital."},{"q":"What is the ETH staking yield and how do I access it?","a":"The current staking yield is approximately 3.8 percent annually, earned by validators who secure the network. Retail investors can access this through liquid staking protocols like Lido (stETH) or Rocket Pool (rETH) without locking up their ETH. Institutional investors can use custody solutions with direct validator infrastructure."},{"q":"What is the Fusaka upgrade and why does it matter?","a":"Fusaka is Ethereum's next major protocol upgrade expected in late 2026. It increases validator efficiency, improves the blob fee market for L2s, and continues progress toward Ethereum's long-term stateless client architecture. It does not immediately change the economic model but improves the infrastructure foundation."},{"q":"Could ETH go to zero?","a":"Extremely unlikely given the scale of the ecosystem — over $50 billion in DeFi TVL, hundreds of L2 networks secured by Ethereum, and institutional staking infrastructure. The more realistic bear case is sustained underperformance relative to Bitcoin, not collapse."}]
 contentLifespan: "medium"
 promotionWeeks: 2
+disclosure: "The author holds Ethereum. This is disclosed for transparency and does not constitute a recommendation."
 ---
 
 ## The Numbers Right Now
@@ -119,6 +120,8 @@ Fed rate guidance. A dovish pivot accelerates the staking yield attractiveness t
 Ethereum scores 6 points below Bitcoin (68/C+), reflecting weaker institutional adoption and L1 economic headwinds from the L2 value capture problem. The staking yield and Fusaka upgrade provide credible re-rating catalysts in H2 2026 — but require patience measured in quarters, not weeks.
 
 ---
+
+> **Disclosure.** The author holds Ethereum. Disclosed above in the interest of transparency.
 
 *Deep Dive reports use the Brutal Edge Analytical Framework (BEAF) adapted for crypto assets. Not investment advice. For informational and educational purposes only. The author has no position in any security or token mentioned. Always conduct your own research.*
 

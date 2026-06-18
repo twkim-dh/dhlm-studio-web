@@ -20,6 +20,7 @@ relatedSlugs: ["btc-crossroads-april-2026","deep-dive-btc-april-2026","deep-dive
 faqs: [{"q":"Is Ethereum a buy at $2,220 in April 2026?","a":"ETH is 55% below its all-time high with $11.7B in cumulative ETF inflows and a staking yield of approximately 3%. The base case is recovery to $2,800-$3,600 by year-end. The bull case ($4,200-$5,200) requires macro easing and accelerating ETF/staking flows. The bear case ($1,600-$2,000) requires inflation re-acceleration and geopolitical deterioration. ETH looks constructive long-term but remains macro-dependent short-term. Not investment advice."},{"q":"Why has ETH underperformed Bitcoin so badly in 2026?","a":"ETH/BTC sits at approximately 0.031 — a multi-year low. Two structural reasons: Bitcoin has a simpler institutional narrative (spot ETF, digital gold, strategic reserve framing) while ETH's L2-centric architecture has reduced L1 fee revenue and weakened traditional cycle analysis. In risk-off environments, simpler narratives attract more capital. ETH historically outperforms BTC in recovery phases but lags in fear environments."},{"q":"What is the key risk to Ethereum in 2026?","a":"Two equal risks. First, persistently high interest rates — March CPI came in at +3.3% YoY and the Fed is holding at 3.50-3.75%. ETH behaves like a duration asset: rate pressure compresses its valuation more than Bitcoin. Second, the L2 value capture paradox — the more efficiently rollups operate at lower cost, the less mainnet fee burning occurs. Growing network, weaker token accrual is the bear case scenario."}]
 contentLifespan: "medium"
 promotionWeeks: 2
+disclosure: "The author holds Ethereum. This is disclosed for transparency and does not constitute a recommendation."
 ---
 
 Ethereum is not simply a store of value. It simultaneously serves as network fuel, staking collateral, L2 settlement asset, and the base asset of tokenization infrastructure. This is why ETH is more sensitive to the macro environment than Bitcoin. When rates are high and liquidity is tight, ETH gets compressed. When rate pressure eases and institutional demand returns, ETH can re-rate more aggressively than BTC.
@@ -148,5 +149,7 @@ My stance on ETH for this year comes down to one sentence:
 This report was prepared as of April 12, 2026. Price and market cap data from CoinGecko. ETF fund flows from Farside. ETF structure and asset data from BlackRock. ETF infrastructure changes from SEC filings. Interest rates and CPI from the Federal Reserve and Bureau of Labor Statistics. Geopolitical variables from AP. Protocol roadmap and upgrades from the Ethereum Foundation and ethereum.org. Staking yields from beaconcha.in. Supply and burn data from Ultrasound Money. Derivatives data from CME and Deribit. Tokenization and stablecoin network dominance from RWA.xyz. Scenario price ranges are author estimates based on the above sources.
 
 ---
+
+> **Disclosure.** The author holds Ethereum. Disclosed above in the interest of transparency.
 
 *For informational and educational purposes only. NOT investment advice. Always do your own research before making investment decisions.*

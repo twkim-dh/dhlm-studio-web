@@ -137,6 +137,18 @@ The conclusion: **markets will relieve first. Whether the rally lasts will be de
 
 ---
 
+## Sources & Methodology
+
+- EIA (U.S. Energy Information Administration) — Brent and WTI crude price data and supply/demand outlooks
+- Federal Open Market Committee (FOMC) — statements and Fed rate-path projections
+- Strait of Hormuz transit volume data — U.S. EIA and shipping industry sources
+- Middle East ceasefire framework documentation and implementation timeline
+- Federal Reserve Economic Data (FRED) — macroeconomic indicators
+- Data as of: mid-June 2026
+- Framework: Brutal Edge Analysis Framework (BEAF) — independent investment analysis
+
+---
+
 > **Disclaimer.** This report is for educational and informational purposes only. It does not constitute investment advice or a recommendation to buy or sell any security, sector, commodity, or digital asset. Market and price figures are as of the dates cited and are subject to rapid change, particularly around developing geopolitical events. Scenarios are illustrative, not forecasts. Investors should conduct independent research and consult qualified financial professionals before making decisions.
 
 *Brutal Edge — Frameworks over forecasts. Signal over noise.*

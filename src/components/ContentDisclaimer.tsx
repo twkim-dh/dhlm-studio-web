@@ -21,6 +21,18 @@ export default function ContentDisclaimer() {
       </div>
       <p style={{
         fontSize: 11,
+        color: '#64748B',
+        lineHeight: 1.7,
+        margin: '0 0 6px',
+        fontStyle: 'italic',
+      }}>
+        <strong style={{ color: '#94A3B8', fontStyle: 'normal' }}>Disclosure:</strong>{' '}
+        Brutal Edge analysis is written by an active investor who manages a real portfolio based on this research.
+        The author holds or may hold positions in the securities, sectors, or digital assets discussed.
+        Specific holdings material to a report are disclosed within that report.
+      </p>
+      <p style={{
+        fontSize: 11,
         color: '#475569',
         lineHeight: 1.7,
         margin: '0 0 8px',

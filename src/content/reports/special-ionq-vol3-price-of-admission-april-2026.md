@@ -12,6 +12,7 @@ slug: "special-ionq-vol3-price-of-admission-april-2026"
 author: "Brutal Edge Team"
 contentLifespan: "evergreen"
 promotionWeeks: 4
+disclosure: "The author holds IonQ. This is disclosed for transparency and does not constitute a recommendation."
 ---
 
 ## The Setup
@@ -25,6 +26,8 @@ Answer: through four reinforcing mechanisms — vertical integration, modular ar
 **Vol.3 asks the hardest question:**
 
 > **"Assume the transition is real. Now what does it cost to own this thesis, and what could break it?"**
+>
+> **Disclosure:** The author holds IonQ. This is disclosed for transparency and does not constitute a recommendation.
 
 This is where most bullish coverage fails. It describes the thesis, then stops. It does not take the bear case seriously. It does not confront valuation math honestly. It does not tell investors how to size a position appropriate to the risk.
 
@@ -375,6 +378,8 @@ The Brutal Edge honest view: IonQ is one of the most intellectually interesting 
 - [The Mental Game #002: How to Survive an AI Bubble](/research/mental-game-002-ai-bubble-survival)
 
 ---
+
+> **Disclosure.** The author holds IonQ. Disclosed above in the interest of transparency.
 
 *For informational and educational purposes only. Not investment advice. The author has no position in any security mentioned. Always conduct your own research. Quantum computing investments carry exceptional execution, technical, and timeline risk. Position sizing should reflect that risk. Readers should consult qualified financial advisors before making investment decisions.*
 
