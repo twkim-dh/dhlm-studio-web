@@ -7,7 +7,6 @@ const SearchModal = lazy(() => import("./SearchModal"));
 
 const links = [
   { label: "Reports", href: "/reports" },
-  { label: "Blog", href: "/blog" },
   { label: "Learn", href: "/learn" },
   { label: "The Mental Game", href: "/research" },
 ];

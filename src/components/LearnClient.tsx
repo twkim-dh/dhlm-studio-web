@@ -118,7 +118,7 @@ function LessonCard({ l }: { l: LessonItem }) {
   );
 
   return published ? (
-    <Link href={`/blog/${l.slug}`} style={{ textDecoration: 'none', display: 'block' }}>
+    <Link href={`/learn/${l.slug}`} style={{ textDecoration: 'none', display: 'block' }}>
       {inner}
     </Link>
   ) : (

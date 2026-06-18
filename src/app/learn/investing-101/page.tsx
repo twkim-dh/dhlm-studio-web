@@ -151,7 +151,7 @@ export default function Investing101Page() {
                     </div>
                   </div>
                 );
-                const href = lesson.isLearnRoute ? `/learn/${lesson.slug}` : `/blog/${lesson.slug}`;
+                const href = `/learn/${lesson.slug}`;
                 return isPublished ? (
                   <Link key={lesson.week} href={href} style={{ textDecoration: 'none' }}>{card}</Link>
                 ) : (

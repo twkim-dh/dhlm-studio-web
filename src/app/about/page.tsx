@@ -210,8 +210,7 @@ export default function AboutPage() {
                 { icon: '📚', title: 'Crypto 101', desc: '12-week beginner curriculum (complete)', href: '/learn/crypto-101' },
                 { icon: '🎓', title: 'Investing 101 Beginner', desc: '12-lesson beginner curriculum (complete)', href: '/learn/investing-101-beginner' },
                 { icon: '📈', title: 'Investing 101 Intermediate', desc: 'Advanced valuation, moat analysis, forensics', href: '/learn?tab=investing-101' },
-                { icon: '📝', title: 'The Masters Blog', desc: 'Lessons from Lynch, Munger, Druckenmiller', href: '/blog' },
-                { icon: '💡', title: 'Wall Street Wisdom', desc: '100 curated investing quotes', href: '/blog/wisdom' },
+                { icon: '🔬', title: 'Quantum 101', desc: '12-part quantum computing curriculum', href: '/learn/quantum-101' },
               ].map(item => (
                 <Link key={item.title} href={item.href} style={{ padding: '12px 14px', borderRadius: 10, background: '#0D1117', border: '1px solid #1E293B', textDecoration: 'none' }}>
                   <span style={{ fontSize: 18 }}>{item.icon}</span>

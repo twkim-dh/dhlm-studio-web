@@ -4,7 +4,6 @@ import Link from 'next/link';
 import fs from 'fs';
 import path from 'path';
 import FadeIn from '@/components/FadeIn';
-import { blogPosts } from '@/data/blog-posts';
 import { fmtDateShort } from '@/lib/fmt-date';
 import NewsletterCTAWrapper from './NewsletterCTAWrapper';
 
@@ -94,7 +93,6 @@ export default function Home() {
   const allReports = getAllReports();
   const featuredReports = allReports.slice(0, 3);
   const latestReports = allReports.slice(3, 7);
-  const latestBlog = blogPosts.filter(p => !p.noindex).slice(0, 4);
   const latestResearch = getAllResearch().slice(0, 4);
 
   return (
@@ -269,41 +267,6 @@ export default function Home() {
         </FadeIn>
       )}
 
-      {/* ── BLOG (2-col image grid) ── */}
-      {latestBlog.length > 0 && (
-        <FadeIn delay={0.15}>
-          <section style={{ padding: '0 24px 48px', maxWidth: 800, margin: '0 auto' }}>
-            <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'baseline', marginBottom: 16 }}>
-              <div>
-                <div style={{ fontFamily: 'var(--mono)', fontSize: 10, fontWeight: 700, color: '#475569', letterSpacing: 3, marginBottom: 4 }}>THE MASTERS · WEEKEND READ</div>
-                <h2 style={{ fontFamily: 'var(--serif)', fontSize: 22, fontWeight: 800, color: '#F1F5F9', margin: 0 }}>Blog</h2>
-              </div>
-              <Link href="/blog" style={{ fontSize: 12, color: '#60A5FA', fontWeight: 600, fontFamily: 'var(--sans)' }}>View All →</Link>
-            </div>
-            <div className="home-content-grid">
-              {latestBlog.map(p => (
-                <Link key={p.slug} href={`/blog/${p.slug}`} style={{ ...card, padding: 0, textDecoration: 'none', display: 'block', overflow: 'hidden' }}>
-                  {p.heroImage ? (
-                    <Image src={p.heroImage} alt={p.title} width={1200} height={800} quality={65} loading="lazy" sizes="(max-width: 640px) calc(100vw - 48px), (max-width: 800px) calc(50vw - 32px), 376px" style={{ width: '100%', height: 'auto', display: 'block', background: '#0f172a' }} />
-                  ) : (
-                    <div style={{ width: '100%', aspectRatio: '16/9', background: `${p.catColor}18`, display: 'flex', alignItems: 'center', justifyContent: 'center' }}>
-                      <span style={{ fontSize: 28 }}>📝</span>
-                    </div>
-                  )}
-                  <div style={{ padding: '12px 16px 16px' }}>
-                    <div style={{ display: 'flex', gap: 8, alignItems: 'center', marginBottom: 6, flexWrap: 'wrap' }}>
-                      <span style={{ fontFamily: 'var(--mono)', fontSize: 9, fontWeight: 700, padding: '2px 7px', borderRadius: 4, background: `${p.catColor}14`, color: p.catColor }}>{p.category}</span>
-                      <span style={{ fontSize: 10, color: '#475569', marginLeft: 'auto' }}>{fmtDateShort(p.date)} · {p.readTime}</span>
-                    </div>
-                    <div style={{ fontFamily: 'var(--serif)', fontSize: 15, fontWeight: 700, color: '#E2E8F0', lineHeight: 1.35 }}>{p.title}</div>
-                    <p style={{ fontSize: 11, color: '#64748B', margin: '4px 0 0', lineHeight: 1.4 }}>{p.description?.length > 80 ? p.description.slice(0, 80) + '...' : p.description}</p>
-                  </div>
-                </Link>
-              ))}
-            </div>
-          </section>
-        </FadeIn>
-      )}
 
       {/* ── NEWSLETTER CTA ── */}
       <section style={{ padding: '0 24px 64px', maxWidth: 800, margin: '0 auto' }}>

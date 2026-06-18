@@ -195,7 +195,7 @@ export default function Crypto101Page() {
             <div style={{ display: 'flex', flexDirection: 'column', gap: 6 }}>
               {phase.lessons.map(lesson => {
                 const isPublished = !!lesson.slug;
-                const href = isPublished ? `/blog/${lesson.slug}` : undefined;
+                const href = isPublished ? `/learn/${lesson.slug}` : undefined;
 
                 const img = manifest[lesson.imageKey];
                 const card = (
