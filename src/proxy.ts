@@ -69,8 +69,10 @@ export default function proxy(request: NextRequest) {
     }
   }
 
-  // 410 Gone: deleted sections (tools, lottery, lotto, rankings = off-brand)
-  if (pathname.startsWith('/tools') || pathname.startsWith('/lottery') ||
+  // 410 Gone: deleted sections
+  // /blog removed 2026-06-18 (AdSense E-E-A-T cleanup — all blog content permanently gone)
+  if (pathname === '/blog' || pathname.startsWith('/blog/') ||
+      pathname.startsWith('/tools') || pathname.startsWith('/lottery') ||
       pathname.startsWith('/lotto') || pathname.startsWith('/rankings')) {
     return new NextResponse('Gone', { status: 410 });
   }
