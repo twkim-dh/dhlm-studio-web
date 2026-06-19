@@ -139,11 +139,11 @@ The conclusion: **markets will relieve first. Whether the rally lasts will be de
 
 ## Sources & Methodology
 
-- EIA (U.S. Energy Information Administration) — Brent crude price data: peaked above $111/bbl at war peak; fell below $78/bbl as of June 17, 2026. WTI crude and global supply/demand outlooks.
-- Federal Open Market Committee (FOMC) — statements and Fed rate-path projections (June 2026)
-- Strait of Hormuz transit volume data — approximately 20% of global oil flow transits the Strait; U.S. EIA and shipping industry sources
+- EIA (U.S. Energy Information Administration) — Brent crude price data: peaked above $111/bbl at war peak; fell below $78/bbl as of June 17, 2026. WTI crude and global supply/demand outlooks. [EIA Petroleum Data](https://www.eia.gov/petroleum/) · [EIA Brent Spot Price History](https://www.eia.gov/dnav/pet/hist/RBRTEd.htm)
+- Federal Open Market Committee (FOMC) — statements and Fed rate-path projections (June 2026). [Federal Reserve](https://www.federalreserve.gov/monetarypolicy/fomccalendars.htm)
+- Strait of Hormuz transit volume data — approximately 20% of global oil flow transits the Strait; U.S. EIA and shipping industry sources. [EIA Strait of Hormuz Overview](https://www.eia.gov/international/analysis/regions-of-interest/Strait_of_Hormuz)
 - Middle East ceasefire framework documentation and implementation timeline (June 2026)
-- Federal Reserve Economic Data (FRED) — macroeconomic indicators
+- Federal Reserve Economic Data (FRED) — macroeconomic indicators. [FRED](https://fred.stlouisfed.org)
 - Data as of: mid-June 2026
 - Framework: Brutal Edge Analysis Framework (BEAF) — independent investment analysis
 

@@ -188,10 +188,11 @@ Fifth, defense demand is likely to remain the strongest anchor customer. Space i
 ## Sources & Methodology
 
 - SpaceX SPCX IPO pricing and market capitalization data — June 2026 (company announcements and market data). SpaceX reported approximately $18.7B in 2025 revenue; Starlink generated approximately $11.4B of that total. Pre-IPO tender offer history used to establish valuation range.
-- Blue Origin New Glenn NG-4 static-fire anomaly (LC-36 pad damage) and U.S. Space Force confirmation that Blue Origin retains NSSL Lane 2 certification eligibility — May 2026
-- Rocket Lab Neutron development updates and Q4 2026 first-launch target — CEO Peter Beck statements, mid-2026
-- Amazon Project Kuiper launch manifest and NASA Artemis / Blue Moon lunar lander program documents
-- U.S. Space Force National Security Space Launch (NSSL) program documentation
+- Blue Origin New Glenn NG-4 static-fire anomaly (LC-36 pad damage) and U.S. Space Force confirmation that Blue Origin retains NSSL Lane 2 certification eligibility — May 2026. [U.S. Space Force Space Systems Command](https://www.ssc.spaceforce.mil)
+- Rocket Lab investor relations and Neutron development updates — CEO Peter Beck statements, mid-2026. [Rocket Lab Investor Relations](https://investors.rocketlabusa.com) · [Rocket Lab SEC Filings (EDGAR)](https://www.sec.gov/cgi-bin/browse-edgar?action=getcompany&CIK=RKLB&type=10-K&dateb=&owner=include&count=10)
+- NASA Artemis program and Blue Moon lunar lander documentation. [NASA Artemis](https://www.nasa.gov/humans-in-space/artemis/)
+- Amazon Project Kuiper launch manifest — public program documentation
+- U.S. Space Force National Security Space Launch (NSSL) program. [NSSL Program](https://www.ssc.spaceforce.mil/Missions/Current-Programs/Launch/National-Security-Space-Launch)
 - Data as of: mid-June 2026
 - Framework: Brutal Edge Analysis Framework (BEAF) — independent investment analysis
 
