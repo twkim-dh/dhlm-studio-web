@@ -217,4 +217,4 @@ At 68x earnings, you are buying a dream of margin expansion. The dream is plausi
 
 ---
 
-*Published April 7, 2026 | DHLM Studio | [View AMZN Live Data →](/markets/amzn) | [All Reports →](/reports) | [Editorial Policy →](/editorial)*
+*Published April 7, 2026 | DHLM Studio | [All Reports →](/reports) | [Editorial Policy →](/editorial)*

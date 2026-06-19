@@ -269,7 +269,7 @@ function Investing101Tab({ intermediateLessons }: { intermediateLessons: Investi
           </div>
         </div>
         <Link
-          href={level === 'beginner' ? '/learn/investing-101-beginner' : '/learn/investing-101-intermediate'}
+          href={level === 'beginner' ? '/learn/investing-101-beginner' : '/learn/investing-101'}
           style={{ fontFamily: 'var(--mono)', fontSize: 11, color: level === 'beginner' ? '#00D474' : '#3B82F6', textDecoration: 'none', fontWeight: 700, flexShrink: 0 }}
         >
           Full Curriculum →

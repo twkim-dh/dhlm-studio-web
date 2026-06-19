@@ -235,4 +235,4 @@ At 24x earnings with a 4.1% FCF yield, Google is the cheapest mega-cap in techno
 
 ---
 
-*Published April 7, 2026 | DHLM Studio | [View GOOGL Live Data →](/markets/googl) | [All Reports →](/reports) | [Editorial Policy →](/editorial)*
+*Published April 7, 2026 | DHLM Studio | [All Reports →](/reports) | [Editorial Policy →](/editorial)*

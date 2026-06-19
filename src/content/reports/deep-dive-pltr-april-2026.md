@@ -233,4 +233,4 @@ Fascinating company. Dangerous entry point. The plus in D+ is for the technology
 
 ---
 
-*Published April 7, 2026 | DHLM Studio | [View PLTR Live Data →](/markets/pltr) | [All Reports →](/reports) | [Editorial Policy →](/editorial)*
+*Published April 7, 2026 | DHLM Studio | [All Reports →](/reports) | [Editorial Policy →](/editorial)*

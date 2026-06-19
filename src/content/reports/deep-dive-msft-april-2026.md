@@ -209,4 +209,4 @@ The probability-weighted math says $418 fair value against a $420 stock price. M
 
 ---
 
-*Published April 7, 2026 | DHLM Studio | [View MSFT Live Data →](/markets/msft) | [All Reports →](/reports) | [Editorial Policy →](/editorial)*
+*Published April 7, 2026 | DHLM Studio | [All Reports →](/reports) | [Editorial Policy →](/editorial)*

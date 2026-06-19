@@ -178,7 +178,7 @@ export default function Investing101Page() {
             <p style={{ fontSize: 13, color: '#94A3B8', margin: '0 0 14px', lineHeight: 1.5 }}>
               12 lessons. Valuation, moats, forensics, portfolio sizing.
             </p>
-            <Link href="/learn/investing-101-intermediate" style={{ display: 'inline-block', padding: '9px 20px', borderRadius: 8, background: '#60A5FA', color: '#0B0F19', fontSize: 12, fontWeight: 800, textDecoration: 'none' }}>
+            <Link href="/learn/investing-101-intermediate-w13-three-valuations" style={{ display: 'inline-block', padding: '9px 20px', borderRadius: 8, background: '#60A5FA', color: '#0B0F19', fontSize: 12, fontWeight: 800, textDecoration: 'none' }}>
               View Intermediate →
             </Link>
           </div>

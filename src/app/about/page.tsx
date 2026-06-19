@@ -147,7 +147,7 @@ export default function AboutPage() {
                 { what: 'The Mental Game & Structural View', when: 'New essays weekly', color: '#A78BFA' },
                 { what: 'Investing 101 Intermediate', when: 'New lesson weekly (W13–W24)', color: '#3B82F6' },
                 { what: 'Investing 101 Beginner', when: '12-lesson curriculum (complete)', color: '#60A5FA' },
-                { what: 'Crypto 101', when: '12-week curriculum (complete)', color: '#F59E0B' },
+                { what: 'The Masters', when: '12-part investor biography series', color: '#D4A843' },
                 { what: 'Wall Street Wisdom', when: '100 curated investing quotes', color: '#D4A843' },
                 { what: 'Editorial Policy & Methodology', when: 'Reviewed monthly', color: '#64748B' },
               ].map(u => (
@@ -207,7 +207,7 @@ export default function AboutPage() {
                 { icon: '🔥', title: 'Deep Dive Reports', desc: 'Institutional-grade stock analysis (BEAF)', href: '/reports' },
                 { icon: '🧠', title: 'The Mental Game', desc: 'Behavioral investing psychology series', href: '/research' },
                 { icon: '🔭', title: 'The Structural View', desc: 'Quarterly macro & sector research', href: '/research' },
-                { icon: '📚', title: 'Crypto 101', desc: '12-week beginner curriculum (complete)', href: '/learn/crypto-101' },
+                { icon: '📖', title: 'The Masters', desc: 'Livermore, Druckenmiller, Lynch, Munger biographies', href: '/learn' },
                 { icon: '🎓', title: 'Investing 101 Beginner', desc: '12-lesson beginner curriculum (complete)', href: '/learn/investing-101-beginner' },
                 { icon: '📈', title: 'Investing 101 Intermediate', desc: 'Advanced valuation, moat analysis, forensics', href: '/learn?tab=investing-101' },
                 { icon: '🔬', title: 'Quantum 101', desc: '12-part quantum computing curriculum', href: '/learn/quantum-101' },
@@ -263,7 +263,7 @@ export default function AboutPage() {
                 'All financial data is independently verified against SEC filings and official company disclosures',
                 'No content is auto-generated or published without editorial approval',
                 'The Mental Game and Structural View series are original essays, not summaries or rewrites',
-                'Investing 101 and Crypto 101 curricula are purpose-built for retail investors — not repurposed from other sources',
+                'Investing 101, The Masters, and Quantum 101 curricula are purpose-built for retail investors — not repurposed from other sources',
               ].map(item => (
                 <div key={item} style={{ display: 'flex', alignItems: 'flex-start', gap: 8 }}>
                   <span style={{ color: '#00D474', fontWeight: 800, fontSize: 12, flexShrink: 0, marginTop: 1 }}>✓</span>
