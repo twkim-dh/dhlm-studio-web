@@ -37,6 +37,8 @@ const GONE_PATHS = new Set([
   '/blog/us-dominates-global-wealth-billionaires-2026',
   '/blog/worlds-richest-people-2026-billionaire-rankings',
   '/blog/top-10-countries-gdp-world-economy-2026',
+  // 2026-06-19: Crypto 101 tab removed from /learn hub (replaced by The Masters)
+  '/learn/crypto-101',
 ]);
 
 // Country-based blocking: confirmed/suspected bot traffic

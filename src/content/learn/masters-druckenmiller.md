@@ -1,4 +1,4 @@
-﻿---
+---
 title: "Druckenmiller's Real Edge Wasn't Macro — It Was Knowing When He Was Wrong"
 series: "The Masters"
 week: 2

@@ -1,4 +1,4 @@
-﻿---
+---
 title: "The Peter Lynch Bible, Part 2: Stocks Are Not All the Same"
 series: "The Masters"
 week: 4

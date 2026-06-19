@@ -1,4 +1,4 @@
-﻿---
+---
 title: "The Peter Lynch Bible, Part 3: The Cocktail Party Theory and the Psychology of Bear Markets"
 series: "The Masters"
 week: 5

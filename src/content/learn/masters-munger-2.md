@@ -1,4 +1,4 @@
-﻿---
+---
 title: "The Masters: Charlie Munger Part 2  --  It's Not Ignorance That Ruins You. It's Ego."
 series: "The Masters"
 week: 9

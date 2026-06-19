@@ -1,4 +1,4 @@
-﻿---
+---
 title: "Livermore Didn't Teach Prediction. He Taught Waiting."
 series: "The Masters"
 week: 1

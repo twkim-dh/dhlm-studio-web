@@ -1,4 +1,4 @@
-﻿---
+---
 title: "The Peter Lynch Bible, Part 4: Numbers Don't Lie"
 series: "The Masters"
 week: 6

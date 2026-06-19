@@ -1,4 +1,4 @@
-﻿---
+---
 title: "The Peter Lynch Bible, Part 5: If Peter Lynch Were Investing in 2026"
 series: "The Masters"
 week: 7

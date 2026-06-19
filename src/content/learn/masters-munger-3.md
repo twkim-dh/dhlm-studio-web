@@ -1,4 +1,4 @@
-﻿---
+---
 title: "The Masters: Charlie Munger Part 3  --  When You Feel Safest, You May Be Most Exposed"
 series: "The Masters"
 week: 10

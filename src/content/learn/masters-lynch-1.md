@@ -1,4 +1,4 @@
-﻿---
+---
 title: "The Peter Lynch Bible, Part 1: There's a Ten-Bagger Closer Than You Think"
 series: "The Masters"
 week: 3

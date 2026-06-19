@@ -1,4 +1,4 @@
-﻿---
+---
 title: "The Masters: Charlie Munger Part 1  --  Don't Try to Be Brilliant. Just Stop Doing Stupid Things."
 series: "The Masters"
 week: 8
