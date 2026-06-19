@@ -17,7 +17,7 @@ byline: "Brutal Edge Team"
 reviewed: "Reviewed against BEAF Framework"
 audience: "U.S. investors and global market participants navigating post-war geopolitical risk repricing — including those positioned in energy, defense, tech, airlines, and emerging markets"
 tags: ["SPECIAL-REPORT", "US-IRAN", "GEOPOLITICS", "OIL", "CRUDE", "STRAIT-OF-HORMUZ", "CEASEFIRE", "SECTOR-ROTATION", "MACRO", "BRENT", "GOLD", "BONDS", "EMERGING-MARKETS", "FED", "INFLATION", "AIRLINES", "DEFENSE"]
-sources: ["EIA — Brent and WTI crude price data", "FOMC statements and Fed rate-path projections", "Strait of Hormuz transit volume data", "Middle East ceasefire framework and implementation timeline"]
+sources: ["EIA — Brent crude peaked above $111/bbl at war peak, fell below $78 as of June 17 2026", "FOMC statements and Fed rate-path projections (June 2026)", "Strait of Hormuz transit volume data — approximately 20% of global oil flow (EIA and shipping industry)", "Middle East ceasefire framework and implementation timeline (June 2026)"]
 relatedSlugs: ["special-market-psychology-volatility-june-2026"]
 contentLifespan: "timely"
 promotionWeeks: 2
@@ -139,10 +139,10 @@ The conclusion: **markets will relieve first. Whether the rally lasts will be de
 
 ## Sources & Methodology
 
-- EIA (U.S. Energy Information Administration) — Brent and WTI crude price data and supply/demand outlooks
-- Federal Open Market Committee (FOMC) — statements and Fed rate-path projections
-- Strait of Hormuz transit volume data — U.S. EIA and shipping industry sources
-- Middle East ceasefire framework documentation and implementation timeline
+- EIA (U.S. Energy Information Administration) — Brent crude price data: peaked above $111/bbl at war peak; fell below $78/bbl as of June 17, 2026. WTI crude and global supply/demand outlooks.
+- Federal Open Market Committee (FOMC) — statements and Fed rate-path projections (June 2026)
+- Strait of Hormuz transit volume data — approximately 20% of global oil flow transits the Strait; U.S. EIA and shipping industry sources
+- Middle East ceasefire framework documentation and implementation timeline (June 2026)
 - Federal Reserve Economic Data (FRED) — macroeconomic indicators
 - Data as of: mid-June 2026
 - Framework: Brutal Edge Analysis Framework (BEAF) — independent investment analysis

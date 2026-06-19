@@ -4,7 +4,6 @@ import { Playfair_Display, DM_Sans, IBM_Plex_Mono } from "next/font/google";
 import Header from "@/components/Header";
 import Footer from "@/components/Footer";
 import ClientWidgets from "./ClientWidgets";
-import ConditionalAds from "@/components/ConditionalAds";
 import "./globals.css";
 
 const playfair = Playfair_Display({
@@ -40,7 +39,7 @@ export const metadata: Metadata = {
   keywords: [
     "DHLM Studio", "Brutal Edge", "Deep Dive reports", "BEAF framework",
     "stock analysis", "crypto analysis", "investing education", "financial research",
-    "The Mental Game", "The Structural View", "Crypto 101", "long-term investing",
+    "The Mental Game", "The Structural View", "The Masters", "long-term investing",
   ],
   openGraph: {
     title: `DHLM Studio — Brutal Edge™ Financial Analysis`,
@@ -90,7 +89,6 @@ export default function RootLayout({
         {/* No Twemoji — caused image explosion bug. Flag emojis show as text on Windows, which is acceptable. */}
         {/* Preconnect to external origins */}
         <link rel="preconnect" href="https://www.googletagmanager.com" />
-        {/* pagead2 preconnect moved to ConditionalAds — only on content pages */}
         {/* Fonts loaded via next/font/google — no external link needed */}
         {/* AdSense publisher verification — ensures code check passes without requiring script to be present at load time */}
         <meta name="google-adsense-account" content="ca-pub-5182634360822108" />
@@ -145,8 +143,6 @@ export default function RootLayout({
             />
           </>
         )}
-        {/* AdSense — interaction-deferred, content pages only (contact/privacy/terms/disclaimer excluded) */}
-        <ConditionalAds />
       </body>
     </html>
   );
