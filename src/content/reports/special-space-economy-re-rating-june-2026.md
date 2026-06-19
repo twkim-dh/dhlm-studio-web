@@ -18,7 +18,7 @@ reviewed: "Reviewed against BEAF Framework"
 disclosure: "The author previously held Rocket Lab (sold prior to SpaceX listing) and is considering positions in SpaceX and Rocket Lab. This is disclosed for transparency and does not constitute a recommendation."
 audience: "U.S. investors evaluating space sector exposure — including SpaceX (SPCX), Rocket Lab (RKLB), and the broader space infrastructure value chain"
 tags: ["SPECIAL-REPORT", "SPACE", "SPACEX", "SPCX", "ROCKET-LAB", "RKLB", "BLUE-ORIGIN", "INFRASTRUCTURE", "SATELLITE", "STARLINK", "DEFENSE", "NEUTRON", "EARTH-OBSERVATION", "IPO", "MACRO-INFRASTRUCTURE", "TESLA"]
-sources: ["SpaceX SPCX IPO pricing and market capitalization data — $18.7B 2025 revenue, Starlink $11.4B segment, tender offer history (June 2026)", "Blue Origin New Glenn NG-4 static-fire anomaly and U.S. Space Force NSSL disqualification statement (May 2026)", "Rocket Lab Neutron development updates and Q4 2026 first-launch target — CEO Peter Beck (mid-2026)", "Amazon Project Kuiper launch manifest and NASA Artemis / Blue Moon lander program documents"]
+sources: ["SpaceX SPCX IPO pricing and market capitalization data — $18.7B 2025 revenue, Starlink $11.4B segment, tender offer history (June 2026)", "Blue Origin New Glenn NG-4 static-fire anomaly (LC-36 pad damage); U.S. Space Force confirmed Blue Origin retains NSSL Lane 2 certification eligibility (May 2026)", "Rocket Lab Neutron development updates and Q4 2026 first-launch target — CEO Peter Beck (mid-2026)", "Amazon Project Kuiper launch manifest and NASA Artemis / Blue Moon lander program documents"]
 relatedSlugs: ["special-tesla-spacex-operating-systems-april-2026"]
 contentLifespan: "medium"
 promotionWeeks: 3
@@ -188,7 +188,7 @@ Fifth, defense demand is likely to remain the strongest anchor customer. Space i
 ## Sources & Methodology
 
 - SpaceX SPCX IPO pricing and market capitalization data — June 2026 (company announcements and market data). SpaceX reported approximately $18.7B in 2025 revenue; Starlink generated approximately $11.4B of that total. Pre-IPO tender offer history used to establish valuation range.
-- Blue Origin New Glenn NG-4 static-fire anomaly report and U.S. Space Force NSSL disqualification statement — May 2026
+- Blue Origin New Glenn NG-4 static-fire anomaly (LC-36 pad damage) and U.S. Space Force confirmation that Blue Origin retains NSSL Lane 2 certification eligibility — May 2026
 - Rocket Lab Neutron development updates and Q4 2026 first-launch target — CEO Peter Beck statements, mid-2026
 - Amazon Project Kuiper launch manifest and NASA Artemis / Blue Moon lunar lander program documents
 - U.S. Space Force National Security Space Launch (NSSL) program documentation
