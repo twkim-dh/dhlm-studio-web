@@ -43,6 +43,24 @@ function getLearnIntermediateSlugs(): string[] {
   } catch { return []; }
 }
 
+function getLearnMastersSlugs(): string[] {
+  try {
+    const today = todayKST();
+    const dir = path.join(process.cwd(), 'src/content/learn');
+    return fs.readdirSync(dir)
+      .filter(f => f.startsWith('masters-') && f.endsWith('.md'))
+      .filter(f => {
+        try {
+          const content = fs.readFileSync(path.join(dir, f), 'utf8');
+          const m = content.match(/^publishDate:\s*"?([^"\n]+)"?/m);
+          if (!m) return true;
+          return m[1].trim().slice(0, 10) <= today;
+        } catch { return true; }
+      })
+      .map(f => f.replace(/\.md$/, ''));
+  } catch { return []; }
+}
+
 function getLearnQuantumSlugs(): string[] {
   try {
     const today = todayKST();
@@ -85,7 +103,6 @@ export default function sitemap(): MetadataRoute.Sitemap {
     { url: BASE,                                    changeFrequency: "weekly",  priority: 1.0 },
     { url: `${BASE}/reports`,                       changeFrequency: "weekly",  priority: 0.9 },
     { url: `${BASE}/learn`,                         changeFrequency: "weekly",  priority: 0.8 },
-    { url: `${BASE}/learn/crypto-101`,              changeFrequency: "weekly",  priority: 0.8 },
     { url: `${BASE}/learn/quantum-101`,             changeFrequency: "weekly",  priority: 0.8 },
     { url: `${BASE}/learn/investing-101`,           changeFrequency: "monthly", priority: 0.7 },
     { url: `${BASE}/learn/investing-101-beginner`,  changeFrequency: "monthly", priority: 0.8 },
@@ -111,6 +128,11 @@ export default function sitemap(): MetadataRoute.Sitemap {
     })),
     // Quantum 101 Series — published parts only (future dates excluded)
     ...getLearnQuantumSlugs().map(slug => ({
+      url: `${BASE}/learn/${slug}`,
+      changeFrequency: 'monthly' as const, priority: 0.7,
+    })),
+    // The Masters Series — published parts only (future dates excluded)
+    ...getLearnMastersSlugs().map(slug => ({
       url: `${BASE}/learn/${slug}`,
       changeFrequency: 'monthly' as const, priority: 0.7,
     })),

@@ -49,6 +49,18 @@ const HERO_MAP: Record<string, string> = {
   'investing-101-intermediate-w22-position-sizing':            '/images/content/INV-101-W22.webp',
   'investing-101-intermediate-w23-correlation-risk':           '/images/content/INV-101-W23.webp',
   'investing-101-intermediate-w24-when-to-sell':               '/images/content/INV-101-W24.webp',
+  'masters-livermore':      '/images/content/livermore-masters-hero.webp',
+  'masters-druckenmiller':  '/images/content/druckenmiller-masters-hero.webp',
+  'masters-lynch-1':        '/images/content/masters-peter-lynch-part1-ten-bagger-hero.webp',
+  'masters-lynch-2':        '/images/content/masters-peter-lynch-part2-categories-hero.webp',
+  'masters-lynch-3':        '/images/content/masters-peter-lynch-part3-cocktail-party-hero.webp',
+  'masters-lynch-4':        '/images/content/masters-peter-lynch-part4-numbers-hero.webp',
+  'masters-lynch-5':        '/images/content/masters-peter-lynch-part5-2026-hero.webp',
+  'masters-munger-1':       '/images/content/masters-charlie-munger-part1-stupidity-hero.webp',
+  'masters-munger-2':       '/images/content/masters-charlie-munger-part2-ego-hero.webp',
+  'masters-munger-3':       '/images/content/masters-charlie-munger-part3-safety-hero.webp',
+  'masters-munger-4':       '/images/content/masters-charlie-munger-part4-leverage-hero.webp',
+  'masters-munger-5':       '/images/content/masters-charlie-munger-part5-compounding-hero.webp',
 };
 
 const BEGINNER_ORDER = [
@@ -96,7 +108,22 @@ const QUANTUM_ORDER = [
   'quantum-101-part12-watchlist',
 ];
 
-const SERIES_ORDER = [...BEGINNER_ORDER, ...INTERMEDIATE_ORDER, ...QUANTUM_ORDER];
+const MASTERS_ORDER = [
+  'masters-livermore',
+  'masters-druckenmiller',
+  'masters-lynch-1',
+  'masters-lynch-2',
+  'masters-lynch-3',
+  'masters-lynch-4',
+  'masters-lynch-5',
+  'masters-munger-1',
+  'masters-munger-2',
+  'masters-munger-3',
+  'masters-munger-4',
+  'masters-munger-5',
+];
+
+const SERIES_ORDER = [...BEGINNER_ORDER, ...INTERMEDIATE_ORDER, ...QUANTUM_ORDER, ...MASTERS_ORDER];
 
 interface LessonFrontmatter {
   title: string;
@@ -107,6 +134,10 @@ interface LessonFrontmatter {
   readingTime: string;
   series: string;
   tags: string[];
+}
+
+function isMasters(slug: string) {
+  return slug.startsWith('masters-');
 }
 
 function isIntermediate(slug: string) {
@@ -163,7 +194,8 @@ export async function generateMetadata({ params }: { params: Promise<{ slug: str
   const ogImage = heroSrc ? `${BASE}${heroSrc}` : `${BASE}/opengraph-image`;
   const quantum = isQuantum(slug);
   const inter = isIntermediate(slug);
-  const seriesLabel = quantum ? 'Quantum Computing 101' : inter ? 'Investing 101 Intermediate' : 'Investing 101 Beginner';
+  const masters = isMasters(slug);
+  const seriesLabel = masters ? 'The Masters' : quantum ? 'Quantum Computing 101' : inter ? 'Investing 101 Intermediate' : 'Investing 101 Beginner';
   const today = todayKST();
   const isFuture = (inter || quantum) && fm.publishDate && fm.publishDate > today;
   const ogW = quantum ? 1920 : 1672;
@@ -347,15 +379,16 @@ export default async function LearnLessonPage({ params }: { params: Promise<{ sl
   const heroSrc = HERO_MAP[slug];
   const inter = isIntermediate(slug);
   const quantum = isQuantum(slug);
-  const ORDER = quantum ? QUANTUM_ORDER : inter ? INTERMEDIATE_ORDER : BEGINNER_ORDER;
+  const masters = isMasters(slug);
+  const ORDER = masters ? MASTERS_ORDER : quantum ? QUANTUM_ORDER : inter ? INTERMEDIATE_ORDER : BEGINNER_ORDER;
   const seriesIndex = ORDER.indexOf(slug);
   const prevSlug = seriesIndex > 0 ? ORDER[seriesIndex - 1] : null;
   const nextSlug = seriesIndex < ORDER.length - 1 ? ORDER[seriesIndex + 1] : null;
-  const seriesTotal = inter ? 24 : 12;
-  const seriesIndexPage = quantum ? '/learn/quantum-101' : inter ? '/learn/investing-101-intermediate' : '/learn/investing-101-beginner';
-  const seriesBadgeLabel = quantum ? 'QUANTUM 101' : inter ? 'INVESTING 101 INTERMEDIATE' : 'INVESTING 101 BEGINNER';
-  const seriesLineLabel = quantum ? 'Quantum Computing 101' : inter ? 'Investing 101 — Intermediate Series' : 'Investing 101 — Beginner Series';
-  const partLabel = quantum ? 'PART' : 'WEEK';
+  const seriesTotal = inter ? 24 : masters ? 12 : 12;
+  const seriesIndexPage = masters ? '/learn' : quantum ? '/learn/quantum-101' : inter ? '/learn/investing-101-intermediate' : '/learn/investing-101-beginner';
+  const seriesBadgeLabel = masters ? 'THE MASTERS' : quantum ? 'QUANTUM 101' : inter ? 'INVESTING 101 INTERMEDIATE' : 'INVESTING 101 BEGINNER';
+  const seriesLineLabel = masters ? 'The Masters — Investor Biographies' : quantum ? 'Quantum Computing 101' : inter ? 'Investing 101 — Intermediate Series' : 'Investing 101 — Beginner Series';
+  const partLabel = (quantum || masters) ? 'PART' : 'WEEK';
 
   const prevLesson = prevSlug ? getLesson(prevSlug) : null;
   const nextLesson = nextSlug ? getLesson(nextSlug) : null;
@@ -371,7 +404,10 @@ export default async function LearnLessonPage({ params }: { params: Promise<{ sl
 
   let phaseColor: string;
   let phaseLabel: string;
-  if (quantum) {
+  if (masters) {
+    phaseColor = fm.week <= 2 ? '#BA7517' : fm.week <= 7 ? '#D4A843' : '#C73E3A';
+    phaseLabel = fm.week <= 2 ? 'MARKET OPERATORS' : fm.week <= 7 ? 'PETER LYNCH' : 'CHARLIE MUNGER';
+  } else if (quantum) {
     phaseColor = fm.week <= 7 ? '#7C3AED' : fm.week <= 10 ? '#3B82F6' : '#D4A843';
     phaseLabel = fm.week <= 7 ? 'PHASE 1 · QUBIT APPROACHES' : fm.week <= 10 ? 'PHASE 2 · PLATFORMS & APPLICATIONS' : 'PHASE 3 · INVESTING FRAMEWORK';
   } else if (inter) {
@@ -393,13 +429,13 @@ export default async function LearnLessonPage({ params }: { params: Promise<{ sl
           <span>/</span>
           <Link href={seriesIndexPage} style={{ color: '#475569', textDecoration: 'none' }}>{seriesLineLabel}</Link>
           <span>/</span>
-          <span style={{ color: '#64748B' }}>{quantum ? 'Part' : 'Week'} {fm.week}</span>
+          <span style={{ color: '#64748B' }}>{(quantum || masters) ? 'Part' : 'Week'} {fm.week}</span>
         </div>
 
         {/* Header */}
         <div style={{ marginBottom: 28 }}>
           <div style={{ display: 'flex', alignItems: 'center', gap: 8, marginBottom: 12, flexWrap: 'wrap' }}>
-            <span style={{ fontFamily: 'var(--mono)', fontSize: 9, fontWeight: 800, padding: '3px 9px', borderRadius: 5, background: quantum ? '#7C3AED18' : '#00D47418', color: quantum ? '#A78BFA' : '#00D474', border: quantum ? '1px solid #7C3AED30' : '1px solid #00D47430', letterSpacing: 1 }}>
+            <span style={{ fontFamily: 'var(--mono)', fontSize: 9, fontWeight: 800, padding: '3px 9px', borderRadius: 5, background: masters ? '#BA751718' : quantum ? '#7C3AED18' : '#00D47418', color: masters ? '#D4A843' : quantum ? '#A78BFA' : '#00D474', border: masters ? '1px solid #BA751730' : quantum ? '1px solid #7C3AED30' : '1px solid #00D47430', letterSpacing: 1 }}>
               {seriesBadgeLabel}
             </span>
             <span style={{ fontFamily: 'var(--mono)', fontSize: 9, fontWeight: 700, padding: '2px 8px', borderRadius: 4, background: `${phaseColor}14`, color: phaseColor }}>

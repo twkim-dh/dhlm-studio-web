@@ -6,7 +6,7 @@ import unsplashManifest from '@/data/unsplash-manifest.json';
 
 export const metadata: Metadata = {
   title: 'Brutal Edge Academy — Learn Investing | DHLM Studio',
-  description: 'Learn investing the way it actually works. Crypto 101, Investing 101, and Paper vs. Profit — data-driven, zero hype, Brutal Edge style.',
+  description: 'Learn investing the way it actually works. The Masters, Investing 101, Quantum 101 — data-driven, zero hype, Brutal Edge style.',
   alternates: { canonical: 'https://dhlm-studio.com/learn' },
 };
 
@@ -65,6 +65,16 @@ export interface QuantumLesson {
   published: boolean;
 }
 
+export interface MastersLesson {
+  part: number;
+  slug: string;
+  title: string;
+  description: string;
+  thumb: string;
+  subject: string;
+  published: boolean;
+}
+
 function getAllResearch(): ResearchItem[] {
   try {
     if (!fs.existsSync(CONTENT_DIR)) return [];
@@ -94,49 +104,6 @@ function getAllResearch(): ResearchItem[] {
       .filter(a => a.badge !== 'mental-game' && a.badge !== 'structural-view')
       .sort((a, b) => (b.date > a.date ? 1 : -1));
   } catch { return []; }
-}
-
-const PHASES = [
-  {
-    phase: 1, title: 'Foundations', color: '#8B5CF6',
-    lessons: [
-      { week: 1, slug: 'crypto-101-what-is-blockchain', title: 'What Is Blockchain? (And Why Most Explanations Are Useless)', description: 'Distributed ledgers, nodes, consensus mechanisms — explained without the buzzword soup. How a Bitcoin transaction actually works, step by step.', imageKey: 'learn-w1-blockchain' },
-      { week: 2, slug: 'crypto-101-bitcoin-vs-ethereum', title: 'Bitcoin vs. Ethereum — The Only Differences That Actually Matter', description: 'Bitcoin is designed to be money. Ethereum is designed to be a computer. Everything else flows from that distinction.', imageKey: 'learn-w2-btc-eth' },
-      { week: 3, slug: 'crypto-101-wallets-explained', title: 'Crypto Wallets Explained — Hot, Cold, and Everything Between', description: "In 2025, hackers stole $3.4B in crypto. Your wallet doesn't hold coins — it holds keys. Here's the difference that could save your portfolio.", imageKey: 'learn-w3-wallets' },
-      { week: 4, slug: 'crypto-101-how-to-buy-crypto', title: 'How to Actually Buy Crypto Without Getting Scammed', description: 'Choosing a real exchange, understanding where the fees actually hide, and recognizing the red flags before they cost you anything.', imageKey: 'learn-w4-buy-crypto' },
-    ],
-  },
-  {
-    phase: 2, title: 'Yields, DeFi & Markets', color: '#3B82F6',
-    lessons: [
-      { week: 5, slug: 'crypto-101-staking-explained', title: 'Staking Explained — Free Money or Hidden Risk?', description: 'The real yields in 2026 (ETH pays 2.8–3.8%, not 15%), the inflation dilution nobody mentions, and a practical framework for beginners.', imageKey: 'learn-w5-staking' },
-      { week: 6, slug: 'crypto-101-defi-explained', title: 'DeFi for Normal People — What It Is and Why You Should Care', description: 'Lending, borrowing, DEXs, yield farming — and the risks that DeFi marketing never puts in the headline.', imageKey: 'learn-w6-defi' },
-      { week: 7, slug: 'crypto-101-chart-patterns', title: 'Reading Crypto Charts: The 5 Patterns That Actually Matter', description: 'Candlesticks, volume, support/resistance, and how to read a chart without fooling yourself.', imageKey: 'learn-w7-charts' },
-      { week: 8, slug: 'crypto-101-portfolio-basics', title: 'Portfolio Basics: How Much Crypto Should You Actually Own?', description: 'Total allocation, core-satellite strategy, three model portfolios, DCA, and rebalancing.', imageKey: 'learn-w8-portfolio' },
-    ],
-  },
-  {
-    phase: 3, title: 'Strategy & Beyond', color: '#D4A843',
-    lessons: [
-      { week: 9, slug: undefined, title: 'Layer 1 vs. Layer 2: Solana, Arbitrum, and the Scaling Wars', description: 'The blockchain trilemma, why Ethereum needs rollups, and what L2 fragmentation means for your portfolio.', imageKey: 'learn-w9-layer2' },
-      { week: 10, slug: undefined, title: 'NFTs in 2026: Dead or Evolving?', description: 'What died, what survived, Bitcoin Ordinals, soulbound tokens, and the honest verdict on what remains valuable.', imageKey: 'learn-w10-nfts' },
-      { week: 11, slug: undefined, title: 'Crypto Taxes: What the IRS Actually Wants From You', description: 'Every swap is a taxable event. Cost basis methods, Form 1099-DA, staking/DeFi treatment, and tax-loss harvesting.', imageKey: 'learn-w11-taxes' },
-      { week: 12, slug: undefined, title: 'Advanced Strategies: Yield Farming, Liquidity Pools, and When to Walk Away', description: 'DeFi yield strategies, impermanent loss explained, risk management framework, and a complete decision checklist.', imageKey: 'learn-w12-advanced' },
-    ],
-  },
-];
-
-function getCryptoLessons(): LessonItem[] {
-  return PHASES.flatMap(ph =>
-    ph.lessons.map(l => ({
-      ...l,
-      phase: ph.phase,
-      phaseTitle: ph.title,
-      phaseColor: ph.color,
-      thumb: manifest[l.imageKey]?.src || '',
-      thumbAlt: manifest[l.imageKey]?.alt || l.title,
-    }))
-  );
 }
 
 const QUANTUM_SLUGS: { slug: string; part: number; title: string; description: string }[] = [
@@ -199,6 +166,21 @@ const INTERMEDIATE_THUMBS: Record<string, string> = {
   'investing-101-intermediate-w24-when-to-sell':       '/images/content/INV-101-W24.webp',
 };
 
+const MASTERS_LESSONS: MastersLesson[] = [
+  { part: 1,  slug: 'masters-livermore',     subject: 'Livermore',    title: "Livermore Didn't Teach Prediction. He Taught Waiting.", description: "Jesse Livermore made $100M shorting the 1929 crash. He died broke at 63. The method worked. The man couldn't survive his own method. That's the lesson most investors miss.", thumb: '/images/content/livermore-masters-hero.webp', published: true },
+  { part: 2,  slug: 'masters-druckenmiller', subject: 'Druckenmiller', title: "Druckenmiller's Real Edge Wasn't Macro — It Was Knowing When He Was Wrong", description: '30% annualized for 30 years with zero losing years. Everyone studies his NVDA trade. Almost nobody studies why he\'d reverse it within weeks. The self-doubt is the strategy.', thumb: '/images/content/druckenmiller-masters-hero.webp', published: true },
+  { part: 3,  slug: 'masters-lynch-1',       subject: 'Peter Lynch',   title: 'The Peter Lynch Bible, Part 1: There\'s a Ten-Bagger Closer Than You Think', description: 'Lynch ran the best large fund in history for 13 years. His edge wasn\'t the Fidelity research machine. It was a checklist any retail investor can use.', thumb: '/images/content/masters-peter-lynch-part1-ten-bagger-hero.webp', published: true },
+  { part: 4,  slug: 'masters-lynch-2',       subject: 'Peter Lynch',   title: 'The Peter Lynch Bible, Part 2: Stocks Are Not All the Same', description: 'Why Peter Lynch\'s six-category framework still beats generic "value vs. growth" thinking — and how to use it before the market labels a stock for you.', thumb: '/images/content/masters-peter-lynch-part2-categories-hero.webp', published: true },
+  { part: 5,  slug: 'masters-lynch-3',       subject: 'Peter Lynch',   title: 'The Peter Lynch Bible, Part 3: The Cocktail Party Theory and the Psychology of Bear Markets', description: 'Lynch developed a real-world sentiment indicator at dinner parties. It\'s more reliable than most professional sentiment surveys — and completely free.', thumb: '/images/content/masters-peter-lynch-part3-cocktail-party-hero.webp', published: true },
+  { part: 6,  slug: 'masters-lynch-4',       subject: 'Peter Lynch',   title: 'The Peter Lynch Bible, Part 4: Numbers Don\'t Lie', description: 'Lynch\'s actual financial checklist — the numbers he looked at first, the ones he ignored, and why P/E alone tells you almost nothing useful.', thumb: '/images/content/masters-peter-lynch-part4-numbers-hero.webp', published: true },
+  { part: 7,  slug: 'masters-lynch-5',       subject: 'Peter Lynch',   title: 'The Peter Lynch Bible, Part 5: If Peter Lynch Were Investing in 2026', description: 'What would Lynch buy in 2026? Not predictions — the exact framework he\'d apply to AI, consumer trends, and where retail investors still have an information edge.', thumb: '/images/content/masters-peter-lynch-part5-2026-hero.webp', published: true },
+  { part: 8,  slug: 'masters-munger-1',      subject: 'Charlie Munger', title: "The Masters: Charlie Munger Part 1  --  Don't Try to Be Brilliant. Just Stop Doing Stupid Things.", description: 'Charlie Munger\'s most underrated insight: long-term compounding is less about brilliant decisions and more about systematically avoiding the predictable mistakes that destroy wealth.', thumb: '/images/content/masters-charlie-munger-part1-stupidity-hero.webp', published: true },
+  { part: 9,  slug: 'masters-munger-2',      subject: 'Charlie Munger', title: "The Masters: Charlie Munger Part 2  --  It's Not Ignorance That Ruins You. It's Ego.", description: 'Why the biggest threat to your portfolio is not the market — it\'s the narrative you construct to protect your self-image when a position goes wrong.', thumb: '/images/content/masters-charlie-munger-part2-ego-hero.webp', published: true },
+  { part: 10, slug: 'masters-munger-3',      subject: 'Charlie Munger', title: 'The Masters: Charlie Munger Part 3  --  When You Feel Safest, You May Be Most Exposed', description: 'Why the moments that feel the most stable in investing are often the most dangerous — and how Munger\'s framework teaches investors to distrust comfort.', thumb: '/images/content/masters-charlie-munger-part3-safety-hero.webp', published: true },
+  { part: 11, slug: 'masters-munger-4',      subject: 'Charlie Munger', title: "The Masters: Charlie Munger Part 4  --  The Fastest Road to Ruin Is the Desire to Get Rich Fast", description: 'Leverage, overconfidence, and the fatal seduction of speed. Why intelligent people blow up in markets not from ignorance, but from impatience.', thumb: '/images/content/masters-charlie-munger-part4-leverage-hero.webp', published: true },
+  { part: 12, slug: 'masters-munger-5',      subject: 'Charlie Munger', title: 'The Masters: Charlie Munger Part 5  --  The Quiet Truth of Compounding', description: 'Why investing should be boring, and why patience is a superpower. The investor who can tolerate silence has an advantage no market cycle can easily replicate.', thumb: '/images/content/masters-charlie-munger-part5-compounding-hero.webp', published: true },
+];
+
 const LEARN_DIR_PATH = path.join(process.cwd(), 'src/content/learn');
 
 function getIntermediateLessons(): InvestingLesson[] {
@@ -260,7 +242,6 @@ function getQuantumLessons(): QuantumLesson[] {
 
 export default function LearnPage() {
   const articles = getAllResearch();
-  const cryptoLessons = getCryptoLessons();
   const intermediateLessons = getIntermediateLessons();
   const quantumLessons = getQuantumLessons();
 
@@ -281,7 +262,7 @@ export default function LearnPage() {
           </p>
         </div>
 
-        <LearnClient articles={articles} cryptoLessons={cryptoLessons} intermediateLessons={intermediateLessons} quantumLessons={quantumLessons} />
+        <LearnClient articles={articles} mastersLessons={MASTERS_LESSONS} intermediateLessons={intermediateLessons} quantumLessons={quantumLessons} />
 
         {/* Philosophy */}
         <div style={{ padding: '22px', borderRadius: 14, background: '#0D1117', border: '1px solid #1E293B', marginTop: 36, marginBottom: 28 }}>

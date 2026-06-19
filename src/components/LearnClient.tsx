@@ -4,13 +4,13 @@ import { useState, useEffect } from 'react';
 import Image from 'next/image';
 import Link from 'next/link';
 import { fmtDateShort } from '@/lib/fmt-date';
-import type { ResearchItem, LessonItem, InvestingLesson, QuantumLesson } from '@/app/learn/page';
+import type { ResearchItem, InvestingLesson, QuantumLesson, MastersLesson } from '@/app/learn/page';
 
-type Tab = 'ALL' | 'CRYPTO 101' | 'INVESTING 101' | 'QUANTUM 101';
-const TABS: Tab[] = ['ALL', 'QUANTUM 101', 'INVESTING 101', 'CRYPTO 101'];
+type Tab = 'ALL' | 'THE MASTERS' | 'INVESTING 101' | 'QUANTUM 101';
+const TABS: Tab[] = ['ALL', 'THE MASTERS', 'QUANTUM 101', 'INVESTING 101'];
 const TAB_PARAM: Record<Tab, string> = {
   'ALL': 'all',
-  'CRYPTO 101': 'crypto-101',
+  'THE MASTERS': 'the-masters',
   'INVESTING 101': 'investing-101',
   'QUANTUM 101': 'quantum-101',
 };
@@ -20,7 +20,7 @@ const PARAM_TAB: Record<string, Tab> = Object.fromEntries(
 
 const TAB_COLOR: Record<Tab, string> = {
   'ALL': '#C73E3A',
-  'CRYPTO 101': '#8B5CF6',
+  'THE MASTERS': '#D4A843',
   'INVESTING 101': '#00D474',
   'QUANTUM 101': '#A78BFA',
 };
@@ -85,47 +85,6 @@ function ResearchCard({ a }: { a: ResearchItem }) {
   );
 }
 
-/* ─── Crypto lesson thumbnail card ─── */
-function LessonCard({ l }: { l: LessonItem }) {
-  const published = !!l.slug;
-  const inner = (
-    <div style={{ ...card, padding: 0, overflow: 'hidden', opacity: published ? 1 : 0.45 }}>
-      {l.thumb ? (
-        <Image src={l.thumb} alt={l.thumbAlt || l.title} width={1200} height={800} loading="lazy" sizes="(max-width: 640px) 100vw, (max-width: 1024px) 50vw, 400px" style={{ width: '100%', height: 'auto', display: 'block', background: '#0f172a' }} />
-      ) : (
-        <div style={{ width: '100%', aspectRatio: '16/9', background: `${l.phaseColor}18`, display: 'flex', alignItems: 'center', justifyContent: 'center' }}>
-          <span style={{ fontFamily: 'var(--mono)', fontSize: 10, fontWeight: 800, color: `${l.phaseColor}80`, letterSpacing: 1 }}>WEEK {l.week}</span>
-        </div>
-      )}
-      <div style={{ padding: '14px 16px 18px' }}>
-        <div style={{ display: 'flex', alignItems: 'center', gap: 7, marginBottom: 8, flexWrap: 'wrap' }}>
-          <span style={{ fontFamily: 'var(--mono)', fontSize: 9, fontWeight: 800, padding: '3px 9px', borderRadius: 5, background: '#8B5CF618', color: '#8B5CF6', border: '1px solid #8B5CF630', letterSpacing: 1 }}>
-            CRYPTO 101
-          </span>
-          <span style={{ fontFamily: 'var(--mono)', fontSize: 9, fontWeight: 700, padding: '2px 7px', borderRadius: 4, background: `${l.phaseColor}14`, color: l.phaseColor }}>
-            WEEK {l.week}
-          </span>
-          {!published && (
-            <span style={{ fontFamily: 'var(--mono)', fontSize: 9, fontWeight: 700, padding: '3px 8px', borderRadius: 4, background: '#D4A84318', color: '#D4A843', border: '1px solid #D4A84340', marginLeft: 'auto' }}>
-              COMING SOON
-            </span>
-          )}
-        </div>
-        <div style={{ fontFamily: 'var(--serif)', fontSize: 17, fontWeight: 800, color: '#F1F5F9', lineHeight: 1.4, marginBottom: 6 }}>{l.title}</div>
-        <p style={{ fontSize: 12, color: '#64748B', margin: 0, lineHeight: 1.55 }}>{l.description}</p>
-      </div>
-    </div>
-  );
-
-  return published ? (
-    <Link href={`/learn/${l.slug}`} style={{ textDecoration: 'none', display: 'block' }}>
-      {inner}
-    </Link>
-  ) : (
-    <div>{inner}</div>
-  );
-}
-
 /* ─── Investing lesson card (Beginner or Intermediate) ─── */
 function InvestingCard({ slug, title, description, thumb, week, published, accentColor }: {
   slug: string; title: string; description: string; thumb: string;
@@ -170,9 +129,9 @@ function CardGrid({ children }: { children: React.ReactNode }) {
 }
 
 /* ─── ALL tab ─── */
-function AllTab({ articles, cryptoLessons }: { articles: ResearchItem[]; cryptoLessons: LessonItem[] }) {
-  const publishedLessons = cryptoLessons.filter(l => l.slug);
-  const totalCount = articles.length + publishedLessons.length;
+function AllTab({ articles, mastersLessons }: { articles: ResearchItem[]; mastersLessons: MastersLesson[] }) {
+  const publishedMasters = mastersLessons.filter(l => l.published);
+  const totalCount = articles.length + publishedMasters.length;
 
   return (
     <div>
@@ -181,38 +140,60 @@ function AllTab({ articles, cryptoLessons }: { articles: ResearchItem[]; cryptoL
       </div>
       <CardGrid>
         {articles.map(a => <ResearchCard key={a.slug} a={a} />)}
-        {publishedLessons.map(l => <LessonCard key={l.slug} l={l} />)}
+        {publishedMasters.map(l => <MastersCard key={l.slug} {...l} />)}
       </CardGrid>
     </div>
   );
 }
 
-/* ─── CRYPTO 101 tab ─── */
-function Crypto101Tab({ lessons }: { lessons: LessonItem[] }) {
-  const published = lessons.filter(l => l.slug).length;
+/* ─── Masters card ─── */
+function MastersCard({ slug, title, description, thumb, part, subject }: MastersLesson) {
+  const accentColor = '#D4A843';
+  const inner = (
+    <div style={{ ...card, padding: 0, overflow: 'hidden' }}>
+      {thumb ? (
+        <Image src={thumb} alt={title} width={1920} height={1080} loading="lazy" sizes="(max-width: 640px) 100vw, (max-width: 1024px) 50vw, 400px" style={{ width: '100%', height: 'auto', display: 'block', background: '#0f172a' }} />
+      ) : (
+        <div style={{ width: '100%', aspectRatio: '16/9', background: `${accentColor}18`, display: 'flex', alignItems: 'center', justifyContent: 'center' }}>
+          <span style={{ fontFamily: 'var(--mono)', fontSize: 10, fontWeight: 800, color: `${accentColor}80`, letterSpacing: 1 }}>PART {part}</span>
+        </div>
+      )}
+      <div style={{ padding: '14px 16px 18px' }}>
+        <div style={{ display: 'flex', alignItems: 'center', gap: 7, marginBottom: 8, flexWrap: 'wrap' }}>
+          <span style={{ fontFamily: 'var(--mono)', fontSize: 9, fontWeight: 800, padding: '3px 9px', borderRadius: 5, background: '#BA751718', color: '#D4A843', border: '1px solid #BA751730', letterSpacing: 1 }}>
+            THE MASTERS
+          </span>
+          <span style={{ fontFamily: 'var(--mono)', fontSize: 9, fontWeight: 700, padding: '2px 7px', borderRadius: 4, background: '#BA751714', color: '#D4A843' }}>
+            {subject.toUpperCase()}
+          </span>
+        </div>
+        <div style={{ fontFamily: 'var(--serif)', fontSize: 17, fontWeight: 800, color: '#F1F5F9', lineHeight: 1.4, marginBottom: 6 }}>{title}</div>
+        <p style={{ fontSize: 12, color: '#64748B', margin: 0, lineHeight: 1.55 }}>{description}</p>
+      </div>
+    </div>
+  );
+  return (
+    <Link href={`/learn/${slug}`} style={{ textDecoration: 'none', display: 'block' }}>{inner}</Link>
+  );
+}
+
+/* ─── THE MASTERS tab ─── */
+function MastersTab({ lessons }: { lessons: MastersLesson[] }) {
+  const accentColor = '#D4A843';
   return (
     <div>
-      {/* Edition label */}
       <div style={{ display: 'flex', alignItems: 'center', gap: 8, marginBottom: 16 }}>
-        <span style={{ fontFamily: 'var(--mono)', fontSize: 9, fontWeight: 800, padding: '3px 10px', borderRadius: 5, background: '#8B5CF618', color: '#8B5CF6', border: '1px solid #8B5CF630', letterSpacing: 1 }}>CRYPTO 101</span>
-        <span style={{ fontFamily: 'var(--mono)', fontSize: 9, fontWeight: 700, padding: '3px 10px', borderRadius: 5, background: '#1E293B', color: '#64748B', letterSpacing: 1 }}>2026 EDITION</span>
+        <span style={{ fontFamily: 'var(--mono)', fontSize: 9, fontWeight: 800, padding: '3px 10px', borderRadius: 5, background: '#BA751718', color: accentColor, border: '1px solid #BA751730', letterSpacing: 1 }}>THE MASTERS</span>
+        <span style={{ fontFamily: 'var(--mono)', fontSize: 9, fontWeight: 700, padding: '3px 10px', borderRadius: 5, background: '#1E293B', color: '#64748B', letterSpacing: 1 }}>INVESTOR BIOGRAPHIES</span>
       </div>
-      <div style={{ display: 'flex', alignItems: 'center', gap: 16, marginBottom: 20, padding: '14px 18px', borderRadius: 12, background: '#0D1117', border: '1px solid #1E293B' }}>
-        <div style={{ flex: 1 }}>
-          <div style={{ display: 'flex', justifyContent: 'space-between', marginBottom: 6 }}>
-            <span style={{ fontFamily: 'var(--mono)', fontSize: 10, fontWeight: 700, color: '#8B5CF6' }}>CURRICULUM PROGRESS</span>
-            <span style={{ fontFamily: 'var(--mono)', fontSize: 10, color: '#64748B' }}>{published}/{lessons.length} PUBLISHED</span>
-          </div>
-          <div style={{ height: 5, background: '#1E293B', borderRadius: 3, overflow: 'hidden' }}>
-            <div style={{ height: '100%', width: `${(published / lessons.length) * 100}%`, background: 'linear-gradient(90deg, #8B5CF6, #6D28D9)', borderRadius: 3 }} />
-          </div>
-        </div>
-        <Link href="/learn/crypto-101" style={{ fontFamily: 'var(--mono)', fontSize: 11, color: '#8B5CF6', textDecoration: 'none', fontWeight: 700, flexShrink: 0 }}>
-          Full Curriculum →
-        </Link>
+      <div style={{ padding: '16px 20px', borderRadius: 12, background: '#0D1117', border: '1px solid #1E293B', marginBottom: 20 }}>
+        <p style={{ fontSize: 13, color: '#64748B', margin: '0 0 6px', lineHeight: 1.6 }}>
+          Deep-dives into how legendary investors actually think. Not mythology — methodology. Livermore, Druckenmiller, Peter Lynch, Charlie Munger.
+        </p>
+        <div style={{ fontFamily: 'var(--mono)', fontSize: 10, color: accentColor, fontWeight: 700 }}>{lessons.length} PARTS PUBLISHED</div>
       </div>
       <CardGrid>
-        {lessons.map(l => <LessonCard key={l.week} l={l} />)}
+        {lessons.map(l => <MastersCard key={l.slug} {...l} />)}
       </CardGrid>
     </div>
   );
@@ -403,9 +384,9 @@ function Quantum101Tab({ lessons }: { lessons: QuantumLesson[] }) {
 }
 
 /* ─── Main export ─── */
-export default function LearnClient({ articles, cryptoLessons, intermediateLessons, quantumLessons }: {
+export default function LearnClient({ articles, mastersLessons, intermediateLessons, quantumLessons }: {
   articles: ResearchItem[];
-  cryptoLessons: LessonItem[];
+  mastersLessons: MastersLesson[];
   intermediateLessons: InvestingLesson[];
   quantumLessons: QuantumLesson[];
 }) {
@@ -454,9 +435,9 @@ export default function LearnClient({ articles, cryptoLessons, intermediateLesso
         })}
       </div>
 
-      {activeTab === 'ALL'           && <AllTab articles={articles} cryptoLessons={cryptoLessons} />}
+      {activeTab === 'ALL'           && <AllTab articles={articles} mastersLessons={mastersLessons} />}
+      {activeTab === 'THE MASTERS'   && <MastersTab lessons={mastersLessons} />}
       {activeTab === 'QUANTUM 101'   && <Quantum101Tab lessons={quantumLessons} />}
-      {activeTab === 'CRYPTO 101'    && <Crypto101Tab lessons={cryptoLessons} />}
       {activeTab === 'INVESTING 101' && <Investing101Tab intermediateLessons={intermediateLessons} />}
     </>
   );
