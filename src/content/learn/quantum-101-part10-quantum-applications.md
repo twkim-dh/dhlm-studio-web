@@ -4,7 +4,7 @@ series: "Quantum Computing 101"
 week: 10
 slug: "quantum-101-part10-quantum-applications"
 description: "The real-world applications of quantum computing — from drug discovery and materials to finance, logistics, and energy — mapped by timing, with an honest assessment of what is real now vs. long-term."
-publishDate: "2026-06-23"
+publishDate: "2026-08-17"
 readingTime: "19 min"
 tags: ["Quantum Computing 101", "Quantum Applications", "Drug Discovery", "Finance", "Technology"]
 ---

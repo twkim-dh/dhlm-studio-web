@@ -4,7 +4,7 @@ series: "Quantum Computing 101"
 week: 3
 slug: "quantum-101-part3-neutral-atom"
 description: "How neutral-atom quantum computers use optical tweezers to arrange large qubit arrays, and what Atom Computing, QuEra, and Pasqal are building toward fault-tolerant scale."
-publishDate: "2026-06-23"
+publishDate: "2026-06-29"
 readingTime: "18 min"
 tags: ["Quantum Computing 101", "Neutral Atom", "Qubit Technologies", "Technology"]
 ---

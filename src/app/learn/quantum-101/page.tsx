@@ -4,6 +4,8 @@ import Image from 'next/image';
 import fs from 'fs';
 import path from 'path';
 
+export const revalidate = 86400;
+
 export const metadata: Metadata = {
   title: 'Quantum Computing 101 — 12-Part Investor Series | DHLM Studio',
   description: 'A 12-part series covering every major approach to quantum computing — superconducting, trapped-ion, photonic, and more — plus an investing framework for separating real platforms from expensive science projects.',

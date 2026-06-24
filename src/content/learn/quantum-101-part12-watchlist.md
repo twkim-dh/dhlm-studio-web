@@ -4,7 +4,7 @@ series: "Quantum Computing 101"
 week: 12
 slug: "quantum-101-part12-watchlist"
 description: "The complete quantum investing watchlist: large platforms, public pure-plays, key private companies, PQC/security, and supply-chain infrastructure — organized by layer and investing purpose for U.S. investors."
-publishDate: "2026-06-23"
+publishDate: "2026-08-31"
 readingTime: "20 min"
 tags: ["Quantum Computing 101", "Watchlist", "Investing", "IonQ", "Technology"]
 ---

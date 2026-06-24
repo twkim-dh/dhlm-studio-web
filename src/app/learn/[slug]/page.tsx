@@ -179,6 +179,7 @@ function getLessonSlugs(): string[] {
 }
 
 export const dynamicParams = true;
+export const revalidate = 86400;
 
 export function generateStaticParams() {
   return getLessonSlugs().map(slug => ({ slug }));
@@ -380,6 +381,7 @@ export default async function LearnLessonPage({ params }: { params: Promise<{ sl
   const inter = isIntermediate(slug);
   const quantum = isQuantum(slug);
   const masters = isMasters(slug);
+  if ((quantum || inter) && fm.publishDate && fm.publishDate > todayKST()) notFound();
   const ORDER = masters ? MASTERS_ORDER : quantum ? QUANTUM_ORDER : inter ? INTERMEDIATE_ORDER : BEGINNER_ORDER;
   const seriesIndex = ORDER.indexOf(slug);
   const prevSlug = seriesIndex > 0 ? ORDER[seriesIndex - 1] : null;

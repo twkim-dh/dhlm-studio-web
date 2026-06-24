@@ -4,7 +4,7 @@ series: "Quantum Computing 101"
 week: 11
 slug: "quantum-101-part11-investing-framework"
 description: "A complete framework for evaluating quantum computing companies: four layers, ten hardware questions, three company groups, seven valuation traps, and a timeline from 2026 to the fault-tolerant era."
-publishDate: "2026-06-23"
+publishDate: "2026-08-24"
 readingTime: "18 min"
 tags: ["Quantum Computing 101", "Investing", "Framework", "IonQ", "Technology"]
 ---

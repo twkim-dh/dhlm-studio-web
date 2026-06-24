@@ -4,7 +4,7 @@ series: "Quantum Computing 101"
 week: 4
 slug: "quantum-101-part4-photonic"
 description: "How photonic quantum computers use particles of light as qubits, and why PsiQuantum, Xanadu, and Quandela represent quantum computing's networking and manufacturing scalability bet."
-publishDate: "2026-06-23"
+publishDate: "2026-07-06"
 readingTime: "17 min"
 tags: ["Quantum Computing 101", "Photonic", "Qubit Technologies", "Technology"]
 ---

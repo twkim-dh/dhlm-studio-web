@@ -4,7 +4,7 @@ series: "Quantum Computing 101"
 week: 8
 slug: "quantum-101-part8-software-cloud"
 description: "Why IBM Qiskit, Microsoft Azure Quantum, Amazon Braket, and Google Cirq form quantum computing's essential operating system layer — and why whoever makes quantum usable may hold the strongest long-term position."
-publishDate: "2026-06-23"
+publishDate: "2026-08-03"
 readingTime: "20 min"
 tags: ["Quantum Computing 101", "Quantum Software", "Cloud Platforms", "IBM", "Microsoft", "Technology"]
 ---

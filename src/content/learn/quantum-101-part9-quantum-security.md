@@ -4,7 +4,7 @@ series: "Quantum Computing 101"
 week: 9
 slug: "quantum-101-part9-quantum-security"
 description: "How NIST's post-quantum cryptography standards (ML-KEM, ML-DSA, SLH-DSA) are changing cybersecurity now — and why the encryption-replacement market can open before quantum computers are commercialized at scale."
-publishDate: "2026-06-23"
+publishDate: "2026-08-10"
 readingTime: "18 min"
 tags: ["Quantum Computing 101", "Post-Quantum Cryptography", "Cybersecurity", "NIST", "Technology"]
 ---

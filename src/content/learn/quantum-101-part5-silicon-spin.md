@@ -4,7 +4,7 @@ series: "Quantum Computing 101"
 week: 5
 slug: "quantum-101-part5-silicon-spin"
 description: "How silicon-spin quantum computers use electron spin in quantum dots — the approach most similar to existing semiconductor manufacturing — and what Intel, Diraq, and Quantum Motion are building."
-publishDate: "2026-06-23"
+publishDate: "2026-07-13"
 readingTime: "18 min"
 tags: ["Quantum Computing 101", "Silicon Spin", "Semiconductor", "Qubit Technologies", "Technology"]
 ---

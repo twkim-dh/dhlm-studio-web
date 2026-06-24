@@ -4,6 +4,8 @@ import path from 'path';
 import LearnClient from '@/components/LearnClient';
 import unsplashManifest from '@/data/unsplash-manifest.json';
 
+export const revalidate = 86400;
+
 export const metadata: Metadata = {
   title: 'Brutal Edge Academy — Learn Investing | DHLM Studio',
   description: 'Learn investing the way it actually works. The Masters, Investing 101, Quantum 101 — data-driven, zero hype, Brutal Edge style.',

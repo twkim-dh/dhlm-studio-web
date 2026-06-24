@@ -4,7 +4,7 @@ series: "Quantum Computing 101"
 week: 6
 slug: "quantum-101-part6-topological"
 description: "How Microsoft's Majorana 1 pursues error-resistant topological qubits — quantum computing's most elegant approach if proven, and the most contested in the scientific community."
-publishDate: "2026-06-23"
+publishDate: "2026-07-20"
 readingTime: "18 min"
 tags: ["Quantum Computing 101", "Topological", "Microsoft", "Majorana", "Qubit Technologies", "Technology"]
 ---

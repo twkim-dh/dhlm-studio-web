@@ -4,7 +4,7 @@ series: "Quantum Computing 101"
 week: 7
 slug: "quantum-101-part7-quantum-annealing"
 description: "How D-Wave's quantum annealing approach specializes in solving combinatorial optimization problems — the most commercially connected quantum approach today — and what its dual-platform strategy means."
-publishDate: "2026-06-23"
+publishDate: "2026-07-27"
 readingTime: "19 min"
 tags: ["Quantum Computing 101", "Quantum Annealing", "D-Wave", "Optimization", "Technology"]
 ---
