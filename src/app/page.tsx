@@ -157,7 +157,7 @@ export default function Home() {
               return (
                 <Link key={r.slug} href={`/reports/${r.slug}`} style={{ ...card, padding: 0, textDecoration: 'none', display: 'block', borderColor: `${r.catColor}40`, overflow: 'hidden' }}>
                   {r.heroImage ? (
-                    <Image src={r.heroImage} alt={r.title} width={1200} height={800} quality={65} priority={idx === 0} unoptimized={idx === 0} loading={idx === 0 ? 'eager' : 'lazy'} sizes="(max-width: 640px) calc(100vw - 48px), (max-width: 860px) calc(50vw - 32px), 246px" style={{ width: '100%', height: 'auto', display: 'block', background: '#0f172a' }} />
+                    <Image src={r.heroImage} alt={r.title} width={1920} height={1080} quality={65} priority={idx === 0} unoptimized={idx === 0} loading={idx === 0 ? 'eager' : 'lazy'} sizes="(max-width: 640px) calc(100vw - 48px), (max-width: 860px) calc(50vw - 32px), 246px" style={{ width: '100%', height: 'auto', display: 'block', background: '#0f172a' }} />
                   ) : (
                     <div style={{ width: '100%', aspectRatio: '16/9', background: `linear-gradient(135deg, ${r.catColor}20, #0f172a)`, display: 'flex', alignItems: 'center', justifyContent: 'center' }}>
                       <span style={{ fontFamily: 'var(--mono)', fontSize: 22, fontWeight: 900, color: `${r.catColor}80` }}>{r.ticker || '—'}</span>
@@ -199,7 +199,7 @@ export default function Home() {
               {latestReports.map(r => (
                 <Link key={r.slug} href={`/reports/${r.slug}`} style={{ ...card, padding: 0, textDecoration: 'none', display: 'block', overflow: 'hidden' }}>
                   {r.heroImage ? (
-                    <Image src={r.heroImage} alt={r.title} width={1200} height={800} quality={65} loading="lazy" sizes="(max-width: 640px) calc(100vw - 48px), (max-width: 800px) calc(50vw - 32px), 376px" style={{ width: '100%', height: 'auto', display: 'block', background: '#0f172a' }} />
+                    <Image src={r.heroImage} alt={r.title} width={1920} height={1080} quality={65} loading="lazy" sizes="(max-width: 640px) calc(100vw - 48px), (max-width: 800px) calc(50vw - 32px), 376px" style={{ width: '100%', height: 'auto', display: 'block', background: '#0f172a' }} />
                   ) : (
                     <div style={{ width: '100%', aspectRatio: '16/9', background: `linear-gradient(135deg, ${r.catColor}18, #0f172a)`, display: 'flex', alignItems: 'center', justifyContent: 'center' }}>
                       <span style={{ fontFamily: 'var(--mono)', fontSize: 18, fontWeight: 900, color: `${r.catColor}70` }}>{r.ticker || '—'}</span>
@@ -241,7 +241,7 @@ export default function Home() {
                 return (
                   <Link key={a.slug} href={`/research/${a.slug}`} style={{ ...card, padding: 0, textDecoration: 'none', display: 'block', overflow: 'hidden', borderColor: c.border }}>
                     {a.heroImage ? (
-                      <Image src={a.heroImage} alt={a.title} width={1200} height={800} quality={65} loading="lazy" sizes="(max-width: 640px) calc(100vw - 48px), (max-width: 800px) calc(50vw - 32px), 376px" style={{ width: '100%', height: 'auto', display: 'block', background: '#0f172a' }} />
+                      <Image src={a.heroImage} alt={a.title} width={1920} height={1080} quality={65} loading="lazy" sizes="(max-width: 640px) calc(100vw - 48px), (max-width: 800px) calc(50vw - 32px), 376px" style={{ width: '100%', height: 'auto', display: 'block', background: '#0f172a' }} />
                     ) : (
                       <div style={{ width: '100%', aspectRatio: '16/9', background: `linear-gradient(135deg, ${c.bg}, #0f172a)`, display: 'flex', alignItems: 'center', justifyContent: 'center' }}>
                         <span style={{ fontSize: 28 }}>🧠</span>
