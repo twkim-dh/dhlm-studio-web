@@ -55,7 +55,7 @@ function getAllReports(): ReportMeta[] {
         if ((raw.startsWith('"') && raw.endsWith('"')) || (raw.startsWith("'") && raw.endsWith("'"))) raw = raw.slice(1, -1);
         fm[m[1]] = raw !== '' && !isNaN(Number(raw)) ? Number(raw) : raw;
       });
-      const pubDate = String(fm['publishDate'] || fm['date'] || '');
+      const pubDate = String(fm['publishDate'] || fm['date'] || '').slice(0, 10);
       if (pubDate > today) return null;
       return fm as unknown as ReportMeta;
     }).filter(Boolean).sort((a, b) => (b!.date > a!.date ? 1 : -1)) as ReportMeta[];
