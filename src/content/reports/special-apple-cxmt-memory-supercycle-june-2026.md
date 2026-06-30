@@ -2,6 +2,7 @@
 title: "The Memory Floor: Why Apple's CXMT Gambit Shows Micron, Samsung, and SK hynix Still Hold the Edge"
 slug: "special-apple-cxmt-memory-supercycle-june-2026"
 description: "Apple is lobbying Washington to buy DRAM from a Chinese chipmaker named on the Pentagon's 1260H list. Most read it as a sourcing story. As a Micron holder, I read it as confirmation that in the AI era, the companies that make memory — Micron, Samsung, SK hynix — may still hold the edge."
+date: "2026-06-30"
 publishDate: "2026-06-30T12:30:00Z"
 category: "Reports"
 subcategory: "Special Report"
