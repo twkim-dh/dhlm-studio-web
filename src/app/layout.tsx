@@ -32,29 +32,29 @@ const YEAR = new Date().getFullYear();
 export const metadata: Metadata = {
   metadataBase: new URL("https://dhlm-studio.com"),
   title: {
-    default: `DHLM Studio — Brutal Edge™ Financial Analysis`,
+    default: `DHLM Studio — One Investor's Notes`,
     template: `%s | DHLM Studio`,
   },
-  description: `Deep-dive research on AI, semiconductor, and quantum computing stocks. BEAF scoring methodology. Institutional-grade analysis for long-term investors.`,
+  description: `I research the stocks I invest in, and share what I find. Notes on AI, semiconductors, quantum computing, and the companies I hold.`,
   keywords: [
-    "DHLM Studio", "Brutal Edge", "Deep Dive reports", "BEAF framework",
-    "stock analysis", "crypto analysis", "investing education", "financial research",
-    "The Mental Game", "The Structural View", "The Masters", "long-term investing",
+    "DHLM Studio", "individual investor", "stock research", "investment notes",
+    "AI stocks", "semiconductor investing", "quantum computing stocks", "Micron", "IonQ",
+    "personal finance", "long-term investing", "portfolio notes",
   ],
   openGraph: {
-    title: `DHLM Studio — Brutal Edge™ Financial Analysis`,
-    description: `Deep-dive research on AI, semiconductor, and quantum computing stocks. BEAF scoring methodology. Institutional-grade analysis for long-term investors.`,
+    title: `DHLM Studio — One Investor's Notes`,
+    description: `I research the stocks I invest in, and share what I find. Notes on AI, semiconductors, quantum computing, and the companies I hold.`,
     url: "https://dhlm-studio.com",
     siteName: "DHLM Studio",
     locale: "en_US",
     type: "website",
-    images: [{ url: "/opengraph-image", width: 1200, height: 630, alt: "DHLM Studio — Brutal Edge Market Intelligence" }],
+    images: [{ url: "/opengraph-image", width: 1200, height: 630, alt: "DHLM Studio — One Investor's Notes" }],
   },
   twitter: {
     card: "summary_large_image",
-    title: "DHLM Studio — Brutal Edge™ Financial Analysis",
-    description: "Deep-dive research on AI, semiconductor, and quantum computing stocks. BEAF scoring methodology. Institutional-grade analysis for long-term investors.",
-    images: [{ url: "https://dhlm-studio.com/twitter-image", width: 1200, height: 630, alt: "DHLM Studio — Brutal Edge Market Intelligence" }],
+    title: "DHLM Studio — One Investor's Notes",
+    description: "I research the stocks I invest in, and share what I find. Notes on AI, semiconductors, quantum computing, and the companies I hold.",
+    images: [{ url: "https://dhlm-studio.com/twitter-image", width: 1200, height: 630, alt: "DHLM Studio — One Investor's Notes" }],
   },
   // No root-level canonical — each page sets its own via alternates.canonical.
   // A root canonical pointing to "/" would be inherited by any page that
@@ -101,7 +101,7 @@ export default function RootLayout({
             "name": "DHLM Studio",
             "url": "https://dhlm-studio.com",
             "logo": "https://dhlm-studio.com/favicon.ico",
-            "description": "Brutal Edge financial analysis: Deep Dive reports, The Mental Game, investing education. For serious long-term investors.",
+            "description": "One investor's research notes on AI, semiconductor, and quantum computing stocks.",
             "sameAs": ["https://github.com/twkim-dh"],
             "contactPoint": { "@type": "ContactPoint", "email": "dhlmstudio2026@gmail.com" }
           })}}
@@ -114,11 +114,11 @@ export default function RootLayout({
             "@type": "WebSite",
             "name": "DHLM Studio",
             "url": "https://dhlm-studio.com",
-            "description": "Brutal Edge financial analysis: Deep Dive reports, The Mental Game, investing education.",
+            "description": "One investor's research notes on AI, semiconductor, and quantum computing stocks.",
           })}}
         />
       </head>
-      <body style={{ background: '#0B0F19', color: '#F1F5F9', fontFamily: "'DM Sans', -apple-system, sans-serif" }} className="min-h-screen flex flex-col">
+      <body style={{ background: '#FFFFFF', color: '#1A1D21', fontFamily: "'DM Sans', -apple-system, sans-serif" }} className="min-h-screen flex flex-col">
         <a href="#main-content" className="skip-to-content">Skip to content</a>
         <Header />
         <main id="main-content" className="flex-1 pb-14 md:pb-0">{children}</main>

@@ -1,7 +1,9 @@
 ---
 title: "The Memory Floor: Why Apple's CXMT Gambit Shows Micron, Samsung, and SK hynix Still Hold the Edge"
+title_ko: "메모리의 바닥: 애플의 CXMT 도박이 마이크론·삼성·SK하이닉스의 강세를 보여주는 이유"
 slug: "special-apple-cxmt-memory-supercycle-june-2026"
 description: "Apple is lobbying Washington to buy DRAM from a Chinese chipmaker named on the Pentagon's 1260H list. Most read it as a sourcing story. As a Micron holder, I read it as confirmation that in the AI era, the companies that make memory — Micron, Samsung, SK hynix — may still hold the edge."
+description_ko: "애플이 펜타곤 1260H 목록에 올라있는 중국 반도체 기업에서 DRAM을 구매하려 워싱턴에 로비 중이다. 대부분은 공급망 이야기로 읽는다. 마이크론 보유자인 나는 이를 다르게 읽는다 — AI 시대에 메모리를 만드는 기업들이 여전히 우위를 가질 수 있다는 확인으로."
 date: "2026-06-30"
 publishDate: "2026-06-30T12:30:00Z"
 category: "Reports"
@@ -10,8 +12,9 @@ type: "special-report"
 badge: "special-report"
 catColor: "#A78BFA"
 readingTime: "13 min"
-byline: "Brutal Edge Team"
+byline: "DHLM Studio"
 disclosure: "The author holds a position in Micron (MU), discussed throughout this report. This is disclosed for transparency and the analysis is deliberately balanced with the bear case and risks."
+disclosure_ko: "이 리포트의 저자는 마이크론(MU) 포지션을 보유하고 있습니다. 투명성을 위해 공개하며, 분석은 강세 논거와 함께 약세 논거도 균형 있게 서술했습니다."
 tags:
   - Micron
   - MU
