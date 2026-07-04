@@ -1,0 +1,326 @@
+
+=== REPORTS === (총 30개)
+
+1. IonQ Special Report Vol.3: The Price of Admission
+   URL: dhlm-studio.com/reports/special-ionq-vol3-price-of-admission-april-2026
+   Date: 2026-04-18T12:30:00Z
+   Category: Reports / Special Report [special-report]
+   ReadTime: 22 min | Words: 3330
+   HeroImage: /images/content/special-ionq-vol3-price-of-admission-hero.png
+
+2. IonQ Special Report Vol.2: The Vertical Integration Bet
+   URL: dhlm-studio.com/reports/special-ionq-vol2-vertical-integration-april-2026
+   Date: 2026-04-18T12:30:00Z
+   Category: Reports / Special Report [special-report]
+   ReadTime: 22 min | Words: 3041
+   HeroImage: /images/content/special-ionq-vol2-vertical-integration-hero.png
+
+3. IonQ Special Report Vol.1: The Re-Categorization
+   URL: dhlm-studio.com/reports/special-ionq-vol1-recategorization-april-2026
+   Date: 2026-04-18T12:30:00Z
+   Category: Reports / Special Report [special-report]
+   ReadTime: 20 min | Words: 2508
+   HeroImage: /images/content/special-ionq-vol1-recategorization-hero.png
+
+4. Navitas Semiconductor (NVTS): The Hidden AI Infrastructure Bet Nobody Priced
+   URL: dhlm-studio.com/reports/navitas-nvts-ai-power-infrastructure-special-report-april-2026
+   Date: 2026-04-17
+   Category: Special Report [special]
+   ReadTime: 18 min | Words: 2819
+   HeroImage: /images/content/navitas-nvts-hero.png
+
+5. Netflix Q1 2026: A -9.72% Selloff That Misreads the Transition
+   URL: dhlm-studio.com/reports/deep-dive-nflx-april-2026
+   Date: 2026-04-17
+   Category: Media
+   ReadTime: 14 min | Words: 2029
+   HeroImage: /images/content/deepdive-nflx-april-2026-hero.png
+
+6. The CLARITY Act: Who Owns the Toll Roads When Crypto Gets Legal Roads
+   URL: dhlm-studio.com/reports/clarity-act-digital-asset-market-structure-april-2026
+   Date: 2026-04-17
+   Category: Special Report
+   ReadTime: 14 min | Words: 1678
+   HeroImage: /images/content/clarity-act-digital-asset-market-structure-hero.png
+
+7. NVIDIA Ising: Why the Quantum Control Plane Matters More Than the Qubits
+   URL: dhlm-studio.com/reports/nvidia-ising-quantum-control-plane-april-2026
+   Date: 2026-04-16
+   Category: Special Report
+   ReadTime: 15 min | Words: 1591
+   HeroImage: /images/content/nvidia-ising-quantum-control-plane-hero.png
+
+8. New Space: The $1 Trillion Sector That Stopped Being Science Fiction
+   URL: dhlm-studio.com/reports/new-space-sector-report-april-2026
+   Date: 2026-04-16
+   Category: Special Report
+   ReadTime: 20 min | Words: 1512
+   HeroImage: /images/content/new-space-hero.png
+
+9. Redwire (RDW): From Space Infrastructure to Defense Autonomy
+   URL: dhlm-studio.com/reports/deep-dive-rdw-redwire-april-2026
+   Date: 2026-04-16
+   Category: Deep Dive
+   ReadTime: 15 min | Words: 1293
+   HeroImage: /images/content/rdw-redwire-hero.png
+
+10. NVIDIA (NVDA): Building the AI Factory for the Age of Intelligence
+   URL: dhlm-studio.com/reports/deep-dive-nvda-april-2026
+   Date: 2026-04-16
+   Category: Deep Dive
+   ReadTime: 18 min | Words: 1375
+   HeroImage: /images/content/nvda-ai-factory-hero.png
+
+11. AI as a Financial-System Threat: Anthropic's Mythos Moment and What It Means for Your Portfolio
+   URL: dhlm-studio.com/reports/ai-cybersecurity-threat-mythos-report-april-2026
+   Date: 2026-04-16
+   Category: Special Report
+   ReadTime: 18 min | Words: 1393
+   HeroImage: /images/content/ai-cybersecurity-mythos-hero.png
+
+12. Circle Internet Group (CRCL): The Stablecoin Leader That Fell Hard — and May Still Matter
+   URL: dhlm-studio.com/reports/deep-dive-crcl-circle-april-2026
+   Date: 2026-04-15
+   Category: Deep Dive
+   ReadTime: 12 min | Words: 1178
+   HeroImage: (없음)
+
+13. Crypto Treasury Stocks: Leveraged Genius or Financial Engineering Gone Too Far?
+   URL: dhlm-studio.com/reports/crypto-treasury-sector-report-april-2026
+   Date: 2026-04-15
+   Category: Special Report
+   ReadTime: 20 min | Words: 2283
+   HeroImage: (없음)
+
+14. Quantum Sector Special Report: Not Commercialization Complete — An Investable Early-Stage Industry
+   URL: dhlm-studio.com/reports/quantum-sector-special-report-april-2026
+   Date: 2026-04-14
+   Category: Special Report
+   ReadTime: 18 min | Words: 2476
+   HeroImage: /images/content/deep-dive-report.png
+
+15. Leveraged ETFs in the U.S. Market — April 2026 Analysis
+   URL: dhlm-studio.com/reports/leveraged-etf-report-april-2026
+   Date: 2026-04-14
+   Category: Markets [special]
+   ReadTime: 14 min | Words: 2558
+   HeroImage: (없음)
+
+16. Ethereum Special Report: Is ETH a Recovery Asset or a Re-Rating Asset in 2026?
+   URL: dhlm-studio.com/reports/ethereum-special-report-april-2026
+   Date: 2026-04-14
+   Category: Crypto
+   ReadTime: 16 min | Words: 2513
+   HeroImage: /images/content/spotlight-crypto.png
+
+17. Anthropic: Private Investor Report — April 2026
+   URL: dhlm-studio.com/reports/anthropic-private-investor-report-april-2026
+   Date: 2026-04-14
+   Category: Special Report [special]
+   ReadTime: 18 min | Words: 2178
+   HeroImage: /images/content/anthropic-hero.jpg
+
+18. SpaceX IPO Special Report: The $1.75 Trillion Question
+   URL: dhlm-studio.com/reports/spacex-ipo-special-report
+   Date: 2026-04-12
+   Category: Special Report
+   ReadTime: 18 min | Words: 2583
+   HeroImage: /images/content/spacex-ipo-hero.png
+
+19. Deep Dive: Ethereum — April 2026 Analysis
+   URL: dhlm-studio.com/reports/deep-dive-eth-april-2026
+   Date: 2026-04-11
+   Category: Crypto
+   ReadTime: 14 min | Words: 1521
+   HeroImage: /images/content/ethereum-deep-dive-april-2026-hero.png
+
+20. After the Spike: 5 Energy Stocks Still Built to Win if the Iran War Premium Lingers
+   URL: dhlm-studio.com/reports/hot-sector-energy-april-2026
+   Date: 2026-04-08
+   Category: Markets
+   ReadTime: 12 min | Words: 3047
+   HeroImage: /images/content/energy-iran-war-hero.png
+
+21. Bitcoin's April 2026 Crossroads: Repricing, Not Euphoria
+   URL: dhlm-studio.com/reports/btc-crossroads-april-2026
+   Date: 2026-04-08
+   Category: Crypto
+   ReadTime: 15 min | Words: 2872
+   HeroImage: /images/content/btc-crossroads-hero.png
+
+22. Deep Dive: Bitcoin — April 2026 Analysis
+   URL: dhlm-studio.com/reports/deep-dive-btc-april-2026
+   Date: 2026-04-07
+   Category: Crypto
+   ReadTime: 14 min | Words: 3605
+   HeroImage: /images/content/btc-crossroads-hero.png
+
+23. Deep Dive: Palantir — April 2026 Analysis
+   URL: dhlm-studio.com/reports/deep-dive-pltr-april-2026
+   Date: 2026-04-06
+   Category: Markets
+   ReadTime: 14 min | Words: 3337
+   HeroImage: /images/content/deep-dive-report.png
+
+24. Deep Dive: Tesla — April 2026 Analysis
+   URL: dhlm-studio.com/reports/deep-dive-tsla-april-2026
+   Date: 2026-04-05
+   Category: Markets
+   ReadTime: 14 min | Words: 2225
+   HeroImage: /images/content/deep-dive-report.png
+
+25. Deep Dive: AMD — April 2026 Analysis
+   URL: dhlm-studio.com/reports/deep-dive-amd-april-2026
+   Date: 2026-04-05
+   Category: Markets
+   ReadTime: 14 min | Words: 3488
+   HeroImage: /images/content/deep-dive-report.png
+
+26. Deep Dive: Meta Platforms — April 2026 Analysis
+   URL: dhlm-studio.com/reports/deep-dive-meta-april-2026
+   Date: 2026-04-04
+   Category: Markets
+   ReadTime: 14 min | Words: 3004
+   HeroImage: /images/content/deep-dive-report.png
+
+27. Deep Dive: Amazon — April 2026 Analysis
+   URL: dhlm-studio.com/reports/deep-dive-amzn-april-2026
+   Date: 2026-04-04
+   Category: Markets
+   ReadTime: 14 min | Words: 2894
+   HeroImage: /images/content/deep-dive-report.png
+
+28. Deep Dive: Alphabet/Google — April 2026 Analysis
+   URL: dhlm-studio.com/reports/deep-dive-googl-april-2026
+   Date: 2026-04-03
+   Category: Markets
+   ReadTime: 14 min | Words: 3361
+   HeroImage: /images/content/deep-dive-report.png
+
+29. Deep Dive: Apple — April 2026 Analysis
+   URL: dhlm-studio.com/reports/deep-dive-aapl-april-2026
+   Date: 2026-04-03
+   Category: Markets
+   ReadTime: 13 min | Words: 2330
+   HeroImage: /images/content/deep-dive-report.png
+
+30. Deep Dive: Microsoft — April 2026 Analysis
+   URL: dhlm-studio.com/reports/deep-dive-msft-april-2026
+   Date: 2026-04-02
+   Category: Markets
+   ReadTime: 14 min | Words: 2981
+   HeroImage: /images/content/deep-dive-report.png
+
+
+=== BLOG === (총 12개)
+
+1. The Masters: Charlie Munger Part 5 — The Quiet Truth of Compounding
+   URL: dhlm-studio.com/blog/masters-charlie-munger-part5-compounding-june-2026
+   Date: 2026-06-26T12:30:00Z
+   Category: Blog / The Masters [masters]
+   ReadTime: 19 min | Words: 2732
+   HeroImage: /images/content/masters-charlie-munger-part5-compounding-hero.png
+
+2. The Masters: Charlie Munger Part 4 — The Fastest Road to Ruin Is the Desire to Get Rich Fast
+   URL: dhlm-studio.com/blog/masters-charlie-munger-part4-leverage-june-2026
+   Date: 2026-06-19T12:30:00Z
+   Category: Blog / The Masters [masters]
+   ReadTime: 18 min | Words: 2637
+   HeroImage: /images/content/masters-charlie-munger-part4-leverage-hero.png
+
+3. The Masters: Charlie Munger Part 3 — When You Feel Safest, You May Be Most Exposed
+   URL: dhlm-studio.com/blog/masters-charlie-munger-part3-safety-june-2026
+   Date: 2026-06-12T12:30:00Z
+   Category: Blog / The Masters [masters]
+   ReadTime: 17 min | Words: 2520
+   HeroImage: /images/content/masters-charlie-munger-part3-safety-hero.png
+
+4. The Masters: Charlie Munger Part 2 — It's Not Ignorance That Ruins You. It's Ego.
+   URL: dhlm-studio.com/blog/masters-charlie-munger-part2-ego-june-2026
+   Date: 2026-06-05T12:30:00Z
+   Category: Blog / The Masters [masters]
+   ReadTime: 17 min | Words: 2676
+   HeroImage: /images/content/masters-charlie-munger-part2-ego-hero.png
+
+5. The Masters: Charlie Munger Part 1 — Don't Try to Be Brilliant. Just Stop Doing Stupid Things.
+   URL: dhlm-studio.com/blog/masters-charlie-munger-part1-stupidity-may-2026
+   Date: 2026-05-29T12:30:00Z
+   Category: Blog / The Masters [masters]
+   ReadTime: 16 min | Words: 2443
+   HeroImage: /images/content/masters-charlie-munger-part1-stupidity-hero.png
+
+6. The Peter Lynch Bible, Part 5: If Peter Lynch Were Investing in 2026
+   URL: dhlm-studio.com/blog/masters-peter-lynch-part5-2026-synthesis-april-2026
+   Date: 2026-04-17
+   Category: Blog / The Masters [masters]
+   ReadTime: 18 min | Words: 2909
+   HeroImage: /images/content/masters-peter-lynch-part5-2026-hero.png
+
+7. The Peter Lynch Bible, Part 4: Numbers Don't Lie
+   URL: dhlm-studio.com/blog/masters-peter-lynch-part4-numbers-april-2026
+   Date: 2026-04-17
+   Category: Blog / The Masters [masters]
+   ReadTime: 17 min | Words: 2875
+   HeroImage: /images/content/masters-peter-lynch-part4-numbers-hero.png
+
+8. The Peter Lynch Bible, Part 3: The Cocktail Party Theory and the Psychology of Bear Markets
+   URL: dhlm-studio.com/blog/masters-peter-lynch-part3-cocktail-party-april-2026
+   Date: 2026-04-17
+   Category: Blog / The Masters [masters]
+   ReadTime: 17 min | Words: 3056
+   HeroImage: /images/content/masters-peter-lynch-part3-cocktail-party-hero.png
+
+9. The Peter Lynch Bible, Part 2: Stocks Are Not All the Same
+   URL: dhlm-studio.com/blog/masters-peter-lynch-part2-six-categories-april-2026
+   Date: 2026-04-17
+   Category: Blog / The Masters [masters]
+   ReadTime: 16 min | Words: 2487
+   HeroImage: /images/content/masters-peter-lynch-part2-categories-hero.png
+
+10. The Peter Lynch Bible, Part 1: There's a Ten-Bagger Closer Than You Think
+   URL: dhlm-studio.com/blog/masters-peter-lynch-part1-ten-bagger-april-2026
+   Date: 2026-04-17
+   Category: Blog / The Masters [masters]
+   ReadTime: 14 min | Words: 2232
+   HeroImage: /images/content/masters-peter-lynch-part1-ten-bagger-hero.png
+
+11. Livermore Didn't Teach Prediction. He Taught Waiting.
+   URL: dhlm-studio.com/blog/masters-jesse-livermore-price-confirmation-april-2026
+   Date: 2026-04-17
+   Category: Blog / The Masters [masters]
+   ReadTime: 15 min | Words: 2382
+   HeroImage: /images/content/livermore-masters-hero.png
+
+12. Druckenmiller's Real Edge Wasn't Macro — It Was Knowing When He Was Wrong
+   URL: dhlm-studio.com/blog/masters-stanley-druckenmiller-real-edge-april-2026
+   Date: 2026-04-10
+   Category: The Masters [masters]
+   ReadTime: 14 min | Words: 1598
+   HeroImage: /images/content/druckenmiller-masters-hero.png
+
+
+=== RESEARCH === (총 3개)
+
+1. The Structural View Vol.1: Palantir Builds the Control Tower. Anthropic Launches the Probe.
+   URL: dhlm-studio.com/research/structural-view-001-palantir-vs-anthropic-april-2026
+   Date: 2026-04-19
+   Category: Research / The Structural View [structural-view]
+   ReadTime: 19 min | Words: 3243
+   HeroImage: /images/content/structural-view-001-palantir-vs-anthropic-hero.png
+
+2. The Mental Game #002: How to Survive an AI Bubble Without Denying the Technology
+   URL: dhlm-studio.com/research/mental-game-002-ai-bubble-survival
+   Date: 2026-04-17
+   Category: Research / The Mental Game [mental-game]
+   ReadTime: 17 min | Words: 3059
+   HeroImage: /images/content/mental-game-002-ai-bubble-survival-hero.png
+
+3. The Mental Game #001: Why Bull Markets Make You Worse at Investing
+   URL: dhlm-studio.com/research/mental-game-001-bull-market-psychology
+   Date: 2026-04-17
+   Category: Research / The Mental Game [mental-game]
+   ReadTime: 15 min | Words: 2927
+   HeroImage: /images/content/mental-game-001-bull-market-psychology-hero.png
+
+---
+전체: 45개
