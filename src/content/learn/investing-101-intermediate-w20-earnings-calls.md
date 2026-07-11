@@ -184,7 +184,7 @@ For any earnings call you listen to, the following checklist converts passive li
 
 ---
 
-## Brutal Edge Coverage Integration
+## DHLM Studio Coverage Integration
 
 This week's framework maps directly onto our coverage:
 
@@ -205,8 +205,8 @@ For now, sit with this week's lesson. An earnings call is not a performance eval
 
 ---
 
-*Brutal Edge. Frameworks over forecasts. Signal over noise.*
+*DHLM Studio. Independent investor analysis.*
 
 ---
 
-**Disclaimer.** Brutal Edge is an independent investment research platform. This report is published for educational and informational purposes only and does not constitute investment advice, a recommendation to buy or sell any security, or an offer to transact in any financial instrument. All valuations, forecasts, and opinions are the analyst's own and are subject to change without notice. Past performance does not guarantee future results. Readers should conduct their own due diligence and consult a qualified financial professional before making investment decisions.
+**Disclaimer.** DHLM Studio is an independent investment research platform. This report is published for educational and informational purposes only and does not constitute investment advice, a recommendation to buy or sell any security, or an offer to transact in any financial instrument. All valuations, forecasts, and opinions are the analyst's own and are subject to change without notice. Past performance does not guarantee future results. Readers should conduct their own due diligence and consult a qualified financial professional before making investment decisions.

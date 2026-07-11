@@ -255,4 +255,4 @@ It is this: **markets usually reward the investor who can think historically whi
 
 ---
 
-*This is part of Brutal Edge's The Masters series, examining the enduring frameworks of legendary investors. Related analysis: The Masters — Peter Lynch (5-part series), The Masters — Jesse Livermore, The Masters — Stanley Druckenmiller.*
+*This is part of DHLM Studio's The Masters series, examining the enduring frameworks of legendary investors. Related analysis: The Masters — Peter Lynch (5-part series), The Masters — Jesse Livermore, The Masters — Stanley Druckenmiller.*

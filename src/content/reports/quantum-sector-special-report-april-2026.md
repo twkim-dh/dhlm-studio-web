@@ -1,5 +1,5 @@
 ---
-author: "Brutal Edge Team"
+author: "DHLM Studio Team"
 slug: "quantum-sector-special-report-april-2026"
 title: "Quantum Sector Special Report: Not Commercialization Complete — An Investable Early-Stage Industry"
 ticker: "IONQ"
@@ -142,7 +142,7 @@ Third, the industry as a whole is gradually transforming from a "quantum computi
 
 ---
 
-## 10. Brutal Edge Verdict
+## 10. DHLM Studio Verdict
 
 The quantum sector is not yet "AI 2023." It is not generating massive earnings today, nor has any single company definitively set the standard. But dismissing it as "hype with nothing behind it" ignores the accelerating pace of technical progress and budget flows. **The accurate description of the sector right now: technology is genuinely advancing, but stock prices are pulling that future forward too aggressively.**
 

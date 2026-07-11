@@ -57,7 +57,7 @@ The second version requires two things most investors don't have: fast asymmetry
 
 His NVDA trade is the cleanest example. He once said he didn't even know how to spell Nvidia three months before building a large position early in the AI wave. Then he later reversed it. That full sequence — enter early, size up on confirmation, reverse when conviction broke — is the method.
 
-**Brutal Edge takeaway:** You don't need perfect certainty to act. You need a clear exit plan the moment your thesis breaks. If you can't articulate what would make you wrong before you enter, you don't have a thesis. You have a hope.
+**DHLM Studio takeaway:** You don't need perfect certainty to act. You need a clear exit plan the moment your thesis breaks. If you can't articulate what would make you wrong before you enter, you don't have a thesis. You have a hope.
 
 ---
 
@@ -73,7 +73,7 @@ For NVDA, the variable wasn't "AI is big." Every investor knew that by mid-2023.
 
 This is why generic "AI exposure" ETFs underperformed concentrated NVDA/AVGO positions by 300+ percentage points through 2024-2025. The index couldn't distinguish between companies actually monetizing the variable and companies just tagged with the label.
 
-**Brutal Edge takeaway:** Stop asking "what does this company do?" Start asking "what will change about this business that the market hasn't priced yet?" If you can't name the specific variable, you're not investing. You're collecting tickers.
+**DHLM Studio takeaway:** Stop asking "what does this company do?" Start asking "what will change about this business that the market hasn't priced yet?" If you can't name the specific variable, you're not investing. You're collecting tickers.
 
 ---
 
@@ -89,7 +89,7 @@ When the Fed signals a pause before actually cutting rates, equity markets typic
 
 The practical question becomes: what will be obvious 18 months from now that still feels arguable today?
 
-**Brutal Edge takeaway:** The only way to generate alpha is to be right before others are. That means you will feel wrong most of the time you're actually right. If your portfolio looks comfortable, you're probably already in the same trade everyone else has.
+**DHLM Studio takeaway:** The only way to generate alpha is to be right before others are. That means you will feel wrong most of the time you're actually right. If your portfolio looks comfortable, you're probably already in the same trade everyone else has.
 
 ---
 
@@ -103,7 +103,7 @@ In the first framework, the chart is the argument. In the second, the chart is t
 
 Crowded technical patterns in 2026 are less powerful than they were in the 1990s. Too many investors watch the same patterns. Too many quant funds trade against retail pattern-recognition. The edge has compressed.
 
-**Brutal Edge takeaway:** If you use charts without a thesis, you're guessing. If you have a thesis but ignore charts, you'll over-size bad timing. The combination is where the skill lives.
+**DHLM Studio takeaway:** If you use charts without a thesis, you're guessing. If you have a thesis but ignore charts, you'll over-size bad timing. The combination is where the skill lives.
 
 ---
 
@@ -119,7 +119,7 @@ The math of compounding is brutal. At +30% every year: 30-year outcome = 2,619x.
 
 Avoiding blow-ups matters more than hitting home runs. And avoiding blow-ups requires the psychological ability to sell something you publicly championed three weeks ago.
 
-**Brutal Edge takeaway:** If you can't separate your identity from your position, you will never compound at 30%. You will compound at whatever your ego allows — which is usually single digits, net of the blow-ups.
+**DHLM Studio takeaway:** If you can't separate your identity from your position, you will never compound at 30%. You will compound at whatever your ego allows — which is usually single digits, net of the blow-ups.
 
 ---
 
@@ -131,7 +131,7 @@ The principle: portfolio construction should reflect the quality of the opportun
 
 Most retail investors do the exact opposite: they put small money in their best idea (because they're "uncertain"), and large money in "safe" diversified ETFs (because it feels prudent). They end up owning everything the market owns, minus the cost of management.
 
-**Brutal Edge takeaway:** Diversification is a response to not knowing. If you actually know something, acting like you don't is strategic cowardice.
+**DHLM Studio takeaway:** Diversification is a response to not knowing. If you actually know something, acting like you don't is strategic cowardice.
 
 ---
 

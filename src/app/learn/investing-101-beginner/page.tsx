@@ -70,7 +70,7 @@ export default function Investing101BeginnerPage() {
         {/* Breadcrumb */}
         <div style={{ marginBottom: 20 }}>
           <Link href="/learn" style={{ fontSize: 11, color: '#475569', textDecoration: 'none', fontFamily: 'var(--mono)' }}>
-            ← Brutal Edge Academy
+            ← DHLM Studio Academy
           </Link>
         </div>
 
@@ -164,7 +164,7 @@ export default function Investing101BeginnerPage() {
 
         {/* Philosophy */}
         <div style={{ padding: '22px', borderRadius: 14, background: '#0D1117', border: '1px solid #1E293B', marginTop: 8, marginBottom: 28 }}>
-          <div style={{ fontFamily: 'var(--mono)', fontSize: 10, fontWeight: 700, color: '#475569', letterSpacing: 2, marginBottom: 12 }}>THE BRUTAL EDGE APPROACH</div>
+          <div style={{ fontFamily: 'var(--mono)', fontSize: 10, fontWeight: 700, color: '#475569', letterSpacing: 2, marginBottom: 12 }}>THE DHLM STUDIO APPROACH</div>
           <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(180px, 1fr))', gap: 16 }}>
             {[
               { icon: '📊', label: 'Data First', desc: 'Every claim backed by numbers, not vibes.' },

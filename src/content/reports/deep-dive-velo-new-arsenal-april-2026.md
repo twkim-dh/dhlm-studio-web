@@ -9,7 +9,7 @@ heroImage: "/images/content/deep-dive-velo-new-arsenal-hero.webp"
 readTime: "15 min"
 tags: ["DEEP-DIVE", "VELO3D", "VELO", "ADDITIVE-MANUFACTURING", "DEFENSE", "AEROSPACE", "US-MANUFACTURING", "RAPID-PRODUCTION"]
 slug: "deep-dive-velo-new-arsenal-april-2026"
-author: "Brutal Edge Team"
+author: "DHLM Studio Team"
 ---
 
 # Velo3D and the New Arsenal of American Manufacturing
@@ -299,4 +299,4 @@ It is that **America decides speed, domestic control, and repeatable production 
 
 ---
 
-*This Deep Dive is part of Brutal Edge's "American Infrastructure Revival" framework series. Related analysis: Intel's Great Repricing (semiconductor manufacturing), JPMorgan American Fortress (financial infrastructure).*
+*This Deep Dive is part of DHLM Studio's "American Infrastructure Revival" framework series. Related analysis: Intel's Great Repricing (semiconductor manufacturing), JPMorgan American Fortress (financial infrastructure).*

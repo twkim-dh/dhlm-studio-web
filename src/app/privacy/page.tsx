@@ -20,7 +20,7 @@ export default function PrivacyPage() {
           },
           {
             h: '2. How We Use Information',
-            b: 'Usage data is used to improve our service, understand traffic patterns, and optimize content delivery. Email addresses collected through our newsletter subscription are used solely to send Brutal Edge Weekly research updates. We do not sell, trade, or rent personal information to third parties.',
+            b: 'Usage data is used to improve our service, understand traffic patterns, and optimize content delivery. Email addresses collected through our newsletter subscription are used solely to send DHLM Studio Weekly research updates. We do not sell, trade, or rent personal information to third parties.',
           },
           {
             h: '3. Cookies & Advertising (Google AdSense)',

@@ -205,7 +205,7 @@ export default async function ResearchArticlePage({ params }: { params: Promise<
         <div style={{ marginTop: 20, padding: '16px 20px', borderRadius: 12, background: series.bg, border: `1px solid ${series.border}`, marginBottom: 16 }}>
           <div style={{ display: 'flex', alignItems: 'center', gap: 8 }}>
             <span style={{ fontSize: 16 }}>🧠</span>
-            <span style={{ fontFamily: 'var(--mono)', fontSize: 11, fontWeight: 800, color: series.fg, letterSpacing: 2 }}>BRUTAL EDGE™ — {series.label}</span>
+            <span style={{ fontFamily: 'var(--mono)', fontSize: 11, fontWeight: 800, color: series.fg, letterSpacing: 2 }}>DHLM STUDIO — {series.label}</span>
           </div>
         </div>
 
@@ -218,7 +218,7 @@ export default async function ResearchArticlePage({ params }: { params: Promise<
           <h1 style={{ fontFamily: 'var(--serif)', fontSize: 'clamp(24px, 4vw, 32px)', fontWeight: 900, color: '#F1F5F9', lineHeight: 1.3, margin: 0 }}>{fm.title}</h1>
           <div style={{ display: 'flex', alignItems: 'center', gap: 6, marginTop: 10, flexWrap: 'wrap' }}>
             <span style={{ fontSize: 12, color: '#475569' }}>By</span>
-            <Link href="/editorial" style={{ fontSize: 12, color: '#60A5FA', fontWeight: 600, textDecoration: 'none' }}>Brutal Edge Team</Link>
+            <Link href="/editorial" style={{ fontSize: 12, color: '#60A5FA', fontWeight: 600, textDecoration: 'none' }}>DHLM Studio Team</Link>
             <span style={{ fontSize: 12, color: '#334155' }}>·</span>
             <Link href="/editorial#beaf" style={{ fontSize: 11, color: '#64748B', textDecoration: 'none' }}>Reviewed against BEAF Framework</Link>
           </div>
@@ -279,11 +279,11 @@ export default async function ResearchArticlePage({ params }: { params: Promise<
         <ContentDisclaimer />
 
         <div style={{ marginTop: 32, paddingTop: 24, borderTop: '1px solid #1E293B', textAlign: 'center' }}>
-          <a href="/" style={{ fontSize: 13, color: '#60A5FA', textDecoration: 'none', fontWeight: 600 }}>Subscribe to Brutal Edge Weekly →</a>
+          <a href="/" style={{ fontSize: 13, color: '#60A5FA', textDecoration: 'none', fontWeight: 600 }}>Subscribe to DHLM Studio Weekly →</a>
         </div>
 
         <div style={{ marginTop: 40, padding: '20px 22px', borderRadius: 14, background: '#111827', border: '1px solid #1E293B', textAlign: 'center' }}>
-          <div style={{ fontFamily: 'var(--mono)', fontSize: 10, fontWeight: 800, color: series.fg, letterSpacing: 2, marginBottom: 6 }}>🧠 BRUTAL EDGE™ — {series.label}</div>
+          <div style={{ fontFamily: 'var(--mono)', fontSize: 10, fontWeight: 800, color: series.fg, letterSpacing: 2, marginBottom: 6 }}>🧠 DHLM STUDIO — {series.label}</div>
           <div style={{ fontSize: 9, color: '#475569', lineHeight: 1.6 }}>
             For informational and educational purposes only. Not financial advice.
           </div>

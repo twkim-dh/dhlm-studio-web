@@ -1,4 +1,4 @@
-'use client';
+﻿'use client';
 
 import { useState, useMemo } from 'react';
 import Link from 'next/link';
@@ -18,7 +18,7 @@ const jsonLd = {
     {
       '@type': 'Question',
       name: 'How much should I DCA into Bitcoin per month?',
-      acceptedAnswer: { '@type': 'Answer', text: 'Invest only what you can afford to lose entirely. A common framework: allocate no more than 1–5% of your portfolio to any single crypto asset. For Bitcoin specifically, many retail investors use $50–$200/month as a disciplined starting point.' },
+      acceptedAnswer: { '@type': 'Answer', text: 'Invest only what you can afford to lose entirely. A common framework: allocate no more than 1??% of your portfolio to any single crypto asset. For Bitcoin specifically, many retail investors use $50??200/month as a disciplined starting point.' },
     },
     {
       '@type': 'Question',
@@ -127,17 +127,17 @@ export default function DCAPage() {
       <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLd) }} />
       <div style={{ maxWidth: 860, margin: '0 auto', padding: '80px 20px 60px' }}>
 
-        <Link href="/calculators" style={{ fontSize: 12, color: '#64748B' }}>← Calculators</Link>
+        <Link href="/calculators" style={{ fontSize: 12, color: '#64748B' }}>??Calculators</Link>
         <div style={{ marginTop: 20, marginBottom: 32 }}>
-          <div style={{ fontFamily: 'var(--mono)', fontSize: 10, fontWeight: 700, color: '#F59E0B', letterSpacing: 3, marginBottom: 8 }}>CALCULATOR · FREE</div>
+          <div style={{ fontFamily: 'var(--mono)', fontSize: 10, fontWeight: 700, color: '#F59E0B', letterSpacing: 3, marginBottom: 8 }}>CALCULATOR 쨌 FREE</div>
           <h1 style={{ fontFamily: 'var(--serif)', fontSize: 'clamp(24px,4vw,36px)', fontWeight: 900, color: '#F1F5F9', margin: '0 0 8px' }}>
             DCA Calculator
           </h1>
           <p style={{ fontSize: 14, color: '#64748B', margin: 0 }}>
-            Dollar cost averaging simulation — see projected portfolio value vs. lump sum investing.
+            Dollar cost averaging simulation ??see projected portfolio value vs. lump sum investing.
           </p>
           <p style={{ fontSize: 10, color: '#334155', marginTop: 4, fontFamily: 'var(--mono)' }}>
-            Phase 1: Uses historical average return rates. Actual historical price data (BTC/ETH) in Phase 2. · NOT financial advice
+            Phase 1: Uses historical average return rates. Actual historical price data (BTC/ETH) in Phase 2. 쨌 NOT financial advice
           </p>
         </div>
 
@@ -260,9 +260,9 @@ export default function DCAPage() {
               </ResponsiveContainer>
             </div>
 
-            {/* Brutal Edge Take */}
-            <div style={{ background: '#111827', borderRadius: 14, border: '1px solid #C73E3A20', padding: '18px 20px' }}>
-              <div style={{ fontFamily: 'var(--mono)', fontSize: 9, fontWeight: 700, color: '#C73E3A', letterSpacing: 2, marginBottom: 8 }}>🔥 BRUTAL EDGE TAKE</div>
+            {/* DHLM Take */}
+            <div style={{ background: '#111827', borderRadius: 14, border: '1px solid #3B4A9920', padding: '18px 20px' }}>
+              <div style={{ fontFamily: 'var(--mono)', fontSize: 9, fontWeight: 700, color: '#3B4A99', letterSpacing: 2, marginBottom: 8 }}>?뵦DHLM TAKE</div>
               <p style={{ fontSize: 14, color: '#E2E8F0', lineHeight: 1.8, margin: 0 }}>{take}</p>
               <p style={{ fontSize: 9, color: '#475569', margin: '10px 0 0' }}>NOT financial advice. Returns are projections, not guarantees.</p>
             </div>
@@ -272,8 +272,8 @@ export default function DCAPage() {
               <div style={{ fontFamily: 'var(--mono)', fontSize: 9, fontWeight: 700, color: '#64748B', letterSpacing: 2, marginBottom: 14 }}>FAQ</div>
               {[
                 { q: 'Is DCA better than lump sum investing?', a: 'Statistically, lump sum wins ~2/3 of the time in rising markets. DCA reduces emotional risk and lowers average cost in volatile assets. The right choice depends on your risk tolerance.' },
-                { q: 'How much should I DCA into Bitcoin per month?', a: 'Only invest what you can afford to lose entirely. Many start with $50–$200/month. Allocate no more than 5% of your total portfolio to any single crypto asset.' },
-                { q: 'Does dollar cost averaging work in a bear market?', a: 'DCA lowers your average cost basis over time. If the asset recovers, your entry price is better than a lump sum at the peak. It requires patience — years, not months.' },
+                { q: 'How much should I DCA into Bitcoin per month?', a: 'Only invest what you can afford to lose entirely. Many start with $50??200/month. Allocate no more than 5% of your total portfolio to any single crypto asset.' },
+                { q: 'Does dollar cost averaging work in a bear market?', a: 'DCA lowers your average cost basis over time. If the asset recovers, your entry price is better than a lump sum at the peak. It requires patience ??years, not months.' },
               ].map((item, i) => (
                 <div key={i} style={{ marginBottom: i < 2 ? 12 : 0, paddingBottom: i < 2 ? 12 : 0, borderBottom: i < 2 ? '1px solid #1E293B40' : 'none' }}>
                   <div style={{ fontSize: 13, fontWeight: 700, color: '#E2E8F0', marginBottom: 4 }}>{item.q}</div>
@@ -286,10 +286,10 @@ export default function DCAPage() {
             <div style={{ background: '#111827', borderRadius: 14, border: '1px solid #1E293B', padding: '16px 20px' }}>
               <div style={{ fontFamily: 'var(--mono)', fontSize: 9, fontWeight: 700, color: '#64748B', letterSpacing: 2, marginBottom: 12 }}>EXPLORE MORE</div>
               <div style={{ display: 'flex', gap: 8, flexWrap: 'wrap' }}>
-                <Link href="/calculators/compound-interest" style={{ fontSize: 11, color: '#F59E0B', padding: '5px 12px', borderRadius: 6, background: '#F59E0B10', border: '1px solid #F59E0B20', textDecoration: 'none' }}>📈 Compound Interest Calculator</Link>
-                <Link href="/learn/crypto-101" style={{ fontSize: 11, color: '#A78BFA', padding: '5px 12px', borderRadius: 6, background: '#A78BFA10', border: '1px solid #A78BFA20', textDecoration: 'none' }}>📚 Crypto 101 — Week 4: How to Buy</Link>
-                <Link href="/learn/crypto-101" style={{ fontSize: 11, color: '#60A5FA', padding: '5px 12px', borderRadius: 6, background: '#3B82F610', border: '1px solid #3B82F620', textDecoration: 'none' }}>📚 Crypto 101 — How to Buy</Link>
-                <Link href="/research" style={{ fontSize: 11, color: '#A78BFA', padding: '5px 12px', borderRadius: 6, background: '#A78BFA10', border: '1px solid #A78BFA20', textDecoration: 'none' }}>🧠 The Mental Game</Link>
+                <Link href="/calculators/compound-interest" style={{ fontSize: 11, color: '#F59E0B', padding: '5px 12px', borderRadius: 6, background: '#F59E0B10', border: '1px solid #F59E0B20', textDecoration: 'none' }}>?뱢 Compound Interest Calculator</Link>
+                <Link href="/learn/crypto-101" style={{ fontSize: 11, color: '#A78BFA', padding: '5px 12px', borderRadius: 6, background: '#A78BFA10', border: '1px solid #A78BFA20', textDecoration: 'none' }}>?뱴 Crypto 101 ??Week 4: How to Buy</Link>
+                <Link href="/learn/crypto-101" style={{ fontSize: 11, color: '#60A5FA', padding: '5px 12px', borderRadius: 6, background: '#3B82F610', border: '1px solid #3B82F620', textDecoration: 'none' }}>?뱴 Crypto 101 ??How to Buy</Link>
+                <Link href="/research" style={{ fontSize: 11, color: '#A78BFA', padding: '5px 12px', borderRadius: 6, background: '#A78BFA10', border: '1px solid #A78BFA20', textDecoration: 'none' }}>?쭬 The Mental Game</Link>
               </div>
             </div>
 
@@ -303,3 +303,4 @@ export default function DCAPage() {
     </div>
   );
 }
+

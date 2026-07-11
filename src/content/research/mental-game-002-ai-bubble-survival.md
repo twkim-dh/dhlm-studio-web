@@ -387,4 +387,4 @@ Issue #003 will examine **herd psychology in the social media era** — specific
 
 *For informational and educational purposes only. Not investment advice. The author has no position in any security mentioned. Always conduct your own research.*
 
-*For the edge that cuts through the noise — Brutal Edge.*
+*For the edge that cuts through the noise — DHLM Studio.*

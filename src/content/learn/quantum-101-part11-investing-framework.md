@@ -231,4 +231,4 @@ In the next and final part of this series, we lay out a **Quantum Investing Watc
 
 > **Educational disclaimer.** This material is educational content intended to help readers understand how quantum-computing companies are evaluated. It is not investment advice or a recommendation to buy or sell any financial instrument. The author holds a position in IonQ (IONQ), disclosed above. Financial figures are as of each company's announcement or filing date and are subject to change. Investment decisions are the reader's own responsibility; consult a qualified professional where appropriate.
 
-*Brutal Edge — Frameworks over forecasts. Signal over noise.*
+*DHLM Studio - Independent investor analysis.*

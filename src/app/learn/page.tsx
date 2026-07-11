@@ -7,8 +7,8 @@ import unsplashManifest from '@/data/unsplash-manifest.json';
 export const revalidate = 86400;
 
 export const metadata: Metadata = {
-  title: 'Brutal Edge Academy — Learn Investing | DHLM Studio',
-  description: 'Learn investing the way it actually works. The Masters, Investing 101, Quantum 101 — data-driven, zero hype, Brutal Edge style.',
+  title: 'DHLM Studio Academy — Learn Investing | DHLM Studio',
+  description: 'Learn investing the way it actually works. The Masters, Investing 101, Quantum 101 — data-driven, zero hype, DHLM Studio style.',
   alternates: { canonical: 'https://dhlm-studio.com/learn' },
 };
 
@@ -254,7 +254,7 @@ export default function LearnPage() {
         {/* Header */}
         <div style={{ marginBottom: 32 }}>
           <div style={{ fontFamily: 'var(--mono)', fontSize: 10, fontWeight: 700, color: '#C73E3A', letterSpacing: 3, marginBottom: 10 }}>
-            🎓 BRUTAL EDGE ACADEMY
+            🎓 DHLM STUDIO ACADEMY
           </div>
           <h1 style={{ fontFamily: 'var(--serif)', fontSize: 'clamp(26px, 4vw, 40px)', fontWeight: 900, color: '#F1F5F9', margin: '0 0 12px', lineHeight: 1.15 }}>
             Learn investing the way<br />it actually works.
@@ -268,7 +268,7 @@ export default function LearnPage() {
 
         {/* Philosophy */}
         <div style={{ padding: '22px', borderRadius: 14, background: '#0D1117', border: '1px solid #1E293B', marginTop: 36, marginBottom: 28 }}>
-          <div style={{ fontFamily: 'var(--mono)', fontSize: 10, fontWeight: 700, color: '#475569', letterSpacing: 2, marginBottom: 12 }}>THE BRUTAL EDGE APPROACH</div>
+          <div style={{ fontFamily: 'var(--mono)', fontSize: 10, fontWeight: 700, color: '#475569', letterSpacing: 2, marginBottom: 12 }}>THE DHLM STUDIO APPROACH</div>
           <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(180px, 1fr))', gap: 16 }}>
             {[
               { icon: '📊', label: 'Data First', desc: 'Every claim backed by numbers, not vibes.' },

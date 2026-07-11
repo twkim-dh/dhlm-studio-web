@@ -2,8 +2,8 @@ import type { Metadata } from 'next';
 import Link from 'next/link';
 
 export const metadata: Metadata = {
-  title: 'Editorial Standards & Team | Brutal Edge — DHLM Studio',
-  description: 'How Brutal Edge produces institutional-grade investment research. Our editorial team background, BEAF Framework methodology, and commitment to conflict-free analysis.',
+  title: 'Editorial Standards | DHLM Studio',
+  description: 'How DHLM Studio produces institutional-grade investment research. Editorial methodology, BEAF Framework, and commitment to conflict-free analysis.',
   alternates: { canonical: 'https://dhlm-studio.com/editorial' },
 };
 
@@ -17,15 +17,15 @@ export default function EditorialPage() {
 
         <div style={{ marginTop: 20, marginBottom: 32 }}>
           <div style={{ fontFamily: 'var(--mono)', fontSize: 10, fontWeight: 700, color: '#C73E3A', letterSpacing: 3, marginBottom: 8 }}>EDITORIAL</div>
-          <h1 style={{ fontFamily: 'var(--serif)', fontSize: 28, fontWeight: 900, color: '#F1F5F9', margin: 0 }}>Brutal Edge Editorial</h1>
-          <p style={{ fontSize: 14, color: '#64748B', marginTop: 6 }}>Institutional-grade research for serious long-term investors. Frameworks over forecasts. Signal over noise.</p>
+          <h1 style={{ fontFamily: 'var(--serif)', fontSize: 28, fontWeight: 900, color: '#F1F5F9', margin: 0 }}>DHLM Studio Editorial</h1>
+          <p style={{ fontSize: 14, color: '#64748B', marginTop: 6 }}>Institutional-grade research for serious long-term investors. Independent investor analysis.</p>
         </div>
 
         {/* Who We Are */}
         <div style={{ ...card, padding: '24px 22px', marginBottom: 20 }}>
           <div style={{ fontFamily: 'var(--mono)', fontSize: 9, fontWeight: 700, color: '#64748B', letterSpacing: 3, marginBottom: 14 }}>WHO WE ARE</div>
           <p style={{ fontSize: 14, color: '#94A3B8', lineHeight: 1.8, margin: '0 0 14px' }}>
-            Brutal Edge is the editorial brand of DHLM Studio. We produce investment research and educational content for serious long-term investors who prefer frameworks over forecasts and signal over noise.
+            DHLM Studio produces investment research and educational content for serious long-term investors.
           </p>
           <div style={{ display: 'flex', flexDirection: 'column', gap: 6 }}>
             {[
@@ -34,7 +34,7 @@ export default function EditorialPage() {
               'Sector Reports on industry structure and trends',
               'The Structural View — quarterly thematic research',
               'The Mental Game — behavioral investing series',
-              'Brutal Edge Academy — Investing 101 and Crypto 101 educational curriculum',
+              'DHLM Studio Academy — Investing 101 and Crypto 101 educational curriculum',
             ].map(item => (
               <div key={item} style={{ display: 'flex', alignItems: 'flex-start', gap: 8 }}>
                 <span style={{ color: '#3B82F6', fontSize: 12, flexShrink: 0, marginTop: 2 }}>▸</span>
@@ -46,11 +46,11 @@ export default function EditorialPage() {
 
         <div style={{ display: 'flex', flexDirection: 'column', gap: 20 }}>
 
-          {/* Why You Can Trust Brutal Edge */}
+          {/* Why You Can Trust DHLM Studio */}
           <div style={{ ...card, padding: '24px 22px', borderColor: '#00D47430' }}>
-            <div style={{ fontFamily: 'var(--mono)', fontSize: 9, fontWeight: 700, color: '#00D474', letterSpacing: 3, marginBottom: 14 }}>WHY YOU CAN TRUST BRUTAL EDGE</div>
+            <div style={{ fontFamily: 'var(--mono)', fontSize: 9, fontWeight: 700, color: '#00D474', letterSpacing: 3, marginBottom: 14 }}>WHY YOU CAN TRUST DHLM STUDIO</div>
             <p style={{ fontSize: 14, fontWeight: 700, color: '#F1F5F9', lineHeight: 1.7, margin: '0 0 14px' }}>
-              Brutal Edge is not anonymous, AI-generated content farming.
+              DHLM Studio is not anonymous, AI-generated content farming.
             </p>
             <p style={{ fontSize: 14, color: '#94A3B8', lineHeight: 1.9, margin: '0 0 14px' }}>
               Our analysis is written by an active investor who builds and manages a real portfolio based on this research. We have skin in the game — which is exactly why we disclose our positions, cite our sources, and prioritize frameworks over hype.
@@ -69,10 +69,10 @@ export default function EditorialPage() {
           <div style={{ ...card, padding: '24px 22px' }}>
             <h2 style={{ fontFamily: 'var(--serif)', fontSize: 20, fontWeight: 800, color: '#E2E8F0', margin: '0 0 12px' }}>Our Approach</h2>
             <p style={{ fontSize: 14, color: '#94A3B8', lineHeight: 1.8, margin: 0 }}>
-              DHLM Studio combines real-time financial data with structured analytical commentary to make market analysis accessible and engaging. Our analysis follows a defined methodology: we collect data from licensed APIs, apply quantitative analysis frameworks, and present findings in a conversational tone through our Brutal Edge&trade; analytical voice — all under editorial oversight.
+              DHLM Studio combines real-time financial data with structured analytical commentary to make market analysis accessible and engaging. Our analysis follows a defined methodology: we collect data from licensed APIs, apply quantitative analysis frameworks, and present findings in a conversational tone through our DHLM Studio analytical voice — all under editorial oversight.
             </p>
             <p style={{ fontSize: 14, color: '#94A3B8', lineHeight: 1.8, marginTop: 12 }}>
-              Every Deep Dive report follows a consistent structure: company overview with key metrics, a unique analytical angle that goes beyond surface-level data, bull vs bear case presentation, and a Brutal Edge verdict that synthesizes the analysis. We aim to present both sides of every argument, never recommending specific investment actions.
+              Every Deep Dive report follows a consistent structure: company overview with key metrics, a unique analytical angle that goes beyond surface-level data, bull vs bear case presentation, and a DHLM Studio verdict that synthesizes the analysis. We aim to present both sides of every argument, never recommending specific investment actions.
             </p>
           </div>
 
@@ -111,7 +111,7 @@ export default function EditorialPage() {
                 { step: '2', title: 'Quantitative Analysis', desc: 'Key metrics are compared against sector averages, historical trends, and peer companies. We analyze P/E ratios, revenue growth rates, profit margins, debt levels, and cash flow generation.' },
                 { step: '3', title: 'Qualitative Context', desc: 'We research recent news, earnings reports, product launches, regulatory actions, and competitive dynamics that affect the company\'s outlook.' },
                 { step: '4', title: 'Bull vs Bear Framework', desc: 'Every analysis presents both the optimistic and pessimistic case. We never present a one-sided view. Readers see the strongest arguments for and against.' },
-                { step: '5', title: 'Brutal Edge&trade; Commentary', desc: 'Our editorial voice synthesizes the data into actionable insights and makes complex analysis accessible. The conversational tone is designed to engage readers while the underlying analysis remains rigorously data-driven.' },
+                { step: '5', title: 'DHLM Studio Commentary', desc: 'Our editorial voice synthesizes the data into actionable insights and makes complex analysis accessible. The conversational tone is designed to engage readers while the underlying analysis remains rigorously data-driven.' },
               ].map(s => (
                 <div key={s.step} style={{ display: 'flex', gap: 14 }}>
                   <div style={{ width: 28, height: 28, borderRadius: '50%', background: '#C73E3A15', display: 'flex', alignItems: 'center', justifyContent: 'center', fontSize: 12, fontWeight: 800, color: '#C73E3A', flexShrink: 0 }}>{s.step}</div>
@@ -266,7 +266,7 @@ export default function EditorialPage() {
           <div style={{ ...card, padding: '24px 22px' }}>
             <h2 style={{ fontFamily: 'var(--serif)', fontSize: 20, fontWeight: 800, color: '#E2E8F0', margin: '0 0 12px' }}>How We Produce Research</h2>
             <p style={{ fontSize: 13, color: '#94A3B8', lineHeight: 1.8, marginBottom: 18 }}>
-              All Brutal Edge research is produced through a human-led editorial process. Our team sets the analytical agenda, conducts the research, draws the conclusions, and owns every published claim.
+              All DHLM Studio research is produced through a human-led editorial process. Our team sets the analytical agenda, conducts the research, draws the conclusions, and owns every published claim.
             </p>
             <div style={{ display: 'flex', flexDirection: 'column', gap: 16, marginBottom: 18 }}>
               <div>
@@ -301,7 +301,7 @@ export default function EditorialPage() {
               </div>
               <div style={{ padding: '12px 14px', background: '#0F172A', borderRadius: 6, borderLeft: '3px solid #334155' }}>
                 <p style={{ fontSize: 12, color: '#64748B', lineHeight: 1.7, margin: 0 }}>
-                  <strong style={{ color: '#94A3B8' }}>Disclosure:</strong> Brutal Edge analysis is written by an active investor who manages a real portfolio based on this research. The author holds positions in the securities, sectors, and digital assets discussed; specific holdings material to any report are disclosed within that report. We do not receive compensation from any company we cover.
+                  <strong style={{ color: '#94A3B8' }}>Disclosure:</strong> This analysis is written by an active investor who manages a real portfolio based on this research. The author holds positions in the securities, sectors, and digital assets discussed; specific holdings material to any report are disclosed within that report. We do not receive compensation from any company we cover.
                 </p>
               </div>
             </div>
@@ -323,7 +323,7 @@ export default function EditorialPage() {
                 <strong style={{ color: '#E2E8F0' }}>Not Investment Advice:</strong> DHLM Studio provides data-driven analysis for educational and entertainment purposes only. Nothing on this website constitutes investment advice, a recommendation to buy or sell any security, or an offer to participate in any investment strategy. Always consult a qualified financial advisor before making investment decisions.
               </p>
               <p style={{ marginBottom: 12 }}>
-                <strong style={{ color: '#E2E8F0' }}>Brutal Edge Character:</strong> &ldquo;Brutal Edge&rdquo; is an informational and educational analytical voice that provides data-driven commentary on market data. Its observations are crafted to make financial concepts accessible and do not represent personalized investment advice. The character&apos;s BEAF scores and grades are quantitative analytical outputs, NOT buy/sell signals.
+                <strong style={{ color: '#E2E8F0' }}>DHLM Studio Voice:</strong> &ldquo;DHLM Studio&rdquo; is an informational and educational analytical voice that provides data-driven commentary on market data. Its observations are crafted to make financial concepts accessible and do not represent personalized investment advice. The character&apos;s BEAF scores and grades are quantitative analytical outputs, NOT buy/sell signals.
               </p>
               <p style={{ marginBottom: 12 }}>
                 <strong style={{ color: '#E2E8F0' }}>Data Accuracy:</strong> While we strive for accuracy, financial data may be delayed, incomplete, or subject to revision. Market data on this site is delayed up to 15 minutes. Always verify critical data points with official sources before making decisions.

@@ -9,7 +9,7 @@ heroImage: "/images/content/special-digital-dollar-empire-hero.webp"
 readTime: "18 min"
 tags: ["SPECIAL-REPORT", "STABLECOINS", "TOKENIZATION", "DIGITAL-DOLLAR", "GENIUS-ACT", "ETHEREUM", "BITCOIN", "DOLLAR-DOMINANCE", "FINANCIAL-INFRASTRUCTURE"]
 slug: "special-digital-dollar-empire-april-2026"
-author: "Brutal Edge Team"
+author: "DHLM Studio Team"
 ---
 
 # The Digital Dollar Empire

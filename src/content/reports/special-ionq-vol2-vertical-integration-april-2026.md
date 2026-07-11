@@ -9,7 +9,7 @@ heroImage: "/images/content/special-ionq-vol2-vertical-integration-hero.webp"
 readTime: "22 min"
 tags: ["SPECIAL-REPORT", "IONQ", "QUANTUM-COMPUTING", "SKYWATER", "VERTICAL-INTEGRATION", "MODULAR-ARCHITECTURE", "SOVEREIGN-PROCUREMENT"]
 slug: "special-ionq-vol2-vertical-integration-april-2026"
-author: "Brutal Edge Team"
+author: "DHLM Studio Team"
 contentLifespan: "evergreen"
 promotionWeeks: 4
 disclosure: "The author holds IonQ. This is disclosed for transparency and does not constitute a recommendation."
@@ -316,4 +316,4 @@ The mechanisms are the signal. Price is noise layered over that signal.
 
 *For informational and educational purposes only. Not investment advice. The author has no position in any security mentioned. Always conduct your own research. Quantum computing investments carry exceptional execution, technical, and timeline risk.*
 
-*For the edge that cuts through the noise — Brutal Edge.*
+*For the edge that cuts through the noise — DHLM Studio.*

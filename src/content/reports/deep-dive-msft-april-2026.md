@@ -1,6 +1,6 @@
 ---
 title: "Deep Dive: Microsoft — April 2026 Analysis"
-author: "Brutal Edge Team"
+author: "DHLM Studio Team"
 slug: "deep-dive-msft-april-2026"
 ticker: "MSFT"
 date: "2026-04-02"
@@ -182,7 +182,7 @@ Assumptions: AI CapEx returns disappoint over 2-3 years. Copilot growth decelera
 
 25% × $520 + 50% × $420 + 25% × $310 = **$418** (vs current $420). Microsoft is priced precisely at the probability-weighted fair value — balanced between Copilot upside and CapEx risk. The market, for once, may have gotten this one exactly right.
 
-## Brutal Edge™ Verdict
+## DHLM Studio Verdict
 
 ### BEAF Score: 81/100 — Grade: B+
 

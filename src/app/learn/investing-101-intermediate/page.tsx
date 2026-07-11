@@ -3,11 +3,11 @@ import type { Metadata } from 'next';
 import Link from 'next/link';
 
 export const metadata: Metadata = {
-  title: 'Investing 101 Intermediate Series — 12 Lessons | Brutal Edge',
+  title: 'Investing 101 Intermediate Series — 12 Lessons | DHLM Studio',
   description: 'A 12-week intermediate series covering advanced valuation, moat analysis, 10-K forensics, earnings call interpretation, and portfolio management. Applied to real stocks.',
   alternates: { canonical: 'https://dhlm-studio.com/learn/investing-101-intermediate' },
   openGraph: {
-    title: 'Investing 101 Intermediate — Brutal Edge',
+    title: 'Investing 101 Intermediate — DHLM Studio',
     description: 'From valuation frameworks to position sizing. 12 lessons. Real companies. Zero hype.',
     images: [{ url: 'https://dhlm-studio.com/images/content/INV-101-W13.webp', width: 1792, height: 1024 }],
   },
@@ -116,7 +116,7 @@ export default function Investing101IntermediatePage() {
 
         {/* Breadcrumb */}
         <div style={{ display: 'flex', alignItems: 'center', gap: 8, marginBottom: 28, fontSize: 11, fontFamily: 'var(--mono)', color: '#475569', flexWrap: 'wrap' }}>
-          <Link href="/learn" style={{ color: '#475569', textDecoration: 'none' }}>Brutal Edge Academy</Link>
+          <Link href="/learn" style={{ color: '#475569', textDecoration: 'none' }}>DHLM Studio Academy</Link>
           <span>/</span>
           <span style={{ color: '#64748B' }}>Investing 101 Intermediate</span>
         </div>
@@ -249,7 +249,7 @@ export default function Investing101IntermediatePage() {
 
         <div style={{ marginTop: 32, display: 'flex', gap: 20 }}>
           <Link href="/learn/investing-101-beginner" style={{ fontSize: 12, color: '#64748B', textDecoration: 'none' }}>← Beginner Series</Link>
-          <Link href="/learn" style={{ fontSize: 12, color: '#64748B', textDecoration: 'none' }}>← Brutal Edge Academy</Link>
+          <Link href="/learn" style={{ fontSize: 12, color: '#64748B', textDecoration: 'none' }}>← DHLM Studio Academy</Link>
         </div>
 
         <p style={{ fontSize: 9, color: '#334155', marginTop: 24, textAlign: 'center' }}>

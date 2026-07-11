@@ -1,4 +1,4 @@
-'use client';
+﻿'use client';
 
 import { useState, useMemo } from 'react';
 import Link from 'next/link';
@@ -6,8 +6,8 @@ import {
   AreaChart, Area, XAxis, YAxis, CartesianGrid, Tooltip, Legend, ResponsiveContainer,
 } from 'recharts';
 
-// ─── SEO metadata exported separately (server-compatible) ────────────────────
-// (metadata export is in a separate layout or via generateMetadata — handled below via JSON-LD)
+// ??? SEO metadata exported separately (server-compatible) ????????????????????
+// (metadata export is in a separate layout or via generateMetadata ??handled below via JSON-LD)
 
 const jsonLd = {
   '@context': 'https://schema.org',
@@ -16,12 +16,12 @@ const jsonLd = {
     {
       '@type': 'Question',
       name: 'How much will $500 a month grow in 20 years?',
-      acceptedAnswer: { '@type': 'Answer', text: 'At a 7% annual return compounded monthly, $500/month over 20 years grows to approximately $260,000 — from $120,000 invested. Compounding turns $140,000 in interest into your total.' },
+      acceptedAnswer: { '@type': 'Answer', text: 'At a 7% annual return compounded monthly, $500/month over 20 years grows to approximately $260,000 ??from $120,000 invested. Compounding turns $140,000 in interest into your total.' },
     },
     {
       '@type': 'Question',
       name: 'What is the formula for compound interest with monthly contributions?',
-      acceptedAnswer: { '@type': 'Answer', text: 'A = P(1 + r/n)^(nt) + PMT × [((1 + r/n)^(nt) − 1) / (r/n)]. Where P = principal, r = annual rate, n = compounds per year, t = years, PMT = periodic contribution.' },
+      acceptedAnswer: { '@type': 'Answer', text: 'A = P(1 + r/n)^(nt) + PMT 횞 [((1 + r/n)^(nt) ??1) / (r/n)]. Where P = principal, r = annual rate, n = compounds per year, t = years, PMT = periodic contribution.' },
     },
     {
       '@type': 'Question',
@@ -86,7 +86,7 @@ export default function CompoundInterestPage() {
     const n = freq.n;
     const t = years;
     const P = principal;
-    const PMT = monthly * (12 / n); // convert monthly → per-period
+    const PMT = monthly * (12 / n); // convert monthly ??per-period
 
     const rows: { year: number; balance: number; contributions: number; interest: number }[] = [];
     let balance = P;
@@ -115,7 +115,7 @@ export default function CompoundInterestPage() {
     return { finalBalance, totalContributions, totalInterest, rows };
   }, [principal, monthly, rate, years, freqIdx, freq.n]);
 
-  // Brutal Edge Take
+  // DHLM Take
   const take = useMemo(() => {
     const parts: string[] = [];
     if (rate > 15) parts.push('If someone promised you this rate, ask harder questions.');
@@ -135,21 +135,21 @@ export default function CompoundInterestPage() {
       <div style={{ maxWidth: 860, margin: '0 auto', padding: '80px 20px 60px' }}>
 
         {/* Header */}
-        <Link href="/calculators" style={{ fontSize: 12, color: '#64748B' }}>← Calculators</Link>
+        <Link href="/calculators" style={{ fontSize: 12, color: '#64748B' }}>??Calculators</Link>
         <div style={{ marginTop: 20, marginBottom: 32 }}>
-          <div style={{ fontFamily: 'var(--mono)', fontSize: 10, fontWeight: 700, color: '#F59E0B', letterSpacing: 3, marginBottom: 8 }}>CALCULATOR · FREE</div>
+          <div style={{ fontFamily: 'var(--mono)', fontSize: 10, fontWeight: 700, color: '#F59E0B', letterSpacing: 3, marginBottom: 8 }}>CALCULATOR 쨌 FREE</div>
           <h1 style={{ fontFamily: 'var(--serif)', fontSize: 'clamp(24px,4vw,36px)', fontWeight: 900, color: '#F1F5F9', margin: '0 0 8px' }}>
             Compound Interest Calculator
           </h1>
           <p style={{ fontSize: 14, color: '#64748B', margin: 0 }}>
-            See how your money grows over time — with contributions included. Real-time results, no account needed.
+            See how your money grows over time ??with contributions included. Real-time results, no account needed.
           </p>
-          <p style={{ fontSize: 10, color: '#334155', marginTop: 4, fontFamily: 'var(--mono)' }}>Last updated: April 2026 · NOT financial advice</p>
+          <p style={{ fontSize: 10, color: '#334155', marginTop: 4, fontFamily: 'var(--mono)' }}>Last updated: April 2026 쨌 NOT financial advice</p>
         </div>
 
         <div style={{ display: 'grid', gridTemplateColumns: 'minmax(280px,1fr) 1.6fr', gap: 16, alignItems: 'start' }}>
 
-          {/* ── Inputs ── */}
+          {/* ?? Inputs ?? */}
           <div style={{ background: '#111827', borderRadius: 14, border: '1px solid #1E293B', padding: '22px 20px', position: 'sticky', top: 80 }}>
             <div style={{ fontFamily: 'var(--mono)', fontSize: 9, fontWeight: 700, color: '#64748B', letterSpacing: 2, marginBottom: 18 }}>INPUTS</div>
 
@@ -174,7 +174,7 @@ export default function CompoundInterestPage() {
             </div>
           </div>
 
-          {/* ── Outputs ── */}
+          {/* ?? Outputs ?? */}
           <div style={{ display: 'flex', flexDirection: 'column', gap: 12 }}>
 
             {/* Big numbers */}
@@ -256,9 +256,9 @@ export default function CompoundInterestPage() {
               </table>
             </div>
 
-            {/* Brutal Edge Take */}
-            <div style={{ background: '#111827', borderRadius: 14, border: '1px solid #C73E3A20', padding: '18px 20px' }}>
-              <div style={{ fontFamily: 'var(--mono)', fontSize: 9, fontWeight: 700, color: '#C73E3A', letterSpacing: 2, marginBottom: 8 }}>🔥 BRUTAL EDGE TAKE</div>
+            {/* DHLM Take */}
+            <div style={{ background: '#111827', borderRadius: 14, border: '1px solid #3B4A9920', padding: '18px 20px' }}>
+              <div style={{ fontFamily: 'var(--mono)', fontSize: 9, fontWeight: 700, color: '#3B4A99', letterSpacing: 2, marginBottom: 8 }}>?뵦DHLM TAKE</div>
               <p style={{ fontSize: 14, color: '#E2E8F0', lineHeight: 1.8, margin: 0 }}>{take}</p>
               <p style={{ fontSize: 9, color: '#475569', margin: '10px 0 0' }}>NOT financial advice. For educational purposes only.</p>
             </div>
@@ -267,8 +267,8 @@ export default function CompoundInterestPage() {
             <div style={{ background: '#111827', borderRadius: 14, border: '1px solid #1E293B', padding: '18px 20px' }}>
               <div style={{ fontFamily: 'var(--mono)', fontSize: 9, fontWeight: 700, color: '#64748B', letterSpacing: 2, marginBottom: 14 }}>FAQ</div>
               {[
-                { q: 'How much will $500 a month grow in 20 years?', a: 'At 7% annual return compounded monthly, $500/month over 20 years grows to ~$260K from $121K invested. Interest earned exceeds contributions — that\'s compounding in action.' },
-                { q: 'What is the formula for compound interest?', a: 'A = P(1 + r/n)^(nt) + PMT × [((1 + r/n)^(nt) − 1) / (r/n)]. P = principal, r = annual rate, n = compounds/year, t = years, PMT = periodic payment.' },
+                { q: 'How much will $500 a month grow in 20 years?', a: 'At 7% annual return compounded monthly, $500/month over 20 years grows to ~$260K from $121K invested. Interest earned exceeds contributions ??that\'s compounding in action.' },
+                { q: 'What is the formula for compound interest?', a: 'A = P(1 + r/n)^(nt) + PMT 횞 [((1 + r/n)^(nt) ??1) / (r/n)]. P = principal, r = annual rate, n = compounds/year, t = years, PMT = periodic payment.' },
                 { q: 'How does compound frequency affect returns?', a: 'Monthly compounding slightly beats quarterly, which beats annual. On $10K at 7% over 20 years: monthly = $40,996 vs annual = $38,697. Small difference, but it adds up.' },
               ].map((item, i) => (
                 <div key={i} style={{ marginBottom: i < 2 ? 12 : 0, paddingBottom: i < 2 ? 12 : 0, borderBottom: i < 2 ? '1px solid #1E293B40' : 'none' }}>
@@ -282,10 +282,10 @@ export default function CompoundInterestPage() {
             <div style={{ background: '#111827', borderRadius: 14, border: '1px solid #1E293B', padding: '16px 20px' }}>
               <div style={{ fontFamily: 'var(--mono)', fontSize: 9, fontWeight: 700, color: '#64748B', letterSpacing: 2, marginBottom: 12 }}>EXPLORE MORE</div>
               <div style={{ display: 'flex', gap: 8, flexWrap: 'wrap' }}>
-                <Link href="/calculators/dca" style={{ fontSize: 11, color: '#F59E0B', padding: '5px 12px', borderRadius: 6, background: '#F59E0B10', border: '1px solid #F59E0B20', textDecoration: 'none' }}>📊 DCA Calculator</Link>
-                <Link href="/calculators/position-size" style={{ fontSize: 11, color: '#A78BFA', padding: '5px 12px', borderRadius: 6, background: '#A78BFA10', border: '1px solid #A78BFA20', textDecoration: 'none' }}>🎯 Position Size Calculator</Link>
-                <Link href="/learn/crypto-101" style={{ fontSize: 11, color: '#60A5FA', padding: '5px 12px', borderRadius: 6, background: '#3B82F610', border: '1px solid #3B82F620', textDecoration: 'none' }}>📚 Crypto 101 — Staking Yields</Link>
-                <Link href="/research" style={{ fontSize: 11, color: '#A78BFA', padding: '5px 12px', borderRadius: 6, background: '#A78BFA10', border: '1px solid #A78BFA20', textDecoration: 'none' }}>🧠 The Mental Game</Link>
+                <Link href="/calculators/dca" style={{ fontSize: 11, color: '#F59E0B', padding: '5px 12px', borderRadius: 6, background: '#F59E0B10', border: '1px solid #F59E0B20', textDecoration: 'none' }}>?뱤 DCA Calculator</Link>
+                <Link href="/calculators/position-size" style={{ fontSize: 11, color: '#A78BFA', padding: '5px 12px', borderRadius: 6, background: '#A78BFA10', border: '1px solid #A78BFA20', textDecoration: 'none' }}>?렞 Position Size Calculator</Link>
+                <Link href="/learn/crypto-101" style={{ fontSize: 11, color: '#60A5FA', padding: '5px 12px', borderRadius: 6, background: '#3B82F610', border: '1px solid #3B82F620', textDecoration: 'none' }}>?뱴 Crypto 101 ??Staking Yields</Link>
+                <Link href="/research" style={{ fontSize: 11, color: '#A78BFA', padding: '5px 12px', borderRadius: 6, background: '#A78BFA10', border: '1px solid #A78BFA20', textDecoration: 'none' }}>?쭬 The Mental Game</Link>
               </div>
             </div>
 
@@ -299,3 +299,4 @@ export default function CompoundInterestPage() {
     </div>
   );
 }
+

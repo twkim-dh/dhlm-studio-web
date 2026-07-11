@@ -133,11 +133,10 @@ export default function FearGreedDashboard() {
         </div>
       )}
 
-      {/* Brutal Edge commentary */}
+      {/* Investor commentary */}
       <div style={{ padding: '20px 22px', borderRadius: 14, background: `linear-gradient(135deg, ${color}10, transparent)`, border: `1px solid ${color}30` }}>
         <div style={{ display: 'flex', alignItems: 'center', gap: 8, marginBottom: 10 }}>
-          <span style={{ fontSize: 16 }}>🔥</span>
-          <span style={{ fontFamily: 'var(--mono)', fontSize: 10, fontWeight: 800, color: '#C73E3A', letterSpacing: 2 }}>BRUTAL EDGE&trade; COMMENTARY</span>
+          <span style={{ fontFamily: 'var(--mono)', fontSize: 10, fontWeight: 800, color: '#3B4A99', letterSpacing: 2 }}>MARKET TAKE</span>
         </div>
         <p style={{ fontFamily: 'var(--serif)', fontSize: 15, color: '#E2E8F0', lineHeight: 1.7, margin: 0, fontStyle: 'italic' }}>
           &ldquo;{brutalCommentary(score)}&rdquo;

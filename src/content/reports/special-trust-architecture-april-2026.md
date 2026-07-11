@@ -9,7 +9,7 @@ heroImage: "/images/content/special-trust-architecture-hero.webp"
 readTime: "20 min"
 tags: ["SPECIAL-REPORT", "AI-TRUST", "AGI-GOVERNANCE", "ANTHROPIC", "MYTHOS", "CYBER-SECURITY", "QUANTUM-SAFE", "INTELLIGENCE-ECONOMY", "SYNTHESIS"]
 slug: "special-trust-architecture-april-2026"
-author: "Brutal Edge Team"
+author: "DHLM Studio Team"
 ---
 
 # The Trust Architecture
@@ -306,7 +306,7 @@ The companies that own that answer own the next phase of AI.
 
 ---
 
-*This Special Report is Part 5 and the synthesis of Brutal Edge's "Intelligence Economy" series. Related analysis: The Rise of Claude (Part 1), The Token Economy (Part 2), NVIDIA: The Industrial Architect (Part 3), The Final Frontier — M7 AGI Map (Part 4). Together these five reports form a complete framework for investing in the industrialization of machine intelligence.*
+*This Special Report is Part 5 and the synthesis of DHLM Studio's "Intelligence Economy" series. Related analysis: The Rise of Claude (Part 1), The Token Economy (Part 2), NVIDIA: The Industrial Architect (Part 3), The Final Frontier — M7 AGI Map (Part 4). Together these five reports form a complete framework for investing in the industrialization of machine intelligence.*
 
 ---
 

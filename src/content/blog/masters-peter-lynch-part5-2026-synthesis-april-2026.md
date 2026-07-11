@@ -543,4 +543,4 @@ And clarity, over full cycles, is one of the rarest advantages an investor can h
 
 *For informational and educational purposes only. Not investment advice. The author has no position in any security mentioned. Always conduct your own research.*
 
-*For the edge that cuts through the noise — Brutal Edge.*
+*For the edge that cuts through the noise — DHLM Studio.*

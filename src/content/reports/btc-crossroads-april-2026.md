@@ -1,5 +1,5 @@
 ---
-author: "Brutal Edge Team"
+author: "DHLM Studio Team"
 slug: "btc-crossroads-april-2026"
 title: "Bitcoin's April 2026 Crossroads: Repricing, Not Euphoria"
 ticker: "BTC"
@@ -145,7 +145,7 @@ The second risk is ETF flow instability. March was a clear recovery, but April 6
 
 The third risk is market structure fragility. Glassnode framing is that volatility looks low on the surface but implied volatility runs above realized volatility, downside protection demand persists, and dealer negative gamma is concentrated below current levels. In this configuration, the chart can look quiet right up until the moment a real decline begins, and then the decline can be faster than the surface volatility suggested.
 
-## 11. Brutal Edge™ Verdict
+## 11. DHLM Studio Verdict
 
 ### BTC Conviction Score (out of 60)
 

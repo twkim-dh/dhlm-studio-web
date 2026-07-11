@@ -10,7 +10,7 @@ readTime: "17 min"
 tags: ["MENTAL-GAME", "ANCHORING-BIAS", "INVESTOR-PSYCHOLOGY", "BEHAVIORAL-FINANCE", "LONG-TERM-INVESTING", "REPRICING"]
 slug: "the-mental-game-004-anchoring-trap"
 author: "DHLM Studio"
-byline: "Brutal Edge Team"
+byline: "DHLM Studio"
 contentLifespan: "evergreen"
 promotionWeeks: 4
 ---
@@ -335,4 +335,4 @@ That is how the ship moves.
 
 ---
 
-*Brutal Edge. Frameworks over forecasts. Signal over noise.*
+*DHLM Studio. Independent investor analysis.*

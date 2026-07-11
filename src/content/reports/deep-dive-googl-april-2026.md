@@ -1,6 +1,6 @@
 ---
 title: "Deep Dive: Alphabet/Google — April 2026 Analysis"
-author: "Brutal Edge Team"
+author: "DHLM Studio Team"
 slug: "deep-dive-googl-april-2026"
 ticker: "GOOGL"
 date: "2026-04-03"
@@ -208,7 +208,7 @@ Counterpoint: at $120/share, Google would trade at 18x earnings with $88B in ann
 
 25% x $220 + 50% x $175 + 25% x $120 = **$172**. Current price: $173. The market has priced in both the AI threat and the YouTube/Cloud upside with remarkable precision. Google is a "market return" stock from here — the probability distribution is narrow and centered on fair value.
 
-## Brutal Edge™ Verdict
+## DHLM Studio Verdict
 
 ### BEAF Score: 78/100 — Grade: B
 

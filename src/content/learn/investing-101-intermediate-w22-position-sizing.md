@@ -17,7 +17,7 @@ At that moment, they make a decision that matters at least as much as any analyt
 
 This is the position-sizing problem, and it is one of the most consistently neglected areas of intermediate investing. Position sizing is not a footnote to stock selection. It is arguably more than half of what determines portfolio outcomes. An excellent stock at 1 percent position size contributes almost nothing to returns. A mediocre stock at 15 percent position size can dominate the portfolio for years. Getting sizing right matters. Getting it wrong systematically — which most retail investors do — explains a significant portion of why portfolio returns tend to lag the indices they track.
 
-This week we apply a specific framework — the Kelly Criterion, adapted for real-world equity investing — to three names from the Brutal Edge coverage universe: NVIDIA, Tesla, and Microsoft. By the end you will have a concrete method for sizing any position based on your conviction, your expected return, and your downside exposure — and a clear sense of why equal-weight or gut-feel sizing systematically underperforms.
+This week we apply a specific framework — the Kelly Criterion, adapted for real-world equity investing — to three names from the DHLM Studio coverage universe: NVIDIA, Tesla, and Microsoft. By the end you will have a concrete method for sizing any position based on your conviction, your expected return, and your downside exposure — and a clear sense of why equal-weight or gut-feel sizing systematically underperforms.
 
 ---
 
@@ -62,7 +62,7 @@ The Kelly Criterion enforces a specific discipline: **your position size should 
 
 ## Applying Kelly to Three Real Names
 
-Let us apply this framework to three names from Brutal Edge coverage. We will use approximate current prices (mid-April 2026) and realistic scenario analysis rather than wishcast numbers.
+Let us apply this framework to three names from DHLM Studio coverage. We will use approximate current prices (mid-April 2026) and realistic scenario analysis rather than wishcast numbers.
 
 ### NVIDIA (NVDA) — BEAF Score 83/B+
 
@@ -235,7 +235,7 @@ Three habits will turn Kelly-based sizing from a mathematical exercise into an e
 
 ---
 
-## Brutal Edge Coverage Integration
+## DHLM Studio Coverage Integration
 
 This week's framework maps directly onto our coverage:
 
@@ -256,8 +256,8 @@ For now, sit with this week's lesson. Position size is not an afterthought to st
 
 ---
 
-*Brutal Edge. Frameworks over forecasts. Signal over noise.*
+*DHLM Studio. Independent investor analysis.*
 
 ---
 
-**Disclaimer.** Brutal Edge is an independent investment research platform. This report is published for educational and informational purposes only and does not constitute investment advice, a recommendation to buy or sell any security, or an offer to transact in any financial instrument. All valuations, forecasts, and opinions are the analyst's own and are subject to change without notice. Past performance does not guarantee future results. Readers should conduct their own due diligence and consult a qualified financial professional before making investment decisions.
+**Disclaimer.** DHLM Studio is an independent investment research platform. This report is published for educational and informational purposes only and does not constitute investment advice, a recommendation to buy or sell any security, or an offer to transact in any financial instrument. All valuations, forecasts, and opinions are the analyst's own and are subject to change without notice. Past performance does not guarantee future results. Readers should conduct their own due diligence and consult a qualified financial professional before making investment decisions.

@@ -12,8 +12,8 @@ badge: "special-report"
 catColor: "#A78BFA"
 readTime: "22 min"
 heroImage: "/images/reports/special-bitcoin-digital-asset-economy-june-2026.webp"
-author: "Brutal Edge Team"
-byline: "Brutal Edge Team"
+author: "DHLM Studio Team"
+byline: "DHLM Studio"
 reviewed: "Reviewed against BEAF Framework"
 disclosure: "Author holds Bitcoin — disclosed in the interest of transparency and does not constitute a recommendation."
 audience: "U.S. investors and portfolio managers evaluating Bitcoin and digital assets as macro allocations — including those tracking ETFs, stablecoins, tokenization, and the AI-digital asset intersection"
@@ -222,4 +222,4 @@ Bitcoin remains volatile. It is not a guaranteed path to wealth, and it is not a
 
 > **Disclaimer.** This report is for educational and informational purposes only. It does not constitute investment advice, a recommendation to buy or sell any security or digital asset, or an offer to transact in any financial instrument. The author holds Bitcoin, disclosed above. Digital assets are volatile and may result in substantial losses. Investors should conduct independent research and consult qualified financial, tax, and legal professionals before making investment decisions.
 
-*Brutal Edge — Frameworks over forecasts. Signal over noise.*
+*DHLM Studio - Independent investor analysis.*

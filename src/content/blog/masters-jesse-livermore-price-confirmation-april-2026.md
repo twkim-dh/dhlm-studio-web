@@ -75,7 +75,7 @@ The public narrative calls this "predicting the crash." Livermore himself called
 
 The difference matters. Prediction is guessing. Preparation is a system that makes you look like you guessed correctly.
 
-**Brutal Edge takeaway:** If you can't answer "what would prove my thesis wrong?" in one sentence, you don't have a thesis. You have a position.
+**DHLM Studio takeaway:** If you can't answer "what would prove my thesis wrong?" in one sentence, you don't have a thesis. You have a position.
 
 ---
 
@@ -107,7 +107,7 @@ Most retail investors spend their careers fighting this fact.
 
 Livermore didn't fight it. He built his method on it.
 
-**Brutal Edge takeaway:** Buying after confirmation feels like "chasing." Buying before confirmation feels like "vision." In practice, chasing outperforms vision across most historical periods. Your instincts are wrong. Your instincts will always be wrong. Build a system that overrides them.
+**DHLM Studio takeaway:** Buying after confirmation feels like "chasing." Buying before confirmation feels like "vision." In practice, chasing outperforms vision across most historical periods. Your instincts are wrong. Your instincts will always be wrong. Build a system that overrides them.
 
 ---
 
@@ -149,7 +149,7 @@ Translation: retail investors are systematically selling what works and holding 
 
 Livermore understood this in 1900. He articulated it in 1923. And it's still costing retail investors measurable alpha in 2026.
 
-**Brutal Edge takeaway:** If you feel emotionally comfortable with your portfolio's moves, you're probably doing it wrong. Discomfort is a signal you're holding winners and cutting losers. Comfort is a signal you've reversed the trade.
+**DHLM Studio takeaway:** If you feel emotionally comfortable with your portfolio's moves, you're probably doing it wrong. Discomfort is a signal you're holding winners and cutting losers. Comfort is a signal you've reversed the trade.
 
 ---
 
@@ -179,7 +179,7 @@ Livermore would have chosen B every time. He would also have admitted that Portf
 
 Livermore's mistake was not recognizing his own limits until after he'd failed three times.
 
-**Brutal Edge takeaway:** The right portfolio isn't the one that maximizes theoretical return. It's the one you can hold without panicking at the worst possible moment. Most retail investors overestimate their tolerance. Livermore did too.
+**DHLM Studio takeaway:** The right portfolio isn't the one that maximizes theoretical return. It's the one you can hold without panicking at the worst possible moment. Most retail investors overestimate their tolerance. Livermore did too.
 
 ---
 
@@ -216,13 +216,13 @@ By 1934 — five years after the greatest trade in American history — Livermor
 
 The trade was a masterpiece. The life was a tragedy.
 
-**Brutal Edge takeaway:** Great trades don't produce great lives. A sustainable approach requires survival, not just performance. The investor who compounds 15% for 40 years dies richer than the investor who made 100x once and gave it back. Livermore proved this with his own life.
+**DHLM Studio takeaway:** Great trades don't produce great lives. A sustainable approach requires survival, not just performance. The investor who compounds 15% for 40 years dies richer than the investor who made 100x once and gave it back. Livermore proved this with his own life.
 
 ---
 
 ## 6. The Uncomfortable Truth About His Death
 
-Most investment writing sanitizes Livermore's ending. Brutal Edge doesn't.
+Most investment writing sanitizes Livermore's ending. DHLM Studio doesn't.
 
 On November 28, 1940, after writing a note to his wife that included the line *"I am tired of fighting,"* Livermore shot himself in the cloakroom of the Sherry-Netherland Hotel. He had $5 million in assets — still wealthy by 1940 standards (roughly $110M today) — but was suffering from severe depression and had been barred from trading by his family.
 
@@ -240,7 +240,7 @@ Three observations from his life reveal what the trading rules alone don't captu
 
 Livermore had a great method for markets. He didn't have a great method for life.
 
-**Brutal Edge takeaway:** Your investment strategy has to be emotionally survivable, not just mathematically optimal. If you need to be perfectly disciplined to avoid ruin, you will eventually be ruined. Build systems that tolerate your worst self, not ones that require your best self.
+**DHLM Studio takeaway:** Your investment strategy has to be emotionally survivable, not just mathematically optimal. If you need to be perfectly disciplined to avoid ruin, you will eventually be ruined. Build systems that tolerate your worst self, not ones that require your best self.
 
 ---
 
@@ -298,4 +298,4 @@ It's also the question every serious investor eventually has to confront.
 
 *For informational and educational purposes only. Not investment advice. The author has no position in any security mentioned. Always conduct your own research.*
 
-*For the edge that cuts through the noise — Brutal Edge.*
+*For the edge that cuts through the noise — DHLM Studio.*

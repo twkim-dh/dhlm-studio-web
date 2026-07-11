@@ -1,5 +1,5 @@
 ---
-author: "Brutal Edge Team"
+author: "DHLM Studio Team"
 slug: "anthropic-private-investor-report-april-2026"
 title: "Anthropic: Private Investor Report — April 2026"
 date: "2026-04-14"
@@ -29,7 +29,7 @@ promotionWeeks: 4
 
 ---
 
-> 🔥 **BRUTAL EDGE™ VERDICT**
+> 🔥 **DHLM STUDIO VERDICT**
 > "Anthropic at $380B is not a hidden gem — it's a confirmed platform play priced like one. The real question isn't quality. It's whether you can even get a seat at the table."
 
 ---

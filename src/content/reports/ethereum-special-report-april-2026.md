@@ -1,5 +1,5 @@
 ---
-author: "Brutal Edge Team"
+author: "DHLM Studio Team"
 slug: "ethereum-special-report-april-2026"
 title: "Ethereum Special Report: Is ETH a Recovery Asset or a Re-Rating Asset in 2026?"
 ticker: "ETH"
@@ -130,7 +130,7 @@ Scenario analysis based on current price, ETF flows, macro environment, staking,
 
 The takeaway is clear. The base path for ETH this year is recovery — but not an automatic new all-time high. For ETH to become a strong asset, markets need to agree not just that "Ethereum is important" but that **"the ETH token is also important."** 2026 is the year that proof must be delivered.
 
-## 11. Brutal Edge Verdict
+## 11. DHLM Studio Verdict
 
 ETH is harder than Bitcoin. But that difficulty is also what makes it an opportunity. Bitcoin is simple — supply and demand, policy and reserve asset framing. ETH requires simultaneously evaluating macro conditions, policy, network usage, L2 structure, staking, and ETF wrappers. That is why ETH is always "the asset that takes longer to explain." And the market raises the discount rate as explanations get longer.
 

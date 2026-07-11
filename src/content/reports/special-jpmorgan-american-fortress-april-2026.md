@@ -9,7 +9,7 @@ heroImage: "/images/content/special-jpmorgan-american-fortress-hero.webp"
 readTime: "16 min"
 tags: ["SPECIAL-REPORT", "JPMORGAN", "JPM", "DIMON", "AMERICAN-POWER", "DOLLAR-DOMINANCE", "PRIVATE-CREDIT", "RESERVE-CURRENCY"]
 slug: "special-jpmorgan-american-fortress-april-2026"
-author: "Brutal Edge Team"
+author: "DHLM Studio Team"
 ---
 
 # JPMorgan and the American Fortress
@@ -237,4 +237,4 @@ And JPMorgan is one of the clearest places that strength becomes visible.
 
 ---
 
-*This Special Report is part of Brutal Edge's framework series on structural advantages in American finance. Related analysis: Intel's Great Repricing (U.S. semiconductor resilience), Velo3D and the New Arsenal (American manufacturing revival).*
+*This Special Report is part of DHLM Studio's framework series on structural advantages in American finance. Related analysis: Intel's Great Repricing (U.S. semiconductor resilience), Velo3D and the New Arsenal (American manufacturing revival).*

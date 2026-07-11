@@ -107,7 +107,7 @@ export default function NewsletterModal() {
       <div
         role="dialog"
         aria-modal="true"
-        aria-label="Subscribe to Brutal Edge Weekly"
+        aria-label="Subscribe to DHLM Studio newsletter"
         style={{
           position: 'fixed',
           top: '50%', left: '50%',
@@ -137,7 +137,7 @@ export default function NewsletterModal() {
           <div style={{ textAlign: 'center', padding: '8px 0' }}>
             <div style={{ fontSize: 11, fontWeight: 800, color: '#00D474', letterSpacing: 2, marginBottom: 10 }}>YOU&apos;RE IN</div>
             <div style={{ fontFamily: 'var(--serif)', fontSize: 24, fontWeight: 900, color: '#F1F5F9', lineHeight: 1.3, marginBottom: 10 }}>
-              Welcome to Brutal Edge.
+              Welcome to DHLM Studio.
             </div>
             <p style={{ fontSize: 13, color: '#64748B', lineHeight: 1.6, margin: '0 0 22px' }}>
               Check your inbox — your first report summary is on the way.
@@ -153,8 +153,8 @@ export default function NewsletterModal() {
           </div>
         ) : (
           <>
-            <div style={{ fontFamily: 'var(--mono)', fontSize: 9, fontWeight: 800, color: '#C73E3A', letterSpacing: 3, marginBottom: 10 }}>
-              BRUTAL EDGE™ WEEKLY
+            <div style={{ fontFamily: 'var(--mono)', fontSize: 9, fontWeight: 800, color: '#3B4A99', letterSpacing: 3, marginBottom: 10 }}>
+              DHLM STUDIO · WEEKLY
             </div>
             <div style={{ fontFamily: 'var(--serif)', fontSize: 22, fontWeight: 900, color: '#F1F5F9', lineHeight: 1.3, marginBottom: 10 }}>
               Institutional-grade research.<br />Free, every week.

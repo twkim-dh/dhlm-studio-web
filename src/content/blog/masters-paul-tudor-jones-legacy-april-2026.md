@@ -295,4 +295,4 @@ And that is why it still works.
 
 ---
 
-*This is part of Brutal Edge's The Masters series. Related analysis: The Masters — Ken Fisher Doctrine, The Masters — Peter Lynch (5-part series), The Masters — Stanley Druckenmiller, The Masters — Jesse Livermore.*
+*This is part of DHLM Studio's The Masters series. Related analysis: The Masters — Ken Fisher Doctrine, The Masters — Peter Lynch (5-part series), The Masters — Stanley Druckenmiller, The Masters — Jesse Livermore.*

@@ -8,8 +8,8 @@ subcategory: "Special Report"
 badge: "special-report"
 readTime: "17 min"
 heroImage: "/images/reports/special-optical-bottleneck-three-layer-may-2026.webp"
-author: "Brutal Edge Team"
-byline: "Brutal Edge Team"
+author: "DHLM Studio Team"
+byline: "DHLM Studio"
 tags: ["SPECIAL-REPORT", "OPTICAL-NETWORKING", "SILICON-PHOTONICS", "CO-PACKAGED-OPTICS", "CPO", "LUMENTUM", "LITE", "COHERENT", "COHR", "NVDA", "AVGO", "AI-INFRASTRUCTURE", "CHOKEPOINT", "QUANTUM-NETWORKING"]
 contentLifespan: "evergreen"
 promotionWeeks: 4
@@ -226,4 +226,4 @@ I should have written this piece six months ago. I am writing it now. The struct
 
 ---
 
-*Brutal Edge. Frameworks over forecasts. Signal over noise.*
+*DHLM Studio. Independent investor analysis.*

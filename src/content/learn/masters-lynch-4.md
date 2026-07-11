@@ -322,4 +322,4 @@ Part 2  --  Stocks Are Not All the Same
 Part 3  --  The Cocktail Party Theory
 Paper vs. Profit #003: Inflation Strategies  --  When research meets execution
 For informational and educational purposes only. Not investment advice. The author has no position in any security mentioned. Always conduct your own research.
-For the edge that cuts through the noise  --  Brutal Edge.
+For the edge that cuts through the noise  --  DHLM Studio.

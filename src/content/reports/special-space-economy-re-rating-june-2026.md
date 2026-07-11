@@ -12,8 +12,8 @@ badge: "special-report"
 catColor: "#A78BFA"
 readTime: "20 min"
 heroImage: "/images/reports/space-economy-re-rating-thumb.webp"
-author: "Brutal Edge Team"
-byline: "Brutal Edge Team"
+author: "DHLM Studio Team"
+byline: "DHLM Studio"
 reviewed: "Reviewed against BEAF Framework"
 disclosure: "The author previously held Rocket Lab (sold prior to SpaceX listing) and is considering positions in SpaceX and Rocket Lab. This is disclosed for transparency and does not constitute a recommendation."
 audience: "U.S. investors evaluating space sector exposure — including SpaceX (SPCX), Rocket Lab (RKLB), and the broader space infrastructure value chain"
@@ -194,7 +194,7 @@ Fifth, defense demand is likely to remain the strongest anchor customer. Space i
 - Amazon Project Kuiper launch manifest — public program documentation
 - U.S. Space Force National Security Space Launch (NSSL) program. [NSSL Program](https://www.ssc.spaceforce.mil/Missions/Current-Programs/Launch/National-Security-Space-Launch)
 - Data as of: mid-June 2026
-- Framework: Brutal Edge Analysis Framework (BEAF) — independent investment analysis
+- Framework: BEAF Analysis Framework — independent investment analysis
 
 ---
 
@@ -202,4 +202,4 @@ Fifth, defense demand is likely to remain the strongest anchor customer. Space i
 
 > **Disclaimer.** This report is for educational and informational purposes only. It does not constitute investment advice or a recommendation to buy or sell any security. Market capitalizations, launch schedules, and technical figures are as of mid-June 2026 and are subject to rapid change. Forward-looking statements about launch timing and company milestones are inherently uncertain. Investors should conduct independent research and consult qualified financial professionals before making decisions.
 
-*Brutal Edge — Frameworks over forecasts. Signal over noise.*
+*DHLM Studio - Independent investor analysis.*

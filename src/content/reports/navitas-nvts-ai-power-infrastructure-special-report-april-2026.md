@@ -7,7 +7,7 @@ badge: "special"
 heroImage: "/images/content/navitas-nvts-hero.webp"
 readTime: "18 min"
 tags: ["NVTS", "NVDA", "AI", "SEMICONDUCTORS", "INFRASTRUCTURE", "POWER", "GAN", "SIC"]
-author: "Brutal Edge Team"
+author: "DHLM Studio Team"
 slug: "navitas-nvts-ai-power-infrastructure-special-report-april-2026"
 contentLifespan: "evergreen"
 promotionWeeks: 4
@@ -33,13 +33,13 @@ The AI trade went through three phases. GPUs in 2023. HBM and networking in 2024
 
 The market is now asking what's next. The consensus answer is "more of the same — scale up what worked."
 
-The Brutal Edge take is different: **the next bottleneck isn't compute. It's electricity delivery inside the rack.** And the companies selling picks and shovels to solve that problem have not yet been repriced.
+The DHLM Studio take is different: **the next bottleneck isn't compute. It's electricity delivery inside the rack.** And the companies selling picks and shovels to solve that problem have not yet been repriced.
 
 Navitas Semiconductor is the highest-beta expression of that thesis. Not the safest. Not the largest. But the most exposed to the single question that will decide whether AI data centers scale past 1 MW racks: **who builds the power architecture that doesn't melt?**
 
 The NVIDIA partnership is real. The 800V HVDC architecture is real. The GTC 2026 demo board is real. But the revenue isn't — and won't be — until 2027 at the earliest.
 
-**Brutal Edge Verdict:** This is a call option on a bottleneck that the market hasn't priced. High conviction on the thesis. Low conviction on the timing. Speculative by any honest definition.
+**DHLM Studio Verdict:** This is a call option on a bottleneck that the market hasn't priced. High conviction on the thesis. Low conviction on the timing. Speculative by any honest definition.
 
 ---
 
@@ -230,7 +230,7 @@ The honest answer: because you want 3x, not 30%. That's a real answer. But know 
 
 ## 8. The Bear Case — Taken Seriously
 
-Brutal Edge doesn't steelman bull cases and strawman bear cases. Here's the honest bear case:
+DHLM Studio doesn't steelman bull cases and strawman bear cases. Here's the honest bear case:
 
 **Bear scenario 1: The timeline slips.**
 AI data center rollouts are capital-intensive and complex. Rubin-era 800V architectures could ship in 2027. Or 2028. Or 2029. Every year of delay is another year of operating losses and potential dilution. If revenue inflection pushes to 2029, this stock is a disaster.
@@ -253,7 +253,7 @@ The market cap is $1.54B today on $30M forward revenue. If any of the above play
 
 ## 9. Why This Isn't Already Priced
 
-Every Brutal Edge report asks the same question at the end: **if this thesis is obvious, why isn't it already priced?**
+Every DHLM Studio report asks the same question at the end: **if this thesis is obvious, why isn't it already priced?**
 
 Three reasons:
 
@@ -287,7 +287,7 @@ Watch quarterly revenue trajectory more than anything else. If Q2 2026 isn't mat
 
 ---
 
-## 11. Brutal Edge Verdict
+## 11. DHLM Studio Verdict
 
 **Rating: Speculative — Not Rated**
 
@@ -313,10 +313,10 @@ It's also what makes it dangerous.
 
 ## 12. Sources and Methodology
 
-Report prepared April 17, 2026. Financial data from Navitas Semiconductor Q4 2025 earnings release and investor presentations. Market sizing projections from Yole Développement (GaN), MarketsandMarkets (SiC), Goldman Sachs Research (data center power demand), McKinsey Global Institute (AI infrastructure capacity), IEA (electricity demand). NVIDIA partnership details from public announcements May 2025 and GTC March 2026. Competitor financial data from SEC filings and public market data as of April 16, 2026 close. Scenario analysis and investment assessments are author estimates under Brutal Edge Analysis Framework. Nothing in this report constitutes investment advice.
+Report prepared April 17, 2026. Financial data from Navitas Semiconductor Q4 2025 earnings release and investor presentations. Market sizing projections from Yole Développement (GaN), MarketsandMarkets (SiC), Goldman Sachs Research (data center power demand), McKinsey Global Institute (AI infrastructure capacity), IEA (electricity demand). NVIDIA partnership details from public announcements May 2025 and GTC March 2026. Competitor financial data from SEC filings and public market data as of April 16, 2026 close. Scenario analysis and investment assessments are author estimates under BEAF Analysis Framework. Nothing in this report constitutes investment advice.
 
 ---
 
 *This report is provided for informational and educational purposes only. It is not investment advice and should not be treated as such. Past performance does not guarantee future results. The author of this report does not hold any position in NVTS or any company mentioned at time of publication. Always conduct your own research before making investment decisions.*
 
-*For the edge that cuts through the noise — Brutal Edge.*
+*For the edge that cuts through the noise — DHLM Studio.*

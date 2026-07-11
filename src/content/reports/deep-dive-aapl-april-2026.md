@@ -1,6 +1,6 @@
 ---
 title: "Deep Dive: Apple — April 2026 Analysis"
-author: "Brutal Edge Team"
+author: "DHLM Studio Team"
 slug: "deep-dive-aapl-april-2026"
 ticker: "AAPL"
 date: "2026-04-03"
@@ -166,7 +166,7 @@ Applied multiple: 27x trough P/E. Market cap: $2.7T.
 
 25% × $290 + 40% × $235 + 20% × $175 + 15% × $150 (severe China scenario) = **$228** (vs current $228). The math says Apple is priced to perfection at current levels — minimal upside in the base case, meaningful downside in adverse scenarios.
 
-## Brutal Edge™ Verdict
+## DHLM Studio Verdict
 
 ### BEAF Score: 77/100 — Grade: B
 

@@ -49,7 +49,7 @@ export default function NewsletterCTA({ source = 'homepage' }: { source?: string
         {justSubscribed ? (
           <>
             <div style={{ fontSize: 13, fontWeight: 800, color: '#00D474', letterSpacing: 1, marginBottom: 4 }}>YOU&apos;RE IN</div>
-            <div style={{ fontSize: 22, fontFamily: 'var(--serif)', fontWeight: 900, color: '#F1F5F9', marginBottom: 6 }}>Welcome to Brutal Edge.</div>
+            <div style={{ fontSize: 22, fontFamily: 'var(--serif)', fontWeight: 900, color: '#F1F5F9', marginBottom: 6 }}>Welcome to DHLM Studio.</div>
             <div style={{ fontSize: 12, color: '#64748B' }}>Check your inbox — your first report summary is on the way.</div>
           </>
         ) : (
@@ -71,7 +71,7 @@ export default function NewsletterCTA({ source = 'homepage' }: { source?: string
     }}>
       {/* Header */}
       <div style={{ marginBottom: 18 }}>
-        <div style={{ fontFamily: 'var(--mono)', fontSize: 9, fontWeight: 800, color: '#C73E3A', letterSpacing: 3, marginBottom: 8 }}>BRUTAL EDGE&trade; WEEKLY</div>
+        <div style={{ fontFamily: 'var(--mono)', fontSize: 9, fontWeight: 800, color: '#3B4A99', letterSpacing: 3, marginBottom: 8 }}>DHLM STUDIO · WEEKLY</div>
         <div style={{ fontFamily: 'var(--serif)', fontSize: 22, fontWeight: 900, color: '#F1F5F9', lineHeight: 1.25, marginBottom: 8 }}>
           Institutional-grade research.<br />Free, every week.
         </div>

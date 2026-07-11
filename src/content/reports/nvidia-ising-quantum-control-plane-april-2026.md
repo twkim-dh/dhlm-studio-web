@@ -1,5 +1,5 @@
 ---
-author: "Brutal Edge Team"
+author: "DHLM Studio Team"
 slug: "nvidia-ising-quantum-control-plane-april-2026"
 title: "NVIDIA Ising: Why the Quantum Control Plane Matters More Than the Qubits"
 ticker: "NVDA"
@@ -23,7 +23,7 @@ contentLifespan: "medium"
 promotionWeeks: 2
 ---
 
-⚡ SPECIAL REPORT — BRUTAL EDGE™ VERDICT
+⚡ SPECIAL REPORT — DHLM STUDIO VERDICT
 
 Ising matters because it attacks the hardest practical problem in quantum computing — calibration and error correction — not because quantum is suddenly commercial. NVIDIA is not trying to build qubits. It is trying to own the software layer that makes qubits usable. This is CUDA for quantum, launched before the era has fully arrived. Not a 2026 earnings catalyst. A decade-long moat extension.
 

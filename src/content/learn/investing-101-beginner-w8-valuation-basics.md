@@ -113,7 +113,7 @@ The **PEG ratio** attempts to solve one of P/E's biggest weaknesses — that it 
 
 If a company has a P/E of 20 and is growing earnings at 20% per year, its PEG is 1.0. If it has a P/E of 40 but is growing at 40%, its PEG is also 1.0. The idea is that stocks growing faster deserve higher multiples, and PEG normalizes this.
 
-The general rule of thumb, popularized by Peter Lynch (which we have covered in the Brutal Edge blog series), is:
+The general rule of thumb, popularized by Peter Lynch (which we have covered in the DHLM Studio blog series), is:
 
 - **PEG below 1.0** — potentially undervalued relative to growth.
 - **PEG around 1.0** — fairly valued given growth.

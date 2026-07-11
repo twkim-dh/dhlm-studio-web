@@ -9,7 +9,7 @@ heroImage: "/images/content/special-final-frontier-m7-agi-hero.webp"
 readTime: "24 min"
 tags: ["SPECIAL-REPORT", "AGI", "M7", "NVIDIA", "GOOGLE", "TESLA", "MICROSOFT", "AMAZON", "META", "APPLE", "WORLD-MODELS", "ROBOTICS", "MACHINE-LABOR"]
 slug: "special-final-frontier-m7-agi-april-2026"
-author: "Brutal Edge Team"
+author: "DHLM Studio Team"
 ---
 
 # The Final Frontier
@@ -320,4 +320,4 @@ It may be about **selling labor, one machine capability at a time** — and the 
 
 ---
 
-*This Special Report is Part 4 of Brutal Edge's "Intelligence Economy" series and serves as the synthesis of M7 AGI positioning. Related analysis: The Rise of Claude (Part 1), The Token Economy (Part 2), NVIDIA: The Industrial Architect (Part 3), and upcoming Trust Architecture (Part 5 synthesis).*
+*This Special Report is Part 4 of DHLM Studio's "Intelligence Economy" series and serves as the synthesis of M7 AGI positioning. Related analysis: The Rise of Claude (Part 1), The Token Economy (Part 2), NVIDIA: The Industrial Architect (Part 3), and upcoming Trust Architecture (Part 5 synthesis).*

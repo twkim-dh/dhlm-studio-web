@@ -236,4 +236,4 @@ That completes the **Quantum Computing 101 for U.S. Investors** series. Twelve p
 
 > **Educational disclaimer.** This material is educational content intended to help readers understand how the quantum-computing industry is structured. It is a watchlist (observation list), **not a buy list**, and is not investment advice or a recommendation to buy or sell any financial instrument. The author holds a position in IonQ (IONQ), disclosed above. Financial figures are as of each company's announcement or filing date and are subject to change. Investment decisions are the reader's own responsibility; consult a qualified professional where appropriate.
 
-*Brutal Edge — Frameworks over forecasts. Signal over noise.*
+*DHLM Studio - Independent investor analysis.*

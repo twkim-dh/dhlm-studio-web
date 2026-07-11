@@ -184,7 +184,7 @@ I've positioned accordingly. The gap between that reality and the market's "Appl
 
 ---
 
-*Brutal Edge — Frameworks over forecasts. Signal over noise.*
+*DHLM Studio — Independent investor analysis.*
 
 > **Disclosure & Disclaimer.** The author holds a position in Micron (MU). This report is for educational and informational purposes only and does not constitute investment advice, a recommendation to buy or sell any security, or an offer to transact in any financial instrument. Memory and semiconductor stocks are cyclical and volatile; a high-margin moment is not a permanent state. Conduct your own due diligence and consult a qualified financial professional before making investment decisions.
 
@@ -202,4 +202,4 @@ I've positioned accordingly. The gap between that reality and the market's "Appl
 - Apple Mac/iPad price increases reportedly tied to memory/storage inflation (June 2026)
 - CXMT STAR Market IPO (reported ~¥29.5B / ~$4.33B) — Global Times, prospectus
 
-**Framework:** Brutal Edge Analysis Framework (BEAF). The question is not whether CXMT can make DRAM — it can — but whether it can change incumbent pricing power at Apple scale, under current political and supply constraints, fast enough to matter.
+**Framework:** BEAF Analysis Framework. The question is not whether CXMT can make DRAM — it can — but whether it can change incumbent pricing power at Apple scale, under current political and supply constraints, fast enough to matter.

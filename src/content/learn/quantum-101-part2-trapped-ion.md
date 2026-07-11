@@ -14,7 +14,7 @@ tags: ["Quantum Computing 101", "Trapped Ion", "IonQ", "Quantinuum", "Quantum Ba
 
 > **About this series.** This is an educational resource for readers learning about quantum computing. It is not a recommendation to buy or sell any security. Companies are named as examples of *who builds each approach, and how* — not as investment picks. The section "What to watch when evaluating this approach" explains the metrics specialists use to judge whether a technology is real, as a tool for reading the news.
 >
-> **Disclosure.** The operator of Brutal Edge holds a position in IonQ (IONQ), discussed in this article. This is disclosed for transparency. Nothing here is investment advice, and the educational treatment of IonQ below is deliberately balanced with its competitor and its risks.
+> **Disclosure.** The operator of DHLM Studio holds a position in IonQ (IONQ), discussed in this article. This is disclosed for transparency. Nothing here is investment advice, and the educational treatment of IonQ below is deliberately balanced with its competitor and its risks.
 
 
 In [Part 1](/learn/quantum-101-part1-superconducting-qubits), we covered the superconducting approach — qubits made from extremely cold electrical circuits on a chip. Its strength was fast gates and a strong large-company ecosystem; its weakness was cold, sensitive, error-prone hardware.
@@ -108,7 +108,7 @@ Trapped ions are not perfect either.
 
 ## 6. Representative Company 1: IonQ
 
-> **Reminder of disclosure:** the operator of Brutal Edge holds a position in IonQ. The treatment below is intentionally balanced.
+> **Reminder of disclosure:** the operator of DHLM Studio holds a position in IonQ. The treatment below is intentionally balanced.
 
 IonQ (NYSE: IONQ) is the U.S.-listed quantum company most directly exposed to the trapped-ion approach. Its strategy can be summarized in three points: trapped-ion high-precision qubits; modular scaling; and commercial accessibility (cloud access, on-premise systems, enterprise customers, government and defense projects).
 
@@ -221,6 +221,6 @@ In the next part, we cover the **neutral-atom approach.** Centered on Atom Compu
 
 ---
 
-> **Educational disclaimer.** This material is educational content intended to help readers understand quantum computing technology. It is not investment advice or a recommendation to buy or sell any financial instrument. The operator of Brutal Edge holds a position in IonQ, disclosed above for transparency. Technical and financial figures are as of each company's announcement or filing date and are subject to change. Investment decisions are the reader's own responsibility; consult a qualified professional where appropriate.
+> **Educational disclaimer.** This material is educational content intended to help readers understand quantum computing technology. It is not investment advice or a recommendation to buy or sell any financial instrument. The operator of DHLM Studio holds a position in IonQ, disclosed above for transparency. Technical and financial figures are as of each company's announcement or filing date and are subject to change. Investment decisions are the reader's own responsibility; consult a qualified professional where appropriate.
 
-*Brutal Edge — Frameworks over forecasts. Signal over noise.*
+*DHLM Studio - Independent investor analysis.*

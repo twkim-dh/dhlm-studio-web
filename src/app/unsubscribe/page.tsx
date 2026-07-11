@@ -2,8 +2,8 @@ import type { Metadata } from 'next';
 import Link from 'next/link';
 
 export const metadata: Metadata = {
-  title: 'Unsubscribe — Brutal Edge',
-  description: 'Unsubscribe from Brutal Edge email updates.',
+  title: 'Unsubscribe — DHLM Studio',
+  description: 'Unsubscribe from DHLM Studio email updates.',
   robots: { index: false, follow: false },
 };
 
@@ -21,7 +21,7 @@ export default async function UnsubscribePage({ searchParams }: Props) {
 
         {/* Brand */}
         <p className="text-[10px] font-black tracking-[3px] uppercase text-[#C73E3A] mb-8">
-          Brutal Edge™
+          DHLM Studio
         </p>
 
         {status === 'success' ? (
@@ -31,7 +31,7 @@ export default async function UnsubscribePage({ searchParams }: Props) {
               Done.
             </h1>
             <p className="text-[#94A3B8] text-sm leading-relaxed mb-3">
-              You&rsquo;ve been removed from the Brutal Edge mailing list.
+              You&rsquo;ve been removed from the DHLM Studio mailing list.
               No more reports. No more Daily Briefs.
             </p>
             <p className="text-[#64748B] text-xs leading-relaxed mb-8">
@@ -45,7 +45,7 @@ export default async function UnsubscribePage({ searchParams }: Props) {
               href="/"
               className="inline-block text-xs font-bold text-[#C73E3A] hover:text-[#F1F5F9] transition-colors"
             >
-              ← Back to Brutal Edge
+              ← Back to DHLM Studio
             </Link>
           </div>
 
@@ -68,7 +68,7 @@ export default async function UnsubscribePage({ searchParams }: Props) {
               Unsubscribe.
             </h1>
             <p className="text-[#94A3B8] text-sm leading-relaxed mb-8">
-              Enter your email address to stop receiving Brutal Edge reports and Daily Briefs.
+              Enter your email address to stop receiving DHLM Studio reports and Daily Briefs.
             </p>
             <UnsubscribeForm />
           </div>
@@ -102,7 +102,7 @@ function UnsubscribeForm() {
         Unsubscribe →
       </button>
       <p className="text-[10px] text-[#475569] text-center leading-relaxed">
-        This will remove you from all Brutal Edge email communications.
+        This will remove you from all DHLM Studio email communications.
       </p>
     </form>
   );

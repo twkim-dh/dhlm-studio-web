@@ -9,7 +9,7 @@ heroImage: "/images/content/special-nvidia-industrial-architect-hero.webp"
 readTime: "22 min"
 tags: ["SPECIAL-REPORT", "NVIDIA", "NVDA", "AI-INFRASTRUCTURE", "TOKEN-ECONOMY", "JENSEN-HUANG", "INTELLIGENCE-ECONOMY", "RUBIN", "BLACKWELL"]
 slug: "special-nvidia-industrial-architect-april-2026"
-author: "Brutal Edge Team"
+author: "DHLM Studio Team"
 disclosure: "The author holds NVIDIA. This is disclosed for transparency and does not constitute a recommendation."
 ---
 
@@ -271,4 +271,4 @@ It is becoming **the industrial architect of the token economy** — and that ma
 
 ---
 
-*This Special Report is part of Brutal Edge's "Intelligence Economy" series, examining how machine intelligence is being industrialized across Big Tech. Related analysis: The Rise of Claude (Anthropic), The Token Economy (Amazon/MS/Google), and The Final Frontier (M7 AGI Map).*
+*This Special Report is part of DHLM Studio's "Intelligence Economy" series, examining how machine intelligence is being industrialized across Big Tech. Related analysis: The Rise of Claude (Anthropic), The Token Economy (Amazon/MS/Google), and The Final Frontier (M7 AGI Map).*

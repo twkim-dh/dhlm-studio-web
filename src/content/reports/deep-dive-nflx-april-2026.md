@@ -1,6 +1,6 @@
 ---
 title: "Netflix Q1 2026: A -9.72% Selloff That Misreads the Transition"
-author: "Brutal Edge Team"
+author: "DHLM Studio Team"
 slug: "deep-dive-nflx-april-2026"
 ticker: "NFLX"
 date: "2026-04-17"
@@ -11,7 +11,7 @@ grade: "B-"
 heroImage: "/images/content/deepdive-nflx-april-2026-hero.webp"
 beafScore: 72
 description: "Netflix beat Q1 on every line. Revenue $12.25B. EPS $1.23. Ad revenue on track to double to $3B. Stock closed down 9.72%. The market is still valuing the old Netflix while the company is becoming something different."
-seoTitle: "Netflix Q1 2026: -9.72% Selloff That Misreads the Transition | Brutal Edge"
+seoTitle: "Netflix Q1 2026: -9.72% Selloff That Misreads the Transition | DHLM Studio"
 seoDescription: "NFLX down 9.72% after beating Q1 estimates. Revenue $12.25B, EPS $1.23 (beat 62%), FCF $5.09B. Ad tier 60% of new signups. Is this a buying opportunity or early warning?"
 relatedSlugs: ["deep-dive-msft-april-2026","deep-dive-googl-april-2026","deep-dive-nvda-april-2026"]
 faqs: [{"q":"Why did Netflix stock fall 9.72% after beating Q1 estimates?","a":"Netflix beat Q1 revenue ($12.25B vs $12.18B estimate) and EPS ($1.23 vs $0.76 estimate) by wide margins, but Q2 guidance came in below consensus — revenue $12.57B vs $12.64B expected, EPS $0.78 vs $0.84. Management attributed the Q2 shortfall to front-loaded content amortization that decelerates in H2. Markets reacted to the guidance pattern and Reed Hastings' board departure, not the underlying Q1 performance."},{"q":"Is Netflix's Q1 EPS beat real or a one-time item?","a":"Q1 EPS of $1.23 was boosted by a $2.8B termination fee from the abandoned Warner Bros. Discovery bid. However, Q1 revenue of $12.25B was NOT boosted — the fee is income, not revenue. Free cash flow was partially elevated. The key point: Netflix walked away from a $110B+ integration risk and received $2.8B for the discipline. This is capital allocation quality, not accounting noise."},{"q":"What is Netflix's advertising revenue trajectory?","a":"Netflix targets $3B in ad revenue for 2026, doubling 2025's approximately $1.5B. In Q1 2026, 60% of new signups in ad-available markets chose the ad tier. The advertiser base grew to 4,000+ brands, up 70% YoY. The ad tier functions as both a price absorption mechanism (users downgrade rather than cancel during price hikes) and a second monetization channel on the same content hours."}]
@@ -72,7 +72,7 @@ Netflix walking away from WBD wasn't weakness. It was the largest capital alloca
 
 CFO Spencer Neumann confirmed: "Some of our initially planned costs for the deal... they won't fully materialize. But also, some that we were planning to carry into '27 were pulled forward into 2026." Translation: the WBD-related internal spend plan is partially executing anyway, just redirected.
 
-**Brutal Edge takeaway:** Not every walked-away deal is a win. This one is. Netflix gets $2.8B, avoids $110B+ of integration risk, and keeps its balance sheet clean while Paramount SkyDance takes on the debt burden instead.
+**DHLM Studio takeaway:** Not every walked-away deal is a win. This one is. Netflix gets $2.8B, avoids $110B+ of integration risk, and keeps its balance sheet clean while Paramount SkyDance takes on the debt burden instead.
 
 ---
 
@@ -121,7 +121,7 @@ When a company deliberately changes what it reports, it's telling you what it th
 
 The market hasn't caught up. Most sell-side models still anchor on implied subscriber growth. That creates a valuation lag — the business is becoming something different, but the spreadsheets are still measuring the old version.
 
-**Brutal Edge takeaway:** The right question is no longer "How many subs did Netflix add?" The right question is: how many hours of consumer attention can Netflix capture, and how efficiently can it monetize those hours?
+**DHLM Studio takeaway:** The right question is no longer "How many subs did Netflix add?" The right question is: how many hours of consumer attention can Netflix capture, and how efficiently can it monetize those hours?
 
 Subscription tells you scale. Engagement tells you relevance. Monetization per hour tells you whether the platform is actually deepening its moat.
 
@@ -317,4 +317,4 @@ The market just hasn't caught up yet.
 
 *For informational and educational purposes only. Not investment advice. The author has no position in any security mentioned. Always conduct your own research.*
 
-*For the edge that cuts through the noise — Brutal Edge.*
+*For the edge that cuts through the noise — DHLM Studio.*

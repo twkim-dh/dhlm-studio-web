@@ -27,7 +27,7 @@ export default function ContentDisclaimer() {
         fontStyle: 'italic',
       }}>
         <strong style={{ color: '#94A3B8', fontStyle: 'normal' }}>Disclosure:</strong>{' '}
-        Brutal Edge analysis is written by an active investor who manages a real portfolio based on this research.
+        This analysis is written by an active investor who manages a real portfolio based on this research.
         The author holds or may hold positions in the securities, sectors, or digital assets discussed.
         Specific holdings material to a report are disclosed within that report.
       </p>
@@ -41,7 +41,7 @@ export default function ContentDisclaimer() {
         financial advice, investment advice, or any recommendation to buy or sell securities.
         Investment decisions should be made based on your own research and consultation with
         qualified financial advisors. Past performance does not guarantee future results.
-        Brutal Edge and DHLM Studio do not assume any liability for losses incurred from
+        DHLM Studio does not assume any liability for losses incurred from
         investment decisions made based on this content.
       </p>
       <Link href="/disclaimer" style={{ fontSize: 11, color: '#60A5FA', textDecoration: 'none' }}>

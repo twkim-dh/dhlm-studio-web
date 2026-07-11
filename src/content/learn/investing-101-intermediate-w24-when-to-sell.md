@@ -248,7 +248,7 @@ Three habits separate investors who sell well from investors who sell badly.
 
 ---
 
-## Brutal Edge Coverage Integration
+## DHLM Studio Coverage Integration
 
 This week's framework maps directly onto our coverage:
 
@@ -277,14 +277,14 @@ Together, these modules build the intermediate toolkit: understanding what busin
 
 Most retail investors never get past the beginner-level skill set. The intermediate skills — the ones we have covered in this series — compound meaningfully over decades of investing. An investor who rigorously applies these frameworks will not guarantee outperformance, because no framework guarantees outperformance. But they will be making decisions from a different analytical basis than most market participants, which is exactly where long-term edge actually comes from.
 
-Beyond this series, the Brutal Edge Deep Dive archive is where these frameworks are applied to specific companies, with BEAF scores, scenario analysis, and specific exit triggers. Reading the series alongside the archive is the most complete way to see each framework in practice across multiple real businesses.
+Beyond this series, the DHLM Studio Deep Dive archive is where these frameworks are applied to specific companies, with BEAF scores, scenario analysis, and specific exit triggers. Reading the series alongside the archive is the most complete way to see each framework in practice across multiple real businesses.
 
 For now, sit with the full 24-week journey. The frameworks are useful individually. They compound when held together.
 
 ---
 
-*Brutal Edge. Frameworks over forecasts. Signal over noise.*
+*DHLM Studio. Independent investor analysis.*
 
 ---
 
-**Disclaimer.** Brutal Edge is an independent investment research platform. This report is published for educational and informational purposes only and does not constitute investment advice, a recommendation to buy or sell any security, or an offer to transact in any financial instrument. All valuations, forecasts, and opinions are the analyst's own and are subject to change without notice. Past performance does not guarantee future results. Readers should conduct their own due diligence and consult a qualified financial professional before making investment decisions.
+**Disclaimer.** DHLM Studio is an independent investment research platform. This report is published for educational and informational purposes only and does not constitute investment advice, a recommendation to buy or sell any security, or an offer to transact in any financial instrument. All valuations, forecasts, and opinions are the analyst's own and are subject to change without notice. Past performance does not guarantee future results. Readers should conduct their own due diligence and consult a qualified financial professional before making investment decisions.

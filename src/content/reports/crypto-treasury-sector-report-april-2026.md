@@ -1,5 +1,5 @@
 ---
-author: "Brutal Edge Team"
+author: "DHLM Studio Team"
 slug: "crypto-treasury-sector-report-april-2026"
 title: "Crypto Treasury Stocks: Leveraged Genius or Financial Engineering Gone Too Far?"
 ticker: "MSTR"
@@ -20,7 +20,7 @@ contentLifespan: "medium"
 promotionWeeks: 2
 ---
 
-🔥 **BRUTAL EDGE™ VERDICT**
+🔥 **DHLM STUDIO VERDICT**
 
 "Crypto treasury stocks are not equity investments. They are leveraged conviction trades wearing a stock ticker. The sector rewards you when crypto runs — and punishes you harder when it doesn't. Know which side of the bet you're on before you buy a single share."
 

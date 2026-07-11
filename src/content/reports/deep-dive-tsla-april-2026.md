@@ -1,6 +1,6 @@
 ---
 title: "Deep Dive: Tesla — April 2026 Analysis"
-author: "Brutal Edge Team"
+author: "DHLM Studio Team"
 slug: "deep-dive-tsla-april-2026"
 ticker: "TSLA"
 date: "2026-04-05"
@@ -173,7 +173,7 @@ Revenue: $105B. Net income: $10B. Applied multiple: 30x (premium auto/energy hyb
 
 15% × $380 + 50% × $240 + 35% × $120 = **$219** (vs current $262). The probability-weighted math suggests 16% downside from current levels — driven primarily by the outsized probability of the bear case materializing.
 
-## Brutal Edge™ Verdict
+## DHLM Studio Verdict
 
 ### BEAF Score: 58/100 — Grade: C+
 

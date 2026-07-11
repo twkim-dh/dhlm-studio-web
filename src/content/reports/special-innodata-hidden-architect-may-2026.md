@@ -11,12 +11,12 @@ tags: ["SPECIAL-REPORT", "INOD", "AI-INFRASTRUCTURE", "DATA-ENGINEERING", "HIDDE
 tickers: ["INOD"]
 catColor: "#C73E3A"
 slug: "special-innodata-hidden-architect-may-2026"
-author: "Brutal Edge Team"
+author: "DHLM Studio Team"
 ---
 
 # Innodata: The Hidden Architect of AI
 
-*The first report in the Brutal Edge **Hidden Architects of AI** series — a sequence of deep dives into companies sitting underneath the frontier model layer, where data engineering, evaluation, and trust infrastructure actually determine whether AI gets deployed.*
+*The first report in the DHLM Studio **Hidden Architects of AI** series — a sequence of deep dives into companies sitting underneath the frontier model layer, where data engineering, evaluation, and trust infrastructure actually determine whether AI gets deployed.*
 
 ---
 
@@ -210,4 +210,4 @@ That is the setup. The execution will determine the rest.
 **Last verified:** May 9, 2026
 **Data delay:** Market data may be delayed up to 15 minutes during trading hours.
 
-This report is independent analysis from the Brutal Edge Editorial Team. For informational and educational purposes only. NOT investment advice. Always do your own research.
+This report is independent analysis from the DHLM Studio Editorial Team. For informational and educational purposes only. NOT investment advice. Always do your own research.

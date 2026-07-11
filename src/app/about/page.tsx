@@ -30,7 +30,7 @@ export default function AboutPage() {
               &ldquo;The tools and data serious investors check before making a move.&rdquo;
             </p>
             <p style={{ fontSize: 14, color: '#94A3B8', lineHeight: 1.9, margin: '0 0 14px' }}>
-              Brutal Edge is built for investors focused on AI, semiconductors, and quantum computing — aged 20–40, serious about long-term capital allocation in the technologies shaping the next decade.
+              DHLM Studio is built for investors focused on AI, semiconductors, and quantum computing — aged 20–40, serious about long-term capital allocation in the technologies shaping the next decade.
             </p>
             <p style={{ fontSize: 14, color: '#94A3B8', lineHeight: 1.9, margin: '0 0 14px' }}>
               We do not tell you what to buy. We show you what the data says.
@@ -51,7 +51,7 @@ export default function AboutPage() {
               ))}
             </div>
             <p style={{ fontSize: 13, color: '#64748B', lineHeight: 1.8, margin: '14px 0 0' }}>
-              Brutal Edge is our editorial voice. Sharp, direct, and allergic to hype. If the data says a stock is overvalued, we say so. If we do not know, we say that too. Built by DHLM Studio. Powered by data. <strong style={{ color: '#C73E3A' }}>Not financial advice.</strong>
+              Sharp, direct, and allergic to hype. If the data says a stock is overvalued, I say so. If I do not know, I say that too. Powered by data. <strong style={{ color: '#C73E3A' }}>Not financial advice.</strong>
             </p>
           </div>
 
@@ -69,7 +69,7 @@ export default function AboutPage() {
               </ul>
             </div>
             <div>
-              <div style={{ fontFamily: 'var(--serif)', fontSize: 17, fontWeight: 800, color: '#F1F5F9', marginBottom: 6 }}>Brutal Edge&trade; Analytical Voice</div>
+              <div style={{ fontFamily: 'var(--serif)', fontSize: 17, fontWeight: 800, color: '#F1F5F9', marginBottom: 6 }}>DHLM Studio Voice</div>
               <ul style={{ margin: 0, paddingLeft: 18, fontSize: 13, color: '#94A3B8', lineHeight: 1.9 }}>
                 <li>Built on institutional equity research standards</li>
                 <li>Grounded in the BEAF 6-axis scoring framework</li>
@@ -83,10 +83,10 @@ export default function AboutPage() {
           <div style={{ ...card, padding: '24px 22px', borderColor: '#C73E3A30' }}>
             <div style={{ fontFamily: 'var(--mono)', fontSize: 9, fontWeight: 700, color: '#C73E3A', letterSpacing: 2, marginBottom: 10 }}>OUR FRAMEWORK</div>
             <p style={{ fontFamily: 'var(--serif)', fontSize: 18, fontWeight: 800, color: '#F1F5F9', lineHeight: 1.5, margin: '0 0 10px' }}>
-              BEAF — Brutal Edge Analysis Framework
+              BEAF — Analysis Framework
             </p>
             <p style={{ fontSize: 13, color: '#94A3B8', lineHeight: 1.8, margin: '0 0 14px' }}>
-              Every Brutal Edge&trade; Deep Dive uses our proprietary <strong style={{ color: '#E2E8F0' }}>BEAF scoring system</strong> — a standardized 100-point methodology built to bring institutional-grade rigor to retail-friendly analysis. Stocks are scored across six axes, then assigned a letter grade (A through F) so readers can compare any two companies on the same scale.
+              Every Deep Dive uses a proprietary <strong style={{ color: '#E2E8F0' }}>BEAF scoring system</strong> — a standardized 100-point methodology built to bring institutional-grade rigor to retail-friendly analysis. Stocks are scored across six axes, then assigned a letter grade (A through F) so readers can compare any two companies on the same scale.
             </p>
             <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(150px, 1fr))', gap: 8, marginBottom: 14 }}>
               {[
@@ -107,7 +107,7 @@ export default function AboutPage() {
               ))}
             </div>
             <p style={{ fontSize: 12, color: '#64748B', lineHeight: 1.7, margin: 0 }}>
-              <strong style={{ color: '#94A3B8' }}>Grade scale:</strong> 90+ = A (Brutal Edge Approved) · 80–89 = B+/A− · 70–79 = B/B− · 60–69 = C/C+ · &lt; 60 = D/F. <Link href="/editorial" style={{ color: '#C73E3A' }}>Read full methodology →</Link>
+              <strong style={{ color: '#94A3B8' }}>Grade scale:</strong> 90+ = A · 80–89 = B+/A− · 70–79 = B/B− · 60–69 = C/C+ · &lt; 60 = D/F. <Link href="/editorial" style={{ color: '#C73E3A' }}>Read full methodology →</Link>
             </p>
           </div>
 
@@ -118,7 +118,7 @@ export default function AboutPage() {
               <Link href="/editorial" style={{ fontSize: 10, color: '#60A5FA', textDecoration: 'none', fontWeight: 600 }}>Full editorial page →</Link>
             </div>
             <p style={{ fontSize: 13, fontWeight: 700, color: '#E2E8F0', lineHeight: 1.6, margin: '0 0 12px' }}>
-              Every Brutal Edge report follows four non-negotiable editorial standards:
+              Every report follows four non-negotiable editorial standards:
             </p>
             <div style={{ display: 'flex', flexDirection: 'column', gap: 10 }}>
               {[
@@ -143,7 +143,7 @@ export default function AboutPage() {
             </p>
             <div style={{ display: 'flex', flexDirection: 'column', gap: 6 }}>
               {[
-                { what: 'Brutal Edge Deep Dive Reports', when: 'New report weekly', color: '#C73E3A' },
+                { what: 'DHLM Studio Deep Dive Reports', when: 'New report weekly', color: '#3B4A99' },
                 { what: 'The Mental Game & Structural View', when: 'New essays weekly', color: '#A78BFA' },
                 { what: 'Investing 101 Intermediate', when: 'New lesson weekly (W13–W24)', color: '#3B82F6' },
                 { what: 'Investing 101 Beginner', when: '12-lesson curriculum (complete)', color: '#60A5FA' },
@@ -192,7 +192,7 @@ export default function AboutPage() {
           <div style={{ ...card, padding: '24px 22px', borderColor: '#C73E3A30' }}>
             <div style={{ fontFamily: 'var(--mono)', fontSize: 9, fontWeight: 700, color: '#C73E3A', letterSpacing: 2, marginBottom: 10 }}>DISCLAIMER</div>
             <p style={{ fontSize: 14, color: '#E2E8F0', lineHeight: 1.8, margin: '0 0 8px' }}>
-              All <strong>Brutal Edge&trade;</strong> analysis is informational and educational commentary based on publicly available financial data, published under editorial oversight.
+              All <strong>DHLM Studio</strong> analysis is informational and educational commentary based on publicly available financial data, published under editorial oversight.
             </p>
             <p style={{ fontSize: 13, color: '#94A3B8', lineHeight: 1.8, margin: 0 }}>
               It is <strong style={{ color: '#C73E3A' }}>NOT investment advice</strong>. Opinions expressed are analytical observations, not personalized recommendations. Always do your own research and consult a qualified financial advisor before making investment decisions.
@@ -204,7 +204,7 @@ export default function AboutPage() {
             <div style={{ fontFamily: 'var(--mono)', fontSize: 9, fontWeight: 700, color: '#A78BFA', letterSpacing: 2, marginBottom: 10 }}>WHAT WE BUILD</div>
             <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(200px, 1fr))', gap: 10 }}>
               {[
-                { icon: '🔥', title: 'Deep Dive Reports', desc: 'Institutional-grade stock analysis (BEAF)', href: '/reports' },
+                { icon: '📊', title: 'Deep Dive Reports', desc: 'Institutional-grade stock analysis (BEAF)', href: '/reports' },
                 { icon: '🧠', title: 'The Mental Game', desc: 'Behavioral investing psychology series', href: '/research' },
                 { icon: '🔭', title: 'The Structural View', desc: 'Quarterly macro & sector research', href: '/research' },
                 { icon: '📖', title: 'The Masters', desc: 'Livermore, Druckenmiller, Lynch, Munger biographies', href: '/learn' },
@@ -255,7 +255,7 @@ export default function AboutPage() {
           <div style={{ ...card, padding: '24px 22px', borderColor: '#00D47430' }}>
             <div style={{ fontFamily: 'var(--mono)', fontSize: 9, fontWeight: 700, color: '#00D474', letterSpacing: 2, marginBottom: 10 }}>CONTENT CURATION POLICY</div>
             <p style={{ fontSize: 14, fontWeight: 700, color: '#E2E8F0', lineHeight: 1.6, margin: '0 0 12px' }}>
-              Every article on Brutal Edge is manually researched, written, and reviewed by a human editor before publication.
+              Every article is manually researched, written, and reviewed before publication.
             </p>
             <div style={{ display: 'flex', flexDirection: 'column', gap: 8 }}>
               {[
@@ -278,7 +278,7 @@ export default function AboutPage() {
             <div style={{ display: 'flex', alignItems: 'center', justifyContent: 'space-between' }}>
               <div>
                 <div style={{ fontSize: 14, fontWeight: 700, color: '#C73E3A' }}>Editorial Policy</div>
-                <div style={{ fontSize: 12, color: '#64748B', marginTop: 2 }}>How Brutal Edge analyzes stocks — methodology, data sources, disclaimers</div>
+                <div style={{ fontSize: 12, color: '#64748B', marginTop: 2 }}>How DHLM Studio analyzes stocks — methodology, data sources, disclaimers</div>
               </div>
               <span style={{ color: '#475569', fontSize: 12 }}>→</span>
             </div>
@@ -288,7 +288,7 @@ export default function AboutPage() {
           <div style={{ ...card, padding: '24px 22px' }}>
             <div style={{ fontFamily: 'var(--mono)', fontSize: 9, fontWeight: 700, color: '#64748B', letterSpacing: 2, marginBottom: 14 }}>EDITORIAL PROCESS</div>
             <p style={{ fontSize: 14, color: '#94A3B8', lineHeight: 1.8, marginBottom: 16 }}>
-              Every piece of analysis published under the Brutal Edge name is produced through a defined, human-led editorial process. Our editorial team sets the research agenda, draws the analytical conclusions, and takes responsibility for every published claim.
+              Every piece of analysis is produced through a defined, human-led editorial process. Our editorial team sets the research agenda, draws the analytical conclusions, and takes responsibility for every published claim.
             </p>
             <div style={{ display: 'flex', flexDirection: 'column', gap: 14 }}>
               <div>

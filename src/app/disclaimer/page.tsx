@@ -2,15 +2,15 @@ import type { Metadata } from 'next';
 import Link from 'next/link';
 
 export const metadata: Metadata = {
-  title: 'Financial Disclaimer | Brutal Edge — DHLM Studio',
-  description: 'Full financial disclaimer for Brutal Edge / DHLM Studio. All content is educational and informational only. Not investment advice.',
+  title: 'Financial Disclaimer | DHLM Studio',
+  description: 'Full financial disclaimer for DHLM Studio. All content is educational and informational only. Not investment advice.',
   alternates: { canonical: 'https://dhlm-studio.com/disclaimer' },
 };
 
 const sections = [
   {
     h: '1. Educational and Informational Purposes Only',
-    b: 'Brutal Edge / DHLM Studio (the "Site") is a publisher of financial market research and educational content. All content on this Site, including but not limited to Deep Dive reports, Special Reports, Sector Reports, Academy lessons, blog posts, and any other published material, is provided for educational and informational purposes only.',
+    b: 'DHLM Studio (the "Site") is a publisher of financial market research and educational content. All content on this Site, including but not limited to Deep Dive reports, Special Reports, Sector Reports, Academy lessons, blog posts, and any other published material, is provided for educational and informational purposes only.',
   },
   {
     h: '2. Not Investment Advice',
@@ -28,7 +28,7 @@ const sections = [
   },
   {
     h: '3. Not a Registered Advisor',
-    b: 'Brutal Edge / DHLM Studio is not registered as an investment advisor, broker-dealer, or financial planner under any jurisdiction. We do not provide personalized financial advice. Readers seeking such advice should consult appropriately licensed professionals.',
+    b: 'DHLM Studio is not registered as an investment advisor, broker-dealer, or financial planner under any jurisdiction. We do not provide personalized financial advice. Readers seeking such advice should consult appropriately licensed professionals.',
   },
   {
     h: '4. Investment Risk',
@@ -48,11 +48,11 @@ const sections = [
   },
   {
     h: '6. Information Accuracy',
-    b: 'While Brutal Edge / DHLM Studio strives to publish accurate, well-researched content, we make no warranties or representations as to the accuracy, completeness, or timeliness of any content. Information may become outdated. Readers should verify all data against primary sources before relying on it.',
+    b: 'While DHLM Studio strives to publish accurate, well-researched content, we make no warranties or representations as to the accuracy, completeness, or timeliness of any content. Information may become outdated. Readers should verify all data against primary sources before relying on it.',
   },
   {
     h: '7. BEAF Framework Disclosure',
-    b: 'The Brutal Edge Analysis Framework (BEAF) is a proprietary qualitative and quantitative framework developed by Brutal Edge for the purpose of consistent comparative analysis. BEAF scores are analytical opinions, not predictions. They reflect framework-based judgment as of the publication date and may change as new information becomes available.',
+    b: 'The BEAF Analysis Framework is a proprietary qualitative and quantitative framework developed for DHLM Studio for the purpose of consistent comparative analysis. BEAF scores are analytical opinions, not predictions. They reflect framework-based judgment as of the publication date and may change as new information becomes available.',
   },
   {
     h: '8. Forward-Looking Statements',
@@ -60,7 +60,7 @@ const sections = [
   },
   {
     h: '9. Third-Party Content and Links',
-    b: 'This Site may reference or link to third-party content, including news sources, regulatory filings, and external websites. Brutal Edge / DHLM Studio does not endorse and is not responsible for the accuracy or content of third-party sources.',
+    b: 'This Site may reference or link to third-party content, including news sources, regulatory filings, and external websites. DHLM Studio does not endorse and is not responsible for the accuracy or content of third-party sources.',
   },
   {
     h: '10. No Conflicts of Interest',
@@ -71,11 +71,11 @@ const sections = [
       'Does not engage in pump-and-dump schemes or coordinated promotion',
       'Discloses any material relationships with covered entities (currently: none)',
     ],
-    prefix: 'Brutal Edge / DHLM Studio:',
+    prefix: 'DHLM Studio:',
   },
   {
     h: '11. Limitation of Liability',
-    b: 'By accessing this Site, you acknowledge that Brutal Edge / DHLM Studio, its editors, contributors, and affiliates shall not be liable for any damages, losses, or adverse outcomes arising from investment decisions made based on content published on this Site.',
+    b: 'By accessing this Site, you acknowledge that DHLM Studio, its editors, contributors, and affiliates shall not be liable for any damages, losses, or adverse outcomes arising from investment decisions made based on content published on this Site.',
   },
   {
     h: '12. Acceptance',

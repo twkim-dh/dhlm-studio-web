@@ -1,6 +1,6 @@
 ---
 title: "Deep Dive: Meta Platforms — April 2026 Analysis"
-author: "Brutal Edge Team"
+author: "DHLM Studio Team"
 slug: "deep-dive-meta-april-2026"
 ticker: "META"
 date: "2026-04-04"
@@ -195,7 +195,7 @@ Counterpoint: even in the bear case, Meta retains 3.98B users and a 48% operatin
 
 25% x $780 + 50% x $620 + 25% x $420 = **$610**. Current price: $620. Slightly above the weighted target, suggesting the stock is approximately fairly valued. The AI ad engine has been priced in. Upside depends on WhatsApp monetization and the metaverse option.
 
-## Brutal Edge™ Verdict
+## DHLM Studio Verdict
 
 ### BEAF Score: 74/100 — Grade: B-
 

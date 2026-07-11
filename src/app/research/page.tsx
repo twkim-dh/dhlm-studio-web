@@ -6,11 +6,11 @@ import { fmtDateShort } from '@/lib/fmt-date';
 import unsplashManifest from '@/data/unsplash-manifest.json';
 
 export const metadata: Metadata = {
-  title: 'The Mental Game | Brutal Edge™ | DHLM Studio',
-  description: 'Psychology, philosophy, and structural frameworks for long-term investors. The Mental Game and The Structural View — by Brutal Edge.',
+  title: 'The Mental Game | DHLM Studio | DHLM Studio',
+  description: 'Psychology, philosophy, and structural frameworks for long-term investors. The Mental Game and The Structural View — by DHLM Studio.',
   alternates: { canonical: 'https://dhlm-studio.com/research' },
   openGraph: {
-    title: 'The Mental Game | Brutal Edge™',
+    title: 'The Mental Game | DHLM Studio',
     description: 'Psychology and structural frameworks for serious investors.',
     type: 'website',
     url: 'https://dhlm-studio.com/research',
@@ -118,7 +118,7 @@ export default function ResearchPage() {
       <div style={{ maxWidth: 800, margin: '0 auto', padding: '80px 24px' }}>
 
         <div style={{ marginBottom: 40 }}>
-          <div style={{ fontFamily: 'var(--mono)', fontSize: 10, fontWeight: 700, color: '#C73E3A', letterSpacing: 3, marginBottom: 8 }}>🧠 BRUTAL EDGE™</div>
+          <div style={{ fontFamily: 'var(--mono)', fontSize: 10, fontWeight: 700, color: '#C73E3A', letterSpacing: 3, marginBottom: 8 }}>🧠 DHLM STUDIO</div>
           <h1 style={{ fontFamily: 'var(--serif)', fontSize: 'clamp(26px, 4vw, 36px)', fontWeight: 900, color: '#F1F5F9', margin: '0 0 10px', lineHeight: 1.2 }}>
             The Mental Game
           </h1>

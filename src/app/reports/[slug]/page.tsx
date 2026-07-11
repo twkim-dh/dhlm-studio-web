@@ -134,7 +134,7 @@ export async function generateMetadata({ params }: { params: Promise<{ slug: str
   // Ensure absolute URL — relative paths (e.g. /images/...) won't work for Twitter cards
   const ogImage = rawImage
     ? rawImage.startsWith('http') ? rawImage : `${BASE}${rawImage}`
-    : `${BASE}/opengraph-image`; // fallback: branded "Brutal Edge" OG image
+    : `${BASE}/opengraph-image`; // fallback: branded DHLM Studio OG image
   const isLocalPng = rawImage && !rawImage.startsWith('http') && rawImage.endsWith('.png');
   const [ogW, ogH] = isLocalPng ? [1536, 1024] : [1200, 630];
   const images = [{ url: ogImage, width: ogW, height: ogH }];
@@ -264,8 +264,8 @@ export default async function ReportPage({ params }: { params: Promise<{ slug: s
     headline: fm.seoTitle || fm.title,
     description: fm.seoDescription || fm.description,
     datePublished: fm.date,
-    author: { '@type': 'Organization', name: 'Brutal Edge Team' },
-    publisher: { '@type': 'Organization', name: 'Brutal Edge Team' },
+    author: { '@type': 'Organization', name: 'DHLM Studio' },
+    publisher: { '@type': 'Organization', name: 'DHLM Studio' },
   };
 
   // FAQPage schema (only if FAQs present)
@@ -295,31 +295,30 @@ export default async function ReportPage({ params }: { params: Promise<{ slug: s
         <div className="print-masthead" style={{ display: 'none' }}>
           <div>
             <div className="print-masthead-brand">DHLM STUDIO</div>
-            <div className="print-masthead-sub">Brutal Edge™ Analysis</div>
+            <div className="print-masthead-sub">DHLM Studio Research</div>
           </div>
           <div className="print-masthead-url">dhlm-studio.com<br />Market Intelligence</div>
         </div>
 
         <Link href="/reports" className="print-hide" style={{ fontSize: 12, color: '#64748B' }}>← Reports</Link>
 
-        {/* Brutal Edge Header — type-aware */}
+        {/* Report Header — type-aware */}
         {(() => {
           const isHotSector = fm.type === 'hot-sector' || fm.type === 'hidden-gem';
           const isSpecialReport = fm.type === 'special-report';
           const headerLabel = isHotSector
-            ? (fm.type === 'hidden-gem' ? 'BRUTAL EDGE™ HIDDEN GEM' : 'BRUTAL EDGE™ HOT SECTOR')
+            ? (fm.type === 'hidden-gem' ? 'HIDDEN GEM' : 'HOT SECTOR')
             : isSpecialReport
-              ? 'BRUTAL EDGE™ SPECIAL REPORT'
-              : 'BRUTAL EDGE™ DEEP DIVE';
+              ? 'RESEARCH NOTE'
+              : 'DEEP DIVE';
           const headerColor = isHotSector ? '#D4A843' : isSpecialReport ? '#A78BFA' : '#C73E3A';
           return (
             <div className="print-hide" style={{ marginTop: 20, padding: '20px 22px', borderRadius: 14, background: `linear-gradient(135deg, ${headerColor}10, ${headerColor}05)`, border: `1px solid ${headerColor}30`, marginBottom: 16 }}>
               <div style={{ display: 'flex', alignItems: 'center', gap: 8, marginBottom: 8 }}>
-                <span style={{ fontSize: 18 }}>🔥</span>
                 <span style={{ fontFamily: 'var(--mono)', fontSize: 11, fontWeight: 800, color: headerColor, letterSpacing: 2 }}>{headerLabel}</span>
                 {isHotSector && fm.sector && <span style={{ fontFamily: 'var(--mono)', fontSize: 10, fontWeight: 700, padding: '2px 8px', borderRadius: 4, background: '#0D1117', color: '#94A3B8', marginLeft: 'auto' }}>{fm.sector}</span>}
               </div>
-              <div style={{ fontSize: 11, color: '#64748B', fontStyle: 'italic' }}>Data-driven. Zero feelings. No BS.</div>
+              <div style={{ fontSize: 11, color: '#64748B', fontStyle: 'italic' }}>Independent investor analysis.</div>
               {isHotSector && Array.isArray(fm.tickers) && fm.tickers.length > 0 && (
                 <div style={{ marginTop: 14, display: 'flex', flexWrap: 'wrap', gap: 12, alignItems: 'center' }}>
                   {fm.tickers.map(t => (
@@ -340,7 +339,7 @@ export default async function ReportPage({ params }: { params: Promise<{ slug: s
                   <TickerLogo ticker={fm.ticker} size={56} />
                   <div style={{ display: 'flex', flexDirection: 'column', gap: 2 }}>
                     <span style={{ fontFamily: 'var(--mono)', fontSize: 18, fontWeight: 900, color: '#60A5FA', letterSpacing: 0.5 }}>{fm.ticker}</span>
-                    <span style={{ fontSize: 11, color: '#64748B', fontFamily: 'var(--sans)' }}>Brutal Edge™ analyzed</span>
+                    <span style={{ fontSize: 11, color: '#64748B', fontFamily: 'var(--sans)' }}>DHLM Studio</span>
                   </div>
                 </div>
               )}
@@ -372,9 +371,7 @@ export default async function ReportPage({ params }: { params: Promise<{ slug: s
           <h1 style={{ fontFamily: 'var(--serif)', fontSize: 'clamp(24px, 4vw, 34px)', fontWeight: 900, color: '#F1F5F9', lineHeight: 1.3, margin: 0 }}>{fm.title}</h1>
           <div style={{ display: 'flex', alignItems: 'center', gap: 6, marginTop: 10, flexWrap: 'wrap' }}>
             <span style={{ fontSize: 12, color: '#475569' }}>By</span>
-            <Link href="/editorial" style={{ fontSize: 12, color: '#60A5FA', fontWeight: 600, textDecoration: 'none' }}>Brutal Edge Team</Link>
-            <span style={{ fontSize: 12, color: '#334155' }}>·</span>
-            <Link href="/editorial#beaf" style={{ fontSize: 11, color: '#64748B', textDecoration: 'none' }}>Reviewed against BEAF Framework</Link>
+            <span style={{ fontSize: 12, color: '#60A5FA', fontWeight: 600 }}>DHLM Studio</span>
           </div>
           <p style={{ fontSize: 15, color: '#64748B', lineHeight: 1.7, marginTop: 10 }}>{fm.description}</p>
           <div className="print-hide" style={{ marginTop: 12, display: 'flex', flexWrap: 'wrap', alignItems: 'center', gap: 10 }}>
@@ -444,7 +441,7 @@ export default async function ReportPage({ params }: { params: Promise<{ slug: s
         {/* Print-only footer */}
         <div className="print-footer" style={{ display: 'none', marginTop: 48, paddingTop: 12, borderTop: '1px solid #d1d5db', fontFamily: 'Arial, sans-serif', fontSize: 8, color: '#888', textAlign: 'center', lineHeight: 1.8 }}>
           dhlm-studio.com &nbsp;·&nbsp; For informational and educational purposes only &nbsp;·&nbsp; NOT investment advice<br />
-          © DHLM Studio {new Date(fm.date).getFullYear()} &nbsp;·&nbsp; Brutal Edge™ Analysis &nbsp;·&nbsp; All rights reserved
+          © DHLM Studio {new Date(fm.date).getFullYear()} &nbsp;·&nbsp; All rights reserved
         </div>
 
         {/* Related Reports */}
@@ -471,17 +468,15 @@ export default async function ReportPage({ params }: { params: Promise<{ slug: s
 
         <ContentDisclaimer />
 
-        {/* Subscribe text link */}
+        {/* Footer */}
         <div className="print-hide" style={{ marginTop: 32, paddingTop: 24, borderTop: '1px solid #1E293B', textAlign: 'center' }}>
-          <a href="/" style={{ fontSize: 13, color: '#60A5FA', textDecoration: 'none', fontWeight: 600 }}>Subscribe to Brutal Edge Weekly →</a>
+          <Link href="/reports" style={{ fontSize: 13, color: '#60A5FA', textDecoration: 'none', fontWeight: 600 }}>← Back to all reports</Link>
         </div>
 
-        {/* Brutal Edge Footer */}
         <div className="print-hide" style={{ marginTop: 40, padding: '20px 22px', borderRadius: 14, background: '#111827', border: '1px solid #1E293B', textAlign: 'center' }}>
-          <div style={{ fontFamily: 'var(--mono)', fontSize: 10, fontWeight: 800, color: '#C73E3A', letterSpacing: 2, marginBottom: 6 }}>🔥 ANALYZED BY BRUTAL EDGE™</div>
-          <div style={{ fontSize: 11, color: '#64748B', marginBottom: 8 }}>DHLM Studio Analysis Engine</div>
+          <div style={{ fontSize: 11, color: '#64748B', marginBottom: 8 }}>DHLM Studio Research</div>
           <div style={{ fontSize: 9, color: '#475569', lineHeight: 1.6 }}>
-            Analysis under editorial oversight, for informational and educational purposes.<br />
+            Independent investor analysis, for informational and educational purposes.<br />
             Data: Financial Modeling Prep, Alpha Vantage, CoinGecko<br />
             NOT investment advice. Always do your own research.
           </div>

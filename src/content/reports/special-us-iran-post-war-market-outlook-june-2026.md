@@ -12,8 +12,8 @@ badge: "special-report"
 catColor: "#A78BFA"
 readTime: "14 min"
 heroImage: "/images/reports/us-iran-post-war-market-outlook-thumb.webp"
-author: "Brutal Edge Team"
-byline: "Brutal Edge Team"
+author: "DHLM Studio Team"
+byline: "DHLM Studio"
 reviewed: "Reviewed against BEAF Framework"
 audience: "U.S. investors and global market participants navigating post-war geopolitical risk repricing — including those positioned in energy, defense, tech, airlines, and emerging markets"
 tags: ["SPECIAL-REPORT", "US-IRAN", "GEOPOLITICS", "OIL", "CRUDE", "STRAIT-OF-HORMUZ", "CEASEFIRE", "SECTOR-ROTATION", "MACRO", "BRENT", "GOLD", "BONDS", "EMERGING-MARKETS", "FED", "INFLATION", "AIRLINES", "DEFENSE"]
@@ -145,10 +145,10 @@ The conclusion: **markets will relieve first. Whether the rally lasts will be de
 - Middle East ceasefire framework documentation and implementation timeline (June 2026)
 - Federal Reserve Economic Data (FRED) — macroeconomic indicators. [FRED](https://fred.stlouisfed.org)
 - Data as of: mid-June 2026
-- Framework: Brutal Edge Analysis Framework (BEAF) — independent investment analysis
+- Framework: BEAF Analysis Framework — independent investment analysis
 
 ---
 
 > **Disclaimer.** This report is for educational and informational purposes only. It does not constitute investment advice or a recommendation to buy or sell any security, sector, commodity, or digital asset. Market and price figures are as of the dates cited and are subject to rapid change, particularly around developing geopolitical events. Scenarios are illustrative, not forecasts. Investors should conduct independent research and consult qualified financial professionals before making decisions.
 
-*Brutal Edge — Frameworks over forecasts. Signal over noise.*
+*DHLM Studio - Independent investor analysis.*

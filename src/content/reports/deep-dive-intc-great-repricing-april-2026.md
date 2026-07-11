@@ -11,7 +11,7 @@ tags: ["DEEP-DIVE", "INTEL", "INTC", "AI-INFERENCE", "FOUNDRY", "CPU", "GAUDI", 
 slug: "deep-dive-intc-great-repricing-april-2026"
 grade: "C+"
 beafScore: 65
-author: "Brutal Edge Team"
+author: "DHLM Studio Team"
 ---
 
 # Intel's Great Repricing
@@ -251,4 +251,4 @@ It will be powered by a quieter truth: **in the inference era, the companies tha
 
 ---
 
-*This Deep Dive is part of Brutal Edge's "American Infrastructure Revival" framework series. Related analysis: Velo3D and the New Arsenal (additive manufacturing for defense), JPMorgan and the American Fortress (financial infrastructure).*
+*This Deep Dive is part of DHLM Studio's "American Infrastructure Revival" framework series. Related analysis: Velo3D and the New Arsenal (additive manufacturing for defense), JPMorgan and the American Fortress (financial infrastructure).*

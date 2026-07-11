@@ -70,7 +70,7 @@ export default function Investing101Page() {
         {/* Breadcrumb */}
         <div style={{ marginBottom: 20 }}>
           <Link href="/learn" style={{ fontSize: 11, color: '#475569', textDecoration: 'none', fontFamily: 'var(--mono)' }}>
-            ← Brutal Edge Academy
+            ← DHLM Studio Academy
           </Link>
         </div>
 

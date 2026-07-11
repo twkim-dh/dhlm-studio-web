@@ -104,7 +104,7 @@ Those are the two great distribution empires of the AI age. Everyone else is eit
 
 ## 3. The 5-Driver Framework
 
-To analyze distribution structurally, the Brutal Edge framework uses five drivers.
+To analyze distribution structurally, the DHLM Studio framework uses five drivers.
 
 1. **Reach** - how many users you can touch
 2. **Frequency** - how often they use it
@@ -128,7 +128,7 @@ This framework matters because "distribution" is too vague on its own. Investors
 
 **Embed depth: 5.** Microsoft is not an app. It is part of the enterprise operating environment.
 
-That yields 24 out of 25, or 96 on a flat conversion. The Brutal Edge Distribution Score is adjusted to 94 to account for enterprise friction, procurement drag, and the possibility of partial Copilot adoption. The structural point still stands: Microsoft owns the deepest AI distribution pipe in enterprise software.
+That yields 24 out of 25, or 96 on a flat conversion. The DHLM Studio Distribution Score is adjusted to 94 to account for enterprise friction, procurement drag, and the possibility of partial Copilot adoption. The structural point still stands: Microsoft owns the deepest AI distribution pipe in enterprise software.
 
 ### Google Through the Five Drivers
 
@@ -190,7 +190,7 @@ OpenAI, Anthropic, and xAI matter strategically. They do not yet own public-mark
 
 ## 5. Distribution Score Comparison
 
-Here is the current Brutal Edge distribution view.
+Here is the current DHLM Studio distribution view.
 
 | Company | Reach | Frequency | Stickiness | Data Flywheel | Embed Depth | Total /25 | Score /100 |
 |---|---|---|---|---|---|---|---|
@@ -241,7 +241,7 @@ That is the Structural View.
 
 ---
 
-*Brutal Edge. Frameworks over forecasts. Signal over noise.*
+*DHLM Studio. Independent investor analysis.*
 
 ---
 
@@ -253,4 +253,4 @@ That is the Structural View.
 
 ---
 
-**Disclaimer.** Brutal Edge is an independent investment research platform. This report is published for educational and informational purposes only and does not constitute investment advice, a recommendation to buy or sell any security, or an offer to transact in any financial instrument. All valuations, forecasts, and opinions are the analyst's own and are subject to change without notice. Past performance does not guarantee future results. Readers should conduct their own due diligence and consult a qualified financial professional before making investment decisions.
+**Disclaimer.** DHLM Studio is an independent investment research platform. This report is published for educational and informational purposes only and does not constitute investment advice, a recommendation to buy or sell any security, or an offer to transact in any financial instrument. All valuations, forecasts, and opinions are the analyst's own and are subject to change without notice. Past performance does not guarantee future results. Readers should conduct their own due diligence and consult a qualified financial professional before making investment decisions.

@@ -11,7 +11,7 @@ function buildHtml(title: string, description: string, url: string, email: strin
   const unsubUrl = `https://dhlm-studio.com/api/unsubscribe?email=${encodeURIComponent(email)}`;
   const rows = [
     ['BEAF-Scored', 'Every report graded across Growth, Profitability, Moat, Valuation, Risk & Momentum.'],
-    ['Brutal Edge', 'No hype. No noise. Analysis that holds up.'],
+    ['DHLM Studio', 'Independent investor analysis. No hype, no noise.'],
   ].map(([t, d]) => `
     <tr><td style="padding:8px 0;vertical-align:top;">
       <span style="color:#C73E3A;font-weight:800;font-size:14px;margin-right:10px;">→</span>
@@ -28,10 +28,10 @@ function buildHtml(title: string, description: string, url: string, email: strin
 <table width="600" cellpadding="0" cellspacing="0" style="max-width:600px;width:100%;">
 
   <tr><td style="padding:0 24px 24px;">
-    <div style="font-family:Georgia,serif;font-size:13px;font-weight:800;color:#C73E3A;letter-spacing:3px;text-transform:uppercase;margin-bottom:12px;">BRUTAL EDGE™ — NEW REPORT</div>
+    <div style="font-family:Georgia,serif;font-size:13px;font-weight:800;color:#3B4A99;letter-spacing:3px;text-transform:uppercase;margin-bottom:12px;">DHLM STUDIO — NEW REPORT</div>
     <div style="font-family:Georgia,serif;font-size:26px;font-weight:900;color:#F1F5F9;line-height:1.25;margin-bottom:10px;">${title}</div>
     ${description ? `<p style="font-size:13px;color:#94A3B8;line-height:1.7;margin:0 0 20px;">${description}</p>` : ''}
-    <a href="${url}" style="display:inline-block;padding:13px 24px;background:#C73E3A;color:#fff;font-size:13px;font-weight:800;text-decoration:none;border-radius:8px;">Read Full Report →</a>
+    <a href="${url}" style="display:inline-block;padding:13px 24px;background:#3B4A99;color:#fff;font-size:13px;font-weight:800;text-decoration:none;border-radius:8px;">Read Full Report →</a>
   </td></tr>
 
   <tr><td style="background:#111827;border-radius:12px;padding:20px 24px;margin:0 24px;">
@@ -89,14 +89,14 @@ export async function POST(req: Request) {
   }
 
   const resend = new Resend(apiKey);
-  const from = process.env.RESEND_FROM ?? 'Brutal Edge <daily@dhlm-studio.com>';
+  const from = process.env.RESEND_FROM ?? 'DHLM Studio <daily@dhlm-studio.com>';
 
   const results = await Promise.allSettled(
     subscribers.map(email =>
       resend.emails.send({
         from,
         to: email,
-        subject: `New Brutal Edge Report: ${title}`,
+        subject: `New Report: ${title}`,
         html: buildHtml(title, description, url, email),
       })
     )

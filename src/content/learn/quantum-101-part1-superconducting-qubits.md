@@ -232,4 +232,4 @@ In the next part, we cover the **trapped-ion approach.** Centered on IonQ and Qu
 
 > **Educational disclaimer.** This material is educational content intended to help readers understand quantum computing technology. It is not investment advice or a recommendation to buy or sell any financial instrument. Technical figures and roadmaps are as of each company's announcement date and are subject to change. Investment decisions are the reader's own responsibility; consult a qualified professional where appropriate.
 
-*Brutal Edge — Frameworks over forecasts. Signal over noise.*
+*DHLM Studio - Independent investor analysis.*

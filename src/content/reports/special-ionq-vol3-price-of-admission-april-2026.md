@@ -9,7 +9,7 @@ heroImage: "/images/content/special-ionq-vol3-price-of-admission-hero.webp"
 readTime: "22 min"
 tags: ["SPECIAL-REPORT", "IONQ", "QUANTUM-COMPUTING", "EXECUTION-RISK", "VALUATION", "POSITION-SIZING", "INVESTMENT-FRAMEWORK"]
 slug: "special-ionq-vol3-price-of-admission-april-2026"
-author: "Brutal Edge Team"
+author: "DHLM Studio Team"
 contentLifespan: "evergreen"
 promotionWeeks: 4
 disclosure: "The author holds IonQ. This is disclosed for transparency and does not constitute a recommendation."
@@ -301,7 +301,7 @@ Write your own break conditions. They will be specific to your interpretation of
 
 ---
 
-## The Final Brutal Edge Framework
+## The Final DHLM Studio Framework
 
 **IonQ is not a stock for most investors. That is not a criticism. It is a category statement.**
 
@@ -325,7 +325,7 @@ The combination of: multi-year holding period required, significant near-term ca
 
 **Neither category is "correct." They are descriptions of different investors with different needs.**
 
-The Brutal Edge honest view: IonQ is one of the most intellectually interesting investment cases in public technology markets right now. That does not automatically mean it belongs in every portfolio. **Intellectual interest and appropriate ownership are different standards.**
+The DHLM Studio honest view: IonQ is one of the most intellectually interesting investment cases in public technology markets right now. That does not automatically mean it belongs in every portfolio. **Intellectual interest and appropriate ownership are different standards.**
 
 ---
 
@@ -383,4 +383,4 @@ The Brutal Edge honest view: IonQ is one of the most intellectually interesting 
 
 *For informational and educational purposes only. Not investment advice. The author has no position in any security mentioned. Always conduct your own research. Quantum computing investments carry exceptional execution, technical, and timeline risk. Position sizing should reflect that risk. Readers should consult qualified financial advisors before making investment decisions.*
 
-*For the edge that cuts through the noise — Brutal Edge.*
+*For the edge that cuts through the noise — DHLM Studio.*

@@ -9,7 +9,7 @@ heroImage: "/images/content/special-rise-of-claude-hero.webp"
 readTime: "19 min"
 tags: ["SPECIAL-REPORT", "ANTHROPIC", "CLAUDE", "MYTHOS", "AI-SECURITY", "CONSTITUTIONAL-AI", "ENTERPRISE-AI", "INTELLIGENCE-ECONOMY", "TRUST-LAYER"]
 slug: "special-rise-of-claude-april-2026"
-author: "Brutal Edge Team"
+author: "DHLM Studio Team"
 ---
 
 # The Rise of Claude
@@ -277,7 +277,7 @@ It may belong to the one institutions trust when the cost of being wrong becomes
 
 ---
 
-*This Special Report is Part 1 of Brutal Edge's "Intelligence Economy" series. Related analysis: The Token Economy (Part 2), NVIDIA: The Industrial Architect (Part 3), The Final Frontier — M7 AGI Map (Part 4), and upcoming Trust Architecture synthesis.*
+*This Special Report is Part 1 of DHLM Studio's "Intelligence Economy" series. Related analysis: The Token Economy (Part 2), NVIDIA: The Industrial Architect (Part 3), The Final Frontier — M7 AGI Map (Part 4), and upcoming Trust Architecture synthesis.*
 
 ---
 

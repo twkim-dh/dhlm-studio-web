@@ -1,6 +1,6 @@
 ---
 title: "Deep Dive: Bitcoin — April 2026 Analysis"
-author: "Brutal Edge Team"
+author: "DHLM Studio Team"
 slug: "deep-dive-btc-april-2026"
 ticker: "BTC"
 date: "2026-04-07"
@@ -232,7 +232,7 @@ Counterpoint: at $35,000, Bitcoin would trade at roughly 2x its long-term holder
 
 25% x $120K + 50% x $72K + 25% x $35K = **$74,750**. Current price: $66,000. The math suggests approximately 13% upside — a reasonable risk-adjusted return but not the "life-changing" upside that Bitcoin evangelists promise. At $66,000, Bitcoin is a reasonable portfolio diversifier, not a lottery ticket.
 
-## Brutal Edge™ Verdict
+## DHLM Studio Verdict
 
 ### BEAF Score: 68/100 — Grade: C+ (Modified for Crypto)
 

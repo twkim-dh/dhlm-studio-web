@@ -226,7 +226,7 @@ Specific risks:
 - Slower perceived growth relative to more open-ended model platforms
 - The possibility that markets eventually distinguish between "AI orchestration" and "AI disruption," and reward the latter more aggressively for extended periods
 
-**The Brutal Edge translation:**
+**The DHLM Studio translation:**
 
 Palantir may be the safer ship in the AI fleet. It is not necessarily the ship that captures the entire ocean.
 
@@ -438,7 +438,7 @@ Investors who frame this as a zero-sum war will mis-allocate capital. Investors 
 
 ---
 
-## 9. The Brutal Edge Conclusion — This Is a Test of Your Worldview
+## 9. The DHLM Studio Conclusion — This Is a Test of Your Worldview
 
 This report is not only about Palantir and Anthropic. It is about **how you think the AI economy will evolve.**
 
@@ -464,7 +464,7 @@ This report is not only about Palantir and Anthropic. It is about **how you thin
 
 > What gets rewarded first in the 2026–2030 AI buildout — control, or autonomy?
 
-**The Brutal Edge answer:**
+**The DHLM Studio answer:**
 
 > **Control gets paid first. Autonomy gets paid bigger later.**
 
@@ -501,11 +501,11 @@ The companies winning this cycle will not be the ones with the most impressive d
 
 Both are correct. Neither is sufficient alone. The investor who understands both structures — and allocates according to which gets paid when — will outperform investors still asking "which model has the best benchmark?"
 
-That is the Brutal Edge view.
+That is the DHLM Studio view.
 
 ---
 
-## The Brutal Edge One-Line Principle
+## The DHLM Studio One-Line Principle
 
 > **"In AI, the winners are not the smartest. The winners are the ones enterprises decide to trust — and the order of that trust determines the order of the returns."**
 
@@ -528,4 +528,4 @@ That is the Brutal Edge view.
 
 *For informational and educational purposes only. Not investment advice. The author has no position in any security mentioned. Always conduct your own research.*
 
-*For the edge that cuts through the noise — Brutal Edge.*
+*For the edge that cuts through the noise — DHLM Studio.*

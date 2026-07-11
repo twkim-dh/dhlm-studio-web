@@ -8,8 +8,8 @@ subcategory: "Special Report"
 badge: "special-report"
 readTime: "17 min"
 heroImage: "/images/reports/special-ionq-2b-quantum-funding-snub-may-2026.webp"
-author: "Brutal Edge Team"
-byline: "Brutal Edge Team"
+author: "DHLM Studio Team"
+byline: "DHLM Studio"
 disclosure: "The author holds IonQ. This is disclosed for transparency and does not constitute a recommendation."
 tags: ["SPECIAL-REPORT", "IONQ", "QUANTUM-COMPUTING", "CHIPS-ACT", "QUANTUM-FUNDING", "SKYWATER", "SKYT", "IBM", "RIGETTI", "D-WAVE", "QUANTINUUM", "PSIQUANTUM", "TRAPPED-ION", "DARPA-HARQ", "VERTICAL-INTEGRATION", "CHOKEPOINT"]
 contentLifespan: "evergreen"
@@ -237,7 +237,7 @@ The Q2-Q3 2026 window is where this gets decided. I am positioned for it. I am g
 
 ---
 
-*Brutal Edge. Frameworks over forecasts. Signal over noise.*
+*DHLM Studio. Independent investor analysis.*
 
 ---
 

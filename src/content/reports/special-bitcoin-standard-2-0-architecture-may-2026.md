@@ -9,8 +9,8 @@ heroImage: "/images/content/bitcoin-standard-2-0-architecture-may-2026.webp"
 readTime: "17 min"
 tags: ["SPECIAL-REPORT", "BITCOIN", "MSTR", "STRATEGY", "DIGITAL-CREDIT", "GLOBAL-COLLATERAL", "SAYLOR", "BITCOIN-STANDARD", "CAPITAL-MARKETS"]
 slug: "special-bitcoin-standard-2-0-architecture-may-2026"
-author: "Brutal Edge Team"
-byline: "Brutal Edge Team"
+author: "DHLM Studio Team"
+byline: "DHLM Studio"
 contentLifespan: "evergreen"
 promotionWeeks: 4
 ---
@@ -228,4 +228,4 @@ The next stage of this cycle will be about whether that thesis is right.
 
 ---
 
-*Brutal Edge. Frameworks over forecasts. Signal over noise.*
+*DHLM Studio. Independent investor analysis.*

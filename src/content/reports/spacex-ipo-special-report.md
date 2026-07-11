@@ -1,5 +1,5 @@
 ---
-author: "Brutal Edge Team"
+author: "DHLM Studio Team"
 slug: "spacex-ipo-special-report"
 title: "SpaceX IPO Special Report: The $1.75 Trillion Question"
 ticker: "SPACEX"
@@ -10,7 +10,7 @@ catColor: "#C73E3A"
 grade: "B-"
 heroImage: "/images/content/spacex-ipo-hero.webp"
 beafScore: 77
-description: "SpaceX's rumored $1.75T IPO would be the largest in history. Revenue breakdown, SOTP valuation, risk scenarios, and our Brutal Edge verdict."
+description: "SpaceX's rumored $1.75T IPO would be the largest in history. Revenue breakdown, SOTP valuation, risk scenarios, and our DHLM Studio verdict."
 type: "special-report"
 seoTitle: "SpaceX IPO 2026: Is $1.75 Trillion Justified? — Special Report"
 seoDescription: "SpaceX's rumored $1.75T IPO would be the largest in history. Revenue breakdown, SOTP valuation, risk scenarios, and our BEAF verdict."
@@ -185,7 +185,7 @@ Where does SpaceX fit? Today it looks more like a blend of both. It has the cere
 
 That is why the IPO will be so divisive. Bears will call it peak hype. Bulls will call it the public birth of a new industrial platform. Both sides will have evidence.
 
-## 11. Brutal Edge Verdict + BEAF Score
+## 11. DHLM Studio Verdict + BEAF Score
 
 **BEAF Score (IPO-adapted — 6 factors, 10 points each, 60 max)**
 
@@ -199,7 +199,7 @@ That is why the IPO will be so divisive. Bears will call it peak hype. Bulls wil
 | Valuation discipline | 3 | At $1.75T, burden is enormous |
 | **Total** | **46 / 60** | Elite business, difficult IPO price |
 
-**Brutal Edge verdict**
+**DHLM Studio verdict**
 
 SpaceX is almost certainly one of the best businesses ever to come public. That does not automatically make it one of the best-priced IPOs ever to buy.
 

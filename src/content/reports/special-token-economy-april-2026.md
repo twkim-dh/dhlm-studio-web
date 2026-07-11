@@ -9,7 +9,7 @@ heroImage: "/images/content/special-token-economy-hero.webp"
 readTime: "20 min"
 tags: ["SPECIAL-REPORT", "TOKEN-ECONOMY", "AI-INFRASTRUCTURE", "AMZN", "MSFT", "GOOGL", "AWS", "AZURE", "INFERENCE-ECONOMICS", "INTELLIGENCE-ECONOMY"]
 slug: "special-token-economy-april-2026"
-author: "Brutal Edge Team"
+author: "DHLM Studio Team"
 sources: ["Microsoft Q3 FY2026 Earnings Call Transcript — Microsoft Investor Relations — https://www.microsoft.com/en-us/investor", "Alphabet Q1 2026 Earnings Call Transcript — Alphabet Investor Relations — https://abc.xyz/investor/", "Amazon Q1 2026 Earnings Release — Amazon Investor Relations — https://ir.aboutamazon.com/", "Meta Q1 2026 Earnings Release — Meta Investor Relations — https://investor.fb.com/", "IEA Electricity 2024 Report Data Center Demand — International Energy Agency — https://www.iea.org/reports/electricity-2024", "Anthropic API Pricing and Model Documentation — Anthropic — https://docs.anthropic.com/", "OpenAI API Pricing and Usage Documentation — OpenAI — https://openai.com/pricing", "Gartner Forecast AI Infrastructure Spending 2025 — Gartner Research — https://www.gartner.com/"]
 ---
 
@@ -292,7 +292,7 @@ It may belong to the company that can produce the most valuable tokens at the lo
 
 ---
 
-*This Special Report is Part 2 of Brutal Edge's "Intelligence Economy" series. Related analysis: The Rise of Claude (Part 1), NVIDIA: The Industrial Architect (Part 3), The Final Frontier — M7 AGI Map (Part 4).*
+*This Special Report is Part 2 of DHLM Studio's "Intelligence Economy" series. Related analysis: The Rise of Claude (Part 1), NVIDIA: The Industrial Architect (Part 3), The Final Frontier — M7 AGI Map (Part 4).*
 
 ---
 

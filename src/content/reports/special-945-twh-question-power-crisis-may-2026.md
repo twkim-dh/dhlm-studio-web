@@ -8,8 +8,8 @@ subcategory: "Special Report"
 badge: "special-report"
 readTime: "17 min"
 heroImage: "/images/reports/special-945-twh-question-power-crisis-may-2026.webp"
-author: "Brutal Edge Team"
-byline: "Brutal Edge Team"
+author: "DHLM Studio Team"
+byline: "DHLM Studio"
 tags: ["SPECIAL-REPORT", "AI-INFRASTRUCTURE", "POWER", "DATA-CENTER", "ELECTRICITY-DEMAND", "IEA", "945-TWH", "NUCLEAR", "NATURAL-GAS", "RENEWABLES", "GRID", "CEG", "GEV", "CAMECO", "BWXT", "EQIX", "DLR", "CHOKEPOINT"]
 contentLifespan: "evergreen"
 promotionWeeks: 4
@@ -204,4 +204,4 @@ This is a long-duration thesis with an active capex cycle running underneath it.
 
 ---
 
-*Brutal Edge. Frameworks over forecasts. Signal over noise.*
+*DHLM Studio. Independent investor analysis.*

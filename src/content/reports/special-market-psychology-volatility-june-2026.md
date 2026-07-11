@@ -12,8 +12,8 @@ badge: "special-report"
 catColor: "#A78BFA"
 readTime: "13 min"
 heroImage: "/images/reports/special-market-psychology-volatility-june-2026.webp"
-author: "Brutal Edge Team"
-byline: "Brutal Edge Team"
+author: "DHLM Studio Team"
+byline: "DHLM Studio"
 reviewed: "Reviewed against BEAF Framework"
 audience: "U.S. investors holding high-volatility growth stocks — semiconductor, AI infrastructure, and quantum computing"
 tags: ["SPECIAL-REPORT", "MARKET-PSYCHOLOGY", "SEMICONDUCTOR", "AI-STOCKS", "QUANTUM-COMPUTING", "NASDAQ", "SOX", "NVDA", "MU", "AMD", "VOLATILITY", "BEHAVIORAL-FINANCE", "RISK-MANAGEMENT", "CPI", "FED-RATE-HIKE", "BROADCOM", "AVGO", "JOBS-REPORT"]
@@ -192,10 +192,10 @@ This is a time to protect the process, not to abandon it.
 - Broadcom (AVGO) Q2 FY2026 Earnings Release and investor commentary
 - Federal Reserve FOMC statements and rate-path projections
 - Data as of: June 10, 2026
-- Framework: Brutal Edge Analysis Framework (BEAF) — independent investment analysis
+- Framework: BEAF Analysis Framework — independent investment analysis
 
 ---
 
 > **Disclaimer.** This report is for educational and informational purposes only and does not constitute investment advice, a recommendation to buy or sell any security, or an offer to transact in any financial instrument. It does not recommend any specific stock, sector, or allocation, and references to a "20% cash" level are illustrative of risk-management psychology, not a personalized recommendation. Market figures (index moves, single-stock moves, and economic data) are as of the dates cited and are subject to revision. Past performance is not indicative of future results. All investment decisions should be made based on your own independent research, individual risk tolerance, time horizon, and consultation with a qualified financial professional.
 
-*Brutal Edge — Frameworks over forecasts. Signal over noise.*
+*DHLM Studio - Independent investor analysis.*

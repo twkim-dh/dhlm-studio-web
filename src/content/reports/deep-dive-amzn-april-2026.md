@@ -1,6 +1,6 @@
 ---
 title: "Deep Dive: Amazon — April 2026 Analysis"
-author: "Brutal Edge Team"
+author: "DHLM Studio Team"
 slug: "deep-dive-amzn-april-2026"
 ticker: "AMZN"
 date: "2026-04-04"
@@ -191,7 +191,7 @@ Counterpoint: even in the bear case, Amazon retains $58B in advertising revenue 
 
 25% x $250 + 50% x $200 + 25% x $140 = **$198**. Current price: $200. The math says Amazon is approximately fairly valued — the market has correctly priced in the AWS + Advertising profit engine while discounting the retail complexity.
 
-## Brutal Edge™ Verdict
+## DHLM Studio Verdict
 
 ### BEAF Score: 76/100 — Grade: B
 

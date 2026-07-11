@@ -98,7 +98,7 @@ export default function Quantum101Page() {
         {/* Breadcrumb */}
         <div style={{ marginBottom: 20 }}>
           <Link href="/learn" style={{ fontSize: 11, color: '#475569', textDecoration: 'none', fontFamily: 'var(--mono)' }}>
-            ← Brutal Edge Academy
+            ← DHLM Studio Academy
           </Link>
         </div>
 
@@ -128,7 +128,7 @@ export default function Quantum101Page() {
             </div>
           </div>
           <p style={{ fontSize: 11, color: '#334155', fontFamily: 'var(--mono)', margin: 0 }}>
-            SERIES RUNS JUNE 15 – AUG 31, 2026 · BRUTAL EDGE ACADEMY
+            SERIES RUNS JUNE 15 – AUG 31, 2026 · DHLM STUDIO ACADEMY
           </p>
         </div>
 

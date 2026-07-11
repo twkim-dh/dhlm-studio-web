@@ -1,6 +1,6 @@
 ---
 title: "Deep Dive: Palantir — April 2026 Analysis"
-author: "Brutal Edge Team"
+author: "DHLM Studio Team"
 slug: "deep-dive-pltr-april-2026"
 ticker: "PLTR"
 date: "2026-04-06"
@@ -205,7 +205,7 @@ Counterpoint to bear case: Palantir's government backlog and multi-year contract
 
 20% x $95 + 50% x $55 + 25% x $25 + 5% x $120 (extreme bull) = **$57**. Current price: $78. The probability-weighted math says Palantir is approximately 27% overvalued even with generous growth assumptions.
 
-## Brutal Edge™ Verdict
+## DHLM Studio Verdict
 
 ### BEAF Score: 52/100 — Grade: D+
 

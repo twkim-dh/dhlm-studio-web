@@ -138,14 +138,13 @@ export default async function BlogPostPage({ params }: { params: Promise<{ slug:
       <article style={{ maxWidth: 720, margin: '0 auto', padding: '80px 24px' }}>
         <Link href={isDeepDive ? '/reports' : '/blog'} style={{ fontSize: 12, color: '#64748B', fontFamily: 'var(--sans)' }}>← {isDeepDive ? 'Reports' : 'Blog'}</Link>
 
-        {/* Brutal Edge Header (deep-dive only) */}
+        {/* Report Header (deep-dive only) */}
         {isDeepDive && (
-          <div style={{ marginTop: 20, padding: '20px 22px', borderRadius: 14, background: 'linear-gradient(135deg, #C73E3A08, #C73E3A03)', border: '1px solid #C73E3A20', marginBottom: 24 }}>
+          <div style={{ marginTop: 20, padding: '20px 22px', borderRadius: 14, background: 'linear-gradient(135deg, #3B4A9908, #3B4A9903)', border: '1px solid #3B4A9920', marginBottom: 24 }}>
             <div style={{ display: 'flex', alignItems: 'center', gap: 8, marginBottom: 8 }}>
-              <span style={{ fontSize: 18 }}>🔥</span>
-              <span style={{ fontFamily: 'var(--mono)', fontSize: 11, fontWeight: 800, color: '#C73E3A', letterSpacing: 2 }}>BRUTAL EDGE&trade; DEEP DIVE</span>
+              <span style={{ fontFamily: 'var(--mono)', fontSize: 11, fontWeight: 800, color: '#3B4A99', letterSpacing: 2 }}>DEEP DIVE</span>
             </div>
-            <div style={{ fontSize: 11, color: '#64748B', fontStyle: 'italic' }}>Data-driven analysis. Zero feelings.</div>
+            <div style={{ fontSize: 11, color: '#64748B', fontStyle: 'italic' }}>Independent investor analysis.</div>
           </div>
         )}
 
@@ -174,9 +173,7 @@ export default async function BlogPostPage({ params }: { params: Promise<{ slug:
           </h1>
           <div style={{ display: 'flex', alignItems: 'center', gap: 6, marginTop: 10, flexWrap: 'wrap' }}>
             <span style={{ fontSize: 12, color: '#475569' }}>By</span>
-            <Link href="/editorial" style={{ fontSize: 12, color: '#60A5FA', fontWeight: 600, textDecoration: 'none' }}>Brutal Edge Team</Link>
-            <span style={{ fontSize: 12, color: '#334155' }}>·</span>
-            <Link href="/editorial#beaf" style={{ fontSize: 11, color: '#64748B', textDecoration: 'none' }}>BEAF Framework →</Link>
+            <span style={{ fontSize: 12, color: '#60A5FA', fontWeight: 600 }}>DHLM Studio</span>
           </div>
           <p style={{ fontFamily: 'var(--sans)', fontSize: 15, color: '#64748B', lineHeight: 1.7, marginTop: 16 }}>
             {post.description}
@@ -302,13 +299,12 @@ export default async function BlogPostPage({ params }: { params: Promise<{ slug:
           </div>
         )}
 
-        {/* Brutal Edge Footer (deep-dive only) */}
+        {/* Footer (deep-dive only) */}
         {isDeepDive && (
           <div style={{ marginTop: 40, padding: '20px 22px', borderRadius: 14, background: '#111827', border: '1px solid #1E293B', textAlign: 'center' }}>
-            <div style={{ fontFamily: 'var(--mono)', fontSize: 10, fontWeight: 800, color: '#C73E3A', letterSpacing: 2, marginBottom: 6 }}>🔥 ANALYZED BY BRUTAL EDGE&trade;</div>
-            <div style={{ fontSize: 11, color: '#64748B', marginBottom: 8 }}>DHLM Studio Analysis Engine</div>
+            <div style={{ fontSize: 11, color: '#64748B', marginBottom: 8 }}>DHLM Studio Research</div>
             <div style={{ fontSize: 9, color: '#475569', lineHeight: 1.6 }}>
-              Data: Financial Modeling Prep, Alpha Vantage, CoinGecko<br />
+              Independent investor analysis, for informational and educational purposes.<br />
               NOT investment advice. Always do your own research.
             </div>
           </div>

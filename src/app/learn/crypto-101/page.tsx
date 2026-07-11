@@ -7,7 +7,7 @@ const manifest = unsplashManifest as Record<string, ManifestEntry>;
 
 export const metadata: Metadata = {
   title: 'Crypto 101 — Learn Crypto From Scratch | DHLM Studio',
-  description: 'A 12-week curriculum covering everything from "What is blockchain?" to DeFi, NFTs, and portfolio strategy. Brutal Edge style — no fluff, no hype.',
+  description: 'A 12-week curriculum covering everything from "What is blockchain?" to DeFi, NFTs, and portfolio strategy. DHLM Studio style — no fluff, no hype.',
   alternates: { canonical: 'https://dhlm-studio.com/learn/crypto-101' },
 };
 
@@ -145,7 +145,7 @@ export default function Crypto101Page() {
         {/* Breadcrumb */}
         <div style={{ marginBottom: 20 }}>
           <Link href="/learn" style={{ fontSize: 11, color: '#475569', textDecoration: 'none', fontFamily: 'var(--mono)' }}>
-            ← Brutal Edge Academy
+            ← DHLM Studio Academy
           </Link>
         </div>
 
@@ -165,7 +165,7 @@ export default function Crypto101Page() {
           </h1>
           <p style={{ fontSize: 15, color: '#94A3B8', lineHeight: 1.7, margin: '0 0 20px', maxWidth: 600 }}>
             A 12-week curriculum covering everything from blockchain basics to DeFi and portfolio strategy.
-            Brutal Edge style — data-driven, zero hype, zero BS.
+            DHLM Studio style — data-driven, zero hype, zero BS.
           </p>
 
           {/* Progress bar */}

@@ -63,7 +63,7 @@ export default function RequestDeepDive({ compact = false }: { compact?: boolean
         Which stock should we analyze next?
       </h3>
       <p style={{ fontSize: 12, color: '#64748B', lineHeight: 1.6, margin: '0 0 16px' }}>
-        Submit a ticker. The top requested ticker each week becomes a Brutal Edge Deep Dive.
+        Submit a ticker. The top requested ticker each week becomes a DHLM Studio Deep Dive.
       </p>
 
       <div style={{ display: 'grid', gridTemplateColumns: compact ? '1fr 1fr auto' : '120px 1fr auto', gap: 8, marginBottom: 10 }}>

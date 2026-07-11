@@ -45,14 +45,14 @@ export default function InlineSubscribe({
     return (
       <div style={{ padding: '16px 20px', borderRadius: 12, background: '#00D47408', border: '1px solid #00D47430', textAlign: 'center' }}>
         <div style={{ fontSize: 13, fontWeight: 800, color: '#00D474', marginBottom: 2 }}>✓ You&apos;re in</div>
-        <div style={{ fontSize: 11, color: '#64748B' }}>Your first Brutal Edge report summary is on the way.</div>
+        <div style={{ fontSize: 11, color: '#64748B' }}>Your first report summary is on the way.</div>
       </div>
     );
   }
 
   return (
     <div style={{ padding: '18px 20px', borderRadius: 12, background: '#0D1117', border: '1px solid #1E293B' }}>
-      <div style={{ fontFamily: 'var(--mono)', fontSize: 9, fontWeight: 800, color: '#C73E3A', letterSpacing: 2, marginBottom: 6 }}>BRUTAL EDGE&trade; WEEKLY</div>
+      <div style={{ fontFamily: 'var(--mono)', fontSize: 9, fontWeight: 800, color: '#3B4A99', letterSpacing: 2, marginBottom: 6 }}>DHLM STUDIO · WEEKLY</div>
       <div style={{ fontSize: 14, fontWeight: 800, color: '#E2E8F0', marginBottom: 3, fontFamily: 'var(--serif)' }}>{headline}</div>
       <div style={{ fontSize: 11, color: '#64748B', marginBottom: 12, lineHeight: 1.5 }}>{description}</div>
       <div style={{ display: 'flex', gap: 8 }}>

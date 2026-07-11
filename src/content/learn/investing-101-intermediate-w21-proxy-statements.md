@@ -252,7 +252,7 @@ Three habits will turn proxy reading from a formality into a real analytical inp
 
 ---
 
-## Brutal Edge Coverage Integration
+## DHLM Studio Coverage Integration
 
 This week's framework maps directly onto our coverage:
 
@@ -267,14 +267,14 @@ For additional frameworks, see our Deep Dive archive.
 
 ## Looking Ahead
 
-This week closes the disclosure module. You now have the frameworks to read the three core public-company documents — the 10-K (legal truth), the earnings call (real-time management), and the proxy (governance and alignment). Over the next three weeks we shift from document-reading to portfolio construction: how to size the positions that result from this analysis. Next week we tackle one of the least-taught skills in retail investing: the Kelly Criterion and its application to conviction-based position sizing. We take three names from the Brutal Edge coverage universe — NVDA, TSLA, MSFT — and apply the Kelly framework to actual position sizes based on their scores, expected returns, and downside exposures.
+This week closes the disclosure module. You now have the frameworks to read the three core public-company documents — the 10-K (legal truth), the earnings call (real-time management), and the proxy (governance and alignment). Over the next three weeks we shift from document-reading to portfolio construction: how to size the positions that result from this analysis. Next week we tackle one of the least-taught skills in retail investing: the Kelly Criterion and its application to conviction-based position sizing. We take three names from the DHLM Studio coverage universe — NVDA, TSLA, MSFT — and apply the Kelly framework to actual position sizes based on their scores, expected returns, and downside exposures.
 
 For now, sit with this week's lesson. A proxy statement is not a routine regulatory filing. It is a window into how a company is actually governed, and over long holding periods, governance determines an enormous portion of outcomes. The asymmetry — publicly disclosed, rarely read — is the opportunity. Forty-five minutes per year per holding is a small price for durable investment insight.
 
 ---
 
-*Brutal Edge. Frameworks over forecasts. Signal over noise.*
+*DHLM Studio. Independent investor analysis.*
 
 ---
 
-**Disclaimer.** Brutal Edge is an independent investment research platform. This report is published for educational and informational purposes only and does not constitute investment advice, a recommendation to buy or sell any security, or an offer to transact in any financial instrument. All valuations, forecasts, and opinions are the analyst's own and are subject to change without notice. Past performance does not guarantee future results. Readers should conduct their own due diligence and consult a qualified financial professional before making investment decisions.
+**Disclaimer.** DHLM Studio is an independent investment research platform. This report is published for educational and informational purposes only and does not constitute investment advice, a recommendation to buy or sell any security, or an offer to transact in any financial instrument. All valuations, forecasts, and opinions are the analyst's own and are subject to change without notice. Past performance does not guarantee future results. Readers should conduct their own due diligence and consult a qualified financial professional before making investment decisions.

@@ -9,7 +9,7 @@ heroImage: "/images/content/special-two-pillars-future-capitalism-hero.webp"
 readTime: "20 min"
 tags: ["SPECIAL-REPORT", "MUSK-EMPIRE", "ANTHROPIC", "CLAUDE", "SPACEX", "FUTURE-CAPITALISM", "INFRASTRUCTURE", "AI-TRUST"]
 slug: "special-two-pillars-future-capitalism-april-2026"
-author: "Brutal Edge Team"
+author: "DHLM Studio Team"
 ---
 
 # The Two Pillars of Future Capitalism
@@ -278,4 +278,4 @@ It may be defined by **new chokepoints** — and by the companies that sit at th
 
 ---
 
-*This Special Report is Part 3 of Brutal Edge's "Musk Empire" series and the synthesis with the "Intelligence Economy" series. Related analysis: The Coronation of Elon Musk — SpaceX IPO (Part 1), The Operating Systems for Earth and Beyond (Part 2), The Rise of Claude (Intelligence Economy Part 1).*
+*This Special Report is Part 3 of DHLM Studio's "Musk Empire" series and the synthesis with the "Intelligence Economy" series. Related analysis: The Coronation of Elon Musk — SpaceX IPO (Part 1), The Operating Systems for Earth and Beyond (Part 2), The Rise of Claude (Intelligence Economy Part 1).*

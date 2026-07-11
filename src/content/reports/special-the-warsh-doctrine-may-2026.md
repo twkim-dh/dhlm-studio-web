@@ -12,12 +12,12 @@ ticker: "MACRO"
 tickers: ["MACRO", "FED", "BANKS"]
 tags: ["SPECIAL-REPORT", "WARSH-DOCTRINE", "MONETARY-POLICY", "FED", "MACRO", "YIELD-CURVE", "BANKS", "TERM-PREMIUM", "REGIME-CHANGE"]
 slug: "special-the-warsh-doctrine-may-2026"
-author: "Brutal Edge Team"
+author: "DHLM Studio Team"
 ---
 
 # The Warsh Doctrine
 
-**Sector Special Report — Brutal Edge**
+**Sector Special Report — DHLM Studio**
 **Framework-based analysis of the next Fed regime and what it means for U.S. capital markets**
 
 ---
@@ -28,7 +28,7 @@ Kevin Warsh is not yet Fed chair. He is the nominee. That distinction matters be
 
 Most analysts are framing this as "Warsh equals hawkish" or "Warsh equals rate cuts." Both readings are too small.
 
-The Brutal Edge view: a Warsh-led Fed would attempt to restore policy signaling discipline and shrink the central bank's role in market pricing. But it would have to do so in a world of higher debt, larger Treasury supply, persistent energy shocks, and a banking system still architected around an ample-reserves framework.
+The DHLM Studio view: a Warsh-led Fed would attempt to restore policy signaling discipline and shrink the central bank's role in market pricing. But it would have to do so in a world of higher debt, larger Treasury supply, persistent energy shocks, and a banking system still architected around an ample-reserves framework.
 
 The intent is normalization. The operating environment is far less forgiving than the 1990s.
 
@@ -66,7 +66,7 @@ For the past five years, the operating mental model for Fed policy was:
 
 This model is no longer sufficient.
 
-The Brutal Edge view: anyone still trading rates on the assumption that the Fed will smoothly telegraph cuts, support markets through balance-sheet expansion, and provide frictionless forward guidance is reading a map of a country that no longer exists.
+The DHLM Studio view: anyone still trading rates on the assumption that the Fed will smoothly telegraph cuts, support markets through balance-sheet expansion, and provide frictionless forward guidance is reading a map of a country that no longer exists.
 
 The Warsh framework, as articulated through his nomination hearing and prior writings, replaces these four pillars with:
 
@@ -95,7 +95,7 @@ Warsh's framework points toward a smaller Fed footprint. The operating reality o
 
 Goldman Sachs Asset Management's March analysis put it directly: notable balance-sheet shrinkage would take time, require committee buy-in, regulatory changes, and asset recomposition. The Fed had already stopped QT in October 2025 and resumed Treasury bill purchases through April 15, 2026 specifically to manage funding-market conditions.
 
-The Brutal Edge read: Warsh would inherit a Fed that has stopped QT, is buying $40B in T-bills monthly, and has dissents in four directions. The path to a smaller, less-communicative Fed is intellectually clear and operationally constrained.
+The DHLM Studio read: Warsh would inherit a Fed that has stopped QT, is buying $40B in T-bills monthly, and has dissents in four directions. The path to a smaller, less-communicative Fed is intellectually clear and operationally constrained.
 
 ---
 
@@ -128,13 +128,13 @@ Both paths reduce the central role of Fed forward guidance in pricing the curve.
 
 Most rate commentary collapses the entire macro structure into one trade. That is the same mistake people made about cartel discipline in oil — treating a structurally diverse system as a single thematic bet.
 
-The Brutal Edge framework breaks the U.S. capital structure into four layers, each repriced differently by a Warsh regime.
+The DHLM Studio framework breaks the U.S. capital structure into four layers, each repriced differently by a Warsh regime.
 
 ### Layer 1 — Banks and Financial Intermediaries (Steepener Beneficiaries)
 
 These are firms whose net interest margin expands when the curve steepens — exactly the structural condition a Warsh framework could produce.
 
-| Category | Brutal Edge Read |
+| Category | DHLM Studio Read |
 |---|---|
 | Large-cap money center banks | NIM expansion, deposit franchise advantage, fee businesses stable |
 | Regional banks | More leveraged to NIM moves, but also more exposed to credit cycle |
@@ -147,7 +147,7 @@ These are firms whose net interest margin expands when the curve steepens — ex
 
 These are businesses that can raise prices alongside inflation without losing customers. In a regime where inflation is structurally higher, this is the layer that compounds.
 
-| Characteristic | Brutal Edge Read |
+| Characteristic | DHLM Studio Read |
 |---|---|
 | Subscription business models | Recurring revenue with annual price increases |
 | Asset-light operators | Margin expansion in inflationary environments |
@@ -174,7 +174,7 @@ This is where the Warsh framework matters most negatively. Anything that priced 
 
 If inflation stays structurally higher and term premium expands, real assets benefit.
 
-| Category | Brutal Edge Read |
+| Category | DHLM Studio Read |
 |---|---|
 | Energy infrastructure | Already covered in The Great Energy Shift |
 | Industrial commodities | Persistent demand in re-shoring environment |
@@ -205,7 +205,7 @@ What banks actually need:
 | Regulatory environment | Tighter post-2023 stress | Stabilizing |
 | Capital return | Restrained by stress tests | Normalizing |
 
-The Brutal Edge view: U.S. large-cap financials are trading at multiples that imply they need rate cuts to work. A Warsh framework changes that math entirely. A steeper curve, persistent term premium, and stable credit conditions are exactly the environment banks have been waiting for.
+The DHLM Studio view: U.S. large-cap financials are trading at multiples that imply they need rate cuts to work. A Warsh framework changes that math entirely. A steeper curve, persistent term premium, and stable credit conditions are exactly the environment banks have been waiting for.
 
 This is one of the strongest single re-rating stories in U.S. equities, and most generalist investors are still operating on the old assumption that the sector is rate-cut dependent.
 
@@ -219,7 +219,7 @@ Warsh's framework directly challenges this assumption.
 
 His pre-Fed writings argued repeatedly that the Fed had become too willing to substitute monetary support for market-clearing prices. His confirmation hearing comments suggest the same instinct — that the Fed should be the lender of last resort, not the buyer of last resort, and not the underwriter of asset prices.
 
-The Brutal Edge view: investors should not assume the Fed put is dead — institutions usually preserve their option to act in real crises. But they should assume the strike price is lower and the activation threshold is higher than markets have been pricing.
+The DHLM Studio view: investors should not assume the Fed put is dead — institutions usually preserve their option to act in real crises. But they should assume the strike price is lower and the activation threshold is higher than markets have been pricing.
 
 That alone is enough to change risk-asset multiples on the margin. The ones most affected are the ones priced as if the Fed put is permanent and reliable. The ones least affected are the ones with real cash flows and real moats that do not depend on continued asset-price support.
 
@@ -227,7 +227,7 @@ That alone is enough to change risk-asset multiples on the margin. The ones most
 
 ## 8. The Bear Case (Honest Version)
 
-Brutal Edge does not write one-sided reports. The bear case here is real and deserves equal weight.
+DHLM Studio does not write one-sided reports. The bear case here is real and deserves equal weight.
 
 **Confirmation risk**: Warsh is not yet confirmed. The thesis assumes a confirmation that may face Senate friction. If confirmation fails, the framework discussed here does not become operative.
 
@@ -247,7 +247,7 @@ These risks do not invalidate the thesis. They define the shape of position sizi
 
 ## 9. What to Watch Over the Next Four Quarters
 
-The thesis develops or breaks based on observable signals. Brutal Edge tracks the following:
+The thesis develops or breaks based on observable signals. DHLM Studio tracks the following:
 
 **Q2 2026**:
 - Warsh confirmation timeline and Senate margin
@@ -281,9 +281,9 @@ Any clean bearish signal in 4 of 5 metrics in Q2 = thesis re-evaluated.
 
 ---
 
-## 10. Brutal Edge Coverage Integration
+## 10. DHLM Studio Coverage Integration
 
-This Special Report connects to existing Brutal Edge coverage across multiple frames.
+This Special Report connects to existing DHLM Studio coverage across multiple frames.
 
 | Coverage | Connection |
 |---|---|
@@ -322,13 +322,13 @@ That is a much wider distribution of outcomes than the consensus is currently em
 
 This Special Report has a 60-day shelf life. Monetary policy regimes are slow-moving, but confirmation outcomes and FOMC composition can shift quickly. Any of the underlying premises (Warsh confirmation, FOMC dissent patterns, Treasury supply trajectory, energy inflation persistence, banking sector credit conditions) can shift materially within the shelf life of this report.
 
-Brutal Edge does not provide personalized investment advice. This content is for educational and informational purposes only. Specific layer categories mentioned are for analytical illustration of the four-layer repricing framework, not buy/sell recommendations. Investment decisions should be based on individual circumstances, risk tolerance, and consultation with qualified financial advisors. Past performance does not guarantee future results.
+DHLM Studio does not provide personalized investment advice. This content is for educational and informational purposes only. Specific layer categories mentioned are for analytical illustration of the four-layer repricing framework, not buy/sell recommendations. Investment decisions should be based on individual circumstances, risk tolerance, and consultation with qualified financial advisors. Past performance does not guarantee future results.
 
 ---
 
-*Brutal Edge. Frameworks over forecasts. Signal over noise.*
+*DHLM Studio. Independent investor analysis.*
 
-**Related Brutal Edge coverage:**
+**Related DHLM Studio coverage:**
 - The Great Energy Shift (May 2026)
 - The Token Economy (April 2026)
 - The Structural View Vol. 2: Distribution Layer Wars

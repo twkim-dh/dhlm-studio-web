@@ -1,5 +1,5 @@
 ---
-author: "Brutal Edge Team"
+author: "DHLM Studio Team"
 slug: "deep-dive-rdw-redwire-april-2026"
 title: "Redwire (RDW): From Space Infrastructure to Defense Autonomy"
 ticker: "RDW"
@@ -15,7 +15,7 @@ type: "deep-dive"
 tickers: ["RDW"]
 sector: "Industrials"
 seoTitle: "Redwire (RDW) Deep Dive April 2026: Space-Defense Hybrid, $411M Backlog | DHLM Studio"
-seoDescription: "Redwire at $9.91 — $411.2M backlog, combat drones in 7 countries, ESA quantum satellite, $450-500M 2026 guidance. Full deep dive: bull case, bear case, risk stack. Brutal Edge."
+seoDescription: "Redwire at $9.91 — $411.2M backlog, combat drones in 7 countries, ESA quantum satellite, $450-500M 2026 guidance. Full deep dive: bull case, bear case, risk stack. DHLM Studio."
 relatedSlugs: ["new-space-sector-report-april-2026","spacex-ipo-special-report-2026","deep-dive-pltr-april-2026"]
 faqs: [{"q":"What does Redwire (RDW) do?","a":"Redwire provides space infrastructure and defense technology for government and commercial customers. Products include spacecraft sensors, deployable solar arrays (ROSA/ELSA), RF systems, and uncrewed autonomous airborne systems (Stalker/Penguin UAS) acquired via Edge Autonomy in 2025. The company has approximately 1,300 employees across the U.S. and Europe."},{"q":"What is Redwire's backlog and revenue guidance?","a":"Entering 2026, Redwire reported a record backlog of $411.2 million. 2026 revenue guidance is $450M-$500M (+34-49% vs FY2025 $335.4M). Analyst consensus is Strong Buy with a median price target of $13.50 (range: $6-$22)."},{"q":"What is Edge Autonomy and why did Redwire acquire it?","a":"Edge Autonomy is a maker of combat-proven UAS platforms including the Stalker and Penguin drones. After the acquisition, Redwire delivered 100+ units in seven countries including to the U.S. Army, U.S. Marine Corps, and NATO/allied nations. The deal expanded Redwire's exposure to defense budgets and recurring defense-program revenue."},{"q":"What is the biggest risk with Redwire stock?","a":"Margin conversion. FY2025 gross margin was 5.2% and net loss was $226.6M on $335M revenue — development-stage economics. The bull case requires 2026 to show meaningful margin improvement as programs move from development to production. If that doesn't happen, the $411M backlog doesn't translate to re-rating."},{"q":"How does Redwire compare to Rocket Lab (RKLB)?","a":"Rocket Lab is more mature: $602M revenue, $1.85B backlog, 100% mission success in 2025. Redwire ($335M revenue, $411M backlog) sits in a different tier but occupies a unique position — the only listed small-cap bridging space components, defense autonomy, and European expansion simultaneously. Higher execution risk, higher optionality."}]
 contentLifespan: "medium"
@@ -23,7 +23,7 @@ promotionWeeks: 2
 disclosure: "The author is considering a position in Redwire. This is disclosed for transparency and does not constitute a recommendation."
 ---
 
-🔥 **BRUTAL EDGE™ VERDICT**
+🔥 **DHLM STUDIO VERDICT**
 
 "Redwire is no longer just a thematic space stock. It is becoming a hybrid space-defense contractor with real backlog, combat-proven drones, and European expansion. The story is credible. The financials are not there yet. At $9.91, this is a show-me stock — and 2026 is the year it has to show."
 

@@ -199,4 +199,4 @@ In the next part, we cover **quantum applications — drug discovery, materials,
 
 > **Educational disclaimer.** This material is educational content intended to help readers understand quantum computing and security technology. It is not investment advice or a recommendation to buy or sell any financial instrument. Standards, guidance, and company details are as of publication and are subject to change. Investment decisions are the reader's own responsibility; consult a qualified professional where appropriate.
 
-*Brutal Edge — Frameworks over forecasts. Signal over noise.*
+*DHLM Studio - Independent investor analysis.*

@@ -27,7 +27,7 @@ export default function ContentSources({ sources }: Props) {
       </div>
       <p style={{ fontSize: 11, color: '#475569', lineHeight: 1.6, margin: '0 0 12px' }}>
         All quantitative claims in this report are verifiable against the following primary sources.
-        Brutal Edge does not rely on secondary aggregators or unverified data.
+        All claims are verified against primary sources, not secondary aggregators.
       </p>
       <ul style={{ margin: 0, paddingLeft: 0, listStyle: 'none', display: 'flex', flexDirection: 'column', gap: 6 }}>
         {sources.map((src, i) => {

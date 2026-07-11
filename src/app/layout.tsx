@@ -85,7 +85,7 @@ export default function RootLayout({
         <link rel="icon" href="/favicon.svg" type="image/svg+xml" />
         <link rel="apple-touch-icon" href="/favicon.svg" />
         <link rel="manifest" href="/manifest.json" />
-        <meta name="theme-color" content="#0B0F19" />
+        <meta name="theme-color" content="#FFFFFF" />
         {/* No Twemoji — caused image explosion bug. Flag emojis show as text on Windows, which is acceptable. */}
         {/* Preconnect to external origins */}
         <link rel="preconnect" href="https://www.googletagmanager.com" />

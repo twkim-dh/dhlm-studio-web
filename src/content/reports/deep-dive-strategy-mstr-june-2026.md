@@ -10,7 +10,7 @@ readTime: "16 min"
 tags: ["DEEP-DIVE", "MSTR", "STRATEGY", "MICROSTRATEGY", "BITCOIN", "BTC", "SAYLOR", "STRC", "STRETCH", "BITCOIN-TREASURY", "PREFERRED-EQUITY", "CONVERTIBLE-BONDS", "CAPITAL-STRUCTURE", "MNAV", "BTC-YIELD", "CHOKEPOINT"]
 tickers: ["MSTR", "STRC", "STRF", "STRD", "STRK"]
 slug: "deep-dive-strategy-mstr-june-2026"
-author: "Brutal Edge Team"
+author: "DHLM Studio Team"
 contentLifespan: "evergreen"
 promotionWeeks: 4
 ---
@@ -221,7 +221,7 @@ This is not a buy recommendation. It is a structural read on the most important 
 
 ---
 
-*Brutal Edge. Frameworks over forecasts. Signal over noise.*
+*DHLM Studio. Independent investor analysis.*
 
 ---
 

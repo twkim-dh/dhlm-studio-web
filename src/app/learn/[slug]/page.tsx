@@ -427,7 +427,7 @@ export default async function LearnLessonPage({ params }: { params: Promise<{ sl
 
         {/* Breadcrumb */}
         <div style={{ display: 'flex', alignItems: 'center', gap: 8, marginBottom: 24, fontSize: 11, fontFamily: 'var(--mono)', color: '#475569', flexWrap: 'wrap' }}>
-          <Link href="/learn" style={{ color: '#475569', textDecoration: 'none' }}>Brutal Edge Academy</Link>
+          <Link href="/learn" style={{ color: '#475569', textDecoration: 'none' }}>DHLM Studio Academy</Link>
           <span>/</span>
           <Link href={seriesIndexPage} style={{ color: '#475569', textDecoration: 'none' }}>{seriesLineLabel}</Link>
           <span>/</span>
@@ -459,9 +459,9 @@ export default async function LearnLessonPage({ params }: { params: Promise<{ sl
           </div>
           <div style={{ display: 'flex', alignItems: 'center', gap: 6, marginTop: 10, flexWrap: 'wrap' }}>
             <span style={{ fontSize: 12, color: '#475569' }}>By</span>
-            <Link href="/editorial" style={{ fontSize: 12, color: '#00D474', fontWeight: 600, textDecoration: 'none' }}>Brutal Edge Team</Link>
+            <Link href="/editorial" style={{ fontSize: 12, color: '#00D474', fontWeight: 600, textDecoration: 'none' }}>DHLM Studio Team</Link>
             <span style={{ fontSize: 12, color: '#334155' }}>·</span>
-            <span style={{ fontSize: 11, color: '#475569' }}>Brutal Edge Academy</span>
+            <span style={{ fontSize: 11, color: '#475569' }}>DHLM Studio Academy</span>
           </div>
         </div>
 
@@ -521,7 +521,7 @@ export default async function LearnLessonPage({ params }: { params: Promise<{ sl
         {/* Back links */}
         <div style={{ display: 'flex', gap: 20 }}>
           <Link href={seriesIndexPage} style={{ fontSize: 12, color: '#64748B', textDecoration: 'none' }}>← Series Index</Link>
-          <Link href="/learn" style={{ fontSize: 12, color: '#64748B', textDecoration: 'none' }}>← Brutal Edge Academy</Link>
+          <Link href="/learn" style={{ fontSize: 12, color: '#64748B', textDecoration: 'none' }}>← DHLM Studio Academy</Link>
         </div>
 
         <ContentDisclaimer />

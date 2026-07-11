@@ -9,7 +9,7 @@ heroImage: "/images/content/deep-dive-nke-long-runway-hero.webp"
 readTime: "16 min"
 tags: ["DEEP-DIVE", "NIKE", "NKE", "TURNAROUND", "CONSUMER-BRANDS", "DTC", "WHOLESALE", "ELLIOTT-HILL", "CHINA-CONSUMER"]
 slug: "deep-dive-nke-long-runway-april-2026"
-author: "Brutal Edge Team"
+author: "DHLM Studio Team"
 ---
 
 # Nike's Long Runway Back
@@ -253,4 +253,4 @@ It will be won by proving that performance, distribution, and cultural relevance
 
 ---
 
-*This Deep Dive is an independent analysis from Brutal Edge, focused on structural turnarounds in premium consumer brands.*
+*This Deep Dive is an independent analysis from DHLM Studio, focused on structural turnarounds in premium consumer brands.*

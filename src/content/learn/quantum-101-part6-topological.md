@@ -208,4 +208,4 @@ In the next part, we cover **quantum annealing.** Centered on D-Wave, we will lo
 
 > **Educational disclaimer.** This material is educational content intended to help readers understand quantum computing technology. It is not investment advice or a recommendation to buy or sell any financial instrument. Technical claims and roadmaps are as of each announcement date, remain subject to ongoing scientific verification, and may change. Investment decisions are the reader's own responsibility; consult a qualified professional where appropriate.
 
-*Brutal Edge — Frameworks over forecasts. Signal over noise.*
+*DHLM Studio - Independent investor analysis.*

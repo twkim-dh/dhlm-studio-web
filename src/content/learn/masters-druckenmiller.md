@@ -49,7 +49,7 @@ The second version requires two things most investors don't have: fast asymmetry
 
 His NVDA trade is the cleanest example. He once said he didn't even know how to spell Nvidia three months before building a large position early in the AI wave. Then he later reversed it. That full sequence — enter early, size up on confirmation, reverse when conviction broke — is the method.
 
-Brutal Edge takeaway: you don't need perfect certainty to act. You need a clear exit plan the moment your thesis breaks. If you can't articulate what would make you wrong before you enter, you don't have a thesis. You have a hope.
+DHLM Studio takeaway: you don't need perfect certainty to act. You need a clear exit plan the moment your thesis breaks. If you can't articulate what would make you wrong before you enter, you don't have a thesis. You have a hope.
 
 ## 2. The Variable That Actually Moves the Stock
 
@@ -63,7 +63,7 @@ For NVDA, the variable wasn't "AI is big." Every investor knew that by mid-2023.
 
 This is why generic "AI exposure" ETFs underperformed concentrated NVDA/AVGO positions by 300+ percentage points through 2024-2025. The index couldn't distinguish between companies actually monetizing the variable and companies just tagged with the label.
 
-Brutal Edge takeaway: stop asking "what does this company do?" Start asking "what will change about this business that the market hasn't priced yet?" If you can't name the specific variable, you're not investing. You're collecting tickers.
+DHLM Studio takeaway: stop asking "what does this company do?" Start asking "what will change about this business that the market hasn't priced yet?" If you can't name the specific variable, you're not investing. You're collecting tickers.
 
 ## 3. The 18-Month Rule — Where Price Actually Lives
 
@@ -81,7 +81,7 @@ The same sequence plays out in every cycle. Housing recovers before unemployment
 
 The practical question becomes: what will be obvious 18 months from now that still feels arguable today? That question forces you to take a position before consensus, live with being called wrong for 6-12 months, and distinguish between being early and being wrong.
 
-Brutal Edge takeaway: the only way to generate alpha is to be right before others are. That means you will feel wrong most of the time you're actually right. If your portfolio looks comfortable, you're probably already in the same trade everyone else has.
+DHLM Studio takeaway: the only way to generate alpha is to be right before others are. That means you will feel wrong most of the time you're actually right. If your portfolio looks comfortable, you're probably already in the same trade everyone else has.
 
 ## 4. Technicals as Confirmation, Not Religion
 
@@ -97,7 +97,7 @@ If his macro view said the dollar should weaken on Fed dovishness, and price act
 
 Crowded technical patterns in 2026 are less powerful than they were in the 1990s. Too many investors watch the same patterns. Too many quant funds trade against retail pattern-recognition. The edge has compressed.
 
-Brutal Edge takeaway: if you use charts without a thesis, you're guessing. If you have a thesis but ignore charts, you'll over-size bad timing. The combination is where the skill lives.
+DHLM Studio takeaway: if you use charts without a thesis, you're guessing. If you have a thesis but ignore charts, you'll over-size bad timing. The combination is where the skill lives.
 
 ## 5. The Self-Doubt That Made Him Rich
 
@@ -117,7 +117,7 @@ Most investors can't do this. Their identity is fused to their positions. They'd
 
 Druckenmiller's 30-year record isn't built on being right more often than others. It's built on being wrong more briefly.
 
-Brutal Edge takeaway: if you can't separate your identity from your position, you will never compound at 30%. You will compound at whatever your ego allows — which is usually single digits, net of the blow-ups.
+DHLM Studio takeaway: if you can't separate your identity from your position, you will never compound at 30%. You will compound at whatever your ego allows — which is usually single digits, net of the blow-ups.
 
 ## 6. When Concentration Actually Makes Sense
 
@@ -133,7 +133,7 @@ When Druckenmiller believed he saw a 10x setup with manageable downside, he was 
 
 Most retail investors do the exact opposite: small money in their best idea (because they're "uncertain"), large money in "safe" diversified ETFs (because it feels prudent). They end up owning everything the market owns, minus the cost of management.
 
-Brutal Edge takeaway: diversification is a response to not knowing. If you actually know something, acting like you don't is strategic cowardice. The trick is being honest about which category you're in on any given trade.
+DHLM Studio takeaway: diversification is a response to not knowing. If you actually know something, acting like you don't is strategic cowardice. The trick is being honest about which category you're in on any given trade.
 
 ## 7. The Five Habits That Actually Translate
 

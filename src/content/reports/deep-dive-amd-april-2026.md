@@ -1,6 +1,6 @@
 ---
 title: "Deep Dive: AMD — April 2026 Analysis"
-author: "Brutal Edge Team"
+author: "DHLM Studio Team"
 slug: "deep-dive-amd-april-2026"
 ticker: "AMD"
 date: "2026-04-05"
@@ -214,7 +214,7 @@ Counterpoint: the bear case values AMD at the semiconductor average multiple, wh
 
 25% x $240 + 50% x $155 + 25% x $95 = **$161**. Current price: $170. The math says AMD is slightly overvalued — the market has priced in the AI GPU opportunity but not the cyclical headwinds. You are paying a fair price for the EPYC success story and a slight premium for AI GPU optionality.
 
-## Brutal Edge™ Verdict
+## DHLM Studio Verdict
 
 ### BEAF Score: 61/100 — Grade: C
 

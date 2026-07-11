@@ -9,7 +9,7 @@ heroImage: "/images/content/special-tesla-spacex-operating-systems-hero.webp"
 readTime: "18 min"
 tags: ["SPECIAL-REPORT", "TESLA", "SPACEX", "MUSK", "WEALTH-CONCENTRATION", "PLATFORM-COMPANIES", "AUTONOMY", "ORBITAL-INFRASTRUCTURE", "ROBOTICS"]
 slug: "special-tesla-spacex-operating-systems-april-2026"
-author: "Brutal Edge Team"
+author: "DHLM Studio Team"
 disclosure: "The author holds Tesla. The author is considering a position in SpaceX. This is disclosed for transparency and does not constitute a recommendation."
 ---
 
@@ -287,10 +287,10 @@ They may be the companies that become **the operating systems for entire domains
 - xAI Grok product announcements and Colossus AI supercomputer development updates
 - Elon Musk public statements via X (formerly Twitter) and earnings call transcripts
 - Data as of: May 2026
-- Framework: Brutal Edge Analysis Framework (BEAF) — independent investment analysis
+- Framework: BEAF Analysis Framework — independent investment analysis
 
 ---
 
 > **Disclosure.** The author holds Tesla. The author is considering a position in SpaceX. Disclosed above in the interest of transparency.
 
-*This Special Report is Part 2 of Brutal Edge's "Musk Empire" series. Related analysis: The Coronation of Elon Musk — SpaceX IPO (Part 1), The Two Pillars of Future Capitalism — Musk + Anthropic (Part 3 — synthesis).*
+*This Special Report is Part 2 of DHLM Studio's "Musk Empire" series. Related analysis: The Coronation of Elon Musk — SpaceX IPO (Part 1), The Two Pillars of Future Capitalism — Musk + Anthropic (Part 3 — synthesis).*

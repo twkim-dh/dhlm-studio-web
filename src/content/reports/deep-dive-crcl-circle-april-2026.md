@@ -1,5 +1,5 @@
 ---
-author: "Brutal Edge Team"
+author: "DHLM Studio Team"
 slug: "deep-dive-crcl-circle-april-2026"
 title: "Circle Internet Group (CRCL): The Stablecoin Leader That Fell Hard — and May Still Matter"
 ticker: "CRCL"
@@ -20,7 +20,7 @@ contentLifespan: "medium"
 promotionWeeks: 2
 ---
 
-🔥 **BRUTAL EDGE™ VERDICT**
+🔥 **DHLM STUDIO VERDICT**
 
 "Circle looks more attractive after the drawdown than it did at $299. But strip away the narrative and the economics are clear: 96% of revenue comes from reserve yield. This is a rate-sensitive stablecoin spread business with infrastructure ambitions — not the other way around. Investors who mistake the vision for the current reality will misprice this stock."
 

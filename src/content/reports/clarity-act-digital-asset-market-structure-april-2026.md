@@ -1,5 +1,5 @@
 ---
-author: "Brutal Edge Team"
+author: "DHLM Studio Team"
 slug: "clarity-act-digital-asset-market-structure-april-2026"
 title: "The CLARITY Act: Who Owns the Toll Roads When Crypto Gets Legal Roads"
 ticker: "COIN"
@@ -24,7 +24,7 @@ contentLifespan: "medium"
 promotionWeeks: 2
 ---
 
-⚡ SPECIAL REPORT — BRUTAL EDGE™ VERDICT
+⚡ SPECIAL REPORT — DHLM STUDIO VERDICT
 
 The CLARITY Act is not a crypto bill. It is a market-access bill. It converts the U.S. digital-asset market from litigation-defined to law-defined. That is a structural shift larger than spot ETF approval, because it affects exchanges, brokers, custodians, stablecoin issuers, and the entire market plumbing — not just one or two assets. The stablecoin yield fight — the single biggest political bottleneck — is now 99% resolved. Banking Committee markup must happen by late April to stay on track for passage before August recess. If it advances, value accrues first to infrastructure, then to assets. Coinbase is the clearest listed beneficiary. Circle is the clearest stablecoin infrastructure play. XRP is a narrative trade, not an equity thesis.
 

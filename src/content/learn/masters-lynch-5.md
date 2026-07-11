@@ -350,4 +350,4 @@ The Masters: Livermore
 The Mental Game #001: Why Bull Markets Make You Worse
 The Mental Game #002: How to Survive an AI Bubble
 For informational and educational purposes only. Not investment advice. The author has no position in any security mentioned. Always conduct your own research.
-For the edge that cuts through the noise  --  Brutal Edge.
+For the edge that cuts through the noise  --  DHLM Studio.

@@ -1,5 +1,5 @@
 ---
-author: "Brutal Edge Team"
+author: "DHLM Studio Team"
 slug: "new-space-sector-report-april-2026"
 title: "New Space: The $1 Trillion Sector That Stopped Being Science Fiction"
 ticker: "RKLB"
@@ -15,14 +15,14 @@ type: "special-report"
 tickers: ["RKLB", "ASTS", "LUNR", "SPACEX"]
 sector: "Industrials"
 seoTitle: "New Space Sector Report April 2026: RKLB, ASTS, LUNR Analysis | DHLM Studio"
-seoDescription: "SpaceX, Rocket Lab, AST SpaceMobile, and Intuitive Machines — who wins as launch gets cheap? Full New Space sector analysis April 2026. Brutal Edge Research."
+seoDescription: "SpaceX, Rocket Lab, AST SpaceMobile, and Intuitive Machines — who wins as launch gets cheap? Full New Space sector analysis April 2026. DHLM Studio Research."
 relatedSlugs: ["spacex-ipo-special-report-2026","deep-dive-pltr-april-2026","crypto-treasury-sector-report-april-2026"]
 faqs: [{"q":"What is New Space investing?","a":"New Space investing refers to the commercial space industry that has emerged from falling launch costs, reusable rockets, and miniaturized satellites. Unlike Old Space (government-dominated, cost-plus contracts), New Space companies operate at commercial economics. The key listed names are Rocket Lab (RKLB), AST SpaceMobile (ASTS), and Intuitive Machines (LUNR)."},{"q":"Is Rocket Lab (RKLB) a good investment in 2026?","a":"Rocket Lab reported record 2025 revenue of $602M, a $1.85B backlog, and 100% mission success across 21 launches. It has diversified beyond launch into satellite manufacturing and spacecraft components. The investment risk centers on Neutron execution and competing at scale against SpaceX. It remains the strongest listed pure-play in the New Space sector."},{"q":"What does AST SpaceMobile (ASTS) do?","a":"AST SpaceMobile is building a satellite constellation to deliver direct cellular broadband to standard smartphones — no special hardware required. It has demonstrated 5G voice calls and data downloads to unmodified phones. The upside is consumer-scale addressable markets; the risk is constellation deployment capital and competition from Starlink direct-to-cell."},{"q":"What is Intuitive Machines (LUNR)?","a":"Intuitive Machines holds five NASA CLPS contracts for lunar payload delivery. Its business spans lunar surface logistics, data relay, orbital services, and surface infrastructure. Revenue is uneven but the strategic positioning in recurring lunar infrastructure is becoming clearer as NASA's Artemis program advances."},{"q":"What is the size of the global space economy in 2026?","a":"Estimates place the global space economy at approximately $462 billion in 2026. Forecasts project growth to $852 billion by 2035 (one estimate) or over $1 trillion by 2034 (another). Launch cost compression is the key driver unlocking value across the entire downstream value chain."}]
 contentLifespan: "medium"
 promotionWeeks: 2
 ---
 
-🔥 **BRUTAL EDGE™ VERDICT**
+🔥 **DHLM STUDIO VERDICT**
 
 "New Space is no longer a niche bet on rockets. It is an infrastructure transition — and the winners will not be the companies that 'go to space,' but the ones that control the recurring revenue created because space got cheap. Launch is the headline. Data, connectivity, and defense contracts are the balance sheet."
 

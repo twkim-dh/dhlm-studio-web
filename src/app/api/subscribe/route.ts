@@ -25,7 +25,7 @@ async function sendWelcomeEmail(email: string): Promise<void> {
   const apiKey = process.env.RESEND_API_KEY;
   if (!apiKey) return;
   const resend = new Resend(apiKey);
-  const from = process.env.RESEND_FROM ?? 'Brutal Edge <daily@dhlm-studio.com>';
+  const from = process.env.RESEND_FROM ?? 'DHLM Studio <daily@dhlm-studio.com>';
 
   const html = `<!DOCTYPE html>
 <html lang="en">
@@ -38,15 +38,15 @@ async function sendWelcomeEmail(email: string): Promise<void> {
   <!-- Header -->
   <tr><td style="padding:0 24px 32px;">
     <div style="font-family:Georgia,serif;font-size:28px;font-weight:900;color:#F1F5F9;line-height:1.2;">
-      Welcome to<br/><span style="color:#C73E3A;">Brutal Edge.</span>
+      Welcome to<br/><span style="color:#3B4A99;">DHLM Studio.</span>
     </div>
-    <div style="font-size:12px;color:#64748B;margin-top:8px;letter-spacing:2px;text-transform:uppercase;">Frameworks over forecasts. Signal over noise.</div>
+    <div style="font-size:12px;color:#64748B;margin-top:8px;letter-spacing:2px;text-transform:uppercase;">Independent investor research.</div>
   </td></tr>
 
   <!-- Body -->
   <tr><td style="background:#111827;border-radius:12px;padding:28px 24px;margin:0 24px;">
     <p style="font-size:14px;color:#CBD5E1;line-height:1.7;margin:0 0 20px;">
-      You&rsquo;re in. Here&rsquo;s what you&rsquo;ll receive as a Brutal Edge subscriber:
+      You&rsquo;re in. Here&rsquo;s what you&rsquo;ll receive as a subscriber:
     </p>
     <table cellpadding="0" cellspacing="0" style="width:100%;margin-bottom:24px;">
       ${[
@@ -67,7 +67,7 @@ async function sendWelcomeEmail(email: string): Promise<void> {
       </tr>`).join('')}
     </table>
 
-    <div style="font-size:12px;font-weight:800;color:#C73E3A;letter-spacing:2px;text-transform:uppercase;margin-bottom:12px;">Start here — 3 most-read reports</div>
+    <div style="font-size:12px;font-weight:800;color:#3B4A99;letter-spacing:2px;text-transform:uppercase;margin-bottom:12px;">Start here — 3 most-read reports</div>
     ${[
       ['Anthropic: Private Investor Report', 'https://dhlm-studio.com/reports/anthropic-private-investor-report-april-2026', 'The $18.4B valuation case — who wins when trust becomes infrastructure.'],
       ['SpaceX IPO: The $1.75 Trillion Question', 'https://dhlm-studio.com/reports/spacex-ipo-special-report', 'The most anticipated private-to-public transition in history.'],
@@ -77,7 +77,7 @@ async function sendWelcomeEmail(email: string): Promise<void> {
       <tr><td style="padding:14px 16px;">
         <a href="${url}" style="font-size:13px;font-weight:700;color:#F1F5F9;text-decoration:none;">${title}</a>
         <div style="font-size:11px;color:#64748B;margin-top:4px;line-height:1.4;">${desc}</div>
-        <a href="${url}" style="display:inline-block;margin-top:8px;font-size:11px;font-weight:700;color:#C73E3A;text-decoration:none;">Read report →</a>
+        <a href="${url}" style="display:inline-block;margin-top:8px;font-size:11px;font-weight:700;color:#3B4A99;text-decoration:none;">Read report →</a>
       </td></tr>
     </table>`).join('')}
 
@@ -104,7 +104,7 @@ async function sendWelcomeEmail(email: string): Promise<void> {
   await resend.emails.send({
     from,
     to: email,
-    subject: 'Welcome to Brutal Edge — You\'re in.',
+    subject: 'Welcome to DHLM Studio — You\'re in.',
     html,
   });
 }
