@@ -43,7 +43,7 @@ function brutalCommentary(v: number): string {
   return 'Peak greed. This is where legends are made and destroyed. Historically, the sentiment readings above 75 have preceded several drawdowns. The data is loud. Whether you listen is your decision.';
 }
 
-const card = { background: '#111827', borderRadius: 14, border: '1px solid #1E293B' };
+const card = { background: '#FAFAF8', borderRadius: 14, border: '1px solid #E8E8E4' };
 
 export default function FearGreedDashboard() {
   const [data, setData] = useState<FngPayload>(FALLBACK);
@@ -77,8 +77,8 @@ export default function FearGreedDashboard() {
     <div>
       {/* Big gauge card */}
       <div style={{ ...card, padding: '32px 28px', textAlign: 'center', marginBottom: 16, background: `radial-gradient(circle at 50% 0%, ${color}15, #111827 60%)` }}>
-        <div style={{ fontFamily: 'var(--mono)', fontSize: 9, fontWeight: 700, color: '#475569', letterSpacing: 2, marginBottom: 8 }}>● CURRENT</div>
-        <div style={{ fontFamily: 'var(--serif)', fontSize: 'clamp(80px, 14vw, 140px)', fontWeight: 900, color, lineHeight: 1 }}>{score}</div>
+        <div style={{ fontFamily: 'var(--mono)', fontSize: 9, fontWeight: 700, color: '#8A929C', letterSpacing: 2, marginBottom: 8 }}>● CURRENT</div>
+        <div style={{ fontFamily: 'var(--serif)', fontSize: 'clamp(80px, 14vw, 140px)', fontWeight: 400, color, lineHeight: 1 }}>{score}</div>
         <div style={{ fontFamily: 'var(--mono)', fontSize: 14, fontWeight: 800, color, marginTop: 8, textTransform: 'uppercase', letterSpacing: 2 }}>{label}</div>
 
         {/* Color band gauge */}
@@ -89,9 +89,9 @@ export default function FearGreedDashboard() {
           <div style={{ flex: 20, background: '#84CC16' }} />
           <div style={{ flex: 25, background: '#00D474' }} />
           {/* Indicator */}
-          <div style={{ position: 'absolute', left: `${score}%`, top: -4, transform: 'translateX(-50%)', width: 4, height: 22, background: '#F1F5F9', borderRadius: 2, boxShadow: '0 0 8px rgba(0,0,0,0.6)' }} />
+          <div style={{ position: 'absolute', left: `${score}%`, top: -4, transform: 'translateX(-50%)', width: 4, height: 22, background: '#16161A', borderRadius: 2, boxShadow: '0 0 8px rgba(0,0,0,0.6)' }} />
         </div>
-        <div style={{ display: 'flex', justifyContent: 'space-between', fontFamily: 'var(--mono)', fontSize: 8, color: '#475569', marginTop: 6 }}>
+        <div style={{ display: 'flex', justifyContent: 'space-between', fontFamily: 'var(--mono)', fontSize: 8, color: '#8A929C', marginTop: 6 }}>
           <span>0 Extreme Fear</span>
           <span>50 Neutral</span>
           <span>100 Extreme Greed</span>
@@ -108,8 +108,8 @@ export default function FearGreedDashboard() {
           { label: '1Y ago', v: data.ago.year },
         ].map(p => (
           <div key={p.label} style={{ ...card, padding: '14px 12px', textAlign: 'center' }}>
-            <div style={{ fontFamily: 'var(--mono)', fontSize: 9, fontWeight: 700, color: '#64748B', letterSpacing: 1, marginBottom: 4 }}>{p.label.toUpperCase()}</div>
-            <div style={{ fontFamily: 'var(--serif)', fontSize: 24, fontWeight: 900, color: bandColor(p.v) }}>{p.v}</div>
+            <div style={{ fontFamily: 'var(--mono)', fontSize: 9, fontWeight: 700, color: '#8A929C', letterSpacing: 1, marginBottom: 4 }}>{p.label.toUpperCase()}</div>
+            <div style={{ fontFamily: 'var(--serif)', fontSize: 24, fontWeight: 400, color: bandColor(p.v) }}>{p.v}</div>
             <div style={{ fontFamily: 'var(--sans)', fontSize: 9, color: bandColor(p.v), marginTop: 2, textTransform: 'uppercase', letterSpacing: 0.5 }}>{bandLabel(p.v)}</div>
           </div>
         ))}
@@ -118,7 +118,7 @@ export default function FearGreedDashboard() {
       {/* Historical sparkline */}
       {sparkPath && (
         <div style={{ ...card, padding: '20px 22px', marginBottom: 16 }}>
-          <div style={{ fontFamily: 'var(--mono)', fontSize: 9, fontWeight: 800, color: '#94A3B8', letterSpacing: 2, marginBottom: 12 }}>📈 LAST 90 DAYS</div>
+          <div style={{ fontFamily: 'var(--mono)', fontSize: 9, fontWeight: 800, color: '#5B6470', letterSpacing: 2, marginBottom: 12 }}>📈 LAST 90 DAYS</div>
           <svg viewBox="0 0 600 80" preserveAspectRatio="none" width="100%" height="80">
             {/* Band background hints */}
             <line x1="0" y1="60" x2="600" y2="60" stroke="#1E293B" strokeWidth="1" strokeDasharray="2,4" />
@@ -126,7 +126,7 @@ export default function FearGreedDashboard() {
             <line x1="0" y1="20" x2="600" y2="20" stroke="#1E293B" strokeWidth="1" strokeDasharray="2,4" />
             <path d={sparkPath} fill="none" stroke={color} strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" />
           </svg>
-          <div style={{ display: 'flex', justifyContent: 'space-between', fontFamily: 'var(--mono)', fontSize: 8, color: '#475569', marginTop: 4 }}>
+          <div style={{ display: 'flex', justifyContent: 'space-between', fontFamily: 'var(--mono)', fontSize: 8, color: '#8A929C', marginTop: 4 }}>
             <span>{last[0]?.x ? new Date(last[0].x).toLocaleDateString('en-US', { month: 'short', day: 'numeric' }) : ''}</span>
             <span>Today</span>
           </div>
@@ -136,9 +136,9 @@ export default function FearGreedDashboard() {
       {/* Investor commentary */}
       <div style={{ padding: '20px 22px', borderRadius: 14, background: `linear-gradient(135deg, ${color}10, transparent)`, border: `1px solid ${color}30` }}>
         <div style={{ display: 'flex', alignItems: 'center', gap: 8, marginBottom: 10 }}>
-          <span style={{ fontFamily: 'var(--mono)', fontSize: 10, fontWeight: 800, color: '#3B4A99', letterSpacing: 2 }}>MARKET TAKE</span>
+          <span style={{ fontFamily: 'var(--mono)', fontSize: 10, fontWeight: 800, color: '#2D2F8F', letterSpacing: 2 }}>MARKET TAKE</span>
         </div>
-        <p style={{ fontFamily: 'var(--serif)', fontSize: 15, color: '#E2E8F0', lineHeight: 1.7, margin: 0, fontStyle: 'italic' }}>
+        <p style={{ fontFamily: 'var(--serif)', fontSize: 15, color: '#16161A', lineHeight: 1.7, margin: 0, fontStyle: 'italic' }}>
           &ldquo;{brutalCommentary(score)}&rdquo;
         </p>
       </div>

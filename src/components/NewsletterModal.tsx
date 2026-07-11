@@ -1,4 +1,4 @@
-'use client';
+﻿'use client';
 
 import { useState, useEffect, useCallback, useRef } from 'react';
 import { usePathname } from 'next/navigation';
@@ -114,8 +114,8 @@ export default function NewsletterModal() {
           transform: 'translate(-50%, -50%)',
           width: 'min(480px, calc(100vw - 32px))',
           zIndex: 9999,
-          background: '#0B0F19',
-          border: '1px solid #1E293B',
+          background: '#FFFFFF',
+          border: '1px solid #E8E8E4',
           borderRadius: 20,
           padding: '32px 28px 28px',
           boxShadow: '0 30px 90px rgba(0,0,0,0.85)',
@@ -128,7 +128,7 @@ export default function NewsletterModal() {
           style={{
             position: 'absolute', top: 14, right: 16,
             background: 'none', border: 'none',
-            color: '#475569', fontSize: 22, cursor: 'pointer',
+            color: '#8A929C', fontSize: 22, cursor: 'pointer',
             lineHeight: 1, padding: '2px 6px', borderRadius: 6,
           }}
         >×</button>
@@ -136,30 +136,30 @@ export default function NewsletterModal() {
         {done ? (
           <div style={{ textAlign: 'center', padding: '8px 0' }}>
             <div style={{ fontSize: 11, fontWeight: 800, color: '#00D474', letterSpacing: 2, marginBottom: 10 }}>YOU&apos;RE IN</div>
-            <div style={{ fontFamily: 'var(--serif)', fontSize: 24, fontWeight: 900, color: '#F1F5F9', lineHeight: 1.3, marginBottom: 10 }}>
+            <div style={{ fontFamily: 'var(--serif)', fontSize: 24, fontWeight: 400, color: '#16161A', lineHeight: 1.3, marginBottom: 10 }}>
               Welcome to DHLM Studio.
             </div>
-            <p style={{ fontSize: 13, color: '#64748B', lineHeight: 1.6, margin: '0 0 22px' }}>
+            <p style={{ fontSize: 13, color: '#8A929C', lineHeight: 1.6, margin: '0 0 22px' }}>
               Check your inbox — your first report summary is on the way.
             </p>
             <button
               onClick={() => setVisible(false)}
               style={{
                 padding: '10px 28px', borderRadius: 10, border: 'none',
-                background: '#1E293B', color: '#94A3B8',
+                background: '#FFFFFF', color: '#5B6470',
                 fontSize: 13, fontWeight: 700, cursor: 'pointer',
               }}
             >Close</button>
           </div>
         ) : (
           <>
-            <div style={{ fontFamily: 'var(--mono)', fontSize: 9, fontWeight: 800, color: '#3B4A99', letterSpacing: 3, marginBottom: 10 }}>
+            <div style={{ fontFamily: 'var(--mono)', fontSize: 9, fontWeight: 800, color: '#2D2F8F', letterSpacing: 3, marginBottom: 10 }}>
               DHLM STUDIO · WEEKLY
             </div>
-            <div style={{ fontFamily: 'var(--serif)', fontSize: 22, fontWeight: 900, color: '#F1F5F9', lineHeight: 1.3, marginBottom: 10 }}>
+            <div style={{ fontFamily: 'var(--serif)', fontSize: 22, fontWeight: 400, color: '#16161A', lineHeight: 1.3, marginBottom: 10 }}>
               Institutional-grade research.<br />Free, every week.
             </div>
-            <p style={{ fontSize: 12, color: '#94A3B8', lineHeight: 1.65, margin: '0 0 18px' }}>
+            <p style={{ fontSize: 12, color: '#5B6470', lineHeight: 1.65, margin: '0 0 18px' }}>
               Deep Dive reports on AI, semiconductors &amp; quantum computing — the analysis serious investors actually use.
             </p>
 
@@ -171,7 +171,7 @@ export default function NewsletterModal() {
               ].map(item => (
                 <div key={item} style={{ display: 'flex', alignItems: 'flex-start', gap: 8 }}>
                   <span style={{ color: '#C73E3A', fontWeight: 800, fontSize: 12, flexShrink: 0, lineHeight: 1.5 }}>→</span>
-                  <span style={{ fontSize: 12, color: '#CBD5E1', lineHeight: 1.5 }}>{item}</span>
+                  <span style={{ fontSize: 12, color: '#374151', lineHeight: 1.5 }}>{item}</span>
                 </div>
               ))}
             </div>
@@ -192,8 +192,8 @@ export default function NewsletterModal() {
                 autoComplete="email"
                 style={{
                   flex: 1, padding: '12px 14px', borderRadius: 10,
-                  background: '#111827', border: '1px solid #1E293B',
-                  color: '#F1F5F9', fontSize: 13, outline: 'none',
+                  background: '#FAFAF8', border: '1px solid #E8E8E4',
+                  color: '#16161A', fontSize: 13, outline: 'none',
                   fontFamily: 'var(--sans)',
                 }}
               />
@@ -203,7 +203,7 @@ export default function NewsletterModal() {
                 style={{
                   padding: '12px 18px', borderRadius: 10, border: 'none',
                   background: email.includes('@') ? '#C73E3A' : '#1E293B',
-                  color: email.includes('@') ? '#fff' : '#475569',
+                  color: email.includes('@') ? '#fff' : '#8A929C',
                   fontSize: 13, fontWeight: 800,
                   cursor: email.includes('@') ? 'pointer' : 'not-allowed',
                   whiteSpace: 'nowrap', transition: 'background 0.2s',
@@ -215,12 +215,12 @@ export default function NewsletterModal() {
             {error && <div style={{ fontSize: 11, color: '#FF4545', marginBottom: 8 }}>{error}</div>}
 
             <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', marginTop: 4 }}>
-              <span style={{ fontSize: 10, color: '#475569' }}>No spam · Unsubscribe anytime</span>
+              <span style={{ fontSize: 10, color: '#8A929C' }}>No spam · Unsubscribe anytime</span>
               <button
                 onClick={dismiss}
                 style={{
                   background: 'none', border: 'none',
-                  fontSize: 11, color: '#475569', cursor: 'pointer', padding: 0,
+                  fontSize: 11, color: '#8A929C', cursor: 'pointer', padding: 0,
                   textDecoration: 'underline',
                 }}
               >Maybe later</button>

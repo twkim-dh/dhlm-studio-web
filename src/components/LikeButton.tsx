@@ -42,9 +42,9 @@ export default function LikeButton({ pageId }: { pageId: string }) {
       style={{
         display: 'flex', alignItems: 'center', gap: 6,
         padding: '8px 16px', borderRadius: 12, fontSize: 13, fontWeight: 600, cursor: liked ? 'default' : 'pointer',
-        background: liked ? '#FF454515' : '#111827',
-        border: liked ? '1px solid #FF454530' : '1px solid #1E293B',
-        color: liked ? '#FF6B6B' : '#94A3B8',
+        background: liked ? '#FF454515' : '#FAFAF8',
+        border: liked ? '1px solid #FF454530' : '1px solid #E8E8E4',
+        color: liked ? '#FF6B6B' : '#5B6470',
         transition: 'all 0.3s',
       }}>
       <span style={{

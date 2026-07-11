@@ -48,21 +48,21 @@ export default function CryptoChart({ points, isUp, days }: Props) {
         <XAxis
           dataKey="ts"
           tickFormatter={(v) => fmtDate(v, days)}
-          tick={{ fill: '#475569', fontSize: 9, fontFamily: 'var(--mono)' }}
+          tick={{ fill: '#8A929C', fontSize: 9, fontFamily: 'var(--mono)' }}
           axisLine={false}
           tickLine={false}
           interval="preserveStartEnd"
         />
         <YAxis
           tickFormatter={fmtPrice}
-          tick={{ fill: '#475569', fontSize: 9, fontFamily: 'var(--mono)' }}
+          tick={{ fill: '#8A929C', fontSize: 9, fontFamily: 'var(--mono)' }}
           axisLine={false}
           tickLine={false}
           width={60}
           domain={['auto', 'auto']}
         />
         <Tooltip
-          contentStyle={{ background: '#111827', border: '1px solid #1E293B', borderRadius: 8, fontSize: 12, fontFamily: 'var(--mono)', color: '#E2E8F0' }}
+          contentStyle={{ background: '#FAFAF8', border: '1px solid #E8E8E4', borderRadius: 8, fontSize: 12, fontFamily: 'var(--mono)', color: '#16161A' }}
           labelFormatter={(v) => fmtDate(Number(v), days)}
           formatter={(v) => [fmtPrice(Number(v)), 'Price']}
         />
@@ -74,7 +74,7 @@ export default function CryptoChart({ points, isUp, days }: Props) {
           strokeWidth={2}
           fill="url(#cgGrad)"
           dot={false}
-          activeDot={{ r: 4, fill: color, stroke: '#0B0F19', strokeWidth: 2 }}
+          activeDot={{ r: 4, fill: color, stroke: '#FFFFFF', strokeWidth: 2 }}
         />
       </AreaChart>
     </ResponsiveContainer>

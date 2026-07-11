@@ -28,10 +28,10 @@ function buildHtml(title: string, description: string, url: string, email: strin
 <table width="600" cellpadding="0" cellspacing="0" style="max-width:600px;width:100%;">
 
   <tr><td style="padding:0 24px 24px;">
-    <div style="font-family:Georgia,serif;font-size:13px;font-weight:800;color:#3B4A99;letter-spacing:3px;text-transform:uppercase;margin-bottom:12px;">DHLM STUDIO — NEW REPORT</div>
+    <div style="font-family:Georgia,serif;font-size:13px;font-weight:800;color:#2D2F8F;letter-spacing:3px;text-transform:uppercase;margin-bottom:12px;">DHLM STUDIO — NEW REPORT</div>
     <div style="font-family:Georgia,serif;font-size:26px;font-weight:900;color:#F1F5F9;line-height:1.25;margin-bottom:10px;">${title}</div>
     ${description ? `<p style="font-size:13px;color:#94A3B8;line-height:1.7;margin:0 0 20px;">${description}</p>` : ''}
-    <a href="${url}" style="display:inline-block;padding:13px 24px;background:#3B4A99;color:#fff;font-size:13px;font-weight:800;text-decoration:none;border-radius:8px;">Read Full Report →</a>
+    <a href="${url}" style="display:inline-block;padding:13px 24px;background:#2D2F8F;color:#fff;font-size:13px;font-weight:800;text-decoration:none;border-radius:8px;">Read Full Report →</a>
   </td></tr>
 
   <tr><td style="background:#111827;border-radius:12px;padding:20px 24px;margin:0 24px;">

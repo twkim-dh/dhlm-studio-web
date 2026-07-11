@@ -52,15 +52,15 @@ function SliderRow({
   return (
     <div style={{ marginBottom: 16 }}>
       <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', marginBottom: 6 }}>
-        <label style={{ fontSize: 12, color: '#94A3B8', fontFamily: 'var(--sans)' }}>{label}</label>
+        <label style={{ fontSize: 12, color: '#5B6470', fontFamily: 'var(--sans)' }}>{label}</label>
         <div style={{ display: 'flex', alignItems: 'center', gap: 2 }}>
-          {prefix && <span style={{ fontSize: 12, color: '#64748B' }}>{prefix}</span>}
+          {prefix && <span style={{ fontSize: 12, color: '#8A929C' }}>{prefix}</span>}
           <input
             type="number" value={value} min={min} max={max} step={step}
             onChange={e => onChange(Number(e.target.value))}
-            style={{ width: 90, textAlign: 'right', background: '#0D1117', border: '1px solid #334155', borderRadius: 6, padding: '4px 8px', fontSize: 13, fontWeight: 700, color: '#F1F5F9', fontFamily: 'var(--mono)', outline: 'none' }}
+            style={{ width: 90, textAlign: 'right', background: '#FAFAF8', border: '1px solid #E8E8E4', borderRadius: 6, padding: '4px 8px', fontSize: 13, fontWeight: 700, color: '#16161A', fontFamily: 'var(--mono)', outline: 'none' }}
           />
-          {suffix && <span style={{ fontSize: 12, color: '#64748B' }}>{suffix}</span>}
+          {suffix && <span style={{ fontSize: 12, color: '#8A929C' }}>{suffix}</span>}
         </div>
       </div>
       <input
@@ -130,28 +130,28 @@ export default function CompoundInterestPage() {
   const chartData = result.rows.filter((_, i) => i % Math.max(1, Math.floor(years / 20)) === 0 || _ === result.rows[result.rows.length - 1]);
 
   return (
-    <div style={{ background: '#0B0F19', minHeight: '100vh' }}>
+    <div style={{ background: '#FFFFFF', minHeight: '100vh' }}>
       <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLd) }} />
       <div style={{ maxWidth: 860, margin: '0 auto', padding: '80px 20px 60px' }}>
 
         {/* Header */}
-        <Link href="/calculators" style={{ fontSize: 12, color: '#64748B' }}>??Calculators</Link>
+        <Link href="/calculators" style={{ fontSize: 12, color: '#8A929C' }}>??Calculators</Link>
         <div style={{ marginTop: 20, marginBottom: 32 }}>
           <div style={{ fontFamily: 'var(--mono)', fontSize: 10, fontWeight: 700, color: '#F59E0B', letterSpacing: 3, marginBottom: 8 }}>CALCULATOR 쨌 FREE</div>
-          <h1 style={{ fontFamily: 'var(--serif)', fontSize: 'clamp(24px,4vw,36px)', fontWeight: 900, color: '#F1F5F9', margin: '0 0 8px' }}>
+          <h1 style={{ fontFamily: 'var(--serif)', fontSize: 'clamp(24px,4vw,36px)', fontWeight: 400, color: '#16161A', margin: '0 0 8px' }}>
             Compound Interest Calculator
           </h1>
-          <p style={{ fontSize: 14, color: '#64748B', margin: 0 }}>
+          <p style={{ fontSize: 14, color: '#8A929C', margin: 0 }}>
             See how your money grows over time ??with contributions included. Real-time results, no account needed.
           </p>
-          <p style={{ fontSize: 10, color: '#334155', marginTop: 4, fontFamily: 'var(--mono)' }}>Last updated: April 2026 쨌 NOT financial advice</p>
+          <p style={{ fontSize: 10, color: '#8A929C', marginTop: 4, fontFamily: 'var(--mono)' }}>Last updated: April 2026 쨌 NOT financial advice</p>
         </div>
 
         <div style={{ display: 'grid', gridTemplateColumns: 'minmax(280px,1fr) 1.6fr', gap: 16, alignItems: 'start' }}>
 
           {/* ?? Inputs ?? */}
-          <div style={{ background: '#111827', borderRadius: 14, border: '1px solid #1E293B', padding: '22px 20px', position: 'sticky', top: 80 }}>
-            <div style={{ fontFamily: 'var(--mono)', fontSize: 9, fontWeight: 700, color: '#64748B', letterSpacing: 2, marginBottom: 18 }}>INPUTS</div>
+          <div style={{ background: '#FAFAF8', borderRadius: 14, border: '1px solid #E8E8E4', padding: '22px 20px', position: 'sticky', top: 80 }}>
+            <div style={{ fontFamily: 'var(--mono)', fontSize: 9, fontWeight: 700, color: '#8A929C', letterSpacing: 2, marginBottom: 18 }}>INPUTS</div>
 
             <SliderRow label="Initial Investment" value={principal} min={0} max={500000} step={1000} prefix="$" onChange={setPrincipal} />
             <SliderRow label="Monthly Contribution" value={monthly} min={0} max={10000} step={50} prefix="$" onChange={setMonthly} />
@@ -159,14 +159,14 @@ export default function CompoundInterestPage() {
             <SliderRow label="Investment Period" value={years} min={1} max={50} step={1} suffix=" yrs" onChange={setYears} />
 
             <div style={{ marginBottom: 8 }}>
-              <div style={{ fontSize: 12, color: '#94A3B8', marginBottom: 8 }}>Compound Frequency</div>
+              <div style={{ fontSize: 12, color: '#5B6470', marginBottom: 8 }}>Compound Frequency</div>
               <div style={{ display: 'flex', gap: 6 }}>
                 {FREQ_OPTIONS.map((f, i) => (
                   <button key={f.label} onClick={() => setFreqIdx(i)} style={{
                     flex: 1, padding: '7px 0', borderRadius: 8, border: '1px solid',
                     borderColor: freqIdx === i ? '#F59E0B' : '#1E293B',
-                    background: freqIdx === i ? '#F59E0B18' : '#0D1117',
-                    color: freqIdx === i ? '#F59E0B' : '#64748B',
+                    background: freqIdx === i ? '#F59E0B18' : '#FAFAF8',
+                    color: freqIdx === i ? '#F59E0B' : '#8A929C',
                     fontSize: 11, fontWeight: 600, cursor: 'pointer', fontFamily: 'var(--mono)',
                   }}>{f.label}</button>
                 ))}
@@ -178,23 +178,23 @@ export default function CompoundInterestPage() {
           <div style={{ display: 'flex', flexDirection: 'column', gap: 12 }}>
 
             {/* Big numbers */}
-            <div style={{ background: '#111827', borderRadius: 14, border: '1px solid #F59E0B30', padding: '20px 22px' }}>
-              <div style={{ fontFamily: 'var(--mono)', fontSize: 9, fontWeight: 700, color: '#64748B', letterSpacing: 2, marginBottom: 16 }}>RESULTS</div>
+            <div style={{ background: '#FAFAF8', borderRadius: 14, border: '1px solid #F59E0B30', padding: '20px 22px' }}>
+              <div style={{ fontFamily: 'var(--mono)', fontSize: 9, fontWeight: 700, color: '#8A929C', letterSpacing: 2, marginBottom: 16 }}>RESULTS</div>
               <div style={{ display: 'grid', gridTemplateColumns: 'repeat(2, 1fr)', gap: 12 }}>
                 <div>
-                  <div style={{ fontSize: 10, color: '#64748B', marginBottom: 4 }}>Final Balance</div>
+                  <div style={{ fontSize: 10, color: '#8A929C', marginBottom: 4 }}>Final Balance</div>
                   <div style={{ fontFamily: 'var(--mono)', fontSize: 28, fontWeight: 900, color: '#F59E0B' }}>{fmt(result.finalBalance)}</div>
                 </div>
                 <div>
-                  <div style={{ fontSize: 10, color: '#64748B', marginBottom: 4 }}>Total Interest Earned</div>
+                  <div style={{ fontSize: 10, color: '#8A929C', marginBottom: 4 }}>Total Interest Earned</div>
                   <div style={{ fontFamily: 'var(--mono)', fontSize: 28, fontWeight: 900, color: '#00D474' }}>{fmt(result.totalInterest)}</div>
                 </div>
                 <div>
-                  <div style={{ fontSize: 10, color: '#64748B', marginBottom: 4 }}>Total Contributions</div>
-                  <div style={{ fontFamily: 'var(--mono)', fontSize: 18, fontWeight: 700, color: '#E2E8F0' }}>{fmt(result.totalContributions)}</div>
+                  <div style={{ fontSize: 10, color: '#8A929C', marginBottom: 4 }}>Total Contributions</div>
+                  <div style={{ fontFamily: 'var(--mono)', fontSize: 18, fontWeight: 700, color: '#16161A' }}>{fmt(result.totalContributions)}</div>
                 </div>
                 <div>
-                  <div style={{ fontSize: 10, color: '#64748B', marginBottom: 4 }}>Interest % of Balance</div>
+                  <div style={{ fontSize: 10, color: '#8A929C', marginBottom: 4 }}>Interest % of Balance</div>
                   <div style={{ fontFamily: 'var(--mono)', fontSize: 18, fontWeight: 700, color: '#A78BFA' }}>
                     {((result.totalInterest / result.finalBalance) * 100).toFixed(1)}%
                   </div>
@@ -203,8 +203,8 @@ export default function CompoundInterestPage() {
             </div>
 
             {/* Chart */}
-            <div style={{ background: '#111827', borderRadius: 14, border: '1px solid #1E293B', padding: '16px 20px' }}>
-              <div style={{ fontFamily: 'var(--mono)', fontSize: 9, fontWeight: 700, color: '#64748B', letterSpacing: 2, marginBottom: 16 }}>GROWTH CHART</div>
+            <div style={{ background: '#FAFAF8', borderRadius: 14, border: '1px solid #E8E8E4', padding: '16px 20px' }}>
+              <div style={{ fontFamily: 'var(--mono)', fontSize: 9, fontWeight: 700, color: '#8A929C', letterSpacing: 2, marginBottom: 16 }}>GROWTH CHART</div>
               <ResponsiveContainer width="100%" height={220}>
                 <AreaChart data={result.rows} margin={{ top: 4, right: 8, left: 0, bottom: 0 }}>
                   <defs>
@@ -218,10 +218,10 @@ export default function CompoundInterestPage() {
                     </linearGradient>
                   </defs>
                   <CartesianGrid strokeDasharray="3 3" stroke="#1E293B" />
-                  <XAxis dataKey="year" tick={{ fontSize: 9, fill: '#475569' }} tickFormatter={v => `Yr ${v}`} />
-                  <YAxis tick={{ fontSize: 9, fill: '#475569' }} tickFormatter={v => fmt(v)} width={56} />
+                  <XAxis dataKey="year" tick={{ fontSize: 9, fill: '#8A929C' }} tickFormatter={v => `Yr ${v}`} />
+                  <YAxis tick={{ fontSize: 9, fill: '#8A929C' }} tickFormatter={v => fmt(v)} width={56} />
                   <Tooltip
-                    contentStyle={{ background: '#0D1117', border: '1px solid #1E293B', borderRadius: 8, fontSize: 11 }}
+                    contentStyle={{ background: '#FAFAF8', border: '1px solid #E8E8E4', borderRadius: 8, fontSize: 11 }}
                     formatter={(val: unknown, name: unknown) => [fmt(Number(val)), String(name)]}
                     labelFormatter={l => `Year ${l}`}
                   />
@@ -233,20 +233,20 @@ export default function CompoundInterestPage() {
             </div>
 
             {/* Year-by-year table */}
-            <div style={{ background: '#111827', borderRadius: 14, border: '1px solid #1E293B', padding: '16px 20px', overflowX: 'auto' }}>
-              <div style={{ fontFamily: 'var(--mono)', fontSize: 9, fontWeight: 700, color: '#64748B', letterSpacing: 2, marginBottom: 12 }}>YEAR-BY-YEAR BREAKDOWN</div>
+            <div style={{ background: '#FAFAF8', borderRadius: 14, border: '1px solid #E8E8E4', padding: '16px 20px', overflowX: 'auto' }}>
+              <div style={{ fontFamily: 'var(--mono)', fontSize: 9, fontWeight: 700, color: '#8A929C', letterSpacing: 2, marginBottom: 12 }}>YEAR-BY-YEAR BREAKDOWN</div>
               <table style={{ width: '100%', borderCollapse: 'collapse', fontSize: 11 }}>
                 <thead>
-                  <tr style={{ borderBottom: '1px solid #1E293B' }}>
+                  <tr style={{ borderBottom: '1px solid #E8E8E4' }}>
                     {['Year', 'Balance', 'Contributions', 'Interest'].map(h => (
-                      <th key={h} style={{ textAlign: 'right', padding: '6px 8px', color: '#475569', fontFamily: 'var(--mono)', fontSize: 9, fontWeight: 700 }}>{h}</th>
+                      <th key={h} style={{ textAlign: 'right', padding: '6px 8px', color: '#8A929C', fontFamily: 'var(--mono)', fontSize: 9, fontWeight: 700 }}>{h}</th>
                     ))}
                   </tr>
                 </thead>
                 <tbody>
                   {result.rows.filter((_, i) => i % Math.max(1, Math.floor(years / 15)) === 0 || i === result.rows.length - 1).map(row => (
-                    <tr key={row.year} style={{ borderBottom: '1px solid #1E293B20' }}>
-                      <td style={{ textAlign: 'right', padding: '5px 8px', color: '#64748B', fontFamily: 'var(--mono)' }}>{row.year}</td>
+                    <tr key={row.year} style={{ borderBottom: '1px solid #E8E8E420' }}>
+                      <td style={{ textAlign: 'right', padding: '5px 8px', color: '#8A929C', fontFamily: 'var(--mono)' }}>{row.year}</td>
                       <td style={{ textAlign: 'right', padding: '5px 8px', color: '#F59E0B', fontFamily: 'var(--mono)', fontWeight: 700 }}>{fmt(row.balance)}</td>
                       <td style={{ textAlign: 'right', padding: '5px 8px', color: '#3B82F6', fontFamily: 'var(--mono)' }}>{fmt(row.contributions)}</td>
                       <td style={{ textAlign: 'right', padding: '5px 8px', color: '#00D474', fontFamily: 'var(--mono)' }}>{fmt(row.interest)}</td>
@@ -257,34 +257,34 @@ export default function CompoundInterestPage() {
             </div>
 
             {/* DHLM Take */}
-            <div style={{ background: '#111827', borderRadius: 14, border: '1px solid #3B4A9920', padding: '18px 20px' }}>
-              <div style={{ fontFamily: 'var(--mono)', fontSize: 9, fontWeight: 700, color: '#3B4A99', letterSpacing: 2, marginBottom: 8 }}>?뵦DHLM TAKE</div>
-              <p style={{ fontSize: 14, color: '#E2E8F0', lineHeight: 1.8, margin: 0 }}>{take}</p>
-              <p style={{ fontSize: 9, color: '#475569', margin: '10px 0 0' }}>NOT financial advice. For educational purposes only.</p>
+            <div style={{ background: '#FAFAF8', borderRadius: 14, border: '1px solid #2D2F8F20', padding: '18px 20px' }}>
+              <div style={{ fontFamily: 'var(--mono)', fontSize: 9, fontWeight: 700, color: '#2D2F8F', letterSpacing: 2, marginBottom: 8 }}>?뵦DHLM TAKE</div>
+              <p style={{ fontSize: 14, color: '#16161A', lineHeight: 1.8, margin: 0 }}>{take}</p>
+              <p style={{ fontSize: 9, color: '#8A929C', margin: '10px 0 0' }}>NOT financial advice. For educational purposes only.</p>
             </div>
 
             {/* FAQ */}
-            <div style={{ background: '#111827', borderRadius: 14, border: '1px solid #1E293B', padding: '18px 20px' }}>
-              <div style={{ fontFamily: 'var(--mono)', fontSize: 9, fontWeight: 700, color: '#64748B', letterSpacing: 2, marginBottom: 14 }}>FAQ</div>
+            <div style={{ background: '#FAFAF8', borderRadius: 14, border: '1px solid #E8E8E4', padding: '18px 20px' }}>
+              <div style={{ fontFamily: 'var(--mono)', fontSize: 9, fontWeight: 700, color: '#8A929C', letterSpacing: 2, marginBottom: 14 }}>FAQ</div>
               {[
                 { q: 'How much will $500 a month grow in 20 years?', a: 'At 7% annual return compounded monthly, $500/month over 20 years grows to ~$260K from $121K invested. Interest earned exceeds contributions ??that\'s compounding in action.' },
                 { q: 'What is the formula for compound interest?', a: 'A = P(1 + r/n)^(nt) + PMT 횞 [((1 + r/n)^(nt) ??1) / (r/n)]. P = principal, r = annual rate, n = compounds/year, t = years, PMT = periodic payment.' },
                 { q: 'How does compound frequency affect returns?', a: 'Monthly compounding slightly beats quarterly, which beats annual. On $10K at 7% over 20 years: monthly = $40,996 vs annual = $38,697. Small difference, but it adds up.' },
               ].map((item, i) => (
-                <div key={i} style={{ marginBottom: i < 2 ? 12 : 0, paddingBottom: i < 2 ? 12 : 0, borderBottom: i < 2 ? '1px solid #1E293B40' : 'none' }}>
-                  <div style={{ fontSize: 13, fontWeight: 700, color: '#E2E8F0', marginBottom: 4 }}>{item.q}</div>
-                  <div style={{ fontSize: 12, color: '#94A3B8', lineHeight: 1.7 }}>{item.a}</div>
+                <div key={i} style={{ marginBottom: i < 2 ? 12 : 0, paddingBottom: i < 2 ? 12 : 0, borderBottom: i < 2 ? '1px solid #E8E8E440' : 'none' }}>
+                  <div style={{ fontSize: 13, fontWeight: 700, color: '#16161A', marginBottom: 4 }}>{item.q}</div>
+                  <div style={{ fontSize: 12, color: '#5B6470', lineHeight: 1.7 }}>{item.a}</div>
                 </div>
               ))}
             </div>
 
             {/* Internal Links */}
-            <div style={{ background: '#111827', borderRadius: 14, border: '1px solid #1E293B', padding: '16px 20px' }}>
-              <div style={{ fontFamily: 'var(--mono)', fontSize: 9, fontWeight: 700, color: '#64748B', letterSpacing: 2, marginBottom: 12 }}>EXPLORE MORE</div>
+            <div style={{ background: '#FAFAF8', borderRadius: 14, border: '1px solid #E8E8E4', padding: '16px 20px' }}>
+              <div style={{ fontFamily: 'var(--mono)', fontSize: 9, fontWeight: 700, color: '#8A929C', letterSpacing: 2, marginBottom: 12 }}>EXPLORE MORE</div>
               <div style={{ display: 'flex', gap: 8, flexWrap: 'wrap' }}>
                 <Link href="/calculators/dca" style={{ fontSize: 11, color: '#F59E0B', padding: '5px 12px', borderRadius: 6, background: '#F59E0B10', border: '1px solid #F59E0B20', textDecoration: 'none' }}>?뱤 DCA Calculator</Link>
                 <Link href="/calculators/position-size" style={{ fontSize: 11, color: '#A78BFA', padding: '5px 12px', borderRadius: 6, background: '#A78BFA10', border: '1px solid #A78BFA20', textDecoration: 'none' }}>?렞 Position Size Calculator</Link>
-                <Link href="/learn/crypto-101" style={{ fontSize: 11, color: '#60A5FA', padding: '5px 12px', borderRadius: 6, background: '#3B82F610', border: '1px solid #3B82F620', textDecoration: 'none' }}>?뱴 Crypto 101 ??Staking Yields</Link>
+                <Link href="/learn/crypto-101" style={{ fontSize: 11, color: '#2D2F8F', padding: '5px 12px', borderRadius: 6, background: '#3B82F610', border: '1px solid #3B82F620', textDecoration: 'none' }}>?뱴 Crypto 101 ??Staking Yields</Link>
                 <Link href="/research" style={{ fontSize: 11, color: '#A78BFA', padding: '5px 12px', borderRadius: 6, background: '#A78BFA10', border: '1px solid #A78BFA20', textDecoration: 'none' }}>?쭬 The Mental Game</Link>
               </div>
             </div>
@@ -292,7 +292,7 @@ export default function CompoundInterestPage() {
           </div>
         </div>
 
-        <p style={{ fontSize: 9, color: '#334155', textAlign: 'center', lineHeight: 1.6, marginTop: 32 }}>
+        <p style={{ fontSize: 9, color: '#8A929C', textAlign: 'center', lineHeight: 1.6, marginTop: 32 }}>
           Results are projections based on constant rate assumptions. Past returns do not guarantee future results. NOT financial advice.
         </p>
       </div>

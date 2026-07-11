@@ -59,10 +59,10 @@ export default function RequestDeepDive({ compact = false }: { compact?: boolean
       <div style={{ display: 'flex', alignItems: 'baseline', gap: 8, marginBottom: 8 }}>
         <span style={{ fontFamily: 'var(--mono)', fontSize: 10, fontWeight: 800, color: '#C73E3A', letterSpacing: 2 }}>🔍 REQUEST A DEEP DIVE</span>
       </div>
-      <h3 style={{ fontFamily: 'var(--serif)', fontSize: compact ? 18 : 22, fontWeight: 800, color: '#F1F5F9', margin: '0 0 6px' }}>
+      <h3 style={{ fontFamily: 'var(--serif)', fontSize: compact ? 18 : 22, fontWeight: 800, color: '#16161A', margin: '0 0 6px' }}>
         Which stock should we analyze next?
       </h3>
-      <p style={{ fontSize: 12, color: '#64748B', lineHeight: 1.6, margin: '0 0 16px' }}>
+      <p style={{ fontSize: 12, color: '#8A929C', lineHeight: 1.6, margin: '0 0 16px' }}>
         Submit a ticker. The top requested ticker each week becomes a DHLM Studio Deep Dive.
       </p>
 
@@ -76,8 +76,8 @@ export default function RequestDeepDive({ compact = false }: { compact?: boolean
           maxLength={10}
           style={{
             padding: '11px 14px', borderRadius: 10,
-            background: '#0D1117', border: '1px solid #1E293B',
-            color: '#F1F5F9', fontFamily: 'var(--mono)', fontSize: 13, fontWeight: 700,
+            background: '#FAFAF8', border: '1px solid #E8E8E4',
+            color: '#16161A', fontFamily: 'var(--mono)', fontSize: 13, fontWeight: 700,
             outline: 'none', textTransform: 'uppercase',
           }}
         />
@@ -89,8 +89,8 @@ export default function RequestDeepDive({ compact = false }: { compact?: boolean
           placeholder="email (optional)"
           style={{
             padding: '11px 14px', borderRadius: 10,
-            background: '#0D1117', border: '1px solid #1E293B',
-            color: '#F1F5F9', fontFamily: 'var(--sans)', fontSize: 13,
+            background: '#FAFAF8', border: '1px solid #E8E8E4',
+            color: '#16161A', fontFamily: 'var(--sans)', fontSize: 13,
             outline: 'none',
           }}
         />
@@ -98,7 +98,7 @@ export default function RequestDeepDive({ compact = false }: { compact?: boolean
           style={{
             padding: '11px 20px', borderRadius: 10, border: 'none',
             background: ticker ? '#C73E3A' : '#1E293B',
-            color: ticker ? '#fff' : '#475569',
+            color: ticker ? '#fff' : '#8A929C',
             fontSize: 13, fontWeight: 800, cursor: ticker ? 'pointer' : 'not-allowed',
             fontFamily: 'var(--sans)',
           }}>
@@ -110,18 +110,18 @@ export default function RequestDeepDive({ compact = false }: { compact?: boolean
       {status === 'error' && <div style={{ fontSize: 11, color: '#FF4545', fontWeight: 700, marginBottom: 8 }}>{errorMsg}</div>}
 
       {top.length > 0 && (
-        <div style={{ marginTop: 14, paddingTop: 14, borderTop: '1px solid #1E293B30' }}>
-          <div style={{ fontFamily: 'var(--mono)', fontSize: 9, fontWeight: 700, color: '#94A3B8', letterSpacing: 2, marginBottom: 8 }}>📊 MOST REQUESTED THIS WEEK</div>
+        <div style={{ marginTop: 14, paddingTop: 14, borderTop: '1px solid #E8E8E430' }}>
+          <div style={{ fontFamily: 'var(--mono)', fontSize: 9, fontWeight: 700, color: '#5B6470', letterSpacing: 2, marginBottom: 8 }}>📊 MOST REQUESTED THIS WEEK</div>
           <div style={{ display: 'flex', flexWrap: 'wrap', gap: 6 }}>
             {top.slice(0, 8).map((t, i) => (
               <span key={t.ticker} style={{
                 display: 'inline-flex', alignItems: 'center', gap: 6,
                 padding: '5px 10px', borderRadius: 6,
-                background: i === 0 ? '#D4A84318' : '#0D1117',
+                background: i === 0 ? '#D4A84318' : '#FAFAF8',
                 border: '1px solid ' + (i === 0 ? '#D4A84340' : '#1E293B'),
               }}>
-                <span style={{ fontFamily: 'var(--mono)', fontSize: 11, fontWeight: 800, color: i === 0 ? '#D4A843' : '#60A5FA' }}>{t.ticker}</span>
-                <span style={{ fontFamily: 'var(--mono)', fontSize: 10, color: '#475569' }}>{t.count}</span>
+                <span style={{ fontFamily: 'var(--mono)', fontSize: 11, fontWeight: 800, color: i === 0 ? '#D4A843' : '#2D2F8F' }}>{t.ticker}</span>
+                <span style={{ fontFamily: 'var(--mono)', fontSize: 10, color: '#8A929C' }}>{t.count}</span>
               </span>
             ))}
           </div>

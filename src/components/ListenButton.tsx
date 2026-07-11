@@ -213,8 +213,8 @@ export default function ListenButton({ text, minutes }: Props) {
       <div style={{
         display: 'inline-flex', alignItems: 'center', gap: 8,
         minHeight: 44, padding: '0 16px', borderRadius: 10,
-        background: '#0D1117', border: '1px solid #1E293B',
-        fontSize: 12, color: '#475569', fontFamily: 'var(--mono)',
+        background: '#FAFAF8', border: '1px solid #E8E8E4',
+        fontSize: 12, color: '#8A929C', fontFamily: 'var(--mono)',
       }}>
         🔊 Listen unavailable
       </div>
@@ -233,9 +233,9 @@ export default function ListenButton({ text, minutes }: Props) {
           display: 'inline-flex', alignItems: 'center', gap: 10,
           minHeight: 44, padding: '0 18px',
           borderRadius: 12,
-          background: '#0D1117',
-          border: '1px solid #1E293B',
-          color: '#E2E8F0',
+          background: '#FAFAF8',
+          border: '1px solid #E8E8E4',
+          color: '#16161A',
           fontFamily: 'var(--mono)',
           fontSize: 13,
           fontWeight: 700,
@@ -246,7 +246,7 @@ export default function ListenButton({ text, minutes }: Props) {
       >
         <span style={{ fontSize: 16 }} aria-hidden="true">🔊</span>
         <span>Listen</span>
-        <span style={{ color: '#64748B', fontWeight: 600 }}>~{mins} min</span>
+        <span style={{ color: '#8A929C', fontWeight: 600 }}>~{mins} min</span>
       </button>
     );
   }
@@ -256,7 +256,7 @@ export default function ListenButton({ text, minutes }: Props) {
     <div style={{
       display: 'inline-flex', alignItems: 'center', gap: 8,
       borderRadius: 12,
-      background: '#0D1117',
+      background: '#FAFAF8',
       border: '1px solid #00D47440',
       padding: '0 6px',
     }}>

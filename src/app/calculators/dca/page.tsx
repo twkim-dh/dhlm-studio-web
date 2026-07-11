@@ -54,15 +54,15 @@ function SliderRow({
   return (
     <div style={{ marginBottom: 16 }}>
       <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', marginBottom: 6 }}>
-        <label style={{ fontSize: 12, color: '#94A3B8' }}>{label}</label>
+        <label style={{ fontSize: 12, color: '#5B6470' }}>{label}</label>
         <div style={{ display: 'flex', alignItems: 'center', gap: 2 }}>
-          {prefix && <span style={{ fontSize: 12, color: '#64748B' }}>{prefix}</span>}
+          {prefix && <span style={{ fontSize: 12, color: '#8A929C' }}>{prefix}</span>}
           <input
             type="number" value={value} min={min} max={max} step={step}
             onChange={e => onChange(Number(e.target.value))}
-            style={{ width: 80, textAlign: 'right', background: '#0D1117', border: '1px solid #334155', borderRadius: 6, padding: '4px 8px', fontSize: 13, fontWeight: 700, color: '#F1F5F9', fontFamily: 'var(--mono)', outline: 'none' }}
+            style={{ width: 80, textAlign: 'right', background: '#FAFAF8', border: '1px solid #E8E8E4', borderRadius: 6, padding: '4px 8px', fontSize: 13, fontWeight: 700, color: '#16161A', fontFamily: 'var(--mono)', outline: 'none' }}
           />
-          {suffix && <span style={{ fontSize: 12, color: '#64748B' }}>{suffix}</span>}
+          {suffix && <span style={{ fontSize: 12, color: '#8A929C' }}>{suffix}</span>}
         </div>
       </div>
       <input type="range" min={min} max={max} step={step} value={value}
@@ -123,20 +123,20 @@ export default function DCAPage() {
   }, [result, years, asset]);
 
   return (
-    <div style={{ background: '#0B0F19', minHeight: '100vh' }}>
+    <div style={{ background: '#FFFFFF', minHeight: '100vh' }}>
       <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLd) }} />
       <div style={{ maxWidth: 860, margin: '0 auto', padding: '80px 20px 60px' }}>
 
-        <Link href="/calculators" style={{ fontSize: 12, color: '#64748B' }}>??Calculators</Link>
+        <Link href="/calculators" style={{ fontSize: 12, color: '#8A929C' }}>??Calculators</Link>
         <div style={{ marginTop: 20, marginBottom: 32 }}>
           <div style={{ fontFamily: 'var(--mono)', fontSize: 10, fontWeight: 700, color: '#F59E0B', letterSpacing: 3, marginBottom: 8 }}>CALCULATOR 쨌 FREE</div>
-          <h1 style={{ fontFamily: 'var(--serif)', fontSize: 'clamp(24px,4vw,36px)', fontWeight: 900, color: '#F1F5F9', margin: '0 0 8px' }}>
+          <h1 style={{ fontFamily: 'var(--serif)', fontSize: 'clamp(24px,4vw,36px)', fontWeight: 400, color: '#16161A', margin: '0 0 8px' }}>
             DCA Calculator
           </h1>
-          <p style={{ fontSize: 14, color: '#64748B', margin: 0 }}>
+          <p style={{ fontSize: 14, color: '#8A929C', margin: 0 }}>
             Dollar cost averaging simulation ??see projected portfolio value vs. lump sum investing.
           </p>
-          <p style={{ fontSize: 10, color: '#334155', marginTop: 4, fontFamily: 'var(--mono)' }}>
+          <p style={{ fontSize: 10, color: '#8A929C', marginTop: 4, fontFamily: 'var(--mono)' }}>
             Phase 1: Uses historical average return rates. Actual historical price data (BTC/ETH) in Phase 2. 쨌 NOT financial advice
           </p>
         </div>
@@ -144,25 +144,25 @@ export default function DCAPage() {
         <div style={{ display: 'grid', gridTemplateColumns: 'minmax(280px,1fr) 1.6fr', gap: 16, alignItems: 'start' }}>
 
           {/* Inputs */}
-          <div style={{ background: '#111827', borderRadius: 14, border: '1px solid #1E293B', padding: '22px 20px', position: 'sticky', top: 80 }}>
-            <div style={{ fontFamily: 'var(--mono)', fontSize: 9, fontWeight: 700, color: '#64748B', letterSpacing: 2, marginBottom: 18 }}>INPUTS</div>
+          <div style={{ background: '#FAFAF8', borderRadius: 14, border: '1px solid #E8E8E4', padding: '22px 20px', position: 'sticky', top: 80 }}>
+            <div style={{ fontFamily: 'var(--mono)', fontSize: 9, fontWeight: 700, color: '#8A929C', letterSpacing: 2, marginBottom: 18 }}>INPUTS</div>
 
             {/* Asset */}
             <div style={{ marginBottom: 16 }}>
-              <div style={{ fontSize: 12, color: '#94A3B8', marginBottom: 8 }}>Asset</div>
+              <div style={{ fontSize: 12, color: '#5B6470', marginBottom: 8 }}>Asset</div>
               <div style={{ display: 'grid', gridTemplateColumns: 'repeat(2, 1fr)', gap: 6 }}>
                 {ASSETS.map(a => (
                   <button key={a} onClick={() => setAsset(a)} style={{
                     padding: '8px 6px', borderRadius: 8, border: '1px solid',
                     borderColor: asset === a ? '#F59E0B' : '#1E293B',
-                    background: asset === a ? '#F59E0B18' : '#0D1117',
-                    color: asset === a ? '#F59E0B' : '#64748B',
+                    background: asset === a ? '#F59E0B18' : '#FAFAF8',
+                    color: asset === a ? '#F59E0B' : '#8A929C',
                     fontSize: 11, fontWeight: 600, cursor: 'pointer', fontFamily: 'var(--mono)',
                   }}>{a}</button>
                 ))}
               </div>
               {asset !== 'Custom' && (
-                <div style={{ marginTop: 8, fontSize: 10, color: '#475569', fontFamily: 'var(--mono)' }}>
+                <div style={{ marginTop: 8, fontSize: 10, color: '#8A929C', fontFamily: 'var(--mono)' }}>
                   Using historical avg: <span style={{ color: '#F59E0B' }}>{PRESET_RETURNS[asset]}% /yr</span>
                 </div>
               )}
@@ -177,14 +177,14 @@ export default function DCAPage() {
 
             {/* Frequency */}
             <div style={{ marginBottom: 16 }}>
-              <div style={{ fontSize: 12, color: '#94A3B8', marginBottom: 8 }}>Frequency</div>
+              <div style={{ fontSize: 12, color: '#5B6470', marginBottom: 8 }}>Frequency</div>
               <div style={{ display: 'flex', gap: 6 }}>
                 {(Object.keys(FREQ_LABEL) as Array<'monthly' | 'weekly' | 'biweekly'>).map(f => (
                   <button key={f} onClick={() => setFreq(f)} style={{
                     flex: 1, padding: '7px 4px', borderRadius: 8, border: '1px solid',
                     borderColor: freq === f ? '#F59E0B' : '#1E293B',
-                    background: freq === f ? '#F59E0B18' : '#0D1117',
-                    color: freq === f ? '#F59E0B' : '#64748B',
+                    background: freq === f ? '#F59E0B18' : '#FAFAF8',
+                    color: freq === f ? '#F59E0B' : '#8A929C',
                     fontSize: 10, fontWeight: 600, cursor: 'pointer', fontFamily: 'var(--mono)',
                   }}>{FREQ_LABEL[f]}</button>
                 ))}
@@ -198,41 +198,41 @@ export default function DCAPage() {
           <div style={{ display: 'flex', flexDirection: 'column', gap: 12 }}>
 
             {/* Results */}
-            <div style={{ background: '#111827', borderRadius: 14, border: '1px solid #F59E0B30', padding: '20px 22px' }}>
-              <div style={{ fontFamily: 'var(--mono)', fontSize: 9, fontWeight: 700, color: '#64748B', letterSpacing: 2, marginBottom: 16 }}>RESULTS</div>
+            <div style={{ background: '#FAFAF8', borderRadius: 14, border: '1px solid #F59E0B30', padding: '20px 22px' }}>
+              <div style={{ fontFamily: 'var(--mono)', fontSize: 9, fontWeight: 700, color: '#8A929C', letterSpacing: 2, marginBottom: 16 }}>RESULTS</div>
               <div style={{ display: 'grid', gridTemplateColumns: 'repeat(2, 1fr)', gap: 12 }}>
                 <div>
-                  <div style={{ fontSize: 10, color: '#64748B', marginBottom: 4 }}>DCA Portfolio Value</div>
+                  <div style={{ fontSize: 10, color: '#8A929C', marginBottom: 4 }}>DCA Portfolio Value</div>
                   <div style={{ fontFamily: 'var(--mono)', fontSize: 26, fontWeight: 900, color: '#F59E0B' }}>{fmt(result.finalValue)}</div>
                 </div>
                 <div>
-                  <div style={{ fontSize: 10, color: '#64748B', marginBottom: 4 }}>Lump Sum (same total)</div>
+                  <div style={{ fontSize: 10, color: '#8A929C', marginBottom: 4 }}>Lump Sum (same total)</div>
                   <div style={{ fontFamily: 'var(--mono)', fontSize: 26, fontWeight: 900, color: '#A78BFA' }}>{fmt(result.lumpSumFV)}</div>
                 </div>
                 <div>
-                  <div style={{ fontSize: 10, color: '#64748B', marginBottom: 4 }}>Total Invested</div>
-                  <div style={{ fontFamily: 'var(--mono)', fontSize: 16, fontWeight: 700, color: '#E2E8F0' }}>{fmt(result.totalInvested)}</div>
+                  <div style={{ fontSize: 10, color: '#8A929C', marginBottom: 4 }}>Total Invested</div>
+                  <div style={{ fontFamily: 'var(--mono)', fontSize: 16, fontWeight: 700, color: '#16161A' }}>{fmt(result.totalInvested)}</div>
                 </div>
                 <div>
-                  <div style={{ fontSize: 10, color: '#64748B', marginBottom: 4 }}>Total Return</div>
+                  <div style={{ fontSize: 10, color: '#8A929C', marginBottom: 4 }}>Total Return</div>
                   <div style={{ fontFamily: 'var(--mono)', fontSize: 16, fontWeight: 700, color: result.totalReturn >= 0 ? '#00D474' : '#FF4545' }}>
                     {fmt(result.totalReturn)} ({pct(result.returnPct)})
                   </div>
                 </div>
                 <div>
-                  <div style={{ fontSize: 10, color: '#64748B', marginBottom: 4 }}>Avg Cost Basis / Period</div>
-                  <div style={{ fontFamily: 'var(--mono)', fontSize: 14, fontWeight: 600, color: '#94A3B8' }}>${result.avgCostBasis.toFixed(2)}</div>
+                  <div style={{ fontSize: 10, color: '#8A929C', marginBottom: 4 }}>Avg Cost Basis / Period</div>
+                  <div style={{ fontFamily: 'var(--mono)', fontSize: 14, fontWeight: 600, color: '#5B6470' }}>${result.avgCostBasis.toFixed(2)}</div>
                 </div>
                 <div>
-                  <div style={{ fontSize: 10, color: '#64748B', marginBottom: 4 }}>Total Purchases</div>
-                  <div style={{ fontFamily: 'var(--mono)', fontSize: 14, fontWeight: 600, color: '#94A3B8' }}>{result.totalPeriods}</div>
+                  <div style={{ fontSize: 10, color: '#8A929C', marginBottom: 4 }}>Total Purchases</div>
+                  <div style={{ fontFamily: 'var(--mono)', fontSize: 14, fontWeight: 600, color: '#5B6470' }}>{result.totalPeriods}</div>
                 </div>
               </div>
             </div>
 
             {/* Chart */}
-            <div style={{ background: '#111827', borderRadius: 14, border: '1px solid #1E293B', padding: '16px 20px' }}>
-              <div style={{ fontFamily: 'var(--mono)', fontSize: 9, fontWeight: 700, color: '#64748B', letterSpacing: 2, marginBottom: 16 }}>PORTFOLIO VALUE OVER TIME</div>
+            <div style={{ background: '#FAFAF8', borderRadius: 14, border: '1px solid #E8E8E4', padding: '16px 20px' }}>
+              <div style={{ fontFamily: 'var(--mono)', fontSize: 9, fontWeight: 700, color: '#8A929C', letterSpacing: 2, marginBottom: 16 }}>PORTFOLIO VALUE OVER TIME</div>
               <ResponsiveContainer width="100%" height={220}>
                 <AreaChart data={result.rows} margin={{ top: 4, right: 8, left: 0, bottom: 0 }}>
                   <defs>
@@ -246,10 +246,10 @@ export default function DCAPage() {
                     </linearGradient>
                   </defs>
                   <CartesianGrid strokeDasharray="3 3" stroke="#1E293B" />
-                  <XAxis dataKey="year" tick={{ fontSize: 9, fill: '#475569' }} tickFormatter={v => `Yr ${v}`} />
-                  <YAxis tick={{ fontSize: 9, fill: '#475569' }} tickFormatter={v => fmt(v)} width={56} />
+                  <XAxis dataKey="year" tick={{ fontSize: 9, fill: '#8A929C' }} tickFormatter={v => `Yr ${v}`} />
+                  <YAxis tick={{ fontSize: 9, fill: '#8A929C' }} tickFormatter={v => fmt(v)} width={56} />
                   <Tooltip
-                    contentStyle={{ background: '#0D1117', border: '1px solid #1E293B', borderRadius: 8, fontSize: 11 }}
+                    contentStyle={{ background: '#FAFAF8', border: '1px solid #E8E8E4', borderRadius: 8, fontSize: 11 }}
                     formatter={(val: unknown, name: unknown) => [fmt(Number(val)), String(name)]}
                     labelFormatter={l => `Year ${l}`}
                   />
@@ -261,34 +261,34 @@ export default function DCAPage() {
             </div>
 
             {/* DHLM Take */}
-            <div style={{ background: '#111827', borderRadius: 14, border: '1px solid #3B4A9920', padding: '18px 20px' }}>
-              <div style={{ fontFamily: 'var(--mono)', fontSize: 9, fontWeight: 700, color: '#3B4A99', letterSpacing: 2, marginBottom: 8 }}>?뵦DHLM TAKE</div>
-              <p style={{ fontSize: 14, color: '#E2E8F0', lineHeight: 1.8, margin: 0 }}>{take}</p>
-              <p style={{ fontSize: 9, color: '#475569', margin: '10px 0 0' }}>NOT financial advice. Returns are projections, not guarantees.</p>
+            <div style={{ background: '#FAFAF8', borderRadius: 14, border: '1px solid #2D2F8F20', padding: '18px 20px' }}>
+              <div style={{ fontFamily: 'var(--mono)', fontSize: 9, fontWeight: 700, color: '#2D2F8F', letterSpacing: 2, marginBottom: 8 }}>?뵦DHLM TAKE</div>
+              <p style={{ fontSize: 14, color: '#16161A', lineHeight: 1.8, margin: 0 }}>{take}</p>
+              <p style={{ fontSize: 9, color: '#8A929C', margin: '10px 0 0' }}>NOT financial advice. Returns are projections, not guarantees.</p>
             </div>
 
             {/* FAQ */}
-            <div style={{ background: '#111827', borderRadius: 14, border: '1px solid #1E293B', padding: '18px 20px' }}>
-              <div style={{ fontFamily: 'var(--mono)', fontSize: 9, fontWeight: 700, color: '#64748B', letterSpacing: 2, marginBottom: 14 }}>FAQ</div>
+            <div style={{ background: '#FAFAF8', borderRadius: 14, border: '1px solid #E8E8E4', padding: '18px 20px' }}>
+              <div style={{ fontFamily: 'var(--mono)', fontSize: 9, fontWeight: 700, color: '#8A929C', letterSpacing: 2, marginBottom: 14 }}>FAQ</div>
               {[
                 { q: 'Is DCA better than lump sum investing?', a: 'Statistically, lump sum wins ~2/3 of the time in rising markets. DCA reduces emotional risk and lowers average cost in volatile assets. The right choice depends on your risk tolerance.' },
                 { q: 'How much should I DCA into Bitcoin per month?', a: 'Only invest what you can afford to lose entirely. Many start with $50??200/month. Allocate no more than 5% of your total portfolio to any single crypto asset.' },
                 { q: 'Does dollar cost averaging work in a bear market?', a: 'DCA lowers your average cost basis over time. If the asset recovers, your entry price is better than a lump sum at the peak. It requires patience ??years, not months.' },
               ].map((item, i) => (
-                <div key={i} style={{ marginBottom: i < 2 ? 12 : 0, paddingBottom: i < 2 ? 12 : 0, borderBottom: i < 2 ? '1px solid #1E293B40' : 'none' }}>
-                  <div style={{ fontSize: 13, fontWeight: 700, color: '#E2E8F0', marginBottom: 4 }}>{item.q}</div>
-                  <div style={{ fontSize: 12, color: '#94A3B8', lineHeight: 1.7 }}>{item.a}</div>
+                <div key={i} style={{ marginBottom: i < 2 ? 12 : 0, paddingBottom: i < 2 ? 12 : 0, borderBottom: i < 2 ? '1px solid #E8E8E440' : 'none' }}>
+                  <div style={{ fontSize: 13, fontWeight: 700, color: '#16161A', marginBottom: 4 }}>{item.q}</div>
+                  <div style={{ fontSize: 12, color: '#5B6470', lineHeight: 1.7 }}>{item.a}</div>
                 </div>
               ))}
             </div>
 
             {/* Internal Links */}
-            <div style={{ background: '#111827', borderRadius: 14, border: '1px solid #1E293B', padding: '16px 20px' }}>
-              <div style={{ fontFamily: 'var(--mono)', fontSize: 9, fontWeight: 700, color: '#64748B', letterSpacing: 2, marginBottom: 12 }}>EXPLORE MORE</div>
+            <div style={{ background: '#FAFAF8', borderRadius: 14, border: '1px solid #E8E8E4', padding: '16px 20px' }}>
+              <div style={{ fontFamily: 'var(--mono)', fontSize: 9, fontWeight: 700, color: '#8A929C', letterSpacing: 2, marginBottom: 12 }}>EXPLORE MORE</div>
               <div style={{ display: 'flex', gap: 8, flexWrap: 'wrap' }}>
                 <Link href="/calculators/compound-interest" style={{ fontSize: 11, color: '#F59E0B', padding: '5px 12px', borderRadius: 6, background: '#F59E0B10', border: '1px solid #F59E0B20', textDecoration: 'none' }}>?뱢 Compound Interest Calculator</Link>
                 <Link href="/learn/crypto-101" style={{ fontSize: 11, color: '#A78BFA', padding: '5px 12px', borderRadius: 6, background: '#A78BFA10', border: '1px solid #A78BFA20', textDecoration: 'none' }}>?뱴 Crypto 101 ??Week 4: How to Buy</Link>
-                <Link href="/learn/crypto-101" style={{ fontSize: 11, color: '#60A5FA', padding: '5px 12px', borderRadius: 6, background: '#3B82F610', border: '1px solid #3B82F620', textDecoration: 'none' }}>?뱴 Crypto 101 ??How to Buy</Link>
+                <Link href="/learn/crypto-101" style={{ fontSize: 11, color: '#2D2F8F', padding: '5px 12px', borderRadius: 6, background: '#3B82F610', border: '1px solid #3B82F620', textDecoration: 'none' }}>?뱴 Crypto 101 ??How to Buy</Link>
                 <Link href="/research" style={{ fontSize: 11, color: '#A78BFA', padding: '5px 12px', borderRadius: 6, background: '#A78BFA10', border: '1px solid #A78BFA20', textDecoration: 'none' }}>?쭬 The Mental Game</Link>
               </div>
             </div>
@@ -296,7 +296,7 @@ export default function DCAPage() {
           </div>
         </div>
 
-        <p style={{ fontSize: 9, color: '#334155', textAlign: 'center', lineHeight: 1.6, marginTop: 32 }}>
+        <p style={{ fontSize: 9, color: '#8A929C', textAlign: 'center', lineHeight: 1.6, marginTop: 32 }}>
           Projections use average historical return rates, not actual price data. Past performance does not guarantee future results. NOT financial advice.
         </p>
       </div>

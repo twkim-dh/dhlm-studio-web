@@ -1,4 +1,4 @@
-import type { Metadata } from 'next';
+﻿import type { Metadata } from 'next';
 import Link from 'next/link';
 import Image from 'next/image';
 import fs from 'fs';
@@ -92,12 +92,12 @@ export default function Quantum101Page() {
   const publishedCount = parts.filter(p => p.published).length;
 
   return (
-    <div style={{ background: '#0B0F19', minHeight: '100vh' }}>
+    <div style={{ background: '#FFFFFF', minHeight: '100vh' }}>
       <div style={{ maxWidth: 860, margin: '0 auto', padding: '80px 24px' }}>
 
         {/* Breadcrumb */}
         <div style={{ marginBottom: 20 }}>
-          <Link href="/learn" style={{ fontSize: 11, color: '#475569', textDecoration: 'none', fontFamily: 'var(--mono)' }}>
+          <Link href="/learn" style={{ fontSize: 11, color: '#8A929C', textDecoration: 'none', fontFamily: 'var(--mono)' }}>
             ← DHLM Studio Academy
           </Link>
         </div>
@@ -107,27 +107,27 @@ export default function Quantum101Page() {
           <div style={{ fontFamily: 'var(--mono)', fontSize: 10, fontWeight: 700, color: '#A78BFA', letterSpacing: 3, marginBottom: 10 }}>
             ⚛ QUANTUM COMPUTING 101 — COMPLETE SERIES
           </div>
-          <h1 style={{ fontFamily: 'var(--serif)', fontSize: 'clamp(26px, 4vw, 38px)', fontWeight: 900, color: '#F1F5F9', margin: '0 0 16px', lineHeight: 1.15 }}>
+          <h1 style={{ fontFamily: 'var(--serif)', fontSize: 'clamp(26px, 4vw, 38px)', fontWeight: 400, color: '#16161A', margin: '0 0 16px', lineHeight: 1.15 }}>
             Quantum Computing 101<br />for U.S. Investors
           </h1>
-          <p style={{ fontSize: 15, color: '#94A3B8', lineHeight: 1.75, margin: '0 0 20px', maxWidth: 640 }}>
+          <p style={{ fontSize: 15, color: '#5B6470', lineHeight: 1.75, margin: '0 0 20px', maxWidth: 640 }}>
             A 12-part series explaining every major approach to quantum computing — from superconducting chips and trapped ions to topological qubits — plus the software layer, post-quantum security, and a structured framework for evaluating quantum companies as investments.
           </p>
-          <p style={{ fontSize: 13, color: '#64748B', lineHeight: 1.65, margin: '0 0 24px', maxWidth: 600 }}>
+          <p style={{ fontSize: 13, color: '#8A929C', lineHeight: 1.65, margin: '0 0 24px', maxWidth: 600 }}>
             Educational content only. Companies are named as examples of how each approach is implemented, not as investment recommendations. The investing sections explain the metrics specialists use — not buy signals.
           </p>
 
           {/* Progress bar */}
-          <div style={{ padding: '16px 20px', borderRadius: 12, background: '#0D1117', border: '1px solid #1E293B', marginBottom: 8 }}>
+          <div style={{ padding: '16px 20px', borderRadius: 12, background: '#FAFAF8', border: '1px solid #E8E8E4', marginBottom: 8 }}>
             <div style={{ display: 'flex', justifyContent: 'space-between', marginBottom: 8 }}>
               <span style={{ fontFamily: 'var(--mono)', fontSize: 10, fontWeight: 700, color: '#A78BFA' }}>SERIES PROGRESS</span>
-              <span style={{ fontFamily: 'var(--mono)', fontSize: 10, color: '#64748B' }}>{publishedCount} / {parts.length} PUBLISHED · NEW WEEKLY ON MONDAYS</span>
+              <span style={{ fontFamily: 'var(--mono)', fontSize: 10, color: '#8A929C' }}>{publishedCount} / {parts.length} PUBLISHED · NEW WEEKLY ON MONDAYS</span>
             </div>
-            <div style={{ height: 6, background: '#1E293B', borderRadius: 3, overflow: 'hidden' }}>
+            <div style={{ height: 6, background: '#FFFFFF', borderRadius: 3, overflow: 'hidden' }}>
               <div style={{ height: '100%', width: `${(publishedCount / parts.length) * 100}%`, background: 'linear-gradient(90deg, #A78BFA, #7C3AED)', borderRadius: 3, transition: 'width 0.3s' }} />
             </div>
           </div>
-          <p style={{ fontSize: 11, color: '#334155', fontFamily: 'var(--mono)', margin: 0 }}>
+          <p style={{ fontSize: 11, color: '#8A929C', fontFamily: 'var(--mono)', margin: 0 }}>
             SERIES RUNS JUNE 15 – AUG 31, 2026 · DHLM STUDIO ACADEMY
           </p>
         </div>
@@ -141,7 +141,7 @@ export default function Quantum101Page() {
                 <span style={{ fontFamily: 'var(--mono)', fontSize: 9, fontWeight: 800, padding: '4px 12px', borderRadius: 5, background: `${ph.color}18`, color: ph.color, border: `1px solid ${ph.color}30`, letterSpacing: 1 }}>
                   PHASE {ph.phase}
                 </span>
-                <span style={{ fontFamily: 'var(--serif)', fontSize: 15, fontWeight: 700, color: '#CBD5E1' }}>{ph.title}</span>
+                <span style={{ fontFamily: 'var(--serif)', fontSize: 15, fontWeight: 700, color: '#374151' }}>{ph.title}</span>
               </div>
 
               <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fill, minmax(260px, 1fr))', gap: 12 }}>
@@ -149,31 +149,31 @@ export default function Quantum101Page() {
                   <div key={p.part}>
                     {p.published ? (
                       <Link href={`/learn/${p.slug}`} style={{ textDecoration: 'none', display: 'block' }}>
-                        <div style={{ background: '#111827', borderRadius: 12, border: '1px solid #1E293B', overflow: 'hidden' }}>
+                        <div style={{ background: '#FAFAF8', borderRadius: 12, border: '1px solid #E8E8E4', overflow: 'hidden' }}>
                           <Image src={p.thumb} alt={p.title} width={1920} height={1080} loading="lazy" sizes="(max-width: 640px) 100vw, (max-width: 1024px) 50vw, 380px" style={{ width: '100%', height: 'auto', display: 'block' }} />
                           <div style={{ padding: '14px 16px 18px' }}>
                             <div style={{ display: 'flex', alignItems: 'center', gap: 6, marginBottom: 8 }}>
                               <span style={{ fontFamily: 'var(--mono)', fontSize: 9, fontWeight: 800, padding: '2px 8px', borderRadius: 4, background: `${ph.color}18`, color: ph.color, border: `1px solid ${ph.color}30` }}>PART {p.part}</span>
                               <span style={{ fontFamily: 'var(--mono)', fontSize: 9, fontWeight: 700, padding: '2px 7px', borderRadius: 4, background: '#00D47418', color: '#00D474' }}>LIVE</span>
                             </div>
-                            <div style={{ fontFamily: 'var(--serif)', fontSize: 16, fontWeight: 800, color: '#F1F5F9', lineHeight: 1.4, marginBottom: 6 }}>{p.title}</div>
-                            <p style={{ fontSize: 12, color: '#64748B', margin: 0, lineHeight: 1.55 }}>{p.description}</p>
+                            <div style={{ fontFamily: 'var(--serif)', fontSize: 16, fontWeight: 800, color: '#16161A', lineHeight: 1.4, marginBottom: 6 }}>{p.title}</div>
+                            <p style={{ fontSize: 12, color: '#8A929C', margin: 0, lineHeight: 1.55 }}>{p.description}</p>
                           </div>
                         </div>
                       </Link>
                     ) : (
-                      <div style={{ background: '#111827', borderRadius: 12, border: '1px solid #1E293B', overflow: 'hidden', opacity: 0.5 }}>
+                      <div style={{ background: '#FAFAF8', borderRadius: 12, border: '1px solid #E8E8E4', overflow: 'hidden', opacity: 0.5 }}>
                         <div style={{ width: '100%', aspectRatio: '16/9', background: `${ph.color}12`, display: 'flex', flexDirection: 'column', alignItems: 'center', justifyContent: 'center', gap: 6 }}>
                           <span style={{ fontFamily: 'var(--mono)', fontSize: 10, fontWeight: 800, color: `${ph.color}60`, letterSpacing: 1 }}>PART {p.part}</span>
-                          <span style={{ fontFamily: 'var(--mono)', fontSize: 9, color: '#334155' }}>{fmtDate(p.scheduledDate)}</span>
+                          <span style={{ fontFamily: 'var(--mono)', fontSize: 9, color: '#8A929C' }}>{fmtDate(p.scheduledDate)}</span>
                         </div>
                         <div style={{ padding: '14px 16px 18px' }}>
                           <div style={{ display: 'flex', alignItems: 'center', gap: 6, marginBottom: 8 }}>
                             <span style={{ fontFamily: 'var(--mono)', fontSize: 9, fontWeight: 800, padding: '2px 8px', borderRadius: 4, background: `${ph.color}18`, color: ph.color, border: `1px solid ${ph.color}30` }}>PART {p.part}</span>
                             <span style={{ fontFamily: 'var(--mono)', fontSize: 9, fontWeight: 700, padding: '2px 8px', borderRadius: 4, background: '#D4A84318', color: '#D4A843', border: '1px solid #D4A84340' }}>COMING {fmtDate(p.scheduledDate).toUpperCase()}</span>
                           </div>
-                          <div style={{ fontFamily: 'var(--serif)', fontSize: 16, fontWeight: 800, color: '#CBD5E1', lineHeight: 1.4, marginBottom: 6 }}>{p.title}</div>
-                          <p style={{ fontSize: 12, color: '#475569', margin: 0, lineHeight: 1.55 }}>{p.description}</p>
+                          <div style={{ fontFamily: 'var(--serif)', fontSize: 16, fontWeight: 800, color: '#374151', lineHeight: 1.4, marginBottom: 6 }}>{p.title}</div>
+                          <p style={{ fontSize: 12, color: '#8A929C', margin: 0, lineHeight: 1.55 }}>{p.description}</p>
                         </div>
                       </div>
                     )}
@@ -185,8 +185,8 @@ export default function Quantum101Page() {
         })}
 
         {/* About section */}
-        <div style={{ padding: '24px', borderRadius: 14, background: '#0D1117', border: '1px solid #1E293B', marginTop: 8, marginBottom: 28 }}>
-          <div style={{ fontFamily: 'var(--mono)', fontSize: 10, fontWeight: 700, color: '#475569', letterSpacing: 2, marginBottom: 14 }}>ABOUT THIS SERIES</div>
+        <div style={{ padding: '24px', borderRadius: 14, background: '#FAFAF8', border: '1px solid #E8E8E4', marginTop: 8, marginBottom: 28 }}>
+          <div style={{ fontFamily: 'var(--mono)', fontSize: 10, fontWeight: 700, color: '#8A929C', letterSpacing: 2, marginBottom: 14 }}>ABOUT THIS SERIES</div>
           <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(180px, 1fr))', gap: 16 }}>
             {[
               { icon: '⚛', label: 'Every Approach Covered', desc: 'Superconducting, trapped-ion, neutral atom, photonic, silicon spin, topological, and annealing.' },
@@ -195,14 +195,14 @@ export default function Quantum101Page() {
             ].map(p => (
               <div key={p.label}>
                 <div style={{ fontSize: 18, marginBottom: 4 }}>{p.icon}</div>
-                <div style={{ fontSize: 12, fontWeight: 700, color: '#E2E8F0', marginBottom: 3 }}>{p.label}</div>
-                <div style={{ fontSize: 11, color: '#64748B', lineHeight: 1.5 }}>{p.desc}</div>
+                <div style={{ fontSize: 12, fontWeight: 700, color: '#16161A', marginBottom: 3 }}>{p.label}</div>
+                <div style={{ fontSize: 11, color: '#8A929C', lineHeight: 1.5 }}>{p.desc}</div>
               </div>
             ))}
           </div>
         </div>
 
-        <p style={{ fontSize: 9, color: '#334155', textAlign: 'center' }}>
+        <p style={{ fontSize: 9, color: '#8A929C', textAlign: 'center' }}>
           Educational content only. Not investment advice. Always do your own research.
         </p>
       </div>

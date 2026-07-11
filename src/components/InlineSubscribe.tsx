@@ -45,16 +45,16 @@ export default function InlineSubscribe({
     return (
       <div style={{ padding: '16px 20px', borderRadius: 12, background: '#00D47408', border: '1px solid #00D47430', textAlign: 'center' }}>
         <div style={{ fontSize: 13, fontWeight: 800, color: '#00D474', marginBottom: 2 }}>✓ You&apos;re in</div>
-        <div style={{ fontSize: 11, color: '#64748B' }}>Your first report summary is on the way.</div>
+        <div style={{ fontSize: 11, color: '#8A929C' }}>Your first report summary is on the way.</div>
       </div>
     );
   }
 
   return (
-    <div style={{ padding: '18px 20px', borderRadius: 12, background: '#0D1117', border: '1px solid #1E293B' }}>
-      <div style={{ fontFamily: 'var(--mono)', fontSize: 9, fontWeight: 800, color: '#3B4A99', letterSpacing: 2, marginBottom: 6 }}>DHLM STUDIO · WEEKLY</div>
-      <div style={{ fontSize: 14, fontWeight: 800, color: '#E2E8F0', marginBottom: 3, fontFamily: 'var(--serif)' }}>{headline}</div>
-      <div style={{ fontSize: 11, color: '#64748B', marginBottom: 12, lineHeight: 1.5 }}>{description}</div>
+    <div style={{ padding: '18px 20px', borderRadius: 12, background: '#FAFAF8', border: '1px solid #E8E8E4' }}>
+      <div style={{ fontFamily: 'var(--mono)', fontSize: 9, fontWeight: 800, color: '#2D2F8F', letterSpacing: 2, marginBottom: 6 }}>DHLM STUDIO · WEEKLY</div>
+      <div style={{ fontSize: 14, fontWeight: 800, color: '#16161A', marginBottom: 3, fontFamily: 'var(--serif)' }}>{headline}</div>
+      <div style={{ fontSize: 11, color: '#8A929C', marginBottom: 12, lineHeight: 1.5 }}>{description}</div>
       <div style={{ display: 'flex', gap: 8 }}>
         <input
           type="email"
@@ -64,8 +64,8 @@ export default function InlineSubscribe({
           placeholder="your@email.com"
           style={{
             flex: 1, padding: '10px 12px', borderRadius: 8,
-            background: '#0B0F19', border: '1px solid #1E293B',
-            color: '#F1F5F9', fontFamily: 'var(--sans)', fontSize: 12, outline: 'none',
+            background: '#FFFFFF', border: '1px solid #E8E8E4',
+            color: '#16161A', fontFamily: 'var(--sans)', fontSize: 12, outline: 'none',
           }}
         />
         <button
@@ -74,7 +74,7 @@ export default function InlineSubscribe({
           style={{
             padding: '10px 16px', borderRadius: 8, border: 'none',
             background: email.includes('@') ? '#C73E3A' : '#1E293B',
-            color: email.includes('@') ? '#fff' : '#475569',
+            color: email.includes('@') ? '#fff' : '#8A929C',
             fontSize: 12, fontWeight: 800, cursor: email.includes('@') ? 'pointer' : 'not-allowed',
             fontFamily: 'var(--sans)', whiteSpace: 'nowrap',
           }}>
@@ -82,7 +82,7 @@ export default function InlineSubscribe({
         </button>
       </div>
       {error && <div style={{ fontSize: 10, color: '#FF4545', marginTop: 6 }}>{error}</div>}
-      <div style={{ fontSize: 10, color: '#475569', marginTop: 8 }}>No spam · Unsubscribe anytime</div>
+      <div style={{ fontSize: 10, color: '#8A929C', marginTop: 8 }}>No spam · Unsubscribe anytime</div>
     </div>
   );
 }

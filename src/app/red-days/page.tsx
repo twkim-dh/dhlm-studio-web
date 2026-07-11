@@ -15,7 +15,7 @@ export default function RedDaysPage() {
 
         {/* Header */}
         <div style={{ marginBottom: 56 }}>
-          <p style={{ fontFamily: "var(--mono)", fontSize: 11, color: "#3B4A99", fontWeight: 600, letterSpacing: 2, marginBottom: 12, textTransform: "uppercase" }}>Red Days</p>
+          <p style={{ fontFamily: "var(--mono)", fontSize: 11, color: "#2D2F8F", fontWeight: 600, letterSpacing: 2, marginBottom: 12, textTransform: "uppercase" }}>Red Days</p>
           <h1 style={{ fontFamily: "var(--serif)", fontSize: 32, fontWeight: 800, color: "#1A1D21", lineHeight: 1.2, marginBottom: 16 }}>
             Notes from Market Turbulence
           </h1>
@@ -40,7 +40,7 @@ export default function RedDaysPage() {
                 <div style={{ fontFamily: "var(--mono)", fontSize: 11, color: "#8A929C", marginBottom: 12 }}>{e.date}</div>
                 <h2 style={{ fontFamily: "var(--serif)", fontSize: 22, fontWeight: 700, color: "#1A1D21", lineHeight: 1.3, marginBottom: 20 }}>{e.title}</h2>
                 {e.quote && (
-                  <blockquote style={{ fontFamily: "var(--font-voice)", fontSize: 18, color: "#5B6470", fontStyle: "italic", lineHeight: 1.7, borderLeft: "3px solid #3B4A99", paddingLeft: 20, margin: "0 0 24px" }}>
+                  <blockquote style={{ fontFamily: "var(--font-voice)", fontSize: 18, color: "#5B6470", fontStyle: "italic", lineHeight: 1.7, borderLeft: "3px solid #2D2F8F", paddingLeft: 20, margin: "0 0 24px" }}>
                     {e.quote}
                   </blockquote>
                 )}

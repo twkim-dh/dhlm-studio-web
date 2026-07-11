@@ -49,14 +49,14 @@ export default function NewsletterCTA({ source = 'homepage' }: { source?: string
         {justSubscribed ? (
           <>
             <div style={{ fontSize: 13, fontWeight: 800, color: '#00D474', letterSpacing: 1, marginBottom: 4 }}>YOU&apos;RE IN</div>
-            <div style={{ fontSize: 22, fontFamily: 'var(--serif)', fontWeight: 900, color: '#F1F5F9', marginBottom: 6 }}>Welcome to DHLM Studio.</div>
-            <div style={{ fontSize: 12, color: '#64748B' }}>Check your inbox — your first report summary is on the way.</div>
+            <div style={{ fontSize: 22, fontFamily: 'var(--serif)', fontWeight: 400, color: '#16161A', marginBottom: 6 }}>Welcome to DHLM Studio.</div>
+            <div style={{ fontSize: 12, color: '#8A929C' }}>Check your inbox — your first report summary is on the way.</div>
           </>
         ) : (
           <>
             <div style={{ fontSize: 13, fontWeight: 800, color: '#00D474', letterSpacing: 1, marginBottom: 4 }}>WELCOME BACK</div>
-            <div style={{ fontSize: 22, fontFamily: 'var(--serif)', fontWeight: 900, color: '#F1F5F9', marginBottom: 6 }}>Welcome back, subscriber.</div>
-            <div style={{ fontSize: 12, color: '#64748B' }}>You&apos;re already on the list. New reports in your inbox every week.</div>
+            <div style={{ fontSize: 22, fontFamily: 'var(--serif)', fontWeight: 400, color: '#16161A', marginBottom: 6 }}>Welcome back, subscriber.</div>
+            <div style={{ fontSize: 12, color: '#8A929C' }}>You&apos;re already on the list. New reports in your inbox every week.</div>
           </>
         )}
       </div>
@@ -66,16 +66,16 @@ export default function NewsletterCTA({ source = 'homepage' }: { source?: string
   return (
     <div style={{
       padding: '28px 28px 24px', borderRadius: 16,
-      background: 'linear-gradient(135deg, #111827 0%, #0D1117 100%)',
-      border: '1px solid #1E293B',
+      background: '#FAFAF8',
+      border: '1px solid #E8E8E4',
     }}>
       {/* Header */}
       <div style={{ marginBottom: 18 }}>
-        <div style={{ fontFamily: 'var(--mono)', fontSize: 9, fontWeight: 800, color: '#3B4A99', letterSpacing: 3, marginBottom: 8 }}>DHLM STUDIO · WEEKLY</div>
-        <div style={{ fontFamily: 'var(--serif)', fontSize: 22, fontWeight: 900, color: '#F1F5F9', lineHeight: 1.25, marginBottom: 8 }}>
+        <div style={{ fontFamily: 'var(--mono)', fontSize: 9, fontWeight: 800, color: '#2D2F8F', letterSpacing: 3, marginBottom: 8 }}>DHLM STUDIO · WEEKLY</div>
+        <div style={{ fontFamily: 'var(--serif)', fontSize: 22, fontWeight: 400, color: '#16161A', lineHeight: 1.25, marginBottom: 8 }}>
           Institutional-grade research.<br />Free, every week.
         </div>
-        <p style={{ fontSize: 12, color: '#94A3B8', margin: 0, lineHeight: 1.6 }}>
+        <p style={{ fontSize: 12, color: '#5B6470', margin: 0, lineHeight: 1.6 }}>
           Deep Dive reports on AI, semiconductors, and quantum computing — the analysis serious investors actually use.
         </p>
       </div>
@@ -90,7 +90,7 @@ export default function NewsletterCTA({ source = 'homepage' }: { source?: string
         ].map((item) => (
           <div key={item} style={{ display: 'flex', alignItems: 'flex-start', gap: 8 }}>
             <span style={{ color: '#C73E3A', fontWeight: 800, fontSize: 13, lineHeight: 1.4, flexShrink: 0 }}>→</span>
-            <span style={{ fontSize: 12, color: '#CBD5E1', lineHeight: 1.4 }}>{item}</span>
+            <span style={{ fontSize: 12, color: '#374151', lineHeight: 1.4 }}>{item}</span>
           </div>
         ))}
       </div>
@@ -105,8 +105,8 @@ export default function NewsletterCTA({ source = 'homepage' }: { source?: string
           placeholder="your@email.com"
           style={{
             flex: 1, padding: '12px 14px', borderRadius: 10,
-            background: '#0B0F19', border: '1px solid #1E293B',
-            color: '#F1F5F9', fontSize: 13, outline: 'none',
+            background: '#FFFFFF', border: '1px solid #E8E8E4',
+            color: '#16161A', fontSize: 13, outline: 'none',
             fontFamily: 'var(--sans)',
           }}
         />
@@ -116,7 +116,7 @@ export default function NewsletterCTA({ source = 'homepage' }: { source?: string
           style={{
             padding: '12px 20px', borderRadius: 10, border: 'none',
             background: email.includes('@') ? '#C73E3A' : '#1E293B',
-            color: email.includes('@') ? '#fff' : '#475569',
+            color: email.includes('@') ? '#fff' : '#8A929C',
             fontSize: 13, fontWeight: 800, cursor: email.includes('@') ? 'pointer' : 'not-allowed',
             fontFamily: 'var(--sans)', whiteSpace: 'nowrap',
             transition: 'background 0.2s',
@@ -128,7 +128,7 @@ export default function NewsletterCTA({ source = 'homepage' }: { source?: string
       {error && <div style={{ fontSize: 11, color: '#FF4545', marginBottom: 8 }}>{error}</div>}
 
       {/* Trust line — tiered by count */}
-      <div style={{ fontSize: 10, color: '#475569', lineHeight: 1.5 }}>
+      <div style={{ fontSize: 10, color: '#8A929C', lineHeight: 1.5 }}>
         {count >= 500
           ? `Join ${count.toLocaleString()}+ investors`
           : count >= 100

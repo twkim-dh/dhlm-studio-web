@@ -7,24 +7,24 @@ export const metadata: Metadata = {
   alternates: { canonical: 'https://dhlm-studio.com/editorial' },
 };
 
-const card = { background: '#111827', borderRadius: 14, border: '1px solid #1E293B' };
+const card = { background: '#FAFAF8', borderRadius: 14, border: '1px solid #E8E8E4' };
 
 export default function EditorialPage() {
   return (
-    <div style={{ background: '#0B0F19', minHeight: '100vh' }}>
+    <div style={{ background: '#FFFFFF', minHeight: '100vh' }}>
       <div style={{ maxWidth: 720, margin: '0 auto', padding: '80px 24px' }}>
-        <Link href="/" style={{ fontSize: 12, color: '#64748B' }}>← Home</Link>
+        <Link href="/" style={{ fontSize: 12, color: '#8A929C' }}>← Home</Link>
 
         <div style={{ marginTop: 20, marginBottom: 32 }}>
           <div style={{ fontFamily: 'var(--mono)', fontSize: 10, fontWeight: 700, color: '#C73E3A', letterSpacing: 3, marginBottom: 8 }}>EDITORIAL</div>
-          <h1 style={{ fontFamily: 'var(--serif)', fontSize: 28, fontWeight: 900, color: '#F1F5F9', margin: 0 }}>DHLM Studio Editorial</h1>
-          <p style={{ fontSize: 14, color: '#64748B', marginTop: 6 }}>Institutional-grade research for serious long-term investors. Independent investor analysis.</p>
+          <h1 style={{ fontFamily: 'var(--serif)', fontSize: 28, fontWeight: 400, color: '#16161A', margin: 0 }}>DHLM Studio Editorial</h1>
+          <p style={{ fontSize: 14, color: '#8A929C', marginTop: 6 }}>Institutional-grade research for serious long-term investors. Independent investor analysis.</p>
         </div>
 
         {/* Who We Are */}
         <div style={{ ...card, padding: '24px 22px', marginBottom: 20 }}>
-          <div style={{ fontFamily: 'var(--mono)', fontSize: 9, fontWeight: 700, color: '#64748B', letterSpacing: 3, marginBottom: 14 }}>WHO WE ARE</div>
-          <p style={{ fontSize: 14, color: '#94A3B8', lineHeight: 1.8, margin: '0 0 14px' }}>
+          <div style={{ fontFamily: 'var(--mono)', fontSize: 9, fontWeight: 700, color: '#8A929C', letterSpacing: 3, marginBottom: 14 }}>WHO WE ARE</div>
+          <p style={{ fontSize: 14, color: '#5B6470', lineHeight: 1.8, margin: '0 0 14px' }}>
             DHLM Studio produces investment research and educational content for serious long-term investors.
           </p>
           <div style={{ display: 'flex', flexDirection: 'column', gap: 6 }}>
@@ -38,7 +38,7 @@ export default function EditorialPage() {
             ].map(item => (
               <div key={item} style={{ display: 'flex', alignItems: 'flex-start', gap: 8 }}>
                 <span style={{ color: '#3B82F6', fontSize: 12, flexShrink: 0, marginTop: 2 }}>▸</span>
-                <span style={{ fontSize: 13, color: '#94A3B8', lineHeight: 1.6 }}>{item}</span>
+                <span style={{ fontSize: 13, color: '#5B6470', lineHeight: 1.6 }}>{item}</span>
               </div>
             ))}
           </div>
@@ -49,17 +49,17 @@ export default function EditorialPage() {
           {/* Why You Can Trust DHLM Studio */}
           <div style={{ ...card, padding: '24px 22px', borderColor: '#00D47430' }}>
             <div style={{ fontFamily: 'var(--mono)', fontSize: 9, fontWeight: 700, color: '#00D474', letterSpacing: 3, marginBottom: 14 }}>WHY YOU CAN TRUST DHLM STUDIO</div>
-            <p style={{ fontSize: 14, fontWeight: 700, color: '#F1F5F9', lineHeight: 1.7, margin: '0 0 14px' }}>
+            <p style={{ fontSize: 14, fontWeight: 700, color: '#16161A', lineHeight: 1.7, margin: '0 0 14px' }}>
               DHLM Studio is not anonymous, AI-generated content farming.
             </p>
-            <p style={{ fontSize: 14, color: '#94A3B8', lineHeight: 1.9, margin: '0 0 14px' }}>
+            <p style={{ fontSize: 14, color: '#5B6470', lineHeight: 1.9, margin: '0 0 14px' }}>
               Our analysis is written by an active investor who builds and manages a real portfolio based on this research. We have skin in the game — which is exactly why we disclose our positions, cite our sources, and prioritize frameworks over hype.
             </p>
-            <p style={{ fontSize: 14, color: '#94A3B8', lineHeight: 1.9, margin: '0 0 14px' }}>
+            <p style={{ fontSize: 14, color: '#5B6470', lineHeight: 1.9, margin: '0 0 14px' }}>
               The author&apos;s core holdings span artificial intelligence, semiconductors, quantum computing, and digital assets. Positions relevant to any specific report are disclosed within that report.
             </p>
-            <div style={{ padding: '12px 16px', background: '#0D1117', borderRadius: 8, borderLeft: '3px solid #00D474' }}>
-              <p style={{ fontSize: 13, color: '#94A3B8', lineHeight: 1.7, margin: 0, fontStyle: 'italic' }}>
+            <div style={{ padding: '12px 16px', background: '#FAFAF8', borderRadius: 8, borderLeft: '3px solid #00D474' }}>
+              <p style={{ fontSize: 13, color: '#5B6470', lineHeight: 1.7, margin: 0, fontStyle: 'italic' }}>
                 This is research we use ourselves. That is the standard we hold it to.
               </p>
             </div>
@@ -67,36 +67,36 @@ export default function EditorialPage() {
 
           {/* Our Approach */}
           <div style={{ ...card, padding: '24px 22px' }}>
-            <h2 style={{ fontFamily: 'var(--serif)', fontSize: 20, fontWeight: 800, color: '#E2E8F0', margin: '0 0 12px' }}>Our Approach</h2>
-            <p style={{ fontSize: 14, color: '#94A3B8', lineHeight: 1.8, margin: 0 }}>
+            <h2 style={{ fontFamily: 'var(--serif)', fontSize: 20, fontWeight: 800, color: '#16161A', margin: '0 0 12px' }}>Our Approach</h2>
+            <p style={{ fontSize: 14, color: '#5B6470', lineHeight: 1.8, margin: 0 }}>
               DHLM Studio combines real-time financial data with structured analytical commentary to make market analysis accessible and engaging. Our analysis follows a defined methodology: we collect data from licensed APIs, apply quantitative analysis frameworks, and present findings in a conversational tone through our DHLM Studio analytical voice — all under editorial oversight.
             </p>
-            <p style={{ fontSize: 14, color: '#94A3B8', lineHeight: 1.8, marginTop: 12 }}>
+            <p style={{ fontSize: 14, color: '#5B6470', lineHeight: 1.8, marginTop: 12 }}>
               Every Deep Dive report follows a consistent structure: company overview with key metrics, a unique analytical angle that goes beyond surface-level data, bull vs bear case presentation, and a DHLM Studio verdict that synthesizes the analysis. We aim to present both sides of every argument, never recommending specific investment actions.
             </p>
           </div>
 
           {/* Data Sources */}
           <div style={{ ...card, padding: '24px 22px' }}>
-            <h2 style={{ fontFamily: 'var(--serif)', fontSize: 20, fontWeight: 800, color: '#E2E8F0', margin: '0 0 12px' }}>Data Sources</h2>
-            <p style={{ fontSize: 13, color: '#94A3B8', marginBottom: 14 }}>
+            <h2 style={{ fontFamily: 'var(--serif)', fontSize: 20, fontWeight: 800, color: '#16161A', margin: '0 0 12px' }}>Data Sources</h2>
+            <p style={{ fontSize: 13, color: '#5B6470', marginBottom: 14 }}>
               All data is sourced from commercially licensed APIs and authoritative public institutions. We do not scrape, fabricate, or estimate data points. Primary sources are cited within each report.
             </p>
             <div style={{ display: 'flex', flexDirection: 'column', gap: 10 }}>
               {[
-                { name: 'Financial Modeling Prep (FMP)', use: 'Stock profiles, financial statements, company fundamentals, SEC filings (10-K, 10-Q, 8-K), earnings data. Licensed for commercial use.', color: '#60A5FA', href: 'https://financialmodelingprep.com' },
+                { name: 'Financial Modeling Prep (FMP)', use: 'Stock profiles, financial statements, company fundamentals, SEC filings (10-K, 10-Q, 8-K), earnings data. Licensed for commercial use.', color: '#2D2F8F', href: 'https://financialmodelingprep.com' },
                 { name: 'CoinGecko', use: 'Cryptocurrency prices, market capitalization, 24-hour volume, historical data. Public API.', color: '#F59E0B', href: 'https://www.coingecko.com' },
                 { name: 'IEA — International Energy Agency', use: 'Energy & AI reports, power demand forecasting, data centre electricity consumption projections. Cited in Energy and Power series.', color: '#00D474', href: 'https://www.iea.org' },
                 { name: 'SEC EDGAR', use: 'Primary source for company filings, prospectuses, proxy statements, and 13-F institutional holdings. Used for all Deep Dive reports.', color: '#A78BFA', href: 'https://www.sec.gov/edgar' },
                 { name: 'Federal Reserve Economic Data (FRED)', use: 'Macroeconomic indicators: interest rates, CPI inflation, GDP, monetary policy data. Used in macro-themed reports.', color: '#C73E3A', href: 'https://fred.stlouisfed.org' },
-                { name: 'NIST', use: 'Post-quantum cryptography standards, quantum computing framework references. Used in Quantum series.', color: '#64748B', href: 'https://www.nist.gov' },
+                { name: 'NIST', use: 'Post-quantum cryptography standards, quantum computing framework references. Used in Quantum series.', color: '#8A929C', href: 'https://www.nist.gov' },
               ].map(s => (
-                <div key={s.name} style={{ padding: '12px 14px', borderRadius: 8, background: '#0D1117', border: '1px solid #1E293B' }}>
+                <div key={s.name} style={{ padding: '12px 14px', borderRadius: 8, background: '#FAFAF8', border: '1px solid #E8E8E4' }}>
                   <div style={{ display: 'flex', alignItems: 'center', gap: 8, marginBottom: 4 }}>
                     <div style={{ width: 8, height: 8, borderRadius: '50%', background: s.color }} />
-                    <a href={s.href} target="_blank" rel="noopener noreferrer" style={{ fontSize: 13, fontWeight: 700, color: '#E2E8F0', textDecoration: 'none' }}>{s.name} ↗</a>
+                    <a href={s.href} target="_blank" rel="noopener noreferrer" style={{ fontSize: 13, fontWeight: 700, color: '#16161A', textDecoration: 'none' }}>{s.name} ↗</a>
                   </div>
-                  <p style={{ fontSize: 12, color: '#64748B', lineHeight: 1.6, margin: 0 }}>{s.use}</p>
+                  <p style={{ fontSize: 12, color: '#8A929C', lineHeight: 1.6, margin: 0 }}>{s.use}</p>
                 </div>
               ))}
             </div>
@@ -104,7 +104,7 @@ export default function EditorialPage() {
 
           {/* Analysis Methodology */}
           <div id="beaf" style={{ ...card, padding: '24px 22px' }}>
-            <h2 style={{ fontFamily: 'var(--serif)', fontSize: 20, fontWeight: 800, color: '#E2E8F0', margin: '0 0 12px' }}>Analysis Methodology</h2>
+            <h2 style={{ fontFamily: 'var(--serif)', fontSize: 20, fontWeight: 800, color: '#16161A', margin: '0 0 12px' }}>Analysis Methodology</h2>
             <div style={{ display: 'flex', flexDirection: 'column', gap: 12 }}>
               {[
                 { step: '1', title: 'Data Collection', desc: 'We pull real-time data from our licensed API sources. Stock prices, financial statements, market cap, P/E ratios, revenue growth, and sector performance are sourced directly from licensed APIs.' },
@@ -116,8 +116,8 @@ export default function EditorialPage() {
                 <div key={s.step} style={{ display: 'flex', gap: 14 }}>
                   <div style={{ width: 28, height: 28, borderRadius: '50%', background: '#C73E3A15', display: 'flex', alignItems: 'center', justifyContent: 'center', fontSize: 12, fontWeight: 800, color: '#C73E3A', flexShrink: 0 }}>{s.step}</div>
                   <div>
-                    <div style={{ fontSize: 14, fontWeight: 700, color: '#E2E8F0' }}>{s.title}</div>
-                    <p style={{ fontSize: 13, color: '#64748B', lineHeight: 1.7, margin: '4px 0 0' }}>{s.desc}</p>
+                    <div style={{ fontSize: 14, fontWeight: 700, color: '#16161A' }}>{s.title}</div>
+                    <p style={{ fontSize: 13, color: '#8A929C', lineHeight: 1.7, margin: '4px 0 0' }}>{s.desc}</p>
                   </div>
                 </div>
               ))}
@@ -126,7 +126,7 @@ export default function EditorialPage() {
 
           {/* Quality Standards */}
           <div style={{ ...card, padding: '24px 22px' }}>
-            <h2 style={{ fontFamily: 'var(--serif)', fontSize: 20, fontWeight: 800, color: '#E2E8F0', margin: '0 0 12px' }}>Quality Standards</h2>
+            <h2 style={{ fontFamily: 'var(--serif)', fontSize: 20, fontWeight: 800, color: '#16161A', margin: '0 0 12px' }}>Quality Standards</h2>
             <div style={{ display: 'flex', flexDirection: 'column', gap: 8 }}>
               {[
                 'All financial data is sourced from licensed, commercially approved APIs',
@@ -142,7 +142,7 @@ export default function EditorialPage() {
               ].map((item, i) => (
                 <div key={i} style={{ display: 'flex', alignItems: 'flex-start', gap: 8 }}>
                   <span style={{ color: '#00D474', fontSize: 12, flexShrink: 0, marginTop: 2 }}>✓</span>
-                  <span style={{ fontSize: 13, color: '#94A3B8', lineHeight: 1.6 }}>{item}</span>
+                  <span style={{ fontSize: 13, color: '#5B6470', lineHeight: 1.6 }}>{item}</span>
                 </div>
               ))}
             </div>
@@ -151,10 +151,10 @@ export default function EditorialPage() {
           {/* Human Editorial Oversight */}
           <div style={{ ...card, padding: '24px 22px', borderColor: '#D4A84330' }}>
             <h2 style={{ fontFamily: 'var(--serif)', fontSize: 20, fontWeight: 800, color: '#D4A843', margin: '0 0 12px' }}>Human Editorial Oversight</h2>
-            <p style={{ fontSize: 14, color: '#E2E8F0', lineHeight: 1.8, margin: '0 0 14px' }}>
+            <p style={{ fontSize: 14, color: '#16161A', lineHeight: 1.8, margin: '0 0 14px' }}>
               Every piece of content on DHLM Studio goes through a human editorial process before publication.
             </p>
-            <p style={{ fontSize: 13, color: '#94A3B8', lineHeight: 1.8, margin: '0 0 12px' }}>
+            <p style={{ fontSize: 13, color: '#5B6470', lineHeight: 1.8, margin: '0 0 12px' }}>
               Our Editor-in-Chief reviews all Deep Dive reports, research articles, for:
             </p>
             <div style={{ display: 'flex', flexDirection: 'column', gap: 8, marginBottom: 14 }}>
@@ -164,20 +164,20 @@ export default function EditorialPage() {
                 { t: 'Balance', d: 'Are bull and bear cases equally strong?' },
                 { t: 'Tone calibration', d: 'Professional analysis first, personality second' },
               ].map(item => (
-                <div key={item.t} style={{ display: 'flex', alignItems: 'flex-start', gap: 10, padding: '8px 12px', borderRadius: 8, background: '#0D1117' }}>
+                <div key={item.t} style={{ display: 'flex', alignItems: 'flex-start', gap: 10, padding: '8px 12px', borderRadius: 8, background: '#FAFAF8' }}>
                   <span style={{ color: '#00D474', fontSize: 12, marginTop: 2 }}>✓</span>
                   <div>
-                    <div style={{ fontSize: 13, fontWeight: 700, color: '#E2E8F0' }}>{item.t}</div>
-                    <div style={{ fontSize: 12, color: '#64748B', marginTop: 2 }}>{item.d}</div>
+                    <div style={{ fontSize: 13, fontWeight: 700, color: '#16161A' }}>{item.t}</div>
+                    <div style={{ fontSize: 12, color: '#8A929C', marginTop: 2 }}>{item.d}</div>
                   </div>
                 </div>
               ))}
             </div>
-            <p style={{ fontSize: 13, color: '#94A3B8', lineHeight: 1.8, margin: '0 0 10px' }}>
+            <p style={{ fontSize: 13, color: '#5B6470', lineHeight: 1.8, margin: '0 0 10px' }}>
               Our team uses structured research processes and quantitative tools for data collection and initial drafting. The editorial judgment — what to analyze, which angle to take, how to weigh competing narratives, and whether the final product meets our standards — is made by a human editor with business and manufacturing industry experience.
             </p>
             <div style={{ marginTop: 14, marginBottom: 14 }}>
-              <div style={{ fontFamily: 'var(--mono)', fontSize: 9, fontWeight: 700, color: '#64748B', letterSpacing: 2, marginBottom: 10 }}>TEAM BACKGROUND</div>
+              <div style={{ fontFamily: 'var(--mono)', fontSize: 9, fontWeight: 700, color: '#8A929C', letterSpacing: 2, marginBottom: 10 }}>TEAM BACKGROUND</div>
               {[
                 'Equity research and quantitative framework development',
                 'AI, semiconductor, and quantum computing sector analysis',
@@ -187,12 +187,12 @@ export default function EditorialPage() {
               ].map(item => (
                 <div key={item} style={{ display: 'flex', alignItems: 'flex-start', gap: 8, marginBottom: 6 }}>
                   <span style={{ color: '#D4A843', fontSize: 12, flexShrink: 0, marginTop: 2 }}>▸</span>
-                  <span style={{ fontSize: 13, color: '#94A3B8', lineHeight: 1.6 }}>{item}</span>
+                  <span style={{ fontSize: 13, color: '#5B6470', lineHeight: 1.6 }}>{item}</span>
                 </div>
               ))}
             </div>
-            <p style={{ fontSize: 13, color: '#94A3B8', lineHeight: 1.8, margin: '0 0 10px' }}>
-              We also employ a <strong style={{ color: '#E2E8F0' }}>data cross-verification process</strong>: every report is cross-checked against multiple independent data sources to identify blind spots, factual errors, and analytical gaps before human final review.
+            <p style={{ fontSize: 13, color: '#5B6470', lineHeight: 1.8, margin: '0 0 10px' }}>
+              We also employ a <strong style={{ color: '#16161A' }}>data cross-verification process</strong>: every report is cross-checked against multiple independent data sources to identify blind spots, factual errors, and analytical gaps before human final review.
             </p>
             <p style={{ fontSize: 13, color: '#D4A843', fontWeight: 700, lineHeight: 1.7, margin: 0 }}>
               This is not content published without oversight. Every report is reviewed and approved before publication.
@@ -201,8 +201,8 @@ export default function EditorialPage() {
 
           {/* Data Verification Process */}
           <div style={{ ...card, padding: '24px 22px' }}>
-            <h2 style={{ fontFamily: 'var(--serif)', fontSize: 20, fontWeight: 800, color: '#E2E8F0', margin: '0 0 12px' }}>Data Verification Process</h2>
-            <p style={{ fontSize: 13, color: '#94A3B8', lineHeight: 1.7, margin: '0 0 14px' }}>
+            <h2 style={{ fontFamily: 'var(--serif)', fontSize: 20, fontWeight: 800, color: '#16161A', margin: '0 0 12px' }}>Data Verification Process</h2>
+            <p style={{ fontSize: 13, color: '#5B6470', lineHeight: 1.7, margin: '0 0 14px' }}>
               Every data point that appears in a Deep Dive report is verified through a multi-step process before publication.
             </p>
             <div style={{ display: 'flex', flexDirection: 'column', gap: 10 }}>
@@ -217,8 +217,8 @@ export default function EditorialPage() {
                 <div key={s.step} style={{ display: 'flex', gap: 14 }}>
                   <div style={{ width: 28, height: 28, borderRadius: '50%', background: '#3B82F615', display: 'flex', alignItems: 'center', justifyContent: 'center', fontSize: 12, fontWeight: 800, color: '#3B82F6', flexShrink: 0 }}>{s.step}</div>
                   <div>
-                    <div style={{ fontSize: 14, fontWeight: 700, color: '#E2E8F0' }}>{s.title}</div>
-                    <p style={{ fontSize: 13, color: '#64748B', lineHeight: 1.7, margin: '4px 0 0' }}>{s.desc}</p>
+                    <div style={{ fontSize: 14, fontWeight: 700, color: '#16161A' }}>{s.title}</div>
+                    <p style={{ fontSize: 13, color: '#8A929C', lineHeight: 1.7, margin: '4px 0 0' }}>{s.desc}</p>
                   </div>
                 </div>
               ))}
@@ -237,7 +237,7 @@ export default function EditorialPage() {
               ].map((item, i) => (
                 <div key={i} style={{ display: 'flex', alignItems: 'flex-start', gap: 8 }}>
                   <span style={{ color: '#EF4444', fontSize: 12, flexShrink: 0, marginTop: 2 }}>✕</span>
-                  <span style={{ fontSize: 13, color: '#94A3B8', lineHeight: 1.6 }}>{item}</span>
+                  <span style={{ fontSize: 13, color: '#5B6470', lineHeight: 1.6 }}>{item}</span>
                 </div>
               ))}
             </div>
@@ -245,7 +245,7 @@ export default function EditorialPage() {
 
           {/* Editorial Independence */}
           <div style={{ ...card, padding: '24px 22px' }}>
-            <h2 style={{ fontFamily: 'var(--serif)', fontSize: 20, fontWeight: 800, color: '#E2E8F0', margin: '0 0 12px' }}>Editorial Independence</h2>
+            <h2 style={{ fontFamily: 'var(--serif)', fontSize: 20, fontWeight: 800, color: '#16161A', margin: '0 0 12px' }}>Editorial Independence</h2>
             <div style={{ display: 'flex', flexDirection: 'column', gap: 8 }}>
               {[
                 'No sponsored content — we do not accept payment to write about any stock or crypto',
@@ -256,7 +256,7 @@ export default function EditorialPage() {
               ].map((item, i) => (
                 <div key={i} style={{ display: 'flex', alignItems: 'flex-start', gap: 8 }}>
                   <span style={{ color: '#00D474', fontSize: 12, flexShrink: 0, marginTop: 2 }}>✓</span>
-                  <span style={{ fontSize: 13, color: '#94A3B8', lineHeight: 1.6 }}>{item}</span>
+                  <span style={{ fontSize: 13, color: '#5B6470', lineHeight: 1.6 }}>{item}</span>
                 </div>
               ))}
             </div>
@@ -264,14 +264,14 @@ export default function EditorialPage() {
 
           {/* How We Produce Research */}
           <div style={{ ...card, padding: '24px 22px' }}>
-            <h2 style={{ fontFamily: 'var(--serif)', fontSize: 20, fontWeight: 800, color: '#E2E8F0', margin: '0 0 12px' }}>How We Produce Research</h2>
-            <p style={{ fontSize: 13, color: '#94A3B8', lineHeight: 1.8, marginBottom: 18 }}>
+            <h2 style={{ fontFamily: 'var(--serif)', fontSize: 20, fontWeight: 800, color: '#16161A', margin: '0 0 12px' }}>How We Produce Research</h2>
+            <p style={{ fontSize: 13, color: '#5B6470', lineHeight: 1.8, marginBottom: 18 }}>
               All DHLM Studio research is produced through a human-led editorial process. Our team sets the analytical agenda, conducts the research, draws the conclusions, and owns every published claim.
             </p>
             <div style={{ display: 'flex', flexDirection: 'column', gap: 16, marginBottom: 18 }}>
               <div>
-                <div style={{ fontSize: 12, fontWeight: 700, color: '#60A5FA', marginBottom: 6, textTransform: 'uppercase', letterSpacing: 1 }}>Where Humans Do the Work</div>
-                <ul style={{ fontSize: 13, color: '#64748B', lineHeight: 1.8, margin: 0, paddingLeft: 18 }}>
+                <div style={{ fontSize: 12, fontWeight: 700, color: '#2D2F8F', marginBottom: 6, textTransform: 'uppercase', letterSpacing: 1 }}>Where Humans Do the Work</div>
+                <ul style={{ fontSize: 13, color: '#8A929C', lineHeight: 1.8, margin: 0, paddingLeft: 18 }}>
                   <li>Selecting research topics and defining the investment thesis</li>
                   <li>Gathering and cross-verifying data from primary sources</li>
                   <li>Building the analytical argument and applying the analysis framework</li>
@@ -281,27 +281,27 @@ export default function EditorialPage() {
                 </ul>
               </div>
               <div>
-                <div style={{ fontSize: 12, fontWeight: 700, color: '#60A5FA', marginBottom: 6, textTransform: 'uppercase', letterSpacing: 1 }}>Where AI Tools May Assist</div>
-                <ul style={{ fontSize: 13, color: '#64748B', lineHeight: 1.8, margin: 0, paddingLeft: 18 }}>
+                <div style={{ fontSize: 12, fontWeight: 700, color: '#2D2F8F', marginBottom: 6, textTransform: 'uppercase', letterSpacing: 1 }}>Where AI Tools May Assist</div>
+                <ul style={{ fontSize: 13, color: '#8A929C', lineHeight: 1.8, margin: 0, paddingLeft: 18 }}>
                   <li>Data formatting and table organization</li>
                   <li>Proofreading for grammar and spelling</li>
                   <li>Structural drafting of outlines (finalized by human editors)</li>
                 </ul>
-                <p style={{ fontSize: 13, color: '#64748B', lineHeight: 1.7, marginTop: 8, marginBottom: 0 }}>
+                <p style={{ fontSize: 13, color: '#8A929C', lineHeight: 1.7, marginTop: 8, marginBottom: 0 }}>
                   AI tools are never used to generate investment analysis, write our final report text, or produce editorial conclusions. If that changes, we will disclose it explicitly.
                 </p>
               </div>
             </div>
             <div style={{ display: 'flex', flexDirection: 'column', gap: 10 }}>
               <div>
-                <div style={{ fontSize: 12, fontWeight: 700, color: '#60A5FA', marginBottom: 4, textTransform: 'uppercase', letterSpacing: 1 }}>Our Standards</div>
-                <p style={{ fontSize: 13, color: '#64748B', lineHeight: 1.7, margin: 0 }}>
+                <div style={{ fontSize: 12, fontWeight: 700, color: '#2D2F8F', marginBottom: 4, textTransform: 'uppercase', letterSpacing: 1 }}>Our Standards</div>
+                <p style={{ fontSize: 13, color: '#8A929C', lineHeight: 1.7, margin: 0 }}>
                   Every factual claim is supported by a cited source. Data is verified against at least one primary source before publication. Analysis that relies on estimates or projections is labeled as such. We do not publish to meet content quotas — reports are published when they meet our quality bar.
                 </p>
               </div>
-              <div style={{ padding: '12px 14px', background: '#0F172A', borderRadius: 6, borderLeft: '3px solid #334155' }}>
-                <p style={{ fontSize: 12, color: '#64748B', lineHeight: 1.7, margin: 0 }}>
-                  <strong style={{ color: '#94A3B8' }}>Disclosure:</strong> This analysis is written by an active investor who manages a real portfolio based on this research. The author holds positions in the securities, sectors, and digital assets discussed; specific holdings material to any report are disclosed within that report. We do not receive compensation from any company we cover.
+              <div style={{ padding: '12px 14px', background: '#FAFAF8', borderRadius: 6, borderLeft: '3px solid #334155' }}>
+                <p style={{ fontSize: 12, color: '#8A929C', lineHeight: 1.7, margin: 0 }}>
+                  <strong style={{ color: '#5B6470' }}>Disclosure:</strong> This analysis is written by an active investor who manages a real portfolio based on this research. The author holds positions in the securities, sectors, and digital assets discussed; specific holdings material to any report are disclosed within that report. We do not receive compensation from any company we cover.
                 </p>
               </div>
             </div>
@@ -309,36 +309,36 @@ export default function EditorialPage() {
 
           {/* Corrections Policy */}
           <div style={{ ...card, padding: '18px 22px' }}>
-            <h2 style={{ fontFamily: 'var(--serif)', fontSize: 18, fontWeight: 800, color: '#E2E8F0', margin: '0 0 8px' }}>Corrections Policy</h2>
-            <p style={{ fontSize: 13, color: '#94A3B8', lineHeight: 1.7, margin: 0 }}>
-              Data errors are corrected within 24 hours of discovery. If you find an error, please contact us at <a href="mailto:dhlmstudio2026@gmail.com" style={{ color: '#60A5FA' }}>dhlmstudio2026@gmail.com</a>. Corrections are noted at the bottom of the affected article.
+            <h2 style={{ fontFamily: 'var(--serif)', fontSize: 18, fontWeight: 800, color: '#16161A', margin: '0 0 8px' }}>Corrections Policy</h2>
+            <p style={{ fontSize: 13, color: '#5B6470', lineHeight: 1.7, margin: 0 }}>
+              Data errors are corrected within 24 hours of discovery. If you find an error, please contact us at <a href="mailto:dhlmstudio2026@gmail.com" style={{ color: '#2D2F8F' }}>dhlmstudio2026@gmail.com</a>. Corrections are noted at the bottom of the affected article.
             </p>
           </div>
 
           {/* Important Disclaimers */}
           <div style={{ ...card, padding: '24px 22px', borderColor: '#C73E3A30' }}>
             <h2 style={{ fontFamily: 'var(--serif)', fontSize: 20, fontWeight: 800, color: '#C73E3A', margin: '0 0 12px' }}>Important Disclaimers</h2>
-            <div style={{ fontSize: 13, color: '#94A3B8', lineHeight: 1.8 }}>
+            <div style={{ fontSize: 13, color: '#5B6470', lineHeight: 1.8 }}>
               <p style={{ marginBottom: 12 }}>
-                <strong style={{ color: '#E2E8F0' }}>Not Investment Advice:</strong> DHLM Studio provides data-driven analysis for educational and entertainment purposes only. Nothing on this website constitutes investment advice, a recommendation to buy or sell any security, or an offer to participate in any investment strategy. Always consult a qualified financial advisor before making investment decisions.
+                <strong style={{ color: '#16161A' }}>Not Investment Advice:</strong> DHLM Studio provides data-driven analysis for educational and entertainment purposes only. Nothing on this website constitutes investment advice, a recommendation to buy or sell any security, or an offer to participate in any investment strategy. Always consult a qualified financial advisor before making investment decisions.
               </p>
               <p style={{ marginBottom: 12 }}>
-                <strong style={{ color: '#E2E8F0' }}>DHLM Studio Voice:</strong> &ldquo;DHLM Studio&rdquo; is an informational and educational analytical voice that provides data-driven commentary on market data. Its observations are crafted to make financial concepts accessible and do not represent personalized investment advice. The character&apos;s grades are quantitative analytical outputs, NOT buy/sell signals.
+                <strong style={{ color: '#16161A' }}>DHLM Studio Voice:</strong> &ldquo;DHLM Studio&rdquo; is an informational and educational analytical voice that provides data-driven commentary on market data. Its observations are crafted to make financial concepts accessible and do not represent personalized investment advice. The character&apos;s grades are quantitative analytical outputs, NOT buy/sell signals.
               </p>
               <p style={{ marginBottom: 12 }}>
-                <strong style={{ color: '#E2E8F0' }}>Data Accuracy:</strong> While we strive for accuracy, financial data may be delayed, incomplete, or subject to revision. Market data on this site is delayed up to 15 minutes. Always verify critical data points with official sources before making decisions.
+                <strong style={{ color: '#16161A' }}>Data Accuracy:</strong> While we strive for accuracy, financial data may be delayed, incomplete, or subject to revision. Market data on this site is delayed up to 15 minutes. Always verify critical data points with official sources before making decisions.
               </p>
               <p style={{ margin: 0 }}>
-                <strong style={{ color: '#E2E8F0' }}>No Affiliation:</strong> DHLM Studio is not affiliated with any broker, exchange, or financial institution. We do not receive compensation for mentioning any specific security or cryptocurrency.
+                <strong style={{ color: '#16161A' }}>No Affiliation:</strong> DHLM Studio is not affiliated with any broker, exchange, or financial institution. We do not receive compensation for mentioning any specific security or cryptocurrency.
               </p>
             </div>
           </div>
 
           {/* Contact */}
           <div style={{ ...card, padding: '18px 22px' }}>
-            <h2 style={{ fontFamily: 'var(--serif)', fontSize: 18, fontWeight: 800, color: '#E2E8F0', margin: '0 0 8px' }}>Questions About Our Editorial Process?</h2>
-            <p style={{ fontSize: 13, color: '#64748B', margin: 0 }}>
-              Contact us at <a href="mailto:dhlmstudio2026@gmail.com" style={{ color: '#60A5FA' }}>dhlmstudio2026@gmail.com</a>
+            <h2 style={{ fontFamily: 'var(--serif)', fontSize: 18, fontWeight: 800, color: '#16161A', margin: '0 0 8px' }}>Questions About Our Editorial Process?</h2>
+            <p style={{ fontSize: 13, color: '#8A929C', margin: 0 }}>
+              Contact us at <a href="mailto:dhlmstudio2026@gmail.com" style={{ color: '#2D2F8F' }}>dhlmstudio2026@gmail.com</a>
             </p>
           </div>
 

@@ -58,8 +58,8 @@ export default function CandlestickChart({ coinId, initialCandles }: Props) {
         autoSize: true,           // responsive — no ResizeObserver needed
         height: 280,
         layout: {
-          background: { type: ColorType.Solid, color: '#0D1117' },
-          textColor: '#64748B',
+          background: { type: ColorType.Solid, color: '#FAFAF8' },
+          textColor: '#8A929C',
           fontSize: 10,
         },
         grid: {
@@ -68,11 +68,11 @@ export default function CandlestickChart({ coinId, initialCandles }: Props) {
         },
         crosshair: { mode: CrosshairMode.Magnet },
         rightPriceScale: {
-          borderColor: '#1E293B',
-          textColor: '#64748B',
+          borderColor: '#E8E8E4',
+          textColor: '#8A929C',
         },
         timeScale: {
-          borderColor: '#1E293B',
+          borderColor: '#E8E8E4',
           timeVisible: true,
           secondsVisible: false,
           fixLeftEdge: true,
@@ -142,9 +142,9 @@ export default function CandlestickChart({ coinId, initialCandles }: Props) {
               fontWeight:  700,
               padding:     '3px 10px',
               borderRadius: 4,
-              border:      `1px solid ${days === d ? '#60A5FA' : '#1E293B'}`,
+              border:      `1px solid ${days === d ? '#2D2F8F' : '#1E293B'}`,
               background:  days === d ? '#60A5FA18' : 'transparent',
-              color:       days === d ? '#60A5FA' : '#475569',
+              color:       days === d ? '#2D2F8F' : '#8A929C',
               cursor:      'pointer',
             }}
           >
@@ -152,7 +152,7 @@ export default function CandlestickChart({ coinId, initialCandles }: Props) {
           </button>
         ))}
         {loading && (
-          <span style={{ fontSize: 9, color: '#475569', fontFamily: 'var(--mono)' }}>Loading…</span>
+          <span style={{ fontSize: 9, color: '#8A929C', fontFamily: 'var(--mono)' }}>Loading…</span>
         )}
       </div>
 

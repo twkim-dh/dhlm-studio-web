@@ -18,7 +18,7 @@ function DhlmMono({ size = 28 }: { size?: number }) {
   const s = size, r = Math.max(s*0.275,3), fs = s*0.3;
   return (
     <svg viewBox={`0 0 ${s} ${s}`} width={size} height={size} style={{ display: "block", flexShrink: 0 }}>
-      <defs><linearGradient id="dG" x1="0%" y1="0%" x2="100%" y2="100%"><stop offset="0%" stopColor="#5B6BE0"/><stop offset="100%" stopColor="#3B4A99"/></linearGradient></defs>
+      <defs><linearGradient id="dG" x1="0%" y1="0%" x2="100%" y2="100%"><stop offset="0%" stopColor="#5B6BE0"/><stop offset="100%" stopColor="#2D2F8F"/></linearGradient></defs>
       <rect x={s*0.04} y={s*0.04} width={s*0.92} height={s*0.92} rx={r} fill="#FFFFFF" stroke="#EAECEF" strokeWidth={Math.max(s*0.015,0.8)}/>
       <text x={s*0.18} y={s*0.43} fontFamily="'Playfair Display',serif" fontSize={fs} fontWeight="900" fill="#1A1D21">D</text>
       <text x={s*0.52} y={s*0.43} fontFamily="'Playfair Display',serif" fontSize={fs} fontWeight="900" fill="#1A1D21" opacity="0.7">H</text>

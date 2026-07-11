@@ -1263,7 +1263,7 @@ export const blogPosts: BlogPost[] = [
     slug: 'crypto-fear-greed-explained',
     title: 'Crypto Fear and Greed Index Explained: How to Use It Before You Trade',
     category: 'Market Analysis',
-    catColor: '#60A5FA',
+    catColor: '#2D2F8F',
     date: '2026-04-10',
     heroImage: '/images/content/crypto-fear-greed-explained-hero.webp',
     readTime: '10 min',

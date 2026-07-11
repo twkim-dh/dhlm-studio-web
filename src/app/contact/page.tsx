@@ -18,41 +18,41 @@ export default function ContactPage() {
     setSent(true);
   };
 
-  const card = { background: '#111827', borderRadius: 14, border: '1px solid #1E293B' };
+  const card = { background: '#FAFAF8', borderRadius: 14, border: '1px solid #E8E8E4' };
 
   return (
-    <div style={{ background: '#0B0F19', minHeight: '100vh' }}>
+    <div style={{ background: '#FFFFFF', minHeight: '100vh' }}>
       <div style={{ maxWidth: 600, margin: '0 auto', padding: '80px 24px' }}>
-        <Link href="/" style={{ fontSize: 12, color: '#64748B' }}>← Home</Link>
+        <Link href="/" style={{ fontSize: 12, color: '#8A929C' }}>← Home</Link>
 
         <div style={{ marginTop: 20, marginBottom: 32 }}>
           <div style={{ fontFamily: 'var(--mono)', fontSize: 10, fontWeight: 700, color: '#3B82F6', letterSpacing: 3, marginBottom: 8 }}>CONTACT US</div>
-          <h1 style={{ fontFamily: 'var(--serif)', fontSize: 28, fontWeight: 900, color: '#F1F5F9', margin: 0 }}>Get in Touch</h1>
-          <p style={{ fontSize: 14, color: '#64748B', marginTop: 6 }}>Questions, feedback, or corrections? We typically respond within 24 hours.</p>
+          <h1 style={{ fontFamily: 'var(--serif)', fontSize: 28, fontWeight: 400, color: '#16161A', margin: 0 }}>Get in Touch</h1>
+          <p style={{ fontSize: 14, color: '#8A929C', marginTop: 6 }}>Questions, feedback, or corrections? We typically respond within 24 hours.</p>
         </div>
 
         {!sent ? (
           <div style={{ ...card, padding: 24 }}>
             <div style={{ marginBottom: 16 }}>
-              <label style={{ fontSize: 11, fontWeight: 600, color: '#94A3B8', fontFamily: 'var(--mono)', letterSpacing: 1, display: 'block', marginBottom: 6 }}>YOUR NAME</label>
+              <label style={{ fontSize: 11, fontWeight: 600, color: '#5B6470', fontFamily: 'var(--mono)', letterSpacing: 1, display: 'block', marginBottom: 6 }}>YOUR NAME</label>
               <input value={name} onChange={e => setName(e.target.value)} placeholder="John Doe"
-                style={{ width: '100%', padding: '12px 14px', borderRadius: 10, background: '#0D1117', border: '1px solid #1E293B', color: '#F1F5F9', fontSize: 14, outline: 'none', boxSizing: 'border-box' }} />
+                style={{ width: '100%', padding: '12px 14px', borderRadius: 10, background: '#FAFAF8', border: '1px solid #E8E8E4', color: '#16161A', fontSize: 14, outline: 'none', boxSizing: 'border-box' }} />
             </div>
             <div style={{ marginBottom: 16 }}>
-              <label style={{ fontSize: 11, fontWeight: 600, color: '#94A3B8', fontFamily: 'var(--mono)', letterSpacing: 1, display: 'block', marginBottom: 6 }}>EMAIL ADDRESS</label>
+              <label style={{ fontSize: 11, fontWeight: 600, color: '#5B6470', fontFamily: 'var(--mono)', letterSpacing: 1, display: 'block', marginBottom: 6 }}>EMAIL ADDRESS</label>
               <input value={email} onChange={e => setEmail(e.target.value)} placeholder="you@example.com" type="email"
-                style={{ width: '100%', padding: '12px 14px', borderRadius: 10, background: '#0D1117', border: '1px solid #1E293B', color: '#F1F5F9', fontSize: 14, outline: 'none', boxSizing: 'border-box' }} />
+                style={{ width: '100%', padding: '12px 14px', borderRadius: 10, background: '#FAFAF8', border: '1px solid #E8E8E4', color: '#16161A', fontSize: 14, outline: 'none', boxSizing: 'border-box' }} />
             </div>
             <div style={{ marginBottom: 20 }}>
-              <label style={{ fontSize: 11, fontWeight: 600, color: '#94A3B8', fontFamily: 'var(--mono)', letterSpacing: 1, display: 'block', marginBottom: 6 }}>MESSAGE</label>
+              <label style={{ fontSize: 11, fontWeight: 600, color: '#5B6470', fontFamily: 'var(--mono)', letterSpacing: 1, display: 'block', marginBottom: 6 }}>MESSAGE</label>
               <textarea value={message} onChange={e => setMessage(e.target.value)} placeholder="Your message..." rows={5}
-                style={{ width: '100%', padding: '12px 14px', borderRadius: 10, background: '#0D1117', border: '1px solid #1E293B', color: '#F1F5F9', fontSize: 14, outline: 'none', resize: 'vertical', boxSizing: 'border-box', fontFamily: 'var(--sans)' }} />
+                style={{ width: '100%', padding: '12px 14px', borderRadius: 10, background: '#FAFAF8', border: '1px solid #E8E8E4', color: '#16161A', fontSize: 14, outline: 'none', resize: 'vertical', boxSizing: 'border-box', fontFamily: 'var(--sans)' }} />
             </div>
             <button onClick={handleSubmit} disabled={!name.trim() || !email.includes('@') || !message.trim()}
               style={{
                 width: '100%', padding: '14px 0', borderRadius: 12, border: 'none', fontWeight: 800, fontSize: 15,
                 background: name.trim() && email.includes('@') && message.trim() ? '#C73E3A' : '#1E293B',
-                color: name.trim() && email.includes('@') && message.trim() ? '#fff' : '#475569',
+                color: name.trim() && email.includes('@') && message.trim() ? '#fff' : '#8A929C',
                 cursor: name.trim() && email.includes('@') && message.trim() ? 'pointer' : 'not-allowed',
               }}>
               Send Message
@@ -62,26 +62,26 @@ export default function ContactPage() {
           <div style={{ ...card, padding: '40px 24px', textAlign: 'center' }}>
             <div style={{ fontSize: 36, marginBottom: 12 }}>✅</div>
             <div style={{ fontSize: 18, fontWeight: 700, color: '#00D474' }}>Message Sent!</div>
-            <p style={{ fontSize: 13, color: '#64748B', marginTop: 8 }}>We typically respond within 24 hours.</p>
+            <p style={{ fontSize: 13, color: '#8A929C', marginTop: 8 }}>We typically respond within 24 hours.</p>
             <button onClick={() => { setSent(false); setName(''); setEmail(''); setMessage(''); }}
-              style={{ marginTop: 16, padding: '8px 20px', borderRadius: 8, background: 'transparent', border: '1px solid #1E293B', color: '#94A3B8', fontSize: 12, cursor: 'pointer' }}>
+              style={{ marginTop: 16, padding: '8px 20px', borderRadius: 8, background: 'transparent', border: '1px solid #E8E8E4', color: '#5B6470', fontSize: 12, cursor: 'pointer' }}>
               Send Another Message
             </button>
           </div>
         )}
 
         <div style={{ marginTop: 24, ...card, padding: '18px 22px' }}>
-          <div style={{ fontFamily: 'var(--mono)', fontSize: 9, fontWeight: 700, color: '#64748B', letterSpacing: 2, marginBottom: 10 }}>INQUIRY TYPES</div>
-          <div style={{ fontSize: 13, color: '#94A3B8', lineHeight: 2 }}>
-            <strong style={{ color: '#E2E8F0' }}>General Questions &amp; Feedback:</strong> Use the form above<br />
-            <strong style={{ color: '#E2E8F0' }}>Business &amp; Partnerships:</strong>{' '}
-            <a href="mailto:dhlmstudio2026@gmail.com?subject=Business Inquiry" style={{ color: '#60A5FA' }}>dhlmstudio2026@gmail.com</a><br />
-            <strong style={{ color: '#E2E8F0' }}>Privacy Concerns:</strong>{' '}
-            <a href="mailto:dhlmstudio2026@gmail.com?subject=Privacy Inquiry" style={{ color: '#60A5FA' }}>dhlmstudio2026@gmail.com</a><br />
-            <strong style={{ color: '#E2E8F0' }}>Press &amp; Media:</strong>{' '}
-            <a href="mailto:dhlmstudio2026@gmail.com?subject=Press Inquiry" style={{ color: '#60A5FA' }}>dhlmstudio2026@gmail.com</a><br />
+          <div style={{ fontFamily: 'var(--mono)', fontSize: 9, fontWeight: 700, color: '#8A929C', letterSpacing: 2, marginBottom: 10 }}>INQUIRY TYPES</div>
+          <div style={{ fontSize: 13, color: '#5B6470', lineHeight: 2 }}>
+            <strong style={{ color: '#16161A' }}>General Questions &amp; Feedback:</strong> Use the form above<br />
+            <strong style={{ color: '#16161A' }}>Business &amp; Partnerships:</strong>{' '}
+            <a href="mailto:dhlmstudio2026@gmail.com?subject=Business Inquiry" style={{ color: '#2D2F8F' }}>dhlmstudio2026@gmail.com</a><br />
+            <strong style={{ color: '#16161A' }}>Privacy Concerns:</strong>{' '}
+            <a href="mailto:dhlmstudio2026@gmail.com?subject=Privacy Inquiry" style={{ color: '#2D2F8F' }}>dhlmstudio2026@gmail.com</a><br />
+            <strong style={{ color: '#16161A' }}>Press &amp; Media:</strong>{' '}
+            <a href="mailto:dhlmstudio2026@gmail.com?subject=Press Inquiry" style={{ color: '#2D2F8F' }}>dhlmstudio2026@gmail.com</a><br />
             𝕏 Twitter:{' '}
-            <a href="https://x.com/dhlm_studio" target="_blank" rel="noopener noreferrer" style={{ color: '#60A5FA' }}>@dhlm_studio</a>
+            <a href="https://x.com/dhlm_studio" target="_blank" rel="noopener noreferrer" style={{ color: '#2D2F8F' }}>@dhlm_studio</a>
           </div>
         </div>
       </div>

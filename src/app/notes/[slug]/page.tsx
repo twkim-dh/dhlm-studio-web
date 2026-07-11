@@ -47,7 +47,7 @@ export default async function NotePage({ params }: Props) {
 
         {/* Eyebrow */}
         <div style={{ marginBottom: 32 }}>
-          <span style={{ fontFamily: "var(--mono)", fontSize: 11, color: "#3B4A99", fontWeight: 600, letterSpacing: 2, textTransform: "uppercase" }}>
+          <span style={{ fontFamily: "var(--mono)", fontSize: 11, color: "#2D2F8F", fontWeight: 600, letterSpacing: 2, textTransform: "uppercase" }}>
             {isHolding ? "Holding Note" : "Review Note"}{fm.ticker ? ` · ${fm.ticker}` : ""}
           </span>
           {fm.date && <span style={{ fontFamily: "var(--mono)", fontSize: 11, color: "#B0B8C1", marginLeft: 16 }}>{fm.date}</span>}
@@ -63,7 +63,7 @@ export default async function NotePage({ params }: Props) {
 
         {/* Disclosure banner (if holding) */}
         {isHolding && fm.disclosure && (
-          <div style={{ background: "#EEF1FF", border: "1px solid #C7D2FE", borderRadius: 8, padding: "14px 18px", marginBottom: 40, fontSize: 13, color: "#3B4A99", lineHeight: 1.5 }}>
+          <div style={{ background: "#EEF1FF", border: "1px solid #C7D2FE", borderRadius: 8, padding: "14px 18px", marginBottom: 40, fontSize: 13, color: "#2D2F8F", lineHeight: 1.5 }}>
             <strong>Disclosure:</strong> {fm.disclosure}
           </div>
         )}

@@ -11,7 +11,7 @@ export default async function Image() {
       <div style={{
         width: '100%', height: '100%', display: 'flex', flexDirection: 'column',
         justifyContent: 'center', alignItems: 'flex-start',
-        background: 'linear-gradient(135deg, #0B0F19 0%, #111827 100%)',
+        background: '#FFFFFF',
         padding: '60px 80px',
       }}>
         {/* Brand mark */}
@@ -24,14 +24,14 @@ export default async function Image() {
             border: '2px solid #C73E3A40',
           }}>D</div>
           <div style={{ display: 'flex', flexDirection: 'column' }}>
-            <span style={{ fontSize: 22, fontWeight: 900, color: '#F1F5F9', letterSpacing: 1 }}>DHLM STUDIO</span>
-            <span style={{ fontSize: 12, fontWeight: 700, color: '#3B4A99', letterSpacing: 3, marginTop: 2 }}>DHLM STUDIO</span>
+            <span style={{ fontSize: 22, fontWeight: 900, color: '#16161A', letterSpacing: 1 }}>DHLM STUDIO</span>
+            <span style={{ fontSize: 12, fontWeight: 700, color: '#2D2F8F', letterSpacing: 3, marginTop: 2 }}>DHLM STUDIO</span>
           </div>
         </div>
 
         {/* Headline */}
         <div style={{ display: 'flex', flexDirection: 'column' }}>
-          <div style={{ fontSize: 60, fontWeight: 900, color: '#F1F5F9', lineHeight: 1.1 }}>
+          <div style={{ fontSize: 60, fontWeight: 900, color: '#16161A', lineHeight: 1.1 }}>
             DHLM Studio
           </div>
           <div style={{ fontSize: 60, fontWeight: 900, color: '#00D474', lineHeight: 1.1 }}>
@@ -40,10 +40,10 @@ export default async function Image() {
         </div>
 
         {/* Subhead */}
-        <div style={{ fontSize: 22, color: '#94A3B8', marginTop: 24, lineHeight: 1.4 }}>
+        <div style={{ fontSize: 22, color: '#5B6470', marginTop: 24, lineHeight: 1.4 }}>
           Real-time market data, Fear &amp; Greed Index,
         </div>
-        <div style={{ fontSize: 22, color: '#94A3B8', marginTop: 4, lineHeight: 1.4 }}>
+        <div style={{ fontSize: 22, color: '#5B6470', marginTop: 4, lineHeight: 1.4 }}>
           Deep Dive reports, and data-driven stock analysis.
         </div>
 
@@ -52,20 +52,20 @@ export default async function Image() {
           {['Stocks', 'Crypto', 'Fear & Greed', 'Deep Dives'].map(tag => (
             <div key={tag} style={{
               padding: '8px 16px', borderRadius: 8,
-              background: '#0D1117', border: '1px solid #1E293B',
-              fontSize: 14, fontWeight: 700, color: '#94A3B8',
+              background: '#FAFAF8', border: '1px solid #E8E8E4',
+              fontSize: 14, fontWeight: 700, color: '#5B6470',
             }}>{tag}</div>
           ))}
         </div>
 
         {/* URL */}
-        <div style={{ position: 'absolute', bottom: 40, right: 60, fontSize: 18, color: '#475569', fontWeight: 600 }}>
+        <div style={{ position: 'absolute', bottom: 40, right: 60, fontSize: 18, color: '#8A929C', fontWeight: 600 }}>
           dhlm-studio.com
         </div>
         {/* Editorial badge */}
         <div style={{
           position: 'absolute', bottom: 40, left: 80,
-          fontSize: 12, color: '#475569', display: 'flex', alignItems: 'center', gap: 6,
+          fontSize: 12, color: '#8A929C', display: 'flex', alignItems: 'center', gap: 6,
         }}>
           <span style={{ color: '#00D474' }}>✓</span>
           <span>Data-driven analysis · Not investment advice</span>

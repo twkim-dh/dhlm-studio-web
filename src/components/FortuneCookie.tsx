@@ -28,7 +28,7 @@ export default function FortuneCookie() {
           <button onClick={crack} className="cookie-idle" style={{ background: 'none', border: 'none', cursor: 'pointer', padding: 0 }}>
             <Image src="/images/fortune-cookie-closed.webp" alt="Fortune Cookie — tap to crack" width={180} height={180} style={IMG_STYLE} priority />
           </button>
-          <p style={{ fontSize: 12, color: '#64748B', marginTop: 10 }}>Tap to crack your fortune 🥠</p>
+          <p style={{ fontSize: 12, color: '#8A929C', marginTop: 10 }}>Tap to crack your fortune 🥠</p>
         </div>
       )}
 
@@ -57,7 +57,7 @@ export default function FortuneCookie() {
         <div className="fortune-reveal">
           <Image src="/images/fortune-cookie-open.webp" alt="Fortune Cookie cracked" width={220} height={220} style={IMG_OPEN_STYLE} />
           <div style={{ padding: '18px 16px', borderRadius: 14, background: 'linear-gradient(135deg, #D4A84310, #D4A84305)', border: '1px solid #D4A84320', marginTop: 12 }}>
-            <blockquote style={{ fontFamily: 'var(--serif)', fontSize: 'clamp(14px, 2.5vw, 17px)', fontWeight: 700, color: '#F1F5F9', lineHeight: 1.6, fontStyle: 'italic', margin: '0 0 10px' }}>
+            <blockquote style={{ fontFamily: 'var(--serif)', fontSize: 'clamp(14px, 2.5vw, 17px)', fontWeight: 700, color: '#16161A', lineHeight: 1.6, fontStyle: 'italic', margin: '0 0 10px' }}>
               &ldquo;{w.quote}&rdquo;
             </blockquote>
             <div style={{ display: 'flex', alignItems: 'center', justifyContent: 'center', gap: 6, marginBottom: 12 }}>

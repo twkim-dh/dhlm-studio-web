@@ -6,8 +6,8 @@ export default function ContentDisclaimer() {
       marginTop: 40,
       padding: '16px 20px',
       borderRadius: 10,
-      background: '#0D1117',
-      border: '1px solid #1E293B',
+      background: '#FAFAF8',
+      border: '1px solid #E8E8E4',
     }}>
       <div style={{
         fontFamily: 'var(--mono)',
@@ -21,19 +21,19 @@ export default function ContentDisclaimer() {
       </div>
       <p style={{
         fontSize: 11,
-        color: '#64748B',
+        color: '#8A929C',
         lineHeight: 1.7,
         margin: '0 0 6px',
         fontStyle: 'italic',
       }}>
-        <strong style={{ color: '#94A3B8', fontStyle: 'normal' }}>Disclosure:</strong>{' '}
+        <strong style={{ color: '#5B6470', fontStyle: 'normal' }}>Disclosure:</strong>{' '}
         This analysis is written by an active investor who manages a real portfolio based on this research.
         The author holds or may hold positions in the securities, sectors, or digital assets discussed.
         Specific holdings material to a report are disclosed within that report.
       </p>
       <p style={{
         fontSize: 11,
-        color: '#475569',
+        color: '#8A929C',
         lineHeight: 1.7,
         margin: '0 0 8px',
       }}>
@@ -44,7 +44,7 @@ export default function ContentDisclaimer() {
         DHLM Studio does not assume any liability for losses incurred from
         investment decisions made based on this content.
       </p>
-      <Link href="/disclaimer" style={{ fontSize: 11, color: '#60A5FA', textDecoration: 'none' }}>
+      <Link href="/disclaimer" style={{ fontSize: 11, color: '#2D2F8F', textDecoration: 'none' }}>
         Read full Financial Disclaimer →
       </Link>
     </div>

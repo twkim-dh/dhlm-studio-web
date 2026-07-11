@@ -7,11 +7,11 @@ export const metadata: Metadata = {
 
 export default function TermsPage() {
   return (
-    <div style={{ background: '#0B0F19', minHeight: '100vh' }}>
+    <div style={{ background: '#FFFFFF', minHeight: '100vh' }}>
       <article style={{ maxWidth: 680, margin: '0 auto', padding: '80px 24px' }}>
-        <div style={{ fontFamily: 'var(--mono)', fontSize: 10, fontWeight: 700, color: '#64748B', letterSpacing: 3, marginBottom: 8 }}>LEGAL</div>
-        <h1 style={{ fontFamily: 'var(--serif)', fontSize: 32, fontWeight: 900, color: '#F1F5F9', margin: '0 0 8px' }}>Terms of Service</h1>
-        <p style={{ fontFamily: 'var(--sans)', fontSize: 13, color: '#475569', marginBottom: 40 }}>Last Updated: May 1, 2026</p>
+        <div style={{ fontFamily: 'var(--mono)', fontSize: 10, fontWeight: 700, color: '#8A929C', letterSpacing: 3, marginBottom: 8 }}>LEGAL</div>
+        <h1 style={{ fontFamily: 'var(--serif)', fontSize: 32, fontWeight: 400, color: '#16161A', margin: '0 0 8px' }}>Terms of Service</h1>
+        <p style={{ fontFamily: 'var(--sans)', fontSize: 13, color: '#8A929C', marginBottom: 40 }}>Last Updated: May 1, 2026</p>
 
         {[
           { h: '1. Acceptance of Terms', b: 'By accessing or using DHLM Studio (dhlm-studio.com), you agree to be bound by these Terms of Service. If you do not agree to these Terms, please do not access or use our service.' },
@@ -29,8 +29,8 @@ export default function TermsPage() {
           { h: '13. Contact', b: 'For questions about these Terms of Service, contact us at: dhlmstudio2026@gmail.com' },
         ].map(s => (
           <div key={s.h} style={{ marginBottom: 28 }}>
-            <h2 style={{ fontFamily: 'var(--sans)', fontSize: 16, fontWeight: 700, color: '#E2E8F0', marginBottom: 8 }}>{s.h}</h2>
-            <p style={{ fontFamily: 'var(--sans)', fontSize: 14, color: '#94A3B8', lineHeight: 1.8, margin: 0 }}>{s.b}</p>
+            <h2 style={{ fontFamily: 'var(--sans)', fontSize: 16, fontWeight: 700, color: '#16161A', marginBottom: 8 }}>{s.h}</h2>
+            <p style={{ fontFamily: 'var(--sans)', fontSize: 14, color: '#5B6470', lineHeight: 1.8, margin: 0 }}>{s.b}</p>
           </div>
         ))}
       </article>

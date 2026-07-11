@@ -32,20 +32,20 @@ export default function CookieConsent() {
       position: 'fixed', bottom: 0, left: 0, right: 0, zIndex: 200,
       padding: '16px 20px',
       background: '#111827F0', backdropFilter: 'blur(12px)',
-      borderTop: '1px solid #1E293B',
+      borderTop: '1px solid #E8E8E4',
     }}>
       <div style={{ maxWidth: 1100, margin: '0 auto', display: 'flex', alignItems: 'center', gap: 16, flexWrap: 'wrap' }}>
         <div style={{ flex: 1, minWidth: 240 }}>
-          <p style={{ fontSize: 12, color: '#E2E8F0', margin: '0 0 4px', fontWeight: 600 }}>🍪 We use cookies</p>
-          <p style={{ fontSize: 11, color: '#64748B', margin: 0, lineHeight: 1.6 }}>
+          <p style={{ fontSize: 12, color: '#16161A', margin: '0 0 4px', fontWeight: 600 }}>🍪 We use cookies</p>
+          <p style={{ fontSize: 11, color: '#8A929C', margin: 0, lineHeight: 1.6 }}>
             We use Google Analytics to understand how you use our site. No personal data is sold.
-            <a href="/privacy" style={{ color: '#60A5FA', marginLeft: 4 }}>Privacy Policy</a>
+            <a href="/privacy" style={{ color: '#2D2F8F', marginLeft: 4 }}>Privacy Policy</a>
           </p>
         </div>
         <div style={{ display: 'flex', gap: 8 }}>
           <button onClick={decline} style={{
-            padding: '8px 16px', borderRadius: 8, border: '1px solid #1E293B',
-            background: 'transparent', color: '#64748B', fontSize: 12, fontWeight: 600, cursor: 'pointer',
+            padding: '8px 16px', borderRadius: 8, border: '1px solid #E8E8E4',
+            background: 'transparent', color: '#8A929C', fontSize: 12, fontWeight: 600, cursor: 'pointer',
           }}>Decline</button>
           <button onClick={accept} style={{
             padding: '8px 20px', borderRadius: 8, border: 'none',

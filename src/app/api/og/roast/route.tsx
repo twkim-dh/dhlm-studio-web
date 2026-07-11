@@ -13,7 +13,7 @@ export async function GET(req: NextRequest) {
   const ratingColors: Record<string, string> = {
     DISASTER: '#FF4545', RUN: '#FF4545', CASINO: '#FF4545',
     OVERHYPED: '#FF4545', RISKY: '#F59E0B', DECENT: '#00D474',
-    WATCH: '#F59E0B', BORING: '#6B7280',
+    WATCH: '#F59E0B', BORING: '#8A929C',
   };
   const color = ratingColors[rating] || '#F59E0B';
 
@@ -21,22 +21,22 @@ export async function GET(req: NextRequest) {
     (
       <div style={{
         width: '100%', height: '100%', display: 'flex', flexDirection: 'column',
-        background: '#0B0F19', padding: '50px 60px', justifyContent: 'space-between',
+        background: '#FFFFFF', padding: '50px 60px', justifyContent: 'space-between',
       }}>
         {/* Header */}
         <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center' }}>
           <div style={{ display: 'flex', alignItems: 'center', gap: 12 }}>
-            <span style={{ fontSize: 16, fontWeight: 800, color: '#94A3B8', letterSpacing: 2 }}>DHLM STUDIO</span>
-            <span style={{ fontSize: 12, color: '#3B4A99', fontWeight: 700 }}>RESEARCH</span>
+            <span style={{ fontSize: 16, fontWeight: 800, color: '#5B6470', letterSpacing: 2 }}>DHLM STUDIO</span>
+            <span style={{ fontSize: 12, color: '#2D2F8F', fontWeight: 700 }}>RESEARCH</span>
           </div>
-          <div style={{ fontSize: 12, color: '#475569' }}>dhlm-studio.com/markets</div>
+          <div style={{ fontSize: 12, color: '#8A929C' }}>dhlm-studio.com/markets</div>
         </div>
 
         {/* Main content */}
         <div style={{ display: 'flex', flexDirection: 'column', gap: 16, flex: 1, justifyContent: 'center' }}>
           {/* Ticker + Rating */}
           <div style={{ display: 'flex', alignItems: 'center', gap: 16 }}>
-            <span style={{ fontSize: 48, fontWeight: 900, color: '#60A5FA', letterSpacing: 3 }}>${ticker}</span>
+            <span style={{ fontSize: 48, fontWeight: 900, color: '#2D2F8F', letterSpacing: 3 }}>${ticker}</span>
             <span style={{ fontSize: 20, fontWeight: 700, color: change.startsWith('+') ? '#00D474' : '#FF4545' }}>{change}</span>
           </div>
           {/* Rating badge */}
@@ -49,7 +49,7 @@ export async function GET(req: NextRequest) {
           </div>
           {/* Roast text */}
           <div style={{
-            fontSize: 22, color: '#E2E8F0', lineHeight: 1.5,
+            fontSize: 22, color: '#16161A', lineHeight: 1.5,
             maxWidth: '95%', fontStyle: 'italic',
           }}>
             &ldquo;{roast.slice(0, 200)}{roast.length > 200 ? '...' : ''}&rdquo;
@@ -58,7 +58,7 @@ export async function GET(req: NextRequest) {
 
         {/* Footer */}
         <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center' }}>
-          <span style={{ fontSize: 11, color: '#334155' }}>🤖 Informational commentary. NOT investment advice.</span>
+          <span style={{ fontSize: 11, color: '#8A929C' }}>🤖 Informational commentary. NOT investment advice.</span>
           <span style={{ fontSize: 13, color: '#C73E3A', fontWeight: 700 }}>🔥 Get your own roast →</span>
         </div>
       </div>

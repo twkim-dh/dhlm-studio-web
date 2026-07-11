@@ -89,12 +89,12 @@ export default function ReportsPage() {
   const all = getAllReports();
 
   return (
-    <div style={{ background: '#0B0F19', minHeight: '100vh' }}>
+    <div style={{ background: '#FFFFFF', minHeight: '100vh' }}>
       <div style={{ maxWidth: 800, margin: '0 auto', padding: '80px 24px' }}>
         <div style={{ marginBottom: 24 }}>
-          <div style={{ fontFamily: 'var(--mono)', fontSize: 10, fontWeight: 700, color: '#3B4A99', letterSpacing: 3, marginBottom: 8 }}>DHLM STUDIO REPORTS</div>
-          <h1 style={{ fontFamily: 'var(--serif)', fontSize: 28, fontWeight: 900, color: '#F1F5F9', margin: 0 }}>Deep Dive Analysis</h1>
-          <p style={{ fontSize: 13, color: '#64748B', marginTop: 4 }}>
+          <div style={{ fontFamily: 'var(--mono)', fontSize: 10, fontWeight: 700, color: '#2D2F8F', letterSpacing: 3, marginBottom: 8 }}>DHLM STUDIO REPORTS</div>
+          <h1 style={{ fontFamily: 'var(--serif)', fontSize: 28, fontWeight: 400, color: '#16161A', margin: 0 }}>Deep Dive Analysis</h1>
+          <p style={{ fontSize: 13, color: '#8A929C', marginTop: 4 }}>
             In-depth stock analysis with {all.length} Reports
           </p>
         </div>
@@ -106,10 +106,10 @@ export default function ReportsPage() {
         </div>
 
         <div style={{ marginTop: 20, textAlign: 'center' }}>
-          <Link href="/editorial" style={{ fontSize: 12, color: '#64748B' }}>How we analyze stocks → Editorial Policy</Link>
+          <Link href="/editorial" style={{ fontSize: 12, color: '#8A929C' }}>How we analyze stocks → Editorial Policy</Link>
         </div>
 
-        <p style={{ fontSize: 9, color: '#334155', textAlign: 'center', marginTop: 12 }}>
+        <p style={{ fontSize: 9, color: '#8A929C', textAlign: 'center', marginTop: 12 }}>
           All reports are for informational purposes only. NOT investment advice. Always do your own research.
         </p>
       </div>

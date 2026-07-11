@@ -16,7 +16,7 @@ export default async function UnsubscribePage({ searchParams }: Props) {
   const status = params?.status ?? '';
 
   return (
-    <main className="min-h-screen bg-[#0B0F19] flex items-center justify-center px-6 py-24">
+    <main className="min-h-screen bg-white flex items-center justify-center px-6 py-24">
       <div className="max-w-md w-full">
 
         {/* Brand */}

@@ -1,4 +1,4 @@
-import type { Metadata } from 'next';
+﻿import type { Metadata } from 'next';
 import Link from 'next/link';
 import unsplashManifest from '@/data/unsplash-manifest.json';
 
@@ -139,19 +139,19 @@ const total = CURRICULUM.flatMap(p => p.lessons).length;
 
 export default function Crypto101Page() {
   return (
-    <div style={{ background: '#0B0F19', minHeight: '100vh' }}>
+    <div style={{ background: '#FFFFFF', minHeight: '100vh' }}>
       <div style={{ maxWidth: 760, margin: '0 auto', padding: '80px 24px' }}>
 
         {/* Breadcrumb */}
         <div style={{ marginBottom: 20 }}>
-          <Link href="/learn" style={{ fontSize: 11, color: '#475569', textDecoration: 'none', fontFamily: 'var(--mono)' }}>
+          <Link href="/learn" style={{ fontSize: 11, color: '#8A929C', textDecoration: 'none', fontFamily: 'var(--mono)' }}>
             ← DHLM Studio Academy
           </Link>
         </div>
 
         {/* Hero image */}
         {manifest['learn-crypto-101']?.src && (
-          <div style={{ width: '100%', borderRadius: 14, overflow: 'hidden', marginBottom: 28, border: '1px solid #1E293B' }}>
+          <div style={{ width: '100%', borderRadius: 14, overflow: 'hidden', marginBottom: 28, border: '1px solid #E8E8E4' }}>
             {/* eslint-disable-next-line @next/next/no-img-element */}
             <img src={manifest['learn-crypto-101'].src} alt={manifest['learn-crypto-101'].alt} style={{ width: '100%', height: 'auto', display: 'block' }} />
           </div>
@@ -160,22 +160,22 @@ export default function Crypto101Page() {
         {/* Header */}
         <div style={{ marginBottom: 32 }}>
           <div style={{ fontFamily: 'var(--mono)', fontSize: 10, fontWeight: 700, color: '#8B5CF6', letterSpacing: 3, marginBottom: 10 }}>🪙 CRYPTO 101</div>
-          <h1 style={{ fontFamily: 'var(--serif)', fontSize: 'clamp(28px, 4.5vw, 42px)', fontWeight: 900, color: '#F1F5F9', margin: '0 0 14px', lineHeight: 1.2 }}>
+          <h1 style={{ fontFamily: 'var(--serif)', fontSize: 'clamp(28px, 4.5vw, 42px)', fontWeight: 400, color: '#16161A', margin: '0 0 14px', lineHeight: 1.2 }}>
             Learn Crypto From Scratch
           </h1>
-          <p style={{ fontSize: 15, color: '#94A3B8', lineHeight: 1.7, margin: '0 0 20px', maxWidth: 600 }}>
+          <p style={{ fontSize: 15, color: '#5B6470', lineHeight: 1.7, margin: '0 0 20px', maxWidth: 600 }}>
             A 12-week curriculum covering everything from blockchain basics to DeFi and portfolio strategy.
             DHLM Studio style — data-driven, zero hype, zero BS.
           </p>
 
           {/* Progress bar */}
-          <div style={{ background: '#111827', borderRadius: 10, border: '1px solid #1E293B', padding: '14px 18px', display: 'flex', alignItems: 'center', gap: 16 }}>
+          <div style={{ background: '#FAFAF8', borderRadius: 10, border: '1px solid #E8E8E4', padding: '14px 18px', display: 'flex', alignItems: 'center', gap: 16 }}>
             <div style={{ flex: 1 }}>
               <div style={{ display: 'flex', justifyContent: 'space-between', marginBottom: 6 }}>
                 <span style={{ fontSize: 11, fontWeight: 700, color: '#8B5CF6', fontFamily: 'var(--mono)' }}>CURRICULUM PROGRESS</span>
-                <span style={{ fontSize: 11, color: '#64748B', fontFamily: 'var(--mono)' }}>{published}/{total} published</span>
+                <span style={{ fontSize: 11, color: '#8A929C', fontFamily: 'var(--mono)' }}>{published}/{total} published</span>
               </div>
-              <div style={{ height: 6, background: '#1E293B', borderRadius: 3, overflow: 'hidden' }}>
+              <div style={{ height: 6, background: '#FFFFFF', borderRadius: 3, overflow: 'hidden' }}>
                 <div style={{ height: '100%', width: `${(published / total) * 100}%`, background: 'linear-gradient(90deg, #8B5CF6, #6D28D9)', borderRadius: 3, transition: 'width 0.5s' }} />
               </div>
             </div>
@@ -189,7 +189,7 @@ export default function Crypto101Page() {
               <span style={{ fontFamily: 'var(--mono)', fontSize: 9, fontWeight: 800, padding: '4px 10px', borderRadius: 5, background: `${phase.color}18`, color: phase.color, border: `1px solid ${phase.color}30`, letterSpacing: 1 }}>
                 PHASE {phase.phase}
               </span>
-              <span style={{ fontFamily: 'var(--serif)', fontSize: 18, fontWeight: 800, color: '#E2E8F0' }}>{phase.title}</span>
+              <span style={{ fontFamily: 'var(--serif)', fontSize: 18, fontWeight: 800, color: '#16161A' }}>{phase.title}</span>
             </div>
 
             <div style={{ display: 'flex', flexDirection: 'column', gap: 6 }}>
@@ -200,7 +200,7 @@ export default function Crypto101Page() {
                 const img = manifest[lesson.imageKey];
                 const card = (
                   <div style={{
-                    background: '#111827',
+                    background: '#FAFAF8',
                     borderRadius: 12,
                     border: `1px solid ${isPublished ? `${phase.color}25` : '#1E293B'}`,
                     padding: '0',
@@ -226,22 +226,22 @@ export default function Crypto101Page() {
                       border: `1px solid ${isPublished ? `${phase.color}40` : '#334155'}`,
                       display: 'flex', alignItems: 'center', justifyContent: 'center',
                       fontFamily: 'var(--mono)', fontSize: 10, fontWeight: 800,
-                      color: isPublished ? phase.color : '#475569',
+                      color: isPublished ? phase.color : '#8A929C',
                     }}>
                       W{lesson.week}
                     </div>
                     <div style={{ flex: 1, minWidth: 0 }}>
                       <div style={{ display: 'flex', alignItems: 'center', gap: 8, marginBottom: 4, flexWrap: 'wrap' }}>
-                        <span style={{ fontSize: 14, fontWeight: 700, color: isPublished ? '#F1F5F9' : '#64748B', lineHeight: 1.3 }}>
+                        <span style={{ fontSize: 14, fontWeight: 700, color: isPublished ? '#16161A' : '#8A929C', lineHeight: 1.3 }}>
                           {lesson.title}
                         </span>
                         {isPublished ? (
                           <span style={{ fontSize: 9, fontWeight: 800, padding: '2px 7px', borderRadius: 4, background: `${phase.color}18`, color: phase.color, fontFamily: 'var(--mono)', flexShrink: 0 }}>READ →</span>
                         ) : (
-                          <span style={{ fontSize: 9, fontWeight: 700, padding: '2px 7px', borderRadius: 4, background: '#1E293B', color: '#475569', fontFamily: 'var(--mono)', flexShrink: 0 }}>COMING SOON</span>
+                          <span style={{ fontSize: 9, fontWeight: 700, padding: '2px 7px', borderRadius: 4, background: '#FFFFFF', color: '#8A929C', fontFamily: 'var(--mono)', flexShrink: 0 }}>COMING SOON</span>
                         )}
                       </div>
-                      <p style={{ fontSize: 12, color: '#64748B', margin: 0, lineHeight: 1.5 }}>{lesson.description}</p>
+                      <p style={{ fontSize: 12, color: '#8A929C', margin: 0, lineHeight: 1.5 }}>{lesson.description}</p>
                     </div>
                     </div>
                   </div>
@@ -260,7 +260,7 @@ export default function Crypto101Page() {
         {/* Subscribe CTA */}
         <div style={{ marginTop: 8, padding: '24px', borderRadius: 14, background: 'linear-gradient(135deg, #8B5CF608, #8B5CF603)', border: '1px solid #8B5CF620', textAlign: 'center' }}>
           <div style={{ fontFamily: 'var(--mono)', fontSize: 10, fontWeight: 700, color: '#8B5CF6', letterSpacing: 2, marginBottom: 8 }}>📬 NEW LESSONS EVERY WEEK</div>
-          <p style={{ fontSize: 14, color: '#94A3B8', margin: '0 0 14px' }}>
+          <p style={{ fontSize: 14, color: '#5B6470', margin: '0 0 14px' }}>
             New Crypto 101 lesson drops every Wednesday. Subscribe to get it in your inbox.
           </p>
           <Link href="/#subscribe" style={{ display: 'inline-block', padding: '10px 24px', borderRadius: 8, background: '#8B5CF6', color: '#fff', fontSize: 13, fontWeight: 700, textDecoration: 'none' }}>
@@ -270,10 +270,10 @@ export default function Crypto101Page() {
 
         {/* Back links */}
         <div style={{ marginTop: 24, display: 'flex', gap: 12 }}>
-          <Link href="/learn" style={{ fontSize: 12, color: '#64748B', textDecoration: 'none' }}>← Back to Academy</Link>
+          <Link href="/learn" style={{ fontSize: 12, color: '#8A929C', textDecoration: 'none' }}>← Back to Academy</Link>
         </div>
 
-        <p style={{ fontSize: 9, color: '#334155', marginTop: 20, textAlign: 'center' }}>
+        <p style={{ fontSize: 9, color: '#8A929C', marginTop: 20, textAlign: 'center' }}>
           Educational content only. Not investment advice. Always do your own research.
         </p>
       </div>

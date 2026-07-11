@@ -130,21 +130,21 @@ export default async function BlogPostPage({ params }: { params: Promise<{ slug:
   } : null;
 
   return (
-    <div style={{ background: '#0B0F19', minHeight: '100vh' }}>
+    <div style={{ background: '#FFFFFF', minHeight: '100vh' }}>
       <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLd) }} />
       <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(breadcrumb) }} />
       {faqLd && <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(faqLd) }} />}
 
       <article style={{ maxWidth: 720, margin: '0 auto', padding: '80px 24px' }}>
-        <Link href={isDeepDive ? '/reports' : '/blog'} style={{ fontSize: 12, color: '#64748B', fontFamily: 'var(--sans)' }}>← {isDeepDive ? 'Reports' : 'Blog'}</Link>
+        <Link href={isDeepDive ? '/reports' : '/blog'} style={{ fontSize: 12, color: '#8A929C', fontFamily: 'var(--sans)' }}>← {isDeepDive ? 'Reports' : 'Blog'}</Link>
 
         {/* Report Header (deep-dive only) */}
         {isDeepDive && (
-          <div style={{ marginTop: 20, padding: '20px 22px', borderRadius: 14, background: 'linear-gradient(135deg, #3B4A9908, #3B4A9903)', border: '1px solid #3B4A9920', marginBottom: 24 }}>
+          <div style={{ marginTop: 20, padding: '20px 22px', borderRadius: 14, background: 'linear-gradient(135deg, #2D2F8F08, #2D2F8F03)', border: '1px solid #2D2F8F20', marginBottom: 24 }}>
             <div style={{ display: 'flex', alignItems: 'center', gap: 8, marginBottom: 8 }}>
-              <span style={{ fontFamily: 'var(--mono)', fontSize: 11, fontWeight: 800, color: '#3B4A99', letterSpacing: 2 }}>DEEP DIVE</span>
+              <span style={{ fontFamily: 'var(--mono)', fontSize: 11, fontWeight: 800, color: '#2D2F8F', letterSpacing: 2 }}>DEEP DIVE</span>
             </div>
-            <div style={{ fontSize: 11, color: '#64748B', fontStyle: 'italic' }}>Independent investor analysis.</div>
+            <div style={{ fontSize: 11, color: '#8A929C', fontStyle: 'italic' }}>Independent investor analysis.</div>
           </div>
         )}
 
@@ -153,9 +153,9 @@ export default async function BlogPostPage({ params }: { params: Promise<{ slug:
           <div style={{ marginTop: 20, padding: '20px 22px', borderRadius: 14, background: 'linear-gradient(135deg, #BA751710, #BA751705)', border: '1px solid #BA751730', marginBottom: 24 }}>
             <div style={{ display: 'flex', alignItems: 'center', gap: 8, marginBottom: 6 }}>
               <span style={{ fontFamily: 'var(--mono)', fontSize: 9, fontWeight: 800, padding: '3px 10px', borderRadius: 4, background: '#BA751720', color: '#BA7517', letterSpacing: 2 }}>THE MASTERS</span>
-              <span style={{ fontFamily: 'var(--mono)', fontSize: 9, fontWeight: 600, color: '#64748B', letterSpacing: 1 }}>SERIES · VOL. 1</span>
+              <span style={{ fontFamily: 'var(--mono)', fontSize: 9, fontWeight: 600, color: '#8A929C', letterSpacing: 1 }}>SERIES · VOL. 1</span>
             </div>
-            <div style={{ fontSize: 11, color: '#94A3B8', lineHeight: 1.6 }}>Methodology, not mythology. One legendary investor per month — studied for what actually explains their edge, not what makes a good quote.</div>
+            <div style={{ fontSize: 11, color: '#5B6470', lineHeight: 1.6 }}>Methodology, not mythology. One legendary investor per month — studied for what actually explains their edge, not what makes a good quote.</div>
           </div>
         )}
 
@@ -163,19 +163,19 @@ export default async function BlogPostPage({ params }: { params: Promise<{ slug:
         <div style={{ marginTop: isDeepDive ? 0 : 24, marginBottom: 24 }}>
           <div style={{ display: 'flex', alignItems: 'center', gap: 8, marginBottom: 12 }}>
             <span style={{ fontFamily: 'var(--mono)', fontSize: 10, fontWeight: 600, padding: '3px 8px', borderRadius: 4, background: `${post.catColor}14`, color: post.catColor }}>{post.category}</span>
-            <span style={{ fontFamily: 'var(--sans)', fontSize: 11, color: '#475569' }}>Published {fmtDateLong(post.date)} · {post.readTime} read</span>
+            <span style={{ fontFamily: 'var(--sans)', fontSize: 11, color: '#8A929C' }}>Published {fmtDateLong(post.date)} · {post.readTime} read</span>
             {post.lastUpdated && (
-              <span style={{ fontFamily: 'var(--sans)', fontSize: 11, color: '#475569' }}>· Updated {post.lastUpdated}</span>
+              <span style={{ fontFamily: 'var(--sans)', fontSize: 11, color: '#8A929C' }}>· Updated {post.lastUpdated}</span>
             )}
           </div>
-          <h1 style={{ fontFamily: 'var(--serif)', fontSize: 'clamp(24px, 4vw, 36px)', fontWeight: 900, color: '#F1F5F9', lineHeight: 1.3, margin: 0 }}>
+          <h1 style={{ fontFamily: 'var(--serif)', fontSize: 'clamp(24px, 4vw, 36px)', fontWeight: 400, color: '#16161A', lineHeight: 1.3, margin: 0 }}>
             {post.title}
           </h1>
           <div style={{ display: 'flex', alignItems: 'center', gap: 6, marginTop: 10, flexWrap: 'wrap' }}>
-            <span style={{ fontSize: 12, color: '#475569' }}>By</span>
-            <span style={{ fontSize: 12, color: '#60A5FA', fontWeight: 600 }}>DHLM Studio</span>
+            <span style={{ fontSize: 12, color: '#8A929C' }}>By</span>
+            <span style={{ fontSize: 12, color: '#2D2F8F', fontWeight: 600 }}>DHLM Studio</span>
           </div>
-          <p style={{ fontFamily: 'var(--sans)', fontSize: 15, color: '#64748B', lineHeight: 1.7, marginTop: 16 }}>
+          <p style={{ fontFamily: 'var(--sans)', fontSize: 15, color: '#8A929C', lineHeight: 1.7, marginTop: 16 }}>
             {post.description}
           </p>
         </div>
@@ -183,7 +183,7 @@ export default async function BlogPostPage({ params }: { params: Promise<{ slug:
         {/* Hero image */}
         {heroSrc && (
           <div style={{ margin: '24px 0' }}>
-            <div style={{ background: '#0f172a', borderRadius: 12, overflow: 'hidden', border: '1px solid #1E293B' }}>
+            <div style={{ background: '#FAFAF8', borderRadius: 12, overflow: 'hidden', border: '1px solid #E8E8E4' }}>
               <Image
                 src={heroSrc}
                 alt={unsplashEntry?.alt || post.title}
@@ -197,8 +197,8 @@ export default async function BlogPostPage({ params }: { params: Promise<{ slug:
             </div>
             {heroCredit && (
               <div style={{ padding: '3px 8px', textAlign: 'right' }}>
-                <span style={{ fontSize: 9, color: '#334155' }}>
-                  Photo by <a href={heroCredit.authorUrl} target="_blank" rel="noopener noreferrer" style={{ color: '#475569', textDecoration: 'none' }}>{heroCredit.author}</a> on <a href={heroCredit.unsplashUrl} target="_blank" rel="noopener noreferrer" style={{ color: '#475569', textDecoration: 'none' }}>Unsplash</a>
+                <span style={{ fontSize: 9, color: '#8A929C' }}>
+                  Photo by <a href={heroCredit.authorUrl} target="_blank" rel="noopener noreferrer" style={{ color: '#8A929C', textDecoration: 'none' }}>{heroCredit.author}</a> on <a href={heroCredit.unsplashUrl} target="_blank" rel="noopener noreferrer" style={{ color: '#8A929C', textDecoration: 'none' }}>Unsplash</a>
                 </span>
               </div>
             )}
@@ -207,19 +207,19 @@ export default async function BlogPostPage({ params }: { params: Promise<{ slug:
 
         {/* Table of Contents */}
         {contentSections.length > 2 && (
-          <details style={{ marginBottom: 32, borderRadius: 10, border: '1px solid #1E293B', overflow: 'hidden' }}>
-            <summary style={{ padding: '10px 16px', background: '#111827', cursor: 'pointer', fontFamily: 'var(--mono)', fontSize: 10, fontWeight: 700, color: '#94A3B8', letterSpacing: 2, listStyle: 'none', userSelect: 'none' }}>
+          <details style={{ marginBottom: 32, borderRadius: 10, border: '1px solid #E8E8E4', overflow: 'hidden' }}>
+            <summary style={{ padding: '10px 16px', background: '#FAFAF8', cursor: 'pointer', fontFamily: 'var(--mono)', fontSize: 10, fontWeight: 700, color: '#5B6470', letterSpacing: 2, listStyle: 'none', userSelect: 'none' }}>
               TABLE OF CONTENTS ▸
             </summary>
-            <ol style={{ margin: 0, padding: '12px 16px 12px 36px', background: '#0D1117', display: 'flex', flexDirection: 'column', gap: 6 }}>
+            <ol style={{ margin: 0, padding: '12px 16px 12px 36px', background: '#FAFAF8', display: 'flex', flexDirection: 'column', gap: 6 }}>
               {contentSections.map((sec, i) => (
-                <li key={i} style={{ fontFamily: 'var(--sans)', fontSize: 13, color: '#64748B' }}>
-                  <a href={`#section-${i}`} style={{ color: '#94A3B8', textDecoration: 'none' }}>{sec.heading}</a>
+                <li key={i} style={{ fontFamily: 'var(--sans)', fontSize: 13, color: '#8A929C' }}>
+                  <a href={`#section-${i}`} style={{ color: '#5B6470', textDecoration: 'none' }}>{sec.heading}</a>
                 </li>
               ))}
               {faqPairs.length > 0 && (
-                <li style={{ fontFamily: 'var(--sans)', fontSize: 13, color: '#64748B' }}>
-                  <a href="#faq" style={{ color: '#94A3B8', textDecoration: 'none' }}>FAQ</a>
+                <li style={{ fontFamily: 'var(--sans)', fontSize: 13, color: '#8A929C' }}>
+                  <a href="#faq" style={{ color: '#5B6470', textDecoration: 'none' }}>FAQ</a>
                 </li>
               )}
             </ol>
@@ -229,11 +229,11 @@ export default async function BlogPostPage({ params }: { params: Promise<{ slug:
         {/* Content sections */}
         {contentSections.map((sec, i) => (
           <div key={sec.heading} id={`section-${i}`} style={{ marginBottom: 32 }}>
-            <h2 style={{ fontFamily: 'var(--serif)', fontSize: 20, fontWeight: 800, color: '#E2E8F0', marginBottom: 12 }}>
+            <h2 style={{ fontFamily: 'var(--serif)', fontSize: 20, fontWeight: 800, color: '#16161A', marginBottom: 12 }}>
               {sec.heading}
             </h2>
             {sec.body.split('\n').map((p, j) => (
-              <p key={j} style={{ fontFamily: 'var(--sans)', fontSize: 15, color: '#94A3B8', lineHeight: 1.9, marginBottom: 12 }}>
+              <p key={j} style={{ fontFamily: 'var(--sans)', fontSize: 15, color: '#5B6470', lineHeight: 1.9, marginBottom: 12 }}>
                 {p}
               </p>
             ))}
@@ -242,12 +242,12 @@ export default async function BlogPostPage({ params }: { params: Promise<{ slug:
 
         {/* Calculator CTA block */}
         {post.calculatorLinks && post.calculatorLinks.length > 0 && (
-          <div style={{ margin: '32px 0', padding: '20px 22px', borderRadius: 12, background: '#111827', border: '1px solid #1E293B' }}>
-            <div style={{ fontFamily: 'var(--mono)', fontSize: 10, fontWeight: 700, color: '#475569', letterSpacing: 2, marginBottom: 14 }}>FREE TOOLS</div>
+          <div style={{ margin: '32px 0', padding: '20px 22px', borderRadius: 12, background: '#FAFAF8', border: '1px solid #E8E8E4' }}>
+            <div style={{ fontFamily: 'var(--mono)', fontSize: 10, fontWeight: 700, color: '#8A929C', letterSpacing: 2, marginBottom: 14 }}>FREE TOOLS</div>
             <div style={{ display: 'flex', flexDirection: 'column', gap: 10 }}>
               {post.calculatorLinks.map(c => (
-                <Link key={c.href} href={c.href} style={{ display: 'flex', alignItems: 'center', justifyContent: 'space-between', gap: 12, padding: '12px 16px', borderRadius: 8, background: '#0D1117', border: '1px solid #1E293B', textDecoration: 'none' }}>
-                  <span style={{ fontFamily: 'var(--sans)', fontSize: 13, color: '#94A3B8', lineHeight: 1.5 }}>{c.text}</span>
+                <Link key={c.href} href={c.href} style={{ display: 'flex', alignItems: 'center', justifyContent: 'space-between', gap: 12, padding: '12px 16px', borderRadius: 8, background: '#FAFAF8', border: '1px solid #E8E8E4', textDecoration: 'none' }}>
+                  <span style={{ fontFamily: 'var(--sans)', fontSize: 13, color: '#5B6470', lineHeight: 1.5 }}>{c.text}</span>
                   <span style={{ fontFamily: 'var(--mono)', fontSize: 10, fontWeight: 700, color: '#C73E3A', whiteSpace: 'nowrap', flexShrink: 0 }}>{c.ctaText} →</span>
                 </Link>
               ))}
@@ -258,17 +258,17 @@ export default async function BlogPostPage({ params }: { params: Promise<{ slug:
         {/* FAQ section */}
         {faqPairs.length > 0 && (
           <div id="faq" style={{ marginBottom: 32 }}>
-            <h2 style={{ fontFamily: 'var(--serif)', fontSize: 20, fontWeight: 800, color: '#E2E8F0', marginBottom: 16 }}>
+            <h2 style={{ fontFamily: 'var(--serif)', fontSize: 20, fontWeight: 800, color: '#16161A', marginBottom: 16 }}>
               Frequently Asked Questions
             </h2>
             <div style={{ display: 'flex', flexDirection: 'column', gap: 0 }}>
               {faqPairs.map(({ question, answer }, i) => (
-                <details key={i} style={{ borderBottom: '1px solid #1E293B' }}>
-                  <summary style={{ padding: '14px 0', cursor: 'pointer', fontFamily: 'var(--sans)', fontSize: 14, fontWeight: 600, color: '#E2E8F0', listStyle: 'none', display: 'flex', justifyContent: 'space-between', alignItems: 'center', userSelect: 'none' }}>
+                <details key={i} style={{ borderBottom: '1px solid #E8E8E4' }}>
+                  <summary style={{ padding: '14px 0', cursor: 'pointer', fontFamily: 'var(--sans)', fontSize: 14, fontWeight: 600, color: '#16161A', listStyle: 'none', display: 'flex', justifyContent: 'space-between', alignItems: 'center', userSelect: 'none' }}>
                     <span>{question}</span>
-                    <span style={{ color: '#475569', fontSize: 16, flexShrink: 0, marginLeft: 12 }}>+</span>
+                    <span style={{ color: '#8A929C', fontSize: 16, flexShrink: 0, marginLeft: 12 }}>+</span>
                   </summary>
-                  <p style={{ fontFamily: 'var(--sans)', fontSize: 14, color: '#94A3B8', lineHeight: 1.8, padding: '0 0 14px 0', margin: 0 }}>
+                  <p style={{ fontFamily: 'var(--sans)', fontSize: 14, color: '#5B6470', lineHeight: 1.8, padding: '0 0 14px 0', margin: 0 }}>
                     {answer}
                   </p>
                 </details>
@@ -279,12 +279,12 @@ export default async function BlogPostPage({ params }: { params: Promise<{ slug:
 
         {/* Related */}
         {related.length > 0 && (
-          <div style={{ marginTop: 48, paddingTop: 32, borderTop: '1px solid #1E293B' }}>
-            <div style={{ fontFamily: 'var(--mono)', fontSize: 10, fontWeight: 700, color: '#475569', letterSpacing: 2, marginBottom: 16 }}>RELATED</div>
+          <div style={{ marginTop: 48, paddingTop: 32, borderTop: '1px solid #E8E8E4' }}>
+            <div style={{ fontFamily: 'var(--mono)', fontSize: 10, fontWeight: 700, color: '#8A929C', letterSpacing: 2, marginBottom: 16 }}>RELATED</div>
             {related.map(r => (
-              <Link key={r.slug} href={`/blog/${r.slug}`} style={{ display: 'block', padding: '12px 0', borderBottom: '1px solid #1E293B', textDecoration: 'none' }}>
+              <Link key={r.slug} href={`/blog/${r.slug}`} style={{ display: 'block', padding: '12px 0', borderBottom: '1px solid #E8E8E4', textDecoration: 'none' }}>
                 <span style={{ fontFamily: 'var(--mono)', fontSize: 10, color: r.catColor, marginRight: 8 }}>{r.category}</span>
-                <span style={{ fontFamily: 'var(--sans)', fontSize: 14, fontWeight: 600, color: '#E2E8F0' }}>{r.title}</span>
+                <span style={{ fontFamily: 'var(--sans)', fontSize: 14, fontWeight: 600, color: '#16161A' }}>{r.title}</span>
               </Link>
             ))}
           </div>
@@ -292,18 +292,18 @@ export default async function BlogPostPage({ params }: { params: Promise<{ slug:
 
         {/* The Masters Footer */}
         {isMasters && (
-          <div style={{ marginTop: 40, padding: '20px 22px', borderRadius: 14, background: '#111827', border: '1px solid #BA751730', textAlign: 'center' }}>
+          <div style={{ marginTop: 40, padding: '20px 22px', borderRadius: 14, background: '#FAFAF8', border: '1px solid #BA751730', textAlign: 'center' }}>
             <div style={{ fontFamily: 'var(--mono)', fontSize: 10, fontWeight: 800, color: '#BA7517', letterSpacing: 2, marginBottom: 6 }}>THE MASTERS SERIES</div>
-            <div style={{ fontSize: 12, color: '#64748B', marginBottom: 4 }}>Monthly deep-dives on the methodology of legendary investors</div>
-            <div style={{ fontSize: 10, color: '#475569' }}>Next up: Warren Buffett — why doing nothing was the strategy</div>
+            <div style={{ fontSize: 12, color: '#8A929C', marginBottom: 4 }}>Monthly deep-dives on the methodology of legendary investors</div>
+            <div style={{ fontSize: 10, color: '#8A929C' }}>Next up: Warren Buffett — why doing nothing was the strategy</div>
           </div>
         )}
 
         {/* Footer (deep-dive only) */}
         {isDeepDive && (
-          <div style={{ marginTop: 40, padding: '20px 22px', borderRadius: 14, background: '#111827', border: '1px solid #1E293B', textAlign: 'center' }}>
-            <div style={{ fontSize: 11, color: '#64748B', marginBottom: 8 }}>DHLM Studio Research</div>
-            <div style={{ fontSize: 9, color: '#475569', lineHeight: 1.6 }}>
+          <div style={{ marginTop: 40, padding: '20px 22px', borderRadius: 14, background: '#FAFAF8', border: '1px solid #E8E8E4', textAlign: 'center' }}>
+            <div style={{ fontSize: 11, color: '#8A929C', marginBottom: 8 }}>DHLM Studio Research</div>
+            <div style={{ fontSize: 9, color: '#8A929C', lineHeight: 1.6 }}>
               Independent investor analysis, for informational and educational purposes.<br />
               NOT investment advice. Always do your own research.
             </div>
@@ -311,7 +311,7 @@ export default async function BlogPostPage({ params }: { params: Promise<{ slug:
         )}
 
         {/* Disclaimer */}
-        <p style={{ fontFamily: 'var(--sans)', fontSize: 10, color: '#334155', marginTop: isDeepDive ? 16 : 40, lineHeight: 1.6, textAlign: 'center' }}>
+        <p style={{ fontFamily: 'var(--sans)', fontSize: 10, color: '#8A929C', marginTop: isDeepDive ? 16 : 40, lineHeight: 1.6, textAlign: 'center' }}>
           Content is for informational purposes only. Always verify data from primary sources.
         </p>
       </article>

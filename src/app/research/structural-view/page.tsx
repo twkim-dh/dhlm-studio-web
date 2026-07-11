@@ -58,11 +58,11 @@ export default function StructuralViewPage() {
   const volumes = getPublishedVolumes();
 
   return (
-    <div style={{ background: '#0B0F19', minHeight: '100vh' }}>
+    <div style={{ background: '#FFFFFF', minHeight: '100vh' }}>
       <div style={{ maxWidth: 900, margin: '0 auto', padding: '80px 24px' }}>
 
         <div style={{ marginBottom: 24 }}>
-          <Link href="/research" style={{ fontSize: 12, color: '#64748B', textDecoration: 'none' }}>← The Mental Game</Link>
+          <Link href="/research" style={{ fontSize: 12, color: '#8A929C', textDecoration: 'none' }}>← The Mental Game</Link>
         </div>
 
         {/* Header */}
@@ -70,10 +70,10 @@ export default function StructuralViewPage() {
           <div style={{ fontFamily: 'var(--mono)', fontSize: 9, fontWeight: 800, padding: '4px 10px', borderRadius: 6, background: '#0EA5E918', color: '#38BDF8', border: '1px solid #0EA5E940', letterSpacing: 2, display: 'inline-block', marginBottom: 14 }}>
             THE STRUCTURAL VIEW
           </div>
-          <h1 style={{ fontFamily: 'var(--serif)', fontSize: 'clamp(26px, 4vw, 38px)', fontWeight: 900, color: '#F1F5F9', margin: '0 0 14px', lineHeight: 1.2 }}>
+          <h1 style={{ fontFamily: 'var(--serif)', fontSize: 'clamp(26px, 4vw, 38px)', fontWeight: 400, color: '#16161A', margin: '0 0 14px', lineHeight: 1.2 }}>
             Industry Paradigms,<br />Redefined Through Structural Analysis.
           </h1>
-          <p style={{ fontFamily: 'var(--sans)', fontSize: 15, color: '#94A3B8', lineHeight: 1.7, margin: 0, maxWidth: 680 }}>
+          <p style={{ fontFamily: 'var(--sans)', fontSize: 15, color: '#5B6470', lineHeight: 1.7, margin: 0, maxWidth: 680 }}>
             Each volume applies a single structural framework to understand which companies, technologies, or business models will define the next decade — and why the obvious answer is usually wrong.
           </p>
         </div>
@@ -84,25 +84,25 @@ export default function StructuralViewPage() {
             <Link
               key={v.slug}
               href={`/research/${v.slug}`}
-              style={{ background: '#111827', borderRadius: 14, border: '1px solid #1E293B', padding: '22px 24px', textDecoration: 'none', display: 'block' }}
+              style={{ background: '#FAFAF8', borderRadius: 14, border: '1px solid #E8E8E4', padding: '22px 24px', textDecoration: 'none', display: 'block' }}
             >
               <div style={{ display: 'flex', alignItems: 'center', gap: 8, marginBottom: 10, flexWrap: 'wrap' }}>
                 <span style={{ fontFamily: 'var(--mono)', fontSize: 9, fontWeight: 800, padding: '3px 10px', borderRadius: 6, background: '#0EA5E918', color: '#38BDF8', border: '1px solid #0EA5E940', letterSpacing: 1 }}>
                   VOL.{i + 1}
                 </span>
-                <span style={{ fontSize: 11, color: '#475569' }}>{fmtDateShort(v.date)} · {v.readTime}</span>
+                <span style={{ fontSize: 11, color: '#8A929C' }}>{fmtDateShort(v.date)} · {v.readTime}</span>
               </div>
-              <div style={{ fontFamily: 'var(--serif)', fontSize: 18, fontWeight: 800, color: '#F1F5F9', lineHeight: 1.4, marginBottom: 8 }}>{v.title}</div>
-              <p style={{ fontSize: 13, color: '#94A3B8', margin: 0, lineHeight: 1.6 }}>{v.description}</p>
+              <div style={{ fontFamily: 'var(--serif)', fontSize: 18, fontWeight: 800, color: '#16161A', lineHeight: 1.4, marginBottom: 8 }}>{v.title}</div>
+              <p style={{ fontSize: 13, color: '#5B6470', margin: 0, lineHeight: 1.6 }}>{v.description}</p>
             </Link>
           ))}
 
         </div>
 
         {/* Series description */}
-        <div style={{ padding: '18px 22px', borderRadius: 14, background: '#0D1117', border: '1px solid #1E293B' }}>
+        <div style={{ padding: '18px 22px', borderRadius: 14, background: '#FAFAF8', border: '1px solid #E8E8E4' }}>
           <div style={{ fontFamily: 'var(--mono)', fontSize: 9, fontWeight: 700, color: '#38BDF8', letterSpacing: 2, marginBottom: 8 }}>ABOUT THIS SERIES</div>
-          <div style={{ fontSize: 13, color: '#94A3B8', lineHeight: 1.7 }}>
+          <div style={{ fontSize: 13, color: '#5B6470', lineHeight: 1.7 }}>
             The Structural View publishes on no fixed schedule. Each volume is released when a structural shift is significant enough to warrant a full framework report — not to fill a calendar slot. Non-scheduled by design.
           </div>
         </div>

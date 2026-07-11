@@ -38,7 +38,7 @@ async function sendWelcomeEmail(email: string): Promise<void> {
   <!-- Header -->
   <tr><td style="padding:0 24px 32px;">
     <div style="font-family:Georgia,serif;font-size:28px;font-weight:900;color:#F1F5F9;line-height:1.2;">
-      Welcome to<br/><span style="color:#3B4A99;">DHLM Studio.</span>
+      Welcome to<br/><span style="color:#2D2F8F;">DHLM Studio.</span>
     </div>
     <div style="font-size:12px;color:#64748B;margin-top:8px;letter-spacing:2px;text-transform:uppercase;">Independent investor research.</div>
   </td></tr>
@@ -67,17 +67,17 @@ async function sendWelcomeEmail(email: string): Promise<void> {
       </tr>`).join('')}
     </table>
 
-    <div style="font-size:12px;font-weight:800;color:#3B4A99;letter-spacing:2px;text-transform:uppercase;margin-bottom:12px;">Start here — 3 most-read reports</div>
+    <div style="font-size:12px;font-weight:800;color:#2D2F8F;letter-spacing:2px;text-transform:uppercase;margin-bottom:12px;">Start here — 3 most-read reports</div>
     ${[
       ['Anthropic: Private Investor Report', 'https://dhlm-studio.com/reports/anthropic-private-investor-report-april-2026', 'The $18.4B valuation case — who wins when trust becomes infrastructure.'],
       ['SpaceX IPO: The $1.75 Trillion Question', 'https://dhlm-studio.com/reports/spacex-ipo-special-report', 'The most anticipated private-to-public transition in history.'],
       ['NVIDIA: Building the AI Factory', 'https://dhlm-studio.com/reports/deep-dive-nvda-april-2026', '83/100 — why NVIDIA is more defensible than it looks.'],
     ].map(([title, url, desc]) => `
-    <table cellpadding="0" cellspacing="0" style="width:100%;margin-bottom:10px;background:#0D1117;border-radius:8px;border:1px solid #1E293B;">
+    <table cellpadding="0" cellspacing="0" style="width:100%;margin-bottom:10px;background:#0D1117;border-radius:8px;border:1px solid #E8E8E4;">
       <tr><td style="padding:14px 16px;">
         <a href="${url}" style="font-size:13px;font-weight:700;color:#F1F5F9;text-decoration:none;">${title}</a>
         <div style="font-size:11px;color:#64748B;margin-top:4px;line-height:1.4;">${desc}</div>
-        <a href="${url}" style="display:inline-block;margin-top:8px;font-size:11px;font-weight:700;color:#3B4A99;text-decoration:none;">Read report →</a>
+        <a href="${url}" style="display:inline-block;margin-top:8px;font-size:11px;font-weight:700;color:#2D2F8F;text-decoration:none;">Read report →</a>
       </td></tr>
     </table>`).join('')}
 

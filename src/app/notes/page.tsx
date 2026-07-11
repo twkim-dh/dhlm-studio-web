@@ -58,7 +58,7 @@ export default function NotesPage() {
 
         {/* Header */}
         <div style={{ marginBottom: 48 }}>
-          <p style={{ fontFamily: "var(--mono)", fontSize: 11, color: "#3B4A99", fontWeight: 600, letterSpacing: 2, marginBottom: 12, textTransform: "uppercase" }}>Notes</p>
+          <p style={{ fontFamily: "var(--mono)", fontSize: 11, color: "#2D2F8F", fontWeight: 600, letterSpacing: 2, marginBottom: 12, textTransform: "uppercase" }}>Notes</p>
           <h1 style={{ fontFamily: "var(--serif)", fontSize: 32, fontWeight: 800, color: "#1A1D21", lineHeight: 1.2, marginBottom: 16 }}>
             Stock Research Notes
           </h1>
@@ -108,7 +108,7 @@ function NoteRow({ note }: { note: NoteMeta }) {
     <Link href={`/notes/${note.slug}`} style={{ display: "flex", alignItems: "flex-start", gap: 20, padding: "18px 0", borderBottom: "1px solid #F0F2F4", textDecoration: "none" }}>
       {note.ticker && (
         <div style={{ minWidth: 56, paddingTop: 2 }}>
-          <span style={{ fontFamily: "var(--mono)", fontSize: 12, fontWeight: 700, color: "#3B4A99" }}>{note.ticker}</span>
+          <span style={{ fontFamily: "var(--mono)", fontSize: 12, fontWeight: 700, color: "#2D2F8F" }}>{note.ticker}</span>
         </div>
       )}
       <div style={{ flex: 1 }}>

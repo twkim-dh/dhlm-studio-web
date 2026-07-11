@@ -1,4 +1,4 @@
-import { permanentRedirect } from 'next/navigation';
+﻿import { permanentRedirect } from 'next/navigation';
 import type { Metadata } from 'next';
 import Link from 'next/link';
 
@@ -15,7 +15,7 @@ export const metadata: Metadata = {
 
 const PHASES = [
   {
-    phase: 1, title: 'Valuation', color: '#60A5FA',
+    phase: 1, title: 'Valuation', color: '#2D2F8F',
     lessons: [
       {
         week: 13, slug: 'investing-101-intermediate-w13-three-valuations',
@@ -111,58 +111,58 @@ const PHASES = [
 export default function Investing101IntermediatePage() {
   permanentRedirect('/learn/investing-101');
   return (
-    <div style={{ background: '#0B0F19', minHeight: '100vh' }}>
+    <div style={{ background: '#FFFFFF', minHeight: '100vh' }}>
       <div style={{ maxWidth: 900, margin: '0 auto', padding: '80px 24px 80px' }}>
 
         {/* Breadcrumb */}
-        <div style={{ display: 'flex', alignItems: 'center', gap: 8, marginBottom: 28, fontSize: 11, fontFamily: 'var(--mono)', color: '#475569', flexWrap: 'wrap' }}>
-          <Link href="/learn" style={{ color: '#475569', textDecoration: 'none' }}>DHLM Studio Academy</Link>
+        <div style={{ display: 'flex', alignItems: 'center', gap: 8, marginBottom: 28, fontSize: 11, fontFamily: 'var(--mono)', color: '#8A929C', flexWrap: 'wrap' }}>
+          <Link href="/learn" style={{ color: '#8A929C', textDecoration: 'none' }}>DHLM Studio Academy</Link>
           <span>/</span>
-          <span style={{ color: '#64748B' }}>Investing 101 Intermediate</span>
+          <span style={{ color: '#8A929C' }}>Investing 101 Intermediate</span>
         </div>
 
         {/* Header */}
         <div style={{ marginBottom: 40 }}>
           <div style={{ display: 'flex', alignItems: 'center', gap: 8, marginBottom: 14, flexWrap: 'wrap' }}>
-            <span style={{ fontFamily: 'var(--mono)', fontSize: 9, fontWeight: 800, padding: '3px 9px', borderRadius: 5, background: '#60A5FA18', color: '#60A5FA', border: '1px solid #60A5FA30', letterSpacing: 1 }}>
+            <span style={{ fontFamily: 'var(--mono)', fontSize: 9, fontWeight: 800, padding: '3px 9px', borderRadius: 5, background: '#60A5FA18', color: '#2D2F8F', border: '1px solid #60A5FA30', letterSpacing: 1 }}>
               INVESTING 101 INTERMEDIATE
             </span>
-            <span style={{ fontFamily: 'var(--mono)', fontSize: 9, fontWeight: 700, padding: '2px 8px', borderRadius: 4, background: '#1E293B', color: '#64748B' }}>
+            <span style={{ fontFamily: 'var(--mono)', fontSize: 9, fontWeight: 700, padding: '2px 8px', borderRadius: 4, background: '#FFFFFF', color: '#8A929C' }}>
               12 LESSONS · 4 PHASES · W13–W24
             </span>
           </div>
 
-          <h1 style={{ fontFamily: 'var(--serif)', fontSize: 'clamp(28px, 5vw, 42px)', fontWeight: 900, color: '#F1F5F9', margin: '0 0 16px', lineHeight: 1.2 }}>
+          <h1 style={{ fontFamily: 'var(--serif)', fontSize: 'clamp(28px, 5vw, 42px)', fontWeight: 400, color: '#16161A', margin: '0 0 16px', lineHeight: 1.2 }}>
             You Know the Basics.<br />Now Build the Edge.
           </h1>
-          <p style={{ fontSize: 16, color: '#64748B', lineHeight: 1.7, margin: '0 0 20px', maxWidth: 680 }}>
+          <p style={{ fontSize: 16, color: '#8A929C', lineHeight: 1.7, margin: '0 0 20px', maxWidth: 680 }}>
             Twelve weeks of institutional-grade analysis applied to real companies. Valuation that goes beyond P/E.
             Moat analysis that goes beyond buzzwords. Document forensics, earnings call interpretation, and portfolio
             management frameworks that professional investors actually use.
           </p>
 
           <div style={{ display: 'flex', gap: 24, flexWrap: 'wrap' }}>
-            <div style={{ fontSize: 12, color: '#94A3B8' }}>
-              <span style={{ color: '#60A5FA', fontWeight: 700 }}>~190 min</span> total reading
+            <div style={{ fontSize: 12, color: '#5B6470' }}>
+              <span style={{ color: '#2D2F8F', fontWeight: 700 }}>~190 min</span> total reading
             </div>
-            <div style={{ fontSize: 12, color: '#94A3B8' }}>
-              <span style={{ color: '#60A5FA', fontWeight: 700 }}>Real companies</span>: TSLA, NVDA, MSFT, AAPL, Intel, Anthropic
+            <div style={{ fontSize: 12, color: '#5B6470' }}>
+              <span style={{ color: '#2D2F8F', fontWeight: 700 }}>Real companies</span>: TSLA, NVDA, MSFT, AAPL, Intel, Anthropic
             </div>
-            <div style={{ fontSize: 12, color: '#94A3B8' }}>
-              <span style={{ color: '#60A5FA', fontWeight: 700 }}>37 original charts</span> — all generated from real data
+            <div style={{ fontSize: 12, color: '#5B6470' }}>
+              <span style={{ color: '#2D2F8F', fontWeight: 700 }}>37 original charts</span> — all generated from real data
             </div>
           </div>
         </div>
 
         {/* Prerequisite notice */}
-        <div style={{ padding: '14px 20px', borderRadius: 10, background: '#111827', border: '1px solid #1E293B', marginBottom: 36, display: 'flex', alignItems: 'flex-start', gap: 12 }}>
-          <span style={{ color: '#60A5FA', fontWeight: 800, fontSize: 14, flexShrink: 0, lineHeight: 1.5 }}>→</span>
+        <div style={{ padding: '14px 20px', borderRadius: 10, background: '#FAFAF8', border: '1px solid #E8E8E4', marginBottom: 36, display: 'flex', alignItems: 'flex-start', gap: 12 }}>
+          <span style={{ color: '#2D2F8F', fontWeight: 800, fontSize: 14, flexShrink: 0, lineHeight: 1.5 }}>→</span>
           <div>
-            <div style={{ fontSize: 13, fontWeight: 700, color: '#E2E8F0', marginBottom: 4 }}>Prerequisite: Investing 101 Beginner</div>
-            <div style={{ fontSize: 12, color: '#64748B', lineHeight: 1.6 }}>
+            <div style={{ fontSize: 13, fontWeight: 700, color: '#16161A', marginBottom: 4 }}>Prerequisite: Investing 101 Beginner</div>
+            <div style={{ fontSize: 12, color: '#8A929C', lineHeight: 1.6 }}>
               This series assumes you can read a basic income statement and understand what P/E means.
               New to investing?{' '}
-              <Link href="/learn/investing-101-beginner" style={{ color: '#60A5FA', textDecoration: 'underline' }}>Start with the Beginner series →</Link>
+              <Link href="/learn/investing-101-beginner" style={{ color: '#2D2F8F', textDecoration: 'underline' }}>Start with the Beginner series →</Link>
             </div>
           </div>
         </div>
@@ -171,7 +171,7 @@ export default function Investing101IntermediatePage() {
         <div style={{ marginBottom: 48 }}>
           <Link href="/learn/investing-101-intermediate-w13-three-valuations" style={{
             display: 'inline-block', padding: '14px 28px', borderRadius: 10,
-            background: '#60A5FA', color: '#0B0F19', fontSize: 14, fontWeight: 800,
+            background: '#2D2F8F', color: '#FFFFFF', fontSize: 14, fontWeight: 800,
             textDecoration: 'none', letterSpacing: 0.3,
           }}>
             Start W13: Three Valuations →
@@ -187,7 +187,7 @@ export default function Investing101IntermediatePage() {
               </div>
               <div>
                 <div style={{ fontFamily: 'var(--mono)', fontSize: 9, fontWeight: 800, color, letterSpacing: 1.5 }}>PHASE {phase}</div>
-                <div style={{ fontSize: 16, fontWeight: 800, color: '#F1F5F9' }}>{phaseTitle}</div>
+                <div style={{ fontSize: 16, fontWeight: 800, color: '#16161A' }}>{phaseTitle}</div>
               </div>
             </div>
 
@@ -196,7 +196,7 @@ export default function Investing101IntermediatePage() {
                 <Link key={lesson.slug} href={`/learn/${lesson.slug}`} style={{ textDecoration: 'none' }}>
                   <div style={{
                     padding: '16px 20px', borderRadius: 10,
-                    background: '#111827', border: '1px solid #1E293B',
+                    background: '#FAFAF8', border: '1px solid #E8E8E4',
                     transition: 'border-color 0.15s',
                     display: 'flex', gap: 16, alignItems: 'flex-start',
                   }}>
@@ -218,10 +218,10 @@ export default function Investing101IntermediatePage() {
                         <span style={{ fontFamily: 'var(--mono)', fontSize: 9, fontWeight: 700, color, padding: '2px 7px', borderRadius: 4, background: `${color}14` }}>
                           W{lesson.week}
                         </span>
-                        <span style={{ fontFamily: 'var(--mono)', fontSize: 9, color: '#475569' }}>{lesson.readingTime}</span>
+                        <span style={{ fontFamily: 'var(--mono)', fontSize: 9, color: '#8A929C' }}>{lesson.readingTime}</span>
                       </div>
-                      <div style={{ fontSize: 14, fontWeight: 700, color: '#E2E8F0', lineHeight: 1.35, marginBottom: 5 }}>{lesson.title}</div>
-                      <div style={{ fontSize: 12, color: '#64748B', lineHeight: 1.55 }}>{lesson.description}</div>
+                      <div style={{ fontSize: 14, fontWeight: 700, color: '#16161A', lineHeight: 1.35, marginBottom: 5 }}>{lesson.title}</div>
+                      <div style={{ fontSize: 12, color: '#8A929C', lineHeight: 1.55 }}>{lesson.description}</div>
                     </div>
                   </div>
                 </Link>
@@ -231,8 +231,8 @@ export default function Investing101IntermediatePage() {
         ))}
 
         {/* Philosophy */}
-        <div style={{ padding: '28px 28px', borderRadius: 14, background: '#0D1117', border: '1px solid #1E293B', marginTop: 16 }}>
-          <div style={{ fontFamily: 'var(--mono)', fontSize: 9, fontWeight: 800, color: '#60A5FA', letterSpacing: 2, marginBottom: 14 }}>HOW THIS SERIES WORKS</div>
+        <div style={{ padding: '28px 28px', borderRadius: 14, background: '#FAFAF8', border: '1px solid #E8E8E4', marginTop: 16 }}>
+          <div style={{ fontFamily: 'var(--mono)', fontSize: 9, fontWeight: 800, color: '#2D2F8F', letterSpacing: 2, marginBottom: 14 }}>HOW THIS SERIES WORKS</div>
           <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(200px, 1fr))', gap: 20 }}>
             {[
               ['Real Companies', 'Every lesson uses actual earnings data, real 10-K filings, and live market numbers — not textbook examples.'],
@@ -240,19 +240,19 @@ export default function Investing101IntermediatePage() {
               ['37 Original Charts', 'Every chart is generated from real data using the same methodology professional analysts use.'],
             ].map(([title, desc]) => (
               <div key={title}>
-                <div style={{ fontSize: 13, fontWeight: 700, color: '#E2E8F0', marginBottom: 6 }}>{title}</div>
-                <div style={{ fontSize: 12, color: '#64748B', lineHeight: 1.6 }}>{desc}</div>
+                <div style={{ fontSize: 13, fontWeight: 700, color: '#16161A', marginBottom: 6 }}>{title}</div>
+                <div style={{ fontSize: 12, color: '#8A929C', lineHeight: 1.6 }}>{desc}</div>
               </div>
             ))}
           </div>
         </div>
 
         <div style={{ marginTop: 32, display: 'flex', gap: 20 }}>
-          <Link href="/learn/investing-101-beginner" style={{ fontSize: 12, color: '#64748B', textDecoration: 'none' }}>← Beginner Series</Link>
-          <Link href="/learn" style={{ fontSize: 12, color: '#64748B', textDecoration: 'none' }}>← DHLM Studio Academy</Link>
+          <Link href="/learn/investing-101-beginner" style={{ fontSize: 12, color: '#8A929C', textDecoration: 'none' }}>← Beginner Series</Link>
+          <Link href="/learn" style={{ fontSize: 12, color: '#8A929C', textDecoration: 'none' }}>← DHLM Studio Academy</Link>
         </div>
 
-        <p style={{ fontSize: 9, color: '#334155', marginTop: 24, textAlign: 'center' }}>
+        <p style={{ fontSize: 9, color: '#8A929C', marginTop: 24, textAlign: 'center' }}>
           Educational content only. Not investment advice. Always do your own research.
         </p>
       </div>

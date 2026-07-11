@@ -10,9 +10,9 @@ function getPageList(current: number, total: number): (number | '...')[] {
 const btn = (active: boolean, disabled?: boolean): React.CSSProperties => ({
   padding: '6px 12px',
   borderRadius: 7,
-  border: active ? '1px solid #C73E3A60' : '1px solid #1E293B',
-  background: active ? '#C73E3A18' : '#111827',
-  color: active ? '#F1F5F9' : disabled ? '#334155' : '#94A3B8',
+  border: active ? '1px solid #C73E3A60' : '1px solid #E8E8E4',
+  background: active ? '#C73E3A18' : '#FAFAF8',
+  color: active ? '#16161A' : disabled ? '#334155' : '#5B6470',
   fontFamily: 'var(--mono)',
   fontSize: 11,
   fontWeight: active ? 800 : 600,
@@ -46,7 +46,7 @@ export default function Pagination({
 
       {pages.map((p, i) =>
         p === '...' ? (
-          <span key={`ellipsis-${i}`} style={{ padding: '6px 4px', color: '#475569', fontSize: 11 }}>…</span>
+          <span key={`ellipsis-${i}`} style={{ padding: '6px 4px', color: '#8A929C', fontSize: 11 }}>…</span>
         ) : (
           <button
             key={p}

@@ -24,9 +24,9 @@ export default async function WisdomPage({ params }: { params: Promise<{ id: str
 
   if (!w) {
     return (
-      <div style={{ background: '#0B0F19', minHeight: '100vh', padding: '120px 24px', textAlign: 'center' }}>
-        <h1 style={{ color: '#F1F5F9', fontFamily: 'var(--serif)', fontSize: 28 }}>Wisdom Not Found</h1>
-        <Link href="/blog" style={{ color: '#64748B', fontSize: 14, marginTop: 16, display: 'inline-block' }}>← Blog</Link>
+      <div style={{ background: '#FFFFFF', minHeight: '100vh', padding: '120px 24px', textAlign: 'center' }}>
+        <h1 style={{ color: '#16161A', fontFamily: 'var(--serif)', fontSize: 28 }}>Wisdom Not Found</h1>
+        <Link href="/blog" style={{ color: '#8A929C', fontSize: 14, marginTop: 16, display: 'inline-block' }}>← Blog</Link>
       </div>
     );
   }
@@ -48,10 +48,10 @@ export default async function WisdomPage({ params }: { params: Promise<{ id: str
   const shareText = `"${w.quote}"\n— ${w.author} ${w.flag}\n\nDaily Wall Street Wisdom #${String(w.id).padStart(3, '0')}\n#investing #stocks #wallstreet`;
 
   return (
-    <div style={{ background: '#0B0F19', minHeight: '100vh' }}>
+    <div style={{ background: '#FFFFFF', minHeight: '100vh' }}>
       <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLd) }} />
       <article style={{ maxWidth: 640, margin: '0 auto', padding: '80px 24px' }}>
-        <Link href="/blog" style={{ fontSize: 12, color: '#64748B', fontFamily: 'var(--sans)' }}>← Blog</Link>
+        <Link href="/blog" style={{ fontSize: 12, color: '#8A929C', fontFamily: 'var(--sans)' }}>← Blog</Link>
 
         {/* Header */}
         <div style={{ marginTop: 20, marginBottom: 32 }}>
@@ -69,7 +69,7 @@ export default async function WisdomPage({ params }: { params: Promise<{ id: str
           <div style={{ fontSize: 40, marginBottom: 16 }}>💡</div>
           <blockquote style={{
             fontFamily: 'var(--serif)', fontSize: 'clamp(20px, 3.5vw, 28px)',
-            fontWeight: 800, color: '#F1F5F9', lineHeight: 1.5, margin: '0 0 20px',
+            fontWeight: 800, color: '#16161A', lineHeight: 1.5, margin: '0 0 20px',
             fontStyle: 'italic',
           }}>
             &ldquo;{w.quote}&rdquo;
@@ -78,25 +78,25 @@ export default async function WisdomPage({ params }: { params: Promise<{ id: str
             <span style={{ fontSize: 18 }}>{w.flag}</span>
             <span style={{ fontFamily: 'var(--sans)', fontSize: 16, fontWeight: 700, color: '#D4A843' }}>{w.author}</span>
           </div>
-          <div style={{ fontFamily: 'var(--sans)', fontSize: 12, color: '#64748B', marginTop: 4 }}>{w.role}</div>
+          <div style={{ fontFamily: 'var(--sans)', fontSize: 12, color: '#8A929C', marginTop: 4 }}>{w.role}</div>
         </div>
 
         {/* WHO SAID IT */}
-        <div style={{ padding: '20px 22px', borderRadius: 14, background: '#111827', border: '1px solid #1E293B', marginBottom: 16 }}>
-          <div style={{ fontFamily: 'var(--mono)', fontSize: 9, fontWeight: 700, color: '#64748B', letterSpacing: 2, marginBottom: 10 }}>WHO SAID IT</div>
-          <p style={{ fontSize: 14, color: '#E2E8F0', fontWeight: 600, margin: '0 0 4px' }}>{w.flag} {w.author}</p>
-          <p style={{ fontSize: 12, color: '#94A3B8', margin: '0 0 8px' }}>{w.role}</p>
+        <div style={{ padding: '20px 22px', borderRadius: 14, background: '#FAFAF8', border: '1px solid #E8E8E4', marginBottom: 16 }}>
+          <div style={{ fontFamily: 'var(--mono)', fontSize: 9, fontWeight: 700, color: '#8A929C', letterSpacing: 2, marginBottom: 10 }}>WHO SAID IT</div>
+          <p style={{ fontSize: 14, color: '#16161A', fontWeight: 600, margin: '0 0 4px' }}>{w.flag} {w.author}</p>
+          <p style={{ fontSize: 12, color: '#5B6470', margin: '0 0 8px' }}>{w.role}</p>
           {w.ticker && (
-            <Link href={`/reports`} style={{ fontSize: 11, color: '#60A5FA', fontFamily: 'var(--mono)' }}>
+            <Link href={`/reports`} style={{ fontSize: 11, color: '#2D2F8F', fontFamily: 'var(--mono)' }}>
               See {w.ticker} Reports →
             </Link>
           )}
         </div>
 
         {/* WHAT IT MEANS */}
-        <div style={{ padding: '20px 22px', borderRadius: 14, background: '#111827', border: '1px solid #1E293B', marginBottom: 16 }}>
+        <div style={{ padding: '20px 22px', borderRadius: 14, background: '#FAFAF8', border: '1px solid #E8E8E4', marginBottom: 16 }}>
           <div style={{ fontFamily: 'var(--mono)', fontSize: 9, fontWeight: 700, color: '#D4A843', letterSpacing: 2, marginBottom: 10 }}>WHAT IT MEANS</div>
-          <p style={{ fontSize: 14, color: '#94A3B8', lineHeight: 1.8, margin: 0 }}>{w.explanation}</p>
+          <p style={{ fontSize: 14, color: '#5B6470', lineHeight: 1.8, margin: 0 }}>{w.explanation}</p>
         </div>
 
         {/* Category tag */}
@@ -114,20 +114,20 @@ export default async function WisdomPage({ params }: { params: Promise<{ id: str
         </div>
 
         {/* Navigation */}
-        <div style={{ display: 'flex', justifyContent: 'space-between', padding: '16px 0', borderTop: '1px solid #1E293B' }}>
-          {prev ? <Link href={`/blog/wisdom/${prev}`} style={{ fontSize: 12, color: '#64748B' }}>← #{prev}</Link> : <span />}
-          {next ? <Link href={`/blog/wisdom/${next}`} style={{ fontSize: 12, color: '#64748B' }}>#{next} →</Link> : <span />}
+        <div style={{ display: 'flex', justifyContent: 'space-between', padding: '16px 0', borderTop: '1px solid #E8E8E4' }}>
+          {prev ? <Link href={`/blog/wisdom/${prev}`} style={{ fontSize: 12, color: '#8A929C' }}>← #{prev}</Link> : <span />}
+          {next ? <Link href={`/blog/wisdom/${next}`} style={{ fontSize: 12, color: '#8A929C' }}>#{next} →</Link> : <span />}
         </div>
 
         {/* Related */}
         {related.length > 0 && (
-          <div style={{ marginTop: 16, paddingTop: 16, borderTop: '1px solid #1E293B' }}>
-            <div style={{ fontFamily: 'var(--mono)', fontSize: 9, fontWeight: 700, color: '#475569', letterSpacing: 2, marginBottom: 12 }}>MORE {w.category.toUpperCase()} WISDOM</div>
+          <div style={{ marginTop: 16, paddingTop: 16, borderTop: '1px solid #E8E8E4' }}>
+            <div style={{ fontFamily: 'var(--mono)', fontSize: 9, fontWeight: 700, color: '#8A929C', letterSpacing: 2, marginBottom: 12 }}>MORE {w.category.toUpperCase()} WISDOM</div>
             {related.map(r => (
               <Link key={r.id} href={`/blog/wisdom/${String(r.id).padStart(3, '0')}`}
-                style={{ display: 'block', padding: '10px 0', borderBottom: '1px solid #1E293B', textDecoration: 'none' }}>
-                <span style={{ fontSize: 13, color: '#E2E8F0', fontStyle: 'italic' }}>&ldquo;{r.quote.slice(0, 60)}...&rdquo;</span>
-                <span style={{ fontSize: 11, color: '#64748B', marginLeft: 8 }}>— {r.author}</span>
+                style={{ display: 'block', padding: '10px 0', borderBottom: '1px solid #E8E8E4', textDecoration: 'none' }}>
+                <span style={{ fontSize: 13, color: '#16161A', fontStyle: 'italic' }}>&ldquo;{r.quote.slice(0, 60)}...&rdquo;</span>
+                <span style={{ fontSize: 11, color: '#8A929C', marginLeft: 8 }}>— {r.author}</span>
               </Link>
             ))}
           </div>

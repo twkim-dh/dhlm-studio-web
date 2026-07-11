@@ -15,7 +15,7 @@ export default function QAPage() {
 
         {/* Header */}
         <div style={{ marginBottom: 48 }}>
-          <p style={{ fontFamily: "var(--mono)", fontSize: 11, color: "#3B4A99", fontWeight: 600, letterSpacing: 2, marginBottom: 12, textTransform: "uppercase" }}>Q&A</p>
+          <p style={{ fontFamily: "var(--mono)", fontSize: 11, color: "#2D2F8F", fontWeight: 600, letterSpacing: 2, marginBottom: 12, textTransform: "uppercase" }}>Q&A</p>
           <h1 style={{ fontFamily: "var(--serif)", fontSize: 32, fontWeight: 800, color: "#1A1D21", lineHeight: 1.2, marginBottom: 16 }}>
             Ask Me About a Stock
           </h1>
@@ -39,7 +39,7 @@ export default function QAPage() {
               <label style={{ display: "block", fontSize: 12, fontWeight: 600, color: "#5B6470", marginBottom: 6, letterSpacing: 0.5 }}>YOUR QUESTION</label>
               <textarea name="body" rows={4} placeholder="What's your question about this company?" style={{ width: "100%", padding: "10px 14px", fontSize: 14, border: "1px solid #EAECEF", borderRadius: 8, background: "#FFFFFF", color: "#1A1D21", resize: "vertical", fontFamily: "var(--sans)" }} />
             </div>
-            <button type="submit" style={{ alignSelf: "flex-start", padding: "10px 24px", fontSize: 14, fontWeight: 600, color: "#FFFFFF", background: "#3B4A99", border: "none", borderRadius: 8, cursor: "pointer" }}>
+            <button type="submit" style={{ alignSelf: "flex-start", padding: "10px 24px", fontSize: 14, fontWeight: 600, color: "#FFFFFF", background: "#2D2F8F", border: "none", borderRadius: 8, cursor: "pointer" }}>
               Send via Email
             </button>
           </form>

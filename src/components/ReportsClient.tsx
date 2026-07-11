@@ -39,13 +39,13 @@ function isCrypto(r: ReportMeta) {
   return r.tags.some(t => CRYPTO_TAGS.includes(t.toUpperCase()));
 }
 
-const card = { background: '#111827', borderRadius: 14, border: '1px solid #1E293B' };
+const card = { background: '#FAFAF8', borderRadius: 14, border: '1px solid #E8E8E4' };
 
 function SpecialCard({ r }: { r: ReportMeta }) {
   return (
     <Link href={`/reports/${r.slug}`} style={{ ...card, padding: 0, textDecoration: 'none', display: 'block', borderColor: `${r.catColor}40`, background: `linear-gradient(135deg, ${r.catColor}08, #111827)`, overflow: 'hidden' }}>
       {r.thumb && (
-        <Image src={r.thumb} alt={r.thumbAlt || r.title} width={1920} height={1080} loading="lazy" sizes="(max-width: 640px) 100vw, (max-width: 1024px) 50vw, 400px" style={{ width: '100%', height: 'auto', display: 'block', background: '#0f172a' }} />
+        <Image src={r.thumb} alt={r.thumbAlt || r.title} width={1920} height={1080} loading="lazy" sizes="(max-width: 640px) 100vw, (max-width: 1024px) 50vw, 400px" style={{ width: '100%', height: 'auto', display: 'block', background: '#FAFAF8' }} />
       )}
       <div style={{ padding: '16px 22px 20px' }}>
         <div style={{ display: 'flex', alignItems: 'center', gap: 8, marginBottom: 8, flexWrap: 'wrap' }}>
@@ -55,10 +55,10 @@ function SpecialCard({ r }: { r: ReportMeta }) {
           {Array.isArray(r.tickers) && r.tickers.slice(0, 5).map(t => (
             <span key={t} style={{ fontFamily: 'var(--mono)', fontSize: 10, fontWeight: 700, color: r.catColor }}>{t}</span>
           ))}
-          <span style={{ fontSize: 11, color: '#475569', marginLeft: 'auto' }}>{fmtDateShort(r.date)} · {r.readTime}</span>
+          <span style={{ fontSize: 11, color: '#8A929C', marginLeft: 'auto' }}>{fmtDateShort(r.date)} · {r.readTime}</span>
         </div>
-        <div style={{ fontFamily: 'var(--serif)', fontSize: 20, fontWeight: 800, color: '#F1F5F9', lineHeight: 1.4 }}>{r.title}</div>
-        <p style={{ fontSize: 12, color: '#64748B', margin: '6px 0 0', lineHeight: 1.5 }}>{r.description}</p>
+        <div style={{ fontFamily: 'var(--serif)', fontSize: 20, fontWeight: 800, color: '#16161A', lineHeight: 1.4 }}>{r.title}</div>
+        <p style={{ fontSize: 12, color: '#8A929C', margin: '6px 0 0', lineHeight: 1.5 }}>{r.description}</p>
       </div>
     </Link>
   );
@@ -70,15 +70,15 @@ function RegularCard({ r }: { r: ReportMeta }) {
       <TickerLogo ticker={r.ticker} size={48} />
       <div style={{ flex: 1, minWidth: 0 }}>
         <div style={{ display: 'flex', alignItems: 'center', gap: 8, marginBottom: 8, flexWrap: 'wrap' }}>
-          <span style={{ fontFamily: 'var(--mono)', fontSize: 18, fontWeight: 900, color: '#60A5FA' }}>{r.ticker}</span>
+          <span style={{ fontFamily: 'var(--mono)', fontSize: 18, fontWeight: 900, color: '#2D2F8F' }}>{r.ticker}</span>
           {r.beafScore > 0 && (
             <span style={{ fontFamily: 'var(--mono)', fontSize: 10, fontWeight: 700, padding: '3px 8px', borderRadius: 4, background: '#D4A84314', color: '#D4A843' }}>{r.beafScore}/100 ({r.grade})</span>
           )}
           <span style={{ fontFamily: 'var(--mono)', fontSize: 10, fontWeight: 600, padding: '3px 8px', borderRadius: 4, background: `${r.catColor}14`, color: r.catColor }}>{r.category}</span>
-          <span style={{ fontSize: 11, color: '#475569' }}>{fmtDateShort(r.date)} · {r.readTime}</span>
+          <span style={{ fontSize: 11, color: '#8A929C' }}>{fmtDateShort(r.date)} · {r.readTime}</span>
         </div>
-        <div style={{ fontFamily: 'var(--serif)', fontSize: 17, fontWeight: 700, color: '#E2E8F0', lineHeight: 1.4 }}>{r.title}</div>
-        <p style={{ fontSize: 12, color: '#64748B', margin: '6px 0 0', lineHeight: 1.5 }}>{r.description}</p>
+        <div style={{ fontFamily: 'var(--serif)', fontSize: 17, fontWeight: 700, color: '#16161A', lineHeight: 1.4 }}>{r.title}</div>
+        <p style={{ fontSize: 12, color: '#8A929C', margin: '6px 0 0', lineHeight: 1.5 }}>{r.description}</p>
       </div>
     </Link>
   );
@@ -168,9 +168,9 @@ export default function ReportsClient({ reports }: { reports: ReportMeta[] }) {
                 flexShrink: 0,
                 padding: '7px 14px',
                 borderRadius: 8,
-                border: active ? '1px solid #C73E3A60' : '1px solid #1E293B',
-                background: active ? '#C73E3A18' : '#111827',
-                color: active ? '#F1F5F9' : '#64748B',
+                border: active ? '1px solid #C73E3A60' : '1px solid #E8E8E4',
+                background: active ? '#C73E3A18' : '#FAFAF8',
+                color: active ? '#16161A' : '#8A929C',
                 fontFamily: 'var(--mono)',
                 fontSize: 11,
                 fontWeight: active ? 800 : 600,
@@ -189,7 +189,7 @@ export default function ReportsClient({ reports }: { reports: ReportMeta[] }) {
                   padding: '1px 5px',
                   borderRadius: 10,
                   background: active ? '#C73E3A30' : '#1E293B',
-                  color: active ? '#C73E3A' : '#475569',
+                  color: active ? '#C73E3A' : '#8A929C',
                   fontWeight: 700,
                 }}>
                   {count}
@@ -223,7 +223,7 @@ export default function ReportsClient({ reports }: { reports: ReportMeta[] }) {
           ) : specials.length === 0 && (
             <div style={{ ...card, padding: '40px 20px', textAlign: 'center' }}>
               <div style={{ fontSize: 32, marginBottom: 8 }}>📊</div>
-              <p style={{ fontSize: 14, color: '#64748B' }}>Reports coming soon.</p>
+              <p style={{ fontSize: 14, color: '#8A929C' }}>Reports coming soon.</p>
             </div>
           )}
         </>
@@ -235,7 +235,7 @@ export default function ReportsClient({ reports }: { reports: ReportMeta[] }) {
           {filtered.length === 0 ? (
             <div style={{ ...card, padding: '40px 20px', textAlign: 'center' }}>
               <div style={{ fontSize: 32, marginBottom: 8 }}>📊</div>
-              <p style={{ fontSize: 14, color: '#64748B' }}>No reports in this category yet.</p>
+              <p style={{ fontSize: 14, color: '#8A929C' }}>No reports in this category yet.</p>
             </div>
           ) : (
             <>

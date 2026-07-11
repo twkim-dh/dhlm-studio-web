@@ -105,7 +105,7 @@ export async function generateMetadata({ params }: { params: Promise<{ slug: str
 function seriesColor(badge?: string) {
   if (badge === 'mental-game') return { fg: '#A78BFA', bg: '#7C3AED18', border: '#7C3AED40', label: 'THE MENTAL GAME' };
   if (badge === 'structural-view') return { fg: '#38BDF8', bg: '#0EA5E918', border: '#0EA5E940', label: 'THE STRUCTURAL VIEW' };
-  return { fg: '#94A3B8', bg: '#1E293B18', border: '#1E293B40', label: 'RESEARCH' };
+  return { fg: '#5B6470', bg: '#1E293B18', border: '#1E293B40', label: 'RESEARCH' };
 }
 
 function renderMarkdown(md: string): React.ReactNode[] {
@@ -128,11 +128,11 @@ function renderMarkdown(md: string): React.ReactNode[] {
       <div key={key++} style={{ overflowX: 'auto', margin: '16px 0' }}>
         <table style={{ width: '100%', borderCollapse: 'collapse', fontSize: 12, fontFamily: 'var(--mono)' }}>
           <thead>
-            <tr>{headers.map((h, i) => <th key={i} style={{ padding: '8px 10px', borderBottom: '2px solid #334155', borderRight: i < headers.length - 1 ? '1px solid #1E293B' : undefined, background: '#111827', color: '#94A3B8', textAlign: i === 0 ? 'left' : 'right', fontWeight: 700, whiteSpace: 'nowrap' }} dangerouslySetInnerHTML={{ __html: inline(h.trim()) }} />)}</tr>
+            <tr>{headers.map((h, i) => <th key={i} style={{ padding: '8px 10px', borderBottom: '2px solid #334155', borderRight: i < headers.length - 1 ? '1px solid #E8E8E4' : undefined, background: '#FAFAF8', color: '#5B6470', textAlign: i === 0 ? 'left' : 'right', fontWeight: 700, whiteSpace: 'nowrap' }} dangerouslySetInnerHTML={{ __html: inline(h.trim()) }} />)}</tr>
           </thead>
           <tbody>
             {dataRows.map((row, ri) => (
-              <tr key={ri}>{row.map((cell, ci) => <td key={ci} style={{ padding: '6px 10px', borderBottom: '1px solid #1E293B', borderRight: ci < row.length - 1 ? '1px solid #1E293B' : undefined, color: '#E2E8F0', textAlign: ci === 0 ? 'left' : 'right' }} dangerouslySetInnerHTML={{ __html: inline(cell.trim()) }} />)}</tr>
+              <tr key={ri}>{row.map((cell, ci) => <td key={ci} style={{ padding: '6px 10px', borderBottom: '1px solid #E8E8E4', borderRight: ci < row.length - 1 ? '1px solid #E8E8E4' : undefined, color: '#16161A', textAlign: ci === 0 ? 'left' : 'right' }} dangerouslySetInnerHTML={{ __html: inline(cell.trim()) }} />)}</tr>
             ))}
           </tbody>
         </table>
@@ -151,15 +151,15 @@ function renderMarkdown(md: string): React.ReactNode[] {
       flushTable();
     }
     if (line.startsWith('## ')) {
-      elements.push(<h2 key={key++} style={{ fontFamily: 'var(--serif)', fontSize: 22, fontWeight: 800, color: '#E2E8F0', margin: '32px 0 12px' }}>{line.slice(3)}</h2>);
+      elements.push(<h2 key={key++} style={{ fontFamily: 'var(--serif)', fontSize: 22, fontWeight: 800, color: '#16161A', margin: '32px 0 12px' }}>{line.slice(3)}</h2>);
     } else if (line.startsWith('### ')) {
       elements.push(<h3 key={key++} style={{ fontFamily: 'var(--serif)', fontSize: 17, fontWeight: 700, color: '#D4A843', margin: '24px 0 8px' }}>{line.slice(4)}</h3>);
     } else if (line.trim() === '') {
       // skip blank lines
     } else if (line.startsWith('---')) {
-      elements.push(<hr key={key++} style={{ border: 'none', borderTop: '1px solid #1E293B', margin: '24px 0' }} />);
+      elements.push(<hr key={key++} style={{ border: 'none', borderTop: '1px solid #E8E8E4', margin: '24px 0' }} />);
     } else {
-      elements.push(<p key={key++} style={{ fontSize: 15, color: '#94A3B8', lineHeight: 1.9, margin: '0 0 12px' }} dangerouslySetInnerHTML={{ __html: inline(line) }} />);
+      elements.push(<p key={key++} style={{ fontSize: 15, color: '#5B6470', lineHeight: 1.9, margin: '0 0 12px' }} dangerouslySetInnerHTML={{ __html: inline(line) }} />);
     }
   }
   if (inTable) flushTable();
@@ -196,11 +196,11 @@ export default async function ResearchArticlePage({ params }: { params: Promise<
   } : null;
 
   return (
-    <div style={{ background: '#0B0F19', minHeight: '100vh' }}>
+    <div style={{ background: '#FFFFFF', minHeight: '100vh' }}>
       <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(articleLd) }} />
       {faqLd && <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(faqLd) }} />}
       <article style={{ maxWidth: 760, margin: '0 auto', padding: '80px 24px' }}>
-        <Link href="/research" style={{ fontSize: 12, color: '#64748B' }}>← The Mental Game</Link>
+        <Link href="/research" style={{ fontSize: 12, color: '#8A929C' }}>← The Mental Game</Link>
 
         <div style={{ marginTop: 20, padding: '16px 20px', borderRadius: 12, background: series.bg, border: `1px solid ${series.border}`, marginBottom: 16 }}>
           <div style={{ display: 'flex', alignItems: 'center', gap: 8 }}>
@@ -212,17 +212,17 @@ export default async function ResearchArticlePage({ params }: { params: Promise<
         <div style={{ marginBottom: 20 }}>
           <div style={{ display: 'flex', alignItems: 'center', gap: 8, marginBottom: 10, flexWrap: 'wrap' }}>
             <span style={{ fontFamily: 'var(--mono)', fontSize: 10, fontWeight: 700, padding: '3px 8px', borderRadius: 4, background: series.bg, color: series.fg, border: `1px solid ${series.border}` }}>{fm.category}</span>
-            <span style={{ fontSize: 11, color: '#475569' }}>Published {fmtDateShort(fm.date)} · {fm.readTime}</span>
-            {(fm as unknown as Record<string, string>).dataAsOf && <span style={{ fontSize: 11, color: '#475569' }}>· Data as of {(fm as unknown as Record<string, string>).dataAsOf}</span>}
+            <span style={{ fontSize: 11, color: '#8A929C' }}>Published {fmtDateShort(fm.date)} · {fm.readTime}</span>
+            {(fm as unknown as Record<string, string>).dataAsOf && <span style={{ fontSize: 11, color: '#8A929C' }}>· Data as of {(fm as unknown as Record<string, string>).dataAsOf}</span>}
           </div>
-          <h1 style={{ fontFamily: 'var(--serif)', fontSize: 'clamp(24px, 4vw, 32px)', fontWeight: 900, color: '#F1F5F9', lineHeight: 1.3, margin: 0 }}>{fm.title}</h1>
+          <h1 style={{ fontFamily: 'var(--serif)', fontSize: 'clamp(24px, 4vw, 32px)', fontWeight: 400, color: '#16161A', lineHeight: 1.3, margin: 0 }}>{fm.title}</h1>
           <div style={{ display: 'flex', alignItems: 'center', gap: 6, marginTop: 10, flexWrap: 'wrap' }}>
-            <span style={{ fontSize: 12, color: '#475569' }}>By</span>
-            <Link href="/editorial" style={{ fontSize: 12, color: '#60A5FA', fontWeight: 600, textDecoration: 'none' }}>DHLM Studio Team</Link>
-            <span style={{ fontSize: 12, color: '#334155' }}>·</span>
-            <Link href="/editorial#beaf" style={{ fontSize: 11, color: '#64748B', textDecoration: 'none' }}>Reviewed against Analysis Framework</Link>
+            <span style={{ fontSize: 12, color: '#8A929C' }}>By</span>
+            <Link href="/editorial" style={{ fontSize: 12, color: '#2D2F8F', fontWeight: 600, textDecoration: 'none' }}>DHLM Studio Team</Link>
+            <span style={{ fontSize: 12, color: '#8A929C' }}>·</span>
+            <Link href="/editorial#beaf" style={{ fontSize: 11, color: '#8A929C', textDecoration: 'none' }}>Reviewed against Analysis Framework</Link>
           </div>
-          <p style={{ fontSize: 15, color: '#64748B', lineHeight: 1.7, marginTop: 10 }}>{fm.description}</p>
+          <p style={{ fontSize: 15, color: '#8A929C', lineHeight: 1.7, marginTop: 10 }}>{fm.description}</p>
           <div style={{ marginTop: 14, display: 'flex', flexWrap: 'wrap', gap: 8, alignItems: 'center' }}>
             <ReportPDF title={fm.title} date={fm.date} description={fm.description} category={fm.category} body={a.body} />
           </div>
@@ -230,7 +230,7 @@ export default async function ResearchArticlePage({ params }: { params: Promise<
 
         {heroSrc && (
           <div style={{ margin: '24px 0' }}>
-            <div style={{ background: '#0f172a', borderRadius: 12, overflow: 'hidden', border: '1px solid #1E293B' }}>
+            <div style={{ background: '#FAFAF8', borderRadius: 12, overflow: 'hidden', border: '1px solid #E8E8E4' }}>
               <Image
                 src={heroSrc}
                 alt={unsplashEntry?.alt || fm.title}
@@ -243,8 +243,8 @@ export default async function ResearchArticlePage({ params }: { params: Promise<
             </div>
             {unsplashEntry?.credit && (
               <div style={{ padding: '3px 8px', textAlign: 'right' }}>
-                <span style={{ fontSize: 9, color: '#334155' }}>
-                  Photo by <a href={unsplashEntry.credit.authorUrl} target="_blank" rel="noopener noreferrer" style={{ color: '#475569', textDecoration: 'none' }}>{unsplashEntry.credit.author}</a> on <a href={unsplashEntry.credit.unsplashUrl} target="_blank" rel="noopener noreferrer" style={{ color: '#475569', textDecoration: 'none' }}>Unsplash</a>
+                <span style={{ fontSize: 9, color: '#8A929C' }}>
+                  Photo by <a href={unsplashEntry.credit.authorUrl} target="_blank" rel="noopener noreferrer" style={{ color: '#8A929C', textDecoration: 'none' }}>{unsplashEntry.credit.author}</a> on <a href={unsplashEntry.credit.unsplashUrl} target="_blank" rel="noopener noreferrer" style={{ color: '#8A929C', textDecoration: 'none' }}>Unsplash</a>
                 </span>
               </div>
             )}
@@ -252,24 +252,24 @@ export default async function ResearchArticlePage({ params }: { params: Promise<
         )}
 
         {fm.paperTitle && (
-          <div style={{ padding: '14px 18px', borderRadius: 12, background: '#0D1117', border: '1px solid #1E293B', marginBottom: 24 }}>
-            <div style={{ fontFamily: 'var(--mono)', fontSize: 9, fontWeight: 800, color: '#94A3B8', letterSpacing: 1.5, marginBottom: 6 }}>📄 SOURCE PAPER</div>
-            <div style={{ fontSize: 14, fontWeight: 700, color: '#E2E8F0', lineHeight: 1.4, marginBottom: 4 }}>{fm.paperTitle}</div>
-            <div style={{ fontSize: 12, color: '#94A3B8' }}>{fm.paperAuthors} ({fm.paperYear}){fm.paperInstitution && ` · ${fm.paperInstitution}`}</div>
-            {fm.paperAdvisor && <div style={{ fontSize: 11, color: '#64748B', marginTop: 2 }}>Advisor: {fm.paperAdvisor}</div>}
+          <div style={{ padding: '14px 18px', borderRadius: 12, background: '#FAFAF8', border: '1px solid #E8E8E4', marginBottom: 24 }}>
+            <div style={{ fontFamily: 'var(--mono)', fontSize: 9, fontWeight: 800, color: '#5B6470', letterSpacing: 1.5, marginBottom: 6 }}>📄 SOURCE PAPER</div>
+            <div style={{ fontSize: 14, fontWeight: 700, color: '#16161A', lineHeight: 1.4, marginBottom: 4 }}>{fm.paperTitle}</div>
+            <div style={{ fontSize: 12, color: '#5B6470' }}>{fm.paperAuthors} ({fm.paperYear}){fm.paperInstitution && ` · ${fm.paperInstitution}`}</div>
+            {fm.paperAdvisor && <div style={{ fontSize: 11, color: '#8A929C', marginTop: 2 }}>Advisor: {fm.paperAdvisor}</div>}
           </div>
         )}
 
         <div>{renderMarkdown(a.body)}</div>
 
         {fm.faqs && fm.faqs.length > 0 && (
-          <section style={{ marginTop: 40, padding: '24px 22px', borderRadius: 14, background: '#0D1117', border: '1px solid #1E293B' }}>
+          <section style={{ marginTop: 40, padding: '24px 22px', borderRadius: 14, background: '#FAFAF8', border: '1px solid #E8E8E4' }}>
             <div style={{ fontFamily: 'var(--mono)', fontSize: 10, fontWeight: 800, color: series.fg, letterSpacing: 2, marginBottom: 14 }}>📋 FREQUENTLY ASKED QUESTIONS</div>
             <div style={{ display: 'flex', flexDirection: 'column', gap: 16 }}>
               {fm.faqs.map((f, i) => (
                 <div key={i}>
-                  <div style={{ fontSize: 14, fontWeight: 700, color: '#F1F5F9', lineHeight: 1.5, marginBottom: 6 }}>Q. {f.q}</div>
-                  <div style={{ fontSize: 13, color: '#94A3B8', lineHeight: 1.7 }}>{f.a}</div>
+                  <div style={{ fontSize: 14, fontWeight: 700, color: '#16161A', lineHeight: 1.5, marginBottom: 6 }}>Q. {f.q}</div>
+                  <div style={{ fontSize: 13, color: '#5B6470', lineHeight: 1.7 }}>{f.a}</div>
                 </div>
               ))}
             </div>
@@ -278,13 +278,13 @@ export default async function ResearchArticlePage({ params }: { params: Promise<
 
         <ContentDisclaimer />
 
-        <div style={{ marginTop: 32, paddingTop: 24, borderTop: '1px solid #1E293B', textAlign: 'center' }}>
-          <a href="/" style={{ fontSize: 13, color: '#60A5FA', textDecoration: 'none', fontWeight: 600 }}>Subscribe to DHLM Studio Weekly →</a>
+        <div style={{ marginTop: 32, paddingTop: 24, borderTop: '1px solid #E8E8E4', textAlign: 'center' }}>
+          <a href="/" style={{ fontSize: 13, color: '#2D2F8F', textDecoration: 'none', fontWeight: 600 }}>Subscribe to DHLM Studio Weekly →</a>
         </div>
 
-        <div style={{ marginTop: 40, padding: '20px 22px', borderRadius: 14, background: '#111827', border: '1px solid #1E293B', textAlign: 'center' }}>
+        <div style={{ marginTop: 40, padding: '20px 22px', borderRadius: 14, background: '#FAFAF8', border: '1px solid #E8E8E4', textAlign: 'center' }}>
           <div style={{ fontFamily: 'var(--mono)', fontSize: 10, fontWeight: 800, color: series.fg, letterSpacing: 2, marginBottom: 6 }}>🧠 DHLM STUDIO — {series.label}</div>
-          <div style={{ fontSize: 9, color: '#475569', lineHeight: 1.6 }}>
+          <div style={{ fontSize: 9, color: '#8A929C', lineHeight: 1.6 }}>
             For informational and educational purposes only. Not financial advice.
           </div>
         </div>

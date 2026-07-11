@@ -1,4 +1,4 @@
-'use client';
+﻿'use client';
 /**
  * BeafRadarChart — renders a Recharts RadarChart for axis scores.
  * Accepts normalized scores (0–100 per axis) extracted from report body.
@@ -23,7 +23,7 @@ interface Props {
 
 function gradeColor(score: number): string {
   if (score >= 80) return '#00D474';
-  if (score >= 65) return '#60A5FA';
+  if (score >= 65) return '#2D2F8F';
   if (score >= 50) return '#D4A843';
   return '#C73E3A';
 }
@@ -43,9 +43,9 @@ const CustomTooltip = ({ active, payload }: any) => {
   if (!active || !payload?.length) return null;
   const d: BeafAxisScore = payload[0]?.payload;
   return (
-    <div style={{ background: '#0D1117', border: '1px solid #1E293B', borderRadius: 6, padding: '6px 10px', fontSize: 10, fontFamily: 'var(--mono)' }}>
-      <div style={{ color: '#94A3B8' }}>{d.axis}</div>
-      <div style={{ color: '#F1F5F9', fontWeight: 700 }}>{d.raw} / {d.max}</div>
+    <div style={{ background: '#FAFAF8', border: '1px solid #E8E8E4', borderRadius: 6, padding: '6px 10px', fontSize: 10, fontFamily: 'var(--mono)' }}>
+      <div style={{ color: '#5B6470' }}>{d.axis}</div>
+      <div style={{ color: '#16161A', fontWeight: 700 }}>{d.raw} / {d.max}</div>
     </div>
   );
 };
@@ -60,14 +60,14 @@ export default function BeafRadarChart({ scores, totalScore, grade }: Props) {
   }));
 
   return (
-    <div style={{ background: '#0D1117', borderRadius: 14, padding: '16px', border: '1px solid #1E293B', marginBottom: 24 }}>
+    <div style={{ background: '#FAFAF8', borderRadius: 14, padding: '16px', border: '1px solid #E8E8E4', marginBottom: 24 }}>
       <div style={{ display: 'flex', alignItems: 'center', justifyContent: 'space-between', marginBottom: 8 }}>
-        <div style={{ fontFamily: 'var(--mono)', fontSize: 9, fontWeight: 800, color: '#475569', letterSpacing: 1.5 }}>
+        <div style={{ fontFamily: 'var(--mono)', fontSize: 9, fontWeight: 800, color: '#8A929C', letterSpacing: 1.5 }}>
           ANALYSIS FRAMEWORK
         </div>
         <div style={{ display: 'flex', alignItems: 'baseline', gap: 6 }}>
           <span style={{ fontFamily: 'var(--mono)', fontSize: 22, fontWeight: 900, color, lineHeight: 1 }}>{totalScore}</span>
-          <span style={{ fontFamily: 'var(--mono)', fontSize: 11, color: '#64748B' }}>/100</span>
+          <span style={{ fontFamily: 'var(--mono)', fontSize: 11, color: '#8A929C' }}>/100</span>
           <span style={{ fontFamily: 'var(--mono)', fontSize: 13, fontWeight: 700, color, marginLeft: 4 }}>({grade})</span>
         </div>
       </div>
@@ -79,7 +79,7 @@ export default function BeafRadarChart({ scores, totalScore, grade }: Props) {
             <PolarGrid stroke="#1E293B" />
             <PolarAngleAxis
               dataKey="axis"
-              tick={{ fontSize: 9, fill: '#64748B', fontFamily: 'var(--mono)', fontWeight: 700 }}
+              tick={{ fontSize: 9, fill: '#8A929C', fontFamily: 'var(--mono)', fontWeight: 700 }}
             />
             <PolarRadiusAxis domain={[0, 100]} angle={90} tick={false} axisLine={false} />
             <Tooltip content={<CustomTooltip />} />
@@ -94,15 +94,15 @@ export default function BeafRadarChart({ scores, totalScore, grade }: Props) {
             return (
               <div key={s.axis} style={{ display: 'flex', flexDirection: 'column', gap: 2 }}>
                 <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'baseline' }}>
-                  <span style={{ fontFamily: 'var(--mono)', fontSize: 8, color: '#64748B', letterSpacing: 0.5 }}>
+                  <span style={{ fontFamily: 'var(--mono)', fontSize: 8, color: '#8A929C', letterSpacing: 0.5 }}>
                     {AXIS_LABEL[s.axis] ?? s.axis}
                   </span>
-                  <span style={{ fontFamily: 'var(--mono)', fontSize: 9, fontWeight: 700, color: '#E2E8F0' }}>
+                  <span style={{ fontFamily: 'var(--mono)', fontSize: 9, fontWeight: 700, color: '#16161A' }}>
                     {s.raw}/{s.max}
                   </span>
                 </div>
                 {/* Mini progress bar */}
-                <div style={{ height: 3, background: '#1E293B', borderRadius: 2, overflow: 'hidden' }}>
+                <div style={{ height: 3, background: '#FFFFFF', borderRadius: 2, overflow: 'hidden' }}>
                   <div style={{ height: '100%', width: `${pct}%`, background: color, borderRadius: 2 }} />
                 </div>
               </div>

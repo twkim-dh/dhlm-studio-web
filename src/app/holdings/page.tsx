@@ -34,7 +34,7 @@ export default function HoldingsPage() {
 
         {/* Header */}
         <div style={{ marginBottom: 48 }}>
-          <p style={{ fontFamily: "var(--mono)", fontSize: 11, color: "#3B4A99", fontWeight: 600, letterSpacing: 2, marginBottom: 12, textTransform: "uppercase" }}>Holdings</p>
+          <p style={{ fontFamily: "var(--mono)", fontSize: 11, color: "#2D2F8F", fontWeight: 600, letterSpacing: 2, marginBottom: 12, textTransform: "uppercase" }}>Holdings</p>
           <h1 style={{ fontFamily: "var(--serif)", fontSize: 32, fontWeight: 800, color: "#1A1D21", lineHeight: 1.2, marginBottom: 16 }}>
             What I Own and Why
           </h1>
@@ -53,7 +53,7 @@ export default function HoldingsPage() {
             {HOLDINGS.map(h => (
               <div key={h.ticker} style={{ display: "flex", alignItems: "flex-start", gap: 20, padding: "18px 0", borderBottom: "1px solid #F0F2F4" }}>
                 <div style={{ minWidth: 64 }}>
-                  <span style={{ fontFamily: "var(--mono)", fontSize: 14, fontWeight: 700, color: "#3B4A99" }}>{h.ticker}</span>
+                  <span style={{ fontFamily: "var(--mono)", fontSize: 14, fontWeight: 700, color: "#2D2F8F" }}>{h.ticker}</span>
                 </div>
                 <div style={{ flex: 1 }}>
                   <div style={{ fontSize: 14, fontWeight: 600, color: "#1A1D21", marginBottom: 4 }}>{h.name}</div>
@@ -85,7 +85,7 @@ export default function HoldingsPage() {
           <ul style={{ display: "flex", flexDirection: "column", gap: 12, paddingLeft: 0, listStyle: "none" }}>
             {PHILOSOPHY.map((p, i) => (
               <li key={i} style={{ display: "flex", gap: 12, alignItems: "flex-start" }}>
-                <span style={{ color: "#3B4A99", fontSize: 14, lineHeight: 1.6, flexShrink: 0 }}>—</span>
+                <span style={{ color: "#2D2F8F", fontSize: 14, lineHeight: 1.6, flexShrink: 0 }}>—</span>
                 <span style={{ fontSize: 14, color: "#5B6470", lineHeight: 1.6 }}>{p}</span>
               </li>
             ))}

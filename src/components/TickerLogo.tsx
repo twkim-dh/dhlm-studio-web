@@ -1,4 +1,4 @@
-'use client';
+﻿'use client';
 
 // TickerLogo — renders a company logo for the given ticker.
 // Priority: 1) /images/logos/{TICKER}.png (static, no CDN)
@@ -37,7 +37,7 @@ export default function TickerLogo({ ticker, size = 24, rounded = true }: Props)
       <div
         style={{
           width: size, height: size, borderRadius: Math.max(4, Math.round(size * 0.2)),
-          background: '#1e293b', flexShrink: 0,
+          background: '#FFFFFF', flexShrink: 0,
           display: 'inline-flex', alignItems: 'center', justifyContent: 'center',
         }}
       />
@@ -105,7 +105,7 @@ export default function TickerLogo({ ticker, size = 24, rounded = true }: Props)
           background: tickerBgColor(ticker),
           display: 'inline-flex', alignItems: 'center', justifyContent: 'center',
           fontSize: Math.max(9, Math.round(size * 0.44)), fontWeight: 800,
-          color: '#F1F5F9', fontFamily: 'var(--mono)',
+          color: '#16161A', fontFamily: 'var(--mono)',
           flexShrink: 0, letterSpacing: -0.5,
         }}
       >
@@ -116,8 +116,8 @@ export default function TickerLogo({ ticker, size = 24, rounded = true }: Props)
 
   const containerBg =
     bg === 'white' ? '#ffffff' :
-    bg === 'dark'  ? '#111827' :
-    '#111827';
+    bg === 'dark'  ? '#FAFAF8' :
+    '#FAFAF8';
 
   return (
     <div

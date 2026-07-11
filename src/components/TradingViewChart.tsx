@@ -47,7 +47,7 @@ export default function TradingViewChart({ ticker, exchange }: Props) {
         theme: 'dark',
         style: '1',
         locale: 'en',
-        toolbar_bg: '#111827',
+        toolbar_bg: '#FAFAF8',
         enable_publishing: false,
         hide_top_toolbar: false,
         hide_legend: false,
@@ -72,7 +72,7 @@ export default function TradingViewChart({ ticker, exchange }: Props) {
   }, [symbol, containerId]);
 
   return (
-    <div style={{ height: 420, borderRadius: 8, overflow: 'hidden', background: '#0D1117' }}>
+    <div style={{ height: 420, borderRadius: 8, overflow: 'hidden', background: '#FAFAF8' }}>
       <div id={containerId} style={{ height: '100%', width: '100%' }} />
     </div>
   );

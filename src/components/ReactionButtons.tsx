@@ -57,8 +57,8 @@ export default function ReactionButtons({ ticker }: { ticker: string }) {
               padding: '5px 10px', borderRadius: 16, fontSize: 10, cursor: isDisabled ? 'default' : 'pointer',
               display: 'flex', alignItems: 'center', gap: 4,
               background: isSelected ? '#C73E3A18' : '#1F2937',
-              border: isSelected ? '1px solid #C73E3A40' : '1px solid #374151',
-              color: isSelected ? '#C73E3A' : isDisabled ? '#475569' : '#94A3B8',
+              border: isSelected ? '1px solid #C73E3A40' : '1px solid #E8E8E4',
+              color: isSelected ? '#C73E3A' : isDisabled ? '#8A929C' : '#5B6470',
               opacity: isDisabled ? 0.5 : 1,
               transition: 'all 0.2s',
             }}>

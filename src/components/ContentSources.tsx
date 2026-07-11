@@ -12,8 +12,8 @@ export default function ContentSources({ sources }: Props) {
       marginTop: 40,
       padding: '20px 22px',
       borderRadius: 10,
-      background: '#0D1117',
-      border: '1px solid #1E293B',
+      background: '#FAFAF8',
+      border: '1px solid #E8E8E4',
     }}>
       <div style={{
         fontFamily: 'var(--mono)',
@@ -25,7 +25,7 @@ export default function ContentSources({ sources }: Props) {
       }}>
         PRIMARY SOURCES
       </div>
-      <p style={{ fontSize: 11, color: '#475569', lineHeight: 1.6, margin: '0 0 12px' }}>
+      <p style={{ fontSize: 11, color: '#8A929C', lineHeight: 1.6, margin: '0 0 12px' }}>
         All quantitative claims in this report are verifiable against the following primary sources.
         All claims are verified against primary sources, not secondary aggregators.
       </p>
@@ -38,8 +38,8 @@ export default function ContentSources({ sources }: Props) {
             return (
               <li key={i} style={{ display: 'flex', gap: 8, alignItems: 'flex-start' }}>
                 <span style={{ color: '#3B82F6', fontSize: 10, flexShrink: 0, marginTop: 2 }}>▸</span>
-                <span style={{ fontSize: 11, color: '#64748B', lineHeight: 1.6 }}>
-                  <strong style={{ color: '#94A3B8' }}>{urlMatch[1]}</strong>
+                <span style={{ fontSize: 11, color: '#8A929C', lineHeight: 1.6 }}>
+                  <strong style={{ color: '#5B6470' }}>{urlMatch[1]}</strong>
                   {' — '}{urlMatch[2]}
                   {' — '}
                   <a href={urlMatch[3]} target="_blank" rel="noopener noreferrer" style={{ color: '#3B82F6', textDecoration: 'none' }}>
@@ -53,8 +53,8 @@ export default function ContentSources({ sources }: Props) {
             return (
               <li key={i} style={{ display: 'flex', gap: 8, alignItems: 'flex-start' }}>
                 <span style={{ color: '#3B82F6', fontSize: 10, flexShrink: 0, marginTop: 2 }}>▸</span>
-                <span style={{ fontSize: 11, color: '#64748B', lineHeight: 1.6 }}>
-                  <strong style={{ color: '#94A3B8' }}>{urlShort[1]}</strong>
+                <span style={{ fontSize: 11, color: '#8A929C', lineHeight: 1.6 }}>
+                  <strong style={{ color: '#5B6470' }}>{urlShort[1]}</strong>
                   {' — '}
                   <a href={urlShort[2]} target="_blank" rel="noopener noreferrer" style={{ color: '#3B82F6', textDecoration: 'none' }}>
                     {urlShort[2].replace(/^https?:\/\//, '').split('/')[0]}
@@ -66,12 +66,12 @@ export default function ContentSources({ sources }: Props) {
           return (
             <li key={i} style={{ display: 'flex', gap: 8, alignItems: 'flex-start' }}>
               <span style={{ color: '#3B82F6', fontSize: 10, flexShrink: 0, marginTop: 2 }}>▸</span>
-              <span style={{ fontSize: 11, color: '#94A3B8', lineHeight: 1.6 }}>{src}</span>
+              <span style={{ fontSize: 11, color: '#5B6470', lineHeight: 1.6 }}>{src}</span>
             </li>
           );
         })}
       </ul>
-      <p style={{ fontSize: 10, color: '#334155', lineHeight: 1.6, margin: '12px 0 0' }}>
+      <p style={{ fontSize: 10, color: '#8A929C', lineHeight: 1.6, margin: '12px 0 0' }}>
         See also:{' '}
         <Link href="/editorial#beaf" style={{ color: '#3B82F6', textDecoration: 'none' }}>Analysis Framework methodology</Link>
         {' · '}

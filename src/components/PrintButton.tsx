@@ -11,8 +11,8 @@ export default function PrintButton() {
         display: 'inline-flex', alignItems: 'center', gap: 6,
         fontFamily: 'var(--mono)', fontSize: 11, fontWeight: 700,
         padding: '8px 14px', borderRadius: 8, cursor: 'pointer',
-        background: '#111827', border: '1px solid #1E293B',
-        color: '#94A3B8',
+        background: '#FAFAF8', border: '1px solid #E8E8E4',
+        color: '#5B6470',
       }}
       title="Save as PDF"
     >

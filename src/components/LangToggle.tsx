@@ -12,7 +12,7 @@ export function LangToggle({ lang, onChange }: { lang: Lang; onChange: (l: Lang)
           onClick={() => onChange(l)}
           style={{
             padding: "5px 12px",
-            background: lang === l ? "#3B4A99" : "#FFFFFF",
+            background: lang === l ? "#2D2F8F" : "#FFFFFF",
             color: lang === l ? "#FFFFFF" : "#8A929C",
             border: "none",
             cursor: "pointer",

@@ -1,4 +1,4 @@
-'use client';
+﻿'use client';
 
 import { useState, useEffect, useRef, useCallback } from 'react';
 import { useRouter } from 'next/navigation';
@@ -187,8 +187,8 @@ export default function SearchModal({ onClose }: { onClose: () => void }) {
         style={{
           position: 'fixed', top: '10vh', left: '50%', transform: 'translateX(-50%)',
           zIndex: 401, width: '100%', maxWidth: 620,
-          background: '#111827',
-          border: '1px solid #1E293B',
+          background: '#FAFAF8',
+          border: '1px solid #E8E8E4',
           borderRadius: 14,
           boxShadow: '0 24px 64px rgba(0,0,0,0.6)',
           display: 'flex', flexDirection: 'column',
@@ -200,12 +200,12 @@ export default function SearchModal({ onClose }: { onClose: () => void }) {
         <div style={{
           display: 'flex', alignItems: 'center', gap: 10,
           padding: '14px 16px',
-          borderBottom: query ? '1px solid #1E293B' : 'none',
+          borderBottom: query ? '1px solid #E8E8E4' : 'none',
           flexShrink: 0,
         }}>
           <svg width="16" height="16" viewBox="0 0 16 16" fill="none" style={{ flexShrink: 0, opacity: 0.5 }}>
-            <circle cx="6.5" cy="6.5" r="5" stroke="#94A3B8" strokeWidth="1.5"/>
-            <path d="M10.5 10.5L14 14" stroke="#94A3B8" strokeWidth="1.5" strokeLinecap="round"/>
+            <circle cx="6.5" cy="6.5" r="5" stroke="#5B6470" strokeWidth="1.5"/>
+            <path d="M10.5 10.5L14 14" stroke="#5B6470" strokeWidth="1.5" strokeLinecap="round"/>
           </svg>
           <input
             ref={inputRef}
@@ -215,14 +215,14 @@ export default function SearchModal({ onClose }: { onClose: () => void }) {
             placeholder="Search reports, blog, lessons..."
             style={{
               flex: 1, background: 'none', border: 'none', outline: 'none',
-              color: '#F1F5F9', fontSize: 15, fontFamily: 'var(--sans)',
+              color: '#16161A', fontSize: 15, fontFamily: 'var(--sans)',
               caretColor: '#C73E3A',
             }}
           />
           {query && (
             <button
               onClick={() => setQuery('')}
-              style={{ background: 'none', border: 'none', cursor: 'pointer', color: '#475569', fontSize: 18, lineHeight: 1, padding: '0 4px' }}
+              style={{ background: 'none', border: 'none', cursor: 'pointer', color: '#8A929C', fontSize: 18, lineHeight: 1, padding: '0 4px' }}
               aria-label="Clear"
             >
               ×
@@ -231,8 +231,8 @@ export default function SearchModal({ onClose }: { onClose: () => void }) {
           <button
             onClick={onClose}
             style={{
-              background: '#1E293B', border: 'none', cursor: 'pointer',
-              color: '#64748B', fontSize: 11, padding: '4px 8px',
+              background: '#FFFFFF', border: 'none', cursor: 'pointer',
+              color: '#8A929C', fontSize: 11, padding: '4px 8px',
               borderRadius: 5, fontFamily: 'var(--mono)', letterSpacing: 0.5,
               flexShrink: 0,
             }}
@@ -247,7 +247,7 @@ export default function SearchModal({ onClose }: { onClose: () => void }) {
           {!query && (
             <div style={{ padding: '32px 24px', textAlign: 'center' }}>
               <div style={{ fontSize: 28, marginBottom: 10 }}>🔍</div>
-              <div style={{ fontSize: 13, color: '#475569', fontFamily: 'var(--sans)' }}>
+              <div style={{ fontSize: 13, color: '#8A929C', fontFamily: 'var(--sans)' }}>
                 Search across {index.length} reports, blog posts, and lessons
               </div>
               <div style={{ marginTop: 14, display: 'flex', gap: 8, justifyContent: 'center', flexWrap: 'wrap' }}>
@@ -256,8 +256,8 @@ export default function SearchModal({ onClose }: { onClose: () => void }) {
                     key={hint}
                     onClick={() => setQuery(hint)}
                     style={{
-                      background: '#1E293B', border: '1px solid #334155', borderRadius: 6,
-                      padding: '4px 10px', fontSize: 11, color: '#64748B',
+                      background: '#FFFFFF', border: '1px solid #E8E8E4', borderRadius: 6,
+                      padding: '4px 10px', fontSize: 11, color: '#8A929C',
                       fontFamily: 'var(--mono)', cursor: 'pointer', letterSpacing: 0.5,
                     }}
                   >
@@ -271,11 +271,11 @@ export default function SearchModal({ onClose }: { onClose: () => void }) {
           {/* No results */}
           {query && !hasResults && debouncedQuery === query && (
             <div style={{ padding: '40px 24px', textAlign: 'center' }}>
-              <div style={{ fontSize: 13, color: '#475569', fontFamily: 'var(--sans)' }}>
+              <div style={{ fontSize: 13, color: '#8A929C', fontFamily: 'var(--sans)' }}>
                 No results found for{' '}
-                <span style={{ color: '#94A3B8', fontWeight: 600 }}>"{query}"</span>
+                <span style={{ color: '#5B6470', fontWeight: 600 }}>"{query}"</span>
               </div>
-              <div style={{ fontSize: 11, color: '#334155', marginTop: 6 }}>Try a different keyword or check spelling.</div>
+              <div style={{ fontSize: 11, color: '#8A929C', marginTop: 6 }}>Try a different keyword or check spelling.</div>
             </div>
           )}
 
@@ -297,7 +297,7 @@ export default function SearchModal({ onClose }: { onClose: () => void }) {
                   </span>
                   <span style={{
                     fontSize: 9, fontFamily: 'var(--mono)', fontWeight: 700,
-                    color: '#334155', background: '#1E293B', borderRadius: 4,
+                    color: '#8A929C', background: '#FFFFFF', borderRadius: 4,
                     padding: '1px 5px',
                   }}>
                     {group.length}
@@ -326,7 +326,7 @@ export default function SearchModal({ onClose }: { onClose: () => void }) {
                       <span style={{ fontSize: 16, flexShrink: 0, marginTop: 1 }}>{icon}</span>
                       <div style={{ flex: 1, minWidth: 0 }}>
                         <div style={{
-                          fontSize: 13, fontWeight: 600, color: isActive ? '#F1F5F9' : '#CBD5E1',
+                          fontSize: 13, fontWeight: 600, color: isActive ? '#16161A' : '#374151',
                           fontFamily: 'var(--sans)', lineHeight: 1.3,
                           overflow: 'hidden', textOverflow: 'ellipsis', whiteSpace: 'nowrap',
                         }}>
@@ -340,14 +340,14 @@ export default function SearchModal({ onClose }: { onClose: () => void }) {
                             {r.item.subCategory}
                           </span>
                           {r.item.publishDate && (
-                            <span style={{ fontSize: 9, color: '#334155', fontFamily: 'var(--mono)' }}>
+                            <span style={{ fontSize: 9, color: '#8A929C', fontFamily: 'var(--mono)' }}>
                               {r.item.publishDate}
                             </span>
                           )}
                         </div>
                         {r.item.excerpt && (
                           <div style={{
-                            fontSize: 11, color: '#475569', marginTop: 3,
+                            fontSize: 11, color: '#8A929C', marginTop: 3,
                             overflow: 'hidden', display: '-webkit-box',
                             WebkitLineClamp: 1, WebkitBoxOrient: 'vertical',
                             fontFamily: 'var(--sans)',
@@ -357,7 +357,7 @@ export default function SearchModal({ onClose }: { onClose: () => void }) {
                         )}
                       </div>
                       {isActive && (
-                        <span style={{ fontSize: 9, color: '#334155', fontFamily: 'var(--mono)', flexShrink: 0, marginTop: 3 }}>↵</span>
+                        <span style={{ fontSize: 9, color: '#8A929C', fontFamily: 'var(--mono)', flexShrink: 0, marginTop: 3 }}>↵</span>
                       )}
                     </button>
                   );
@@ -370,14 +370,14 @@ export default function SearchModal({ onClose }: { onClose: () => void }) {
           {hasResults && (
             <div style={{
               padding: '10px 16px',
-              borderTop: '1px solid #1E293B',
+              borderTop: '1px solid #E8E8E4',
               display: 'flex', justifyContent: 'space-between', alignItems: 'center',
               flexShrink: 0,
             }}>
-              <div style={{ fontSize: 9, color: '#334155', fontFamily: 'var(--mono)' }}>
+              <div style={{ fontSize: 9, color: '#8A929C', fontFamily: 'var(--mono)' }}>
                 {totalCount} result{totalCount !== 1 ? 's' : ''}
               </div>
-              <div style={{ fontSize: 9, color: '#334155', fontFamily: 'var(--mono)', display: 'flex', gap: 10 }}>
+              <div style={{ fontSize: 9, color: '#8A929C', fontFamily: 'var(--mono)', display: 'flex', gap: 10 }}>
                 <span>↑↓ navigate</span>
                 <span>↵ open</span>
                 <span>esc close</span>

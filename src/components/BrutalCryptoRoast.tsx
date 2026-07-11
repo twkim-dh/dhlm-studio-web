@@ -13,14 +13,14 @@ export default function BrutalCryptoRoast({ symbol }: { symbol: string }) {
   };
 
   return (
-    <div style={{ background: '#111827', borderRadius: 14, border: '1px solid #1E293B', marginBottom: 16, overflow: 'hidden' }}>
-      <div style={{ padding: '14px 18px', borderBottom: revealed ? '1px solid #1E293B' : 'none' }}>
+    <div style={{ background: '#FAFAF8', borderRadius: 14, border: '1px solid #E8E8E4', marginBottom: 16, overflow: 'hidden' }}>
+      <div style={{ padding: '14px 18px', borderBottom: revealed ? '1px solid #E8E8E4' : 'none' }}>
         <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center' }}>
-          <div style={{ fontFamily: 'var(--mono)', fontSize: 9, fontWeight: 700, color: '#3B4A99', letterSpacing: 2 }}>DHLM TAKE</div>
+          <div style={{ fontFamily: 'var(--mono)', fontSize: 9, fontWeight: 700, color: '#2D2F8F', letterSpacing: 2 }}>DHLM TAKE</div>
           {!revealed && (
             <button onClick={generate} style={{
               padding: '6px 14px', borderRadius: 8, border: 'none', cursor: 'pointer',
-              background: '#3B4A99', color: '#fff',
+              background: '#2D2F8F', color: '#fff',
               fontSize: 11, fontWeight: 700,
             }}>
               Get the Take
@@ -35,11 +35,11 @@ export default function BrutalCryptoRoast({ symbol }: { symbol: string }) {
       </div>
       {revealed && roast && (
         <div style={{ padding: '14px 18px' }}>
-          <p style={{ fontSize: 13, color: '#E2E8F0', lineHeight: 1.8, fontStyle: 'italic', margin: 0 }}>
+          <p style={{ fontSize: 13, color: '#16161A', lineHeight: 1.8, fontStyle: 'italic', margin: 0 }}>
             &ldquo;{roast.roast}&rdquo;
           </p>
           <div style={{ padding: '6px 12px', borderTop: '1px solid #1F2937', marginTop: 12, background: '#0D111780' }}>
-            <p style={{ fontSize: 8, color: '#475569', margin: 0, textAlign: 'center' }}>🤖 Informational and educational commentary. NOT investment advice.</p>
+            <p style={{ fontSize: 8, color: '#8A929C', margin: 0, textAlign: 'center' }}>🤖 Informational and educational commentary. NOT investment advice.</p>
           </div>
         </div>
       )}

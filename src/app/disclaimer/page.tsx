@@ -90,21 +90,21 @@ const sections = [
 
 export default function DisclaimerPage() {
   return (
-    <div style={{ background: '#0B0F19', minHeight: '100vh' }}>
+    <div style={{ background: '#FFFFFF', minHeight: '100vh' }}>
       <article style={{ maxWidth: 680, margin: '0 auto', padding: '80px 24px' }}>
-        <Link href="/" style={{ fontSize: 12, color: '#64748B', textDecoration: 'none' }}>← Home</Link>
+        <Link href="/" style={{ fontSize: 12, color: '#8A929C', textDecoration: 'none' }}>← Home</Link>
 
         <div style={{ marginTop: 20, marginBottom: 8 }}>
-          <div style={{ fontFamily: 'var(--mono)', fontSize: 10, fontWeight: 700, color: '#64748B', letterSpacing: 3, marginBottom: 8 }}>LEGAL</div>
-          <h1 style={{ fontFamily: 'var(--serif)', fontSize: 32, fontWeight: 900, color: '#F1F5F9', margin: '0 0 8px' }}>Financial Disclaimer</h1>
-          <p style={{ fontFamily: 'var(--sans)', fontSize: 13, color: '#475569', marginBottom: 32 }}>Last Updated: May 1, 2026</p>
+          <div style={{ fontFamily: 'var(--mono)', fontSize: 10, fontWeight: 700, color: '#8A929C', letterSpacing: 3, marginBottom: 8 }}>LEGAL</div>
+          <h1 style={{ fontFamily: 'var(--serif)', fontSize: 32, fontWeight: 400, color: '#16161A', margin: '0 0 8px' }}>Financial Disclaimer</h1>
+          <p style={{ fontFamily: 'var(--sans)', fontSize: 13, color: '#8A929C', marginBottom: 32 }}>Last Updated: May 1, 2026</p>
         </div>
 
         {/* Highlighted summary */}
         <div style={{ background: '#C73E3A10', border: '1px solid #C73E3A30', borderRadius: 10, padding: '16px 20px', marginBottom: 36 }}>
           <div style={{ fontFamily: 'var(--mono)', fontSize: 9, fontWeight: 800, color: '#C73E3A', letterSpacing: 2, marginBottom: 8 }}>⚠ IMPORTANT NOTICE</div>
-          <p style={{ fontFamily: 'var(--sans)', fontSize: 13, color: '#94A3B8', lineHeight: 1.7, margin: 0 }}>
-            All content published on this site is for <strong style={{ color: '#E2E8F0' }}>educational and informational purposes only</strong>.
+          <p style={{ fontFamily: 'var(--sans)', fontSize: 13, color: '#5B6470', lineHeight: 1.7, margin: 0 }}>
+            All content published on this site is for <strong style={{ color: '#16161A' }}>educational and informational purposes only</strong>.
             Nothing constitutes investment advice, a recommendation to buy or sell any security, or personalized financial guidance.
             All investment decisions are made at the reader&apos;s own risk.
           </p>
@@ -112,33 +112,33 @@ export default function DisclaimerPage() {
 
         {sections.map(s => (
           <div key={s.h} style={{ marginBottom: 28 }}>
-            <h2 style={{ fontFamily: 'var(--sans)', fontSize: 16, fontWeight: 700, color: '#E2E8F0', marginBottom: 8, marginTop: 0 }}>{s.h}</h2>
+            <h2 style={{ fontFamily: 'var(--sans)', fontSize: 16, fontWeight: 700, color: '#16161A', marginBottom: 8, marginTop: 0 }}>{s.h}</h2>
             {'prefix' in s && s.prefix && (
-              <p style={{ fontFamily: 'var(--sans)', fontSize: 14, color: '#94A3B8', lineHeight: 1.8, marginBottom: 8, marginTop: 0 }}>{s.prefix}</p>
+              <p style={{ fontFamily: 'var(--sans)', fontSize: 14, color: '#5B6470', lineHeight: 1.8, marginBottom: 8, marginTop: 0 }}>{s.prefix}</p>
             )}
             {s.b && (
-              <p style={{ fontFamily: 'var(--sans)', fontSize: 14, color: '#94A3B8', lineHeight: 1.8, margin: 0 }}>{s.b}</p>
+              <p style={{ fontFamily: 'var(--sans)', fontSize: 14, color: '#5B6470', lineHeight: 1.8, margin: 0 }}>{s.b}</p>
             )}
             {'list' in s && s.list && (
               <ul style={{ margin: 0, paddingLeft: 22 }}>
                 {s.list.map(item => (
-                  <li key={item} style={{ fontFamily: 'var(--sans)', fontSize: 14, color: '#94A3B8', lineHeight: 1.8, marginBottom: 4 }}>{item}</li>
+                  <li key={item} style={{ fontFamily: 'var(--sans)', fontSize: 14, color: '#5B6470', lineHeight: 1.8, marginBottom: 4 }}>{item}</li>
                 ))}
               </ul>
             )}
             {'contact' in s && s.contact && (
-              <p style={{ fontFamily: 'var(--sans)', fontSize: 14, color: '#94A3B8', lineHeight: 1.8, margin: 0 }}>
+              <p style={{ fontFamily: 'var(--sans)', fontSize: 14, color: '#5B6470', lineHeight: 1.8, margin: 0 }}>
                 For questions regarding this Financial Disclaimer, contact us through our{' '}
-                <Link href="/contact" style={{ color: '#60A5FA', textDecoration: 'none' }}>Contact page</Link>.
+                <Link href="/contact" style={{ color: '#2D2F8F', textDecoration: 'none' }}>Contact page</Link>.
               </p>
             )}
           </div>
         ))}
 
-        <div style={{ marginTop: 40, padding: '14px 18px', borderRadius: 8, border: '1px solid #1E293B', background: '#111827' }}>
-          <p style={{ fontFamily: 'var(--sans)', fontSize: 12, color: '#475569', margin: 0, lineHeight: 1.7 }}>
+        <div style={{ marginTop: 40, padding: '14px 18px', borderRadius: 8, border: '1px solid #E8E8E4', background: '#FAFAF8' }}>
+          <p style={{ fontFamily: 'var(--sans)', fontSize: 12, color: '#8A929C', margin: 0, lineHeight: 1.7 }}>
             This Financial Disclaimer is effective as of May 1, 2026, and may be updated from time to time. The most recent version is always available at this URL.
-            See also: <Link href="/editorial" style={{ color: '#60A5FA', textDecoration: 'none' }}>Editorial Standards</Link> · <Link href="/terms" style={{ color: '#60A5FA', textDecoration: 'none' }}>Terms of Service</Link> · <Link href="/privacy" style={{ color: '#60A5FA', textDecoration: 'none' }}>Privacy Policy</Link>
+            See also: <Link href="/editorial" style={{ color: '#2D2F8F', textDecoration: 'none' }}>Editorial Standards</Link> · <Link href="/terms" style={{ color: '#2D2F8F', textDecoration: 'none' }}>Terms of Service</Link> · <Link href="/privacy" style={{ color: '#2D2F8F', textDecoration: 'none' }}>Privacy Policy</Link>
           </p>
         </div>
       </article>
