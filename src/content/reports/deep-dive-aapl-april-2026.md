@@ -7,9 +7,7 @@ date: "2026-04-03"
 readTime: "13 min"
 category: "Markets"
 catColor: "#00D474"
-grade: "B"
 heroImage: "/images/content/deep-dive-report.webp"
-beafScore: 77
 description: "Apple at $3.8T: $100B annual FCF, 2.2B device ecosystem, but iPhone growth at 4%. The subscription empire nobody notices. BEAF 77/100."
 seoTitle: "Apple BEAF 77/100: Is the Subscription Pivot Enough? | April 2026"
 seoDescription: "Apple scores 77/100 on BEAF. iPhone growth at just 4%. Services revenue $96B at 70% margin. 2.2B device ecosystem. Is on-device AI enough?"
@@ -58,9 +56,9 @@ Consumer Intelligence Research Partners (CIRP) estimates Apple's US customer ret
 
 The App Store's 30% commission on digital transactions has been challenged legally (Epic Games v. Apple, EU Digital Markets Act) but remains intact for the vast majority of transactions. Even if the commission drops to 20% — a plausible regulatory outcome over 3-5 years — the impact on Services revenue would be approximately $8-10B, or 8-10% of the segment.
 
-## Financial Analysis: BEAF Scoring
 
-### BEAF Score: 77/100 (B)
+
+
 
 | BEAF Axis | Score | Max | Evidence |
 |-----------|-------|-----|----------|
@@ -168,7 +166,7 @@ Applied multiple: 27x trough P/E. Market cap: $2.7T.
 
 ## DHLM Studio Verdict
 
-### BEAF Score: 77/100 — Grade: B
+
 
 $100 billion in annual free cash flow. $90 billion in annual buybacks. 2.2 billion devices. 93% customer retention. These are not metrics. These are fortifications. Apple's financials don't have weaknesses — they have areas that are merely excellent instead of extraordinary.
 

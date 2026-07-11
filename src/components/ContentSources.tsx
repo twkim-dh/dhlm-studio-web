@@ -73,7 +73,7 @@ export default function ContentSources({ sources }: Props) {
       </ul>
       <p style={{ fontSize: 10, color: '#334155', lineHeight: 1.6, margin: '12px 0 0' }}>
         See also:{' '}
-        <Link href="/editorial#beaf" style={{ color: '#3B82F6', textDecoration: 'none' }}>BEAF Framework methodology</Link>
+        <Link href="/editorial#beaf" style={{ color: '#3B82F6', textDecoration: 'none' }}>Analysis Framework methodology</Link>
         {' · '}
         <Link href="/disclaimer" style={{ color: '#3B82F6', textDecoration: 'none' }}>Financial Disclaimer</Link>
       </p>

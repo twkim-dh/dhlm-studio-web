@@ -9,8 +9,6 @@ heroImage: "/images/content/deep-dive-intc-great-repricing-hero.webp"
 readTime: "18 min"
 tags: ["DEEP-DIVE", "INTEL", "INTC", "AI-INFERENCE", "FOUNDRY", "CPU", "GAUDI", "US-MANUFACTURING", "SEMICONDUCTOR"]
 slug: "deep-dive-intc-great-repricing-april-2026"
-grade: "C+"
-beafScore: 65
 author: "DHLM Studio Team"
 ---
 

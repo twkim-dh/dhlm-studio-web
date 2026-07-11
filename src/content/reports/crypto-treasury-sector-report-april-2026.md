@@ -7,8 +7,6 @@ date: "2026-04-15"
 readTime: "20 min"
 category: "Special Report"
 catColor: "#F59E0B"
-grade: "—"
-beafScore: 0
 description: "Strategy, Bitmine, Metaplanet, Twenty One — a sector map for investors who want to know what they're actually buying. mNAV framework, BTC vs ETH treasury comparison, and the 5 risks that define this sector in 2026."
 type: "special-report"
 tickers: ["MSTR", "BMNR", "MARA", "XXI"]

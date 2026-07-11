@@ -7,9 +7,7 @@ date: "2026-04-05"
 readTime: "14 min"
 category: "Markets"
 catColor: "#00D474"
-grade: "C"
 heroImage: "/images/content/deep-dive-report.webp"
-beafScore: 61
 description: "AMD at $280B: Lisa Su's genius, MI350 progress, but always one step behind NVIDIA. BEAF Score 61/100."
 seoTitle: "AMD BEAF 61/100: Always Second in the AI Chip Race? | April 2026"
 seoDescription: "AMD scores 61/100 on BEAF. MI350 captured 8% AI training share. Server CPU share 33%. Is Lisa Su's roadmap enough to catch NVIDIA's CUDA moat?"
@@ -93,9 +91,9 @@ The reality: Embedded segment revenue dropped from $4.6B to $2B as post-pandemic
 
 Bull case: embedded is cyclical, and recovery will bring Xilinx revenue back to $4-5B+ with AI edge inference as a secular tailwind. Raymond James analyst Srini Pajjuri projected in a January 2026 report that "the embedded recovery should drive Xilinx-related revenue back to $4B+ by FY2028, implying a more reasonable 12x acquisition multiple." Bear case: AMD overpaid for a cyclical business at the peak, and the recovery will not justify the acquisition price.
 
-## Financial Analysis: BEAF Scoring
 
-### BEAF Score: 61/100 (C)
+
+
 
 | BEAF Axis | Score | Max | Evidence |
 |-----------|-------|-----|----------|
@@ -216,7 +214,7 @@ Counterpoint: the bear case values AMD at the semiconductor average multiple, wh
 
 ## DHLM Studio Verdict
 
-### BEAF Score: 61/100 — Grade: C
+
 
 Lisa Su has done everything right. She fixed the balance sheet. She delivered competitive products. She stole 25% of the server CPU market from Intel through pure engineering excellence. She built an AI GPU that actually works and is gaining real market share — 8%, up from 3% a year ago. She maintained margins through a brutal cyclical downturn. By any objective CEO scorecard, she gets an A+.
 

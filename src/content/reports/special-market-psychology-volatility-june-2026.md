@@ -14,7 +14,6 @@ readTime: "13 min"
 heroImage: "/images/reports/special-market-psychology-volatility-june-2026.webp"
 author: "DHLM Studio Team"
 byline: "DHLM Studio"
-reviewed: "Reviewed against BEAF Framework"
 audience: "U.S. investors holding high-volatility growth stocks — semiconductor, AI infrastructure, and quantum computing"
 tags: ["SPECIAL-REPORT", "MARKET-PSYCHOLOGY", "SEMICONDUCTOR", "AI-STOCKS", "QUANTUM-COMPUTING", "NASDAQ", "SOX", "NVDA", "MU", "AMD", "VOLATILITY", "BEHAVIORAL-FINANCE", "RISK-MANAGEMENT", "CPI", "FED-RATE-HIKE", "BROADCOM", "AVGO", "JOBS-REPORT"]
 sources: ["Bureau of Labor Statistics — May 2026 Employment Situation Summary", "Philadelphia Semiconductor Index (PHLX SOX)", "Nasdaq Composite daily price data", "Broadcom Q2 FY2026 Earnings Release"]

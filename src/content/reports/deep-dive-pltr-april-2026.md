@@ -7,9 +7,7 @@ date: "2026-04-06"
 readTime: "14 min"
 category: "Markets"
 catColor: "#00D474"
-grade: "D+"
 heroImage: "/images/content/deep-dive-report.webp"
-beafScore: 52
 description: "Palantir at $185B: 165x earnings, government AI, and AIP bootcamps. Brilliant or insane? BEAF Score 52/100."
 seoTitle: "Palantir BEAF 52/100: 165x P/E for $3B Revenue? | April 2026"
 seoDescription: "Palantir scores 52/100 on BEAF. 165x earnings. Government 55% of revenue. AIP bootcamps fueling commercial growth. Brilliant or bubble?"
@@ -88,9 +86,9 @@ These contracts have 5-10 year durations with renewal options. The switching cos
 
 Counterpoint: government contract concentration is a double-edged sword. Top 10 government customers represent approximately 45% of total revenue (Palantir 10-K). A single contract loss or budget cut in the wrong program has outsized impact. RBC Capital analyst Rishi Jaluria noted in a February 2026 report that "Palantir's customer concentration risk is among the highest in enterprise software — comparable to early-stage defense contractors, not mature software platforms."
 
-## Financial Analysis: BEAF Scoring
 
-### BEAF Score: 52/100 (D+)
+
+
 
 | BEAF Axis | Score | Max | Evidence |
 |-----------|-------|-----|----------|
@@ -207,7 +205,7 @@ Counterpoint to bear case: Palantir's government backlog and multi-year contract
 
 ## DHLM Studio Verdict
 
-### BEAF Score: 52/100 — Grade: D+
+
 
 Palantir might be the best company with the worst stock price in the S&P 500.
 

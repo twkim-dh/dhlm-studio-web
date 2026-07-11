@@ -71,7 +71,7 @@ async function sendWelcomeEmail(email: string): Promise<void> {
     ${[
       ['Anthropic: Private Investor Report', 'https://dhlm-studio.com/reports/anthropic-private-investor-report-april-2026', 'The $18.4B valuation case — who wins when trust becomes infrastructure.'],
       ['SpaceX IPO: The $1.75 Trillion Question', 'https://dhlm-studio.com/reports/spacex-ipo-special-report', 'The most anticipated private-to-public transition in history.'],
-      ['NVIDIA: Building the AI Factory', 'https://dhlm-studio.com/reports/deep-dive-nvda-april-2026', 'BEAF 83/100 — why NVIDIA is more defensible than it looks.'],
+      ['NVIDIA: Building the AI Factory', 'https://dhlm-studio.com/reports/deep-dive-nvda-april-2026', '83/100 — why NVIDIA is more defensible than it looks.'],
     ].map(([title, url, desc]) => `
     <table cellpadding="0" cellspacing="0" style="width:100%;margin-bottom:10px;background:#0D1117;border-radius:8px;border:1px solid #1E293B;">
       <tr><td style="padding:14px 16px;">

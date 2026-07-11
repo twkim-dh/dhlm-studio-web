@@ -7,9 +7,7 @@ date: "2026-04-17"
 readTime: "14 min"
 category: "Media"
 catColor: "#E50914"
-grade: "B-"
 heroImage: "/images/content/deepdive-nflx-april-2026-hero.webp"
-beafScore: 72
 description: "Netflix beat Q1 on every line. Revenue $12.25B. EPS $1.23. Ad revenue on track to double to $3B. Stock closed down 9.72%. The market is still valuing the old Netflix while the company is becoming something different."
 seoTitle: "Netflix Q1 2026: -9.72% Selloff That Misreads the Transition | DHLM Studio"
 seoDescription: "NFLX down 9.72% after beating Q1 estimates. Revenue $12.25B, EPS $1.23 (beat 62%), FCF $5.09B. Ad tier 60% of new signups. Is this a buying opportunity or early warning?"
@@ -258,9 +256,9 @@ The risk/reward asymmetry is reasonable, not exceptional. This isn't a deep valu
 
 ---
 
-## Financial Analysis: BEAF Scoring
 
-### BEAF Score: 72/100 (B-)
+
+
 
 | BEAF Axis | Score | Max | Evidence |
 |-----------|-------|-----|----------|
@@ -271,7 +269,7 @@ The risk/reward asymmetry is reasonable, not exceptional. This isn't a deep valu
 | **RISK** | 7 | 10 | Content amortization front-loaded, creating Q2 margin pressure. Subscriber transparency removed — health harder to verify. Gaming pillar unproven. WBD walk-away raises organic execution bar. Counterbalance: $2.8B termination fee de-risked one tail event; strong FCF generation provides buffer. |
 | **MOMENTUM** | 7 | 10 | Q1 beat on every line — yet stock closed −9.72% on earnings day. Temporary negative momentum driven by guidance pattern and Hastings departure, not fundamental deterioration. Full-year guidance unchanged. Ad tier 60% of new signups. Institutional thesis intact; near-term sentiment cautious. |
 
-### BEAF Score: 72/100 — Grade: B-
+
 
 Netflix scores solidly on Profitability and Moat but loses points on Growth (maturing revenue base) and Valuation (transition premium). The selloff creates a reasonable entry for investors who believe the engagement-to-monetization model transition succeeds.
 

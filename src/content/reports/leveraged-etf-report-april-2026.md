@@ -6,8 +6,6 @@ date: "2026-04-14"
 readTime: "14 min"
 category: "Markets"
 catColor: "#C73E3A"
-grade: "—"
-beafScore: 0
 description: "What leveraged ETFs actually do, when they work, and why long-term holding can go very right or very wrong. Daily-reset mechanics, volatility drag, and ETF-by-ETF analysis."
 type: "special-report"
 badge: "special"

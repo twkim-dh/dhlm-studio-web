@@ -22,11 +22,11 @@ export async function generateMetadata(
     title: page > 1
       ? `Reports — Page ${page} | DHLM Studio`
       : 'Reports — DHLM Studio Research | DHLM Studio',
-    description: 'In-depth stock and crypto analysis with BEAF scoring. 3,000+ word deep dives. Data-driven insights, not investment advice.',
+    description: 'In-depth stock and crypto analysis with scoring. 3,000+ word deep dives. Data-driven insights, not investment advice.',
     alternates: { canonical },
     openGraph: {
       title: 'DHLM Studio Reports',
-      description: 'In-depth stock and crypto analysis with BEAF scoring. 3,000+ word deep dives.',
+      description: 'In-depth stock and crypto analysis with scoring. 3,000+ word deep dives.',
       type: 'website',
       url: canonical,
     },
@@ -95,7 +95,7 @@ export default function ReportsPage() {
           <div style={{ fontFamily: 'var(--mono)', fontSize: 10, fontWeight: 700, color: '#3B4A99', letterSpacing: 3, marginBottom: 8 }}>DHLM STUDIO REPORTS</div>
           <h1 style={{ fontFamily: 'var(--serif)', fontSize: 28, fontWeight: 900, color: '#F1F5F9', margin: 0 }}>Deep Dive Analysis</h1>
           <p style={{ fontSize: 13, color: '#64748B', marginTop: 4 }}>
-            In-depth stock analysis with BEAF scoring — {all.length} Reports
+            In-depth stock analysis with {all.length} Reports
           </p>
         </div>
 

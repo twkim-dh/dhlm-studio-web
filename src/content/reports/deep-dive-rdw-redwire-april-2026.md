@@ -7,8 +7,6 @@ date: "2026-04-16"
 readTime: "15 min"
 category: "Deep Dive"
 catColor: "#3B82F6"
-grade: "D+"
-beafScore: 50
 heroImage: "/images/content/rdw-redwire-hero.webp"
 description: "Redwire at $9.91: $411.2M record backlog, Edge Autonomy UAS acquisition, ESA quantum-secure contract, $450-500M 2026 guidance. Real backlog. Real execution risk."
 type: "deep-dive"
@@ -131,9 +129,9 @@ Redwire occupies a unique position: the only listed small-cap that bridges space
 
 ---
 
-## Financial Analysis: BEAF Scoring
 
-### BEAF Score: 50/100 (D+)
+
+
 
 | BEAF Axis | Score | Max | Evidence |
 |-----------|-------|-----|----------|
@@ -144,7 +142,7 @@ Redwire occupies a unique position: the only listed small-cap that bridges space
 | **RISK** | 3 | 10 | Margin conversion failure is the single most critical risk — and it is unproven. Government procurement timing and continuing resolution exposure. Edge Autonomy integration complexity. Dilution risk: ATM issuance history; $130.2M liquidity is adequate but not abundant for an unprofitable company with acquisition-driven growth. Multi-domain execution (space + defense + Europe) at 1,300 employees raises operational risk. Highest risk profile in the Deep Dive coverage universe. |
 | **MOMENTUM** | 4 | 10 | −63% from 52-week high ($26.66 → $9.91). Strong Buy analyst consensus has not translated to price recovery. Defense sector narrative broadly positive (geopolitical tailwinds) but RDW-specific momentum weak. ESA quantum contract and UK office opening are credible near-term catalysts. Deduction: institutional ownership data and price action suggest the market is waiting for margin proof before re-engaging. |
 
-### BEAF Score: 50/100 — Grade: D+
+
 
 Reassessment trigger: FY2026 margin transition evidence (Q2/Q3 gross margin >10%, EBIT trend toward breakeven) would warrant re-scoring. Current grade reflects snapshot financial reality, not thesis rejection.
 

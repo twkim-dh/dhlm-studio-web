@@ -7,8 +7,6 @@ date: "2026-04-16"
 readTime: "20 min"
 category: "Special Report"
 catColor: "#C73E3A"
-grade: "—"
-beafScore: 0
 heroImage: "/images/content/new-space-hero.webp"
 description: "SpaceX, Rocket Lab, AST SpaceMobile, Intuitive Machines — where the money actually goes when launch gets cheap. Full New Space sector breakdown April 2026."
 type: "special-report"

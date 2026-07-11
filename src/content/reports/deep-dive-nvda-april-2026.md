@@ -7,8 +7,6 @@ date: "2026-04-16"
 readTime: "18 min"
 category: "Deep Dive"
 catColor: "#3B82F6"
-grade: "B+"
-beafScore: 83
 heroImage: "/images/content/nvda-ai-factory-hero.webp"
 description: "NVIDIA at $4.53T: FY2026 revenue $215.9B (+65% YoY), 75% Q4 gross margin, $62.3B data center quarter. The AI factory thesis, CUDA moat, and the valuation question that matters."
 type: "deep-dive"
@@ -107,9 +105,9 @@ Three variables determine the stock from here.
 
 ---
 
-## Financial Analysis: BEAF Scoring
 
-### BEAF Score: 83/100 (B+)
+
+
 
 | BEAF Axis | Score | Max | Evidence |
 |-----------|-------|-----|----------|
@@ -120,7 +118,7 @@ Three variables determine the stock from here.
 | **RISK** | 7 | 10 | Export controls already cost $4.5B in H20 inventory charges; further U.S.–China restrictions are plausible. Hyperscaler buyer concentration means a handful of customers control a significant revenue share. Custom silicon (Google TPUs, Amazon Trainium, Microsoft Maia) poses a credible long-term competitive vector. Risks are real but currently manageable given CUDA ecosystem durability. |
 | **MOMENTUM** | 7 | 10 | Blackwell ramp, AI capex cycle fully operational, record quarterly results, $58.5B buyback runway. AI factory narrative dominant in enterprise tech. Stock near ATH territory. Counterbalance: at $4.5T, any guidance miss would be punished severely; multiple compression risk grows with each passing quarter at peak valuation. |
 
-### BEAF Score: 83/100 — Grade: B+
+
 
 NVIDIA earns near-perfect marks on Moat and Profitability — a combination extremely rare among large-cap companies. The score reflects genuine platform dominance offset by valuation demands that leave little room for execution error at $4.53 trillion.
 

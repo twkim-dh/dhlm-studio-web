@@ -51,8 +51,8 @@ const sections = [
     b: 'While DHLM Studio strives to publish accurate, well-researched content, we make no warranties or representations as to the accuracy, completeness, or timeliness of any content. Information may become outdated. Readers should verify all data against primary sources before relying on it.',
   },
   {
-    h: '7. BEAF Framework Disclosure',
-    b: 'The BEAF Analysis Framework is a proprietary qualitative and quantitative framework developed for DHLM Studio for the purpose of consistent comparative analysis. BEAF scores are analytical opinions, not predictions. They reflect framework-based judgment as of the publication date and may change as new information becomes available.',
+    h: '7. Analysis Framework Disclosure',
+    b: 'The Analysis Framework is a proprietary qualitative and quantitative framework developed for DHLM Studio for the purpose of consistent comparative analysis. scores are analytical opinions, not predictions. They reflect framework-based judgment as of the publication date and may change as new information becomes available.',
   },
   {
     h: '8. Forward-Looking Statements',

@@ -7,8 +7,6 @@ date: "2026-04-14"
 readTime: "16 min"
 category: "Crypto"
 catColor: "#8B5CF6"
-grade: "—"
-beafScore: 0
 heroImage: "/images/content/spotlight-crypto.webp"
 description: "ETH at $2,220 — 55% below ATH. Special report covering ETF flows, staking wrappers, macro environment, Pectra protocol upgrades, L2 value capture problem, and year-end scenarios. Is ETH repricing or re-rating?"
 type: "hot-sector"

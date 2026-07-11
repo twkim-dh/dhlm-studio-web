@@ -1,6 +1,6 @@
 'use client';
 /**
- * BeafRadarChart — renders a Recharts RadarChart for BEAF axis scores.
+ * BeafRadarChart — renders a Recharts RadarChart for axis scores.
  * Accepts normalized scores (0–100 per axis) extracted from report body.
  * Used in /reports/[slug]/page.tsx for deep-dive reports.
  */
@@ -63,7 +63,7 @@ export default function BeafRadarChart({ scores, totalScore, grade }: Props) {
     <div style={{ background: '#0D1117', borderRadius: 14, padding: '16px', border: '1px solid #1E293B', marginBottom: 24 }}>
       <div style={{ display: 'flex', alignItems: 'center', justifyContent: 'space-between', marginBottom: 8 }}>
         <div style={{ fontFamily: 'var(--mono)', fontSize: 9, fontWeight: 800, color: '#475569', letterSpacing: 1.5 }}>
-          BEAF ANALYSIS FRAMEWORK
+          ANALYSIS FRAMEWORK
         </div>
         <div style={{ display: 'flex', alignItems: 'baseline', gap: 6 }}>
           <span style={{ fontFamily: 'var(--mono)', fontSize: 22, fontWeight: 900, color, lineHeight: 1 }}>{totalScore}</span>

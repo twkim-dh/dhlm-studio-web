@@ -7,9 +7,7 @@ date: "2026-04-05"
 readTime: "14 min"
 category: "Markets"
 catColor: "#00D474"
-grade: "C+"
 heroImage: "/images/content/deep-dive-report.webp"
-beafScore: 58
 description: "Tesla at $1.5T: 120x earnings for a company with 15% promise delivery rate. Energy storage is the hidden gem nobody prices. BEAF 58/100."
 seoTitle: "Tesla BEAF 58/100: 120x Earnings, 15% Promise Delivery | April 2026"
 seoDescription: "Tesla scores 58/100 on BEAF. 120x earnings. Auto margins compressing to 17%. Energy storage growing 60%. Is FSD optionality worth the multiple?"
@@ -79,9 +77,9 @@ If Tesla's energy business were a standalone company, it would be valued at $150
 
 Documented promise-to-delivery ratio: approximately 15%. This is relevant to valuation because an estimated $500-700 billion of Tesla's current market cap — based on sum-of-parts analysis by Morgan Stanley's Adam Jonas (January 2026 note) — is attributed to robotaxi and autonomous driving revenue that has generated $0 to date.
 
-## Financial Analysis: BEAF Scoring
 
-### BEAF Score: 58/100 (C+)
+
+
 
 | BEAF Axis | Score | Max | Evidence |
 |-----------|-------|-----|----------|
@@ -175,7 +173,7 @@ Revenue: $105B. Net income: $10B. Applied multiple: 30x (premium auto/energy hyb
 
 ## DHLM Studio Verdict
 
-### BEAF Score: 58/100 — Grade: C+
+
 
 $1.5 trillion. For a company whose documented promise-to-delivery ratio is 15%.
 

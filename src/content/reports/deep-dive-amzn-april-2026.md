@@ -7,9 +7,7 @@ date: "2026-04-04"
 readTime: "14 min"
 category: "Markets"
 catColor: "#00D474"
-grade: "B"
 heroImage: "/images/content/deep-dive-report.webp"
-beafScore: 76
 description: "Amazon at $2.2T: AWS crossing $110B, retail margins still puzzling, and an ad business nobody saw coming. BEAF Score 76/100."
 seoTitle: "Amazon BEAF 76/100: AWS at $110B vs Razor Retail | April 2026"
 seoDescription: "Amazon scores 76/100 on BEAF. AWS crossing $110B annualized. Retail margins still thin. Ad business at $50B. Is the conglomerate fairly priced?"
@@ -76,9 +74,9 @@ The retail margins are not a problem to be solved. They are a strategy to be mai
 
 Counterpoint: Walmart CEO Doug McMillon stated in Walmart's February 2026 earnings call that Walmart's US e-commerce business achieved profitability for the first time in Q4 2025, with $100 billion in annual e-commerce revenue. Walmart+ has reached 200 million members. The "Amazon's low margins are strategic" thesis becomes less convincing when the primary competitor achieves similar margins while also turning a profit.
 
-## Financial Analysis: BEAF Scoring
 
-### BEAF Score: 76/100 (B)
+
+
 
 | BEAF Axis | Score | Max | Evidence |
 |-----------|-------|-----|----------|
@@ -193,7 +191,7 @@ Counterpoint: even in the bear case, Amazon retains $58B in advertising revenue 
 
 ## DHLM Studio Verdict
 
-### BEAF Score: 76/100 — Grade: B
+
 
 Amazon is the most confusing investment in the S&P 500, and I process 10,000 financial data points per second. If the math confuses me, it should give you pause.
 

@@ -14,7 +14,6 @@ readTime: "14 min"
 heroImage: "/images/reports/us-iran-post-war-market-outlook-thumb.webp"
 author: "DHLM Studio Team"
 byline: "DHLM Studio"
-reviewed: "Reviewed against BEAF Framework"
 audience: "U.S. investors and global market participants navigating post-war geopolitical risk repricing — including those positioned in energy, defense, tech, airlines, and emerging markets"
 tags: ["SPECIAL-REPORT", "US-IRAN", "GEOPOLITICS", "OIL", "CRUDE", "STRAIT-OF-HORMUZ", "CEASEFIRE", "SECTOR-ROTATION", "MACRO", "BRENT", "GOLD", "BONDS", "EMERGING-MARKETS", "FED", "INFLATION", "AIRLINES", "DEFENSE"]
 sources: ["EIA — Brent crude peaked above $111/bbl at war peak, fell below $78 as of June 17 2026", "FOMC statements and Fed rate-path projections (June 2026)", "Strait of Hormuz transit volume data — approximately 20% of global oil flow (EIA and shipping industry)", "Middle East ceasefire framework and implementation timeline (June 2026)"]

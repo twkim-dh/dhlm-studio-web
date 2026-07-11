@@ -64,7 +64,7 @@ export default function AboutPage() {
                 <li>Active investor — builds and manages a real portfolio based on this research</li>
                 <li>15+ years in manufacturing and business operations</li>
                 <li>Core holdings span AI, semiconductors, quantum computing, and digital assets</li>
-                <li>Directs the BEAF analysis framework and final approval on all reports</li>
+                <li>Directs the analysis framework and final approval on all reports</li>
                 <li>Positions relevant to any report are disclosed within that report</li>
               </ul>
             </div>
@@ -72,21 +72,21 @@ export default function AboutPage() {
               <div style={{ fontFamily: 'var(--serif)', fontSize: 17, fontWeight: 800, color: '#F1F5F9', marginBottom: 6 }}>DHLM Studio Voice</div>
               <ul style={{ margin: 0, paddingLeft: 18, fontSize: 13, color: '#94A3B8', lineHeight: 1.9 }}>
                 <li>Built on institutional equity research standards</li>
-                <li>Grounded in the BEAF 6-axis scoring framework</li>
+                <li>Grounded in the scoring framework</li>
                 <li>Operates under editorial oversight</li>
                 <li>Never publishes without editor approval</li>
               </ul>
             </div>
           </div>
 
-          {/* BEAF Framework */}
+          {/* Analysis Framework */}
           <div style={{ ...card, padding: '24px 22px', borderColor: '#C73E3A30' }}>
             <div style={{ fontFamily: 'var(--mono)', fontSize: 9, fontWeight: 700, color: '#C73E3A', letterSpacing: 2, marginBottom: 10 }}>OUR FRAMEWORK</div>
             <p style={{ fontFamily: 'var(--serif)', fontSize: 18, fontWeight: 800, color: '#F1F5F9', lineHeight: 1.5, margin: '0 0 10px' }}>
-              BEAF — Analysis Framework
+              Analysis Framework
             </p>
             <p style={{ fontSize: 13, color: '#94A3B8', lineHeight: 1.8, margin: '0 0 14px' }}>
-              Every Deep Dive uses a proprietary <strong style={{ color: '#E2E8F0' }}>BEAF scoring system</strong> — a standardized 100-point methodology built to bring institutional-grade rigor to retail-friendly analysis. Stocks are scored across six axes, then assigned a letter grade (A through F) so readers can compare any two companies on the same scale.
+              Every Deep Dive uses a proprietary <strong style={{ color: '#E2E8F0' }}>scoring system</strong> — a standardized 100-point methodology built to bring institutional-grade rigor to retail-friendly analysis. Stocks are scored across six axes, then assigned a letter grade (A through F) so readers can compare any two companies on the same scale.
             </p>
             <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(150px, 1fr))', gap: 8, marginBottom: 14 }}>
               {[
@@ -124,7 +124,7 @@ export default function AboutPage() {
               {[
                 { label: 'Original Analysis', desc: 'We do not summarize or repackage existing content. Every report starts from primary sources — SEC filings, earnings transcripts, official disclosures.' },
                 { label: 'Data-Driven', desc: 'Claims are supported by verified data. All figures are cross-referenced against at least two independent sources before publication.' },
-                { label: 'Framework-First', desc: 'Analysis follows the BEAF framework before narrative is written. The data shapes the story — not the other way around.' },
+                { label: 'Framework-First', desc: 'Analysis follows the analysis framework before narrative is written. The data shapes the story — not the other way around.' },
                 { label: 'Honest on Uncertainty', desc: 'Where data is ambiguous or the outcome is uncertain, we say so explicitly. We do not manufacture conviction we do not have.' },
               ].map(s => (
                 <div key={s.label} style={{ padding: '10px 14px', borderRadius: 8, background: '#0D1117', border: '1px solid #1E293B' }}>
@@ -204,7 +204,7 @@ export default function AboutPage() {
             <div style={{ fontFamily: 'var(--mono)', fontSize: 9, fontWeight: 700, color: '#A78BFA', letterSpacing: 2, marginBottom: 10 }}>WHAT WE BUILD</div>
             <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(200px, 1fr))', gap: 10 }}>
               {[
-                { icon: '📊', title: 'Deep Dive Reports', desc: 'Institutional-grade stock analysis (BEAF)', href: '/reports' },
+                { icon: '📊', title: 'Deep Dive Reports', desc: 'Institutional-grade stock analysis' },
                 { icon: '🧠', title: 'The Mental Game', desc: 'Behavioral investing psychology series', href: '/research' },
                 { icon: '🔭', title: 'The Structural View', desc: 'Quarterly macro & sector research', href: '/research' },
                 { icon: '📖', title: 'The Masters', desc: 'Livermore, Druckenmiller, Lynch, Munger biographies', href: '/learn' },
@@ -212,7 +212,7 @@ export default function AboutPage() {
                 { icon: '📈', title: 'Investing 101 Intermediate', desc: 'Advanced valuation, moat analysis, forensics', href: '/learn?tab=investing-101' },
                 { icon: '🔬', title: 'Quantum 101', desc: '12-part quantum computing curriculum', href: '/learn/quantum-101' },
               ].map(item => (
-                <Link key={item.title} href={item.href} style={{ padding: '12px 14px', borderRadius: 10, background: '#0D1117', border: '1px solid #1E293B', textDecoration: 'none' }}>
+                <Link key={item.title} href={item.href!} style={{ padding: '12px 14px', borderRadius: 10, background: '#0D1117', border: '1px solid #1E293B', textDecoration: 'none' }}>
                   <span style={{ fontSize: 18 }}>{item.icon}</span>
                   <div style={{ fontSize: 13, fontWeight: 600, color: '#E2E8F0', marginTop: 6 }}>{item.title}</div>
                   <div style={{ fontSize: 11, color: '#64748B', marginTop: 2 }}>{item.desc}</div>
@@ -301,7 +301,7 @@ export default function AboutPage() {
               </div>
               <div>
                 <div style={{ fontSize: 13, fontWeight: 700, color: '#C73E3A', marginBottom: 4 }}>Stage 3 — Analysis &amp; Writing</div>
-                <p style={{ fontSize: 13, color: '#64748B', lineHeight: 1.7, margin: 0 }}>Human analysts develop the argument, apply the BEAF scoring framework, and write the full report. All analytical conclusions, risk assessments, and investment framings are produced and owned by our editorial team — not generated by automated systems.</p>
+                <p style={{ fontSize: 13, color: '#64748B', lineHeight: 1.7, margin: 0 }}>Human analysts develop the argument, apply the analysis framework, and write the full report. All analytical conclusions, risk assessments, and investment framings are produced and owned by our editorial team — not generated by automated systems.</p>
               </div>
               <div>
                 <div style={{ fontSize: 13, fontWeight: 700, color: '#C73E3A', marginBottom: 4 }}>Stage 4 — Editorial Review &amp; Publication</div>

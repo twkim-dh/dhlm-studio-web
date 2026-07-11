@@ -7,8 +7,6 @@ date: "2026-04-15"
 readTime: "12 min"
 category: "Deep Dive"
 catColor: "#3B82F6"
-grade: "C"
-beafScore: 61
 description: "Circle at $105: USDC at $75.3B circulation, 96% revenue from reserve yield, 162% EPS beat — but rate sensitivity and regulatory whiplash define this stablecoin infrastructure bet."
 type: "deep-dive"
 tickers: ["CRCL"]
@@ -99,9 +97,9 @@ The GENIUS Act helps, but the Clarity Act draft on March 24 showed that Congress
 
 ---
 
-## Financial Analysis: BEAF Scoring
 
-### BEAF Score: 61/100 (C)
+
+
 
 | BEAF Axis | Score | Max | Evidence |
 |-----------|-------|-----|----------|
@@ -112,7 +110,7 @@ The GENIUS Act helps, but the Clarity Act draft on March 24 showed that Congress
 | **RISK** | 4 | 10 | Rate sensitivity is the dominant risk — every Fed cut directly compresses top-line revenue. The Clarity Act draft in March 2026 triggered a 30%+ single-session decline on a single legislative paragraph. Regulatory binary risk is unusual for a $24B company. Revenue concentration at 96%+ from one income source. Competitive entry from banks and exchanges accelerating. |
 | **MOMENTUM** | 6 | 10 | Stock at $105 after falling 65% from $299 ATH — speculative premium removed. Q4 162% EPS beat and GENIUS Act progress provide recent positive catalysts. Insider buying reported post-drawdown. Deduction: rate headwind narrative persists; next inflection requires either Fed pivot pause or CPN revenue milestone, neither of which is near-term visible. |
 
-### BEAF Score: 61/100 — Grade: C
+
 
 Circle scores well on Growth and has genuine regulatory moat — but the current economics are those of an interest-rate spread business, not a software platform. The thesis upgrades when non-reserve revenue becomes material.
 

@@ -165,7 +165,7 @@ export default function NewsletterModal() {
 
             <div style={{ display: 'flex', flexDirection: 'column', gap: 6, marginBottom: 20 }}>
               {[
-                'Mag 7 + AI sector Deep Dives — BEAF scored',
+                'Mag 7 + AI sector Deep Dives — scored',
                 'The Mental Game — behavioral investing series',
                 'New reports delivered to your inbox first',
               ].map(item => (

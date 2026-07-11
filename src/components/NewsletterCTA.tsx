@@ -83,7 +83,7 @@ export default function NewsletterCTA({ source = 'homepage' }: { source?: string
       {/* Value bullets */}
       <div style={{ display: 'flex', flexDirection: 'column', gap: 6, marginBottom: 20 }}>
         {[
-          'Mag 7 + AI sector Deep Dives — BEAF scored',
+          'Mag 7 + AI sector Deep Dives — scored',
           '32+ published reports + new analysis every week',
           'Investing 101 Beginner Series — 12 free lessons',
           'New reports delivered to your inbox first',

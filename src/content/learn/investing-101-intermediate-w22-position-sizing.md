@@ -64,7 +64,7 @@ The Kelly Criterion enforces a specific discipline: **your position size should 
 
 Let us apply this framework to three names from DHLM Studio coverage. We will use approximate current prices (mid-April 2026) and realistic scenario analysis rather than wishcast numbers.
 
-### NVIDIA (NVDA) — BEAF Score 83/B+
+
 
 **Current state (April 2026):**
 - Price: ~$200
@@ -91,7 +91,7 @@ Let us apply this framework to three names from DHLM Studio coverage. We will us
 
 **Kelly-suggested position**: 8–10% of portfolio. The combination of strong upside (+28% expected), manageable downside (severe-bear scenario is only 5% probability), and high conviction supports a meaningful position.
 
-### Tesla (TSLA) — BEAF Score 58/C+
+
 
 **Current state (April 2026):**
 - Price: ~$373
@@ -117,7 +117,7 @@ Let us apply this framework to three names from DHLM Studio coverage. We will us
 
 **Kelly-suggested position**: 3–5% of portfolio. The near-zero expected return combined with significant downside exposure dictates a small position even for an investor who believes the Physical AI thesis. Pure Kelly math on these inputs would produce an even smaller or zero position — but the framework allows room for thesis-driven exposure when the narrative components justify participation.
 
-### Microsoft (MSFT) — BEAF Score 81/B+
+
 
 **Current state (April 2026):**
 - Price: ~$416

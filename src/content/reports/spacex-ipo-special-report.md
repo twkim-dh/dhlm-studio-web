@@ -7,9 +7,7 @@ date: "2026-04-12"
 readTime: "18 min"
 category: "Special Report"
 catColor: "#C73E3A"
-grade: "B-"
 heroImage: "/images/content/spacex-ipo-hero.webp"
-beafScore: 77
 description: "SpaceX's rumored $1.75T IPO would be the largest in history. Revenue breakdown, SOTP valuation, risk scenarios, and our DHLM Studio verdict."
 type: "special-report"
 seoTitle: "SpaceX IPO 2026: Is $1.75 Trillion Justified? — Special Report"
@@ -185,9 +183,9 @@ Where does SpaceX fit? Today it looks more like a blend of both. It has the cere
 
 That is why the IPO will be so divisive. Bears will call it peak hype. Bulls will call it the public birth of a new industrial platform. Both sides will have evidence.
 
-## 11. DHLM Studio Verdict + BEAF Score
 
-**BEAF Score (IPO-adapted — 6 factors, 10 points each, 60 max)**
+
+**
 
 | Factor | Score (/10) | Comment |
 |--------|-------------|---------|

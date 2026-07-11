@@ -25,30 +25,30 @@ const HERO_MAP: Record<string, string> = {
   'quantum-101-part10-quantum-applications':    '/images/content/quantum-101-part10-hero.webp',
   'quantum-101-part11-investing-framework':     '/images/content/quantum-101-part11-hero.webp',
   'quantum-101-part12-watchlist':               '/images/content/quantum-101-part12-hero.webp',
-  'investing-101-beginner-w1-what-is-a-stock-really':          '/images/content/investing-101-beginner-w1-what-is-a-stock-hero.webp',
-  'investing-101-beginner-w2-how-the-market-actually-works':   '/images/content/investing-101-beginner-w2-how-market-works-hero.webp',
+  'investing-101-beginner-w1-what-is-a-stock-really':            '/images/content/investing-101-beginner-w1-what-is-a-stock-hero.webp',
+  'investing-101-beginner-w2-how-the-market-actually-works':     '/images/content/investing-101-beginner-w2-how-market-works-hero.webp',
   'investing-101-beginner-w3-opening-your-first-brokerage-account': '/images/content/investing-101-beginner-w3-brokerage-account-hero.webp',
-  'investing-101-beginner-w4-reading-income-statement':        '/images/content/investing-101-beginner-w4-income-statement-hero.webp',
-  'investing-101-beginner-w5-reading-balance-sheet':           '/images/content/investing-101-beginner-w5-balance-sheet-hero.webp',
-  'investing-101-beginner-w6-reading-cash-flow-statement':     '/images/content/investing-101-beginner-w6-cash-flow-statement-hero.webp',
-  'investing-101-beginner-w7-what-is-a-business-model':        '/images/content/investing-101-beginner-w7-business-model-hero.webp',
-  'investing-101-beginner-w8-valuation-basics':                '/images/content/investing-101-beginner-w8-valuation-basics-hero.webp',
-  'investing-101-beginner-w9-dividends-and-total-return':      '/images/content/investing-101-beginner-w9-dividends-total-return-hero.webp',
+  'investing-101-beginner-w4-reading-income-statement':          '/images/content/investing-101-beginner-w4-income-statement-hero.webp',
+  'investing-101-beginner-w5-reading-balance-sheet':             '/images/content/investing-101-beginner-w5-balance-sheet-hero.webp',
+  'investing-101-beginner-w6-reading-cash-flow-statement':       '/images/content/investing-101-beginner-w6-cash-flow-statement-hero.webp',
+  'investing-101-beginner-w7-what-is-a-business-model':          '/images/content/investing-101-beginner-w7-business-model-hero.webp',
+  'investing-101-beginner-w8-valuation-basics':                  '/images/content/investing-101-beginner-w8-valuation-basics-hero.webp',
+  'investing-101-beginner-w9-dividends-and-total-return':        '/images/content/investing-101-beginner-w9-dividends-total-return-hero.webp',
   'investing-101-beginner-w10-diversification-portfolio-basics': '/images/content/investing-101-beginner-w10-diversification-portfolio-hero.webp',
-  'investing-101-beginner-w11-investors-mind':                 '/images/content/investing-101-beginner-w11-investors-mind-hero.webp',
-  'investing-101-beginner-w12-your-first-five-years':          '/images/content/investing-101-beginner-w12-five-year-roadmap-hero.webp',
-  'investing-101-intermediate-w13-three-valuations':           '/images/content/INV-101-W13.webp',
-  'investing-101-intermediate-w14-dcf-lies':                   '/images/content/INV-101-W14.webp',
-  'investing-101-intermediate-w15-multiples':                  '/images/content/INV-101-W15.webp',
-  'investing-101-intermediate-w16-five-moats':                 '/images/content/INV-101-W16.webp',
-  'investing-101-intermediate-w17-moat-erosion':               '/images/content/INV-101-W17.webp',
-  'investing-101-intermediate-w18-new-tech-moats':             '/images/content/INV-101-W18.webp',
-  'investing-101-intermediate-w19-10k-forensics':              '/images/content/INV-101-W19.webp',
-  'investing-101-intermediate-w20-earnings-calls':             '/images/content/INV-101-W20.webp',
-  'investing-101-intermediate-w21-proxy-statements':           '/images/content/INV-101-W21.webp',
-  'investing-101-intermediate-w22-position-sizing':            '/images/content/INV-101-W22.webp',
-  'investing-101-intermediate-w23-correlation-risk':           '/images/content/INV-101-W23.webp',
-  'investing-101-intermediate-w24-when-to-sell':               '/images/content/INV-101-W24.webp',
+  'investing-101-beginner-w11-investors-mind':                   '/images/content/investing-101-beginner-w11-investors-mind-hero.webp',
+  'investing-101-beginner-w12-your-first-five-years':            '/images/content/investing-101-beginner-w12-five-year-roadmap-hero.webp',
+  'investing-101-intermediate-w13-three-valuations':  '/images/content/INV-101-W13.webp',
+  'investing-101-intermediate-w14-dcf-lies':          '/images/content/INV-101-W14.webp',
+  'investing-101-intermediate-w15-multiples':         '/images/content/INV-101-W15.webp',
+  'investing-101-intermediate-w16-five-moats':        '/images/content/INV-101-W16.webp',
+  'investing-101-intermediate-w17-moat-erosion':      '/images/content/INV-101-W17.webp',
+  'investing-101-intermediate-w18-new-tech-moats':    '/images/content/INV-101-W18.webp',
+  'investing-101-intermediate-w19-10k-forensics':     '/images/content/INV-101-W19.webp',
+  'investing-101-intermediate-w20-earnings-calls':    '/images/content/INV-101-W20.webp',
+  'investing-101-intermediate-w21-proxy-statements':  '/images/content/INV-101-W21.webp',
+  'investing-101-intermediate-w22-position-sizing':   '/images/content/INV-101-W22.webp',
+  'investing-101-intermediate-w23-correlation-risk':  '/images/content/INV-101-W23.webp',
+  'investing-101-intermediate-w24-when-to-sell':      '/images/content/INV-101-W24.webp',
   'masters-livermore':      '/images/content/livermore-masters-hero.webp',
   'masters-druckenmiller':  '/images/content/druckenmiller-masters-hero.webp',
   'masters-lynch-1':        '/images/content/masters-peter-lynch-part1-ten-bagger-hero.webp',
@@ -64,66 +64,35 @@ const HERO_MAP: Record<string, string> = {
 };
 
 const BEGINNER_ORDER = [
-  'investing-101-beginner-w1-what-is-a-stock-really',
-  'investing-101-beginner-w2-how-the-market-actually-works',
-  'investing-101-beginner-w3-opening-your-first-brokerage-account',
-  'investing-101-beginner-w4-reading-income-statement',
-  'investing-101-beginner-w5-reading-balance-sheet',
-  'investing-101-beginner-w6-reading-cash-flow-statement',
-  'investing-101-beginner-w7-what-is-a-business-model',
-  'investing-101-beginner-w8-valuation-basics',
-  'investing-101-beginner-w9-dividends-and-total-return',
-  'investing-101-beginner-w10-diversification-portfolio-basics',
-  'investing-101-beginner-w11-investors-mind',
-  'investing-101-beginner-w12-your-first-five-years',
+  'investing-101-beginner-w1-what-is-a-stock-really', 'investing-101-beginner-w2-how-the-market-actually-works',
+  'investing-101-beginner-w3-opening-your-first-brokerage-account', 'investing-101-beginner-w4-reading-income-statement',
+  'investing-101-beginner-w5-reading-balance-sheet', 'investing-101-beginner-w6-reading-cash-flow-statement',
+  'investing-101-beginner-w7-what-is-a-business-model', 'investing-101-beginner-w8-valuation-basics',
+  'investing-101-beginner-w9-dividends-and-total-return', 'investing-101-beginner-w10-diversification-portfolio-basics',
+  'investing-101-beginner-w11-investors-mind', 'investing-101-beginner-w12-your-first-five-years',
 ];
 
 const INTERMEDIATE_ORDER = [
-  'investing-101-intermediate-w13-three-valuations',
-  'investing-101-intermediate-w14-dcf-lies',
-  'investing-101-intermediate-w15-multiples',
-  'investing-101-intermediate-w16-five-moats',
-  'investing-101-intermediate-w17-moat-erosion',
-  'investing-101-intermediate-w18-new-tech-moats',
-  'investing-101-intermediate-w19-10k-forensics',
-  'investing-101-intermediate-w20-earnings-calls',
-  'investing-101-intermediate-w21-proxy-statements',
-  'investing-101-intermediate-w22-position-sizing',
-  'investing-101-intermediate-w23-correlation-risk',
-  'investing-101-intermediate-w24-when-to-sell',
+  'investing-101-intermediate-w13-three-valuations', 'investing-101-intermediate-w14-dcf-lies',
+  'investing-101-intermediate-w15-multiples', 'investing-101-intermediate-w16-five-moats',
+  'investing-101-intermediate-w17-moat-erosion', 'investing-101-intermediate-w18-new-tech-moats',
+  'investing-101-intermediate-w19-10k-forensics', 'investing-101-intermediate-w20-earnings-calls',
+  'investing-101-intermediate-w21-proxy-statements', 'investing-101-intermediate-w22-position-sizing',
+  'investing-101-intermediate-w23-correlation-risk', 'investing-101-intermediate-w24-when-to-sell',
 ];
 
 const QUANTUM_ORDER = [
-  'quantum-101-part1-superconducting-qubits',
-  'quantum-101-part2-trapped-ion',
-  'quantum-101-part3-neutral-atom',
-  'quantum-101-part4-photonic',
-  'quantum-101-part5-silicon-spin',
-  'quantum-101-part6-topological',
-  'quantum-101-part7-quantum-annealing',
-  'quantum-101-part8-software-cloud',
-  'quantum-101-part9-quantum-security',
-  'quantum-101-part10-quantum-applications',
-  'quantum-101-part11-investing-framework',
-  'quantum-101-part12-watchlist',
+  'quantum-101-part1-superconducting-qubits', 'quantum-101-part2-trapped-ion', 'quantum-101-part3-neutral-atom',
+  'quantum-101-part4-photonic', 'quantum-101-part5-silicon-spin', 'quantum-101-part6-topological',
+  'quantum-101-part7-quantum-annealing', 'quantum-101-part8-software-cloud', 'quantum-101-part9-quantum-security',
+  'quantum-101-part10-quantum-applications', 'quantum-101-part11-investing-framework', 'quantum-101-part12-watchlist',
 ];
 
 const MASTERS_ORDER = [
-  'masters-livermore',
-  'masters-druckenmiller',
-  'masters-lynch-1',
-  'masters-lynch-2',
-  'masters-lynch-3',
-  'masters-lynch-4',
-  'masters-lynch-5',
-  'masters-munger-1',
-  'masters-munger-2',
-  'masters-munger-3',
-  'masters-munger-4',
-  'masters-munger-5',
+  'masters-livermore', 'masters-druckenmiller',
+  'masters-lynch-1', 'masters-lynch-2', 'masters-lynch-3', 'masters-lynch-4', 'masters-lynch-5',
+  'masters-munger-1', 'masters-munger-2', 'masters-munger-3', 'masters-munger-4', 'masters-munger-5',
 ];
-
-const SERIES_ORDER = [...BEGINNER_ORDER, ...INTERMEDIATE_ORDER, ...QUANTUM_ORDER, ...MASTERS_ORDER];
 
 interface LessonFrontmatter {
   title: string;
@@ -136,17 +105,9 @@ interface LessonFrontmatter {
   tags: string[];
 }
 
-function isMasters(slug: string) {
-  return slug.startsWith('masters-');
-}
-
-function isIntermediate(slug: string) {
-  return slug.startsWith('investing-101-intermediate');
-}
-
-function isQuantum(slug: string) {
-  return slug.startsWith('quantum-101-');
-}
+function isMasters(slug: string) { return slug.startsWith('masters-'); }
+function isIntermediate(slug: string) { return slug.startsWith('investing-101-intermediate'); }
+function isQuantum(slug: string) { return slug.startsWith('quantum-101-'); }
 
 function parseLesson(content: string): { fm: LessonFrontmatter; body: string } | null {
   const normalised = content.replace(/\r\n/g, '\n');
@@ -220,8 +181,8 @@ function processInline(text: string): string {
   return text
     .replace(/\*\*([^*]+)\*\*/g, '<strong>$1</strong>')
     .replace(/\*([^*]+)\*/g, '<em>$1</em>')
-    .replace(/`([^`]+)`/g, '<code style="background:#1E293B;padding:2px 6px;border-radius:4px;font-family:var(--mono);font-size:0.9em">$1</code>')
-    .replace(/\[([^\]]+)\]\(([^)]+)\)/g, '<a href="$2" style="color:#60A5FA;text-decoration:underline">$1</a>');
+    .replace(/`([^`]+)`/g, '<code style="background:#F0F0EC;padding:2px 6px;font-family:var(--mono);font-size:0.88em;color:#16161A">$1</code>')
+    .replace(/\[([^\]]+)\]\(([^)]+)\)/g, '<a href="$2" style="color:#2D2F8F;text-decoration:underline">$1</a>');
 }
 
 function renderMarkdown(md: string): React.ReactNode[] {
@@ -245,11 +206,25 @@ function renderMarkdown(md: string): React.ReactNode[] {
       <div key={key++} style={{ overflowX: 'auto', margin: '20px 0' }}>
         <table style={{ width: '100%', borderCollapse: 'collapse', fontSize: 13, fontFamily: 'var(--mono)' }}>
           <thead>
-            <tr>{headers.map((h, i) => <th key={i} style={{ padding: '8px 12px', borderBottom: '2px solid #334155', borderRight: i < headers.length - 1 ? '1px solid #1E293B' : undefined, background: '#111827', color: '#94A3B8', textAlign: 'left', fontWeight: 700, whiteSpace: 'nowrap' }} dangerouslySetInnerHTML={{ __html: processInline(h.trim()) }} />)}</tr>
+            <tr>
+              {headers.map((h, i) => (
+                <th key={i} style={{
+                  padding: '8px 12px', borderBottom: '2px solid #E8E8E4',
+                  background: '#FAFAF8', color: '#5B6470',
+                  textAlign: 'left', fontWeight: 700, whiteSpace: 'nowrap'
+                }} dangerouslySetInnerHTML={{ __html: processInline(h.trim()) }} />
+              ))}
+            </tr>
           </thead>
           <tbody>
             {dataRows.map((row, ri) => (
-              <tr key={ri}>{row.map((cell, ci) => <td key={ci} style={{ padding: '7px 12px', borderBottom: '1px solid #1E293B', borderRight: ci < row.length - 1 ? '1px solid #1E293B' : undefined, color: '#E2E8F0' }} dangerouslySetInnerHTML={{ __html: processInline(cell.trim()) }} />)}</tr>
+              <tr key={ri}>
+                {row.map((cell, ci) => (
+                  <td key={ci} style={{
+                    padding: '7px 12px', borderBottom: '1px solid #F0F0EC', color: '#374151'
+                  }} dangerouslySetInnerHTML={{ __html: processInline(cell.trim()) }} />
+                ))}
+              </tr>
             ))}
           </tbody>
         </table>
@@ -261,8 +236,17 @@ function renderMarkdown(md: string): React.ReactNode[] {
   const flushBlockquote = () => {
     if (!blockquoteLines.length) return;
     elements.push(
-      <blockquote key={key++} style={{ margin: '20px 0', padding: '14px 20px', borderLeft: '3px solid #00D474', background: '#00D47408', borderRadius: '0 8px 8px 0' }}>
-        {blockquoteLines.map((l, i) => <p key={i} style={{ margin: 0, fontSize: 15, color: '#CBD5E1', lineHeight: 1.8, fontStyle: 'italic' }} dangerouslySetInnerHTML={{ __html: processInline(l) }} />)}
+      <blockquote key={key++} style={{
+        margin: '24px 0', paddingLeft: 20,
+        borderLeft: '2px solid #16161A'
+      }}>
+        {blockquoteLines.map((l, i) => (
+          <p key={i} style={{
+            margin: 0, fontFamily: 'var(--serif)', fontSize: 18,
+            fontWeight: 300, fontStyle: 'italic', color: '#16161A',
+            lineHeight: 1.6, letterSpacing: '-0.01em'
+          }} dangerouslySetInnerHTML={{ __html: processInline(l) }} />
+        ))}
       </blockquote>
     );
     blockquoteLines = [];
@@ -273,7 +257,10 @@ function renderMarkdown(md: string): React.ReactNode[] {
     elements.push(
       <ul key={key++} style={{ margin: '8px 0 16px 0', paddingLeft: 20 }}>
         {listItems.map((item, i) => (
-          <li key={i} style={{ fontSize: 15, color: '#94A3B8', lineHeight: 1.85, marginBottom: 4 }} dangerouslySetInnerHTML={{ __html: processInline(item) }} />
+          <li key={i} style={{
+            fontFamily: 'var(--sans)', fontSize: 15, color: '#374151',
+            lineHeight: 1.85, marginBottom: 4
+          }} dangerouslySetInnerHTML={{ __html: processInline(item) }} />
         ))}
       </ul>
     );
@@ -281,11 +268,14 @@ function renderMarkdown(md: string): React.ReactNode[] {
   };
 
   for (const line of lines) {
-    // Code fence
     if (line.startsWith('```')) {
       if (inCodeFence) {
         elements.push(
-          <pre key={key++} style={{ background: '#0D1117', border: '1px solid #1E293B', borderRadius: 8, padding: '16px 18px', overflowX: 'auto', margin: '20px 0', fontFamily: 'var(--mono)', fontSize: 13, color: '#94A3B8', lineHeight: 1.7 }}>
+          <pre key={key++} style={{
+            background: '#FAFAF8', border: '1px solid #E8E8E4',
+            padding: '16px 18px', overflowX: 'auto', margin: '20px 0',
+            fontFamily: 'var(--mono)', fontSize: 13, color: '#374151', lineHeight: 1.7
+          }}>
             <code>{codeFenceLines.join('\n')}</code>
           </pre>
         );
@@ -301,7 +291,6 @@ function renderMarkdown(md: string): React.ReactNode[] {
     }
     if (inCodeFence) { codeFenceLines.push(line); continue; }
 
-    // Table
     if (line.trim().startsWith('|') && line.trim().endsWith('|')) {
       if (inBlockquote) { flushBlockquote(); inBlockquote = false; }
       if (inList) { flushList(); inList = false; }
@@ -312,7 +301,6 @@ function renderMarkdown(md: string): React.ReactNode[] {
       continue;
     } else if (inTable) { inTable = false; flushTable(); }
 
-    // Blockquote
     if (line.startsWith('> ')) {
       if (inList) { flushList(); inList = false; }
       inBlockquote = true;
@@ -320,7 +308,6 @@ function renderMarkdown(md: string): React.ReactNode[] {
       continue;
     } else if (inBlockquote) { flushBlockquote(); inBlockquote = false; }
 
-    // List
     if (line.match(/^[-*] /)) {
       inList = true;
       listItems.push(line.slice(2));
@@ -329,12 +316,11 @@ function renderMarkdown(md: string): React.ReactNode[] {
       flushList(); inList = false;
     } else if (inList) { flushList(); inList = false; }
 
-    // Images: ![alt](url)
     const imgMatch = line.match(/^!\[([^\]]*)\]\(([^)]+)\)$/);
     if (imgMatch) {
       const [, alt, src] = imgMatch;
       elements.push(
-        <figure key={key++} style={{ margin: '28px 0', borderRadius: 10, overflow: 'hidden', border: '1px solid #1E293B', background: '#0D1117' }}>
+        <figure key={key++} style={{ margin: '28px 0', overflow: 'hidden', border: '1px solid #E8E8E4' }}>
           {/* eslint-disable-next-line @next/next/no-img-element */}
           <img src={src} alt={alt} style={{ width: '100%', height: 'auto', display: 'block' }} loading="lazy" />
         </figure>
@@ -342,21 +328,57 @@ function renderMarkdown(md: string): React.ReactNode[] {
       continue;
     }
 
-    // Headings
     if (line.startsWith('# ')) {
-      elements.push(<h1 key={key++} style={{ fontFamily: 'var(--serif)', fontSize: 28, fontWeight: 900, color: '#F1F5F9', margin: '36px 0 14px', lineHeight: 1.25 }}>{line.slice(2)}</h1>);
+      elements.push(
+        <h1 key={key++} style={{
+          fontFamily: 'var(--serif)', fontSize: 28, fontWeight: 400,
+          color: '#16161A', margin: '40px 0 16px', lineHeight: 1.2, letterSpacing: '-0.02em'
+        }}>
+          {line.slice(2)}
+        </h1>
+      );
     } else if (line.startsWith('## ')) {
-      elements.push(<h2 key={key++} style={{ fontFamily: 'var(--serif)', fontSize: 22, fontWeight: 800, color: '#E2E8F0', margin: '32px 0 12px', borderBottom: '1px solid #1E293B', paddingBottom: 8 }}>{line.slice(3)}</h2>);
+      elements.push(
+        <h2 key={key++} style={{
+          fontFamily: 'var(--serif)', fontSize: 22, fontWeight: 500,
+          color: '#16161A', margin: '36px 0 14px',
+          paddingBottom: 10, borderBottom: '1px solid #E8E8E4',
+          letterSpacing: '-0.01em'
+        }}>
+          {line.slice(3)}
+        </h2>
+      );
     } else if (line.startsWith('### ')) {
-      elements.push(<h3 key={key++} style={{ fontFamily: 'var(--serif)', fontSize: 17, fontWeight: 700, color: '#00D474', margin: '24px 0 8px' }}>{line.slice(4)}</h3>);
+      elements.push(
+        <h3 key={key++} style={{
+          fontFamily: 'var(--serif)', fontSize: 17, fontWeight: 500,
+          color: '#2D2F8F', margin: '28px 0 10px', letterSpacing: '-0.01em'
+        }}>
+          {line.slice(4)}
+        </h3>
+      );
     } else if (line.startsWith('#### ')) {
-      elements.push(<h4 key={key++} style={{ fontSize: 14, fontWeight: 700, color: '#CBD5E1', margin: '16px 0 6px', fontFamily: 'var(--mono)', letterSpacing: 0.5 }}>{line.slice(5)}</h4>);
+      elements.push(
+        <h4 key={key++} style={{
+          fontFamily: 'var(--mono)', fontSize: 11, fontWeight: 700,
+          color: '#5B6470', margin: '20px 0 8px', letterSpacing: 1.5, textTransform: 'uppercase'
+        }}>
+          {line.slice(5)}
+        </h4>
+      );
     } else if (line.startsWith('---')) {
-      elements.push(<hr key={key++} style={{ border: 'none', borderTop: '1px solid #1E293B', margin: '28px 0' }} />);
+      elements.push(<hr key={key++} style={{ border: 'none', borderTop: '1px solid #E8E8E4', margin: '32px 0' }} />);
     } else if (line.trim() === '') {
-      // skip blank
+      // skip
     } else {
-      elements.push(<p key={key++} style={{ fontSize: 16, color: '#94A3B8', lineHeight: 1.9, margin: '0 0 14px' }} dangerouslySetInnerHTML={{ __html: processInline(line) }} />);
+      elements.push(
+        <p key={key++} style={{
+          fontFamily: 'var(--sans)', fontSize: 16, color: '#374151',
+          lineHeight: 1.9, margin: '0 0 14px'
+        }}
+          dangerouslySetInnerHTML={{ __html: processInline(line) }}
+        />
+      );
     }
   }
 
@@ -364,7 +386,15 @@ function renderMarkdown(md: string): React.ReactNode[] {
   if (inBlockquote) flushBlockquote();
   if (inList) flushList();
   if (inCodeFence && codeFenceLines.length) {
-    elements.push(<pre key={key++} style={{ background: '#0D1117', border: '1px solid #1E293B', borderRadius: 8, padding: '16px 18px', overflowX: 'auto', margin: '20px 0', fontFamily: 'var(--mono)', fontSize: 13, color: '#94A3B8', lineHeight: 1.7 }}><code>{codeFenceLines.join('\n')}</code></pre>);
+    elements.push(
+      <pre key={key++} style={{
+        background: '#FAFAF8', border: '1px solid #E8E8E4',
+        padding: '16px 18px', overflowX: 'auto', margin: '20px 0',
+        fontFamily: 'var(--mono)', fontSize: 13, color: '#374151', lineHeight: 1.7
+      }}>
+        <code>{codeFenceLines.join('\n')}</code>
+      </pre>
+    );
   }
 
   return elements;
@@ -382,15 +412,17 @@ export default async function LearnLessonPage({ params }: { params: Promise<{ sl
   const quantum = isQuantum(slug);
   const masters = isMasters(slug);
   if ((quantum || inter) && fm.publishDate && fm.publishDate > todayKST()) notFound();
+
   const ORDER = masters ? MASTERS_ORDER : quantum ? QUANTUM_ORDER : inter ? INTERMEDIATE_ORDER : BEGINNER_ORDER;
   const seriesIndex = ORDER.indexOf(slug);
   const prevSlug = seriesIndex > 0 ? ORDER[seriesIndex - 1] : null;
   const nextSlug = seriesIndex < ORDER.length - 1 ? ORDER[seriesIndex + 1] : null;
-  const seriesTotal = inter ? 24 : masters ? 12 : 12;
+  const seriesTotal = inter ? 24 : 12;
   const seriesIndexPage = masters ? '/learn' : quantum ? '/learn/quantum-101' : inter ? '/learn/investing-101-intermediate' : '/learn/investing-101-beginner';
   const seriesBadgeLabel = masters ? 'THE MASTERS' : quantum ? 'QUANTUM 101' : inter ? 'INVESTING 101 INTERMEDIATE' : 'INVESTING 101 BEGINNER';
   const seriesLineLabel = masters ? 'The Masters — Investor Biographies' : quantum ? 'Quantum Computing 101' : inter ? 'Investing 101 — Intermediate Series' : 'Investing 101 — Beginner Series';
   const partLabel = (quantum || masters) ? 'PART' : 'WEEK';
+  const seriesColor = masters ? '#B5860D' : quantum ? '#5B3FB5' : inter ? '#2D2F8F' : '#2A7A4C';
 
   const prevLesson = prevSlug ? getLesson(prevSlug) : null;
   const nextLesson = nextSlug ? getLesson(nextSlug) : null;
@@ -404,81 +436,82 @@ export default async function LearnLessonPage({ params }: { params: Promise<{ sl
     isPartOf: { '@type': 'Course', name: fm.series },
   };
 
-  let phaseColor: string;
-  let phaseLabel: string;
-  if (masters) {
-    phaseColor = fm.week <= 2 ? '#BA7517' : fm.week <= 7 ? '#D4A843' : '#C73E3A';
-    phaseLabel = fm.week <= 2 ? 'MARKET OPERATORS' : fm.week <= 7 ? 'PETER LYNCH' : 'CHARLIE MUNGER';
-  } else if (quantum) {
-    phaseColor = fm.week <= 7 ? '#7C3AED' : fm.week <= 10 ? '#3B82F6' : '#D4A843';
-    phaseLabel = fm.week <= 7 ? 'PHASE 1 · QUBIT APPROACHES' : fm.week <= 10 ? 'PHASE 2 · PLATFORMS & APPLICATIONS' : 'PHASE 3 · INVESTING FRAMEWORK';
-  } else if (inter) {
-    phaseColor = fm.week <= 15 ? '#60A5FA' : fm.week <= 18 ? '#A78BFA' : fm.week <= 21 ? '#34D399' : '#F59E0B';
-    phaseLabel = fm.week <= 15 ? 'PHASE 1 · VALUATION' : fm.week <= 18 ? 'PHASE 2 · MOAT ANALYSIS' : fm.week <= 21 ? 'PHASE 3 · DOCUMENT FORENSICS' : 'PHASE 4 · PORTFOLIO MANAGEMENT';
-  } else {
-    phaseColor = fm.week <= 3 ? '#00D474' : fm.week <= 7 ? '#3B82F6' : '#D4A843';
-    phaseLabel = fm.week <= 3 ? 'PHASE 1 · FOUNDATIONS' : fm.week <= 7 ? 'PHASE 2 · READING COMPANIES' : 'PHASE 3 · STRATEGY';
-  }
-
   return (
-    <div style={{ background: '#0B0F19', minHeight: '100vh' }}>
+    <div style={{ background: '#FFFFFF', minHeight: '100vh' }}>
       <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(articleLd) }} />
-      <article style={{ maxWidth: 760, margin: '0 auto', padding: '80px 24px 60px' }}>
+
+      <article style={{ maxWidth: 720, margin: '0 auto', padding: '64px 28px 80px' }}>
 
         {/* Breadcrumb */}
-        <div style={{ display: 'flex', alignItems: 'center', gap: 8, marginBottom: 24, fontSize: 11, fontFamily: 'var(--mono)', color: '#475569', flexWrap: 'wrap' }}>
-          <Link href="/learn" style={{ color: '#475569', textDecoration: 'none' }}>DHLM Studio Academy</Link>
+        <div style={{
+          display: 'flex', alignItems: 'center', gap: 8, marginBottom: 32,
+          fontFamily: 'var(--mono)', fontSize: 10, color: '#8A929C', flexWrap: 'wrap'
+        }}>
+          <Link href="/learn" style={{ color: '#8A929C', textDecoration: 'none' }}>Academy</Link>
           <span>/</span>
-          <Link href={seriesIndexPage} style={{ color: '#475569', textDecoration: 'none' }}>{seriesLineLabel}</Link>
+          <Link href={seriesIndexPage} style={{ color: '#8A929C', textDecoration: 'none' }}>{seriesLineLabel}</Link>
           <span>/</span>
-          <span style={{ color: '#64748B' }}>{(quantum || masters) ? 'Part' : 'Week'} {fm.week}</span>
+          <span>{(quantum || masters) ? 'Part' : 'Week'} {fm.week}</span>
         </div>
 
         {/* Header */}
-        <div style={{ marginBottom: 28 }}>
-          <div style={{ display: 'flex', alignItems: 'center', gap: 8, marginBottom: 12, flexWrap: 'wrap' }}>
-            <span style={{ fontFamily: 'var(--mono)', fontSize: 9, fontWeight: 800, padding: '3px 9px', borderRadius: 5, background: masters ? '#BA751718' : quantum ? '#7C3AED18' : '#00D47418', color: masters ? '#D4A843' : quantum ? '#A78BFA' : '#00D474', border: masters ? '1px solid #BA751730' : quantum ? '1px solid #7C3AED30' : '1px solid #00D47430', letterSpacing: 1 }}>
+        <div style={{ marginBottom: 32 }}>
+          <div style={{ display: 'flex', alignItems: 'center', gap: 8, marginBottom: 16, flexWrap: 'wrap' }}>
+            <span style={{
+              fontFamily: 'var(--mono)', fontSize: 9, fontWeight: 700,
+              padding: '3px 8px', border: `1px solid ${seriesColor}40`,
+              color: seriesColor, letterSpacing: 1
+            }}>
               {seriesBadgeLabel}
             </span>
-            <span style={{ fontFamily: 'var(--mono)', fontSize: 9, fontWeight: 700, padding: '2px 8px', borderRadius: 4, background: `${phaseColor}14`, color: phaseColor }}>
-              {phaseLabel}
-            </span>
-            <span style={{ fontFamily: 'var(--mono)', fontSize: 9, fontWeight: 700, padding: '2px 8px', borderRadius: 4, background: '#1E293B', color: '#64748B' }}>
+            <span style={{
+              fontFamily: 'var(--mono)', fontSize: 9, padding: '3px 8px',
+              border: '1px solid #E8E8E4', color: '#8A929C', letterSpacing: 1
+            }}>
               {partLabel} {fm.week} / {seriesTotal}
             </span>
           </div>
 
-          <h1 style={{ fontFamily: 'var(--serif)', fontSize: 'clamp(26px, 4.5vw, 38px)', fontWeight: 900, color: '#F1F5F9', margin: '0 0 14px', lineHeight: 1.2 }}>
+          <h1 style={{
+            fontFamily: 'var(--serif)', fontSize: 'clamp(24px, 4.5vw, 38px)',
+            fontWeight: 400, color: '#16161A', margin: '0 0 16px',
+            lineHeight: 1.2, letterSpacing: '-0.02em'
+          }}>
             {fm.title}
           </h1>
-          <p style={{ fontSize: 15, color: '#64748B', lineHeight: 1.7, margin: '0 0 16px' }}>{fm.description}</p>
-          <div style={{ display: 'flex', alignItems: 'center', gap: 10, fontSize: 11, color: '#475569', fontFamily: 'var(--mono)' }}>
-            <span>🕐 {fm.readingTime}</span>
+
+          <p style={{ fontFamily: 'var(--sans)', fontSize: 15, color: '#5B6470', lineHeight: 1.7, margin: '0 0 16px' }}>
+            {fm.description}
+          </p>
+
+          <div style={{ display: 'flex', alignItems: 'center', gap: 12, fontFamily: 'var(--mono)', fontSize: 10, color: '#B0B8C1' }}>
+            <span>{fm.readingTime}</span>
             <span>·</span>
-            <span>{seriesLineLabel}</span>
-          </div>
-          <div style={{ display: 'flex', alignItems: 'center', gap: 6, marginTop: 10, flexWrap: 'wrap' }}>
-            <span style={{ fontSize: 12, color: '#475569' }}>By</span>
-            <Link href="/editorial" style={{ fontSize: 12, color: '#00D474', fontWeight: 600, textDecoration: 'none' }}>DHLM Studio Team</Link>
-            <span style={{ fontSize: 12, color: '#334155' }}>·</span>
-            <span style={{ fontSize: 11, color: '#475569' }}>DHLM Studio Academy</span>
+            <span style={{ color: '#8A929C' }}>By DHLM Studio</span>
           </div>
         </div>
 
         {/* Progress bar */}
-        <div style={{ marginBottom: 28, padding: '12px 16px', borderRadius: 10, background: '#0D1117', border: '1px solid #1E293B' }}>
-          <div style={{ display: 'flex', justifyContent: 'space-between', marginBottom: 6 }}>
-            <span style={{ fontFamily: 'var(--mono)', fontSize: 9, fontWeight: 700, color: '#475569' }}>SERIES PROGRESS</span>
-            <span style={{ fontFamily: 'var(--mono)', fontSize: 9, color: '#475569' }}>{quantum ? 'P' : 'W'}{fm.week} / {seriesTotal}</span>
+        <div style={{ marginBottom: 32, padding: '14px 18px', border: '1px solid #E8E8E4' }}>
+          <div style={{ display: 'flex', justifyContent: 'space-between', marginBottom: 8 }}>
+            <span style={{ fontFamily: 'var(--mono)', fontSize: 9, fontWeight: 700, color: seriesColor, letterSpacing: 1 }}>
+              SERIES PROGRESS
+            </span>
+            <span style={{ fontFamily: 'var(--mono)', fontSize: 9, color: '#8A929C' }}>
+              {quantum ? 'P' : 'W'}{fm.week} / {seriesTotal}
+            </span>
           </div>
-          <div style={{ height: 4, background: '#1E293B', borderRadius: 2, overflow: 'hidden' }}>
-            <div style={{ height: '100%', width: `${(fm.week / seriesTotal) * 100}%`, background: 'linear-gradient(90deg, #00D474, #059952)', borderRadius: 2 }} />
+          <div style={{ height: 2, background: '#F0F0EC', overflow: 'hidden' }}>
+            <div style={{
+              height: '100%', width: `${(fm.week / seriesTotal) * 100}%`,
+              background: seriesColor, transition: 'width 0.3s'
+            }} />
           </div>
         </div>
 
         {/* Hero image */}
         {heroSrc && (
-          <div style={{ borderRadius: 14, overflow: 'hidden', marginBottom: 32, border: '1px solid #1E293B', background: '#0f172a' }}>
+          <div style={{ marginBottom: 40, overflow: 'hidden', border: '1px solid #E8E8E4' }}>
             {/* eslint-disable-next-line @next/next/no-img-element */}
             <img src={heroSrc} alt={fm.title} style={{ width: '100%', height: 'auto', display: 'block' }} />
           </div>
@@ -493,38 +526,65 @@ export default async function LearnLessonPage({ params }: { params: Promise<{ sl
         {fm.tags && fm.tags.length > 0 && (
           <div style={{ display: 'flex', flexWrap: 'wrap', gap: 6, marginTop: 32 }}>
             {fm.tags.map((tag: string) => (
-              <span key={tag} style={{ fontFamily: 'var(--mono)', fontSize: 9, fontWeight: 700, padding: '3px 9px', borderRadius: 5, background: '#1E293B', color: '#475569', letterSpacing: 0.5 }}>
+              <span key={tag} style={{
+                fontFamily: 'var(--mono)', fontSize: 9, fontWeight: 600,
+                padding: '3px 8px', border: '1px solid #E8E8E4', color: '#8A929C', letterSpacing: 1
+              }}>
                 {tag}
               </span>
             ))}
           </div>
         )}
 
-        <hr style={{ border: 'none', borderTop: '1px solid #1E293B', margin: '36px 0' }} />
+        <hr style={{ border: 'none', borderTop: '1px solid #E8E8E4', margin: '40px 0' }} />
 
         {/* Prev / Next navigation */}
-        <div style={{ display: 'grid', gridTemplateColumns: prevLesson ? (nextLesson ? '1fr 1fr' : '1fr') : (nextLesson ? '1fr' : 'none'), gap: 12, marginBottom: 32 }}>
+        <div style={{
+          display: 'grid',
+          gridTemplateColumns: prevLesson ? (nextLesson ? '1fr 1fr' : '1fr') : (nextLesson ? '1fr' : 'none'),
+          gap: 12, marginBottom: 32
+        }}>
           {prevLesson && (
-            <Link href={`/learn/${prevSlug}`} style={{ textDecoration: 'none', padding: '14px 16px', borderRadius: 10, background: '#111827', border: '1px solid #1E293B', display: 'block' }}>
-              <div style={{ fontFamily: 'var(--mono)', fontSize: 9, fontWeight: 700, color: '#475569', marginBottom: 4 }}>← PREV · {partLabel} {prevLesson.fm.week}</div>
-              <div style={{ fontSize: 13, fontWeight: 700, color: '#E2E8F0', lineHeight: 1.4 }}>{prevLesson.fm.title}</div>
+            <Link href={`/learn/${prevSlug}`} style={{
+              textDecoration: 'none', padding: '16px 18px',
+              border: '1px solid #E8E8E4', display: 'block'
+            }}>
+              <div style={{ fontFamily: 'var(--mono)', fontSize: 9, fontWeight: 700, color: '#8A929C', marginBottom: 6, letterSpacing: 1 }}>
+                ← {partLabel} {prevLesson.fm.week}
+              </div>
+              <div style={{ fontFamily: 'var(--sans)', fontSize: 13, fontWeight: 500, color: '#16161A', lineHeight: 1.4 }}>
+                {prevLesson.fm.title}
+              </div>
             </Link>
           )}
           {nextLesson && (
-            <Link href={`/learn/${nextSlug}`} style={{ textDecoration: 'none', padding: '14px 16px', borderRadius: 10, background: '#111827', border: '1px solid #1E293B', display: 'block', textAlign: prevLesson ? 'right' : 'left' }}>
-              <div style={{ fontFamily: 'var(--mono)', fontSize: 9, fontWeight: 700, color: '#475569', marginBottom: 4 }}>NEXT · {partLabel} {nextLesson.fm.week} →</div>
-              <div style={{ fontSize: 13, fontWeight: 700, color: '#E2E8F0', lineHeight: 1.4 }}>{nextLesson.fm.title}</div>
+            <Link href={`/learn/${nextSlug}`} style={{
+              textDecoration: 'none', padding: '16px 18px',
+              border: '1px solid #E8E8E4', display: 'block',
+              textAlign: prevLesson ? 'right' : 'left'
+            }}>
+              <div style={{ fontFamily: 'var(--mono)', fontSize: 9, fontWeight: 700, color: '#8A929C', marginBottom: 6, letterSpacing: 1 }}>
+                {partLabel} {nextLesson.fm.week} →
+              </div>
+              <div style={{ fontFamily: 'var(--sans)', fontSize: 13, fontWeight: 500, color: '#16161A', lineHeight: 1.4 }}>
+                {nextLesson.fm.title}
+              </div>
             </Link>
           )}
         </div>
 
         {/* Back links */}
-        <div style={{ display: 'flex', gap: 20 }}>
-          <Link href={seriesIndexPage} style={{ fontSize: 12, color: '#64748B', textDecoration: 'none' }}>← Series Index</Link>
-          <Link href="/learn" style={{ fontSize: 12, color: '#64748B', textDecoration: 'none' }}>← DHLM Studio Academy</Link>
+        <div style={{ display: 'flex', gap: 20, flexWrap: 'wrap' }}>
+          <Link href={seriesIndexPage} style={{ fontFamily: 'var(--sans)', fontSize: 13, color: '#2D2F8F', textDecoration: 'none' }}>
+            ← Series Index
+          </Link>
+          <Link href="/learn" style={{ fontFamily: 'var(--sans)', fontSize: 13, color: '#8A929C', textDecoration: 'none' }}>
+            ← DHLM Studio Academy
+          </Link>
         </div>
 
         <ContentDisclaimer />
+
       </article>
     </div>
   );

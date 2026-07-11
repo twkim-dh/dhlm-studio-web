@@ -7,9 +7,7 @@ date: "2026-04-03"
 readTime: "14 min"
 category: "Markets"
 catColor: "#00D474"
-grade: "B"
 heroImage: "/images/content/deep-dive-report.webp"
-beafScore: 78
 description: "Google at $2.3T: ChatGPT eating search, YouTube holding strong, Cloud accelerating. BEAF Score 78/100."
 seoTitle: "Alphabet BEAF 78/100: Can Search Survive ChatGPT? | April 2026"
 seoDescription: "Alphabet scores 78/100 on BEAF. Search still 56% of revenue. YouTube ad growth +21%. Cloud accelerating to 31%. Is the search moat actually cracking?"
@@ -90,9 +88,9 @@ Waymo completes over 150,000 paid rides per week across San Francisco, Phoenix, 
 
 If Waymo captures even 5% of the US ride-hailing market ($50B TAM), it would be worth $100-200B as a standalone entity, per Morgan Stanley's autonomous vehicle team's November 2025 valuation framework.
 
-## Financial Analysis: BEAF Scoring
 
-### BEAF Score: 78/100 (B)
+
+
 
 | BEAF Axis | Score | Max | Evidence |
 |-----------|-------|-----|----------|
@@ -210,7 +208,7 @@ Counterpoint: at $120/share, Google would trade at 18x earnings with $88B in ann
 
 ## DHLM Studio Verdict
 
-### BEAF Score: 78/100 — Grade: B
+
 
 Google literally invented the technology that is now disrupting its core business. The transformer architecture came from a paper written by Google employees called "Attention Is All You Need." And Google did not pay attention.
 

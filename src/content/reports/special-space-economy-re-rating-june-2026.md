@@ -14,7 +14,6 @@ readTime: "20 min"
 heroImage: "/images/reports/space-economy-re-rating-thumb.webp"
 author: "DHLM Studio Team"
 byline: "DHLM Studio"
-reviewed: "Reviewed against BEAF Framework"
 disclosure: "The author previously held Rocket Lab (sold prior to SpaceX listing) and is considering positions in SpaceX and Rocket Lab. This is disclosed for transparency and does not constitute a recommendation."
 audience: "U.S. investors evaluating space sector exposure — including SpaceX (SPCX), Rocket Lab (RKLB), and the broader space infrastructure value chain"
 tags: ["SPECIAL-REPORT", "SPACE", "SPACEX", "SPCX", "ROCKET-LAB", "RKLB", "BLUE-ORIGIN", "INFRASTRUCTURE", "SATELLITE", "STARLINK", "DEFENSE", "NEUTRON", "EARTH-OBSERVATION", "IPO", "MACRO-INFRASTRUCTURE", "TESLA"]

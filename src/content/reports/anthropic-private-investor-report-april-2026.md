@@ -6,8 +6,6 @@ date: "2026-04-14"
 readTime: "18 min"
 category: "Special Report"
 catColor: "#C73E3A"
-grade: "—"
-beafScore: 0
 homeRank: 2
 description: "Anthropic at $380B post-money, $30B run-rate revenue, 300,000+ business customers. The most important private AI company most investors can't access. Here is what you need to understand before you try."
 type: "special-report"

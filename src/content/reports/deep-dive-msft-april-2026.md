@@ -7,9 +7,7 @@ date: "2026-04-02"
 readTime: "14 min"
 category: "Markets"
 catColor: "#00D474"
-grade: "B+"
 heroImage: "/images/content/deep-dive-report.webp"
-beafScore: 81
 description: "Microsoft at $3T: Copilot generating $18B, Azure AI at 50%+, 44% operating margins. But $50B annual CapEx must pay off. BEAF 81/100."
 seoTitle: "Microsoft Down 23% From ATH — Cheapest It's Been in 3 Years. Worth Buying?"
 seoDescription: "MSFT at 28x forward earnings: Azure AI +50%, Copilot $18B run rate, 44% margins. $50B CapEx is the question. Full BEAF 81/100 analysis with bull/bear targets."
@@ -70,9 +68,9 @@ For historical context: Microsoft's total CapEx was $23 billion in FY2022. It ha
 
 The thesis requires this investment to generate proportional revenue returns within 3-5 years. Morgan Stanley analyst Keith Weiss noted in a March 2026 report that "the CapEx-to-revenue conversion cycle for cloud AI infrastructure typically runs 18-24 months, meaning FY2026 spending should begin showing returns in FY2027-2028." If that conversion disappoints — if enterprise AI adoption follows the slower trajectory that Gartner's survey suggests — margins compress from 44% to 38-40% and the investment thesis requires patience the market may not offer at 36x earnings.
 
-## Financial Analysis: BEAF Scoring
 
-### BEAF Score: 81/100 (B+)
+
+
 
 | BEAF Axis | Score | Max | Evidence |
 |-----------|-------|-----|----------|
@@ -184,7 +182,7 @@ Assumptions: AI CapEx returns disappoint over 2-3 years. Copilot growth decelera
 
 ## DHLM Studio Verdict
 
-### BEAF Score: 81/100 — Grade: B+
+
 
 Satya Nadella is the most boring genius in technology. He took a company the market left for dead at 15x earnings — "Windows is dying," they said, "mobile is over" — and turned it into a $3 trillion AI leader at 36x. Without a single viral tweet. Without a single meme-worthy product launch. Without a single congressional hearing about his hair.
 

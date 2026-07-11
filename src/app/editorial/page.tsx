@@ -3,7 +3,7 @@ import Link from 'next/link';
 
 export const metadata: Metadata = {
   title: 'Editorial Standards | DHLM Studio',
-  description: 'How DHLM Studio produces institutional-grade investment research. Editorial methodology, BEAF Framework, and commitment to conflict-free analysis.',
+  description: 'How DHLM Studio produces institutional-grade investment research. Editorial methodology, Analysis Framework, and commitment to conflict-free analysis.',
   alternates: { canonical: 'https://dhlm-studio.com/editorial' },
 };
 
@@ -29,7 +29,7 @@ export default function EditorialPage() {
           </p>
           <div style={{ display: 'flex', flexDirection: 'column', gap: 6 }}>
             {[
-              'Deep Dive reports on individual companies (BEAF Framework scored)',
+              'Deep Dive reports on individual companies',
               'Special Reports on macro and sector themes',
               'Sector Reports on industry structure and trends',
               'The Structural View — quarterly thematic research',
@@ -155,7 +155,7 @@ export default function EditorialPage() {
               Every piece of content on DHLM Studio goes through a human editorial process before publication.
             </p>
             <p style={{ fontSize: 13, color: '#94A3B8', lineHeight: 1.8, margin: '0 0 12px' }}>
-              Our Editor-in-Chief reviews all Deep Dive reports, research articles, and BEAF scores for:
+              Our Editor-in-Chief reviews all Deep Dive reports, research articles, for:
             </p>
             <div style={{ display: 'flex', flexDirection: 'column', gap: 8, marginBottom: 14 }}>
               {[
@@ -210,7 +210,7 @@ export default function EditorialPage() {
                 { step: '1', title: 'Primary Source Pull', desc: 'Financial figures (revenue, margins, EPS, debt) are pulled from Financial Modeling Prep, sourced directly from SEC filings (10-K, 10-Q, 8-K).' },
                 { step: '2', title: 'Cross-Reference', desc: 'Key metrics are cross-checked against a second source — typically the company\'s official Investor Relations page or Alpha Vantage.' },
                 { step: '3', title: 'Historical Sanity Check', desc: 'Growth rates and margins are compared to 3-year and 5-year trends. Outliers (>3 standard deviations) are flagged and re-verified manually.' },
-                { step: '4', title: 'Peer Validation', desc: 'Competitor metrics are pulled at the same timestamp to ensure apples-to-apples comparison in the BEAF comparison table.' },
+                { step: '4', title: 'Peer Validation', desc: 'Competitor metrics are pulled at the same timestamp to ensure apples-to-apples comparison in the comparison table.' },
                 { step: '5', title: 'Timestamp Disclosure', desc: 'Every report includes a "Data as of" date. Real-time prices on market pages disclose the 15-minute delay.' },
                 { step: '6', title: 'Correction Protocol', desc: 'If a verified error is found post-publication, the report is updated within 24 hours and a correction note is appended at the bottom.' },
               ].map(s => (
@@ -274,7 +274,7 @@ export default function EditorialPage() {
                 <ul style={{ fontSize: 13, color: '#64748B', lineHeight: 1.8, margin: 0, paddingLeft: 18 }}>
                   <li>Selecting research topics and defining the investment thesis</li>
                   <li>Gathering and cross-verifying data from primary sources</li>
-                  <li>Building the analytical argument and applying the BEAF framework</li>
+                  <li>Building the analytical argument and applying the analysis framework</li>
                   <li>Writing the full report text and all analytical commentary</li>
                   <li>Making all editorial judgments, risk assessments, and publication decisions</li>
                   <li>Issuing corrections when errors are identified</li>
@@ -323,7 +323,7 @@ export default function EditorialPage() {
                 <strong style={{ color: '#E2E8F0' }}>Not Investment Advice:</strong> DHLM Studio provides data-driven analysis for educational and entertainment purposes only. Nothing on this website constitutes investment advice, a recommendation to buy or sell any security, or an offer to participate in any investment strategy. Always consult a qualified financial advisor before making investment decisions.
               </p>
               <p style={{ marginBottom: 12 }}>
-                <strong style={{ color: '#E2E8F0' }}>DHLM Studio Voice:</strong> &ldquo;DHLM Studio&rdquo; is an informational and educational analytical voice that provides data-driven commentary on market data. Its observations are crafted to make financial concepts accessible and do not represent personalized investment advice. The character&apos;s BEAF scores and grades are quantitative analytical outputs, NOT buy/sell signals.
+                <strong style={{ color: '#E2E8F0' }}>DHLM Studio Voice:</strong> &ldquo;DHLM Studio&rdquo; is an informational and educational analytical voice that provides data-driven commentary on market data. Its observations are crafted to make financial concepts accessible and do not represent personalized investment advice. The character&apos;s grades are quantitative analytical outputs, NOT buy/sell signals.
               </p>
               <p style={{ marginBottom: 12 }}>
                 <strong style={{ color: '#E2E8F0' }}>Data Accuracy:</strong> While we strive for accuracy, financial data may be delayed, incomplete, or subject to revision. Market data on this site is delayed up to 15 minutes. Always verify critical data points with official sources before making decisions.

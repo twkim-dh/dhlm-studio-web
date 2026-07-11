@@ -7,8 +7,6 @@ date: "2026-04-16"
 readTime: "15 min"
 category: "Special Report"
 catColor: "#C73E3A"
-grade: "N/R"
-beafScore: 0
 heroImage: "/images/content/nvidia-ising-quantum-control-plane-hero.webp"
 description: "NVIDIA Just Launched the Operating System for Quantum Computers. Ising attacks the hardest practical problem in quantum — calibration and error correction. This is CUDA for quantum, launched before the era has fully arrived. Not a 2026 earnings catalyst. A decade-long moat extension."
 type: "special-report"

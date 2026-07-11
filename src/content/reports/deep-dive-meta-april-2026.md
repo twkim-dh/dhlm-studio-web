@@ -7,9 +7,7 @@ date: "2026-04-04"
 readTime: "14 min"
 category: "Markets"
 catColor: "#00D474"
-grade: "B-"
 heroImage: "/images/content/deep-dive-report.webp"
-beafScore: 74
 description: "Meta at $1.6T: $36B metaverse losses, but AI-powered ads saving everything. BEAF Score 74/100."
 seoTitle: "Meta BEAF 74/100: Is the $36B Reality Labs Bet Paying Off? | April 2026"
 seoDescription: "Meta scores 74/100 on BEAF. Reality Labs lost $36B cumulative. Ad revenue +22% on AI targeting. 3.2B daily users. Is the AI ad engine enough?"
@@ -81,9 +79,9 @@ The metaverse as Zuckerberg originally described — a persistent, shared virtua
 
 The investor framework: Meta at $1.6 trillion is an advertising business at 26x earnings with a free option on the metaverse. If Reality Labs succeeds, the upside is enormous. If it fails, the losses are absorbed by advertising cash flow without materially impacting the investment thesis.
 
-## Financial Analysis: BEAF Scoring
 
-### BEAF Score: 74/100 (B-)
+
+
 
 | BEAF Axis | Score | Max | Evidence |
 |-----------|-------|-----|----------|
@@ -197,7 +195,7 @@ Counterpoint: even in the bear case, Meta retains 3.98B users and a 48% operatin
 
 ## DHLM Studio Verdict
 
-### BEAF Score: 74/100 — Grade: B-
+
 
 I have to give Zuckerberg credit, and I resent it.
 
