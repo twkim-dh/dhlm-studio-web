@@ -1,22 +1,23 @@
 import type { Metadata } from "next";
 import Script from "next/script";
-import { Playfair_Display, DM_Sans, IBM_Plex_Mono } from "next/font/google";
+import { Fraunces, Instrument_Sans, IBM_Plex_Mono } from "next/font/google";
 import Header from "@/components/Header";
 import Footer from "@/components/Footer";
 import ClientWidgets from "./ClientWidgets";
 import "./globals.css";
 
-const playfair = Playfair_Display({
-  variable: "--font-playfair",
+const fraunces = Fraunces({
+  variable: "--font-fraunces",
   subsets: ["latin"],
-  weight: ["700", "800", "900"],
+  weight: ["300", "400", "500", "600", "700", "900"],
   display: "swap",
+  style: ["normal", "italic"],
 });
 
-const dmSans = DM_Sans({
-  variable: "--font-dm-sans",
+const instrumentSans = Instrument_Sans({
+  variable: "--font-instrument-sans",
   subsets: ["latin"],
-  weight: ["400", "500", "600", "700", "800"],
+  weight: ["400", "500", "600", "700"],
   display: "swap",
 });
 
@@ -56,10 +57,6 @@ export const metadata: Metadata = {
     description: "I research the stocks I invest in, and share what I find. Notes on AI, semiconductors, quantum computing, and the companies I hold.",
     images: [{ url: "https://dhlm-studio.com/twitter-image", width: 1200, height: 630, alt: "DHLM Studio — One Investor's Notes" }],
   },
-  // No root-level canonical — each page sets its own via alternates.canonical.
-  // A root canonical pointing to "/" would be inherited by any page that
-  // forgets to declare its own, making Google treat all those pages as
-  // duplicates of the home page.
   robots: {
     index: true,
     follow: true,
@@ -79,18 +76,16 @@ export default function RootLayout({
   children: React.ReactNode;
 }>) {
   return (
-    <html lang="en" className={`${playfair.variable} ${dmSans.variable} ${ibmPlexMono.variable} antialiased`}>
+    <html lang="en" className={`${fraunces.variable} ${instrumentSans.variable} ${ibmPlexMono.variable} antialiased`}>
       <head>
         {/* Favicon */}
         <link rel="icon" href="/favicon.svg" type="image/svg+xml" />
         <link rel="apple-touch-icon" href="/favicon.svg" />
         <link rel="manifest" href="/manifest.json" />
         <meta name="theme-color" content="#FFFFFF" />
-        {/* No Twemoji — caused image explosion bug. Flag emojis show as text on Windows, which is acceptable. */}
         {/* Preconnect to external origins */}
         <link rel="preconnect" href="https://www.googletagmanager.com" />
         {/* Fonts loaded via next/font/google — no external link needed */}
-        {/* AdSense publisher verification — ensures code check passes without requiring script to be present at load time */}
         <meta name="google-adsense-account" content="ca-pub-5182634360822108" />
         {/* JSON-LD Organization */}
         <script
@@ -118,7 +113,7 @@ export default function RootLayout({
           })}}
         />
       </head>
-      <body style={{ background: '#FFFFFF', color: '#1A1D21', fontFamily: "'DM Sans', -apple-system, sans-serif" }} className="min-h-screen flex flex-col">
+      <body style={{ background: '#FFFFFF', color: '#16161A', fontFamily: "var(--sans)" }} className="min-h-screen flex flex-col">
         <a href="#main-content" className="skip-to-content">Skip to content</a>
         <Header />
         <main id="main-content" className="flex-1 pb-14 md:pb-0">{children}</main>

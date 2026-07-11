@@ -1,29 +1,29 @@
 @import "tailwindcss";
 
 :root {
-  /* ── DHLM Studio 2026 White Minimal ── */
+  /* ── DHLM Studio 2026 Editorial ── */
   --bg: #FFFFFF;
-  --bg-subtle: #FBFBFC;
+  --bg-subtle: #FAFAF8;
   --card: #FFFFFF;
   --elevated: #F7F8FA;
-  --border: #EAECEF;
-  --border-soft: #F0F2F4;
-  --text-primary: #1A1D21;
+  --border: #E8E8E4;
+  --border-soft: #F0F0EC;
+  --text-primary: #16161A;
   --text-secondary: #5B6470;
   --text-muted: #8A929C;
   --text-dim: #B0B8C1;
-  --accent: #3B4A99;
-  --accent-bg: #EEF1FF;
-  --accent-hover: #2E3A7A;
+  --accent: #2D2F8F;
+  --accent-bg: #EBEBF8;
+  --accent-hover: #1E2070;
   --green: #00A86B;
   --red-neg: #DC2626;
-  --blue: #3B4A99;
+  --blue: #2D2F8F;
   --gold: #B5860D;
   --purple: #6D5BE0;
-  /* Georgia for quotes/voice (Red Days) */
-  --font-voice: Georgia, 'Times New Roman', serif;
-  --serif: var(--font-playfair), 'Playfair Display', Georgia, serif;
-  --sans: var(--font-dm-sans), 'DM Sans', -apple-system, sans-serif;
+  /* Fraunces for editorial voice/headlines */
+  --font-voice: var(--font-fraunces), 'Fraunces', Georgia, serif;
+  --serif: var(--font-fraunces), 'Fraunces', Georgia, serif;
+  --sans: var(--font-instrument-sans), 'Instrument Sans', -apple-system, sans-serif;
   --mono: var(--font-ibm-plex-mono), 'IBM Plex Mono', 'SF Mono', monospace;
   /* Legacy dark aliases (existing dark pages use these via area-bg) */
   --dark-bg: #0B0F19;

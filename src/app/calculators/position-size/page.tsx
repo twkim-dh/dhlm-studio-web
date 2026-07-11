@@ -178,7 +178,7 @@ export default function PositionSizePage() {
                   </div>
                   <div>
                     <div style={{ fontSize: 10, color: '#64748B', marginBottom: 4 }}>Max Loss if Stop Hit</div>
-                    <div style={{ fontFamily: 'var(--mono)', fontSize: 16, fontWeight: 700, color: '#EF4444' }}>??fmt(result.maxLoss)}</div>
+                    <div style={{ fontFamily: 'var(--mono)', fontSize: 16, fontWeight: 700, color: '#EF4444' }}>{fmt(result.maxLoss)}</div>
                   </div>
                   <div>
                     <div style={{ fontSize: 10, color: '#64748B', marginBottom: 4 }}>% of Portfolio at Risk</div>
